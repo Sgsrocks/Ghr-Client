@@ -57,16 +57,6 @@ public class Configuration {
 
 	public static final String CACHE_LINK = "https://www.dropbox.com/s/qyp6b3etma22lrs/cache.zip?dl=1"; // Link for every client below client
 
-	public static final String MEDIA_ARCHIVES_LINK = "https://www.dl.dropboxusercontent.com/sh/qpw6qpe1gqm8zq6/AABqDA9gScRH72FQBebyKm0Ba"; // Link for every
-																									// client below //
-	public static final String SPRITE_CACHE_URL = "https://www.dl.dropboxusercontent.com/sh/1km7safuq247s6l/AACFc43UzputgyZ_0SXUgDola"; // Link for every client below
-																						// client v1.12 - being
-	public static final String VERSION_URL = "http://playanguish.net/versiontracker/cachevers";
-	
-	public static final String CLIENT_VERSION_URL = "http://playanguish.net/versiontracker/clientvers.txt";
-	
-	public static final String CLIENT_URL = "https://www.dropbox.com/s/9r0z9h7ymtfp25p/clientunobf.jar?dl=1";
-
 	public static final boolean DUMP_OBJECTS = false;
 	
 	/**

@@ -22,7 +22,6 @@ import com.client.Stream;
 import com.client.StreamLoader;
 import com.client.definitions.items.*;
 import com.client.sign.Signlink;
-import com.client.utilities.FileOperations;
 
 public final class ItemDefinition {
 
@@ -571,9 +570,9 @@ public final class ItemDefinition {
 		if (k == -1)
 			return true;
 		boolean flag = true;
-		if (!Model.method463(k))
+		if (!Model.isCached(k))
 			flag = false;
-		if (l != -1 && !Model.method463(l))
+		if (l != -1 && !Model.isCached(l))
 			flag = false;
 		return flag;
 	}
@@ -587,9 +586,9 @@ public final class ItemDefinition {
 		}
 		if (k == -1)
 			return null;
-		Model model = Model.method462(k);
+		Model model = Model.getModel(k);
 		if (l != -1) {
-			Model model_1 = Model.method462(l);
+			Model model_1 = Model.getModel(l);
 			Model aclass30_sub2_sub4_sub6s[] = { model, model_1 };
 			model = new Model(2, aclass30_sub2_sub4_sub6s);
 		}
@@ -613,11 +612,11 @@ public final class ItemDefinition {
 		if (k == -1)
 			return true;
 		boolean flag = true;
-		if (!Model.method463(k))
+		if (!Model.isCached(k))
 			flag = false;
-		if (l != -1 && !Model.method463(l))
+		if (l != -1 && !Model.isCached(l))
 			flag = false;
-		if (i1 != -1 && !Model.method463(i1))
+		if (i1 != -1 && !Model.isCached(i1))
 			flag = false;
 		return flag;
 	}
@@ -633,15 +632,15 @@ public final class ItemDefinition {
 		}
 		if (j == -1)
 			return null;
-		Model model = Model.method462(j);
+		Model model = Model.getModel(j);
 		if (k != -1)
 			if (l != -1) {
-				Model model_1 = Model.method462(k);
-				Model model_3 = Model.method462(l);
+				Model model_1 = Model.getModel(k);
+				Model model_3 = Model.getModel(l);
 				Model aclass30_sub2_sub4_sub6_1s[] = { model, model_1, model_3 };
 				model = new Model(3, aclass30_sub2_sub4_sub6_1s);
 			} else {
-				Model model_2 = Model.method462(k);
+				Model model_2 = Model.getModel(k);
 				Model aclass30_sub2_sub4_sub6s[] = { model, model_2 };
 				model = new Model(2, aclass30_sub2_sub4_sub6s);
 			}
@@ -1303,7 +1302,7 @@ public final class ItemDefinition {
 		Model model = (Model) mruNodes2.insertFromCache(id);
 		if (model != null)
 			return model;
-		model = Model.method462(modelId);
+		model = Model.getModel(modelId);
 		if (model == null)
 			return null;
 		if (groundScaleX != 128 || groundScaleY != 128 || groundScaleZ != 128)
@@ -1334,7 +1333,7 @@ public final class ItemDefinition {
 			if (j != -1)
 				return forID(j).method202(1);
 		}
-		Model model = Model.method462(modelId);
+		Model model = Model.getModel(modelId);
 		if (model == null)
 			return null;
 		if (modifiedModelColors != null) {

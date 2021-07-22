@@ -82,7 +82,7 @@ public final class GraphicsDefinition {
 		Model model = (Model) aMRUNodes_415.insertFromCache(index);
 		if (model != null)
 			return model;
-		model = Model.method462(modelId);
+		model = Model.getModel(modelId);
 		if (model == null)
 			return null;
 		for (int i = 0; i < anIntArray408.length; i++)

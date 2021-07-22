@@ -980,7 +980,7 @@ public class ItemDefinition_Sub4 {
 			class8.placeholderId = 18811;
 			class8.placeholderTemplateId = -1;
 		}
-		if(i == 27306) //ID
+		if(i == 27406) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1010,7 +1010,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 13000;
 		}
 
-		if(i == 27307) //ID
+		if(i == 27407) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1046,7 +1046,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 85000;
 		}
 
-		if(i == 27308) //ID
+		if(i == 27408) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1084,7 +1084,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 50000;
 		}
 
-		if(i == 27309) //ID
+		if(i == 27409) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1119,7 +1119,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 47000;
 		}
-		if(i == 27310) //ID
+		if(i == 27410) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1157,7 +1157,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 13000;
 		}
 
-		if(i == 27311) //ID
+		if(i == 27411) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1194,7 +1194,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27312) //ID
+		if(i == 27412) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1239,7 +1239,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27313) //ID
+		if(i == 27413) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1278,7 +1278,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 47000;
 		}
-		if(i == 27314) //ID
+		if(i == 27414) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1310,7 +1310,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 103000;
 		}
 
-		if(i == 27315) //ID
+		if(i == 27415) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1343,7 +1343,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27316) //ID
+		if(i == 27416) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1377,7 +1377,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27317) //ID
+		if(i == 27417) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1412,7 +1412,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 275000;
 		}
-		if(i == 27318) //ID
+		if(i == 27418) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1454,7 +1454,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27319) //ID
+		if(i == 27419) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1490,7 +1490,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27320) //ID
+		if(i == 27420) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1527,7 +1527,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 280000;
 		}
-		if(i == 27321) //ID
+		if(i == 27421) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1560,7 +1560,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 275000;
 		}
-		if(i == 27322) //ID
+		if(i == 27422) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1596,7 +1596,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27323) //ID
+		if(i == 27423) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1627,7 +1627,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27324) //ID
+		if(i == 27424) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1660,7 +1660,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27325) //ID
+		if(i == 27425) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1690,7 +1690,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27326) //ID
+		if(i == 27426) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1722,7 +1722,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27327) //ID
+		if(i == 27427) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1753,7 +1753,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27328) //ID
+		if(i == 27428) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1783,7 +1783,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27329) //ID
+		if(i == 27429) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1813,7 +1813,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 13000;
 		}
 
-		if(i == 27330) //ID
+		if(i == 27430) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1849,7 +1849,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 85000;
 		}
 
-		if(i == 27331) //ID
+		if(i == 27431) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1887,7 +1887,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 50000;
 		}
 
-		if(i == 27332) //ID
+		if(i == 27432) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1924,7 +1924,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 47000;
 		}
-		if(i == 27333) //ID
+		if(i == 27433) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1962,7 +1962,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 13000;
 		}
 
-		if(i == 27334) //ID
+		if(i == 27434) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -1999,7 +1999,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27335) //ID
+		if(i == 27435) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2044,7 +2044,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27336) //ID
+		if(i == 27436) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2083,7 +2083,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 47000;
 		}
-		if(i == 27337) //ID
+		if(i == 27437) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2115,7 +2115,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 103000;
 		}
 
-		if(i == 27338) //ID
+		if(i == 27438) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2148,7 +2148,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27339) //ID
+		if(i == 27439) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2182,7 +2182,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27340) //ID
+		if(i == 27440) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2217,7 +2217,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 275000;
 		}
-		if(i == 27341) //ID
+		if(i == 27441) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2259,7 +2259,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27342) //ID
+		if(i == 27442) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2295,7 +2295,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27343) //ID
+		if(i == 27443) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2332,7 +2332,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 280000;
 		}
-		if(i == 27344) //ID
+		if(i == 27444) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2365,7 +2365,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 275000;
 		}
-		if(i == 27345) //ID
+		if(i == 27445) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2401,7 +2401,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27346) //ID
+		if(i == 27446) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2432,7 +2432,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27347) //ID
+		if(i == 27447) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2465,7 +2465,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27348) //ID
+		if(i == 27448) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2495,7 +2495,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27349) //ID
+		if(i == 27449) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2527,7 +2527,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27350) //ID
+		if(i == 27450) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2559,7 +2559,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27351) //ID
+		if(i == 27451) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2589,7 +2589,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27352) //ID
+		if(i == 27452) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2619,7 +2619,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 13000;
 		}
 
-		if(i == 27353) //ID
+		if(i == 27453) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2655,7 +2655,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 85000;
 		}
 
-		if(i == 27354) //ID
+		if(i == 27454) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2693,7 +2693,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 50000;
 		}
 
-		if(i == 27355) //ID
+		if(i == 27455) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2728,7 +2728,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 47000;
 		}
-		if(i == 27356) //ID
+		if(i == 27456) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2766,7 +2766,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 13000;
 		}
 
-		if(i == 27357) //ID
+		if(i == 27457) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2803,7 +2803,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27358) //ID
+		if(i == 27458) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2848,7 +2848,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27359) //ID
+		if(i == 27459) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2887,7 +2887,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 47000;
 		}
-		if(i == 27360) //ID
+		if(i == 27460) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2919,7 +2919,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 103000;
 		}
 
-		if(i == 27361) //ID
+		if(i == 27461) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2952,7 +2952,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27362) //ID
+		if(i == 27462) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -2986,7 +2986,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27363) //ID
+		if(i == 27463) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3021,7 +3021,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 275000;
 		}
-		if(i == 27364) //ID
+		if(i == 27464) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3063,7 +3063,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27365) //ID
+		if(i == 27465) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3099,7 +3099,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27366) //ID
+		if(i == 27466) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3136,7 +3136,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 280000;
 		}
-		if(i == 27367) //ID
+		if(i == 27467) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3169,7 +3169,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 275000;
 		}
-		if(i == 27368) //ID
+		if(i == 27468) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3205,7 +3205,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27369) //ID
+		if(i == 27469) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3236,7 +3236,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27370) //ID
+		if(i == 27470) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3269,7 +3269,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27371) //ID
+		if(i == 27471) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3299,7 +3299,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27372) //ID
+		if(i == 27472) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3331,7 +3331,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27373) //ID
+		if(i == 27473) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3363,7 +3363,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27374) //ID
+		if(i == 27474) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3393,7 +3393,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27375) //ID
+		if(i == 27475) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3423,7 +3423,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 13000;
 		}
 
-		if(i == 27376) //ID
+		if(i == 27476) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3459,7 +3459,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 85000;
 		}
 
-		if(i == 27377) //ID
+		if(i == 27477) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3497,7 +3497,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 50000;
 		}
 
-		if(i == 27378) //ID
+		if(i == 27478) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3534,7 +3534,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 47000;
 		}
-		if(i == 27379) //ID
+		if(i == 27479) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3572,7 +3572,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 13000;
 		}
 
-		if(i == 27380) //ID
+		if(i == 27480) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3609,7 +3609,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27381) //ID
+		if(i == 27481) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3654,7 +3654,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27382) //ID
+		if(i == 27482) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3693,7 +3693,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 47000;
 		}
-		if(i == 27383) //ID
+		if(i == 27483) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3725,7 +3725,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 103000;
 		}
 
-		if(i == 27384) //ID
+		if(i == 27484) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3758,7 +3758,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27385) //ID
+		if(i == 27485) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3792,7 +3792,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27386) //ID
+		if(i == 27486) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3827,7 +3827,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 275000;
 		}
-		if(i == 27387) //ID
+		if(i == 27487) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3869,7 +3869,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27388) //ID
+		if(i == 27488) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3905,7 +3905,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27389) //ID
+		if(i == 27489) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3942,7 +3942,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 280000;
 		}
-		if(i == 27390) //ID
+		if(i == 27490) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -3975,7 +3975,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 275000;
 		}
-		if(i == 27391) //ID
+		if(i == 27491) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4011,7 +4011,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27392) //ID
+		if(i == 27492) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4042,7 +4042,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27393) //ID
+		if(i == 27493) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4075,7 +4075,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27394) //ID
+		if(i == 27494) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4105,7 +4105,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27395) //ID
+		if(i == 27495) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4137,7 +4137,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27396) //ID
+		if(i == 27496) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4169,7 +4169,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27397) //ID
+		if(i == 27497) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4199,7 +4199,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27398) //ID
+		if(i == 27498) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4229,7 +4229,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 13000;
 		}
 
-		if(i == 27399) //ID
+		if(i == 27499) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4265,7 +4265,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 85000;
 		}
 
-		if(i == 27400) //ID
+		if(i == 27500) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4303,7 +4303,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 50000;
 		}
 
-		if(i == 27401) //ID
+		if(i == 27501) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4338,7 +4338,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 47000;
 		}
-		if(i == 27402) //ID
+		if(i == 27502) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4376,7 +4376,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 13000;
 		}
 
-		if(i == 27403) //ID
+		if(i == 27503) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4413,7 +4413,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27404) //ID
+		if(i == 27504) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4458,7 +4458,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27405) //ID
+		if(i == 27505) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4497,7 +4497,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 47000;
 		}
-		if(i == 27406) //ID
+		if(i == 27506) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4529,7 +4529,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 103000;
 		}
 
-		if(i == 27407) //ID
+		if(i == 27507) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4562,7 +4562,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27408) //ID
+		if(i == 27508) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4596,7 +4596,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27409) //ID
+		if(i == 27509) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4631,7 +4631,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 275000;
 		}
-		if(i == 27410) //ID
+		if(i == 27510) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4673,7 +4673,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27411) //ID
+		if(i == 27511) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4709,7 +4709,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27412) //ID
+		if(i == 27512) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4746,7 +4746,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 280000;
 		}
-		if(i == 27413) //ID
+		if(i == 27513) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4779,7 +4779,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 275000;
 		}
-		if(i == 27414) //ID
+		if(i == 27514) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4815,7 +4815,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27415) //ID
+		if(i == 27515) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4846,7 +4846,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27416) //ID
+		if(i == 27516) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4879,7 +4879,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27417) //ID
+		if(i == 27517) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4909,7 +4909,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27418) //ID
+		if(i == 27518) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4941,7 +4941,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27419) //ID
+		if(i == 27519) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -4973,7 +4973,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27420) //ID
+		if(i == 27520) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5003,7 +5003,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27421) //ID
+		if(i == 27521) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5042,7 +5042,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 290010;
 		}
-		if(i == 27422) //ID
+		if(i == 27522) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5073,7 +5073,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 289910;
 		}
-		if(i == 27423) //ID
+		if(i == 27523) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5102,7 +5102,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 289010;
 		}
-		if(i == 27424) //ID
+		if(i == 27524) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5132,7 +5132,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 13000;
 		}
 
-		if(i == 27425) //ID
+		if(i == 27525) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5168,7 +5168,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 85000;
 		}
 
-		if(i == 27426) //ID
+		if(i == 27526) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5206,7 +5206,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 50000;
 		}
 
-		if(i == 27427) //ID
+		if(i == 27527) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5241,7 +5241,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 47000;
 		}
-		if(i == 27428) //ID
+		if(i == 27528) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5279,7 +5279,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 13000;
 		}
 
-		if(i == 27429) //ID
+		if(i == 27529) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5316,7 +5316,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27430) //ID
+		if(i == 27530) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5361,7 +5361,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27431) //ID
+		if(i == 27531) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5400,7 +5400,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 47000;
 		}
-		if(i == 27432) //ID
+		if(i == 27532) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5432,7 +5432,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 103000;
 		}
 
-		if(i == 27433) //ID
+		if(i == 27533) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5465,7 +5465,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27434) //ID
+		if(i == 27534) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5499,7 +5499,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27435) //ID
+		if(i == 27535) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5534,7 +5534,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 275000;
 		}
-		if(i == 27436) //ID
+		if(i == 27536) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5576,7 +5576,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27437) //ID
+		if(i == 27537) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5612,7 +5612,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27438) //ID
+		if(i == 27538) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5649,7 +5649,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 280000;
 		}
-		if(i == 27439) //ID
+		if(i == 27539) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5682,7 +5682,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 275000;
 		}
-		if(i == 27440) //ID
+		if(i == 27540) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5718,7 +5718,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27441) //ID
+		if(i == 27541) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5749,7 +5749,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27442) //ID
+		if(i == 27542) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5782,7 +5782,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27443) //ID
+		if(i == 27543) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5812,7 +5812,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27444) //ID
+		if(i == 27544) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5844,7 +5844,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27445) //ID
+		if(i == 27545) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5876,7 +5876,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27446) //ID
+		if(i == 27546) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5906,7 +5906,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27447) //ID
+		if(i == 27547) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5936,7 +5936,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 13000;
 		}
 
-		if(i == 27448) //ID
+		if(i == 27548) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -5972,7 +5972,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 85000;
 		}
 
-		if(i == 27449) //ID
+		if(i == 27549) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6010,7 +6010,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 50000;
 		}
 
-		if(i == 27450) //ID
+		if(i == 27550) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6045,7 +6045,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 47000;
 		}
-		if(i == 27451) //ID
+		if(i == 27551) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6083,7 +6083,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 13000;
 		}
 
-		if(i == 27452) //ID
+		if(i == 27552) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6120,7 +6120,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27453) //ID
+		if(i == 27553) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6165,7 +6165,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27454) //ID
+		if(i == 27554) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6204,7 +6204,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 47000;
 		}
-		if(i == 27455) //ID
+		if(i == 27555) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6236,7 +6236,7 @@ public class ItemDefinition_Sub4 {
 			class8.value = 103000;
 		}
 
-		if(i == 27456) //ID
+		if(i == 27556) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6269,7 +6269,7 @@ public class ItemDefinition_Sub4 {
 		}
 
 
-		if(i == 27457) //ID
+		if(i == 27557) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6303,7 +6303,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27458) //ID
+		if(i == 27558) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6338,7 +6338,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 275000;
 		}
-		if(i == 27459) //ID
+		if(i == 27559) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6380,7 +6380,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27460) //ID
+		if(i == 27560) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6416,7 +6416,7 @@ public class ItemDefinition_Sub4 {
 
 
 
-		if(i == 27461) //ID
+		if(i == 27561) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6453,7 +6453,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 280000;
 		}
-		if(i == 27462) //ID
+		if(i == 27562) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6486,7 +6486,7 @@ public class ItemDefinition_Sub4 {
 			class8.primaryFemaleHeadPiece = -1;
 			class8.value = 275000;
 		}
-		if(i == 27463) //ID
+		if(i == 27563) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6522,7 +6522,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27464) //ID
+		if(i == 27564) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6553,7 +6553,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27465) //ID
+		if(i == 27565) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6586,7 +6586,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27466) //ID
+		if(i == 27566) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6616,7 +6616,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27467) //ID
+		if(i == 27567) //ID
 		{
 			class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6648,7 +6648,7 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
-		if(i == 27468) //ID
+		if(i == 27568) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};
@@ -6680,7 +6680,7 @@ public class ItemDefinition_Sub4 {
 			class8.notedId = -1;
 		}
 
-		if(i == 27469) //ID
+		if(i == 27569) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
 			class8.groundActions = new String[] {null, null, "Take", null, null};

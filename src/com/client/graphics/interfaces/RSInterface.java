@@ -5567,7 +5567,7 @@ public class RSInterface {
 		if (model != null)
 			return model;
 		if (i == 1)
-			model = Model.method462(j);
+			model = Model.getModel(j);
 		if (i == 2)
 			model = NpcDefinition.forID(j).method160();
 		if (i == 3)

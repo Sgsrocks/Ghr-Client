@@ -1349,7 +1349,7 @@ public class Model extends Renderable {
         aClass21Array1661[j] = null;
     }
 
-    public static Model method462(int j) {
+    public static Model getModel(int j) {
         if (aClass21Array1661 == null) {
             return null;
         }
@@ -1362,7 +1362,7 @@ public class Model extends Renderable {
         }
     }
 
-    public static boolean method463(int i) {
+    public static boolean isCached(int i) {
         if (aClass21Array1661 == null) {
             return false;
         }

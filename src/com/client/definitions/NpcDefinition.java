@@ -38,111 +38,6 @@ public final class NpcDefinition {
 		entityDef.readValues(stream);
 
 
-		if (i == 506) {
-			entityDef.name = "Iron Man Store";
-			entityDef.description = "A shop specifically for iron men.";
-		}if(i==3218 || i ==3217){
-			entityDef.actions = new String[] { "Talk-to", null, null, null, null };
-		}
-		
-		if (i == 771) {
-            entityDef.name = "";
-            entityDef.models = new int[1];
-            entityDef.models[0] = 1822;
-            entityDef.actions = new String[5];
-            entityDef.actions[0] = "";
-            entityDef.actions[1] = null;
-            entityDef.actions[2] = null;
-            entityDef.actions[3] = null;
-            entityDef.actions[4] = null;
-            entityDef.description = "";
-            entityDef.onMinimap = false;
-        }
-
-		if (i == 6295) {
-            entityDef.name = "@red@Demon @whi@God";
-            entityDef.description = "A mighty foe, only the best can defeat!";
-            entityDef.combatLevel = 5268;
-            entityDef.onMinimap = true;
-        }
-		
-		if (i == 8026) {
-			entityDef.name = "Vorkath";
-			// entityDef.combatLevel = 732;
-			entityDef.models = new int[] { 35023 };
-			entityDef.standAnim = 7946;
-			entityDef.onMinimap = true;
-			entityDef.actions = new String[5];
-			entityDef.actions = new String[] { "Poke", null, null, null, null };
-			entityDef.anInt86 = 100;
-			entityDef.anInt91 = 100;
-		}
-		if (i == 8027) {
-			entityDef.name = "Vorkath";
-			entityDef.combatLevel = 732;
-			entityDef.models = new int[] { 35023 };
-			entityDef.standAnim = 7950;
-			entityDef.onMinimap = true;
-			entityDef.actions = new String[5];
-			entityDef.actions = new String[] { null, null, null, null, null };
-			entityDef.anInt86 = 100;
-			entityDef.anInt91 = 100;
-		}
-		if (i == 8028) {
-			entityDef.name = "Vorkath";
-			entityDef.combatLevel = 732;
-			entityDef.models = new int[] { 35023 };
-			entityDef.standAnim = 7948;
-			entityDef.onMinimap = true;
-			entityDef.actions = new String[5];
-			entityDef.actions = new String[] { null, "Attack", null, null, null };
-			entityDef.anInt86 = 100;
-			entityDef.anInt91 = 100;
-		}
-		
-		if (i == 8059) {
-			entityDef.name = "Vorkath";
-			entityDef.combatLevel = 732;
-			entityDef.models = new int[] { 35023 };
-			entityDef.standAnim = 7950;
-			entityDef.onMinimap = true;
-			entityDef.actions = new String[5];
-			entityDef.actions = new String[] { null, null, null, null, null };
-			entityDef.anInt86 = 100;
-			entityDef.anInt91 = 100;
-		}
-		if (i == 8061) {
-			entityDef.name = "Vorkath";
-			entityDef.combatLevel = 732;
-			entityDef.models = new int[] { 35023 };
-			entityDef.standAnim = 7948;
-			entityDef.onMinimap = true;
-			entityDef.actions = new String[5];
-			entityDef.actions = new String[] { null, "Attack", null, null, null };
-			entityDef.anInt86 = 100;
-			entityDef.anInt91 = 100;
-		}
-		
-		if (i==3257){
-			entityDef.actions = new String[] { "Trade", null, null, null, null };
-		}
-		if (i==17){
-			entityDef.actions = new String[] { "Pollnivneach", null, null, null, null };
-		}
-		if (i==3936){
-			entityDef.actions = new String[] { "Neitiznot", "Jatizso", null, null, null };
-		}
-		if (i==2580){
-			entityDef.actions = new String[] { "Talk-to", "Abyss", null, null, null };
-		}
-		if (i==1056){
-			entityDef.name = "Herblore Shop";
-			entityDef.actions = new String[] { "Trade", null, null, null, null };
-		}
-		if (i==1815){
-			entityDef.name = "Fishing Supplies";
-			entityDef.actions = new String[] { "Trade", null, null, null, null };
-		}
 		if (i== 4625){
 			entityDef.name = "Donator shop";
 			entityDef.actions = new String[] { "Talk-to", null, "Trade", null, null };
@@ -155,36 +50,7 @@ public final class NpcDefinition {
 			entityDef.standAnim = 808;
 			entityDef.walkAnim = 819;
 		}
-	
 
-		if(i==7144){
-	entityDef.anInt75 = 0;
-		}
-		if(i==963){
-			entityDef.anInt75 = 6;
-		}
-		if(i==7145){
-	entityDef.anInt75 = 1;
-		}
-		if(i==7146){
-	entityDef.anInt75 = 2;
-		}
-		
-		
-		switch (i) {//this turns into cases/breaks
-		
-		case 822:
-			//TODO
-				entityDef.anInt58 = 1;
-				entityDef.anInt83 = 1;
-				entityDef.anInt55 = 1;
-				entityDef.anInt57 = 1;
-				entityDef.anInt59 = 1;
-				//entityDef.anInt55 = 1;	
-			break;
-		
-		
-		}
 		return entityDef;
 	}
 
@@ -211,7 +77,7 @@ public final class NpcDefinition {
 			if (ed.name == null)
 				continue;
 		}*/
-		   dumpNpcConfig();
+		   //dumpNpcConfig();
 	}
 
 	public static void dumpNpcConfig() {
@@ -361,14 +227,14 @@ bw.close();
 		}
 		boolean flag1 = false;
 		for (int i = 0; i < dialogueModels.length; i++)
-			if (!Model.method463(dialogueModels[i]))
+			if (!Model.isCached(dialogueModels[i]))
 				flag1 = true;
 
 		if (flag1)
 			return null;
 		Model aclass30_sub2_sub4_sub6s[] = new Model[dialogueModels.length];
 		for (int j = 0; j < dialogueModels.length; j++)
-			aclass30_sub2_sub4_sub6s[j] = Model.method462(dialogueModels[j]);
+			aclass30_sub2_sub4_sub6s[j] = Model.getModel(dialogueModels[j]);
 
 		Model model;
 		if (aclass30_sub2_sub4_sub6s.length == 1)
@@ -415,14 +281,14 @@ bw.close();
 		if (model == null) {
 			boolean flag = false;
 			for (int i1 = 0; i1 < models.length; i1++)
-				if (!Model.method463(models[i1]))
+				if (!Model.isCached(models[i1]))
 					flag = true;
 
 			if (flag)
 				return null;
 			Model aclass30_sub2_sub4_sub6s[] = new Model[models.length];
 			for (int j1 = 0; j1 < models.length; j1++)
-				aclass30_sub2_sub4_sub6s[j1] = Model.method462(models[j1]);
+				aclass30_sub2_sub4_sub6s[j1] = Model.getModel(models[j1]);
 
 			if (aclass30_sub2_sub4_sub6s.length == 1)
 				model = aclass30_sub2_sub4_sub6s[0];

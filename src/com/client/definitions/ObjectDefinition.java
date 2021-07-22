@@ -446,14 +446,14 @@ public final class ObjectDefinition {
 			boolean flag1 = true;
 			Model model = (Model) mruNodes2.insertFromCache(type);
 			for (int k = 0; k < anIntArray773.length; k++)
-				flag1 &= Model.method463(anIntArray773[k] & 0xffff);
+				flag1 &= Model.isCached(anIntArray773[k] & 0xffff);
 			applyTexturing(model, type);
 			return flag1;
 		}
 		Model model = (Model) mruNodes2.insertFromCache(type);
 		for (int j = 0; j < anIntArray776.length; j++)
 			if (anIntArray776[j] == i)
-				return Model.method463(anIntArray773[j] & 0xffff);
+				return Model.isCached(anIntArray773[j] & 0xffff);
 		applyTexturing(model, type);
 		return true;
 	}
@@ -485,7 +485,7 @@ public final class ObjectDefinition {
 			return true;
 		boolean flag1 = true;
 		for (int i = 0; i < anIntArray773.length; i++)
-			flag1 &= Model.method463(anIntArray773[i] & 0xffff);
+			flag1 &= Model.isCached(anIntArray773[i] & 0xffff);
 		return flag1;
 	}
 
@@ -530,7 +530,7 @@ public final class ObjectDefinition {
 					l2 += 0x10000;
 				model = (Model) mruNodes1.insertFromCache(l2);
 				if (model == null) {
-					model = Model.method462(l2 & 0xffff);
+					model = Model.getModel(l2 & 0xffff);
 					applyTexture(model, type);
 					if (model == null)
 						return null;
@@ -565,7 +565,7 @@ public final class ObjectDefinition {
 				j2 += 0x10000;
 			model = (Model) mruNodes1.insertFromCache(j2);
 			if (model == null) {
-				model = Model.method462(j2 & 0xffff);
+				model = Model.getModel(j2 & 0xffff);
 				applyTexture(model, type);// try
 				if (model == null)
 					return null;

@@ -4334,8 +4334,8 @@ public class Client extends RSApplet {
         aBoolean1031 = true;
         for (int j = 0; j < 7; j++) {
             anIntArray1065[j] = -1;
-            for (int k = 0; k < IDK.length; k++) {
-                if (IDK.cache[k].aBoolean662 || IDK.cache[k].anInt657 != j + (aBoolean1047 ? 0 : 7))
+            for (int k = 0; k < IdentityKit.length; k++) {
+                if (IdentityKit.cache[k].validStyle || IdentityKit.cache[k].bodyPartId != j + (aBoolean1047 ? 0 : 7))
                     continue;
                 anIntArray1065[j] = k;
                 break;
@@ -4489,10 +4489,10 @@ public class Client extends RSApplet {
             if (i2 != -1) {
                 do {
                     if (j1 == 0 && --i2 < 0)
-                        i2 = IDK.length - 1;
-                    if (j1 == 1 && ++i2 >= IDK.length)
+                        i2 = IdentityKit.length - 1;
+                    if (j1 == 1 && ++i2 >= IdentityKit.length)
                         i2 = 0;
-                } while (IDK.cache[i2].aBoolean662 || IDK.cache[i2].anInt657 != k + (aBoolean1047 ? 0 : 7));
+                } while (IdentityKit.cache[i2].validStyle || IdentityKit.cache[i2].bodyPartId != k + (aBoolean1047 ? 0 : 7));
                 anIntArray1065[k] = i2;
                 aBoolean1031 = true;
             }
@@ -7681,7 +7681,7 @@ public class Client extends RSApplet {
         ItemDefinition.nullLoader();
         FloorUnderlayDefinition.underlays = null;
         FloorOverlayDefinition.overlays = null;
-        IDK.cache = null;
+        IdentityKit.cache = null;
         RSInterface.interfaceCache = null;
         DummyClass.cache = null;
         AnimationDefinition.anims = null;
@@ -9176,7 +9176,7 @@ public class Client extends RSApplet {
             if (aBoolean1031) {
                 for (int k1 = 0; k1 < 7; k1++) {
                     int l1 = anIntArray1065[k1];
-                    if (l1 >= 0 && !IDK.cache[l1].method537())
+                    if (l1 >= 0 && !IdentityKit.cache[l1].method537())
                         return;
                 }
 
@@ -9186,7 +9186,7 @@ public class Client extends RSApplet {
                 for (int j2 = 0; j2 < 7; j2++) {
                     int k2 = anIntArray1065[j2];
                     if (k2 >= 0)
-                        aclass30_sub2_sub4_sub6s[i2++] = IDK.cache[k2].method538();
+                        aclass30_sub2_sub4_sub6s[i2++] = IdentityKit.cache[k2].method538();
                 }
 
                 Model model = new Model(i2, aclass30_sub2_sub4_sub6s);
@@ -10226,6 +10226,10 @@ public class Client extends RSApplet {
                 return;
             }
             if (k == 25) {
+
+                return;
+            }
+            if (k == 27) {
                 firstLoginMessage = "Ghreborn is currently in beta.";
                 secondLoginMessage = "Please apply on the discord.";
                 return;
@@ -12146,7 +12150,7 @@ public class Client extends RSApplet {
             //FloorOverlayDefinition.unpackConfig(streamLoader);
             ItemDefinition.unpackConfig(streamLoader);
             NpcDefinition.unpackConfig(streamLoader);
-            IDK.unpackConfig(streamLoader);
+            IdentityKit.unpackConfig(streamLoader);
             GraphicsDefinition.unpackConfig(streamLoader);
             AreaDefinition.unpackConfig(streamLoader);
             Varp.unpackConfig(streamLoader);
