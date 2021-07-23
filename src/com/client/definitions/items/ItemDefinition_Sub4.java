@@ -6710,6 +6710,1038 @@ public class ItemDefinition_Sub4 {
 			class8.unnotedId = -1;
 			class8.notedId = -1;
 		}
+		if(i == 27328) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Light Blue Ghostly boots"; //Name
+			class8.description = "Its an Light Blue Ghostly boots"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 33525;
+			class8.modelId = 8366;
+			class8.spriteScale = 880;
+			class8.spritePitch = 96;
+			class8.spriteCameraRoll = 120;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 3;
+			class8.spriteTranslateY = 0;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.primaryMaleModel = 8380;
+			class8.primaryFemaleModel = 8386;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27329) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Light Blue Ghostly robe top"; //Name
+			class8.description = "Its an Light Blue Ghostly robe top"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 33525;
+			class8.modelId = 8370;
+			class8.spriteScale = 1320;
+			class8.spritePitch = 556;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 6;
+			class8.primaryMaleModel = 8383;
+			class8.primaryFemaleModel = 8389;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27330) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Light Blue Ghostly robe bottom"; //Name
+			class8.description = "Its an Light Blue Ghostly robe bottom"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 33525;
+			class8.modelId = 8369;
+			class8.spriteScale = 1980;
+			class8.spritePitch = 460;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 0;
+			class8.primaryMaleModel = 8382;
+			class8.primaryFemaleModel = 8388;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27331) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Light Blue Ghostly hood"; //Name
+			class8.description = "Its an Light Blue Ghostly hood"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 33525;
+			class8.modelId = 8368;
+			class8.spriteScale = 930;
+			class8.spritePitch = 124;
+			class8.spriteCameraRoll = 52;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = -2;
+			class8.primaryMaleModel = 8391;
+			class8.primaryFemaleModel = 8392;
+			class8.secondaryMaleModel = 8381;
+			class8.secondaryFemaleModel = 8387;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.primaryMaleHeadPiece = 8374;
+			class8.primaryFemaleHeadPiece = 8377;
+		}
+
+
+		if(i == 27332) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Light Blue Ghostly gloves"; //Name
+			class8.description = "Its an Light Blue Ghostly gloves"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 33525;
+			class8.modelId = 8367;
+			class8.spriteScale = 750;
+			class8.spritePitch = 404;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 10;
+			class8.primaryMaleModel = 8379;
+			class8.primaryFemaleModel = 8385;
+			class8.secondaryMaleModel = -1;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27333) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Light Blue Ghostly cloak"; //Name
+			class8.description = "Its an Light Blue Ghostly cloak"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 33525;
+			class8.modelId = 8365;
+			class8.spriteScale = 2080;
+			class8.spritePitch = 448;
+			class8.spriteCameraRoll = 540;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 8;
+			class8.primaryMaleModel = 8384;
+			class8.primaryFemaleModel = 8390;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+		if(i == 27334) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Light Green Ghostly boots"; //Name
+			class8.description = "Its an Light Green Ghostly boots"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 19455;
+			class8.modelId = 8366;
+			class8.spriteScale = 880;
+			class8.spritePitch = 96;
+			class8.spriteCameraRoll = 120;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 3;
+			class8.spriteTranslateY = 0;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.primaryMaleModel = 8380;
+			class8.primaryFemaleModel = 8386;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27335) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Light Green Ghostly robe top"; //Name
+			class8.description = "Its an Light Green Ghostly robe top"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 19455;
+			class8.modelId = 8370;
+			class8.spriteScale = 1320;
+			class8.spritePitch = 556;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 6;
+			class8.primaryMaleModel = 8383;
+			class8.primaryFemaleModel = 8389;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27336) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Light Green Ghostly robe bottom"; //Name
+			class8.description = "Its an Light Green Ghostly robe bottom"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 19455;
+			class8.modelId = 8369;
+			class8.spriteScale = 1980;
+			class8.spritePitch = 460;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 0;
+			class8.primaryMaleModel = 8382;
+			class8.primaryFemaleModel = 8388;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27337) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Light Green Ghostly hood"; //Name
+			class8.description = "Its an Light Green Ghostly hood"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 19455;
+			class8.modelId = 8368;
+			class8.spriteScale = 930;
+			class8.spritePitch = 124;
+			class8.spriteCameraRoll = 52;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = -2;
+			class8.primaryMaleModel = 8391;
+			class8.primaryFemaleModel = 8392;
+			class8.secondaryMaleModel = 8381;
+			class8.secondaryFemaleModel = 8387;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.primaryMaleHeadPiece = 8374;
+			class8.primaryFemaleHeadPiece = 8377;
+		}
+
+
+		if(i == 27338) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Light Green Ghostly gloves"; //Name
+			class8.description = "Its an Light Green Ghostly gloves"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 19455;
+			class8.modelId = 8367;
+			class8.spriteScale = 750;
+			class8.spritePitch = 404;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 10;
+			class8.primaryMaleModel = 8379;
+			class8.primaryFemaleModel = 8385;
+			class8.secondaryMaleModel = -1;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27339) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Light Green Ghostly cloak"; //Name
+			class8.description = "Its an Light Green Ghostly cloak"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 19455;
+			class8.modelId = 8365;
+			class8.spriteScale = 2080;
+			class8.spritePitch = 448;
+			class8.spriteCameraRoll = 540;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 8;
+			class8.primaryMaleModel = 8384;
+			class8.primaryFemaleModel = 8390;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+		if(i == 27340) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Red Ghostly boots"; //Name
+			class8.description = "Its an Red Ghostly boots"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 997;
+			class8.modelId = 8366;
+			class8.spriteScale = 880;
+			class8.spritePitch = 96;
+			class8.spriteCameraRoll = 120;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 3;
+			class8.spriteTranslateY = 0;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.primaryMaleModel = 8380;
+			class8.primaryFemaleModel = 8386;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27341) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Red Ghostly robe top"; //Name
+			class8.description = "Its an Red Ghostly robe top"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 997;
+			class8.modelId = 8370;
+			class8.spriteScale = 1320;
+			class8.spritePitch = 556;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 6;
+			class8.primaryMaleModel = 8383;
+			class8.primaryFemaleModel = 8389;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27342) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Red Ghostly robe bottom"; //Name
+			class8.description = "Its an Red Ghostly robe bottom"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 997;
+			class8.modelId = 8369;
+			class8.spriteScale = 1980;
+			class8.spritePitch = 460;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 0;
+			class8.primaryMaleModel = 8382;
+			class8.primaryFemaleModel = 8388;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27343) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Red Ghostly hood"; //Name
+			class8.description = "Its an Red Ghostly hood"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 997;
+			class8.modelId = 8368;
+			class8.spriteScale = 930;
+			class8.spritePitch = 124;
+			class8.spriteCameraRoll = 52;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = -2;
+			class8.primaryMaleModel = 8391;
+			class8.primaryFemaleModel = 8392;
+			class8.secondaryMaleModel = 8381;
+			class8.secondaryFemaleModel = 8387;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.primaryMaleHeadPiece = 8374;
+			class8.primaryFemaleHeadPiece = 8377;
+		}
+
+
+		if(i == 27344) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Red Ghostly gloves"; //Name
+			class8.description = "Its an Red Ghostly gloves"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 997;
+			class8.modelId = 8367;
+			class8.spriteScale = 750;
+			class8.spritePitch = 404;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 10;
+			class8.primaryMaleModel = 8379;
+			class8.primaryFemaleModel = 8385;
+			class8.secondaryMaleModel = -1;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27345) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Red Ghostly cloak"; //Name
+			class8.description = "Its an Red Ghostly cloak"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 997;
+			class8.modelId = 8365;
+			class8.spriteScale = 2080;
+			class8.spritePitch = 448;
+			class8.spriteCameraRoll = 540;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 8;
+			class8.primaryMaleModel = 8384;
+			class8.primaryFemaleModel = 8390;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+		if(i == 27346) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Yellow Ghostly boots"; //Name
+			class8.description = "Its an Yellow Ghostly boots"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 11263;
+			class8.modelId = 8366;
+			class8.spriteScale = 880;
+			class8.spritePitch = 96;
+			class8.spriteCameraRoll = 120;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 3;
+			class8.spriteTranslateY = 0;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.primaryMaleModel = 8380;
+			class8.primaryFemaleModel = 8386;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27347) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Yellow Ghostly robe top"; //Name
+			class8.description = "Its an Yellow Ghostly robe top"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 11263;
+			class8.modelId = 8370;
+			class8.spriteScale = 1320;
+			class8.spritePitch = 556;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 6;
+			class8.primaryMaleModel = 8383;
+			class8.primaryFemaleModel = 8389;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27348) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Yellow Ghostly robe bottom"; //Name
+			class8.description = "Its an Yellow Ghostly robe bottom"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 11263;
+			class8.modelId = 8369;
+			class8.spriteScale = 1980;
+			class8.spritePitch = 460;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 0;
+			class8.primaryMaleModel = 8382;
+			class8.primaryFemaleModel = 8388;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27349) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Yellow Ghostly hood"; //Name
+			class8.description = "Its an Yellow Ghostly hood"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 11263;
+			class8.modelId = 8368;
+			class8.spriteScale = 930;
+			class8.spritePitch = 124;
+			class8.spriteCameraRoll = 52;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = -2;
+			class8.primaryMaleModel = 8391;
+			class8.primaryFemaleModel = 8392;
+			class8.secondaryMaleModel = 8381;
+			class8.secondaryFemaleModel = 8387;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.primaryMaleHeadPiece = 8374;
+			class8.primaryFemaleHeadPiece = 8377;
+		}
+
+
+		if(i == 27350) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Yellow Ghostly gloves"; //Name
+			class8.description = "Its an Yellow Ghostly gloves"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 11263;
+			class8.modelId = 8367;
+			class8.spriteScale = 750;
+			class8.spritePitch = 404;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 10;
+			class8.primaryMaleModel = 8379;
+			class8.primaryFemaleModel = 8385;
+			class8.secondaryMaleModel = -1;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27351) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Yellow Ghostly cloak"; //Name
+			class8.description = "Its an Yellow Ghostly cloak"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 11263;
+			class8.modelId = 8365;
+			class8.spriteScale = 2080;
+			class8.spritePitch = 448;
+			class8.spriteCameraRoll = 540;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 8;
+			class8.primaryMaleModel = 8384;
+			class8.primaryFemaleModel = 8390;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+		if(i == 27352) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Pink Ghostly boots"; //Name
+			class8.description = "Its an Pink Ghostly boots"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 639;
+			class8.modelId = 8366;
+			class8.spriteScale = 880;
+			class8.spritePitch = 96;
+			class8.spriteCameraRoll = 120;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 3;
+			class8.spriteTranslateY = 0;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.primaryMaleModel = 8380;
+			class8.primaryFemaleModel = 8386;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27353) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Pink Ghostly robe top"; //Name
+			class8.description = "Its an Pink Ghostly robe top"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 639;
+			class8.modelId = 8370;
+			class8.spriteScale = 1320;
+			class8.spritePitch = 556;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 6;
+			class8.primaryMaleModel = 8383;
+			class8.primaryFemaleModel = 8389;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27354) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Pink Ghostly robe bottom"; //Name
+			class8.description = "Its an Pink Ghostly robe bottom"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 639;
+			class8.modelId = 8369;
+			class8.spriteScale = 1980;
+			class8.spritePitch = 460;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 0;
+			class8.primaryMaleModel = 8382;
+			class8.primaryFemaleModel = 8388;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27355) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Pink Ghostly hood"; //Name
+			class8.description = "Its an Pink Ghostly hood"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 639;
+			class8.modelId = 8368;
+			class8.spriteScale = 930;
+			class8.spritePitch = 124;
+			class8.spriteCameraRoll = 52;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = -2;
+			class8.primaryMaleModel = 8391;
+			class8.primaryFemaleModel = 8392;
+			class8.secondaryMaleModel = 8381;
+			class8.secondaryFemaleModel = 8387;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.primaryMaleHeadPiece = 8374;
+			class8.primaryFemaleHeadPiece = 8377;
+		}
+
+
+		if(i == 27356) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Pink Ghostly gloves"; //Name
+			class8.description = "Its an Pink Ghostly gloves"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 639;
+			class8.modelId = 8367;
+			class8.spriteScale = 750;
+			class8.spritePitch = 404;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 10;
+			class8.primaryMaleModel = 8379;
+			class8.primaryFemaleModel = 8385;
+			class8.secondaryMaleModel = -1;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27357) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Pink Ghostly cloak"; //Name
+			class8.description = "Its an Pink Ghostly cloak"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 639;
+			class8.modelId = 8365;
+			class8.spriteScale = 2080;
+			class8.spritePitch = 448;
+			class8.spriteCameraRoll = 540;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 8;
+			class8.primaryMaleModel = 8384;
+			class8.primaryFemaleModel = 8390;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+		if(i == 27358) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "White Ghostly boots"; //Name
+			class8.description = "Its an White Ghostly boots"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 127;
+			class8.modelId = 8366;
+			class8.spriteScale = 880;
+			class8.spritePitch = 96;
+			class8.spriteCameraRoll = 120;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 3;
+			class8.spriteTranslateY = 0;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.primaryMaleModel = 8380;
+			class8.primaryFemaleModel = 8386;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27359) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "White Ghostly robe top"; //Name
+			class8.description = "Its an White Ghostly robe top"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 127;
+			class8.modelId = 8370;
+			class8.spriteScale = 1320;
+			class8.spritePitch = 556;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 6;
+			class8.primaryMaleModel = 8383;
+			class8.primaryFemaleModel = 8389;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27360) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "White Ghostly robe bottom"; //Name
+			class8.description = "Its an White Ghostly robe bottom"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 127;
+			class8.modelId = 8369;
+			class8.spriteScale = 1980;
+			class8.spritePitch = 460;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 0;
+			class8.primaryMaleModel = 8382;
+			class8.primaryFemaleModel = 8388;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27361) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "White Ghostly hood"; //Name
+			class8.description = "Its an White Ghostly hood"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 127;
+			class8.modelId = 8368;
+			class8.spriteScale = 930;
+			class8.spritePitch = 124;
+			class8.spriteCameraRoll = 52;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = -2;
+			class8.primaryMaleModel = 8391;
+			class8.primaryFemaleModel = 8392;
+			class8.secondaryMaleModel = 8381;
+			class8.secondaryFemaleModel = 8387;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.primaryMaleHeadPiece = 8374;
+			class8.primaryFemaleHeadPiece = 8377;
+		}
+
+
+		if(i == 27362) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "White Ghostly gloves"; //Name
+			class8.description = "Its an White Ghostly gloves"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 127;
+			class8.modelId = 8367;
+			class8.spriteScale = 750;
+			class8.spritePitch = 404;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 10;
+			class8.primaryMaleModel = 8379;
+			class8.primaryFemaleModel = 8385;
+			class8.secondaryMaleModel = -1;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
+
+
+		if(i == 27363) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "White Ghostly cloak"; //Name
+			class8.description = "Its an White Ghostly cloak"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 10266;
+			class8.originalModelColors[0] = 127;
+			class8.modelId = 8365;
+			class8.spriteScale = 2080;
+			class8.spritePitch = 448;
+			class8.spriteCameraRoll = 540;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 8;
+			class8.primaryMaleModel = 8384;
+			class8.primaryFemaleModel = 8390;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.primaryFemaleHeadPiece = -1;
+		}
         return class8;
     }
 }
