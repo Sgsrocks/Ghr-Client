@@ -12,6 +12,7 @@ public final class FrameLoader {
             Class18 class18 = new Class18(stream);
 			int k1 = stream.readUnsignedWord();
 			animationlist[file] = new FrameLoader[(int)(k1*3)];
+			System.out.println("Animation frame id "+file);
 			int ai[] = new int[500];
 			int ai1[] = new int[500];
 			int ai2[] = new int[500];

@@ -78,6 +78,7 @@ public final class NpcDefinition {
 				continue;
 		}*/
 		   //dumpNpcConfig();
+		//dumpNpcList();
 	}
 
 	public static void dumpNpcConfig() {
@@ -372,6 +373,24 @@ bw.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	public static void dumpNpcList() {
+		for(int i = 0; i < totalAmount; ++i) {
+			NpcDefinition class5 = forID(i);
+			BufferedWriter bw = null;
+
+			try {
+				bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/197Npclist.txt", true));
+				if(class5.name != null) {
+					bw.write("case " + i + "://" + class5.name);
+					bw.newLine();
+					bw.flush();
+					bw.close();
+				}
+			} catch (IOException var4) {
+			}
+		}
+
 	}
 
 	public static void dumpSizes() {

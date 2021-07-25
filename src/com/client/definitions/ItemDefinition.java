@@ -99,7 +99,7 @@ public final class ItemDefinition {
 
 	         try {
 	   	 class8.currentcolors = 0;
-	            bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/itemdump196.txt", true));
+	            bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/Osrsitemdump.txt", true));
 
 	   	 bw.newLine();
 	   	 bw.write("	if(i == "+i+") //ID");
