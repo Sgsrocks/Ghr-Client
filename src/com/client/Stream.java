@@ -227,7 +227,7 @@ public final class Stream extends NodeSub {
         return buffer[currentOffset++];
     }
 
-    public int readUnsignedWord() {
+    public int readUnsignedShort() {
         try {
             currentOffset += 2;
             return ((buffer[currentOffset - 2] & 0xff) << 8)
@@ -318,7 +318,7 @@ public final class Stream extends NodeSub {
             if (i < 128)
                 return readUnsignedByte() - 64;
             else
-                return readUnsignedWord() - 49152;
+                return readUnsignedShort() - 49152;
         } catch (Exception e) {
             return -1;
         }
@@ -329,7 +329,7 @@ public final class Stream extends NodeSub {
         if (i < 128)
             return readUnsignedByte();
         else
-            return readUnsignedWord() - 32768;
+            return readUnsignedShort() - 32768;
     }
 
     public void doKeys() {

@@ -8138,6 +8138,487 @@ public class ItemDefinition_Sub4 {
 			class8.primaryMaleHeadPiece = -1;
 			class8.primaryFemaleHeadPiece = -1;
 		}
-        return class8;
+		if(i == 27376) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name = "Golden Frog mask"; //Name
+			class8.description = "Its an Golden  Frog mask"; //Description
+			class8.modifiedModelColors = new int[3];
+			class8.originalModelColors = new int[3];
+			class8.modifiedModelColors[0] = 25490;
+			class8.originalModelColors[0] = 7114;
+			class8.modifiedModelColors[1] = 26520;
+			class8.originalModelColors[1] = 7114;
+			class8.modifiedModelColors[2] = 22412;
+			class8.originalModelColors[2] = 7114;
+			class8.modelId = 8806;
+			class8.spriteScale = 900;
+			class8.spritePitch = 288;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 5;
+			class8.primaryMaleModel = 8776;
+			class8.primaryFemaleModel = 8782;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = 8770;
+			class8.primaryFemaleHeadPiece = 8772;
+			class8.value = 0;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.stackable = false;
+			class8.placeholderId = 18077;
+			class8.placeholderTemplateId = -1;
+		}
+		if(i == 27377) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name =  "Blue Frog mask"; //Name
+			class8.description = "Its an Blue Frog mask"; //Description
+			class8.modifiedModelColors = new int[3];
+			class8.originalModelColors = new int[3];
+			class8.modifiedModelColors[0] = 25490;
+			class8.originalModelColors[0] = 44031;
+			class8.modifiedModelColors[1] = 26520;
+			class8.originalModelColors[1] = 44031;
+			class8.modifiedModelColors[2] = 22412;
+			class8.originalModelColors[2] = 44031;
+			class8.modelId = 8806;
+			class8.spriteScale = 900;
+			class8.spritePitch = 288;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 5;
+			class8.primaryMaleModel = 8776;
+			class8.primaryFemaleModel = 8782;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = 8770;
+			class8.primaryFemaleHeadPiece = 8772;
+			class8.value = 0;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.stackable = false;
+			class8.placeholderId = 18077;
+			class8.placeholderTemplateId = -1;
+		}
+		if(i == 27378) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name =  "Purple Frog mask"; //Name
+			class8.description = "Its an Purple Frog mask"; //Description
+			class8.modifiedModelColors = new int[3];
+			class8.originalModelColors = new int[3];
+			class8.modifiedModelColors[0] = 25490;
+			class8.originalModelColors[0] = 52223;
+			class8.modifiedModelColors[1] = 26520;
+			class8.originalModelColors[1] = 52223;
+			class8.modifiedModelColors[2] = 22412;
+			class8.originalModelColors[2] = 52223;
+			class8.modelId = 8806;
+			class8.spriteScale = 900;
+			class8.spritePitch = 288;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 5;
+			class8.primaryMaleModel = 8776;
+			class8.primaryFemaleModel = 8782;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = 8770;
+			class8.primaryFemaleHeadPiece = 8772;
+			class8.value = 0;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.stackable = false;
+			class8.placeholderId = 18077;
+			class8.placeholderTemplateId = -1;
+		}
+		if(i == 27379) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name =  "Green Frog mask"; //Name
+			class8.description = "Its an Green Frog mask"; //Description
+			class8.modifiedModelColors = new int[3];
+			class8.originalModelColors = new int[3];
+			class8.modifiedModelColors[0] = 25490;
+			class8.originalModelColors[0] = 19429;
+			class8.modifiedModelColors[1] = 26520;
+			class8.originalModelColors[1] = 19429;
+			class8.modifiedModelColors[2] = 22412;
+			class8.originalModelColors[2] = 19429;
+			class8.modelId = 8806;
+			class8.spriteScale = 900;
+			class8.spritePitch = 288;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 5;
+			class8.primaryMaleModel = 8776;
+			class8.primaryFemaleModel = 8782;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = 8770;
+			class8.primaryFemaleHeadPiece = 8772;
+			class8.value = 0;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.stackable = false;
+			class8.placeholderId = 18077;
+			class8.placeholderTemplateId = -1;
+		}
+		if(i == 27380) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name =  "Red Frog mask"; //Name
+			class8.description = "Its an Red Frog mask"; //Description
+			class8.modifiedModelColors = new int[3];
+			class8.originalModelColors = new int[3];
+			class8.modifiedModelColors[0] = 25490;
+			class8.originalModelColors[0] = 997;
+			class8.modifiedModelColors[1] = 26520;
+			class8.originalModelColors[1] = 997;
+			class8.modifiedModelColors[2] = 22412;
+			class8.originalModelColors[2] = 997;
+			class8.modelId = 8806;
+			class8.spriteScale = 900;
+			class8.spritePitch = 288;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 5;
+			class8.primaryMaleModel = 8776;
+			class8.primaryFemaleModel = 8782;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = 8770;
+			class8.primaryFemaleHeadPiece = 8772;
+			class8.value = 0;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.stackable = false;
+			class8.placeholderId = 18077;
+			class8.placeholderTemplateId = -1;
+		}
+		if(i == 27381) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name =  "Pink Frog mask"; //Name
+			class8.description = "Its an Pink Frog mask"; //Description
+			class8.modifiedModelColors = new int[3];
+			class8.originalModelColors = new int[3];
+			class8.modifiedModelColors[0] = 25490;
+			class8.originalModelColors[0] = 57983;
+			class8.modifiedModelColors[1] = 26520;
+			class8.originalModelColors[1] = 57983;
+			class8.modifiedModelColors[2] = 22412;
+			class8.originalModelColors[2] = 57983;
+			class8.modelId = 8806;
+			class8.spriteScale = 900;
+			class8.spritePitch = 288;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 5;
+			class8.primaryMaleModel = 8776;
+			class8.primaryFemaleModel = 8782;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = 8770;
+			class8.primaryFemaleHeadPiece = 8772;
+			class8.value = 0;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.stackable = false;
+			class8.placeholderId = 18077;
+			class8.placeholderTemplateId = -1;
+		}
+		if(i == 27382) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name =  "Teal Frog mask"; //Name
+			class8.description = "Its an Teal Frog mask"; //Description
+			class8.modifiedModelColors = new int[3];
+			class8.originalModelColors = new int[3];
+			class8.modifiedModelColors[0] = 25490;
+			class8.originalModelColors[0] = 32741;
+			class8.modifiedModelColors[1] = 26520;
+			class8.originalModelColors[1] = 32741;
+			class8.modifiedModelColors[2] = 22412;
+			class8.originalModelColors[2] = 32741;
+			class8.modelId = 8806;
+			class8.spriteScale = 900;
+			class8.spritePitch = 288;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 5;
+			class8.primaryMaleModel = 8776;
+			class8.primaryFemaleModel = 8782;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = 8770;
+			class8.primaryFemaleHeadPiece = 8772;
+			class8.value = 0;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.stackable = false;
+			class8.placeholderId = 18077;
+			class8.placeholderTemplateId = -1;
+		}
+		if(i == 27383) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.name =  "Yellow Frog mask"; //Name
+			class8.description = "Its an Yellow Frog mask"; //Description
+			class8.modifiedModelColors = new int[3];
+			class8.originalModelColors = new int[3];
+			class8.modifiedModelColors[0] = 25490;
+			class8.originalModelColors[0] = 11263;
+			class8.modifiedModelColors[1] = 26520;
+			class8.originalModelColors[1] = 11263;
+			class8.modifiedModelColors[2] = 22412;
+			class8.originalModelColors[2] = 11263;
+			class8.modelId = 8806;
+			class8.spriteScale = 900;
+			class8.spritePitch = 288;
+			class8.spriteCameraRoll = 0;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 5;
+			class8.primaryMaleModel = 8776;
+			class8.primaryFemaleModel = 8782;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = 8770;
+			class8.primaryFemaleHeadPiece = 8772;
+			class8.value = 0;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.stackable = false;
+			class8.placeholderId = 18077;
+			class8.placeholderTemplateId = -1;
+		}
+		if(i == 27384) //ID
+		{
+			class8.itemActions = new String[] {null, "Wield", "Bind", null, "Drop"};
+			class8.name = "Novite maul"; //Name
+			class8.description = "Its an Novite maul"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 0;
+			class8.originalModelColors[0] = 1;
+			class8.modelId = 54519;
+			class8.spriteScale = 1250;
+			class8.spritePitch = 727;
+			class8.spriteCameraRoll = 337;
+			class8.spriteCameraYaw = 94;
+			class8.spriteTranslateX = 3;
+			class8.spriteTranslateY = 1;
+			class8.primaryMaleModel = 56245;
+			class8.primaryFemaleModel = 56245;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+			class8.value = 0;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.stackable = false;
+			class8.placeholderId = -1;
+			class8.placeholderTemplateId = -1;
+		}
+		if(i == 27385) //ID
+		{
+			class8.itemActions = new String[] {null, "Wield", "Bind", null, "Drop"};
+			class8.name = "Bathus maul"; //Name
+			class8.description = "Its an Bathus maul"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 0;
+			class8.originalModelColors[0] = 1;
+			class8.modelId = 54387;
+			class8.spriteScale = 1250;
+			class8.spritePitch = 727;
+			class8.spriteCameraRoll = 337;
+			class8.spriteCameraYaw = 94;
+			class8.spriteTranslateX = 3;
+			class8.spriteTranslateY = 1;
+			class8.primaryMaleModel = 56013;
+			class8.primaryFemaleModel = 56013;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.stackable = false;
+			class8.placeholderId = -1;
+			class8.placeholderTemplateId = -1;
+		}
+		if(i == 27386) //ID
+		{
+			class8.itemActions = new String[] {null, "Wield", "Bind", null, "Drop"};
+			class8.name = "Marmaros maul"; //Name
+			class8.description = "Its an Marmaros maul"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 0;
+			class8.originalModelColors[0] = 1;
+			class8.modelId = 54453;
+			class8.spriteScale = 1250;
+			class8.spritePitch = 727;
+			class8.spriteCameraRoll = 337;
+			class8.spriteCameraYaw = 94;
+			class8.spriteTranslateX = 3;
+			class8.spriteTranslateY = 1;
+			class8.primaryMaleModel = 56290;
+			class8.primaryFemaleModel = 56290;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.stackable = false;
+			class8.placeholderId = -1;
+			class8.placeholderTemplateId = -1;
+		}
+		if(i == 27387) //ID
+		{
+			class8.itemActions = new String[] {null, "Wield", "Bind", null, "Drop"};
+			class8.name = "Kratonite maul"; //Name
+			class8.description = "Its an Kratonite maul"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 0;
+			class8.originalModelColors[0] = 1;
+			class8.modelId = 54281;
+			class8.spriteScale = 1250;
+			class8.spritePitch = 727;
+			class8.spriteCameraRoll = 337;
+			class8.spriteCameraYaw = 94;
+			class8.spriteTranslateX = 3;
+			class8.spriteTranslateY = 1;
+			class8.primaryMaleModel = 56086;
+			class8.primaryFemaleModel = 56086;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.stackable = false;
+			class8.placeholderId = -1;
+			class8.placeholderTemplateId = -1;
+		}
+		if(i == 27388) //ID
+		{
+			class8.itemActions = new String[] {null, "Wield", "Bind", null, "Drop"};
+			class8.name = "Fractite maul"; //Name
+			class8.description = "Its an Fractite maul"; //Description
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 0;
+			class8.originalModelColors[0] = 1;
+			class8.modelId = 54423;
+			class8.spriteScale = 1447;
+			class8.spritePitch = 525;
+			class8.spriteCameraRoll = 377;
+			class8.spriteCameraYaw = 94;
+			class8.spriteTranslateX = 5;
+			class8.spriteTranslateY = 1;
+			class8.primaryMaleModel = 56115;
+			class8.primaryFemaleModel = 56115;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.stackable = false;
+			class8.placeholderId = -1;
+			class8.placeholderTemplateId = -1;
+		}
+		if(i == 26342)
+		{
+			class8.itemActions = new String[5];
+			class8.itemActions[1] = "Wield";
+			class8.itemActions[2] = "Check-charges";
+			class8.modifiedModelColors = new int[2];
+			class8.originalModelColors = new int[2];
+			class8.modifiedModelColors[0] = 43072;
+			class8.originalModelColors[0] = 925;
+			class8.modifiedModelColors[1] = 4550;
+			class8.originalModelColors[1] = 925;
+			class8.modelId = 62699;
+			class8.spriteScale = 1506;
+			class8.spritePitch = 473;
+			class8.spriteCameraRoll = 2042;
+			class8.spriteTranslateX = 0;
+			class8.spriteTranslateY = 0;
+			class8.primaryMaleModel = 62746;
+			class8.primaryFemaleModel = 62762;
+			class8.secondaryFemaleModel = -1;
+			class8.secondaryMaleModel = -1;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.stackable = false;
+			class8.name = "Torva platebody";
+			class8.description = "Provides excellent protection";
+		}
+		if(i == 26343)
+		{
+			class8.itemActions = new String[5];
+			class8.itemActions[1] = "Wear";
+			class8.itemActions[2] = "Check-charges";
+			class8.modelId = 62701;
+			class8.primaryMaleModel = 62743;
+			class8.primaryFemaleModel = 62760;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.spriteScale = 1740;
+			class8.spritePitch = 474;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.spriteCameraRoll = 2045;
+			class8.spriteTranslateY = 0;
+			class8.name = "Torva platelegs";
+			class8.description = "A pair of Torva platelegs";
+		}
+		return class8;
     }
 }

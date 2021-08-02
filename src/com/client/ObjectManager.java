@@ -203,6 +203,7 @@ final class ObjectManager {
 						if (l < maximumPlane) {
 							maximumPlane = l;
 						}
+
 						int underlayA = underlays[l][x][z] & 0xff;
 						int underlayB = underlays[l][nextX][z] & 0xff;
 						int underlayC = underlays[l][nextX][nextZ] & 0xff;

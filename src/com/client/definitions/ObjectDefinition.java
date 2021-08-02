@@ -18,6 +18,8 @@ import com.client.StreamLoader;
 
 public final class ObjectDefinition {
 
+	private int opcode61;
+
 	public void applyTexturing(Model m, int id) {
 		if (id == 26764)
 			m.setTexture(26);
@@ -342,9 +344,9 @@ public final class ObjectDefinition {
 			ObjectDefinition class5 = forID(i);
 			BufferedWriter bw = null;
 			try {
-				bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/ObjectList194.txt", true));
+				bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/ObjectList196.txt", true));
 				if(class5.name!= null) {
-					bw.write("ID: "+i+" Name:"+class5.name.replace(" ","_"));
+					bw.write("ID: "+i+" varbit :"+class5.anInt774+" varp: "+class5.anInt749);
 					bw.newLine();
 					bw.flush();
 					bw.close();
@@ -423,12 +425,12 @@ public final class ObjectDefinition {
 	public static void unpackConfig(StreamLoader streamLoader) {
 		stream = new Stream(streamLoader.getDataForName("loc.dat"));
 		Stream stream = new Stream(streamLoader.getDataForName("loc.idx"));
-		totalObjects = stream.readUnsignedWord();
+		totalObjects = stream.readUnsignedShort();
 		streamIndices = new int[totalObjects];
 		int i = 2;
 		for (int j = 0; j < totalObjects; j++) {
 			streamIndices[j] = i;
-			i += stream.readUnsignedWord();
+			i += stream.readUnsignedShort();
 		}
 		cache = new ObjectDefinition[20];
 		for (int k = 0; k < 20; k++)
@@ -594,9 +596,9 @@ public final class ObjectDefinition {
 
 		}
 		
-		if (modifiedTexture != null) {
-			for (int k2 = 0; k2 < modifiedTexture.length; k2++)
-				model_3.replaceTexture(modifiedTexture[k2], originalTexture[k2]);
+		if (originalTexture != null) {
+			for (int k2 = 0; k2 < originalTexture.length; k2++)
+				model_3.replaceTexture(originalTexture[k2], modifiedTexture[k2]);
 
 		}
 		/*if (modifiedTexture != null) {
@@ -700,7 +702,7 @@ public final class ObjectDefinition {
 						anIntArray776 = new int[len];
 						anIntArray773 = new int[len];
 						for (int k1 = 0; k1 < len; k1++) {
-							anIntArray773[k1] = stream.readUnsignedWord();
+							anIntArray773[k1] = stream.readUnsignedShort();
 							anIntArray776[k1] = stream.readUnsignedByte();
 						}
 					} else {
@@ -718,7 +720,7 @@ public final class ObjectDefinition {
 						anIntArray776 = null;
 						anIntArray773 = new int[len];
 						for (int l1 = 0; l1 < len; l1++)
-							anIntArray773[l1] = stream.readUnsignedWord();
+							anIntArray773[l1] = stream.readUnsignedShort();
 					} else {
 						stream.currentOffset += len * 2;
 					}
@@ -740,7 +742,7 @@ public final class ObjectDefinition {
 			else if (type == 23)
 				aBoolean764 = true;
 			else if (type == 24) { // Object Animations
-				animation = stream.readUnsignedWord();
+				animation = stream.readUnsignedShort();
 				if (animation == 65535)
 					animation = -1;
 			} else if (type == 28)
@@ -760,29 +762,31 @@ public final class ObjectDefinition {
 				modifiedModelColors = new int[i1];
 				originalModelColors = new int[i1];
 				for (int i2 = 0; i2 < i1; i2++) {
-					modifiedModelColors[i2] = stream.readUnsignedWord();
-					originalModelColors[i2] = stream.readUnsignedWord();
+					modifiedModelColors[i2] = stream.readUnsignedShort();
+					originalModelColors[i2] = stream.readUnsignedShort();
 				}
 			} else if (type == 41) {
 				int i1 = stream.readUnsignedByte();
 				originalTexture = new int[i1];
 				modifiedTexture = new int[i1];
 				for (int i2 = 0; i2 < i1; i2++) {
-					originalTexture[i2] = stream.readUnsignedWord();
-					modifiedTexture[i2] = stream.readUnsignedWord();
+					originalTexture[i2] = stream.readUnsignedShort();
+					modifiedTexture[i2] = stream.readUnsignedShort();
 				}
+				} else if (type == 61) {
+				opcode61 = stream.readUnsignedShort();
 			} else if (type == 62)
 				aBoolean751 = true;
 			else if (type == 64)
 				aBoolean779 = false;
 			else if (type == 65)
-				thickness = stream.readUnsignedWord();
+				thickness = stream.readUnsignedShort();
 			else if (type == 66)
-				height = stream.readUnsignedWord();
+				height = stream.readUnsignedShort();
 			else if (type == 67)
-				width = stream.readUnsignedWord();
+				width = stream.readUnsignedShort();
 			else if (type == 68)
-				anInt758 = stream.readUnsignedWord();
+				anInt758 = stream.readUnsignedShort();
 			else if (type == 69)
 				anInt768 = stream.readUnsignedByte();
 			else if (type == 70)
@@ -798,20 +802,20 @@ public final class ObjectDefinition {
 			else if (type == 75)
 				anInt760 = stream.readUnsignedByte();
 			else if (type == 77 || type == 92) {
-				anInt774 = stream.readUnsignedWord();
+				anInt774 = stream.readUnsignedShort();
 				if (anInt774 == 65535)
 					anInt774 = -1;
-				anInt749 = stream.readUnsignedWord();
+				anInt749 = stream.readUnsignedShort();
 				if (anInt749 == 65535)
 					anInt749 = -1;
 				int var3 = -1;
 				if(type == 92) {
-					var3 = stream.readUnsignedWord();
+					var3 = stream.readUnsignedShort();
 				}
 				int j1 = stream.readUnsignedByte();
 				childrenIDs = new int[j1 + 2];
 				for (int j2 = 0; j2 <= j1; j2++) {
-					childrenIDs[j2] = stream.readUnsignedWord();
+					childrenIDs[j2] = stream.readUnsignedShort();
 					if (childrenIDs[j2] == 65535)
 						childrenIDs[j2] = -1;
 				}
@@ -827,7 +831,7 @@ public final class ObjectDefinition {
 			} else if(type == 81) {
 				stream.skip(1);//Clip type?
 			} else if (type == 82) {
-				AreaType = stream.readUnsignedWord();//AreaType
+				AreaType = stream.readUnsignedShort();//AreaType
 			} else if(type == 89) {
 				field3621 = false;
 			} else if(type == 249) {

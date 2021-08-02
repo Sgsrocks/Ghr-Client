@@ -10230,7 +10230,7 @@ public class Client extends RSApplet {
                 return;
             }
             if (k == 27) {
-                firstLoginMessage = "Ghreborn is currently in beta.";
+                firstLoginMessage = "Ghreborn is currently in Alpha.";
                 secondLoginMessage = "Please apply on the discord.";
                 return;
             }
@@ -10496,11 +10496,11 @@ public class Client extends RSApplet {
                 int j2 = stream.method427();
                 npc.updateHitData(j2, j1, loopCycle);
                 npc.loopCycleStatus = loopCycle + 300;
-                npc.currentHealth = stream.readUnsignedWord();
-                npc.maxHealth = stream.readUnsignedWord();
+                npc.currentHealth = stream.readUnsignedShort();
+                npc.maxHealth = stream.readUnsignedShort();
             }
             if ((l & 0x80) != 0) {
-                npc.anInt1520 = stream.readUnsignedWord();
+                npc.anInt1520 = stream.readUnsignedShort();
                 int k1 = stream.readDWord();
                 npc.anInt1524 = k1 >> 16;
                 npc.anInt1523 = loopCycle + (k1 & 0xffff);
@@ -10512,7 +10512,7 @@ public class Client extends RSApplet {
                     npc.anInt1520 = -1;
             }
             if ((l & 0x20) != 0) {
-                npc.interactingEntity = stream.readUnsignedWord();
+                npc.interactingEntity = stream.readUnsignedShort();
                 if (npc.interactingEntity == 65535)
                     npc.interactingEntity = -1;
             }
@@ -10525,8 +10525,8 @@ public class Client extends RSApplet {
                 int k2 = stream.method428();
                 npc.updateHitData(k2, l1, loopCycle);
                 npc.loopCycleStatus = loopCycle + 300;
-                npc.currentHealth = stream.readUnsignedWord();
-                npc.maxHealth = stream.readUnsignedWord();
+                npc.currentHealth = stream.readUnsignedShort();
+                npc.maxHealth = stream.readUnsignedShort();
             }
             if ((l & 2) != 0) {
                 npc.desc = NpcDefinition.forID(stream.method436());
@@ -12397,14 +12397,14 @@ public class Client extends RSApplet {
             g.setFont(new Font("Helvetica", 1, 16));
             g.setColor(Color.yellow);
             int k = 35;
-            g.drawString("Sorry, an error has occured whilst loading RuneScape", 30, k);
+            g.drawString("Sorry, an error has occured whilst loading Ghreborn", 30, k);
             k += 50;
             g.setColor(Color.white);
             g.drawString("To fix this try the following (in order):", 30, k);
             k += 50;
             g.setColor(Color.white);
             g.setFont(new Font("Helvetica", 1, 12));
-            g.drawString("1: Go to your user files and delete GhrebornCache folder", 30, k);
+            g.drawString("1: Go to your user files and delete .GhrebornCache folder", 30, k);
             k += 30;
             g.drawString("2: Delete the Ghreborn.jar and redownload the loader from our homepage", 30, k);
             k += 30;
@@ -15199,7 +15199,6 @@ public class Client extends RSApplet {
         }
         mainGameGraphicsBuffer.setCanvas();
     }
-
     private void loadHpOrb(int xOffset) {
         int yOff = Configuration.osbuddyGameframe ? currentScreenMode == ScreenMode.FIXED ? 0 : -5
                 : currentScreenMode == ScreenMode.FIXED ? 0 : -5;
@@ -15242,19 +15241,18 @@ public class Client extends RSApplet {
         cacheSprite3[168].drawSprite(27 + xOffset - xOff, 45 - yOff);
         smallText.method382(getOrbTextColor(health), 15 + xOffset - xOff, "" + cHP, 67 - yOff, true);
     }
-
     private void drawSpecialOrb(int xOffset) {
         Sprite image = cacheSprite1[specialHover ? 8 : 7];
         Sprite fill = cacheSprite[specialEnabled == 0 ? 9 : 6];
         Sprite sword = cacheSprite[12];
-        double percent = specialAttack / (double) 100;
+        double percent = specialAttack  / (double) 100;
         //int percent = 100;
         boolean isFixed = currentScreenMode == ScreenMode.FIXED;
         image.drawSprite((isFixed ? 37 : 37) + xOffset, isFixed ? 134 : 139);
-        if (specialEnabled == 1) {
+        if(specialEnabled==1) {
             //fill.drawSprite((isFixed ? 60 : 133) + xOffset, isFixed ? 134 : 151);
             fill.drawSprite((isFixed ? 63 : 63) + xOffset, isFixed ? 137 : 141);
-        } else {
+        }else{
             fill.drawSprite((isFixed ? 64 : 64) + xOffset, isFixed ? 138 : 143);
             //fill.drawSprite((isFixed ? 65 : 133) + xOffset, isFixed ? 139 : 151);
         }
@@ -15271,17 +15269,17 @@ public class Client extends RSApplet {
                 : currentScreenMode == ScreenMode.FIXED ? -1 : -7;
         Sprite bg = cacheSprite1[prayHover ? 8 : 7];
         Sprite fg = prayClicked ? new Sprite("Gameframe/newprayclicked") : cacheSprite1[1];
-        bg.drawSprite(0 + xOffset - xOff, 75 - yOff);
-        fg.drawSprite(27 + xOffset - xOff, 79 - yOff);
+        bg.drawSprite(-2 + xOffset - xOff, 80 - yOff);
+        fg.drawSprite(25 + xOffset - xOff, 84 - yOff);
         int level = Integer.parseInt(RSInterface.interfaceCache[4012].message.replaceAll("%", ""));
         int max = maxStats[5];
         double percent = level / (double) max;
         cacheSprite1[14].myHeight = (int) (26 * (1 - percent));
-        cacheSprite1[14].drawSprite(27 + xOffset - xOff, 79 - yOff);
+        cacheSprite1[14].drawSprite(25 + xOffset - xOff, 84 - yOff);
         if (percent <= .25) {
-            cacheSprite1[10].drawSprite(30 + xOffset - xOff, 82 - yOff);
+            cacheSprite1[10].drawSprite(25 + xOffset - xOff, 84 - yOff);
         } else {
-            cacheSprite1[10].drawSprite(30 + xOffset - xOff, 82 - yOff);
+            cacheSprite1[10].drawSprite(25 + xOffset - xOff, 84 - yOff);
         }
         smallText.method382(getOrbTextColor((int) (percent * 100)), 14 + xOffset - xOff, level + "", 101 - yOff, true);
     }
@@ -15290,12 +15288,12 @@ public class Client extends RSApplet {
         int current = Integer.parseInt(RSInterface.interfaceCache[149].message.replaceAll("%", ""));
         int yOff = Configuration.osbuddyGameframe ? currentScreenMode == ScreenMode.FIXED ? 15 : 5
                 : currentScreenMode == ScreenMode.FIXED ? 1 : -4;
-        int xMinus = Configuration.osbuddyGameframe ? currentScreenMode == ScreenMode.FIXED ? 11 : 5
+        int xMinus = Configuration.osbuddyGameframe ? currentScreenMode == ScreenMode.FIXED ? 11 : 3
                 : currentScreenMode == ScreenMode.FIXED ? -1 : -6;
         Sprite bg = cacheSprite1[runHover ? 8 : 7];
         boolean running = anIntArray1045[173] == 1;
         Sprite fg = cacheSprite1[running ? 4 : 3];
-        bg.drawSprite(10 + xOffset - xMinus, 109 - yOff);
+        bg.drawSprite(10 + xOffset - xMinus, 103 - yOff);
         fg.drawSprite(37 + xOffset - xMinus, 113 - yOff);
         int level = current;
         double percent = level / (double) 100;
@@ -15838,9 +15836,9 @@ public class Client extends RSApplet {
             int k = stream.readUnsignedByte();
             int j3 = anInt1268 + (k >> 4 & 7);
             int i6 = anInt1269 + (k & 7);
-            int l8 = stream.readUnsignedWord();
-            int k11 = stream.readUnsignedWord();
-            int l13 = stream.readUnsignedWord();// edit
+            int l8 = stream.readUnsignedShort();
+            int k11 = stream.readUnsignedShort();
+            int l13 = stream.readUnsignedShort();// edit
             if (j3 >= 0 && i6 >= 0 && j3 < 104 && i6 < 104) {
                 NodeList class19_1 = groundArray[plane][j3][i6];
                 if (class19_1 != null) {
@@ -15862,7 +15860,7 @@ public class Client extends RSApplet {
             int l = stream.readUnsignedByte();
             int k3 = anInt1268 + (l >> 4 & 7);
             int j6 = anInt1269 + (l & 7);
-            int i9 = stream.readUnsignedWord();
+            int i9 = stream.readUnsignedShort();
             int l11 = stream.readUnsignedByte();
             int i14 = l11 >> 4 & 0xf;
             int i16 = l11 & 7;
@@ -15882,7 +15880,7 @@ public class Client extends RSApplet {
             int k6 = anInt1268 + (l3 >> 4 & 7);
             int j9 = anInt1269 + (l3 & 7);
             int i12 = stream.method435();
-            int j14 = stream.readUnsignedWord();
+            int j14 = stream.readUnsignedShort();
             if (k6 >= 0 && j9 >= 0 && k6 < 104 && j9 < 104 && i12 != unknownInt10) {
                 Item class30_sub2_sub4_sub2_2 = new Item();
                 class30_sub2_sub4_sub2_2.ID = i1;
@@ -15898,7 +15896,7 @@ public class Client extends RSApplet {
             int j1 = stream.method426();
             int i4 = anInt1268 + (j1 >> 4 & 7);
             int l6 = anInt1269 + (j1 & 7);
-            int k9 = stream.readUnsignedWord();
+            int k9 = stream.readUnsignedShort();
             if (i4 >= 0 && l6 >= 0 && i4 < 104 && l6 < 104) {
                 NodeList class19 = groundArray[plane][i4][l6];
                 if (class19 != null) {
@@ -15973,17 +15971,17 @@ public class Client extends RSApplet {
             int l1 = stream.method428();
             int k4 = anInt1268 + (l1 >> 4 & 7);
             int j7 = anInt1269 + (l1 & 7);
-            int i10 = stream.readUnsignedWord();
+            int i10 = stream.readUnsignedShort();
             byte byte0 = stream.method430();
             int l14 = stream.method434();
             byte byte1 = stream.method429();
-            int k17 = stream.readUnsignedWord();
+            int k17 = stream.readUnsignedShort();
             int k18 = stream.method428();
             int j19 = k18 >> 2;
             int i20 = k18 & 3;
             int l20 = anIntArray1177[j19];
             byte byte2 = stream.readSignedByte();
-            int l21 = stream.readUnsignedWord();
+            int l21 = stream.readUnsignedShort();
             byte byte3 = stream.method429();
             Player player;
             if (i10 == unknownInt10)
@@ -16045,9 +16043,9 @@ public class Client extends RSApplet {
             int j2 = stream.readUnsignedByte();
             int i5 = anInt1268 + (j2 >> 4 & 7);
             int l7 = anInt1269 + (j2 & 7);
-            int k10 = stream.readUnsignedWord();
+            int k10 = stream.readUnsignedShort();
             int l12 = stream.readUnsignedByte();
-            int j15 = stream.readUnsignedWord();
+            int j15 = stream.readUnsignedShort();
             if (i5 >= 0 && l7 >= 0 && i5 < 104 && l7 < 104) {
                 i5 = i5 * 128 + 64;
                 l7 = l7 * 128 + 64;
@@ -16093,11 +16091,11 @@ public class Client extends RSApplet {
             int j11 = l5 + stream.readSignedByte();
             int k13 = k8 + stream.readSignedByte();
             int l15 = stream.readSignedWord();
-            int i17 = stream.readUnsignedWord();
+            int i17 = stream.readUnsignedShort();
             int i18 = stream.readUnsignedByte() * 4;
             int l18 = stream.readUnsignedByte() * 4;
-            int k19 = stream.readUnsignedWord();
-            int j20 = stream.readUnsignedWord();
+            int k19 = stream.readUnsignedShort();
+            int j20 = stream.readUnsignedShort();
             int i21 = stream.readUnsignedByte();
             int j21 = stream.readUnsignedByte();
             if (l5 >= 0 && k8 >= 0 && l5 < 104 && k8 < 104 && j11 >= 0 && k13 >= 0 && j11 < 104 && k13 < 104
@@ -16503,7 +16501,7 @@ public class Client extends RSApplet {
                 if (i > 1) {
                     socketStream.flushInputStream(inStream.buffer, 2);
                     inStream.currentOffset = 0;
-                    packetSize = inStream.readUnsignedWord();
+                    packetSize = inStream.readUnsignedShort();
                     i -= 2;
                 } else {
                     return false;
@@ -16545,7 +16543,7 @@ public class Client extends RSApplet {
                 case 231:
                     //int i5 = inStream.method435();
                     //final int npc_id = Client.instance.inStream.readUnsignedWord();
-                    short npc_id = (short) inStream.readUnsignedWord();
+                    short npc_id = (short) inStream.readUnsignedShort();
                     //int interfaceId = Client.instance.inStream.readUnsignedWord();
                     int interfaceId = inStream.method435();
                     final RSInterface npcOnInterface = RSInterface.interfaceCache[interfaceId];
@@ -16565,9 +16563,9 @@ public class Client extends RSApplet {
                 case 222:
                     byte entityState = (byte) inStream.readUnsignedByte();
                     if (entityState != 0) {
-                        short entityIndex = (short) inStream.readUnsignedWord();
-                        short currentHealth = (short) inStream.readUnsignedWord();
-                        short maximumHealth = (short) inStream.readUnsignedWord();
+                        short entityIndex = (short) inStream.readUnsignedShort();
+                        short currentHealth = (short) inStream.readUnsignedShort();
+                        short maximumHealth = (short) inStream.readUnsignedShort();
                         entityTarget = new EntityTarget(entityState, entityIndex, currentHealth, maximumHealth,
                                 newSmallFont);
                     } else {
@@ -16584,7 +16582,7 @@ public class Client extends RSApplet {
                  */
                 case 223:
                     byte timerId = (byte) inStream.readUnsignedByte();
-                    short secondsToAdd = (short) inStream.readUnsignedWord();
+                    short secondsToAdd = (short) inStream.readUnsignedShort();
                     GameTimerHandler.getSingleton().startGameTimer(timerId, TimeUnit.SECONDS, secondsToAdd);
                     incomingPacket = -1;
                     return true;
@@ -16624,7 +16622,7 @@ public class Client extends RSApplet {
                     unreadMessages = inStream.method435();
                     membersInt = inStream.readUnsignedByte();
                     anInt1193 = inStream.method440();
-                    daysSinceLastLogin = inStream.readUnsignedWord();
+                    daysSinceLastLogin = inStream.readUnsignedShort();
                     if (anInt1193 != 0 && openInterfaceID == -1) {
                         Signlink.dnslookup(TextClass.method586(anInt1193));
                         clearTopInterfaces();
@@ -16693,7 +16691,7 @@ public class Client extends RSApplet {
                         clanUsername = inStream.readString();
                         clanMessage = TextInput.processText(inStream.readString());
                         clanTitle = inStream.readString();
-                        channelRights = inStream.readUnsignedWord();
+                        channelRights = inStream.readUnsignedShort();
                         pushMessage(clanMessage, 12, clanUsername);
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -16730,7 +16728,7 @@ public class Client extends RSApplet {
                     aBoolean1160 = true;
                     x = inStream.readUnsignedByte();
                     y = inStream.readUnsignedByte();
-                    height = inStream.readUnsignedWord();
+                    height = inStream.readUnsignedShort();
                     anInt1101 = inStream.readUnsignedByte();
                     angle = inStream.readUnsignedByte();
                     if (angle >= 100) {
@@ -16760,7 +16758,7 @@ public class Client extends RSApplet {
                     return true;
 
                 case 71:
-                    int l1 = inStream.readUnsignedWord();
+                    int l1 = inStream.readUnsignedShort();
                     int j10 = inStream.method426();
                     if (l1 == 65535)
                         l1 = -1;
@@ -16832,7 +16830,7 @@ public class Client extends RSApplet {
                     int mapRegionY = mapRegionsY;
                     if (incomingPacket == 73) {
                         mapRegionX = inStream.method435();
-                        mapRegionY = inStream.readUnsignedWord();
+                        mapRegionY = inStream.readUnsignedShort();
                         aBoolean1159 = false;
                     }
                     if (incomingPacket == 241) {
@@ -16850,7 +16848,7 @@ public class Client extends RSApplet {
                             }
                         }
                         inStream.finishBitAccess();
-                        mapRegionX = inStream.readUnsignedWord();
+                        mapRegionX = inStream.readUnsignedShort();
                         aBoolean1159 = true;
                     }
                     if (this.incomingPacket != 241 && mapRegionsX == mapRegionX && mapRegionsY == mapRegionY && loadingStage == 2) {
@@ -17062,10 +17060,10 @@ public class Client extends RSApplet {
                     return true;
 
                 case 174:
-                    int id = inStream.readUnsignedWord();
+                    int id = inStream.readUnsignedShort();
                     int type = inStream.readUnsignedByte();
-                    int delay = inStream.readUnsignedWord();
-                    int var47 = inStream.readUnsignedWord();
+                    int delay = inStream.readUnsignedShort();
+                    int var47 = inStream.readUnsignedShort();
                     if (soundEffectVolume != 0 && type != 0 && soundCount < 50) {
                         sound[soundCount] = id;
                         soundType[soundCount] = type;
@@ -17228,7 +17226,7 @@ public class Client extends RSApplet {
                 case 254:
                     anInt855 = inStream.readUnsignedByte();
                     if (anInt855 == 1)
-                        anInt1222 = inStream.readUnsignedWord();
+                        anInt1222 = inStream.readUnsignedShort();
                     if (anInt855 >= 2 && anInt855 <= 6) {
                         if (anInt855 == 2) {
                             anInt937 = 64;
@@ -17251,18 +17249,18 @@ public class Client extends RSApplet {
                             anInt938 = 128;
                         }
                         anInt855 = 2;
-                        anInt934 = inStream.readUnsignedWord();
-                        anInt935 = inStream.readUnsignedWord();
+                        anInt934 = inStream.readUnsignedShort();
+                        anInt935 = inStream.readUnsignedShort();
                         anInt936 = inStream.readUnsignedByte();
                     }
                     if (anInt855 == 10)
-                        anInt933 = inStream.readUnsignedWord();
+                        anInt933 = inStream.readUnsignedShort();
                     incomingPacket = -1;
                     return true;
 
                 case 248:
                     int i5 = inStream.method435();
-                    int k12 = inStream.readUnsignedWord();
+                    int k12 = inStream.readUnsignedShort();
                     if (backDialogID != -1) {
                         backDialogID = -1;
                         inputTaken = true;
@@ -17351,8 +17349,8 @@ public class Client extends RSApplet {
 
                 case 246:
                     int i6 = inStream.method434();
-                    int i13 = inStream.readUnsignedWord();
-                    int k18 = inStream.readUnsignedWord();
+                    int i13 = inStream.readUnsignedShort();
+                    int k18 = inStream.readUnsignedShort();
                     if (k18 == 65535) {
                         RSInterface.interfaceCache[i6].anInt233 = 0;
                         incomingPacket = -1;
@@ -17370,7 +17368,7 @@ public class Client extends RSApplet {
 
                 case 171:
                     boolean flag1 = inStream.readUnsignedByte() == 1;
-                    int j13 = inStream.readUnsignedWord();
+                    int j13 = inStream.readUnsignedShort();
                     if (RSInterface.interfaceCache[j13] != null)
                         RSInterface.interfaceCache[j13].isMouseoverTriggered = flag1;
                     incomingPacket = -1;
@@ -17439,7 +17437,7 @@ public class Client extends RSApplet {
 
                 case 8:
                     int k6 = inStream.method436();
-                    int l13 = inStream.readUnsignedWord();
+                    int l13 = inStream.readUnsignedShort();
                     RSInterface.interfaceCache[k6].anInt233 = 1;
                     RSInterface.interfaceCache[k6].mediaID = l13;
                     incomingPacket = -1;
@@ -17457,9 +17455,9 @@ public class Client extends RSApplet {
 
                 case 53:
                     needDrawTabArea = true;
-                    int i7 = inStream.readUnsignedWord();
+                    int i7 = inStream.readUnsignedShort();
                     RSInterface class9_1 = RSInterface.interfaceCache[i7];
-                    int j19 = inStream.readUnsignedWord();
+                    int j19 = inStream.readUnsignedShort();
                     for (int j22 = 0; j22 < j19; j22++) {
                         int i25 = inStream.readUnsignedByte();
                         if (i25 == 255)
@@ -17476,8 +17474,8 @@ public class Client extends RSApplet {
 
                 case 230:
                     int j7 = inStream.method435();
-                    int j14 = inStream.readUnsignedWord();
-                    int k19 = inStream.readUnsignedWord();
+                    int j14 = inStream.readUnsignedShort();
+                    int k19 = inStream.readUnsignedShort();
                     int k22 = inStream.method436();
                     RSInterface.interfaceCache[j14].spritePitch = k19;
                     RSInterface.interfaceCache[j14].spriteCameraRoll = k22;
@@ -17496,7 +17494,7 @@ public class Client extends RSApplet {
                     aBoolean1160 = true;
                     cinematicCamXViewpointLoc = inStream.readUnsignedByte();
                     cinematicCamYViewpointLoc = inStream.readUnsignedByte();
-                    cinematicCamZViewpointLoc = inStream.readUnsignedWord();
+                    cinematicCamZViewpointLoc = inStream.readUnsignedShort();
                     anInt998 = inStream.readUnsignedByte();
                     anInt999 = inStream.readUnsignedByte();
                     if (anInt999 >= 100) {
@@ -17561,7 +17559,7 @@ public class Client extends RSApplet {
                     return true;
 
                 case 97:
-                    int l7 = inStream.readUnsignedWord();
+                    int l7 = inStream.readUnsignedShort();
                     method60(l7);
                     if (invOverlayInterfaceID != -1) {
                         invOverlayInterfaceID = -1;
@@ -17639,7 +17637,7 @@ public class Client extends RSApplet {
                     return true;
 
                 case 200:
-                    int l8 = inStream.readUnsignedWord();
+                    int l8 = inStream.readUnsignedShort();
                     int i15 = inStream.readSignedWord();
                     RSInterface class9_4 = RSInterface.interfaceCache[l8];
                     if (i15 != class9_4.anInt257 || i15 == -1) {
@@ -17676,7 +17674,7 @@ public class Client extends RSApplet {
 
                 case 34:
                     needDrawTabArea = true;
-                    int i9 = inStream.readUnsignedWord();
+                    int i9 = inStream.readUnsignedShort();
                     if (handledPacket34(i9)) {
                         incomingPacket = -1;
                         return true;
@@ -17684,7 +17682,7 @@ public class Client extends RSApplet {
                     RSInterface class9_2 = RSInterface.interfaceCache[i9];
                     while (inStream.currentOffset < packetSize) {
                         int j20 = inStream.method422();
-                        int i23 = inStream.readUnsignedWord();
+                        int i23 = inStream.readUnsignedShort();
                         int l25 = inStream.readUnsignedByte();
                         if (l25 == 255)
                             l25 = inStream.readDWord();
@@ -17827,7 +17825,7 @@ public class Client extends RSApplet {
         RSInterface items = RSInterface.interfaceCache[frame];
         while (inStream.currentOffset < packetSize) {
             int slot = inStream.method422();
-            int itemId = inStream.readUnsignedWord();
+            int itemId = inStream.readUnsignedShort();
 
 
             inStream.readUnsignedByte();

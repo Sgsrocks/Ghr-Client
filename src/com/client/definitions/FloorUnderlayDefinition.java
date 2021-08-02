@@ -1,16 +1,14 @@
 package com.client.definitions;
 
 import com.client.Client;
-import com.client.utilities.FileOperations;
 import com.client.Stream;
 import com.client.StreamLoader;
-import com.client.sign.Signlink;
 
 public final class FloorUnderlayDefinition {
 
 	public static void unpackConfig(StreamLoader streamLoader) {
 		Stream stream = new Stream(streamLoader.getDataForName("flo.dat"));
-		int cacheSize = stream.readUnsignedWord();
+		int cacheSize = stream.readUnsignedShort();
 		if (underlays == null)
 			underlays = new FloorUnderlayDefinition[cacheSize];
 		for (int j = 0; j < cacheSize; j++) {

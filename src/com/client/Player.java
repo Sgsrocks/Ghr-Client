@@ -94,7 +94,7 @@ public final class Player extends Entity {
 			int i1 = stream.readUnsignedByte();
 			equipment[j] = (k << 8) + i1;
 			if (j == 0 && equipment[0] == 65535) {
-				desc = NpcDefinition.forID(stream.readUnsignedWord());
+				desc = NpcDefinition.forID(stream.readUnsignedShort());
 				break;
 			}
 			if (equipment[j] >= 512 && equipment[j] - 512 < ItemDefinition.totalItems) {
@@ -111,32 +111,32 @@ public final class Player extends Entity {
 			anIntArray1700[l] = j1;
 		}
 
-		super.anInt1511 = stream.readUnsignedWord();
+		super.anInt1511 = stream.readUnsignedShort();
 		if (super.anInt1511 == 65535)
 			super.anInt1511 = -1;
-		super.anInt1512 = stream.readUnsignedWord();
+		super.anInt1512 = stream.readUnsignedShort();
 		if (super.anInt1512 == 65535)
 			super.anInt1512 = -1;
-		super.anInt1554 = stream.readUnsignedWord();
+		super.anInt1554 = stream.readUnsignedShort();
 		if (super.anInt1554 == 65535)
 			super.anInt1554 = -1;
-		super.anInt1555 = stream.readUnsignedWord();
+		super.anInt1555 = stream.readUnsignedShort();
 		if (super.anInt1555 == 65535)
 			super.anInt1555 = -1;
-		super.anInt1556 = stream.readUnsignedWord();
+		super.anInt1556 = stream.readUnsignedShort();
 		if (super.anInt1556 == 65535)
 			super.anInt1556 = -1;
-		super.anInt1557 = stream.readUnsignedWord();
+		super.anInt1557 = stream.readUnsignedShort();
 		if (super.anInt1557 == 65535)
 			super.anInt1557 = -1;
-		super.anInt1505 = stream.readUnsignedWord();
+		super.anInt1505 = stream.readUnsignedShort();
 		if (super.anInt1505 == 65535)
 			super.anInt1505 = -1;
 		name = TextClass.fixName(TextClass.nameForLong(stream.readQWord()));
 		visible = stream.readUnsignedByte() == 0 ? true : false;
 		combatLevel = stream.readUnsignedByte();
 		rights = stream.readUnsignedByte();
-		skill = stream.readUnsignedWord();
+		skill = stream.readUnsignedShort();
 		aLong1718 = 0L;
 		for (int k1 = 0; k1 < 12; k1++) {
 			aLong1718 <<= 4;

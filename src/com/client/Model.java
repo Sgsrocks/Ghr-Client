@@ -169,8 +169,8 @@ public class Model extends Renderable {
         Stream nc6 = new Stream(abyte0);
         Stream nc7 = new Stream(abyte0);
         nc1.currentOffset = abyte0.length - 23;
-        int numVertices = nc1.readUnsignedWord();
-        int numTriangles = nc1.readUnsignedWord();
+        int numVertices = nc1.readUnsignedShort();
+        int numTriangles = nc1.readUnsignedShort();
         int numTexTriangles = nc1.readUnsignedByte();
         ModelHeader ModelDef_1 = aClass21Array1661[modelID] = new ModelHeader();
         ModelDef_1.aByteArray368 = abyte0;
@@ -184,11 +184,11 @@ public class Model extends Renderable {
         int k2 = nc1.readUnsignedByte();
         int l2 = nc1.readUnsignedByte();
         int i3 = nc1.readUnsignedByte();
-        int j3 = nc1.readUnsignedWord();
-        int k3 = nc1.readUnsignedWord();
-        int l3 = nc1.readUnsignedWord();
-        int i4 = nc1.readUnsignedWord();
-        int j4 = nc1.readUnsignedWord();
+        int j3 = nc1.readUnsignedShort();
+        int k3 = nc1.readUnsignedShort();
+        int l3 = nc1.readUnsignedShort();
+        int i4 = nc1.readUnsignedShort();
+        int j4 = nc1.readUnsignedShort();
         int k4 = 0;
         int l4 = 0;
         int i5 = 0;
@@ -367,7 +367,7 @@ public class Model extends Renderable {
         nc6.currentOffset = l7;
         nc7.currentOffset = i8;
         for (int i12 = 0; i12 < numTriangles; i12++) {
-            triangleColours2[i12] = nc1.readUnsignedWord();
+            triangleColours2[i12] = nc1.readUnsignedShort();
             if (l1 == 1) {
                 face_render_type[i12] = nc2.readSignedByte();
                 if (face_render_type[i12] == 2) {
@@ -388,7 +388,7 @@ public class Model extends Renderable {
                 anIntArray1656[i12] = nc5.readUnsignedByte();
             }
             if (l2 == 1) {
-                D[i12] = (short) (nc6.readUnsignedWord() - 1);
+                D[i12] = (short) (nc6.readUnsignedShort() - 1);
             }
             if (x != null) {
                 if (D[i12] != -1) {
@@ -467,28 +467,28 @@ public class Model extends Renderable {
         for (int k14 = 0; k14 < numTexTriangles; k14++) {
             int i15 = O[k14] & 0xff;
             if (i15 == 0) {
-                texTrianglesPoint1[k14] = nc1.readUnsignedWord();
-                texTrianglesPoint2[k14] = nc1.readUnsignedWord();
-                texTrianglesPoint3[k14] = nc1.readUnsignedWord();
+                texTrianglesPoint1[k14] = nc1.readUnsignedShort();
+                texTrianglesPoint2[k14] = nc1.readUnsignedShort();
+                texTrianglesPoint3[k14] = nc1.readUnsignedShort();
             }
             if (i15 == 1) {
-                texTrianglesPoint1[k14] = nc2.readUnsignedWord();
-                texTrianglesPoint2[k14] = nc2.readUnsignedWord();
-                texTrianglesPoint3[k14] = nc2.readUnsignedWord();
-                kb[k14] = nc3.readUnsignedWord();
-                N[k14] = nc3.readUnsignedWord();
-                y[k14] = nc3.readUnsignedWord();
+                texTrianglesPoint1[k14] = nc2.readUnsignedShort();
+                texTrianglesPoint2[k14] = nc2.readUnsignedShort();
+                texTrianglesPoint3[k14] = nc2.readUnsignedShort();
+                kb[k14] = nc3.readUnsignedShort();
+                N[k14] = nc3.readUnsignedShort();
+                y[k14] = nc3.readUnsignedShort();
                 gb[k14] = nc4.readSignedByte();
                 lb[k14] = nc5.readSignedByte();
                 F[k14] = nc6.readSignedByte();
             }
             if (i15 == 2) {
-                texTrianglesPoint1[k14] = nc2.readUnsignedWord();
-                texTrianglesPoint2[k14] = nc2.readUnsignedWord();
-                texTrianglesPoint3[k14] = nc2.readUnsignedWord();
-                kb[k14] = nc3.readUnsignedWord();
-                N[k14] = nc3.readUnsignedWord();
-                y[k14] = nc3.readUnsignedWord();
+                texTrianglesPoint1[k14] = nc2.readUnsignedShort();
+                texTrianglesPoint2[k14] = nc2.readUnsignedShort();
+                texTrianglesPoint3[k14] = nc2.readUnsignedShort();
+                kb[k14] = nc3.readUnsignedShort();
+                N[k14] = nc3.readUnsignedShort();
+                y[k14] = nc3.readUnsignedShort();
                 gb[k14] = nc4.readSignedByte();
                 lb[k14] = nc5.readSignedByte();
                 F[k14] = nc6.readSignedByte();
@@ -496,12 +496,12 @@ public class Model extends Renderable {
                 J[k14] = nc6.readSignedByte();
             }
             if (i15 == 3) {
-                texTrianglesPoint1[k14] = nc2.readUnsignedWord();
-                texTrianglesPoint2[k14] = nc2.readUnsignedWord();
-                texTrianglesPoint3[k14] = nc2.readUnsignedWord();
-                kb[k14] = nc3.readUnsignedWord();
-                N[k14] = nc3.readUnsignedWord();
-                y[k14] = nc3.readUnsignedWord();
+                texTrianglesPoint1[k14] = nc2.readUnsignedShort();
+                texTrianglesPoint2[k14] = nc2.readUnsignedShort();
+                texTrianglesPoint3[k14] = nc2.readUnsignedShort();
+                kb[k14] = nc3.readUnsignedShort();
+                N[k14] = nc3.readUnsignedShort();
+                y[k14] = nc3.readUnsignedShort();
                 gb[k14] = nc4.readSignedByte();
                 lb[k14] = nc5.readSignedByte();
                 F[k14] = nc6.readSignedByte();
@@ -576,8 +576,8 @@ public class Model extends Renderable {
         Stream nc6 = new Stream(abyte0);
         Stream nc7 = new Stream(abyte0);
         nc1.currentOffset = abyte0.length - 23;
-        int numVertices = nc1.readUnsignedWord();
-        int numTriangles = nc1.readUnsignedWord();
+        int numVertices = nc1.readUnsignedShort();
+        int numTriangles = nc1.readUnsignedShort();
         int numTexTriangles = nc1.readUnsignedByte();
         ModelHeader ModelDef_1 = aClass21Array1661[modelID] = new ModelHeader();
         ModelDef_1.aByteArray368 = abyte0;
@@ -605,11 +605,11 @@ public class Model extends Renderable {
         int k2 = nc1.readUnsignedByte();
         int l2 = nc1.readUnsignedByte();
         int i3 = nc1.readUnsignedByte();
-        int j3 = nc1.readUnsignedWord();
-        int k3 = nc1.readUnsignedWord();
-        int l3 = nc1.readUnsignedWord();
-        int i4 = nc1.readUnsignedWord();
-        int j4 = nc1.readUnsignedWord();
+        int j3 = nc1.readUnsignedShort();
+        int k3 = nc1.readUnsignedShort();
+        int l3 = nc1.readUnsignedShort();
+        int i4 = nc1.readUnsignedShort();
+        int j4 = nc1.readUnsignedShort();
         int k4 = 0;
         int l4 = 0;
         int i5 = 0;
@@ -799,7 +799,7 @@ public class Model extends Renderable {
         nc6.currentOffset = l7;
         nc7.currentOffset = i8;
         for (int i12 = 0; i12 < numTriangles; i12++) {
-            triangleColours2[i12] = nc1.readUnsignedWord();
+            triangleColours2[i12] = nc1.readUnsignedShort();
             if (l1 == 1) {
                 face_render_type[i12] = nc2.readSignedByte();
                 if (face_render_type[i12] == 2) {
@@ -820,7 +820,7 @@ public class Model extends Renderable {
                 anIntArray1656[i12] = nc5.readUnsignedByte();
             }
             if (l2 == 1) {
-                D[i12] = (short) (nc6.readUnsignedWord() - 1);
+                D[i12] = (short) (nc6.readUnsignedShort() - 1);
             }
             if (x != null) {
                 if (D[i12] != -1) {
@@ -885,22 +885,22 @@ public class Model extends Renderable {
         for (int k14 = 0; k14 < numTexTriangles; k14++) {
             int i15 = O[k14] & 0xff;
             if (i15 == 0) {
-                texTrianglesPoint1[k14] = nc1.readUnsignedWord();
-                texTrianglesPoint2[k14] = nc1.readUnsignedWord();
-                texTrianglesPoint3[k14] = nc1.readUnsignedWord();
+                texTrianglesPoint1[k14] = nc1.readUnsignedShort();
+                texTrianglesPoint2[k14] = nc1.readUnsignedShort();
+                texTrianglesPoint3[k14] = nc1.readUnsignedShort();
             }
             if (i15 == 1) {
-                texTrianglesPoint1[k14] = nc2.readUnsignedWord();
-                texTrianglesPoint2[k14] = nc2.readUnsignedWord();
-                texTrianglesPoint3[k14] = nc2.readUnsignedWord();
+                texTrianglesPoint1[k14] = nc2.readUnsignedShort();
+                texTrianglesPoint2[k14] = nc2.readUnsignedShort();
+                texTrianglesPoint3[k14] = nc2.readUnsignedShort();
                 if (newformat < 15) {
-                    kb[k14] = nc3.readUnsignedWord();
+                    kb[k14] = nc3.readUnsignedShort();
                     if (newformat >= 14) {
                         N[k14] = nc3.v(-1);
                     } else {
-                        N[k14] = nc3.readUnsignedWord();
+                        N[k14] = nc3.readUnsignedShort();
                     }
-                    y[k14] = nc3.readUnsignedWord();
+                    y[k14] = nc3.readUnsignedShort();
                 } else {
                     kb[k14] = nc3.v(-1);
                     N[k14] = nc3.v(-1);
@@ -911,21 +911,21 @@ public class Model extends Renderable {
                 F[k14] = nc6.readSignedByte();
             }
             if (i15 == 2) {
-                texTrianglesPoint1[k14] = nc2.readUnsignedWord();
-                texTrianglesPoint2[k14] = nc2.readUnsignedWord();
-                texTrianglesPoint3[k14] = nc2.readUnsignedWord();
+                texTrianglesPoint1[k14] = nc2.readUnsignedShort();
+                texTrianglesPoint2[k14] = nc2.readUnsignedShort();
+                texTrianglesPoint3[k14] = nc2.readUnsignedShort();
                 if (newformat >= 15) {
                     kb[k14] = nc3.v(-1);
                     N[k14] = nc3.v(-1);
                     y[k14] = nc3.v(-1);
                 } else {
-                    kb[k14] = nc3.readUnsignedWord();
+                    kb[k14] = nc3.readUnsignedShort();
                     if (newformat < 14) {
-                        N[k14] = nc3.readUnsignedWord();
+                        N[k14] = nc3.readUnsignedShort();
                     } else {
                         N[k14] = nc3.v(-1);
                     }
-                    y[k14] = nc3.readUnsignedWord();
+                    y[k14] = nc3.readUnsignedShort();
                 }
                 gb[k14] = nc4.readSignedByte();
                 lb[k14] = nc5.readSignedByte();
@@ -934,17 +934,17 @@ public class Model extends Renderable {
                 J[k14] = nc6.readSignedByte();
             }
             if (i15 == 3) {
-                texTrianglesPoint1[k14] = nc2.readUnsignedWord();
-                texTrianglesPoint2[k14] = nc2.readUnsignedWord();
-                texTrianglesPoint3[k14] = nc2.readUnsignedWord();
+                texTrianglesPoint1[k14] = nc2.readUnsignedShort();
+                texTrianglesPoint2[k14] = nc2.readUnsignedShort();
+                texTrianglesPoint3[k14] = nc2.readUnsignedShort();
                 if (newformat < 15) {
-                    kb[k14] = nc3.readUnsignedWord();
+                    kb[k14] = nc3.readUnsignedShort();
                     if (newformat < 14) {
-                        N[k14] = nc3.readUnsignedWord();
+                        N[k14] = nc3.readUnsignedShort();
                     } else {
                         N[k14] = nc3.v(-1);
                     }
-                    y[k14] = nc3.readUnsignedWord();
+                    y[k14] = nc3.readUnsignedShort();
                 } else {
                     kb[k14] = nc3.v(-1);
                     N[k14] = nc3.v(-1);
@@ -1196,7 +1196,7 @@ public class Model extends Renderable {
         stream_3.currentOffset = class21.anInt382;
         stream_4.currentOffset = class21.anInt383;
         for (int l1 = 0; l1 < numberOfTriangleFaces; l1++) {
-            face_color[l1] = stream.readUnsignedWord();
+            face_color[l1] = stream.readUnsignedShort();
             if (face_render_type != null)
                 face_render_type[l1] = stream_1.readUnsignedByte();
             if (face_render_priorities != null)
@@ -1255,9 +1255,9 @@ public class Model extends Renderable {
         }
         stream.currentOffset = class21.anInt384;
         for (int j4 = 0; j4 < numberOfTexturesFaces; j4++) {
-            textured_face_a[j4] = stream.readUnsignedWord();
-            textured_face_b[j4] = stream.readUnsignedWord();
-            textured_face_c[j4] = stream.readUnsignedWord();
+            textured_face_a[j4] = stream.readUnsignedShort();
+            textured_face_b[j4] = stream.readUnsignedShort();
+            textured_face_c[j4] = stream.readUnsignedShort();
         }
     }
 
@@ -1274,18 +1274,18 @@ public class Model extends Renderable {
             stream.currentOffset = abyte0.length - 18;
             ModelHeader class21_1 = aClass21Array1661[j] = new ModelHeader();
             class21_1.aByteArray368 = abyte0;
-            class21_1.anInt369 = stream.readUnsignedWord();
-            class21_1.anInt370 = stream.readUnsignedWord();
+            class21_1.anInt369 = stream.readUnsignedShort();
+            class21_1.anInt370 = stream.readUnsignedShort();
             class21_1.anInt371 = stream.readUnsignedByte();
             int k = stream.readUnsignedByte();
             int l = stream.readUnsignedByte();
             int i1 = stream.readUnsignedByte();
             int j1 = stream.readUnsignedByte();
             int k1 = stream.readUnsignedByte();
-            int l1 = stream.readUnsignedWord();
-            int i2 = stream.readUnsignedWord();
-            int j2 = stream.readUnsignedWord();
-            int k2 = stream.readUnsignedWord();
+            int l1 = stream.readUnsignedShort();
+            int i2 = stream.readUnsignedShort();
+            int j2 = stream.readUnsignedShort();
+            int k2 = stream.readUnsignedShort();
             int l2 = 0;
             class21_1.anInt372 = l2;
             l2 += class21_1.anInt369;

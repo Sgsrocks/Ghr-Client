@@ -12,11 +12,8 @@ import javax.swing.ImageIcon;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.awt.image.DirectColorModel;
-import java.awt.image.PixelGrabber;
 import java.awt.image.Raster;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Hashtable;
 
 import javax.imageio.ImageIO;
@@ -457,9 +454,9 @@ public class Sprite extends DrawingArea {
 	public Sprite(StreamLoader streamLoader, String s, int i) {
 		Stream stream = new Stream(streamLoader.getDataForName(s + ".dat"));
 		Stream stream_1 = new Stream(streamLoader.getDataForName("index.dat"));
-		stream_1.currentOffset = stream.readUnsignedWord();
-		maxWidth = stream_1.readUnsignedWord();
-		maxHeight = stream_1.readUnsignedWord();
+		stream_1.currentOffset = stream.readUnsignedShort();
+		maxWidth = stream_1.readUnsignedShort();
+		maxHeight = stream_1.readUnsignedShort();
 		int j = stream_1.readUnsignedByte();
 		int ai[] = new int[j];
 		for (int k = 0; k < j - 1; k++) {
@@ -470,15 +467,15 @@ public class Sprite extends DrawingArea {
 
 		for (int l = 0; l < i; l++) {
 			stream_1.currentOffset += 2;
-			stream.currentOffset += stream_1.readUnsignedWord()
-					* stream_1.readUnsignedWord();
+			stream.currentOffset += stream_1.readUnsignedShort()
+					* stream_1.readUnsignedShort();
 			stream_1.currentOffset++;
 		}
 
 		anInt1442 = stream_1.readUnsignedByte();
 		anInt1443 = stream_1.readUnsignedByte();
-		myWidth = stream_1.readUnsignedWord();
-		myHeight = stream_1.readUnsignedWord();
+		myWidth = stream_1.readUnsignedShort();
+		myHeight = stream_1.readUnsignedShort();
 		int i1 = stream_1.readUnsignedByte();
 		int j1 = myWidth * myHeight;
 //		if (j1 > maxWidth * maxHeight) {

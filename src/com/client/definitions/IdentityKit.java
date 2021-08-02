@@ -11,7 +11,7 @@ public final class IdentityKit {
 
 	public static void unpackConfig(StreamLoader streamLoader) {
 		Stream stream = new Stream(streamLoader.getDataForName("idk.dat"));
-		length = stream.readUnsignedWord();
+		length = stream.readUnsignedShort();
 		if (cache == null)
 			cache = new IdentityKit[length];
 		for (int j = 0; j < length; j++) {
@@ -34,16 +34,16 @@ public final class IdentityKit {
 				int j = stream.readUnsignedByte();
 				bodyModels = new int[j];
 				for (int k = 0; k < j; k++)
-					bodyModels[k] = stream.readUnsignedWord();
+					bodyModels[k] = stream.readUnsignedShort();
 
 			} else if (opcode == 3)
 				validStyle = true;
 			else if (opcode >= 40 && opcode < 50)
-				originalColors[opcode - 40] = stream.readUnsignedWord();
+				originalColors[opcode - 40] = stream.readUnsignedShort();
 			else if (opcode >= 50 && opcode < 60)
-				replacementColors[opcode - 50] = stream.readUnsignedWord();
+				replacementColors[opcode - 50] = stream.readUnsignedShort();
 			else if (opcode >= 60 && opcode < 70)
-				headModels[opcode - 60] = stream.readUnsignedWord();
+				headModels[opcode - 60] = stream.readUnsignedShort();
 			else
 				System.out.println("Error unrecognised config code: " + opcode);
 		} while (true);

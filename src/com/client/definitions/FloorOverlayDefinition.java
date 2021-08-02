@@ -1,15 +1,12 @@
 package com.client.definitions;
 
-import com.client.utilities.FileOperations;
 import com.client.Stream;
-import com.client.StreamLoader;
-import com.client.sign.Signlink;
 
 public class FloorOverlayDefinition {
 
     public static void unpackConfig(Stream stream) {
       //  Stream stream = new Stream(FileOperations.readFile(Signlink.getCacheDirectory() + "/data/flo2.dat"));
-        int cacheSize = stream.readUnsignedWord();
+        int cacheSize = stream.readUnsignedShort();
         if (overlays == null)
             overlays = new FloorOverlayDefinition[cacheSize];
         for (int j = 0; j < cacheSize; j++) {

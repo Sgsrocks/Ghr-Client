@@ -9,7 +9,7 @@ public final class GraphicsDefinition {
 
 	public static void unpackConfig(StreamLoader streamLoader) {
 		Stream stream = new Stream(streamLoader.getDataForName("spotanim.dat"));
-		int length = stream.readUnsignedWord();
+		int length = stream.readUnsignedShort();
 		if (cache == null)
 			cache = new GraphicsDefinition[length + 15000];
 		for (int j = 0; j < length; j++) {
@@ -37,18 +37,18 @@ public final class GraphicsDefinition {
 				return;
 			}
 			if (i == 1) {
-				modelId = stream.readUnsignedWord();
+				modelId = stream.readUnsignedShort();
 			} else if (i == 2) {
-				anInt406 = stream.readUnsignedWord();
+				anInt406 = stream.readUnsignedShort();
 				if (AnimationDefinition.anims != null) {
 					aAnimation_407 = AnimationDefinition.anims[anInt406];
 				}
 			} else if (i == 4) {
-				anInt410 = stream.readUnsignedWord();
+				anInt410 = stream.readUnsignedShort();
 			} else if (i == 5) {
-				anInt411 = stream.readUnsignedWord();
+				anInt411 = stream.readUnsignedShort();
 			} else if (i == 6) {
-				anInt412 = stream.readUnsignedWord();
+				anInt412 = stream.readUnsignedShort();
 			} else if (i == 7) {
 				anInt413 = stream.readUnsignedByte();
 			} else if (i == 8) {
@@ -56,8 +56,8 @@ public final class GraphicsDefinition {
 			} else if (i == 40) {
 				int j = stream.readUnsignedByte();
 				for (int k = 0; k < j; k++) {
-					anIntArray408[k] = stream.readUnsignedWord();
-					anIntArray409[k] = stream.readUnsignedWord();
+					anIntArray408[k] = stream.readUnsignedShort();
+					anIntArray409[k] = stream.readUnsignedShort();
 				}
 			} else {
 				System.out.println("Error unrecognised spotanim config code: " + i);

@@ -25,18 +25,20 @@ import com.client.sign.Signlink;
 
 public final class ItemDefinition {
 
+	private int opcode94;
+
 	public static void unpackConfig(final StreamLoader streamLoader) {
 		 stream = new Stream(streamLoader.getDataForName("obj.dat"));
 		 Stream stream = new Stream(streamLoader.getDataForName("obj.idx"));
 		//stream = new Stream(FileOperations.readFile(Signlink.getCacheDirectory() + "/data/obj.dat"));
 		//final Stream stream = new Stream(FileOperations.readFile(Signlink.getCacheDirectory() + "/data/obj.idx"));
 
-		totalItems = stream.readUnsignedWord();
+		totalItems = stream.readUnsignedShort();
 		streamIndices = new int[totalItems + 90000];
 		int i = 2;
 		for (int j = 0; j < totalItems; j++) {
 			streamIndices[j] = i;
-			i += stream.readUnsignedWord();
+			i += stream.readUnsignedShort();
 		}
 
 		cache = new ItemDefinition[10];
@@ -52,6 +54,7 @@ public final class ItemDefinition {
 		//itemDump();
 		//dumpCfg();
 		//dumpItems2();
+		//dumpList();
 	}
 
 	public static ItemDefinition forID(int itemId) {
@@ -416,23 +419,23 @@ public final class ItemDefinition {
 			if (opcode == 0)
 				return;
 			if (opcode == 1)
-				modelId = stream.readUnsignedWord();
+				modelId = stream.readUnsignedShort();
 			else if (opcode == 2)
 				name = stream.readString();
             else if (opcode == 3)
                 description = stream.readString();
 			else if (opcode == 4)
-				spriteScale = stream.readUnsignedWord();
+				spriteScale = stream.readUnsignedShort();
 			else if (opcode == 5)
-				spritePitch = stream.readUnsignedWord();
+				spritePitch = stream.readUnsignedShort();
 			else if (opcode == 6)
-				spriteCameraRoll = stream.readUnsignedWord();
+				spriteCameraRoll = stream.readUnsignedShort();
 			else if (opcode == 7) {
-				spriteTranslateX = stream.readUnsignedWord();
+				spriteTranslateX = stream.readUnsignedShort();
 				if (spriteTranslateX > 32767)
 					spriteTranslateX -= 0x10000;
 			} else if (opcode == 8) {
-				spriteTranslateY = stream.readUnsignedWord();
+				spriteTranslateY = stream.readUnsignedShort();
 				if (spriteTranslateY > 32767)
 					spriteTranslateY -= 0x10000;
 			} else if (opcode == 11)
@@ -442,15 +445,15 @@ public final class ItemDefinition {
 			else if (opcode == 16)
 				membersObject = true;
 			else if (opcode == 23) {
-				primaryMaleModel = stream.readUnsignedWord();
+				primaryMaleModel = stream.readUnsignedShort();
 				maleTranslation = stream.readSignedByte();
 			} else if (opcode == 24)
-				secondaryMaleModel = stream.readUnsignedWord();
+				secondaryMaleModel = stream.readUnsignedShort();
 			else if (opcode == 25) {
-				primaryFemaleModel = stream.readUnsignedWord();
+				primaryFemaleModel = stream.readUnsignedShort();
 				femaleTranslation = stream.readSignedByte();
 			} else if (opcode == 26)
-				secondaryFemaleModel = stream.readUnsignedWord();
+				secondaryFemaleModel = stream.readUnsignedShort();
 			else if (opcode >= 30 && opcode < 35) {
 				if (groundActions == null)
 					groundActions = new String[5];
@@ -466,52 +469,54 @@ public final class ItemDefinition {
 				originalModelColors = new int[size];
 				modifiedModelColors = new int[size];
 				for (int index = 0; index < size; index++) {
-					originalModelColors[index] = stream.readUnsignedWord();
-					modifiedModelColors[index] = stream.readUnsignedWord();
+					originalModelColors[index] = stream.readUnsignedShort();
+					modifiedModelColors[index] = stream.readUnsignedShort();
 				}
 			} else if (opcode == 41) {
 				int size = stream.readUnsignedByte();
 				originalTextureColors = new short[size];
 				modifiedTextureColors = new short[size];
 				for (int index = 0; index < size; index++) {
-					originalTextureColors[index] = (short) stream.readUnsignedWord();
-					modifiedTextureColors[index] = (short) stream.readUnsignedWord();
+					originalTextureColors[index] = (short) stream.readUnsignedShort();
+					modifiedTextureColors[index] = (short) stream.readUnsignedShort();
 				}
             } else if (opcode == 42) {
                 shiftClickIndex = stream.readUnsignedByte();
 			} else if (opcode == 65) {
 				searchable = true;
 			} else if (opcode == 78)
-				tertiaryMaleEquipmentModel = stream.readUnsignedWord();
+				tertiaryMaleEquipmentModel = stream.readUnsignedShort();
 			else if (opcode == 79)
-				tertiaryFemaleEquipmentModel = stream.readUnsignedWord();
+				tertiaryFemaleEquipmentModel = stream.readUnsignedShort();
 			else if (opcode == 90)
-				primaryMaleHeadPiece = stream.readUnsignedWord();
+				primaryMaleHeadPiece = stream.readUnsignedShort();
 			else if (opcode == 91)
-				primaryFemaleHeadPiece = stream.readUnsignedWord();
+				primaryFemaleHeadPiece = stream.readUnsignedShort();
 			else if (opcode == 92)
-				secondaryMaleHeadPiece = stream.readUnsignedWord();
+				secondaryMaleHeadPiece = stream.readUnsignedShort();
 			else if (opcode == 93)
-				secondaryFemaleHeadPiece = stream.readUnsignedWord();
+				secondaryFemaleHeadPiece = stream.readUnsignedShort();
+			else if (opcode == 94)
+				opcode94 = stream.readUnsignedShort();
 			else if (opcode == 95)
-				spriteCameraYaw = stream.readUnsignedWord();
+				spriteCameraYaw = stream.readUnsignedShort();
 			else if (opcode == 97)
-				certID = stream.readUnsignedWord();
+				certID = stream.readUnsignedShort();
 			else if (opcode == 98)
-				certTemplateID = stream.readUnsignedWord();
+				certTemplateID = stream.readUnsignedShort();
 			else if (opcode >= 100 && opcode < 110) {
 				if (stackIDs == null) {
 					stackIDs = new int[10];
 					stackAmounts = new int[10];
 				}
-				stackIDs[opcode - 100] = stream.readUnsignedWord();
-				stackAmounts[opcode - 100] = stream.readUnsignedWord();
+				stackIDs[opcode - 100] = stream.readUnsignedShort();
+				stackAmounts[opcode - 100] = stream.readUnsignedShort();
 			} else if (opcode == 110)
-				groundScaleX = stream.readUnsignedWord();
+				groundScaleX = stream.readUnsignedShort();
 			else if (opcode == 111)
-				groundScaleY = stream.readUnsignedWord();
+				groundScaleY = stream.readUnsignedShort();
 			else if (opcode == 112)
-				groundScaleZ = stream.readUnsignedWord();
+				groundScaleZ = stream.readUnsignedShort();
 			else if (opcode == 113)
 				ambience = stream.readSignedByte();
 			else if (opcode == 114)
@@ -519,11 +524,11 @@ public final class ItemDefinition {
 			else if (opcode == 115)
 				team = stream.readUnsignedByte();
 			else if (opcode == 139)
-				unnotedId = stream.readUnsignedWord();
+				unnotedId = stream.readUnsignedShort();
 			else if (opcode == 140)
-				notedId = stream.readUnsignedWord();
+				notedId = stream.readUnsignedShort();
 			else if (opcode == 148)
-				placeholderId = stream.readUnsignedWord();
+				placeholderId = stream.readUnsignedShort();
             else if (opcode == 149) {
                 placeholderTemplateId = stream.readUShort();
             } else if (opcode == 249) {
@@ -969,10 +974,11 @@ public final class ItemDefinition {
 
 	public static void dumpList() {
 		try {
-			FileWriter fw = new FileWriter(System.getProperty("user.home") + "/Desktop/item_data.json");
+			BufferedWriter fw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/198itemlist.txt"));
 			for (int i = 0; i < totalItems; i++) {
 				ItemDefinition itemDefinition = ItemDefinition.forID(i);
 				fw.write("id: " + itemDefinition.id + " - " + itemDefinition.name + "\n");
+				fw.newLine();
 			}
 			fw.close();
 		} catch (Exception e) {

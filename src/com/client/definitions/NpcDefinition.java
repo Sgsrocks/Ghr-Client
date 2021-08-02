@@ -59,12 +59,12 @@ public final class NpcDefinition {
 	public static void unpackConfig(StreamLoader streamLoader) {
 		stream = new Stream(streamLoader.getDataForName("npc.dat"));
 		Stream stream = new Stream(streamLoader.getDataForName("npc.idx"));
-		totalAmount = stream.readUnsignedWord();
+		totalAmount = stream.readUnsignedShort();
 		streamIndices = new int[totalAmount];
 		int i = 2;
 		for (int j = 0; j < totalAmount; j++) {
 			streamIndices[j] = i;
-			i += stream.readUnsignedWord();
+			i += stream.readUnsignedShort();
 		}
 
 		cache = new NpcDefinition[20];
@@ -107,7 +107,7 @@ bw.close();
 				int j = stream.readUnsignedByte();
 				models = new int[j];
 				for (int j1 = 0; j1 < j; j1++)
-					models[j1] = stream.readUnsignedWord();
+					models[j1] = stream.readUnsignedShort();
 
 			} else if (opcode == 2)
 				name = stream.readString();
@@ -116,16 +116,16 @@ bw.close();
 			else if (opcode == 12)
 				boundDim = stream.readSignedByte();
 			else if (opcode == 13)
-				standAnim = stream.readUnsignedWord();
+				standAnim = stream.readUnsignedShort();
 			else if (opcode == 14)
-				walkAnim = stream.readUnsignedWord();
+				walkAnim = stream.readUnsignedShort();
 			else if(opcode == 15 || opcode == 16)
-				stream.readUnsignedWord();
+				stream.readUnsignedShort();
 			else if (opcode == 17) {
-				walkAnim = stream.readUnsignedWord();
-				anInt58 = stream.readUnsignedWord();
-				anInt83 = stream.readUnsignedWord();
-				anInt55 = stream.readUnsignedWord();
+				walkAnim = stream.readUnsignedShort();
+				anInt58 = stream.readUnsignedShort();
+				anInt83 = stream.readUnsignedShort();
+				anInt55 = stream.readUnsignedShort();
 				if (anInt58 == 65535) {
 					anInt58 = -1;
 				}
@@ -136,7 +136,7 @@ bw.close();
 					anInt55 = -1;
 				}
 			} else if(opcode == 18){
-						Category = stream.readUnsignedWord();
+						Category = stream.readUnsignedShort();
 			} else if (opcode >= 30 && opcode < 40) {
 				if (actions == null)
 					actions = new String[10];
@@ -148,30 +148,30 @@ bw.close();
 				originalColors = new int[k];
 				newColors = new int[k];
 				for (int k1 = 0; k1 < k; k1++) {
-					originalColors[k1] = stream.readUnsignedWord();
-					newColors[k1] = stream.readUnsignedWord();
+					originalColors[k1] = stream.readUnsignedShort();
+					newColors[k1] = stream.readUnsignedShort();
 				}
 			} else if (opcode == 41) {
 				int k = stream.readUnsignedByte();
 				for (int k1 = 0; k1 < k; k1++) {
-					stream.readUnsignedWord();
-					stream.readUnsignedWord();
+					stream.readUnsignedShort();
+					stream.readUnsignedShort();
 				}
 
 			} else if (opcode == 60) {
 				int l = stream.readUnsignedByte();
 				dialogueModels = new int[l];
 				for (int l1 = 0; l1 < l; l1++)
-					dialogueModels[l1] = stream.readUnsignedWord();
+					dialogueModels[l1] = stream.readUnsignedShort();
 
 			} else if (opcode == 93)
 				onMinimap = false;
 			else if (opcode == 95)
-				combatLevel = stream.readUnsignedWord();
+				combatLevel = stream.readUnsignedShort();
 			else if (opcode == 97)
-				anInt91 = stream.readUnsignedWord();
+				anInt91 = stream.readUnsignedShort();
 			else if (opcode == 98)
-				anInt86 = stream.readUnsignedWord();
+				anInt86 = stream.readUnsignedShort();
 			else if (opcode == 99)
 				aBoolean93 = true;
 			else if (opcode == 100)
@@ -179,25 +179,25 @@ bw.close();
 			else if (opcode == 101)
 				anInt92 = stream.readSignedByte();
 			else if (opcode == 102)
-				anInt75 = stream.readUnsignedWord();
+				anInt75 = stream.readUnsignedShort();
 			else if (opcode == 103)
-				getDegreesToTurn = stream.readUnsignedWord();
+				getDegreesToTurn = stream.readUnsignedShort();
 			else if (opcode == 106 || opcode == 118) {
-				anInt57 = stream.readUnsignedWord();
+				anInt57 = stream.readUnsignedShort();
 				if (anInt57 == 65535)
 					anInt57 = -1;
-				anInt59 = stream.readUnsignedWord();
+				anInt59 = stream.readUnsignedShort();
 				if (anInt59 == 65535)
 					anInt59 = -1;
 				
 				int var3 = -1;
 				if(opcode == 118) {
-					var3 = stream.readUnsignedWord();
+					var3 = stream.readUnsignedShort();
 				}
 				int i1 = stream.readUnsignedByte();
 				childrenIDs = new int[i1 + 2];
 				for (int i2 = 0; i2 <= i1; i2++) {
-					childrenIDs[i2] = stream.readUnsignedWord();
+					childrenIDs[i2] = stream.readUnsignedShort();
 					if (childrenIDs[i2] == 65535)
 						childrenIDs[i2] = -1;
 				}

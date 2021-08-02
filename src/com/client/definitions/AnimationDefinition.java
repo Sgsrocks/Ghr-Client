@@ -8,7 +8,7 @@ public final class AnimationDefinition {
 
 	public static void unpackConfig(StreamLoader streamLoader) {
 		Stream stream = new Stream(streamLoader.getDataForName("seq.dat"));
-		int length = stream.readUnsignedWord();
+		int length = stream.readUnsignedShort();
 		if (anims == null)
 			anims = new AnimationDefinition[length];
 		for (int j = 0; j < length; j++) {
@@ -38,25 +38,25 @@ public final class AnimationDefinition {
 		while ((i = stream.readUnsignedByte()) != 0) {
 
 			if (i == 1) {
-				anInt352 = stream.readUnsignedWord();
+				anInt352 = stream.readUnsignedShort();
 				primaryFrames = new int[anInt352];
 				secondaryFrames = new int[anInt352];
 				durations = new int[anInt352];
 
 				for (int j = 0; j < anInt352; j++)
-					durations[j] = stream.readUnsignedWord();
+					durations[j] = stream.readUnsignedShort();
 
 
 				for (int j = 0; j < anInt352; j++) {
-					primaryFrames[j] = stream.readUnsignedWord();
+					primaryFrames[j] = stream.readUnsignedShort();
 					secondaryFrames[j] = -1;
 				}
 
 				for (int j = 0; j < anInt352; j++) {
-					primaryFrames[j] += stream.readUnsignedWord() << 16;
+					primaryFrames[j] += stream.readUnsignedShort() << 16;
 				}
 			} else if (i == 2)
-				anInt356 = stream.readUnsignedWord();
+				anInt356 = stream.readUnsignedShort();
 			else if (i == 3) {
 				int k = stream.readUnsignedByte();
 				anIntArray357 = new int[k + 1];
@@ -68,9 +68,9 @@ public final class AnimationDefinition {
 		} else if (i == 5) {
 				anInt359 = stream.readUnsignedByte();
 		} else if (i == 6) {
-				anInt360 = stream.readUnsignedWord();
+				anInt360 = stream.readUnsignedShort();
 		} else if (i == 7) {
-				anInt361 = stream.readUnsignedWord();
+				anInt361 = stream.readUnsignedShort();
 		} else if (i == 8) {
 				anInt362 = stream.readUnsignedByte();
 		} else if (i == 9) {
@@ -83,11 +83,11 @@ public final class AnimationDefinition {
 			int len = stream.readUnsignedByte();
 
 			for (int i1 = 0; i1 < len; i1++) {
-				stream.readUnsignedWord();
+				stream.readUnsignedShort();
 			}
 
 			for (int i1 = 0; i1 < len; i1++) {
-				stream.readUnsignedWord();
+				stream.readUnsignedShort();
 			}
 		} else if (i == 13) { 
 			int len = stream.readUnsignedByte();

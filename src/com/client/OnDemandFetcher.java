@@ -98,14 +98,14 @@ public final class OnDemandFetcher extends OnDemandFetcherParent implements Runn
 	public void start(StreamLoader streamLoader, Client client) {
 		byte[] fileData = streamLoader.getDataForName("map_index");
 		Stream stream = new Stream(fileData);
-		int length = stream.readUnsignedWord();
+		int length = stream.readUnsignedShort();
 		mapIndices1 = new int[length];
 		mapIndices2 = new int[length];
 		mapIndices3 = new int[length];
 		for (int i2 = 0; i2 < length; i2++) {
-			mapIndices1[i2] = stream.readUnsignedWord();
-			mapIndices2[i2] = stream.readUnsignedWord();
-			mapIndices3[i2] = stream.readUnsignedWord();
+			mapIndices1[i2] = stream.readUnsignedShort();
+			mapIndices2[i2] = stream.readUnsignedShort();
+			mapIndices3[i2] = stream.readUnsignedShort();
 			//System.out.println(mapIndices1[i2] + " " + mapIndices2[i2] + " " + mapIndices3[i2]);
 		}
 		fileData = streamLoader.getDataForName("midi_index");

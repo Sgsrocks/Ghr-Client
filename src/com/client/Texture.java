@@ -24,8 +24,8 @@ public final class Texture extends DrawingArea {
     public static final void decode(int index, byte[] data) {
         Texture texture = cache[index] = new Texture();
         Stream buffer = new Stream(data);
-        int width = buffer.readUnsignedWord();
-        int height = buffer.readUnsignedWord();
+        int width = buffer.readUnsignedShort();
+        int height = buffer.readUnsignedShort();
         texture.mipmaps[0] = new int[16384];
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {

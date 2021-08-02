@@ -19,15 +19,15 @@ public final class TextDrawingArea extends DrawingArea {
 		aBoolean1499 = false;
 		Stream stream = new Stream(streamLoader.getDataForName(s + ".dat"));
 		Stream stream_1 = new Stream(streamLoader.getDataForName("index.dat"));
-		stream_1.currentOffset = stream.readUnsignedWord() + 4;
+		stream_1.currentOffset = stream.readUnsignedShort() + 4;
 		int k = stream_1.readUnsignedByte();
 		if (k > 0)
 			stream_1.currentOffset += 3 * (k - 1);
 		for (int l = 0; l < 256; l++) {
 			anIntArray1494[l] = stream_1.readUnsignedByte();
 			anIntArray1495[l] = stream_1.readUnsignedByte();
-			int i1 = anIntArray1492[l] = stream_1.readUnsignedWord();
-			int j1 = anIntArray1493[l] = stream_1.readUnsignedWord();
+			int i1 = anIntArray1492[l] = stream_1.readUnsignedShort();
+			int j1 = anIntArray1493[l] = stream_1.readUnsignedShort();
 			int k1 = stream_1.readUnsignedByte();
 			int l1 = i1 * j1;
 			aByteArrayArray1491[l] = new byte[l1];

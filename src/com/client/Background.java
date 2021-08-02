@@ -8,9 +8,9 @@ public final class Background extends DrawingArea {
 	public Background(StreamLoader streamLoader, String s, int i) {
 		Stream stream = new Stream(streamLoader.getDataForName(s + ".dat"));
 		Stream stream_1 = new Stream(streamLoader.getDataForName("index.dat"));
-		stream_1.currentOffset = stream.readUnsignedWord();
-		anInt1456 = stream_1.readUnsignedWord();
-		anInt1457 = stream_1.readUnsignedWord();
+		stream_1.currentOffset = stream.readUnsignedShort();
+		anInt1456 = stream_1.readUnsignedShort();
+		anInt1457 = stream_1.readUnsignedShort();
 		int j = stream_1.readUnsignedByte();
 		palette = new int[j];
 		for (int k = 0; k < j - 1; k++)
@@ -18,15 +18,15 @@ public final class Background extends DrawingArea {
 
 		for (int l = 0; l < i; l++) {
 			stream_1.currentOffset += 2;
-			stream.currentOffset += stream_1.readUnsignedWord()
-					* stream_1.readUnsignedWord();
+			stream.currentOffset += stream_1.readUnsignedShort()
+					* stream_1.readUnsignedShort();
 			stream_1.currentOffset++;
 		}
 
 		anInt1454 = stream_1.readUnsignedByte();
 		anInt1455 = stream_1.readUnsignedByte();
-		width = stream_1.readUnsignedWord();
-		anInt1453 = stream_1.readUnsignedWord();
+		width = stream_1.readUnsignedShort();
+		anInt1453 = stream_1.readUnsignedShort();
 		int i1 = stream_1.readUnsignedByte();
 		int j1 = width * anInt1453;
 		palettePixels = new byte[j1];

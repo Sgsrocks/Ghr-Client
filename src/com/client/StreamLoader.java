@@ -64,7 +64,7 @@ public class StreamLoader {
 			aByteArray726 = abyte0;
 			aBoolean732 = false;
 		}
-		dataSize = stream.readUnsignedWord();
+		dataSize = stream.readUnsignedShort();
 		anIntArray728 = new int[dataSize];
 		anIntArray729 = new int[dataSize];
 		anIntArray730 = new int[dataSize];

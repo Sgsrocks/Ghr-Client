@@ -10,7 +10,7 @@ public final class FrameLoader {
 		try {
 			Stream stream = new Stream(fileData);
             Class18 class18 = new Class18(stream);
-			int k1 = stream.readUnsignedWord();
+			int k1 = stream.readUnsignedShort();
 			animationlist[file] = new FrameLoader[(int)(k1*3)];
 			System.out.println("Animation frame id "+file);
 			int ai[] = new int[500];
@@ -18,7 +18,7 @@ public final class FrameLoader {
 			int ai2[] = new int[500];
 			int ai3[] = new int[500];
 			for(int l1 = 0; l1 < k1; l1++) {
-				int i2 = stream.readUnsignedWord();
+				int i2 = stream.readUnsignedShort();
 				FrameLoader class36 = animationlist[file][i2] = new FrameLoader();
 				class36.aClass18_637 = class18;
 				int j2 = stream.readUnsignedByte();
