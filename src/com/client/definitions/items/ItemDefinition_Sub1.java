@@ -4056,21 +4056,15 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
-            itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 6073;
-            itemDef.modifiedModelColors[1] = 935;
-            itemDef.originalModelColors[1] = 5959;
-			itemDef.modelId = 6033;
+			itemDef.modelId = 66033;
 			itemDef.spriteScale = 1640;
 			itemDef.spritePitch = 456;
 			itemDef.spriteCameraRoll = 12;
 			itemDef.spriteCameraYaw = 0;
 			itemDef.spriteTranslateX = 0;
 			itemDef.spriteTranslateY = 6;
-			itemDef.primaryMaleModel = 6031;
-			itemDef.primaryFemaleModel = 6031;
+			itemDef.primaryMaleModel = 66031;
+			itemDef.primaryFemaleModel = 66031;
 			itemDef.secondaryMaleModel = -1;
 			itemDef.secondaryFemaleModel = -1;
 			itemDef.primaryMaleHeadPiece = -1;

@@ -4,6 +4,7 @@ import com.client.bot.MouseDetection;
 import com.client.definitions.*;
 import com.client.features.EntityTarget;
 import com.client.features.ExperienceDrop;
+import com.client.features.FishingSpotData;
 import com.client.features.gameframe.ScreenMode;
 import com.client.features.gametimers.GameTimer;
 import com.client.features.gametimers.GameTimerHandler;
@@ -139,7 +140,7 @@ public class Client extends RSApplet {
     public static boolean inputTaken;
     public static int[] anIntArray1232;
     public static int anInt1290;
-    public static String server = Configuration.LIVE_SERVER ? "38.89.142.80" : "127.0.0.1"; //Configuration.LIVE_SERVER ? "162.252.8.130" : "127.0.0.1";
+    public static String server = Configuration.LIVE_SERVER ? "192.3.110.201" : "127.0.0.1"; //Configuration.LIVE_SERVER ? "162.252.8.130" : "127.0.0.1";
     public static boolean controlIsDown;
     public static int anInt1401 = 256;
     public static long aLong1432;
@@ -863,7 +864,7 @@ public class Client extends RSApplet {
         openWalkableWidgetID = -1;
         anIntArray1030 = new int[5];
         aBoolean1031 = false;
-        mapFunctions = new Sprite[119];
+        mapFunctions = new Sprite[4000];
         dialogID = -1;
         maxStats = new int[Skills.SKILLS_COUNT];
         anIntArray1045 = new int[25000];
@@ -2491,7 +2492,7 @@ public class Client extends RSApplet {
                                 int k3 = k2;
                                 int l3 = l2;
                                 System.out.println("Area id: "+j3);
-                                mapIconSprite[mapIconAmount] = mapFunctions[sprite];
+                                mapIconSprite[mapIconAmount] = cacheSprite474[sprite];
                                 anIntArray1072[mapIconAmount] = k3;
                                 anIntArray1073[mapIconAmount] = l3;
                                 mapIconAmount++;
@@ -3496,6 +3497,16 @@ public class Client extends RSApplet {
                     continue;
                 if (obj instanceof NPC) {
                     NpcDefinition entityDef = ((NPC) obj).desc;
+                    npcScreenPos((NPC) obj, ((NPC) obj).height + 15);
+                    if(Configuration.showfish) {
+                        if (spriteDrawX > -1) {
+                            for(FishingSpotData data : FishingSpotData.values()) {
+                                if (entityDef.interfaceType == data.getId()) {
+                                    ItemDefinition.getSprite(data.getFishId(),0,0).drawSprite(spriteDrawX - 12, spriteDrawY - 30);
+                                }
+                            }
+                        }
+                    }
                     if (entityDef.childrenIDs != null)
                         entityDef = entityDef.method161();
                     if (entityDef == null)
@@ -4028,6 +4039,32 @@ public class Client extends RSApplet {
                 aByteArray912 = abyte1;
                 Rasterizer.requestTextureUpdate(59);
             }
+            if (Rasterizer.textureLastUsed[61] >= j) {
+                Background background_1 = Rasterizer.textures[61];
+                int l = background_1.width * background_1.anInt1453 - 1;
+                int k1 = background_1.width * tickDelta * 1;
+                byte[] abyte1 = background_1.palettePixels;
+                byte[] abyte4 = aByteArray912;
+                for (int j2 = 0; j2 <= l; j2++)
+                    abyte4[j2] = abyte1[j2 - k1 & l];
+
+                background_1.palettePixels = abyte4;
+                aByteArray912 = abyte1;
+                Rasterizer.requestTextureUpdate(61);
+            }
+            if (Rasterizer.textureLastUsed[63] >= j) {
+                Background background_1 = Rasterizer.textures[63];
+                int l = background_1.width * background_1.anInt1453 - 1;
+                int k1 = background_1.width * tickDelta * 1;
+                byte[] abyte1 = background_1.palettePixels;
+                byte[] abyte4 = aByteArray912;
+                for (int j2 = 0; j2 <= l; j2++)
+                    abyte4[j2] = abyte1[j2 - k1 & l];
+
+                background_1.palettePixels = abyte4;
+                aByteArray912 = abyte1;
+                Rasterizer.requestTextureUpdate(63);
+            }
             if (Rasterizer.textureLastUsed[34] >= j) {
                 Background background_2 = Rasterizer.textures[34];
                 int i1 = background_2.width * background_2.anInt1453 - 1;
@@ -4053,18 +4090,6 @@ public class Client extends RSApplet {
                 aByteArray912 = abyte2;
                 Rasterizer.requestTextureUpdate(40);
             }
-            if (Rasterizer.textureLastUsed[49] >= j) {
-                Background background_2 = Rasterizer.textures[49];
-                int i1 = background_2.width * background_2.anInt1453 - 1;
-                int l1 = background_2.width * tickDelta * 2;
-                byte[] abyte2 = background_2.palettePixels;
-                byte[] abyte5 = aByteArray912;
-                for (int k2 = 0; k2 <= i1; k2++)
-                    abyte5[k2] = abyte2[k2 - l1 & i1];
-                background_2.palettePixels = abyte5;
-                aByteArray912 = abyte2;
-                Rasterizer.requestTextureUpdate(49);
-            }
             if (Rasterizer.textureLastUsed[56] >= j) {
                 Background background_2 = Rasterizer.textures[56];
                 int i1 = background_2.width * background_2.anInt1453 - 1;
@@ -4088,18 +4113,6 @@ public class Client extends RSApplet {
                 background_2.palettePixels = abyte5;
                 aByteArray912 = abyte2;
                 Rasterizer.requestTextureUpdate(57);
-            }
-            if (Rasterizer.textureLastUsed[61] >= j) {
-                Background background_2 = Rasterizer.textures[61];
-                int i1 = background_2.width * background_2.anInt1453 - 1;
-                int l1 = background_2.width * tickDelta * 2;
-                byte[] abyte2 = background_2.palettePixels;
-                byte[] abyte5 = aByteArray912;
-                for (int k2 = 0; k2 <= i1; k2++)
-                    abyte5[k2] = abyte2[k2 - l1 & i1];
-                background_2.palettePixels = abyte5;
-                aByteArray912 = abyte2;
-                Rasterizer.requestTextureUpdate(61);
             }
         }
     }
@@ -4994,7 +5007,7 @@ public class Client extends RSApplet {
             anInt1104--;
         if (anInt1011 > 0)
             anInt1011--;
-        for (int j = 0; j < 5; j++)
+        for (int j = 0; j < 100; j++)
             if (!parsePacket())
                 break;
 
@@ -5509,7 +5522,7 @@ public class Client extends RSApplet {
         char c = '\u0168';
         char c1 = '\310';
         byte byte1 = 20;
-        chatTextDrawingArea.drawText(0xffffff, "Ghreborn is loading - please wait...", c1 / 2 - 26 - byte1, c / 2);
+        chatTextDrawingArea.drawText(0xffffff, "GodzHell is loading - please wait...", c1 / 2 - 26 - byte1, c / 2);
         int j = c1 / 2 - 18 - byte1;
         DrawingArea.fillPixels(c / 2 - 152, 304, 34, 0x8c1111, j);
         DrawingArea.fillPixels(c / 2 - 151, 302, 32, 0, j + 1);
@@ -9920,7 +9933,7 @@ public class Client extends RSApplet {
         try {
             if (!flag) {
                 firstLoginMessage = "";
-                secondLoginMessage = "Connecting to Ghreborn...";
+                secondLoginMessage = "Connecting to GodzHell...";
                 drawLoginScreen(true);
             }
             setConfigButton(23103, informationFile.isRememberRoof());
@@ -10121,7 +10134,7 @@ public class Client extends RSApplet {
                 return;
             }
             if (k == 6) {
-                firstLoginMessage = "Ghreborn has been updated!";
+                firstLoginMessage = "GodzHell has been updated!";
                 secondLoginMessage = "Please restart the client.";
                 return;
             }
@@ -10159,7 +10172,7 @@ public class Client extends RSApplet {
                 return;
             }
             if (k == 14) {
-                firstLoginMessage = "Ghreborn is currently being updated.";
+                firstLoginMessage = "GodzHell is currently being updated.";
                 secondLoginMessage = "Please wait one minute and try again.";
                 return;
             }
@@ -10230,7 +10243,7 @@ public class Client extends RSApplet {
                 return;
             }
             if (k == 27) {
-                firstLoginMessage = "Ghreborn is currently in Alpha.";
+                firstLoginMessage = "GodzHell is currently in Alpha.";
                 secondLoginMessage = "Please apply on the discord.";
                 return;
             }
@@ -12077,7 +12090,7 @@ public class Client extends RSApplet {
             } catch (Exception _ex) {
             }
             try {
-                for (int l3 = 0; l3 < 119; l3++)
+                for (int l3 = 0; l3 < 4000; l3++)
                     mapFunctions[l3] = new Sprite("MapFunctions/" + l3);
             } catch (Exception _ex) {
             }
@@ -12397,16 +12410,16 @@ public class Client extends RSApplet {
             g.setFont(new Font("Helvetica", 1, 16));
             g.setColor(Color.yellow);
             int k = 35;
-            g.drawString("Sorry, an error has occured whilst loading Ghreborn", 30, k);
+            g.drawString("Sorry, an error has occured whilst loading GodzHell", 30, k);
             k += 50;
             g.setColor(Color.white);
             g.drawString("To fix this try the following (in order):", 30, k);
             k += 50;
             g.setColor(Color.white);
             g.setFont(new Font("Helvetica", 1, 12));
-            g.drawString("1: Go to your user files and delete .GhrebornCache folder", 30, k);
+            g.drawString("1: Go to your user files and delete .GodzHellCache folder", 30, k);
             k += 30;
-            g.drawString("2: Delete the Ghreborn.jar and redownload the loader from our homepage", 30, k);
+            g.drawString("2: Delete the GodzHell.jar and redownload the loader from our homepage", 30, k);
             k += 30;
             g.drawString("3: After deleting cache and redownloading client, go ahead and open it", 30, k);
             k += 30;
@@ -12424,7 +12437,7 @@ public class Client extends RSApplet {
             aBoolean831 = false;
             g.setColor(Color.yellow);
             int l = 35;
-            g.drawString("Error a copy of Ghreborn already appears to be loaded", 30, l);
+            g.drawString("Error a copy of GodzHell already appears to be loaded", 30, l);
             l += 50;
             g.setColor(Color.white);
             g.drawString("To fix this try the following (in order):", 30, l);
@@ -15241,6 +15254,8 @@ public class Client extends RSApplet {
         cacheSprite3[168].drawSprite(27 + xOffset - xOff, 45 - yOff);
         smallText.method382(getOrbTextColor(health), 15 + xOffset - xOff, "" + cHP, 67 - yOff, true);
     }
+
+
     private void drawSpecialOrb(int xOffset) {
         Sprite image = cacheSprite1[specialHover ? 8 : 7];
         Sprite fill = cacheSprite[specialEnabled == 0 ? 9 : 6];
@@ -15269,17 +15284,17 @@ public class Client extends RSApplet {
                 : currentScreenMode == ScreenMode.FIXED ? -1 : -7;
         Sprite bg = cacheSprite1[prayHover ? 8 : 7];
         Sprite fg = prayClicked ? new Sprite("Gameframe/newprayclicked") : cacheSprite1[1];
-        bg.drawSprite(-2 + xOffset - xOff, 80 - yOff);
-        fg.drawSprite(25 + xOffset - xOff, 84 - yOff);
+        bg.drawSprite(0 + xOffset - xOff, 75 - yOff);
+        fg.drawSprite(27 + xOffset - xOff, 79 - yOff);
         int level = Integer.parseInt(RSInterface.interfaceCache[4012].message.replaceAll("%", ""));
         int max = maxStats[5];
         double percent = level / (double) max;
         cacheSprite1[14].myHeight = (int) (26 * (1 - percent));
-        cacheSprite1[14].drawSprite(25 + xOffset - xOff, 84 - yOff);
+        cacheSprite1[14].drawSprite(27 + xOffset - xOff, 79 - yOff);
         if (percent <= .25) {
-            cacheSprite1[10].drawSprite(25 + xOffset - xOff, 84 - yOff);
+            cacheSprite1[10].drawSprite(30 + xOffset - xOff, 82 - yOff);
         } else {
-            cacheSprite1[10].drawSprite(25 + xOffset - xOff, 84 - yOff);
+            cacheSprite1[10].drawSprite(30 + xOffset - xOff, 82 - yOff);
         }
         smallText.method382(getOrbTextColor((int) (percent * 100)), 14 + xOffset - xOff, level + "", 101 - yOff, true);
     }
@@ -15288,12 +15303,12 @@ public class Client extends RSApplet {
         int current = Integer.parseInt(RSInterface.interfaceCache[149].message.replaceAll("%", ""));
         int yOff = Configuration.osbuddyGameframe ? currentScreenMode == ScreenMode.FIXED ? 15 : 5
                 : currentScreenMode == ScreenMode.FIXED ? 1 : -4;
-        int xMinus = Configuration.osbuddyGameframe ? currentScreenMode == ScreenMode.FIXED ? 11 : 3
+        int xMinus = Configuration.osbuddyGameframe ? currentScreenMode == ScreenMode.FIXED ? 11 : 5
                 : currentScreenMode == ScreenMode.FIXED ? -1 : -6;
         Sprite bg = cacheSprite1[runHover ? 8 : 7];
         boolean running = anIntArray1045[173] == 1;
         Sprite fg = cacheSprite1[running ? 4 : 3];
-        bg.drawSprite(10 + xOffset - xMinus, 103 - yOff);
+        bg.drawSprite(10 + xOffset - xMinus, 109 - yOff);
         fg.drawSprite(37 + xOffset - xMinus, 113 - yOff);
         int level = current;
         double percent = level / (double) 100;
@@ -15709,7 +15724,7 @@ public class Client extends RSApplet {
             int i = c1 / 2 + 80;
             smallText.method382(0x75a9a9, c / 2, onDemandFetcher.statusString, i, true);
             i = c1 / 2 - 20;
-            chatTextDrawingArea.method382(0xffff00, c / 2, "Welcome to Ghreborn", i, true);
+            chatTextDrawingArea.method382(0xffff00, c / 2, "Welcome to GodzHell", i, true);
             i += 30;
             int l = c / 2 - 80;
             int k1 = c1 / 2 + 20;

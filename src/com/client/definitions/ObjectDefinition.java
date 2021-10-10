@@ -601,17 +601,7 @@ public final class ObjectDefinition {
 				model_3.replaceTexture(originalTexture[k2], modifiedTexture[k2]);
 
 		}
-		/*if (modifiedTexture != null) {
-			for (int k2 = 0; k2 < modifiedTexture.length; k2++) {
-				if(originalTexture[k2] < 1 && originalTexture == null) {
-					//this was set to < 100 --- But setting it to never call fixed walls.
-					model_3.overrideTexture( originalTexture[k2], modifiedTexture[k2]);
-				} else {
-					model_3.setTexture(originalTexture[k2], modifiedTexture[k2]);
-				}
-			}*/
 
-		//}
 		if (flag)
 			model_3.method478(thickness, width, height);
 		if (flag2)
@@ -620,7 +610,7 @@ public final class ObjectDefinition {
 		// !aBoolean769);
 		// ORIGINAL^
 
-		model_3.method479(64 + aByte737, 768 + aByte742 * 5, -50, -10, -50, !aBoolean769);
+		model_3.method479(aByte737 + 64,  aByte742  * 25 + 768, -50, -10, -50, !aBoolean769);
 
 		if (anInt760 == 1)
 			model_3.itemDropHeight = model_3.modelHeight;

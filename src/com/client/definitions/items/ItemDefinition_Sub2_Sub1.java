@@ -7786,7 +7786,7 @@ if(i == 26909) //ID
 	class8.spriteCameraYaw = 0;
 	class8.spriteTranslateX = 0;
 	class8.spriteTranslateY = 2;
-	class8.primaryMaleModel = 34271;
+	class8.primaryMaleModel = 64271;
 	class8.primaryFemaleModel = 34288;
 	class8.secondaryMaleModel = -1;
 	class8.secondaryFemaleModel = -1;

@@ -54,7 +54,8 @@ public final class ItemDefinition {
 		//itemDump();
 		//dumpCfg();
 		//dumpItems2();
-		//dumpList();
+		dumpList();
+		//dumpNpcList();
 	}
 
 	public static ItemDefinition forID(int itemId) {
@@ -316,6 +317,24 @@ public final class ItemDefinition {
 		ItemDefinition_Sub4.itemDef(itemId, itemDef);
 		switch (itemId) {
 		}
+	}
+	public static void dumpNpcList() {
+		for(int i = 0; i < 30000; ++i) {
+			ItemDefinition class5 = forID(i);
+			BufferedWriter bw = null;
+
+			try {
+				bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/198gameitem.txt", true));
+				if(class5.name != null) {
+					bw.write("new GameItem(" + i + "),//" + class5.name);
+					bw.newLine();
+					bw.flush();
+					bw.close();
+				}
+			} catch (IOException var4) {
+			}
+		}
+
 	}
 	void updateNote(ItemDefinition itemcomposition_1, ItemDefinition itemcomposition_2)
 	{
@@ -602,6 +621,11 @@ public final class ItemDefinition {
 				model.method476(modifiedModelColors[i1], originalModelColors[i1]);
 
 		}
+		if (originalTextureColors != null) {
+			for (int k2 = 0; k2 < originalTextureColors.length; k2++)
+				model.replaceTexture(originalTextureColors[k2], modifiedTextureColors[k2]);
+
+		}
 		return model;
 	}
 
@@ -656,6 +680,11 @@ public final class ItemDefinition {
 		if (modifiedModelColors != null) {
 			for (int i1 = 0; i1 < modifiedModelColors.length; i1++)
 				model.method476(modifiedModelColors[i1], originalModelColors[i1]);
+
+		}
+		if (originalTextureColors != null) {
+			for (int k2 = 0; k2 < originalTextureColors.length; k2++)
+				model.replaceTexture(originalTextureColors[k2], modifiedTextureColors[k2]);
 
 		}
 		return model;
@@ -1318,9 +1347,9 @@ public final class ItemDefinition {
 				model.method476(modifiedModelColors[l], originalModelColors[l]);
 
 		}
-		if (modifiedTextureColors != null) {
-			for (int k2 = 0; k2 < modifiedTextureColors.length; k2++)
-				model.replaceTexture(modifiedTextureColors[k2], originalTextureColors[k2]);
+		if (originalTextureColors != null) {
+			for (int k2 = 0; k2 < originalTextureColors.length; k2++)
+				model.replaceTexture(originalTextureColors[k2], modifiedTextureColors[k2]);
 
 		}
 		model.method479(64 + ambience, 768 + diffusion, -50, -10, -50, true);
@@ -1347,9 +1376,9 @@ public final class ItemDefinition {
 				model.method476(modifiedModelColors[l], originalModelColors[l]);
 
 		}
-		if (modifiedTextureColors != null) {
-			for (int k2 = 0; k2 < modifiedTextureColors.length; k2++)
-				model.replaceTexture(modifiedTextureColors[k2], originalTextureColors[k2]);
+		if (originalTextureColors != null) {
+			for (int k2 = 0; k2 < originalTextureColors.length; k2++)
+				model.replaceTexture(originalTextureColors[k2], modifiedTextureColors[k2]);
 
 		}
 		return model;

@@ -39,7 +39,6 @@ public class Sprite extends DrawingArea {
 		sprite.setTransparency(255, 0, 255);
 		return sprite;
 	}
-
 	public String location = Signlink.getCacheDirectory() + "/Sprites/";
 
 	public Sprite(byte abyte0[], Component component) {

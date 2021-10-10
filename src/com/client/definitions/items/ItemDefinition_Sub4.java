@@ -8619,6 +8619,63 @@ public class ItemDefinition_Sub4 {
 			class8.name = "Torva platelegs";
 			class8.description = "A pair of Torva platelegs";
 		}
+		if(i == 27389) //ID
+		{
+			class8.itemActions = new String[] {null, "Wield", "Check", "Uncharge", "Drop"};
+			class8.groundActions = new String[] {null};
+			class8.name = "Scythe of vitur (Lava)"; //Name
+			class8.description = "Its an Scythe of vitur (Lava)"; //Description
+			class8.modelId = 65742;
+			class8.spriteScale = 2105;
+			class8.spritePitch = 327;
+			class8.spriteCameraRoll = 23;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = 1;
+			class8.spriteTranslateY = 17;
+			class8.primaryMaleModel = 65371;
+			class8.primaryFemaleModel = 62906;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;
+			class8.value = 4000000;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.stackable = false;
+			class8.placeholderId = 22485;
+			class8.placeholderTemplateId = -1;
+		}
+		if(i == 27390) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 59;
+			class8.originalModelColors[0] = 61;
+			class8.name = "Rainbow Infernal cape"; //Name
+			class8.description = "Its an Rainbow Infernal cape"; //Description
+			class8.modelId = 33144;
+			class8.spriteScale = 2086;
+			class8.spritePitch = 567;
+			class8.spriteCameraRoll = 2031;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = -4;
+			class8.spriteTranslateY = 0;
+			class8.primaryMaleModel = 33103;
+			class8.primaryFemaleModel = 33111;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.value = 80000;
+		}
 		return class8;
     }
 }

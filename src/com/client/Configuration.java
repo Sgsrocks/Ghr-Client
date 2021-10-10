@@ -26,16 +26,17 @@ public class Configuration {
 	public static boolean enableAntiAliasing = false;
 	public static boolean enableFogRendering = false;
     public static boolean enableRainbowFog = false;
+    public static boolean showfish = true;
 	public static boolean bountyHunter = true;
 	public static boolean playerNames = false;
 	public static int chatColor = 0;
     public static int fogColor = 0xDCDBDF;
 	public static long fogDelay = 500;
 	public static final int CLIENT_VERSION = 4;
-	public static Boolean LIVE_SERVER = false;
+	public static Boolean LIVE_SERVER = true;
 	public static final int PORT = 5555;
 
-	public static final String CLIENT_TITLE =  Configuration.LIVE_SERVER ? "Ghreborn" : "Ghreborn - LocalHost";
+	public static final String CLIENT_TITLE =  Configuration.LIVE_SERVER ? "GodzHell" : "GodzHell - LocalHost";
 	public static Boolean DUMP_DATA = false;
 	public static int dumpID = 196;
 	public static Boolean DUMP_OTHER = false;
@@ -45,7 +46,7 @@ public class Configuration {
 	 * Sounds/Music Index 4 = Maps You can only do up to 300 files at a time
 	 */
 
-	public static final String CACHE_NAME = ".GhrebornCache";
+	public static final String CACHE_NAME = ".GodzHell-Cache";
 
 	public static boolean 
 			repackIndexOne = false,
@@ -55,7 +56,7 @@ public class Configuration {
 			repackIndexFive = false,
 			repackIndexSix = false;
 
-	public static final String CACHE_LINK = "https://www.dropbox.com/s/qyp6b3etma22lrs/cache.zip?dl=1"; // Link for every client below client
+	public static final String CACHE_LINK = "https://www.dropbox.com/s/z80j5p2eksojlfd/cache.zip?dl=1"; // Link for every client below client
 
 	public static final boolean DUMP_OBJECTS = false;
 	
@@ -67,7 +68,7 @@ public class Configuration {
 	public static boolean CHRISTMAS_EVENT = false;
 	public static boolean EASTER = false;
 
-	public static boolean osbuddyGameframe = true;
+	public static boolean osbuddyGameframe = false;
 
 	public static boolean oldGameframe = false;
 	public static int gameWorld = 1;

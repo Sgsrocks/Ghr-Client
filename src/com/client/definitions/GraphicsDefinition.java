@@ -59,6 +59,14 @@ public final class GraphicsDefinition {
 					anIntArray408[k] = stream.readUnsignedShort();
 					anIntArray409[k] = stream.readUnsignedShort();
 				}
+			} else if (i == 41) {
+				final int len = stream.readUnsignedByte();
+				textureToFind = new short[len];
+				textureToReplace = new short[len];
+				for (int k = 0; k < len; k++) {
+					textureToFind[k] = (short) stream.readUnsignedShort();
+					textureToReplace[k] = (short) stream.readUnsignedShort();
+				}
 			} else {
 				System.out.println("Error unrecognised spotanim config code: " + i);
 			}
@@ -88,6 +96,10 @@ public final class GraphicsDefinition {
 		for (int i = 0; i < anIntArray408.length; i++)
 			if (anIntArray408[0] != 0) //default frame id
 				model.replaceColor(anIntArray408[i], anIntArray409[i]);
+
+		if (textureToFind != null)
+			for (int i = 0; i < textureToReplace.length; i++)
+				model.replaceTexture(textureToFind[i], textureToReplace[i]);
 
 		aMRUNodes_415.removeFromCache(model, index);
 		return model;
@@ -130,6 +142,8 @@ public final class GraphicsDefinition {
 	public AnimationDefinition aAnimation_407;
 	public int[] anIntArray408;
 	public int[] anIntArray409;
+	private short[] textureToFind;
+	private short[] textureToReplace;
 	public int anInt410;
 	public int anInt411;
 	public int anInt412;
