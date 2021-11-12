@@ -8654,9 +8654,38 @@ public class ItemDefinition_Sub4 {
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
 			class8.modifiedModelColors[0] = 59;
-			class8.originalModelColors[0] = 61;
-			class8.name = "Rainbow Infernal cape"; //Name
-			class8.description = "Its an Rainbow Infernal cape"; //Description
+			class8.originalModelColors[0] = 92;
+			class8.name = "Magic Infernal cape"; //Name
+			class8.description = "Its an Magic Infernal cape"; //Description
+			class8.modelId = 33144;
+			class8.spriteScale = 2086;
+			class8.spritePitch = 567;
+			class8.spriteCameraRoll = 2031;
+			class8.spriteCameraYaw = 0;
+			class8.spriteTranslateX = -4;
+			class8.spriteTranslateY = 0;
+			class8.primaryMaleModel = 33103;
+			class8.primaryFemaleModel = 33111;
+			class8.secondaryMaleModel = -1;
+			class8.secondaryFemaleModel = -1;
+			class8.primaryMaleHeadPiece = -1;
+			class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;
+			class8.certID = -1;
+			class8.certTemplateID = -1;
+			class8.unnotedId = -1;
+			class8.notedId = -1;
+			class8.value = 80000;
+		}
+		if(i == 27391) //ID
+		{
+			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.modifiedModelColors = new int[1];
+			class8.originalModelColors = new int[1];
+			class8.modifiedModelColors[0] = 59;
+			class8.originalModelColors[0] = 93;
+			class8.name = "Range Infernal cape"; //Name
+			class8.description = "Its an Magic Infernal cape"; //Description
 			class8.modelId = 33144;
 			class8.spriteScale = 2086;
 			class8.spritePitch = 567;

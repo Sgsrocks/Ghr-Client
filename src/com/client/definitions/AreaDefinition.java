@@ -99,6 +99,10 @@ public final class AreaDefinition {
                 itemDef.spriteId = 0;
                 itemDef.field3294 = -1;
                 break;
+            case 13:
+                itemDef.spriteId = 13;
+                itemDef.field3294 = -1;
+                break;
         }
         return itemDef;
     }

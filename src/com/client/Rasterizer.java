@@ -5,7 +5,7 @@ public final class Rasterizer extends DrawingArea {
     public static boolean saveDepth;
     public static float[] depthBuffer;
     private static int mipMapLevel;
-    public static int textureAmount = 64;
+    public static int textureAmount = 131;
     static boolean aBoolean1462;
     static boolean repeatTexture;
     private static boolean aBoolean1463;
@@ -253,7 +253,7 @@ public final class Rasterizer extends DrawingArea {
     }
 
     public static void requestTextureUpdate(int i) {
-        if (i > 50 && i != 59){
+        if (i > 50 && i != 59 && i != 91 && i != 92 && i != 93 && i != 56 && i != 57){
             return;
         }
         if (texturesPixelBuffer[i] == null)

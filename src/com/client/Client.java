@@ -2492,7 +2492,7 @@ public class Client extends RSApplet {
                                 int k3 = k2;
                                 int l3 = l2;
                                 System.out.println("Area id: "+j3);
-                                mapIconSprite[mapIconAmount] = cacheSprite474[sprite];
+                                mapIconSprite[mapIconAmount] = mapFunctions[sprite];
                                 anIntArray1072[mapIconAmount] = k3;
                                 anIntArray1073[mapIconAmount] = l3;
                                 mapIconAmount++;
@@ -4026,45 +4026,6 @@ public class Client extends RSApplet {
                 aByteArray912 = abyte1;
                 Rasterizer.requestTextureUpdate(24);
             }
-            if (Rasterizer.textureLastUsed[59] >= j) {
-                Background background_1 = Rasterizer.textures[59];
-                int l = background_1.width * background_1.anInt1453 - 1;
-                int k1 = background_1.width * tickDelta * 1;
-                byte[] abyte1 = background_1.palettePixels;
-                byte[] abyte4 = aByteArray912;
-                for (int j2 = 0; j2 <= l; j2++)
-                    abyte4[j2] = abyte1[j2 - k1 & l];
-
-                background_1.palettePixels = abyte4;
-                aByteArray912 = abyte1;
-                Rasterizer.requestTextureUpdate(59);
-            }
-            if (Rasterizer.textureLastUsed[61] >= j) {
-                Background background_1 = Rasterizer.textures[61];
-                int l = background_1.width * background_1.anInt1453 - 1;
-                int k1 = background_1.width * tickDelta * 1;
-                byte[] abyte1 = background_1.palettePixels;
-                byte[] abyte4 = aByteArray912;
-                for (int j2 = 0; j2 <= l; j2++)
-                    abyte4[j2] = abyte1[j2 - k1 & l];
-
-                background_1.palettePixels = abyte4;
-                aByteArray912 = abyte1;
-                Rasterizer.requestTextureUpdate(61);
-            }
-            if (Rasterizer.textureLastUsed[63] >= j) {
-                Background background_1 = Rasterizer.textures[63];
-                int l = background_1.width * background_1.anInt1453 - 1;
-                int k1 = background_1.width * tickDelta * 1;
-                byte[] abyte1 = background_1.palettePixels;
-                byte[] abyte4 = aByteArray912;
-                for (int j2 = 0; j2 <= l; j2++)
-                    abyte4[j2] = abyte1[j2 - k1 & l];
-
-                background_1.palettePixels = abyte4;
-                aByteArray912 = abyte1;
-                Rasterizer.requestTextureUpdate(63);
-            }
             if (Rasterizer.textureLastUsed[34] >= j) {
                 Background background_2 = Rasterizer.textures[34];
                 int i1 = background_2.width * background_2.anInt1453 - 1;
@@ -4073,7 +4034,6 @@ public class Client extends RSApplet {
                 byte[] abyte5 = aByteArray912;
                 for (int k2 = 0; k2 <= i1; k2++)
                     abyte5[k2] = abyte2[k2 - l1 & i1];
-
                 background_2.palettePixels = abyte5;
                 aByteArray912 = abyte2;
                 Rasterizer.requestTextureUpdate(34);
@@ -4089,6 +4049,55 @@ public class Client extends RSApplet {
                 background_2.palettePixels = abyte5;
                 aByteArray912 = abyte2;
                 Rasterizer.requestTextureUpdate(40);
+            }
+
+            if (Rasterizer.textureLastUsed[59] >= j) {
+                Background background_2 = Rasterizer.textures[59];
+                int i1 = background_2.width * background_2.anInt1453 - 1;
+                int l1 = background_2.width * tickDelta * 2;
+                byte[] abyte2 = background_2.palettePixels;
+                byte[] abyte5 = aByteArray912;
+                for (int k2 = 0; k2 <= i1; k2++)
+                    abyte5[k2] = abyte2[k2 - l1 & i1];
+                background_2.palettePixels = abyte5;
+                aByteArray912 = abyte2;
+                Rasterizer.requestTextureUpdate(59);
+            }
+            if (Rasterizer.textureLastUsed[91] >= j) {
+                Background background_2 = Rasterizer.textures[91];
+                int i1 = background_2.width * background_2.anInt1453 - 1;
+                int l1 = background_2.width * tickDelta * 2;
+                byte[] abyte2 = background_2.palettePixels;
+                byte[] abyte5 = aByteArray912;
+                for (int k2 = 0; k2 <= i1; k2++)
+                    abyte5[k2] = abyte2[k2 - l1 & i1];
+                background_2.palettePixels = abyte5;
+                aByteArray912 = abyte2;
+                Rasterizer.requestTextureUpdate(91);
+            }
+            if (Rasterizer.textureLastUsed[92] >= j) {
+                Background background_2 = Rasterizer.textures[92];
+                int i1 = background_2.width * background_2.anInt1453 - 1;
+                int l1 = background_2.width * tickDelta * 2;
+                byte[] abyte2 = background_2.palettePixels;
+                byte[] abyte5 = aByteArray912;
+                for (int k2 = 0; k2 <= i1; k2++)
+                    abyte5[k2] = abyte2[k2 - l1 & i1];
+                background_2.palettePixels = abyte5;
+                aByteArray912 = abyte2;
+                Rasterizer.requestTextureUpdate(92);
+            }
+            if (Rasterizer.textureLastUsed[93] >= j) {
+                Background background_2 = Rasterizer.textures[93];
+                int i1 = background_2.width * background_2.anInt1453 - 1;
+                int l1 = background_2.width * tickDelta * 2;
+                byte[] abyte2 = background_2.palettePixels;
+                byte[] abyte5 = aByteArray912;
+                for (int k2 = 0; k2 <= i1; k2++)
+                    abyte5[k2] = abyte2[k2 - l1 & i1];
+                background_2.palettePixels = abyte5;
+                aByteArray912 = abyte2;
+                Rasterizer.requestTextureUpdate(93);
             }
             if (Rasterizer.textureLastUsed[56] >= j) {
                 Background background_2 = Rasterizer.textures[56];
@@ -7145,7 +7154,7 @@ public class Client extends RSApplet {
             } else {
                 s10 = "It's a " + class46.name + ".";
                 if (myPlayer.getRights() == 3) {
-                    String objectCoords = "{" + (j + baseX) + ", " + (k + baseY) + "},";
+                    String objectCoords = ""+id;//"{" + (j + baseX) + ", " + (k + baseY) + "},";
                     StringSelection stringSelection = new StringSelection(objectCoords);
                     Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
                     clpbrd.setContents(stringSelection, null);

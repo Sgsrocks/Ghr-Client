@@ -863,7 +863,7 @@ final class WorldController {
         anInt498 = l;
         anInt493 = k / 2;
         anInt494 = l / 2;
-        boolean aflag[][][][] = new boolean[9][32][53][53];
+        boolean aflag[][][][] = new boolean[9][32][(TILE_DRAW_DISTANCE * 2) + 3][(TILE_DRAW_DISTANCE * 2) + 3];
         for (int i1 = 128; i1 <= 384; i1 += 32) {
             for (int j1 = 0; j1 < 2048; j1 += 64) {
                 anInt458 = Model.SINE[i1];
@@ -884,7 +884,7 @@ final class WorldController {
                             break;
                         }
 
-                        aflag[l1][j2][l2 + 25 + 1][j3 + 25 + 1] = flag2;
+                        aflag[l1][j2][l2 + TILE_DRAW_DISTANCE + 1][j3 + TILE_DRAW_DISTANCE + 1] = flag2;
                     }
 
                 }
@@ -895,24 +895,24 @@ final class WorldController {
 
         for (int k1 = 0; k1 < 8; k1++) {
             for (int i2 = 0; i2 < 32; i2++) {
-                for (int k2 = -25; k2 < 25; k2++) {
-                    for (int i3 = -25; i3 < 25; i3++) {
+                for (int k2 = -TILE_DRAW_DISTANCE; k2 < TILE_DRAW_DISTANCE; k2++) {
+                    for (int i3 = -TILE_DRAW_DISTANCE; i3 < TILE_DRAW_DISTANCE; i3++) {
                         boolean flag1 = false;
                         label0:
                         for (int l3 = -1; l3 <= 1; l3++) {
                             for (int j4 = -1; j4 <= 1; j4++) {
-                                if (aflag[k1][i2][k2 + l3 + 25 + 1][i3 + j4
-                                        + 25 + 1])
+                                if (aflag[k1][i2][k2 + l3 + TILE_DRAW_DISTANCE + 1][i3 + j4
+                                        + TILE_DRAW_DISTANCE + 1])
                                     flag1 = true;
-                                else if (aflag[k1][(i2 + 1) % 31][k2 + l3 + 25
-                                        + 1][i3 + j4 + 25 + 1])
+                                else if (aflag[k1][(i2 + 1) % 31][k2 + l3 + TILE_DRAW_DISTANCE
+                                        + 1][i3 + j4 + TILE_DRAW_DISTANCE + 1])
                                     flag1 = true;
-                                else if (aflag[k1 + 1][i2][k2 + l3 + 25 + 1][i3
-                                        + j4 + 25 + 1]) {
+                                else if (aflag[k1 + 1][i2][k2 + l3 + TILE_DRAW_DISTANCE + 1][i3
+                                        + j4 + TILE_DRAW_DISTANCE + 1]) {
                                     flag1 = true;
                                 } else {
                                     if (!aflag[k1 + 1][(i2 + 1) % 31][k2 + l3
-                                            + 25 + 1][i3 + j4 + 25 + 1])
+                                            + TILE_DRAW_DISTANCE + 1][i3 + j4 + TILE_DRAW_DISTANCE + 1])
                                         continue;
                                     flag1 = true;
                                 }
@@ -921,7 +921,7 @@ final class WorldController {
 
                         }
 
-                        aBooleanArrayArrayArrayArray491[k1][i2][k2 + 25][i3 + 25] = flag1;
+                        aBooleanArrayArrayArrayArray491[k1][i2][k2 + TILE_DRAW_DISTANCE][i3 + TILE_DRAW_DISTANCE] = flag1;
                     }
 
                 }
@@ -986,16 +986,16 @@ final class WorldController {
         anInt453 = i / 128;
         anInt454 = j / 128;
         anInt447 = i1;
-        anInt449 = anInt453 - 25;
+        anInt449 = anInt453 - TILE_DRAW_DISTANCE;
         if (anInt449 < 0)
             anInt449 = 0;
-        anInt451 = anInt454 - 25;
+        anInt451 = anInt454 - TILE_DRAW_DISTANCE;
         if (anInt451 < 0)
             anInt451 = 0;
-        anInt450 = anInt453 + 25;
+        anInt450 = anInt453 + TILE_DRAW_DISTANCE;
         if (anInt450 > anInt438)
             anInt450 = anInt438;
-        anInt452 = anInt454 + 25;
+        anInt452 = anInt454 + TILE_DRAW_DISTANCE;
         if (anInt452 > anInt439)
             anInt452 = anInt439;
         method319();
@@ -1007,7 +1007,7 @@ final class WorldController {
                     Ground class30_sub3 = aclass30_sub3[i2][k2];
                     if (class30_sub3 != null)
                         if (class30_sub3.anInt1321 > i1
-                                || !aBooleanArrayArray492[(i2 - anInt453) + 25][(k2 - anInt454) + 25]
+                                || !aBooleanArrayArray492[(i2 - anInt453) + TILE_DRAW_DISTANCE][(k2 - anInt454) + TILE_DRAW_DISTANCE]
                                 && anIntArrayArrayArray440[k1][i2][k2] - l < 2000) {
                             class30_sub3.aBoolean1322 = false;
                             class30_sub3.aBoolean1323 = false;
@@ -1026,11 +1026,11 @@ final class WorldController {
 
         for (int l1 = anInt442; l1 < anInt437; l1++) {
             Ground aclass30_sub3_1[][] = groundArray[l1];
-            for (int l2 = -25; l2 <= 0; l2++) {
+            for (int l2 = -TILE_DRAW_DISTANCE; l2 <= 0; l2++) {
                 int i3 = anInt453 + l2;
                 int k3 = anInt453 - l2;
                 if (i3 >= anInt449 || k3 < anInt450) {
-                    for (int i4 = -25; i4 <= 0; i4++) {
+                    for (int i4 = -TILE_DRAW_DISTANCE; i4 <= 0; i4++) {
                         int k4 = anInt454 + i4;
                         int i5 = anInt454 - i4;
                         if (i3 >= anInt449) {
@@ -1074,11 +1074,11 @@ final class WorldController {
 
         for (int j2 = anInt442; j2 < anInt437; j2++) {
             Ground aclass30_sub3_2[][] = groundArray[j2];
-            for (int j3 = -25; j3 <= 0; j3++) {
+            for (int j3 = -TILE_DRAW_DISTANCE; j3 <= 0; j3++) {
                 int l3 = anInt453 + j3;
                 int j4 = anInt453 - j3;
                 if (l3 >= anInt449 || j4 < anInt450) {
-                    for (int l4 = -25; l4 <= 0; l4++) {
+                    for (int l4 = -TILE_DRAW_DISTANCE; l4 <= 0; l4++) {
                         int j5 = anInt454 + l4;
                         int k5 = anInt454 - l4;
                         if (l3 >= anInt449) {
@@ -1982,13 +1982,13 @@ final class WorldController {
         for (int k = 0; k < j; k++) {
             Class47 class47 = aclass47[k];
             if (class47.anInt791 == 1) {
-                int l = (class47.anInt787 - anInt453) + 25;
+                int l = (class47.anInt787 - anInt453) + TILE_DRAW_DISTANCE;
                 if (l < 0 || l > 50)
                     continue;
-                int k1 = (class47.anInt789 - anInt454) + 25;
+                int k1 = (class47.anInt789 - anInt454) + TILE_DRAW_DISTANCE;
                 if (k1 < 0)
                     k1 = 0;
-                int j2 = (class47.anInt790 - anInt454) + 25;
+                int j2 = (class47.anInt790 - anInt454) + TILE_DRAW_DISTANCE;
                 if (j2 > 50)
                     j2 = 50;
                 boolean flag = false;
@@ -2016,13 +2016,13 @@ final class WorldController {
                 continue;
             }
             if (class47.anInt791 == 2) {
-                int i1 = (class47.anInt789 - anInt454) + 25;
+                int i1 = (class47.anInt789 - anInt454) + TILE_DRAW_DISTANCE;
                 if (i1 < 0 || i1 > 50)
                     continue;
-                int l1 = (class47.anInt787 - anInt453) + 25;
+                int l1 = (class47.anInt787 - anInt453) + TILE_DRAW_DISTANCE;
                 if (l1 < 0)
                     l1 = 0;
-                int k2 = (class47.anInt788 - anInt453) + 25;
+                int k2 = (class47.anInt788 - anInt453) + TILE_DRAW_DISTANCE;
                 if (k2 > 50)
                     k2 = 50;
                 boolean flag1 = false;
@@ -2050,17 +2050,17 @@ final class WorldController {
             } else if (class47.anInt791 == 4) {
                 int j1 = class47.anInt796 - anInt456;
                 if (j1 > 128) {
-                    int i2 = (class47.anInt789 - anInt454) + 25;
+                    int i2 = (class47.anInt789 - anInt454) + TILE_DRAW_DISTANCE;
                     if (i2 < 0)
                         i2 = 0;
-                    int l2 = (class47.anInt790 - anInt454) + 25;
+                    int l2 = (class47.anInt790 - anInt454) + TILE_DRAW_DISTANCE;
                     if (l2 > 50)
                         l2 = 50;
                     if (i2 <= l2) {
-                        int i3 = (class47.anInt787 - anInt453) + 25;
+                        int i3 = (class47.anInt787 - anInt453) + TILE_DRAW_DISTANCE;
                         if (i3 < 0)
                             i3 = 0;
-                        int l3 = (class47.anInt788 - anInt453) + 25;
+                        int l3 = (class47.anInt788 - anInt453) + TILE_DRAW_DISTANCE;
                         if (l3 > 50)
                             l3 = 50;
                         boolean flag2 = false;
@@ -2393,7 +2393,7 @@ final class WorldController {
             {12, 8, 4, 0, 13, 9, 5, 1, 14, 10, 6, 2, 15, 11, 7, 3},
             {15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0},
             {3, 7, 11, 15, 2, 6, 10, 14, 1, 5, 9, 13, 0, 4, 8, 12}};
-    private static boolean[][][][] aBooleanArrayArrayArrayArray491 = new boolean[8][32][51][51];
+    private static boolean[][][][] aBooleanArrayArrayArrayArray491;
     private static boolean[][] aBooleanArrayArray492;
     private static int anInt493;
     private static int anInt494;
@@ -2403,8 +2403,9 @@ final class WorldController {
     private static int anInt498;
     public static int focalLength = 512;
 	public static int viewDistance = 9;
-
+    private static final int TILE_DRAW_DISTANCE = 50;
     static {
+        aBooleanArrayArrayArrayArray491 = new boolean[8][32][(TILE_DRAW_DISTANCE * 2) + 1][(TILE_DRAW_DISTANCE * 2) + 1];
         focalLength = 512;
         anInt472 = 4;
         anIntArray473 = new int[anInt472];

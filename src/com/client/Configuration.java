@@ -33,12 +33,12 @@ public class Configuration {
     public static int fogColor = 0xDCDBDF;
 	public static long fogDelay = 500;
 	public static final int CLIENT_VERSION = 4;
-	public static Boolean LIVE_SERVER = true;
+	public static Boolean LIVE_SERVER = false;
 	public static final int PORT = 5555;
 
 	public static final String CLIENT_TITLE =  Configuration.LIVE_SERVER ? "GodzHell" : "GodzHell - LocalHost";
 	public static Boolean DUMP_DATA = false;
-	public static int dumpID = 196;
+	public static int dumpID = 200;
 	public static Boolean DUMP_OTHER = false;
 
 	/**

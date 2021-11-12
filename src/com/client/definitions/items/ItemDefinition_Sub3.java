@@ -1997,7 +1997,7 @@ public class ItemDefinition_Sub3 {
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
 			class8.modifiedModelColors[0] = 59;
-			class8.originalModelColors[0] = 63;
+			class8.originalModelColors[0] = 91;
 			class8.name = "Inverted Infernal cape"; //Name
 			class8.description = "Its an Infernal cape"; //Description
 			class8.modelId = 33144;

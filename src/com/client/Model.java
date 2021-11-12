@@ -29,6 +29,7 @@ public class Model extends Renderable {
         hsl2rgb = null;
         lightDecay = null;
     }
+    private final int MODEL_DRAW_DISTANCE = 30000;
 
     public void convertTexturesTo317(short[] textureIds, int[] texa, int[] texb, int[] texc, byte[] texture_coordinates) {
         int set = 0;
@@ -2518,7 +2519,7 @@ public class Model extends Renderable {
         int k2 = k1 * j + j2 * k >> 16;
         int l2 = maxVertexDistanceXZPlane * k >> 16;
         int i3 = k2 + l2;
-        if (i3 <= 50 || k2 >= 3500) {
+        if (i3 <= 50 || k2 >= MODEL_DRAW_DISTANCE) {
             return;
         }
         int j3 = l1 * l + j1 * i1 >> 16;
