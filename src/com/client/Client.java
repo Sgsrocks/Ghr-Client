@@ -21,6 +21,8 @@ import com.client.graphics.interfaces.impl.SettingsWidget;
 import com.client.graphics.interfaces.impl.Slider;
 import com.client.graphics.loaders.*;
 import com.client.sign.Signlink;
+import com.client.sound.Sound;
+import com.client.sound.SoundType;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.reflection.Sun14ReflectionProvider;
 import org.apache.commons.lang3.SystemUtils;
@@ -75,6 +77,7 @@ public class Client extends RSApplet {
     private static final String validUserPassChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"\243$%^&*()-_=+[{]};:'@#~,<.>/?\\| ";
     public static boolean oldGameframe = false;
     public static Sprite[] fadingScreenImages = new Sprite[8];
+    public static final RichPresence RICH_PRESENCE = new RichPresence();
     public static int IDLE_TIME = 30000; // 1 minute = 3000
     public static boolean debugModels = false;
     public static int currentWorld = 0;
@@ -353,8 +356,8 @@ public class Client extends RSApplet {
     public int autocastId = 0;
     public boolean autocast = false;
     public Sprite[] hoverLogin = new Sprite[3];
-    public NPC[] npcArray;
-    public Player[] playerArray;
+    public NPC[] npcs;
+    public Player[] players;
     public int[] variousSettings;
     public int openWalkableWidgetID;
     public TextDrawingArea smallText;
@@ -803,7 +806,7 @@ public class Client extends RSApplet {
         groundArray = new NodeList[4][104][104];
         aBoolean831 = false;
         aStream_834 = new Stream(new byte[5000]);
-        npcArray = new NPC[16384];
+        npcs = new NPC[16384];
         npcIndices = new int[16384];
         anIntArray840 = new int[1000];
         aStream_847 = Stream.create();
@@ -819,7 +822,7 @@ public class Client extends RSApplet {
         inputString = "";
         maxPlayers = 2048;
         myPlayerIndex = 2047;
-        playerArray = new Player[maxPlayers];
+        players = new Player[maxPlayers];
         playerIndices = new int[maxPlayers];
         anIntArray894 = new int[maxPlayers];
         aStreamArray895s = new Stream[maxPlayers];
@@ -1140,6 +1143,7 @@ public class Client extends RSApplet {
             Signlink.storeid = 32;
             Signlink.startpriv(InetAddress.getLocalHost());
             instance = new ClientWindow(args);
+            RICH_PRESENCE.initiate();
         } catch (Exception exception) {
         }
     }
@@ -2545,7 +2549,7 @@ public class Client extends RSApplet {
 
     public void method26(boolean flag) {
         for (int j = 0; j < npcCount; j++) {
-            NPC npc = npcArray[npcIndices[j]];
+            NPC npc = npcs[npcIndices[j]];
             int k = 0x20000000 + (npcIndices[j] << 14);
             if (npc == null || !npc.isVisible() || npc.desc.aBoolean93 != flag)
                 continue;
@@ -3298,9 +3302,9 @@ public class Client extends RSApplet {
         method86(stream);
         for (int k = 0; k < anInt839; k++) {
             int l = anIntArray840[k];
-            if (npcArray[l].anInt1537 != loopCycle) {
-                npcArray[l].desc = null;
-                npcArray[l] = null;
+            if (npcs[l].anInt1537 != loopCycle) {
+                npcs[l].desc = null;
+                npcs[l] = null;
             }
         }
 
@@ -3316,7 +3320,7 @@ public class Client extends RSApplet {
             throw new RuntimeException("eek");
         }
         for (int i1 = 0; i1 < npcCount; i1++)
-            if (npcArray[npcIndices[i1]] == null) {
+            if (npcs[npcIndices[i1]] == null) {
                 Signlink.reporterror(myUsername + " null entry in npc list - pos:" + i1 + " size:" + npcCount);
                 throw new RuntimeException("eek");
             }
@@ -3490,9 +3494,9 @@ public class Client extends RSApplet {
                 if (j == -1)
                     obj = myPlayer;
                 else if (j < playerCount)
-                    obj = playerArray[playerIndices[j]];
+                    obj = players[playerIndices[j]];
                 else
-                    obj = npcArray[npcIndices[j - playerCount]];
+                    obj = npcs[npcIndices[j - playerCount]];
                 if (obj == null || !((Entity) (obj)).isVisible())
                     continue;
                 if (obj instanceof NPC) {
@@ -4133,7 +4137,7 @@ public class Client extends RSApplet {
                 j = myPlayerIndex;
             else
                 j = playerIndices[i];
-            Player player = playerArray[j];
+            Player player = players[j];
             if (player != null && player.textCycle > 0) {
                 player.textCycle--;
                 if (player.textCycle == 0)
@@ -4142,7 +4146,7 @@ public class Client extends RSApplet {
         }
         for (int k = 0; k < npcCount; k++) {
             int l = npcIndices[k];
-            NPC npc = npcArray[l];
+            NPC npc = npcs[l];
             if (npc != null && npc.textCycle > 0) {
                 npc.textCycle--;
                 if (npc.textCycle == 0)
@@ -4370,9 +4374,9 @@ public class Client extends RSApplet {
             int k = stream.readBits(14);
             if (k == 16383)
                 break;
-            if (npcArray[k] == null)
-                npcArray[k] = new NPC();
-            NPC npc = npcArray[k];
+            if (npcs[k] == null)
+                npcs[k] = new NPC();
+            NPC npc = npcs[k];
             npcIndices[npcCount++] = k;
             npc.anInt1537 = loopCycle;
             int l = stream.readBits(5);
@@ -4427,7 +4431,7 @@ public class Client extends RSApplet {
                 player = myPlayer;
                 i1 = myPlayerIndex << 14;
             } else {
-                player = playerArray[playerIndices[l]];
+                player = players[playerIndices[l]];
                 i1 = playerIndices[l] << 14;
             }
             if (player == null || !player.isVisible())
@@ -4566,7 +4570,7 @@ public class Client extends RSApplet {
     public void method49(Stream stream) {
         for (int j = 0; j < anInt893; j++) {
             int k = anIntArray894[j];
-            Player player = playerArray[k];
+            Player player = players[k];
             int l = stream.readUnsignedByte();
             if ((l & 0x40) != 0)
                 l += stream.readUnsignedByte() << 8;
@@ -4834,7 +4838,7 @@ public class Client extends RSApplet {
                 class30_sub2_sub4_sub4.unlink();
             else if (loopCycle >= class30_sub2_sub4_sub4.anInt1571) {
                 if (class30_sub2_sub4_sub4.anInt1590 > 0) {
-                    NPC npc = npcArray[class30_sub2_sub4_sub4.anInt1590 - 1];
+                    NPC npc = npcs[class30_sub2_sub4_sub4.anInt1590 - 1];
                     if (npc != null && npc.x >= 0 && npc.x < 13312 && npc.y >= 0 && npc.y < 13312)
                         class30_sub2_sub4_sub4.method455(loopCycle, npc.y,
                                 getCenterHeight(class30_sub2_sub4_sub4.anInt1597, npc.y, npc.x)
@@ -4847,7 +4851,7 @@ public class Client extends RSApplet {
                     if (j == unknownInt10)
                         player = myPlayer;
                     else
-                        player = playerArray[j];
+                        player = players[j];
                     if (player != null && player.x >= 0 && player.x < 13312 && player.y >= 0 && player.y < 13312)
                         class30_sub2_sub4_sub4.method455(loopCycle, player.y,
                                 getCenterHeight(class30_sub2_sub4_sub4.anInt1597, player.y, player.x)
@@ -5883,7 +5887,7 @@ public class Client extends RSApplet {
 		}*/
 
         if (l == 582) {
-            NPC npc = npcArray[i1];
+            NPC npc = npcs[i1];
             if (npc != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, npc.smallY[0], myPlayer.smallX[0], false, npc.smallX[0]);
                 crossX = super.saveClickX;
@@ -6120,7 +6124,7 @@ public class Client extends RSApplet {
             }
         }
         if (l == 561) {
-            Player player = playerArray[i1];
+            Player player = players[i1];
             if (player != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, player.smallY[0], myPlayer.smallX[0], false,
                         player.smallX[0]);
@@ -6142,7 +6146,7 @@ public class Client extends RSApplet {
             stream.writeDWord(i1);
         }
         if (l == 20) {
-            NPC class30_sub2_sub4_sub1_sub1_1 = npcArray[i1];
+            NPC class30_sub2_sub4_sub1_sub1_1 = npcs[i1];
             if (class30_sub2_sub4_sub1_sub1_1 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub1_1.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub1_1.smallX[0]);
@@ -6155,7 +6159,7 @@ public class Client extends RSApplet {
             }
         }
         if (l == 779) {
-            Player class30_sub2_sub4_sub1_sub2_1 = playerArray[i1];
+            Player class30_sub2_sub4_sub1_sub2_1 = players[i1];
             if (class30_sub2_sub4_sub1_sub2_1 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub2_1.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub2_1.smallX[0]);
@@ -6298,7 +6302,7 @@ public class Client extends RSApplet {
                 String s7 = TextClass.fixName(TextClass.nameForLong(TextClass.longForName(s1)));
                 boolean flag9 = false;
                 for (int j3 = 0; j3 < playerCount; j3++) {
-                    Player class30_sub2_sub4_sub1_sub2_7 = playerArray[playerIndices[j3]];
+                    Player class30_sub2_sub4_sub1_sub2_7 = players[playerIndices[j3]];
                     if (class30_sub2_sub4_sub1_sub2_7 == null || class30_sub2_sub4_sub1_sub2_7.name == null
                             || !class30_sub2_sub4_sub1_sub2_7.name.equalsIgnoreCase(s7))
                         continue;
@@ -6418,7 +6422,7 @@ public class Client extends RSApplet {
                 atInventoryInterfaceType = 3;
         }
         if (l == 27) {
-            Player class30_sub2_sub4_sub1_sub2_2 = playerArray[i1];
+            Player class30_sub2_sub4_sub1_sub2_2 = players[i1];
             if (class30_sub2_sub4_sub1_sub2_2 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub2_2.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub2_2.smallX[0]);
@@ -6755,7 +6759,7 @@ public class Client extends RSApplet {
             }
         }
         if (l == 225) {
-            NPC class30_sub2_sub4_sub1_sub1_2 = npcArray[i1];
+            NPC class30_sub2_sub4_sub1_sub1_2 = npcs[i1];
             if (class30_sub2_sub4_sub1_sub1_2 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub1_2.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub1_2.smallX[0]);
@@ -6774,7 +6778,7 @@ public class Client extends RSApplet {
             }
         }
         if (l == 965) {
-            NPC class30_sub2_sub4_sub1_sub1_3 = npcArray[i1];
+            NPC class30_sub2_sub4_sub1_sub1_3 = npcs[i1];
             if (class30_sub2_sub4_sub1_sub1_3 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub1_3.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub1_3.smallX[0]);
@@ -6793,7 +6797,7 @@ public class Client extends RSApplet {
             }
         }
         if (l == 413) {
-            NPC class30_sub2_sub4_sub1_sub1_4 = npcArray[i1];
+            NPC class30_sub2_sub4_sub1_sub1_4 = npcs[i1];
             if (class30_sub2_sub4_sub1_sub1_4 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub1_4.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub1_4.smallX[0]);
@@ -6834,7 +6838,7 @@ public class Client extends RSApplet {
         }
 
         if (l == 1025) {
-            NPC class30_sub2_sub4_sub1_sub1_5 = npcArray[i1];
+            NPC class30_sub2_sub4_sub1_sub1_5 = npcs[i1];
             if (class30_sub2_sub4_sub1_sub1_5 != null) {
                 NpcDefinition entityDef = class30_sub2_sub4_sub1_sub1_5.desc;
                 if (entityDef.childrenIDs != null)
@@ -6864,7 +6868,7 @@ public class Client extends RSApplet {
             stream.method432(x + baseX);
         }
         if (l == 412) {
-            NPC class30_sub2_sub4_sub1_sub1_6 = npcArray[i1];
+            NPC class30_sub2_sub4_sub1_sub1_6 = npcs[i1];
             if (class30_sub2_sub4_sub1_sub1_6 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub1_6.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub1_6.smallX[0]);
@@ -6877,7 +6881,7 @@ public class Client extends RSApplet {
             }
         }
         if (l == 365) {
-            Player class30_sub2_sub4_sub1_sub2_3 = playerArray[i1];
+            Player class30_sub2_sub4_sub1_sub2_3 = players[i1];
             if (class30_sub2_sub4_sub1_sub2_3 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub2_3.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub2_3.smallX[0]);
@@ -6891,7 +6895,7 @@ public class Client extends RSApplet {
             }
         }
         if (l == 729) {
-            Player class30_sub2_sub4_sub1_sub2_4 = playerArray[i1];
+            Player class30_sub2_sub4_sub1_sub2_4 = players[i1];
             if (class30_sub2_sub4_sub1_sub2_4 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub2_4.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub2_4.smallX[0]);
@@ -6904,7 +6908,7 @@ public class Client extends RSApplet {
             }
         }
         if (l == 577) {
-            Player class30_sub2_sub4_sub1_sub2_5 = playerArray[i1];
+            Player class30_sub2_sub4_sub1_sub2_5 = players[i1];
             if (class30_sub2_sub4_sub1_sub2_5 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub2_5.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub2_5.smallX[0]);
@@ -6993,7 +6997,7 @@ public class Client extends RSApplet {
                 }
         }
         if (l == 491) {
-            Player class30_sub2_sub4_sub1_sub2_6 = playerArray[i1];
+            Player class30_sub2_sub4_sub1_sub2_6 = players[i1];
             if (class30_sub2_sub4_sub1_sub2_6 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub2_6.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub2_6.smallX[0]);
@@ -7065,7 +7069,7 @@ public class Client extends RSApplet {
 
         }
         if (l == 478) {
-            NPC class30_sub2_sub4_sub1_sub1_7 = npcArray[i1];
+            NPC class30_sub2_sub4_sub1_sub1_7 = npcs[i1];
             if (class30_sub2_sub4_sub1_sub1_7 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub1_7.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub1_7.smallX[0]);
@@ -7457,17 +7461,17 @@ public class Client extends RSApplet {
                 }
             }
             if (k1 == 1) {
-                NPC npc = npcArray[l1];
+                NPC npc = npcs[l1];
                 if (npc.desc.boundDim == 1 && (npc.x & 0x7f) == 64 && (npc.y & 0x7f) == 64) {
                     for (int j2 = 0; j2 < npcCount; j2++) {
-                        NPC npc2 = npcArray[npcIndices[j2]];
+                        NPC npc2 = npcs[npcIndices[j2]];
                         if (npc2 != null && npc2 != npc && npc2.desc.boundDim == 1 && npc2.x == npc.x
                                 && npc2.y == npc.y)
                             buildAtNPCMenu(npc2.desc, npcIndices[j2], j1, i1);
                     }
 
                     for (int l2 = 0; l2 < playerCount; l2++) {
-                        Player player = playerArray[playerIndices[l2]];
+                        Player player = players[playerIndices[l2]];
                         if (player != null && player.x == npc.x && player.y == npc.y)
                             buildAtPlayerMenu(i1, playerIndices[l2], player, j1);
                     }
@@ -7476,10 +7480,10 @@ public class Client extends RSApplet {
                 buildAtNPCMenu(npc.desc, l1, j1, i1);
             }
             if (k1 == 0) {
-                Player player = playerArray[l1];
+                Player player = players[l1];
                 if ((player.x & 0x7f) == 64 && (player.y & 0x7f) == 64) {
                     for (int k2 = 0; k2 < npcCount; k2++) {
-                        NPC class30_sub2_sub4_sub1_sub1_2 = npcArray[npcIndices[k2]];
+                        NPC class30_sub2_sub4_sub1_sub1_2 = npcs[npcIndices[k2]];
                         if (class30_sub2_sub4_sub1_sub1_2 != null && class30_sub2_sub4_sub1_sub1_2.desc.boundDim == 1
                                 && class30_sub2_sub4_sub1_sub1_2.x == player.x
                                 && class30_sub2_sub4_sub1_sub1_2.y == player.y)
@@ -7487,7 +7491,7 @@ public class Client extends RSApplet {
                     }
 
                     for (int i3 = 0; i3 < playerCount; i3++) {
-                        Player class30_sub2_sub4_sub1_sub2_2 = playerArray[playerIndices[i3]];
+                        Player class30_sub2_sub4_sub1_sub2_2 = players[playerIndices[i3]];
                         if (class30_sub2_sub4_sub1_sub2_2 != null && class30_sub2_sub4_sub1_sub2_2 != player
                                 && class30_sub2_sub4_sub1_sub2_2.x == player.x
                                 && class30_sub2_sub4_sub1_sub2_2.y == player.y)
@@ -7663,12 +7667,12 @@ public class Client extends RSApplet {
         mapScenes = null;
         mapFunctions = null;
         anIntArrayArray929 = null;
-        playerArray = null;
+        players = null;
         playerIndices = null;
         anIntArray894 = null;
         aStreamArray895s = null;
         anIntArray840 = null;
-        npcArray = null;
+        npcs = null;
         npcIndices = null;
         groundArray = null;
         aClass19_1179 = null;
@@ -10052,7 +10056,7 @@ public class Client extends RSApplet {
                 super.idleTime = 0;
                 for (int j1 = 0; j1 < 500; j1++)
                     chatMessages[j1] = null;
-
+                RICH_PRESENCE.updateState("[ Logged In: " + s + " ]");
                 itemSelected = 0;
                 spellSelected = 0;
                 loadingStage = 0;
@@ -10065,14 +10069,14 @@ public class Client extends RSApplet {
                 playerCount = 0;
                 npcCount = 0;
                 for (int i2 = 0; i2 < maxPlayers; i2++) {
-                    playerArray[i2] = null;
+                    players[i2] = null;
                     aStreamArray895s[i2] = null;
                 }
 
                 for (int k2 = 0; k2 < 16384; k2++)
-                    npcArray[k2] = null;
+                    npcs[k2] = null;
 
-                myPlayer = playerArray[myPlayerIndex] = new Player();
+                myPlayer = players[myPlayerIndex] = new Player();
                 aClass19_1013.removeAll();
                 aClass19_1056.removeAll();
                 for (int l2 = 0; l2 < 4; l2++) {
@@ -10486,7 +10490,7 @@ public class Client extends RSApplet {
     public void method86(Stream stream) {
         for (int j = 0; j < anInt893; j++) {
             int k = anIntArray894[j];
-            NPC npc = npcArray[k];
+            NPC npc = npcs[k];
             int l = stream.readUnsignedByte();
             if ((l & 0x10) != 0) {
                 int i1 = stream.method434();
@@ -12297,13 +12301,13 @@ public class Client extends RSApplet {
             int j = stream.readBits(11);
             if (j == 2047)
                 break;
-            if (playerArray[j] == null) {
-                playerArray[j] = new Player();
+            if (players[j] == null) {
+                players[j] = new Player();
                 if (aStreamArray895s[j] != null)
-                    playerArray[j].updatePlayer(aStreamArray895s[j]);
+                    players[j].updatePlayer(aStreamArray895s[j]);
             }
             playerIndices[playerCount++] = j;
-            Player player = playerArray[j];
+            Player player = players[j];
             player.anInt1537 = loopCycle;
             int k = stream.readBits(1);
             if (k == 1)
@@ -12475,7 +12479,7 @@ public class Client extends RSApplet {
     public void method95() {
         for (int j = 0; j < npcCount; j++) {
             int k = npcIndices[j];
-            NPC npc = npcArray[k];
+            NPC npc = npcs[k];
             if (npc != null)
                 method96(npc);
         }
@@ -12652,7 +12656,7 @@ public class Client extends RSApplet {
         if (entity.anInt1504 == 0)
             return;
         if (entity.interactingEntity != -1 && entity.interactingEntity < 32768) {
-            NPC npc = npcArray[entity.interactingEntity];
+            NPC npc = npcs[entity.interactingEntity];
             if (npc != null) {
                 int i1 = entity.x - npc.x;
                 int k1 = entity.y - npc.y;
@@ -12664,7 +12668,7 @@ public class Client extends RSApplet {
             int j = entity.interactingEntity - 32768;
             if (j == unknownInt10)
                 j = myPlayerIndex;
-            Player player = playerArray[j];
+            Player player = players[j];
             if (player != null) {
                 int l1 = entity.x - player.x;
                 int i2 = entity.y - player.y;
@@ -12706,6 +12710,12 @@ public class Client extends RSApplet {
         if (entity.anInt1517 != -1) {
             AnimationDefinition animation = AnimationDefinition.anims[entity.anInt1517];
             entity.anInt1519++; // should I? yeah go ahead
+            // Animation sound
+            if (entity.anInt1519 == 1) {
+                if (animation.getFrameSound(entity.anInt1518) != -1) {
+                    entity.makeSound(animation.getFrameSound(entity.anInt1518));
+                }
+            }
             if (entity.anInt1518 < animation.anInt352 && entity.anInt1519 > animation.method258(entity.anInt1518)) {
                 entity.anInt1519 = 1;
                 entity.anInt1518++;
@@ -12721,6 +12731,12 @@ public class Client extends RSApplet {
             AnimationDefinition animation_1 = GraphicsDefinition.cache[entity.anInt1520].aAnimation_407;
             if (animation_1 == null) {
                 return;
+            }
+            // Animation sound
+            if (entity.anInt1522 == 1) {
+                if (animation_1.getFrameSound(entity.anInt1521) != -1) {
+                    entity.makeSound(animation_1.getFrameSound(entity.anInt1521));
+                }
             }
             for (entity.anInt1522++; entity.anInt1521 < animation_1.anInt352
                     && entity.anInt1522 > animation_1.method258(entity.anInt1521); entity.anInt1521++)
@@ -14538,7 +14554,7 @@ public class Client extends RSApplet {
                 j = myPlayerIndex;
             else
                 j = playerIndices[i];
-            Player player = playerArray[j];
+            Player player = players[j];
             if (player != null)
                 method96(player);
         }
@@ -15100,7 +15116,7 @@ public class Client extends RSApplet {
         }
 
         for (int i6 = 0; i6 < npcCount; i6++) {
-            NPC npc = npcArray[npcIndices[i6]];
+            NPC npc = npcs[npcIndices[i6]];
             if (npc != null && npc.isVisible()) {
                 NpcDefinition entityDef = npc.desc;
                 if (entityDef.childrenIDs != null)
@@ -15114,7 +15130,7 @@ public class Client extends RSApplet {
         }
 
         for (int j6 = 0; j6 < playerCount; j6++) {
-            Player player = playerArray[playerIndices[j6]];
+            Player player = players[playerIndices[j6]];
             if (player != null && player.isVisible()) {
                 int j1 = player.x / 32 - myPlayer.x / 32;
                 int l3 = player.y / 32 - myPlayer.y / 32;
@@ -15154,8 +15170,8 @@ public class Client extends RSApplet {
         }
 
         if (anInt855 != 0 && loopCycle % 20 < 10) {
-            if (anInt855 == 1 && anInt1222 >= 0 && anInt1222 < npcArray.length) {
-                NPC class30_sub2_sub4_sub1_sub1_1 = npcArray[anInt1222];
+            if (anInt855 == 1 && anInt1222 >= 0 && anInt1222 < npcs.length) {
+                NPC class30_sub2_sub4_sub1_sub1_1 = npcs[anInt1222];
                 if (class30_sub2_sub4_sub1_sub1_1 != null) {
                     int k1 = class30_sub2_sub4_sub1_sub1_1.x / 32 - myPlayer.x / 32;
                     int i4 = class30_sub2_sub4_sub1_sub1_1.y / 32 - myPlayer.y / 32;
@@ -15167,8 +15183,8 @@ public class Client extends RSApplet {
                 int j4 = ((anInt935 - baseY) * 4 + 2) - myPlayer.y / 32;
                 method81(mapMarker, j4, l1);
             }
-            if (anInt855 == 10 && anInt933 >= 0 && anInt933 < playerArray.length) {
-                Player class30_sub2_sub4_sub1_sub2_1 = playerArray[anInt933];
+            if (anInt855 == 10 && anInt933 >= 0 && anInt933 < players.length) {
+                Player class30_sub2_sub4_sub1_sub2_1 = players[anInt933];
                 if (class30_sub2_sub4_sub1_sub2_1 != null) {
                     int i2 = class30_sub2_sub4_sub1_sub2_1.x / 32 - myPlayer.x / 32;
                     int k4 = class30_sub2_sub4_sub1_sub2_1.y / 32 - myPlayer.y / 32;
@@ -15680,7 +15696,7 @@ public class Client extends RSApplet {
         playerCount = 0;
         for (int l = 0; l < j; l++) {
             int i1 = playerIndices[l];
-            Player player = playerArray[i1];
+            Player player = players[i1];
             int j1 = stream.readBits(1);
             if (j1 == 0) {
                 playerIndices[playerCount++] = i1;
@@ -16011,7 +16027,7 @@ public class Client extends RSApplet {
             if (i10 == unknownInt10)
                 player = myPlayer;
             else
-                player = playerArray[i10];
+                player = players[i10];
             if (player != null) {
                 ObjectDefinition class46 = ObjectDefinition.forID(l21);
                 int i22 = intGroundArray[plane][k4][j7];
@@ -16152,7 +16168,7 @@ public class Client extends RSApplet {
             npcCount = 0;
             for (int i1 = 0; i1 < k; i1++) {
                 int j1 = npcIndices[i1];
-                NPC npc = npcArray[j1];
+                NPC npc = npcs[j1];
                 int k1 = stream.readBits(1);
                 if (k1 == 0) {
                     npcIndices[npcCount++] = j1;
@@ -16368,8 +16384,8 @@ public class Client extends RSApplet {
         method49(stream);
         for (int k = 0; k < anInt839; k++) {
             int l = anIntArray840[k];
-            if (playerArray[l].anInt1537 != loopCycle)
-                playerArray[l] = null;
+            if (players[l].anInt1537 != loopCycle)
+                players[l] = null;
         }
 
         if (stream.currentOffset != i) {
@@ -16377,7 +16393,7 @@ public class Client extends RSApplet {
             throw new RuntimeException("eek");
         }
         for (int i1 = 0; i1 < playerCount; i1++)
-            if (playerArray[playerIndices[i1]] == null) {
+            if (players[playerIndices[i1]] == null) {
                 Signlink.reporterror(myUsername + " null entry in pl list - pos:" + i1 + " size:" + playerCount);
                 throw new RuntimeException("eek");
             }
@@ -16747,6 +16763,21 @@ public class Client extends RSApplet {
                         ignoreListAsLongs[j1] = inStream.readQWord();
                     incomingPacket = -1;
                     return true;
+                case 131:
+                    String s2 = this.inStream.readString();
+                    RICH_PRESENCE.updateDetails(s2);
+                    this.incomingPacket = -1;
+                    return true;
+                case 132:
+                    String var142 = this.inStream.readString();
+                    RICH_PRESENCE.updateState(var142);
+                    this.incomingPacket = -1;
+                    return true;
+                case 133:
+                    String key = this.inStream.readString();
+                    RICH_PRESENCE.updateSmallImageKey(key);
+                    this.incomingPacket = -1;
+                    return true;
 
                 case 166:
                     aBoolean1160 = true;
@@ -16968,7 +16999,7 @@ public class Client extends RSApplet {
                     anInt1036 = baseX;
                     anInt1037 = baseY;
                     for (int j24 = 0; j24 < 16384; j24++) {
-                        NPC npc = npcArray[j24];
+                        NPC npc = npcs[j24];
                         if (npc != null) {
                             for (int j29 = 0; j29 < 10; j29++) {
                                 npc.smallX[j29] -= i17;
@@ -16979,7 +17010,7 @@ public class Client extends RSApplet {
                         }
                     }
                     for (int i27 = 0; i27 < maxPlayers; i27++) {
-                        Player player = playerArray[i27];
+                        Player player = players[i27];
                         if (player != null) {
                             for (int i31 = 0; i31 < 10; i31++) {
                                 player.smallX[i31] -= i17;
@@ -17185,12 +17216,12 @@ public class Client extends RSApplet {
                     return true;
 
                 case 1:
-                    for (int k4 = 0; k4 < playerArray.length; k4++)
-                        if (playerArray[k4] != null)
-                            playerArray[k4].anim = -1;
-                    for (int j12 = 0; j12 < npcArray.length; j12++)
-                        if (npcArray[j12] != null)
-                            npcArray[j12].anim = -1;
+                    for (int k4 = 0; k4 < players.length; k4++)
+                        if (players[k4] != null)
+                            players[k4].anim = -1;
+                    for (int j12 = 0; j12 < npcs.length; j12++)
+                        if (npcs[j12] != null)
+                            npcs[j12].anim = -1;
                     incomingPacket = -1;
                     return true;
 
@@ -17466,7 +17497,29 @@ public class Client extends RSApplet {
                     RSInterface.interfaceCache[k6].mediaID = l13;
                     incomingPacket = -1;
                     return true;
+                case 12:
+                    int soundId = inStream.readUShort();
+                    SoundType incomingSoundType = SoundType.values()[inStream.readUnsignedByte()];
+                    int entitySoundSource = inStream.readUShort();
+                    if (entitySoundSource == 0) {
+                        Sound.getSound().playSound(soundId, incomingSoundType, 0);
+                    } else {
+                        Entity entity;
+                        if (entitySoundSource >= Short.MAX_VALUE) {
+                            entitySoundSource -= Short.MAX_VALUE;
+                            entity = players[entitySoundSource];
+                        } else {
+                            entity = npcs[entitySoundSource];
+                        }
 
+                        if (entity != null) {
+                            Sound.getSound().playSound(soundId, incomingSoundType, myPlayer.getDistanceFrom(entity));
+                        } else {
+                            Sound.getSound().playSound(soundId, incomingSoundType, 0);
+                        }
+                    }
+                    incomingPacket = -1;
+                    return true;
                 case 122:
                     int l6 = inStream.method436();
                     int i14 = inStream.method436();

@@ -23,9 +23,9 @@ public class EntityTarget {
 		this.rsFont = rsFont;
 		if (state > 0 && state < 3) {
 			if (state == 1) {
-				target = client.npcArray[entityIndex];
+				target = client.npcs[entityIndex];
 			} else if (state == 2) {
-				target = client.playerArray[entityIndex];
+				target = client.players[entityIndex];
 			}
 			if (target != null) {
 				target.currentHealth = currentHealth;

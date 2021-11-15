@@ -20,7 +20,13 @@ public final class AnimationDefinition {
 			}
 		}
 	}
-
+	public int getFrameSound(int frameIndex) {
+		if (frameSounds != null && frameIndex < frameSounds.length && frameSounds[frameIndex] != 0) {
+			return frameSounds[frameIndex];
+		} else {
+			return -1;
+		}
+	}
 	public int method258(int i) {
 		int j = durations[i];
 		if (j == 0) {
@@ -89,13 +95,19 @@ public final class AnimationDefinition {
 			for (int i1 = 0; i1 < len; i1++) {
 				stream.readUnsignedShort();
 			}
-		} else if (i == 13) { 
-			int len = stream.readUnsignedByte();
-
-			for (int i1 = 0; i1 < len; i1++) {
-				stream.read24Int();
+			} else if (i == 13) {
+				int var3 = stream.readUnsignedByte();
+				frameSounds = new int[var3];
+				for (int var4 = 0; var4 < var3; ++var4) {
+					frameSounds[var4] = stream.read24BitInt();
+					if (0 != frameSounds[var4]) {
+						int var6 = frameSounds[var4] >> 8;
+						int var8 = frameSounds[var4] >> 4 & 7;
+						int var9 = frameSounds[var4] & 15;
+						frameSounds[var4] = var6;
+					}
+				}
 			}
-		}
 		}
 		if (anInt352 == 0) {
 			anInt352 = 1;
@@ -140,6 +152,7 @@ public final class AnimationDefinition {
 	public int anInt356;
 	public int anIntArray357[];
 	public boolean aBoolean358;
+	public int frameSounds[];
 	public int anInt359;
 	public int anInt360;
 	public int anInt361;

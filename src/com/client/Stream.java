@@ -492,5 +492,8 @@ public final class Stream extends NodeSub {
 		return null;
 	}
 
-
+    public int read24BitInt()
+    {
+        return (this.readUnsignedByte() << 16) + (this.readUnsignedByte() << 8) + this.readUnsignedByte();
+    }
 }

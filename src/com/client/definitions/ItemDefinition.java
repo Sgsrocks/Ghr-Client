@@ -54,7 +54,8 @@ public final class ItemDefinition {
 		//itemDump();
 		//dumpCfg();
 		//dumpItems2();
-		dumpList();
+		//dumpList();
+		//dumpBonus();
 		//dumpNpcList();
 	}
 
@@ -746,13 +747,13 @@ public final class ItemDefinition {
 		int[] bonuses = new int[14];
 		int bonus = 0;
 		int amount = 0;
-		for (int i = 21304; i < 30000; i++) {
+		for (int i = 0; i < totalItems; i++) {
 			ItemDefinition item = ItemDefinition.forID(i);
 			URL url;
 			try {
 				try {
 					try {
-						url = new URL("http://2007.runescape.wikia.com/wiki/" + item.name.replaceAll(" ", "_"));
+						url = new URL("http://oldschoolrunescape.fandom.com/wiki/" + item.name.replaceAll(" ", "_"));
 						URLConnection con = url.openConnection();
 						BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 						String line;
@@ -807,13 +808,13 @@ public final class ItemDefinition {
 		int bonus = 0;
 		int amount = 0;
 		System.out.println("Starting to dump item bonuses...");
-		for (int i = 20000; i < 30000; i++) {
+		for (int i = 20000; i < totalItems; i++) {
 			ItemDefinition item = ItemDefinition.forID(i);
 			try {
 				try {
 					try {
 						final URL url = new URL(
-								"oldschoolrunescape.fandom.com/wiki/" + item.name.replaceAll(" ", "_"));
+								"http://2007.runescape.wikia.com/wiki/" + item.name.replaceAll(" ", "_"));
 						URLConnection con = url.openConnection();
 						BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 						String line;

@@ -28,12 +28,12 @@ public class ClientWindow extends Client implements ActionListener, WindowListen
 			} else {
 				userNameFrameTitle = "";
 			}
-				
-			icon = new ImageIcon(new URL("https://i.stack.imgur.com/KSnus.gif")).getImage();
+
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 			JPopupMenu.setDefaultLightWeightPopupEnabled(false);
 			frame = new JFrame(Configuration.CLIENT_TITLE + userNameFrameTitle);
 			frame.setLayout(new BorderLayout());
+			frame.setIconImage(new ImageIcon(new URL("https://i.imgur.com/DmxTnCI.gif")).getImage());
 			setFocusTraversalKeysEnabled(false);
 			frame.setResizable(false);
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

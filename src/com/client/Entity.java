@@ -1,8 +1,49 @@
 package com.client;
 
 import com.client.definitions.AnimationDefinition;
+import com.client.sound.Sound;
+import com.client.sound.SoundType;
 
 public class Entity extends Renderable {
+
+
+	public boolean isLocalPlayer() {
+		return this == Client.myPlayer;
+	}
+
+	public int getAbsoluteX() {
+		int x = Client.baseX + (this.x - 6 >> 7);
+		if (this instanceof NPC) {
+			return x - ((NPC) this).desc.boundDim / 2;
+		}
+		return x;
+	}
+
+	public int getAbsoluteY() {
+		int y = Client.baseY + (this.y - 6 >> 7);
+		if (this instanceof NPC) {
+			return y - ((NPC) this).desc.boundDim / 2;
+		}
+		return y;
+	}
+
+	public int getDistanceFrom(Entity entity) {
+		return getDistanceFrom(entity.getAbsoluteX(), entity.getAbsoluteY());
+	}
+
+	public int getDistanceFrom(int x2, int y2) {
+		int x = (int) Math.pow(getAbsoluteX() - x2, 2.0D);
+		int y = (int) Math.pow(getAbsoluteY() - y2, 2.0D);
+		return (int) Math.floor(Math.sqrt(x + y));
+	}
+
+	public void makeSound(int soundId) {
+		double distance = getDistanceFrom(Client.myPlayer);
+//		if (Configuration.developerMode) {
+//			System.out.println("entity sound: id " + id + " x" + getAbsoluteX() + " y" + getAbsoluteY() + " d" + distance);
+//		}
+		Sound.getSound().playSound(soundId, isLocalPlayer() || this instanceof NPC ? SoundType.SOUND : SoundType.AREA_SOUND, distance);
+	}
 
 	public final void setPos(int i, int j, boolean flag) {
 		if (anim != -1 && AnimationDefinition.anims[anim].anInt364 == 1)
