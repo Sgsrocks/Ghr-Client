@@ -8,6 +8,12 @@ import java.io.File;
 
 public class Model extends Renderable {
 
+    public byte[] textureTypes;
+    public byte[] textures;
+    public int[][] animayaGroups;
+    public int[][] animayaScales;
+    public short[] materials;
+
     public static void nullLoader() {
         aClass21Array1661 = null;
         aBooleanArray1663 = null;
@@ -36,26 +42,26 @@ public class Model extends Renderable {
         int set2 = 0;
         int max = 50;
         if (textureIds != null) {
-            textured_face_a = new int[numberOfTriangleFaces];
-            textured_face_b = new int[numberOfTriangleFaces];
-            textured_face_c = new int[numberOfTriangleFaces];
+            texturesX = new short[trianglesCount];
+            texturesY = new short[trianglesCount];
+            texturesZ = new short[trianglesCount];
 
 
-            for (int i = 0; i < numberOfTriangleFaces; i++) {
-                if (textureIds[i] == -1 && face_render_type[i] == 2) {
-                    face_color[i] = 65535;
-                    face_render_type[i] = 0;
+            for (int i = 0; i < trianglesCount; i++) {
+                if (textureIds[i] == -1 && types[i] == 2) {
+                    colors[i] = (short) 65535;
+                    types[i] = 0;
                 }
                 if (textureIds[i] >= max || textureIds[i] < 0 || textureIds[i] == 39) {
-                    face_render_type[i] = 0;
+                    types[i] = 0;
                     continue;
                 }
-                face_render_type[i] = 2 + set2;
+                types[i] = 2 + set2;
                 set2 += 4;
-                int a = face_a[i];
-                int b = face_b[i];
-                int c = face_c[i];
-                face_color[i] = textureIds[i];
+                int a = trianglesX[i];
+                int b = trianglesY[i];
+                int c = trianglesZ[i];
+                colors[i] = textureIds[i];
 
 
                 int texture_type = -1;
@@ -70,13 +76,13 @@ public class Model extends Renderable {
                     texture_type = -1;
 
 
-                textured_face_a[set] = texture_type == -1 ? a : texa[texture_type];
-                textured_face_b[set] = texture_type == -1 ? b : texb[texture_type];
-                textured_face_c[set++] = texture_type == -1 ? c : texc[texture_type];
+                texturesX[set] = (short) (texture_type == -1 ? a : texa[texture_type]);
+                texturesY[set] = (short) (texture_type == -1 ? b : texb[texture_type]);
+                texturesZ[set++] = (short) (texture_type == -1 ? c : texc[texture_type]);
 
 
             }
-            numberOfTexturesFaces = set;
+            texturesCount = set;
         }
     }
 
@@ -86,24 +92,24 @@ public class Model extends Renderable {
         int set2 = 0;
         int max = Rasterizer.textureAmount;
         if (textureIds != null) {
-            textured_face_a = new int[numberOfTriangleFaces];
-            textured_face_b = new int[numberOfTriangleFaces];
-            textured_face_c = new int[numberOfTriangleFaces];
+            texturesX = new short[trianglesCount];
+            texturesY = new short[trianglesCount];
+            texturesZ = new short[trianglesCount];
 
-            for (int i = 0; i < numberOfTriangleFaces; i++) {
-                if (textureIds[i] == -1 && face_render_type[i] == 2) {
-                    face_render_type[i] = 0;
+            for (int i = 0; i < trianglesCount; i++) {
+                if (textureIds[i] == -1 && types[i] == 2) {
+                    types[i] = 0;
                 }
                 if (textureIds[i] >= max || textureIds[i] < 0 || textureIds[i] == 39) {
-                    face_render_type[i] = 0;
+                    types[i] = 0;
                     continue;
                 }
-                face_render_type[i] = 2 + set2;
+                types[i] = 2 + set2;
                 set2 += 4;
-                int a = face_a[i];
-                int b = face_b[i];
-                int c = face_c[i];
-                face_color[i] = textureIds[i];
+                int a = trianglesX[i];
+                int b = trianglesY[i];
+                int c = trianglesZ[i];
+                colors[i] = textureIds[i];
 
                 int texture_type = -1;
                 if (texture_coordinates != null) {
@@ -116,414 +122,51 @@ public class Model extends Renderable {
                 if (texture_type == 0xff)
                     texture_type = -1;
 
-                textured_face_a[set] = texture_type == -1 ? a : texa[texture_type];
-                textured_face_b[set] = texture_type == -1 ? b : texb[texture_type];
-                textured_face_c[set++] = texture_type == -1 ? c : texc[texture_type];
+                texturesX[set] = (short) (texture_type == -1 ? a : texa[texture_type]);
+                texturesY[set] = (short) (texture_type == -1 ? b : texb[texture_type]);
+                texturesZ[set++] = (short) (texture_type == -1 ? c : texc[texture_type]);
 
             }
-            numberOfTexturesFaces = set;
+            texturesCount = set;
         }
     }
 
     public void method476(int i, int j) {
-        for (int k = 0; k < numberOfTriangleFaces; k++)
-            if (face_color[k] == i)
-                face_color[k] = j;
+        for (int k = 0; k < trianglesCount; k++)
+            if (colors[k] == i)
+                colors[k] = (short) j;
 
     }
 
     public void replaceColor(int i, int j, int tex) {
         if (tex == -1) {
-            for (int k = 0; k < numberOfTriangleFaces; k++)
-                if (face_color[k] == i)
-                    face_color[k] = j;
+            for (int k = 0; k < trianglesCount; k++)
+                if (colors[k] == i)
+                    colors[k] = (short) j;
         } else {
-            numberOfTexturesFaces = numberOfTriangleFaces;
+            texturesCount = trianglesCount;
             int set2 = 0;
-            if (face_render_type == null)
-                face_render_type = new int[numberOfTriangleFaces];
-            if (face_color == null)
-                face_color = new int[numberOfTriangleFaces];
-            textured_face_a = new int[numberOfTriangleFaces];
-            textured_face_b = new int[numberOfTriangleFaces];
-            textured_face_c = new int[numberOfTriangleFaces];
-            for (int i3 = 0; i3 < numberOfTriangleFaces; i3++) {
-                if (face_color[i3] != 0) {
-                    face_color[i3] = tex;
-                    face_render_type[i3] = 3 + set2;
+            if (types == null)
+                types = new int[trianglesCount];
+            if (colors == null)
+                colors = new short[trianglesCount];
+            texturesX = new short[trianglesCount];
+            texturesY = new short[trianglesCount];
+            texturesZ = new short[trianglesCount];
+            for (int i3 = 0; i3 < trianglesCount; i3++) {
+                if (colors[i3] != 0) {
+                    colors[i3] = (short) tex;
+                    types[i3] = 3 + set2;
                     set2 += 4;
-                    textured_face_a[i3] = face_a[i3];
-                    textured_face_b[i3] = face_b[i3];
-                    textured_face_c[i3] = face_c[i3];
+                    texturesX[i3] = (short) trianglesX[i3];
+                    texturesY[i3] = (short) trianglesY[i3];
+                    texturesZ[i3] = (short) trianglesZ[i3];
                 }
             }
         }
     }
 
 
-    public void read525Model(byte abyte0[], int modelID) {
-        Stream nc1 = new Stream(abyte0);
-        Stream nc2 = new Stream(abyte0);
-        Stream nc3 = new Stream(abyte0);
-        Stream nc4 = new Stream(abyte0);
-        Stream nc5 = new Stream(abyte0);
-        Stream nc6 = new Stream(abyte0);
-        Stream nc7 = new Stream(abyte0);
-        nc1.currentOffset = abyte0.length - 23;
-        int numVertices = nc1.readUnsignedShort();
-        int numTriangles = nc1.readUnsignedShort();
-        int numTexTriangles = nc1.readUnsignedByte();
-        ModelHeader ModelDef_1 = aClass21Array1661[modelID] = new ModelHeader();
-        ModelDef_1.aByteArray368 = abyte0;
-        ModelDef_1.anInt369 = numVertices;
-        ModelDef_1.anInt370 = numTriangles;
-        ModelDef_1.anInt371 = numTexTriangles;
-        int l1 = nc1.readUnsignedByte();
-        boolean bool = (0x1 & l1 ^ 0xffffffff) == -2;
-        int i2 = nc1.readUnsignedByte();
-        int j2 = nc1.readUnsignedByte();
-        int k2 = nc1.readUnsignedByte();
-        int l2 = nc1.readUnsignedByte();
-        int i3 = nc1.readUnsignedByte();
-        int j3 = nc1.readUnsignedShort();
-        int k3 = nc1.readUnsignedShort();
-        int l3 = nc1.readUnsignedShort();
-        int i4 = nc1.readUnsignedShort();
-        int j4 = nc1.readUnsignedShort();
-        int k4 = 0;
-        int l4 = 0;
-        int i5 = 0;
-        byte[] x = null;
-        byte[] O = null;
-        byte[] J = null;
-        byte[] F = null;
-        byte[] cb = null;
-        byte[] gb = null;
-        byte[] lb = null;
-        int[] kb = null;
-        int[] y = null;
-        int[] N = null;
-        short[] D = null;
-        int[] triangleColours2 = new int[numTriangles];
-        if (numTexTriangles > 0) {
-            O = new byte[numTexTriangles];
-            nc1.currentOffset = 0;
-            for (int j5 = 0; j5 < numTexTriangles; j5++) {
-                byte byte0 = O[j5] = nc1.readSignedByte();
-                if (byte0 == 0) {
-                    k4++;
-                }
-                if (byte0 >= 1 && byte0 <= 3) {
-                    l4++;
-                }
-                if (byte0 == 2) {
-                    i5++;
-                }
-            }
-        }
-        int k5 = numTexTriangles;
-        int l5 = k5;
-        k5 += numVertices;
-        int i6 = k5;
-        if (l1 == 1) {
-            k5 += numTriangles;
-        }
-        int j6 = k5;
-        k5 += numTriangles;
-        int k6 = k5;
-        if (i2 == 255) {
-            k5 += numTriangles;
-        }
-        int l6 = k5;
-        if (k2 == 1) {
-            k5 += numTriangles;
-        }
-        int i7 = k5;
-        if (i3 == 1) {
-            k5 += numVertices;
-        }
-        int j7 = k5;
-        if (j2 == 1) {
-            k5 += numTriangles;
-        }
-        int k7 = k5;
-        k5 += i4;
-        int l7 = k5;
-        if (l2 == 1) {
-            k5 += numTriangles * 2;
-        }
-        int i8 = k5;
-        k5 += j4;
-        int j8 = k5;
-        k5 += numTriangles * 2;
-        int k8 = k5;
-        k5 += j3;
-        int l8 = k5;
-        k5 += k3;
-        int i9 = k5;
-        k5 += l3;
-        int j9 = k5;
-        k5 += k4 * 6;
-        int k9 = k5;
-        k5 += l4 * 6;
-        int l9 = k5;
-        k5 += l4 * 6;
-        int i10 = k5;
-        k5 += l4;
-        int j10 = k5;
-        k5 += l4;
-        int k10 = k5;
-        k5 += l4 + i5 * 2;
-        int[] vertexX = new int[numVertices];
-        int[] vertexY = new int[numVertices];
-        int[] vertexZ = new int[numVertices];
-        int[] facePoint1 = new int[numTriangles];
-        int[] facePoint2 = new int[numTriangles];
-        int[] facePoint3 = new int[numTriangles];
-        anIntArray1655 = new int[numVertices];
-        face_render_type = new int[numTriangles];
-        face_render_priorities = new int[numTriangles];
-        face_alpha = new int[numTriangles];
-        anIntArray1656 = new int[numTriangles];
-        if (i3 == 1) {
-            anIntArray1655 = new int[numVertices];
-        }
-        if (bool) {
-            face_render_type = new int[numTriangles];
-        }
-        if (i2 == 255) {
-            face_render_priorities = new int[numTriangles];
-        } else {
-        }
-        if (j2 == 1) {
-            face_alpha = new int[numTriangles];
-        }
-        if (k2 == 1) {
-            anIntArray1656 = new int[numTriangles];
-        }
-        if (l2 == 1) {
-            D = new short[numTriangles];
-        }
-        if (l2 == 1 && numTexTriangles > 0) {
-            x = new byte[numTriangles];
-        }
-        triangleColours2 = new int[numTriangles];
-        int[] texTrianglesPoint1 = null;
-        int[] texTrianglesPoint2 = null;
-        int[] texTrianglesPoint3 = null;
-        if (numTexTriangles > 0) {
-            texTrianglesPoint1 = new int[numTexTriangles];
-            texTrianglesPoint2 = new int[numTexTriangles];
-            texTrianglesPoint3 = new int[numTexTriangles];
-            if (l4 > 0) {
-                kb = new int[l4];
-                N = new int[l4];
-                y = new int[l4];
-                gb = new byte[l4];
-                lb = new byte[l4];
-                F = new byte[l4];
-            }
-            if (i5 > 0) {
-                cb = new byte[i5];
-                J = new byte[i5];
-            }
-        }
-        nc1.currentOffset = l5;
-        nc2.currentOffset = k8;
-        nc3.currentOffset = l8;
-        nc4.currentOffset = i9;
-        nc5.currentOffset = i7;
-        int l10 = 0;
-        int i11 = 0;
-        int j11 = 0;
-        for (int k11 = 0; k11 < numVertices; k11++) {
-            int l11 = nc1.readUnsignedByte();
-            int j12 = 0;
-            if ((l11 & 1) != 0) {
-                j12 = nc2.method421();
-            }
-            int l12 = 0;
-            if ((l11 & 2) != 0) {
-                l12 = nc3.method421();
-            }
-            int j13 = 0;
-            if ((l11 & 4) != 0) {
-                j13 = nc4.method421();
-            }
-            vertexX[k11] = l10 + j12;
-            vertexY[k11] = i11 + l12;
-            vertexZ[k11] = j11 + j13;
-            l10 = vertexX[k11];
-            i11 = vertexY[k11];
-            j11 = vertexZ[k11];
-            if (anIntArray1655 != null) {
-                anIntArray1655[k11] = nc5.readUnsignedByte();
-            }
-        }
-        nc1.currentOffset = j8;
-        nc2.currentOffset = i6;
-        nc3.currentOffset = k6;
-        nc4.currentOffset = j7;
-        nc5.currentOffset = l6;
-        nc6.currentOffset = l7;
-        nc7.currentOffset = i8;
-        for (int i12 = 0; i12 < numTriangles; i12++) {
-            triangleColours2[i12] = nc1.readUnsignedShort();
-            if (l1 == 1) {
-                face_render_type[i12] = nc2.readSignedByte();
-                if (face_render_type[i12] == 2) {
-                    triangleColours2[i12] = 65535;
-                }
-                face_render_type[i12] = 0;
-            }
-            if (i2 == 255) {
-                face_render_priorities[i12] = nc3.readSignedByte();
-            }
-            if (j2 == 1) {
-                face_alpha[i12] = nc4.readSignedByte();
-                if (face_alpha[i12] < 0) {
-                    face_alpha[i12] = 256 + face_alpha[i12];
-                }
-            }
-            if (k2 == 1) {
-                anIntArray1656[i12] = nc5.readUnsignedByte();
-            }
-            if (l2 == 1) {
-                D[i12] = (short) (nc6.readUnsignedShort() - 1);
-            }
-            if (x != null) {
-                if (D[i12] != -1) {
-                    x[i12] = (byte) (nc7.readUnsignedByte() - 1);
-                } else {
-                    x[i12] = -1;
-                }
-            }
-        }
-        // /fix's triangle issue, but fucked up - no need, loading all 474-
-        // models
-        /*
-         * try { for(int i12 = 0; i12 < numberOfTriangleFaces; i12++) {
-		 * triangleColours2[i12] = nc1.readUnsignedWord(); if(l1 == 1){
-		 * face_render_type[i12] = nc2.readSignedByte(); } if(i2 == 255){
-		 * face_render_priorities[i12] = nc3.readSignedByte(); } if(j2 == 1){
-		 * anIntArray1639[i12] = nc4.readSignedByte(); if(anIntArray1639[i12] <
-		 * 0) anIntArray1639[i12] = (256+anIntArray1639[i12]); } if(k2 == 1)
-		 * anIntArray1656[i12] = nc5.readUnsignedByte(); if(l2 == 1) D[i12] =
-		 * (short)(nc6.readUnsignedWord() - 1); if(x != null) if(D[i12] != -1)
-		 * x[i12] = (byte)(nc7.readUnsignedByte() -1); else x[i12] = -1; } }
-		 * catch (Exception ex) { }
-		 */
-        nc1.currentOffset = k7;
-        nc2.currentOffset = j6;
-        int k12 = 0;
-        int i13 = 0;
-        int k13 = 0;
-        int l13 = 0;
-        for (int i14 = 0; i14 < numTriangles; i14++) {
-            int j14 = nc2.readUnsignedByte();
-            if (j14 == 1) {
-                k12 = nc1.method421() + l13;
-                l13 = k12;
-                i13 = nc1.method421() + l13;
-                l13 = i13;
-                k13 = nc1.method421() + l13;
-                l13 = k13;
-                facePoint1[i14] = k12;
-                facePoint2[i14] = i13;
-                facePoint3[i14] = k13;
-            }
-            if (j14 == 2) {
-                i13 = k13;
-                k13 = nc1.method421() + l13;
-                l13 = k13;
-                facePoint1[i14] = k12;
-                facePoint2[i14] = i13;
-                facePoint3[i14] = k13;
-            }
-            if (j14 == 3) {
-                k12 = k13;
-                k13 = nc1.method421() + l13;
-                l13 = k13;
-                facePoint1[i14] = k12;
-                facePoint2[i14] = i13;
-                facePoint3[i14] = k13;
-            }
-            if (j14 == 4) {
-                int l14 = k12;
-                k12 = i13;
-                i13 = l14;
-                k13 = nc1.method421() + l13;
-                l13 = k13;
-                facePoint1[i14] = k12;
-                facePoint2[i14] = i13;
-                facePoint3[i14] = k13;
-            }
-        }
-        nc1.currentOffset = j9;
-        nc2.currentOffset = k9;
-        nc3.currentOffset = l9;
-        nc4.currentOffset = i10;
-        nc5.currentOffset = j10;
-        nc6.currentOffset = k10;
-        for (int k14 = 0; k14 < numTexTriangles; k14++) {
-            int i15 = O[k14] & 0xff;
-            if (i15 == 0) {
-                texTrianglesPoint1[k14] = nc1.readUnsignedShort();
-                texTrianglesPoint2[k14] = nc1.readUnsignedShort();
-                texTrianglesPoint3[k14] = nc1.readUnsignedShort();
-            }
-            if (i15 == 1) {
-                texTrianglesPoint1[k14] = nc2.readUnsignedShort();
-                texTrianglesPoint2[k14] = nc2.readUnsignedShort();
-                texTrianglesPoint3[k14] = nc2.readUnsignedShort();
-                kb[k14] = nc3.readUnsignedShort();
-                N[k14] = nc3.readUnsignedShort();
-                y[k14] = nc3.readUnsignedShort();
-                gb[k14] = nc4.readSignedByte();
-                lb[k14] = nc5.readSignedByte();
-                F[k14] = nc6.readSignedByte();
-            }
-            if (i15 == 2) {
-                texTrianglesPoint1[k14] = nc2.readUnsignedShort();
-                texTrianglesPoint2[k14] = nc2.readUnsignedShort();
-                texTrianglesPoint3[k14] = nc2.readUnsignedShort();
-                kb[k14] = nc3.readUnsignedShort();
-                N[k14] = nc3.readUnsignedShort();
-                y[k14] = nc3.readUnsignedShort();
-                gb[k14] = nc4.readSignedByte();
-                lb[k14] = nc5.readSignedByte();
-                F[k14] = nc6.readSignedByte();
-                cb[k14] = nc6.readSignedByte();
-                J[k14] = nc6.readSignedByte();
-            }
-            if (i15 == 3) {
-                texTrianglesPoint1[k14] = nc2.readUnsignedShort();
-                texTrianglesPoint2[k14] = nc2.readUnsignedShort();
-                texTrianglesPoint3[k14] = nc2.readUnsignedShort();
-                kb[k14] = nc3.readUnsignedShort();
-                N[k14] = nc3.readUnsignedShort();
-                y[k14] = nc3.readUnsignedShort();
-                gb[k14] = nc4.readSignedByte();
-                lb[k14] = nc5.readSignedByte();
-                F[k14] = nc6.readSignedByte();
-            }
-        }
-        if (i2 != 255) {
-            for (int i12 = 0; i12 < numTriangles; i12++) {
-                face_render_priorities[i12] = i2;
-            }
-        }
-        face_color = triangleColours2;
-        this.numVertices = numVertices;
-        this.numberOfTriangleFaces = numTriangles;
-        this.vertexX = vertexX;
-        this.vertexY = vertexY;
-        this.vertexZ = vertexZ;
-        face_a = facePoint1;
-        face_b = facePoint2;
-        face_c = facePoint3;
-        convertTexturesTo317(D, texTrianglesPoint1, texTrianglesPoint2, texTrianglesPoint3, false, x);
-    }
 
     public static final byte[] read(String location) {
         try {
@@ -543,13 +186,17 @@ public class Model extends Renderable {
         if (model == 0) {
             return;
         }
-        byte[] data = aClass21Array1661[model].aByteArray368;
-        //data = read(signlink.findcachedir() + "/Raw/" + model + ".dat");
-        if (data[data.length - 1] == -1 && data[data.length - 2] == -1) {
-            read622Model(data, model);
-        } else {
-            readOldModel(model);
-        }
+            byte[] is = aClass21Array1661[model].aByteArray368;
+            if (is[is.length - 1] == -3 && is[is.length - 2] == -1) {
+                ModelLoader.decodeType3(this, is);
+            } else if (is[is.length - 1] == -2 && is[is.length - 2] == -1) {
+                ModelLoader.decodeType2(this, is);
+            } else if (is[is.length - 1] == -1 && is[is.length - 2] == -1) {
+                ModelLoader.decodeType1(this, is);
+            } else {
+                ModelLoader.decodeOldFormat(this, is);
+            }
+
         if (newmodel[model]) {
             scale2(4);// 2 is too big -- 3 is almost right
             if (face_render_priorities != null) {
@@ -561,416 +208,11 @@ public class Model extends Renderable {
     }
 
     public void scale2(int i) {
-        for (int i1 = 0; i1 < numVertices; i1++) {
-            vertexX[i1] = vertexX[i1] / i;
-            vertexY[i1] = vertexY[i1] / i;
-            vertexZ[i1] = vertexZ[i1] / i;
+        for (int i1 = 0; i1 < verticesCount; i1++) {
+            verticesX[i1] = verticesX[i1] / i;
+            verticesY[i1] = verticesY[i1] / i;
+            verticesZ[i1] = verticesZ[i1] / i;
         }
-    }
-
-    public void read622Model(byte abyte0[], int modelID) {
-        Stream nc1 = new Stream(abyte0);
-        Stream nc2 = new Stream(abyte0);
-        Stream nc3 = new Stream(abyte0);
-        Stream nc4 = new Stream(abyte0);
-        Stream nc5 = new Stream(abyte0);
-        Stream nc6 = new Stream(abyte0);
-        Stream nc7 = new Stream(abyte0);
-        nc1.currentOffset = abyte0.length - 23;
-        int numVertices = nc1.readUnsignedShort();
-        int numTriangles = nc1.readUnsignedShort();
-        int numTexTriangles = nc1.readUnsignedByte();
-        ModelHeader ModelDef_1 = aClass21Array1661[modelID] = new ModelHeader();
-        ModelDef_1.aByteArray368 = abyte0;
-        ModelDef_1.anInt369 = numVertices;
-        ModelDef_1.anInt370 = numTriangles;
-        ModelDef_1.anInt371 = numTexTriangles;
-        int l1 = nc1.readUnsignedByte();
-        boolean bool = (0x1 & l1 ^ 0xffffffff) == -2;
-        boolean bool_26_ = (0x8 & l1) == 8;
-        if (!bool_26_) {
-            read525Model(abyte0, modelID);
-            return;
-        }
-        int newformat = 0;
-        if (bool_26_) {
-            nc1.currentOffset -= 7;
-            newformat = nc1.readUnsignedByte();
-            nc1.currentOffset += 6;
-        }
-        if (newformat == 15) {
-            newmodel[modelID] = true;
-        }
-        int i2 = nc1.readUnsignedByte();
-        int j2 = nc1.readUnsignedByte();
-        int k2 = nc1.readUnsignedByte();
-        int l2 = nc1.readUnsignedByte();
-        int i3 = nc1.readUnsignedByte();
-        int j3 = nc1.readUnsignedShort();
-        int k3 = nc1.readUnsignedShort();
-        int l3 = nc1.readUnsignedShort();
-        int i4 = nc1.readUnsignedShort();
-        int j4 = nc1.readUnsignedShort();
-        int k4 = 0;
-        int l4 = 0;
-        int i5 = 0;
-        byte[] x = null;
-        byte[] O = null;
-        byte[] J = null;
-        byte[] F = null;
-        byte[] cb = null;
-        byte[] gb = null;
-        byte[] lb = null;
-        int[] kb = null;
-        int[] y = null;
-        int[] N = null;
-        short[] D = null;
-        int[] triangleColours2 = new int[numTriangles];
-        if (numTexTriangles > 0) {
-            O = new byte[numTexTriangles];
-            nc1.currentOffset = 0;
-            for (int j5 = 0; j5 < numTexTriangles; j5++) {
-                byte byte0 = O[j5] = nc1.readSignedByte();
-                if (byte0 == 0) {
-                    k4++;
-                }
-                if (byte0 >= 1 && byte0 <= 3) {
-                    l4++;
-                }
-                if (byte0 == 2) {
-                    i5++;
-                }
-            }
-        }
-        int k5 = numTexTriangles;
-        int l5 = k5;
-        k5 += numVertices;
-        int i6 = k5;
-        if (bool) {
-            k5 += numTriangles;
-        }
-        if (l1 == 1) {
-            k5 += numTriangles;
-        }
-        int j6 = k5;
-        k5 += numTriangles;
-        int k6 = k5;
-        if (i2 == 255) {
-            k5 += numTriangles;
-        }
-        int l6 = k5;
-        if (k2 == 1) {
-            k5 += numTriangles;
-        }
-        int i7 = k5;
-        if (i3 == 1) {
-            k5 += numVertices;
-        }
-        int j7 = k5;
-        if (j2 == 1) {
-            k5 += numTriangles;
-        }
-        int k7 = k5;
-        k5 += i4;
-        int l7 = k5;
-        if (l2 == 1) {
-            k5 += numTriangles * 2;
-        }
-        int i8 = k5;
-        k5 += j4;
-        int j8 = k5;
-        k5 += numTriangles * 2;
-        int k8 = k5;
-        k5 += j3;
-        int l8 = k5;
-        k5 += k3;
-        int i9 = k5;
-        k5 += l3;
-        int j9 = k5;
-        k5 += k4 * 6;
-        int k9 = k5;
-        k5 += l4 * 6;
-        int i_59_ = 6;
-        if (newformat != 14) {
-            if (newformat >= 15) {
-                i_59_ = 9;
-            }
-        } else {
-            i_59_ = 7;
-        }
-        int l9 = k5;
-        k5 += i_59_ * l4;
-        int i10 = k5;
-        k5 += l4;
-        int j10 = k5;
-        k5 += l4;
-        int k10 = k5;
-        k5 += l4 + i5 * 2;
-        int[] vertexX = new int[numVertices];
-        int[] vertexY = new int[numVertices];
-        int[] vertexZ = new int[numVertices];
-        int[] facePoint1 = new int[numTriangles];
-        int[] facePoint2 = new int[numTriangles];
-        int[] facePoint3 = new int[numTriangles];
-        anIntArray1655 = new int[numVertices];
-        face_render_type = new int[numTriangles];
-        face_render_priorities = new int[numTriangles];
-        face_alpha = new int[numTriangles];
-        anIntArray1656 = new int[numTriangles];
-        if (i3 == 1) {
-            anIntArray1655 = new int[numVertices];
-        }
-        if (bool) {
-            face_render_type = new int[numTriangles];
-        }
-        if (i2 == 255) {
-            face_render_priorities = new int[numTriangles];
-        } else {
-        }
-        if (j2 == 1) {
-            face_alpha = new int[numTriangles];
-        }
-        if (k2 == 1) {
-            anIntArray1656 = new int[numTriangles];
-        }
-        if (l2 == 1) {
-            D = new short[numTriangles];
-        }
-        if (l2 == 1 && numTexTriangles > 0) {
-            x = new byte[numTriangles];
-        }
-        triangleColours2 = new int[numTriangles];
-        int[] texTrianglesPoint1 = null;
-        int[] texTrianglesPoint2 = null;
-        int[] texTrianglesPoint3 = null;
-        if (numTexTriangles > 0) {
-            texTrianglesPoint1 = new int[numTexTriangles];
-            texTrianglesPoint2 = new int[numTexTriangles];
-            texTrianglesPoint3 = new int[numTexTriangles];
-            if (l4 > 0) {
-                kb = new int[l4];
-                N = new int[l4];
-                y = new int[l4];
-                gb = new byte[l4];
-                lb = new byte[l4];
-                F = new byte[l4];
-            }
-            if (i5 > 0) {
-                cb = new byte[i5];
-                J = new byte[i5];
-            }
-        }
-        nc1.currentOffset = l5;
-        nc2.currentOffset = k8;
-        nc3.currentOffset = l8;
-        nc4.currentOffset = i9;
-        nc5.currentOffset = i7;
-        int l10 = 0;
-        int i11 = 0;
-        int j11 = 0;
-        for (int k11 = 0; k11 < numVertices; k11++) {
-            int l11 = nc1.readUnsignedByte();
-            int j12 = 0;
-            if ((l11 & 1) != 0) {
-                j12 = nc2.method421();
-            }
-            int l12 = 0;
-            if ((l11 & 2) != 0) {
-                l12 = nc3.method421();
-            }
-            int j13 = 0;
-            if ((l11 & 4) != 0) {
-                j13 = nc4.method421();
-            }
-            vertexX[k11] = l10 + j12;
-            vertexY[k11] = i11 + l12;
-            vertexZ[k11] = j11 + j13;
-            l10 = vertexX[k11];
-            i11 = vertexY[k11];
-            j11 = vertexZ[k11];
-            if (anIntArray1655 != null) {
-                anIntArray1655[k11] = nc5.readUnsignedByte();
-            }
-        }
-        nc1.currentOffset = j8;
-        nc2.currentOffset = i6;
-        nc3.currentOffset = k6;
-        nc4.currentOffset = j7;
-        nc5.currentOffset = l6;
-        nc6.currentOffset = l7;
-        nc7.currentOffset = i8;
-        for (int i12 = 0; i12 < numTriangles; i12++) {
-            triangleColours2[i12] = nc1.readUnsignedShort();
-            if (l1 == 1) {
-                face_render_type[i12] = nc2.readSignedByte();
-                if (face_render_type[i12] == 2) {
-                    triangleColours2[i12] = 65535;
-                }
-                face_render_type[i12] = 0;
-            }
-            if (i2 == 255) {
-                face_render_priorities[i12] = nc3.readSignedByte();
-            }
-            if (j2 == 1) {
-                face_alpha[i12] = nc4.readSignedByte();
-                if (face_alpha[i12] < 0) {
-                    face_alpha[i12] = 256 + face_alpha[i12];
-                }
-            }
-            if (k2 == 1) {
-                anIntArray1656[i12] = nc5.readUnsignedByte();
-            }
-            if (l2 == 1) {
-                D[i12] = (short) (nc6.readUnsignedShort() - 1);
-            }
-            if (x != null) {
-                if (D[i12] != -1) {
-                    x[i12] = (byte) (nc7.readUnsignedByte() - 1);
-                } else {
-                    x[i12] = -1;
-                }
-            }
-        }
-        nc1.currentOffset = k7;
-        nc2.currentOffset = j6;
-        int k12 = 0;
-        int i13 = 0;
-        int k13 = 0;
-        int l13 = 0;
-        for (int i14 = 0; i14 < numTriangles; i14++) {
-            int j14 = nc2.readUnsignedByte();
-            if (j14 == 1) {
-                k12 = nc1.method421() + l13;
-                l13 = k12;
-                i13 = nc1.method421() + l13;
-                l13 = i13;
-                k13 = nc1.method421() + l13;
-                l13 = k13;
-                facePoint1[i14] = k12;
-                facePoint2[i14] = i13;
-                facePoint3[i14] = k13;
-            }
-            if (j14 == 2) {
-                i13 = k13;
-                k13 = nc1.method421() + l13;
-                l13 = k13;
-                facePoint1[i14] = k12;
-                facePoint2[i14] = i13;
-                facePoint3[i14] = k13;
-            }
-            if (j14 == 3) {
-                k12 = k13;
-                k13 = nc1.method421() + l13;
-                l13 = k13;
-                facePoint1[i14] = k12;
-                facePoint2[i14] = i13;
-                facePoint3[i14] = k13;
-            }
-            if (j14 == 4) {
-                int l14 = k12;
-                k12 = i13;
-                i13 = l14;
-                k13 = nc1.method421() + l13;
-                l13 = k13;
-                facePoint1[i14] = k12;
-                facePoint2[i14] = i13;
-                facePoint3[i14] = k13;
-            }
-        }
-        nc1.currentOffset = j9;
-        nc2.currentOffset = k9;
-        nc3.currentOffset = l9;
-        nc4.currentOffset = i10;
-        nc5.currentOffset = j10;
-        nc6.currentOffset = k10;
-        for (int k14 = 0; k14 < numTexTriangles; k14++) {
-            int i15 = O[k14] & 0xff;
-            if (i15 == 0) {
-                texTrianglesPoint1[k14] = nc1.readUnsignedShort();
-                texTrianglesPoint2[k14] = nc1.readUnsignedShort();
-                texTrianglesPoint3[k14] = nc1.readUnsignedShort();
-            }
-            if (i15 == 1) {
-                texTrianglesPoint1[k14] = nc2.readUnsignedShort();
-                texTrianglesPoint2[k14] = nc2.readUnsignedShort();
-                texTrianglesPoint3[k14] = nc2.readUnsignedShort();
-                if (newformat < 15) {
-                    kb[k14] = nc3.readUnsignedShort();
-                    if (newformat >= 14) {
-                        N[k14] = nc3.v(-1);
-                    } else {
-                        N[k14] = nc3.readUnsignedShort();
-                    }
-                    y[k14] = nc3.readUnsignedShort();
-                } else {
-                    kb[k14] = nc3.v(-1);
-                    N[k14] = nc3.v(-1);
-                    y[k14] = nc3.v(-1);
-                }
-                gb[k14] = nc4.readSignedByte();
-                lb[k14] = nc5.readSignedByte();
-                F[k14] = nc6.readSignedByte();
-            }
-            if (i15 == 2) {
-                texTrianglesPoint1[k14] = nc2.readUnsignedShort();
-                texTrianglesPoint2[k14] = nc2.readUnsignedShort();
-                texTrianglesPoint3[k14] = nc2.readUnsignedShort();
-                if (newformat >= 15) {
-                    kb[k14] = nc3.v(-1);
-                    N[k14] = nc3.v(-1);
-                    y[k14] = nc3.v(-1);
-                } else {
-                    kb[k14] = nc3.readUnsignedShort();
-                    if (newformat < 14) {
-                        N[k14] = nc3.readUnsignedShort();
-                    } else {
-                        N[k14] = nc3.v(-1);
-                    }
-                    y[k14] = nc3.readUnsignedShort();
-                }
-                gb[k14] = nc4.readSignedByte();
-                lb[k14] = nc5.readSignedByte();
-                F[k14] = nc6.readSignedByte();
-                cb[k14] = nc6.readSignedByte();
-                J[k14] = nc6.readSignedByte();
-            }
-            if (i15 == 3) {
-                texTrianglesPoint1[k14] = nc2.readUnsignedShort();
-                texTrianglesPoint2[k14] = nc2.readUnsignedShort();
-                texTrianglesPoint3[k14] = nc2.readUnsignedShort();
-                if (newformat < 15) {
-                    kb[k14] = nc3.readUnsignedShort();
-                    if (newformat < 14) {
-                        N[k14] = nc3.readUnsignedShort();
-                    } else {
-                        N[k14] = nc3.v(-1);
-                    }
-                    y[k14] = nc3.readUnsignedShort();
-                } else {
-                    kb[k14] = nc3.v(-1);
-                    N[k14] = nc3.v(-1);
-                    y[k14] = nc3.v(-1);
-                }
-                gb[k14] = nc4.readSignedByte();
-                lb[k14] = nc5.readSignedByte();
-                F[k14] = nc6.readSignedByte();
-            }
-        }
-        if (i2 != 255) {
-            for (int i12 = 0; i12 < numTriangles; i12++) {
-                face_render_priorities[i12] = i2;
-            }
-        }
-        face_color = triangleColours2;
-        this.numVertices = numVertices;
-        this.numberOfTriangleFaces = numTriangles;
-        this.vertexX = vertexX;
-        this.vertexY = vertexY;
-        this.vertexZ = vertexZ;
-        face_a = facePoint1;
-        face_b = facePoint2;
-        face_c = facePoint3;
-        convertTexturesTo317(D, texTrianglesPoint1, texTrianglesPoint2, texTrianglesPoint3, false, x);
     }
 
 	/*private void readOldModel(int i) {
@@ -1125,142 +367,6 @@ public class Model extends Renderable {
 		}
 	}*/
 
-    private void readOldModel(int i) {
-        int j = -870;
-        aBoolean1618 = true;
-        aBoolean1659 = false;
-        anInt1620++;
-        ModelHeader class21 = aClass21Array1661[i];
-        numVertices = class21.anInt369;
-        numberOfTriangleFaces = class21.anInt370;
-        numberOfTexturesFaces = class21.anInt371;
-        vertexX = new int[numVertices];
-        vertexY = new int[numVertices];
-        vertexZ = new int[numVertices];
-        face_a = new int[numberOfTriangleFaces];
-        face_b = new int[numberOfTriangleFaces];
-        while (j >= 0)
-            aBoolean1618 = !aBoolean1618;
-        face_c = new int[numberOfTriangleFaces];
-        textured_face_a = new int[numberOfTexturesFaces];
-        textured_face_b = new int[numberOfTexturesFaces];
-        textured_face_c = new int[numberOfTexturesFaces];
-        if (class21.anInt376 >= 0)
-            anIntArray1655 = new int[numVertices];
-        if (class21.anInt380 >= 0)
-            face_render_type = new int[numberOfTriangleFaces];
-        if (class21.anInt381 >= 0)
-            face_render_priorities = new int[numberOfTriangleFaces];
-        else
-            anInt1641 = -class21.anInt381 - 1;
-        if (class21.anInt382 >= 0)
-            face_alpha = new int[numberOfTriangleFaces];
-        if (class21.anInt383 >= 0)
-            anIntArray1656 = new int[numberOfTriangleFaces];
-        face_color = new int[numberOfTriangleFaces];
-        Stream stream = new Stream(class21.aByteArray368);
-        stream.currentOffset = class21.anInt372;
-        Stream stream_1 = new Stream(class21.aByteArray368);
-        stream_1.currentOffset = class21.anInt373;
-        Stream stream_2 = new Stream(class21.aByteArray368);
-        stream_2.currentOffset = class21.anInt374;
-        Stream stream_3 = new Stream(class21.aByteArray368);
-        stream_3.currentOffset = class21.anInt375;
-        Stream stream_4 = new Stream(class21.aByteArray368);
-        stream_4.currentOffset = class21.anInt376;
-        int k = 0;
-        int l = 0;
-        int i1 = 0;
-        for (int j1 = 0; j1 < numVertices; j1++) {
-            int k1 = stream.readUnsignedByte();
-            int i2 = 0;
-            if ((k1 & 1) != 0)
-                i2 = stream_1.method421();
-            int k2 = 0;
-            if ((k1 & 2) != 0)
-                k2 = stream_2.method421();
-            int i3 = 0;
-            if ((k1 & 4) != 0)
-                i3 = stream_3.method421();
-            vertexX[j1] = k + i2;
-            vertexY[j1] = l + k2;
-            vertexZ[j1] = i1 + i3;
-            k = vertexX[j1];
-            l = vertexY[j1];
-            i1 = vertexZ[j1];
-            if (anIntArray1655 != null)
-                anIntArray1655[j1] = stream_4.readUnsignedByte();
-        }
-        stream.currentOffset = class21.anInt379;
-        stream_1.currentOffset = class21.anInt380;
-        stream_2.currentOffset = class21.anInt381;
-        stream_3.currentOffset = class21.anInt382;
-        stream_4.currentOffset = class21.anInt383;
-        for (int l1 = 0; l1 < numberOfTriangleFaces; l1++) {
-            face_color[l1] = stream.readUnsignedShort();
-            if (face_render_type != null)
-                face_render_type[l1] = stream_1.readUnsignedByte();
-            if (face_render_priorities != null)
-                face_render_priorities[l1] = stream_2.readUnsignedByte();
-            if (face_alpha != null) {
-                face_alpha[l1] = stream_3.readUnsignedByte();
-            }
-            if (anIntArray1656 != null)
-                anIntArray1656[l1] = stream_4.readUnsignedByte();
-        }
-        stream.currentOffset = class21.anInt377;
-        stream_1.currentOffset = class21.anInt378;
-        int j2 = 0;
-        int coordinate_b = 0;
-        int coordinate_c = 0;
-        int k3 = 0;
-        for (int l3 = 0; l3 < numberOfTriangleFaces; l3++) {
-            int opcode = stream_1.readUnsignedByte();
-            if (opcode == 1) {
-                j2 = stream.method421() + k3;
-                k3 = j2;
-                coordinate_b = stream.method421() + k3;
-                k3 = coordinate_b;
-                coordinate_c = stream.method421() + k3;
-                k3 = coordinate_c;
-                face_a[l3] = j2;
-                face_b[l3] = coordinate_b;
-                face_c[l3] = coordinate_c;
-            }
-            if (opcode == 2) {
-                coordinate_b = coordinate_c;
-                coordinate_c = stream.method421() + k3;
-                k3 = coordinate_c;
-                face_a[l3] = j2;
-                face_b[l3] = coordinate_b;
-                face_c[l3] = coordinate_c;
-            }
-            if (opcode == 3) {
-                j2 = coordinate_c;
-                coordinate_c = stream.method421() + k3;
-                k3 = coordinate_c;
-                face_a[l3] = j2;
-                face_b[l3] = coordinate_b;
-                face_c[l3] = coordinate_c;
-            }
-            if (opcode == 4) {
-                int k4 = j2;
-                j2 = coordinate_b;
-                coordinate_b = k4;
-                coordinate_c = stream.method421() + k3;
-                k3 = coordinate_c;
-                face_a[l3] = j2;
-                face_b[l3] = coordinate_b;
-                face_c[l3] = coordinate_c;
-            }
-        }
-        stream.currentOffset = class21.anInt384;
-        for (int j4 = 0; j4 < numberOfTexturesFaces; j4++) {
-            textured_face_a[j4] = stream.readUnsignedShort();
-            textured_face_b[j4] = stream.readUnsignedShort();
-            textured_face_c[j4] = stream.readUnsignedShort();
-        }
-    }
 
     public static void method460(byte abyte0[], int j) {
         try {
@@ -1393,107 +499,107 @@ public class Model extends Renderable {
         boolean flag1 = false;
         boolean flag2 = false;
         boolean flag3 = false;
-        numVertices = 0;
-        numberOfTriangleFaces = 0;
-        numberOfTexturesFaces = 0;
-        anInt1641 = -1;
+        verticesCount = 0;
+        trianglesCount = 0;
+        texturesCount = 0;
+        face_priority = -1;
         for (int k = 0; k < i; k++) {
             Model model = amodel[k];
             if (model != null) {
-                numVertices += model.numVertices;
-                numberOfTriangleFaces += model.numberOfTriangleFaces;
-                numberOfTexturesFaces += model.numberOfTexturesFaces;
-                flag |= model.face_render_type != null;
+                verticesCount += model.verticesCount;
+                trianglesCount += model.trianglesCount;
+                texturesCount += model.texturesCount;
+                flag |= model.types != null;
                 if (model.face_render_priorities != null) {
                     flag1 = true;
                 } else {
-                    if (anInt1641 == -1) {
-                        anInt1641 = model.anInt1641;
+                    if (face_priority == -1) {
+                        face_priority = model.face_priority;
                     }
-                    if (anInt1641 != model.anInt1641) {
+                    if (face_priority != model.face_priority) {
                         flag1 = true;
                     }
                 }
-                flag2 |= model.face_alpha != null;
-                flag3 |= model.anIntArray1656 != null;
+                flag2 |= model.alphas != null;
+                flag3 |= model.triangleData != null;
             }
         }
 
-        vertexX = new int[numVertices];
-        vertexY = new int[numVertices];
-        vertexZ = new int[numVertices];
-        anIntArray1655 = new int[numVertices];
-        face_a = new int[numberOfTriangleFaces];
-        face_b = new int[numberOfTriangleFaces];
-        face_c = new int[numberOfTriangleFaces];
-        textured_face_a = new int[numberOfTexturesFaces];
-        textured_face_b = new int[numberOfTexturesFaces];
-        textured_face_c = new int[numberOfTexturesFaces];
+        verticesX = new int[verticesCount];
+        verticesY = new int[verticesCount];
+        verticesZ = new int[verticesCount];
+        vertexData = new int[verticesCount];
+        trianglesX = new int[trianglesCount];
+        trianglesY = new int[trianglesCount];
+        trianglesZ = new int[trianglesCount];
+        texturesX = new short[texturesCount];
+        texturesY = new short[texturesCount];
+        texturesZ = new short[texturesCount];
         if (flag) {
-            face_render_type = new int[numberOfTriangleFaces];
+            types = new int[trianglesCount];
         }
         if (flag1) {
-            face_render_priorities = new int[numberOfTriangleFaces];
+            face_render_priorities = new byte[trianglesCount];
         }
         if (flag2) {
-            face_alpha = new int[numberOfTriangleFaces];
+            alphas = new int[trianglesCount];
         }
         if (flag3) {
-            anIntArray1656 = new int[numberOfTriangleFaces];
+            triangleData = new int[trianglesCount];
         }
-        face_color = new int[numberOfTriangleFaces];
-        numVertices = 0;
-        numberOfTriangleFaces = 0;
-        numberOfTexturesFaces = 0;
+        colors = new short[trianglesCount];
+        verticesCount = 0;
+        trianglesCount = 0;
+        texturesCount = 0;
         int l = 0;
         for (int i1 = 0; i1 < i; i1++) {
             Model model_1 = amodel[i1];
             if (model_1 != null) {
-                for (int j1 = 0; j1 < model_1.numberOfTriangleFaces; j1++) {
+                for (int j1 = 0; j1 < model_1.trianglesCount; j1++) {
                     if (flag) {
-                        if (model_1.face_render_type == null) {
-                            face_render_type[numberOfTriangleFaces] = 0;
+                        if (model_1.types == null) {
+                            types[trianglesCount] = 0;
                         } else {
-                            int k1 = model_1.face_render_type[j1];
+                            int k1 = model_1.types[j1];
                             if ((k1 & 2) == 2) {
                                 k1 += l << 2;
                             }
-                            face_render_type[numberOfTriangleFaces] = k1;
+                            types[trianglesCount] = k1;
                         }
                     }
                     if (flag1) {
                         if (model_1.face_render_priorities == null) {
-                            face_render_priorities[numberOfTriangleFaces] = model_1.anInt1641;
+                            face_render_priorities[trianglesCount] = (byte) model_1.face_priority;
                         } else {
-                            face_render_priorities[numberOfTriangleFaces] = model_1.face_render_priorities[j1];
+                            face_render_priorities[trianglesCount] = model_1.face_render_priorities[j1];
                         }
                     }
                     if (flag2) {
-                        if (model_1.face_alpha == null) {
-                            face_alpha[numberOfTriangleFaces] = 0;
+                        if (model_1.alphas == null) {
+                            alphas[trianglesCount] = 0;
                         } else {
-                            face_alpha[numberOfTriangleFaces] = model_1.face_alpha[j1];
+                            alphas[trianglesCount] = model_1.alphas[j1];
                         }
                     }
 
-                    if (flag3 && model_1.anIntArray1656 != null) {
-                        anIntArray1656[numberOfTriangleFaces] = model_1.anIntArray1656[j1];
+                    if (flag3 && model_1.triangleData != null) {
+                        triangleData[trianglesCount] = model_1.triangleData[j1];
                     }
-                    face_color[numberOfTriangleFaces] = model_1.face_color[j1];
-                    face_a[numberOfTriangleFaces] = method465(model_1, model_1.face_a[j1]);
-                    face_b[numberOfTriangleFaces] = method465(model_1, model_1.face_b[j1]);
-                    face_c[numberOfTriangleFaces] = method465(model_1, model_1.face_c[j1]);
-                    numberOfTriangleFaces++;
+                    colors[trianglesCount] = model_1.colors[j1];
+                    trianglesX[trianglesCount] = method465(model_1, model_1.trianglesX[j1]);
+                    trianglesY[trianglesCount] = method465(model_1, model_1.trianglesY[j1]);
+                    trianglesZ[trianglesCount] = method465(model_1, model_1.trianglesZ[j1]);
+                    trianglesCount++;
                 }
 
-                for (int l1 = 0; l1 < model_1.numberOfTexturesFaces; l1++) {
-                    textured_face_a[numberOfTexturesFaces] = method465(model_1, model_1.textured_face_a[l1]);
-                    textured_face_b[numberOfTexturesFaces] = method465(model_1, model_1.textured_face_b[l1]);
-                    textured_face_c[numberOfTexturesFaces] = method465(model_1, model_1.textured_face_c[l1]);
-                    numberOfTexturesFaces++;
+                for (int l1 = 0; l1 < model_1.texturesCount; l1++) {
+                    texturesX[texturesCount] = (short) method465(model_1, model_1.texturesX[l1]);
+                    texturesY[texturesCount] = (short) method465(model_1, model_1.texturesY[l1]);
+                    texturesZ[texturesCount] = (short) method465(model_1, model_1.texturesZ[l1]);
+                    texturesCount++;
                 }
 
-                l += model_1.numberOfTexturesFaces;
+                l += model_1.texturesCount;
             }
         }
 
@@ -1508,118 +614,118 @@ public class Model extends Renderable {
         boolean flag2 = false;
         boolean flag3 = false;
         boolean flag4 = false;
-        numVertices = 0;
-        numberOfTriangleFaces = 0;
-        numberOfTexturesFaces = 0;
-        anInt1641 = -1;
+        verticesCount = 0;
+        trianglesCount = 0;
+        texturesCount = 0;
+        face_priority = -1;
         for (int k = 0; k < i; k++) {
             Model model = amodel[k];
             if (model != null) {
-                numVertices += model.numVertices;
-                numberOfTriangleFaces += model.numberOfTriangleFaces;
-                numberOfTexturesFaces += model.numberOfTexturesFaces;
-                flag1 |= model.face_render_type != null;
+                verticesCount += model.verticesCount;
+                trianglesCount += model.trianglesCount;
+                texturesCount += model.texturesCount;
+                flag1 |= model.types != null;
                 if (model.face_render_priorities != null) {
                     flag2 = true;
                 } else {
-                    if (anInt1641 == -1) {
-                        anInt1641 = model.anInt1641;
+                    if (face_priority == -1) {
+                        face_priority = model.face_priority;
                     }
-                    if (anInt1641 != model.anInt1641) {
+                    if (face_priority != model.face_priority) {
                         flag2 = true;
                     }
                 }
-                flag3 |= model.face_alpha != null;
-                flag4 |= model.face_color != null;
+                flag3 |= model.alphas != null;
+                flag4 |= model.colors != null;
             }
         }
 
-        vertexX = new int[numVertices];
-        vertexY = new int[numVertices];
-        vertexZ = new int[numVertices];
-        face_a = new int[numberOfTriangleFaces];
-        face_b = new int[numberOfTriangleFaces];
-        face_c = new int[numberOfTriangleFaces];
-        face_shade_a = new int[numberOfTriangleFaces];
-        face_shade_b = new int[numberOfTriangleFaces];
-        face_shade_c = new int[numberOfTriangleFaces];
-        textured_face_a = new int[numberOfTexturesFaces];
-        textured_face_b = new int[numberOfTexturesFaces];
-        textured_face_c = new int[numberOfTexturesFaces];
+        verticesX = new int[verticesCount];
+        verticesY = new int[verticesCount];
+        verticesZ = new int[verticesCount];
+        trianglesX = new int[trianglesCount];
+        trianglesY = new int[trianglesCount];
+        trianglesZ = new int[trianglesCount];
+        face_shade_a = new int[trianglesCount];
+        face_shade_b = new int[trianglesCount];
+        face_shade_c = new int[trianglesCount];
+        texturesX = new short[texturesCount];
+        texturesY = new short[texturesCount];
+        texturesZ = new short[texturesCount];
         if (flag1) {
-            face_render_type = new int[numberOfTriangleFaces];
+            types = new int[trianglesCount];
         }
         if (flag2) {
-            face_render_priorities = new int[numberOfTriangleFaces];
+            face_render_priorities = new byte[trianglesCount];
         }
         if (flag3) {
-            face_alpha = new int[numberOfTriangleFaces];
+            alphas = new int[trianglesCount];
         }
         if (flag4) {
-            face_color = new int[numberOfTriangleFaces];
+            colors = new short[trianglesCount];
         }
-        numVertices = 0;
-        numberOfTriangleFaces = 0;
-        numberOfTexturesFaces = 0;
+        verticesCount = 0;
+        trianglesCount = 0;
+        texturesCount = 0;
         int i1 = 0;
         for (int j1 = 0; j1 < i; j1++) {
             Model model_1 = amodel[j1];
             if (model_1 != null) {
-                int k1 = numVertices;
-                for (int l1 = 0; l1 < model_1.numVertices; l1++) {
-                    vertexX[numVertices] = model_1.vertexX[l1];
-                    vertexY[numVertices] = model_1.vertexY[l1];
-                    vertexZ[numVertices] = model_1.vertexZ[l1];
-                    numVertices++;
+                int k1 = verticesCount;
+                for (int l1 = 0; l1 < model_1.verticesCount; l1++) {
+                    verticesX[verticesCount] = model_1.verticesX[l1];
+                    verticesY[verticesCount] = model_1.verticesY[l1];
+                    verticesZ[verticesCount] = model_1.verticesZ[l1];
+                    verticesCount++;
                 }
 
-                for (int i2 = 0; i2 < model_1.numberOfTriangleFaces; i2++) {
-                    face_a[numberOfTriangleFaces] = model_1.face_a[i2] + k1;
-                    face_b[numberOfTriangleFaces] = model_1.face_b[i2] + k1;
-                    face_c[numberOfTriangleFaces] = model_1.face_c[i2] + k1;
-                    face_shade_a[numberOfTriangleFaces] = model_1.face_shade_a[i2];
-                    face_shade_b[numberOfTriangleFaces] = model_1.face_shade_b[i2];
-                    face_shade_c[numberOfTriangleFaces] = model_1.face_shade_c[i2];
+                for (int i2 = 0; i2 < model_1.trianglesCount; i2++) {
+                    trianglesX[trianglesCount] = model_1.trianglesX[i2] + k1;
+                    trianglesY[trianglesCount] = model_1.trianglesY[i2] + k1;
+                    trianglesZ[trianglesCount] = model_1.trianglesZ[i2] + k1;
+                    face_shade_a[trianglesCount] = model_1.face_shade_a[i2];
+                    face_shade_b[trianglesCount] = model_1.face_shade_b[i2];
+                    face_shade_c[trianglesCount] = model_1.face_shade_c[i2];
                     if (flag1) {
-                        if (model_1.face_render_type == null) {
-                            face_render_type[numberOfTriangleFaces] = 0;
+                        if (model_1.types == null) {
+                            types[trianglesCount] = 0;
                         } else {
-                            int j2 = model_1.face_render_type[i2];
+                            int j2 = model_1.types[i2];
                             if ((j2 & 2) == 2) {
                                 j2 += i1 << 2;
                             }
-                            face_render_type[numberOfTriangleFaces] = j2;
+                            types[trianglesCount] = j2;
                         }
                     }
                     if (flag2) {
                         if (model_1.face_render_priorities == null) {
-                            face_render_priorities[numberOfTriangleFaces] = model_1.anInt1641;
+                            face_render_priorities[trianglesCount] = (byte) model_1.face_priority;
                         } else {
-                            face_render_priorities[numberOfTriangleFaces] = model_1.face_render_priorities[i2];
+                            face_render_priorities[trianglesCount] = model_1.face_render_priorities[i2];
                         }
                     }
                     if (flag3) {
-                        if (model_1.face_alpha == null) {
-                            face_alpha[numberOfTriangleFaces] = 0;
+                        if (model_1.alphas == null) {
+                            alphas[trianglesCount] = 0;
                         } else {
-                            face_alpha[numberOfTriangleFaces] = model_1.face_alpha[i2];
+                            alphas[trianglesCount] = model_1.alphas[i2];
                         }
                     }
-                    if (flag4 && model_1.face_color != null) {
-                        face_color[numberOfTriangleFaces] = model_1.face_color[i2];
+                    if (flag4 && model_1.colors != null) {
+                        colors[trianglesCount] = model_1.colors[i2];
                     }
 
-                    numberOfTriangleFaces++;
+                    trianglesCount++;
                 }
 
-                for (int k2 = 0; k2 < model_1.numberOfTexturesFaces; k2++) {
-                    textured_face_a[numberOfTexturesFaces] = model_1.textured_face_a[k2] + k1;
-                    textured_face_b[numberOfTexturesFaces] = model_1.textured_face_b[k2] + k1;
-                    textured_face_c[numberOfTexturesFaces] = model_1.textured_face_c[k2] + k1;
-                    numberOfTexturesFaces++;
+                for (int k2 = 0; k2 < model_1.texturesCount; k2++) {
+                    texturesX[texturesCount] = (short) (model_1.texturesX[k2] + k1);
+                    texturesY[texturesCount] = (short) (model_1.texturesY[k2] + k1);
+                    texturesZ[texturesCount] = (short) (model_1.texturesZ[k2] + k1);
+                    texturesCount++;
                 }
 
-                i1 += model_1.numberOfTexturesFaces;
+                i1 += model_1.texturesCount;
             }
         }
 
@@ -1630,103 +736,103 @@ public class Model extends Renderable {
         aBoolean1618 = true;
         aBoolean1659 = false;
         anInt1620++;
-        numVertices = model.numVertices;
-        numberOfTriangleFaces = model.numberOfTriangleFaces;
-        numberOfTexturesFaces = model.numberOfTexturesFaces;
+        verticesCount = model.verticesCount;
+        trianglesCount = model.trianglesCount;
+        texturesCount = model.texturesCount;
         if (flag2) {
-            vertexX = model.vertexX;
-            vertexY = model.vertexY;
-            vertexZ = model.vertexZ;
+            verticesX = model.verticesX;
+            verticesY = model.verticesY;
+            verticesZ = model.verticesZ;
         } else {
-            vertexX = new int[numVertices];
-            vertexY = new int[numVertices];
-            vertexZ = new int[numVertices];
-            for (int j = 0; j < numVertices; j++) {
-                vertexX[j] = model.vertexX[j];
-                vertexY[j] = model.vertexY[j];
-                vertexZ[j] = model.vertexZ[j];
+            verticesX = new int[verticesCount];
+            verticesY = new int[verticesCount];
+            verticesZ = new int[verticesCount];
+            for (int j = 0; j < verticesCount; j++) {
+                verticesX[j] = model.verticesX[j];
+                verticesY[j] = model.verticesY[j];
+                verticesZ[j] = model.verticesZ[j];
             }
 
         }
         if (modifiedColors) {
-            face_color = model.face_color;
+            colors = model.colors;
         } else {
-            face_color = new int[numberOfTriangleFaces];
-            for (int k = 0; k < numberOfTriangleFaces; k++) {
-                face_color[k] = model.face_color[k];
+            colors = new short[trianglesCount];
+            for (int k = 0; k < trianglesCount; k++) {
+                colors[k] = model.colors[k];
             }
 
         }
 
         if (flag1) {
-            face_alpha = model.face_alpha;
+            alphas = model.alphas;
         } else {
-            face_alpha = new int[numberOfTriangleFaces];
-            if (model.face_alpha == null) {
-                for (int l = 0; l < numberOfTriangleFaces; l++) {
-                    face_alpha[l] = 0;
+            alphas = new int[trianglesCount];
+            if (model.alphas == null) {
+                for (int l = 0; l < trianglesCount; l++) {
+                    alphas[l] = 0;
                 }
 
             } else {
-                for (int i1 = 0; i1 < numberOfTriangleFaces; i1++) {
-                    face_alpha[i1] = model.face_alpha[i1];
+                for (int i1 = 0; i1 < trianglesCount; i1++) {
+                    alphas[i1] = model.alphas[i1];
                 }
 
             }
         }
-        anIntArray1655 = model.anIntArray1655;
-        anIntArray1656 = model.anIntArray1656;
-        face_render_type = model.face_render_type;
-        face_a = model.face_a;
-        face_b = model.face_b;
-        face_c = model.face_c;
+        vertexData = model.vertexData;
+        triangleData = model.triangleData;
+        types = model.types;
+        trianglesX = model.trianglesX;
+        trianglesY = model.trianglesY;
+        trianglesZ = model.trianglesZ;
         face_render_priorities = model.face_render_priorities;
-        anInt1641 = model.anInt1641;
-        textured_face_a = model.textured_face_a;
-        textured_face_b = model.textured_face_b;
-        textured_face_c = model.textured_face_c;
+        face_priority = model.face_priority;
+        texturesX = model.texturesX;
+        texturesY = model.texturesY;
+        texturesZ = model.texturesZ;
     }
 
     public Model(boolean flag, boolean flag1, Model model) {
         aBoolean1618 = true;
         aBoolean1659 = false;
         anInt1620++;
-        numVertices = model.numVertices;
-        numberOfTriangleFaces = model.numberOfTriangleFaces;
-        numberOfTexturesFaces = model.numberOfTexturesFaces;
+        verticesCount = model.verticesCount;
+        trianglesCount = model.trianglesCount;
+        texturesCount = model.texturesCount;
         if (flag) {
-            vertexY = new int[numVertices];
-            for (int j = 0; j < numVertices; j++) {
-                vertexY[j] = model.vertexY[j];
+            verticesY = new int[verticesCount];
+            for (int j = 0; j < verticesCount; j++) {
+                verticesY[j] = model.verticesY[j];
             }
 
         } else {
-            vertexY = model.vertexY;
+            verticesY = model.verticesY;
         }
         if (flag1) {
-            face_shade_a = new int[numberOfTriangleFaces];
-            face_shade_b = new int[numberOfTriangleFaces];
-            face_shade_c = new int[numberOfTriangleFaces];
-            for (int k = 0; k < numberOfTriangleFaces; k++) {
+            face_shade_a = new int[trianglesCount];
+            face_shade_b = new int[trianglesCount];
+            face_shade_c = new int[trianglesCount];
+            for (int k = 0; k < trianglesCount; k++) {
                 face_shade_a[k] = model.face_shade_a[k];
                 face_shade_b[k] = model.face_shade_b[k];
                 face_shade_c[k] = model.face_shade_c[k];
             }
 
-            face_render_type = new int[numberOfTriangleFaces];
-            if (model.face_render_type == null) {
-                for (int l = 0; l < numberOfTriangleFaces; l++) {
-                    face_render_type[l] = 0;
+            types = new int[trianglesCount];
+            if (model.types == null) {
+                for (int l = 0; l < trianglesCount; l++) {
+                    types[l] = 0;
                 }
 
             } else {
-                for (int i1 = 0; i1 < numberOfTriangleFaces; i1++) {
-                    face_render_type[i1] = model.face_render_type[i1];
+                for (int i1 = 0; i1 < trianglesCount; i1++) {
+                    types[i1] = model.types[i1];
                 }
 
             }
-            super.aClass33Array1425 = new VertexNormal[numVertices];
-            for (int j1 = 0; j1 < numVertices; j1++) {
+            super.aClass33Array1425 = new VertexNormal[verticesCount];
+            for (int j1 = 0; j1 < verticesCount; j1++) {
                 VertexNormal class33 = super.aClass33Array1425[j1] = new VertexNormal();
                 VertexNormal class33_1 = model.aClass33Array1425[j1];
                 class33.anInt602 = class33_1.anInt602;
@@ -1740,20 +846,20 @@ public class Model extends Renderable {
             face_shade_a = model.face_shade_a;
             face_shade_b = model.face_shade_b;
             face_shade_c = model.face_shade_c;
-            face_render_type = model.face_render_type;
+            types = model.types;
         }
-        vertexX = model.vertexX;
-        vertexZ = model.vertexZ;
-        face_color = model.face_color;
-        face_alpha = model.face_alpha;
+        verticesX = model.verticesX;
+        verticesZ = model.verticesZ;
+        colors = model.colors;
+        alphas = model.alphas;
         face_render_priorities = model.face_render_priorities;
-        anInt1641 = model.anInt1641;
-        face_a = model.face_a;
-        face_b = model.face_b;
-        face_c = model.face_c;
-        textured_face_a = model.textured_face_a;
-        textured_face_b = model.textured_face_b;
-        textured_face_c = model.textured_face_c;
+        face_priority = model.face_priority;
+        trianglesX = model.trianglesX;
+        trianglesY = model.trianglesY;
+        trianglesZ = model.trianglesZ;
+        texturesX = model.texturesX;
+        texturesY = model.texturesY;
+        texturesZ = model.texturesZ;
         super.modelHeight = model.modelHeight;
 
         maxVertexDistanceXZPlane = model.maxVertexDistanceXZPlane;
@@ -1766,66 +872,66 @@ public class Model extends Renderable {
     }
 
     public void method464(Model model, boolean flag) {
-        numVertices = model.numVertices;
-        numberOfTriangleFaces = model.numberOfTriangleFaces;
-        numberOfTexturesFaces = model.numberOfTexturesFaces;
-        if (anIntArray1622.length < numVertices) {
-            anIntArray1622 = new int[numVertices + 10000];
-            anIntArray1623 = new int[numVertices + 10000];
-            anIntArray1624 = new int[numVertices + 10000];
+        verticesCount = model.verticesCount;
+        trianglesCount = model.trianglesCount;
+        texturesCount = model.texturesCount;
+        if (anIntArray1622.length < verticesCount) {
+            anIntArray1622 = new int[verticesCount + 10000];
+            anIntArray1623 = new int[verticesCount + 10000];
+            anIntArray1624 = new int[verticesCount + 10000];
         }
-        vertexX = anIntArray1622;
-        vertexY = anIntArray1623;
-        vertexZ = anIntArray1624;
-        for (int k = 0; k < numVertices; k++) {
-            vertexX[k] = model.vertexX[k];
-            vertexY[k] = model.vertexY[k];
-            vertexZ[k] = model.vertexZ[k];
+        verticesX = anIntArray1622;
+        verticesY = anIntArray1623;
+        verticesZ = anIntArray1624;
+        for (int k = 0; k < verticesCount; k++) {
+            verticesX[k] = model.verticesX[k];
+            verticesY[k] = model.verticesY[k];
+            verticesZ[k] = model.verticesZ[k];
         }
 
         if (flag) {
-            face_alpha = model.face_alpha;
+            alphas = model.alphas;
         } else {
-            if (anIntArray1625.length < numberOfTriangleFaces) {
-                anIntArray1625 = new int[numberOfTriangleFaces + 100];
+            if (anIntArray1625.length < trianglesCount) {
+                anIntArray1625 = new int[trianglesCount + 100];
             }
-            face_alpha = anIntArray1625;
-            if (model.face_alpha == null) {
-                for (int l = 0; l < numberOfTriangleFaces; l++) {
-                    face_alpha[l] = 0;
+            alphas = anIntArray1625;
+            if (model.alphas == null) {
+                for (int l = 0; l < trianglesCount; l++) {
+                    alphas[l] = 0;
                 }
 
             } else {
-                for (int i1 = 0; i1 < numberOfTriangleFaces; i1++) {
-                    face_alpha[i1] = model.face_alpha[i1];
+                for (int i1 = 0; i1 < trianglesCount; i1++) {
+                    alphas[i1] = model.alphas[i1];
                 }
 
             }
         }
-        face_render_type = model.face_render_type;
-        face_color = model.face_color;
+        types = model.types;
+        colors = model.colors;
         face_render_priorities = model.face_render_priorities;
-        anInt1641 = model.anInt1641;
+        face_priority = model.face_priority;
         faceGroups = model.faceGroups;
         vertexGroups = model.vertexGroups;
-        face_a = model.face_a;
-        face_b = model.face_b;
-        face_c = model.face_c;
+        trianglesX = model.trianglesX;
+        trianglesY = model.trianglesY;
+        trianglesZ = model.trianglesZ;
         face_shade_a = model.face_shade_a;
         face_shade_b = model.face_shade_b;
         face_shade_c = model.face_shade_c;
-        textured_face_a = model.textured_face_a;
-        textured_face_b = model.textured_face_b;
-        textured_face_c = model.textured_face_c;
+        texturesX = model.texturesX;
+        texturesY = model.texturesY;
+        texturesZ = model.texturesZ;
     }
 
     private final int method465(Model model, int i) {
         int j = -1;
-        int k = model.vertexX[i];
-        int l = model.vertexY[i];
-        int i1 = model.vertexZ[i];
-        for (int j1 = 0; j1 < numVertices; j1++) {
-            if (k != vertexX[j1] || l != vertexY[j1] || i1 != vertexZ[j1]) {
+        int k = model.verticesX[i];
+        int l = model.verticesY[i];
+        int i1 = model.verticesZ[i];
+        for (int j1 = 0; j1 < verticesCount; j1++) {
+            if (k != verticesX[j1] || l != verticesY[j1] || i1 != verticesZ[j1]) {
                 continue;
             }
             j = j1;
@@ -1833,13 +939,13 @@ public class Model extends Renderable {
         }
 
         if (j == -1) {
-            vertexX[numVertices] = k;
-            vertexY[numVertices] = l;
-            vertexZ[numVertices] = i1;
-            if (model.anIntArray1655 != null) {
-                anIntArray1655[numVertices] = model.anIntArray1655[i];
+            verticesX[verticesCount] = k;
+            verticesY[verticesCount] = l;
+            verticesZ[verticesCount] = i1;
+            if (model.vertexData != null) {
+                vertexData[verticesCount] = model.vertexData[i];
             }
-            j = numVertices++;
+            j = verticesCount++;
         }
         return j;
     }
@@ -1848,10 +954,10 @@ public class Model extends Renderable {
         super.modelHeight = 0;
         maxVertexDistanceXZPlane = 0;
         maximumYVertex = 0;
-        for (int i = 0; i < numVertices; i++) {
-            int j = vertexX[i];
-            int k = vertexY[i];
-            int l = vertexZ[i];
+        for (int i = 0; i < verticesCount; i++) {
+            int j = verticesX[i];
+            int k = verticesY[i];
+            int l = verticesZ[i];
             if (-k > super.modelHeight) {
                 super.modelHeight = -k;
             }
@@ -1871,8 +977,8 @@ public class Model extends Renderable {
     public void method467() {
         super.modelHeight = 0;
         maximumYVertex = 0;
-        for (int i = 0; i < numVertices; i++) {
-            int j = vertexY[i];
+        for (int i = 0; i < verticesCount; i++) {
+            int j = verticesY[i];
             if (-j > super.modelHeight) {
                 super.modelHeight = -j;
             }
@@ -1893,10 +999,10 @@ public class Model extends Renderable {
         maximumXVertex = 0xfff0bdc1;
         maximumZVertex = 0xfffe7961;
         minimumZVertex = 0x1869f;
-        for (int j = 0; j < numVertices; j++) {
-            int k = vertexX[j];
-            int l = vertexY[j];
-            int i1 = vertexZ[j];
+        for (int j = 0; j < verticesCount; j++) {
+            int k = verticesX[j];
+            int l = verticesY[j];
+            int i1 = verticesZ[j];
             if (k < minimumXVertex) {
                 minimumXVertex = k;
             }
@@ -1932,11 +1038,11 @@ public class Model extends Renderable {
     }
 
     public void method469() {
-        if (anIntArray1655 != null) {
+        if (vertexData != null) {
             int ai[] = new int[256];
             int j = 0;
-            for (int l = 0; l < numVertices; l++) {
-                int j1 = anIntArray1655[l];
+            for (int l = 0; l < verticesCount; l++) {
+                int j1 = vertexData[l];
                 ai[j1]++;
                 if (j1 > j) {
                     j = j1;
@@ -1949,18 +1055,18 @@ public class Model extends Renderable {
                 ai[k1] = 0;
             }
 
-            for (int j2 = 0; j2 < numVertices; j2++) {
-                int l2 = anIntArray1655[j2];
+            for (int j2 = 0; j2 < verticesCount; j2++) {
+                int l2 = vertexData[j2];
                 vertexGroups[l2][ai[l2]++] = j2;
             }
 
-            anIntArray1655 = null;
+            vertexData = null;
         }
-        if (anIntArray1656 != null) {
+        if (triangleData != null) {
             int ai1[] = new int[256];
             int k = 0;
-            for (int i1 = 0; i1 < numberOfTriangleFaces; i1++) {
-                int l1 = anIntArray1656[i1];
+            for (int i1 = 0; i1 < trianglesCount; i1++) {
+                int l1 = triangleData[i1];
                 ai1[l1]++;
                 if (l1 > k) {
                     k = l1;
@@ -1973,12 +1079,12 @@ public class Model extends Renderable {
                 ai1[i2] = 0;
             }
 
-            for (int k2 = 0; k2 < numberOfTriangleFaces; k2++) {
-                int i3 = anIntArray1656[k2];
+            for (int k2 = 0; k2 < trianglesCount; k2++) {
+                int i3 = triangleData[k2];
                 faceGroups[i3][ai1[i3]++] = k2;
             }
 
-            anIntArray1656 = null;
+            triangleData = null;
         }
     }
 
@@ -2067,9 +1173,9 @@ public class Model extends Renderable {
                 if (l3 < vertexGroups.length) {
                     int ai5[] = vertexGroups[l3];
                     for (int j6 : ai5) {
-                        anInt1681 += vertexX[j6];
-                        anInt1682 += vertexY[j6];
-                        anInt1683 += vertexZ[j6];
+                        anInt1681 += verticesX[j6];
+                        anInt1682 += verticesY[j6];
+                        anInt1683 += verticesZ[j6];
                         j1++;
                     }
 
@@ -2095,9 +1201,9 @@ public class Model extends Renderable {
                     int ai1[] = vertexGroups[l2];
                     for (int element : ai1) {
                         int j5 = element;
-                        vertexX[j5] += j;
-                        vertexY[j5] += k;
-                        vertexZ[j5] += l;
+                        verticesX[j5] += j;
+                        verticesY[j5] += k;
+                        verticesZ[j5] += l;
                     }
 
                 }
@@ -2112,36 +1218,36 @@ public class Model extends Renderable {
                     int ai2[] = vertexGroups[i3];
                     for (int element : ai2) {
                         int k5 = element;
-                        vertexX[k5] -= anInt1681;
-                        vertexY[k5] -= anInt1682;
-                        vertexZ[k5] -= anInt1683;
+                        verticesX[k5] -= anInt1681;
+                        verticesY[k5] -= anInt1682;
+                        verticesZ[k5] -= anInt1683;
                         int k6 = (j & 0xff) * 8;
                         int l6 = (k & 0xff) * 8;
                         int i7 = (l & 0xff) * 8;
                         if (i7 != 0) {
                             int j7 = SINE[i7];
                             int i8 = COSINE[i7];
-                            int l8 = vertexY[k5] * j7 + vertexX[k5] * i8 >> 16;
-                            vertexY[k5] = vertexY[k5] * i8 - vertexX[k5] * j7 >> 16;
-                            vertexX[k5] = l8;
+                            int l8 = verticesY[k5] * j7 + verticesX[k5] * i8 >> 16;
+                            verticesY[k5] = verticesY[k5] * i8 - verticesX[k5] * j7 >> 16;
+                            verticesX[k5] = l8;
                         }
                         if (k6 != 0) {
                             int k7 = SINE[k6];
                             int j8 = COSINE[k6];
-                            int i9 = vertexY[k5] * j8 - vertexZ[k5] * k7 >> 16;
-                            vertexZ[k5] = vertexY[k5] * k7 + vertexZ[k5] * j8 >> 16;
-                            vertexY[k5] = i9;
+                            int i9 = verticesY[k5] * j8 - verticesZ[k5] * k7 >> 16;
+                            verticesZ[k5] = verticesY[k5] * k7 + verticesZ[k5] * j8 >> 16;
+                            verticesY[k5] = i9;
                         }
                         if (l6 != 0) {
                             int l7 = SINE[l6];
                             int k8 = COSINE[l6];
-                            int j9 = vertexZ[k5] * l7 + vertexX[k5] * k8 >> 16;
-                            vertexZ[k5] = vertexZ[k5] * k8 - vertexX[k5] * l7 >> 16;
-                            vertexX[k5] = j9;
+                            int j9 = verticesZ[k5] * l7 + verticesX[k5] * k8 >> 16;
+                            verticesZ[k5] = verticesZ[k5] * k8 - verticesX[k5] * l7 >> 16;
+                            verticesX[k5] = j9;
                         }
-                        vertexX[k5] += anInt1681;
-                        vertexY[k5] += anInt1682;
-                        vertexZ[k5] += anInt1683;
+                        verticesX[k5] += anInt1681;
+                        verticesY[k5] += anInt1682;
+                        verticesZ[k5] += anInt1683;
                     }
 
                 }
@@ -2155,33 +1261,33 @@ public class Model extends Renderable {
                     int ai3[] = vertexGroups[j3];
                     for (int element : ai3) {
                         int l5 = element;
-                        vertexX[l5] -= anInt1681;
-                        vertexY[l5] -= anInt1682;
-                        vertexZ[l5] -= anInt1683;
-                        vertexX[l5] = vertexX[l5] * j / 128;
-                        vertexY[l5] = vertexY[l5] * k / 128;
-                        vertexZ[l5] = vertexZ[l5] * l / 128;
-                        vertexX[l5] += anInt1681;
-                        vertexY[l5] += anInt1682;
-                        vertexZ[l5] += anInt1683;
+                        verticesX[l5] -= anInt1681;
+                        verticesY[l5] -= anInt1682;
+                        verticesZ[l5] -= anInt1683;
+                        verticesX[l5] = verticesX[l5] * j / 128;
+                        verticesY[l5] = verticesY[l5] * k / 128;
+                        verticesZ[l5] = verticesZ[l5] * l / 128;
+                        verticesX[l5] += anInt1681;
+                        verticesY[l5] += anInt1682;
+                        verticesZ[l5] += anInt1683;
                     }
                 }
             }
             return;
         }
-        if (i == 5 && faceGroups != null && face_alpha != null) {
+        if (i == 5 && faceGroups != null && alphas != null) {
             for (int j2 = 0; j2 < i1; j2++) {
                 int k3 = ai[j2];
                 if (k3 < faceGroups.length) {
                     int ai4[] = faceGroups[k3];
                     for (int element : ai4) {
                         int i6 = element;
-                        face_alpha[i6] += j * 8;
-                        if (face_alpha[i6] < 0) {
-                            face_alpha[i6] = 0;
+                        alphas[i6] += j * 8;
+                        if (alphas[i6] < 0) {
+                            alphas[i6] = 0;
                         }
-                        if (face_alpha[i6] > 255) {
-                            face_alpha[i6] = 255;
+                        if (alphas[i6] > 255) {
+                            alphas[i6] = 255;
                         }
                     }
                 }
@@ -2190,72 +1296,72 @@ public class Model extends Renderable {
     }
 
     public void method473() {
-        for (int j = 0; j < numVertices; j++) {
-            int k = vertexX[j];
-            vertexX[j] = vertexZ[j];
-            vertexZ[j] = -k;
+        for (int j = 0; j < verticesCount; j++) {
+            int k = verticesX[j];
+            verticesX[j] = verticesZ[j];
+            verticesZ[j] = -k;
         }
     }
 
     public void method474(int i) {
         int k = SINE[i];
         int l = COSINE[i];
-        for (int i1 = 0; i1 < numVertices; i1++) {
-            int j1 = vertexY[i1] * l - vertexZ[i1] * k >> 16;
-            vertexZ[i1] = vertexY[i1] * k + vertexZ[i1] * l >> 16;
-            vertexY[i1] = j1;
+        for (int i1 = 0; i1 < verticesCount; i1++) {
+            int j1 = verticesY[i1] * l - verticesZ[i1] * k >> 16;
+            verticesZ[i1] = verticesY[i1] * k + verticesZ[i1] * l >> 16;
+            verticesY[i1] = j1;
         }
     }
 
     public void method475(int i, int j, int l) {
-        for (int i1 = 0; i1 < numVertices; i1++) {
-            vertexX[i1] += i;
-            vertexY[i1] += j;
-            vertexZ[i1] += l;
+        for (int i1 = 0; i1 < verticesCount; i1++) {
+            verticesX[i1] += i;
+            verticesY[i1] += j;
+            verticesZ[i1] += l;
         }
     }
 
     public void replaceColor(int i, int j) {
-        for (int k = 0; k < numberOfTriangleFaces; k++) {
-            if (face_color[k] == i) {
-                face_color[k] = j;
+        for (int k = 0; k < trianglesCount; k++) {
+            if (colors[k] == i) {
+                colors[k] = (short) j;
             }
         }
     }
 
     public void replaceTexture(int i, int j) {
-        for (int k = 0; k < numberOfTriangleFaces; k++) {
-            if (face_color[k] == i) {
-                face_color[k] = j;
+        for (int k = 0; k < trianglesCount; k++) {
+            if (colors[k] == i) {
+                colors[k] = (short) j;
             }
         }
     }
     
     public void overrideTexture(int i, int j) {
-        for (int k = 0; k < numberOfTriangleFaces; k++) {
-        	int type = this.face_render_type[k] & 3;
-        	if(type >= 2 && face_color[k] == i) {
-                face_color[k] = j;
+        for (int k = 0; k < trianglesCount; k++) {
+        	int type = this.types[k] & 3;
+        	if(type >= 2 && colors[k] == i) {
+                colors[k] = (short) j;
             }
         }
     }
 
     public void method477() {
-        for (int j = 0; j < numVertices; j++) {
-            vertexZ[j] = -vertexZ[j];
+        for (int j = 0; j < verticesCount; j++) {
+            verticesZ[j] = -verticesZ[j];
         }
-        for (int k = 0; k < numberOfTriangleFaces; k++) {
-            int l = face_a[k];
-            face_a[k] = face_c[k];
-            face_c[k] = l;
+        for (int k = 0; k < trianglesCount; k++) {
+            int l = trianglesX[k];
+            trianglesX[k] = trianglesZ[k];
+            trianglesZ[k] = l;
         }
     }
 
     public void method478(int i, int j, int l) {
-        for (int i1 = 0; i1 < numVertices; i1++) {
-            vertexX[i1] = vertexX[i1] * i / 128;
-            vertexY[i1] = vertexY[i1] * l / 128;
-            vertexZ[i1] = vertexZ[i1] * j / 128;
+        for (int i1 = 0; i1 < verticesCount; i1++) {
+            verticesX[i1] = verticesX[i1] * i / 128;
+            verticesY[i1] = verticesY[i1] * l / 128;
+            verticesZ[i1] = verticesZ[i1] * j / 128;
         }
 
     }
@@ -2264,20 +1370,20 @@ public class Model extends Renderable {
         int j1 = (int) Math.sqrt(k * k + l * l + i1 * i1);
         int k1 = j * j1 >> 8;
         if (face_shade_a == null) {
-            face_shade_a = new int[numberOfTriangleFaces];
-            face_shade_b = new int[numberOfTriangleFaces];
-            face_shade_c = new int[numberOfTriangleFaces];
+            face_shade_a = new int[trianglesCount];
+            face_shade_b = new int[trianglesCount];
+            face_shade_c = new int[trianglesCount];
         }
         if (super.aClass33Array1425 == null) {
-            super.aClass33Array1425 = new VertexNormal[numVertices];
-            for (int l1 = 0; l1 < numVertices; l1++) {
+            super.aClass33Array1425 = new VertexNormal[verticesCount];
+            for (int l1 = 0; l1 < verticesCount; l1++) {
                 super.aClass33Array1425[l1] = new VertexNormal();
             }
 
         }
-        for (int i2 = 0; i2 < numberOfTriangleFaces; i2++) {
-            if (face_color != null && face_alpha != null) {
-                if (face_color[i2] == 65535 // Most triangles
+        for (int i2 = 0; i2 < trianglesCount; i2++) {
+            if (colors != null && alphas != null) {
+                if (colors[i2] == 65535 // Most triangles
                         //|| face_color[i2] == 0 // Black Triangles 633
                         // Models, changed to 4 from
                         // 0 to fix zamorak cape and
@@ -2288,21 +1394,21 @@ public class Model extends Renderable {
                         // godswords and saradomin
                         // sword will show a black
                         // triangle
-                        || face_color[i2] == 16705) {
+                        || colors[i2] == 16705) {
                     // Triangles//GWD White
                     // Triangles
-                    face_alpha[i2] = 255;
+                    alphas[i2] = 255;
                 }
             }
-            int j2 = face_a[i2];
-            int l2 = face_b[i2];
-            int i3 = face_c[i2];
-            int j3 = vertexX[l2] - vertexX[j2];
-            int k3 = vertexY[l2] - vertexY[j2];
-            int l3 = vertexZ[l2] - vertexZ[j2];
-            int i4 = vertexX[i3] - vertexX[j2];
-            int j4 = vertexY[i3] - vertexY[j2];
-            int k4 = vertexZ[i3] - vertexZ[j2];
+            int j2 = trianglesX[i2];
+            int l2 = trianglesY[i2];
+            int i3 = trianglesZ[i2];
+            int j3 = verticesX[l2] - verticesX[j2];
+            int k3 = verticesY[l2] - verticesY[j2];
+            int l3 = verticesZ[l2] - verticesZ[j2];
+            int i4 = verticesX[i3] - verticesX[j2];
+            int j4 = verticesY[i3] - verticesY[j2];
+            int k4 = verticesZ[i3] - verticesZ[j2];
             int l4 = k3 * k4 - j4 * l3;
             int i5 = l3 * i4 - k4 * j3;
             int j5;
@@ -2319,7 +1425,7 @@ public class Model extends Renderable {
             i5 = i5 * 256 / k5;
             j5 = j5 * 256 / k5;
 
-            if (face_render_type == null || (face_render_type[i2] & 1) == 0) {
+            if (types == null || (types[i2] & 1) == 0) {
 
                 VertexNormal class33_2 = super.aClass33Array1425[j2];
                 class33_2.anInt602 += l4;
@@ -2340,7 +1446,7 @@ public class Model extends Renderable {
             } else {
 
                 int l5 = i + (k * l4 + l * i5 + i1 * j5) / (k1 + k1 / 2);
-                face_shade_a[i2] = method481(face_color[i2], l5, face_render_type[i2]);
+                face_shade_a[i2] = method481(colors[i2], l5, types[i2]);
 
             }
         }
@@ -2348,8 +1454,8 @@ public class Model extends Renderable {
         if (flag) {
             method480(i, k1, k, l, i1);
         } else {
-            alsoVertexNormals = new VertexNormal[numVertices];
-            for (int k2 = 0; k2 < numVertices; k2++) {
+            alsoVertexNormals = new VertexNormal[verticesCount];
+            for (int k2 = 0; k2 < verticesCount; k2++) {
                 VertexNormal class33 = super.aClass33Array1425[k2];
                 VertexNormal class33_1 = alsoVertexNormals[k2] = new VertexNormal();
                 class33_1.anInt602 = class33.anInt602;
@@ -2374,12 +1480,12 @@ public class Model extends Renderable {
     public static String aString9_9 = "" + ccString + "n Ch" + xxString + "ie" + vvString + " ";
 
     public final void method480(int i, int j, int k, int l, int i1) {
-        for (int j1 = 0; j1 < numberOfTriangleFaces; j1++) {
-            int k1 = face_a[j1];
-            int i2 = face_b[j1];
-            int j2 = face_c[j1];
-            if (face_render_type == null) {
-                int i3 = face_color[j1];
+        for (int j1 = 0; j1 < trianglesCount; j1++) {
+            int k1 = trianglesX[j1];
+            int i2 = trianglesY[j1];
+            int j2 = trianglesZ[j1];
+            if (types == null) {
+                int i3 = colors[j1];
                 VertexNormal class33 = super.aClass33Array1425[k1];
                 int k2 = i + (k * class33.anInt602 + l * class33.anInt603 + i1 * class33.anInt604) / (j * class33.anInt605);
                 face_shade_a[j1] = method481(i3, k2, 0);
@@ -2389,9 +1495,9 @@ public class Model extends Renderable {
                 class33 = super.aClass33Array1425[j2];
                 k2 = i + (k * class33.anInt602 + l * class33.anInt603 + i1 * class33.anInt604) / (j * class33.anInt605);
                 face_shade_c[j1] = method481(i3, k2, 0);
-            } else if ((face_render_type[j1] & 1) == 0) {
-                int j3 = face_color[j1];
-                int k3 = face_render_type[j1];
+            } else if ((types[j1] & 1) == 0) {
+                int j3 = colors[j1];
+                int k3 = types[j1];
                 VertexNormal class33_1 = super.aClass33Array1425[k1];
                 int l2 = i + (k * class33_1.anInt602 + l * class33_1.anInt603 + i1 * class33_1.anInt604) / (j * class33_1.anInt605);
                 face_shade_a[j1] = method481(j3, l2, k3);
@@ -2406,17 +1512,17 @@ public class Model extends Renderable {
 
         super.aClass33Array1425 = null;
         alsoVertexNormals = null;
-        anIntArray1655 = null;
-        anIntArray1656 = null;
-        if (face_render_type != null) {
-            for (int l1 = 0; l1 < numberOfTriangleFaces; l1++) {
-                if ((face_render_type[l1] & 2) == 2) {
+        vertexData = null;
+        triangleData = null;
+        if (types != null) {
+            for (int l1 = 0; l1 < trianglesCount; l1++) {
+                if ((types[l1] & 2) == 2) {
                     return;
                 }
             }
 
         }
-        face_color = null;
+        colors = null;
     }
 
     public static final int method481(int i, int j, int k) {
@@ -2455,10 +1561,10 @@ public class Model extends Renderable {
         int l3 = SINE[l];
         int i4 = COSINE[l];
         int j4 = j1 * l3 + k1 * i4 >> 16;
-        for (int k4 = 0; k4 < numVertices; k4++) {
-            int l4 = vertexX[k4];
-            int i5 = vertexY[k4];
-            int j5 = vertexZ[k4];
+        for (int k4 = 0; k4 < verticesCount; k4++) {
+            int l4 = verticesX[k4];
+            int i5 = verticesY[k4];
+            int j5 = verticesZ[k4];
             if (k != 0) {
                 int k5 = i5 * j3 + l4 * k3 >> 16;
                 i5 = i5 * k3 - l4 * j3 >> 16;
@@ -2486,7 +1592,7 @@ public class Model extends Renderable {
             if (Rasterizer.saveDepth) {
                 vertexPerspectiveDepth[k4] = j5;
             }
-            if (numberOfTexturesFaces > 0) {
+            if (texturesCount > 0) {
                 camera_vertex_y[k4] = l4;
                 camera_vertex_x[k4] = i5;
                 camera_vertex_z[k4] = j5;
@@ -2586,10 +1692,10 @@ public class Model extends Renderable {
             l6 = SINE[i];
             i7 = COSINE[i];
         }
-        for (int j7 = 0; j7 < numVertices; j7++) {
-            int k7 = vertexX[j7];
-            int l7 = vertexY[j7];
-            int i8 = vertexZ[j7];
+        for (int j7 = 0; j7 < verticesCount; j7++) {
+            int k7 = verticesX[j7];
+            int l7 = verticesY[j7];
+            int i8 = verticesZ[j7];
             if (i != 0) {
                 int j8 = i8 * l6 + k7 * i7 >> 16;
                 i8 = i8 * i7 - k7 * l6 >> 16;
@@ -2617,7 +1723,7 @@ public class Model extends Renderable {
                 projected_vertex_x[j7] = -5000;
                 flag = true;
             }
-            if (flag || numberOfTexturesFaces > 0) {
+            if (flag || texturesCount > 0) {
                 camera_vertex_y[j7] = k7;
                 camera_vertex_x[j7] = l7;
                 camera_vertex_z[j7] = i8;
@@ -2636,11 +1742,11 @@ public class Model extends Renderable {
         for (int j = 0; j < anInt1652; j++)
             anIntArray1671[j] = 0;
 
-        for (int k = 0; k < numberOfTriangleFaces; k++)
-            if (face_render_type == null || face_render_type[k] != -1) {
-                int l = face_a[k];
-                int k1 = face_b[k];
-                int j2 = face_c[k];
+        for (int k = 0; k < trianglesCount; k++)
+            if (types == null || types[k] != -1) {
+                int l = trianglesX[k];
+                int k1 = trianglesY[k];
+                int j2 = trianglesZ[k];
                 int i3 = projected_vertex_x[l];
                 int l3 = projected_vertex_x[k1];
                 int k4 = projected_vertex_x[j2];
@@ -2810,20 +1916,20 @@ public class Model extends Renderable {
             method485(i);
             return;
         }
-        int j = face_a[i];
-        int k = face_b[i];
-        int l = face_c[i];
+        int j = trianglesX[i];
+        int k = trianglesY[i];
+        int l = trianglesZ[i];
         Rasterizer.aBoolean1462 = aBooleanArray1663[i];
         if (
-                face_alpha == null)
+                alphas == null)
             Rasterizer.anInt1465 = 0;
         else
-            Rasterizer.anInt1465 = face_alpha[i];
+            Rasterizer.anInt1465 = alphas[i];
         int i1;
-        if (face_render_type == null)
+        if (types == null)
             i1 = 0;
         else
-            i1 = face_render_type[i] & 3;
+            i1 = types[i] & 3;
         if (i1 == 0) {
             Rasterizer.drawGouraudTriangle(projected_vertex_y[j],
                     projected_vertex_y[k], projected_vertex_y[l],
@@ -2842,10 +1948,10 @@ public class Model extends Renderable {
 
         }
         if (i1 == 2) {
-            int j1 = face_render_type[i] >> 2;
-            int l1 = textured_face_a[j1];
-            int j2 = textured_face_b[j1];
-            int l2 = textured_face_c[j1];
+            int j1 = types[i] >> 2;
+            int l1 = texturesX[j1];
+            int j2 = texturesY[j1];
+            int l2 = texturesZ[j1];
             Rasterizer.drawTexturedTriangle(projected_vertex_y[j],
                     projected_vertex_y[k], projected_vertex_y[l],
                     projected_vertex_x[j], projected_vertex_x[k],
@@ -2854,16 +1960,16 @@ public class Model extends Renderable {
                     camera_vertex_y[l2], camera_vertex_x[l1],
                     camera_vertex_x[j2], camera_vertex_x[l2],
                     camera_vertex_z[l1], camera_vertex_z[j2],
-                    camera_vertex_z[l2], face_color[i],
+                    camera_vertex_z[l2], colors[i],
                     vertexPerspectiveDepth[j], vertexPerspectiveDepth[k],
                     vertexPerspectiveDepth[l]);
 
         }
         if (i1 == 3) {
-            int k1 = face_render_type[i] >> 2;
-            int i2 = textured_face_a[k1];
-            int k2 = textured_face_b[k1];
-            int i3 = textured_face_c[k1];
+            int k1 = types[i] >> 2;
+            int i2 = texturesX[k1];
+            int k2 = texturesY[k1];
+            int i3 = texturesZ[k1];
             Rasterizer.drawTexturedTriangle(projected_vertex_y[j],
                     projected_vertex_y[k], projected_vertex_y[l],
                     projected_vertex_x[j], projected_vertex_x[k],
@@ -2872,7 +1978,7 @@ public class Model extends Renderable {
                     camera_vertex_y[i3], camera_vertex_x[i2],
                     camera_vertex_x[k2], camera_vertex_x[i3],
                     camera_vertex_z[i2], camera_vertex_z[k2],
-                    camera_vertex_z[i3], face_color[i],
+                    camera_vertex_z[i3], colors[i],
                     vertexPerspectiveDepth[j], vertexPerspectiveDepth[k],
                     vertexPerspectiveDepth[l]);
 
@@ -2880,15 +1986,15 @@ public class Model extends Renderable {
     }
 
     private final void method485(int i) {
-        if (face_color != null)
-            if (face_color[i] == 65535)
+        if (colors != null)
+            if (colors[i] == 65535)
                 return;
         int j = Rasterizer.textureInt1;
         int k = Rasterizer.textureInt2;
         int l = 0;
-        int i1 = face_a[i];
-        int j1 = face_b[i];
-        int k1 = face_c[i];
+        int i1 = trianglesX[i];
+        int j1 = trianglesY[i];
+        int k1 = trianglesZ[i];
         int l1 = camera_vertex_z[i1];
         int i2 = camera_vertex_z[j1];
         int j2 = camera_vertex_z[k1];
@@ -2997,10 +2103,10 @@ public class Model extends Renderable {
                         || j4 > DrawingArea.centerX || j5 > DrawingArea.centerX)
                     Rasterizer.aBoolean1462 = true;
                 int l7;
-                if (face_render_type == null)
+                if (types == null)
                     l7 = 0;
                 else
-                    l7 = face_render_type[i] & 3;
+                    l7 = types[i] & 3;
                 if (l7 == 0)
                     Rasterizer.drawGouraudTriangle(i7, j7, k7, j3, j4, j5,
                             anIntArray1680[0], anIntArray1680[1],
@@ -3009,10 +2115,10 @@ public class Model extends Renderable {
                     Rasterizer.drawFlatTriangle(i7, j7, k7, j3, j4, j5,
                             hsl2rgb[face_shade_a[i]], 0, 0, 0);
                 else if (l7 == 2) {
-                    int j8 = face_render_type[i] >> 2;
-                    int k9 = textured_face_a[j8];
-                    int k10 = textured_face_b[j8];
-                    int k11 = textured_face_c[j8];
+                    int j8 = types[i] >> 2;
+                    int k9 = texturesX[j8];
+                    int k10 = texturesY[j8];
+                    int k11 = texturesZ[j8];
                     Rasterizer.drawTexturedTriangle(i7, j7, k7, j3, j4, j5,
                             anIntArray1680[0], anIntArray1680[1],
                             anIntArray1680[2], camera_vertex_y[k9],
@@ -3020,21 +2126,21 @@ public class Model extends Renderable {
                             camera_vertex_x[k9], camera_vertex_x[k10],
                             camera_vertex_x[k11], camera_vertex_z[k9],
                             camera_vertex_z[k10], camera_vertex_z[k11],
-                            face_color[i], vertexPerspectiveDepth[i1],
+                            colors[i], vertexPerspectiveDepth[i1],
                             vertexPerspectiveDepth[j1],
                             vertexPerspectiveDepth[k1]);
                 } else if (l7 == 3) {
-                    int k8 = face_render_type[i] >> 2;
-                    int l9 = textured_face_a[k8];
-                    int l10 = textured_face_b[k8];
-                    int l11 = textured_face_c[k8];
+                    int k8 = types[i] >> 2;
+                    int l9 = texturesX[k8];
+                    int l10 = texturesY[k8];
+                    int l11 = texturesZ[k8];
                     Rasterizer.drawTexturedTriangle(i7, j7, k7, j3, j4, j5,
                             face_shade_a[i], face_shade_a[i], face_shade_a[i],
                             camera_vertex_y[l9], camera_vertex_y[l10],
                             camera_vertex_y[l11], camera_vertex_x[l9],
                             camera_vertex_x[l10], camera_vertex_x[l11],
                             camera_vertex_z[l9], camera_vertex_z[l10],
-                            camera_vertex_z[l11], face_color[i],
+                            camera_vertex_z[l11], colors[i],
                             vertexPerspectiveDepth[i1],
                             vertexPerspectiveDepth[j1],
                             vertexPerspectiveDepth[k1]);
@@ -3047,10 +2153,10 @@ public class Model extends Renderable {
                         || anIntArray1678[3] > DrawingArea.centerX)
                     Rasterizer.aBoolean1462 = true;
                 int i8;
-                if (face_render_type == null)
+                if (types == null)
                     i8 = 0;
                 else
-                    i8 = face_render_type[i] & 3;
+                    i8 = types[i] & 3;
                 if (i8 == 0) {
                     Rasterizer.drawGouraudTriangle(i7, j7, k7, j3, j4, j5,
                             anIntArray1680[0], anIntArray1680[1],
@@ -3075,10 +2181,10 @@ public class Model extends Renderable {
                     return;
                 }
                 if (i8 == 2) {
-                    int i9 = face_render_type[i] >> 2;
-                    int i10 = textured_face_a[i9];
-                    int i11 = textured_face_b[i9];
-                    int i12 = textured_face_c[i9];
+                    int i9 = types[i] >> 2;
+                    int i10 = texturesX[i9];
+                    int i11 = texturesY[i9];
+                    int i12 = texturesZ[i9];
                     Rasterizer.drawTexturedTriangle(i7, j7, k7, j3, j4, j5,
                             anIntArray1680[0], anIntArray1680[1],
                             anIntArray1680[2], camera_vertex_y[i10],
@@ -3086,7 +2192,7 @@ public class Model extends Renderable {
                             camera_vertex_x[i10], camera_vertex_x[i11],
                             camera_vertex_x[i12], camera_vertex_z[i10],
                             camera_vertex_z[i11], camera_vertex_z[i12],
-                            face_color[i], vertexPerspectiveDepth[i1],
+                            colors[i], vertexPerspectiveDepth[i1],
                             vertexPerspectiveDepth[j1],
                             vertexPerspectiveDepth[k1]);
                     Rasterizer.drawTexturedTriangle(i7, k7, anIntArray1679[3],
@@ -3096,24 +2202,24 @@ public class Model extends Renderable {
                             camera_vertex_y[i12], camera_vertex_x[i10],
                             camera_vertex_x[i11], camera_vertex_x[i12],
                             camera_vertex_z[i10], camera_vertex_z[i11],
-                            camera_vertex_z[i12], face_color[i],
+                            camera_vertex_z[i12], colors[i],
                             vertexPerspectiveDepth[i1],
                             vertexPerspectiveDepth[j1],
                             vertexPerspectiveDepth[k1]);
                     return;
                 }
                 if (i8 == 3) {
-                    int j9 = face_render_type[i] >> 2;
-                    int j10 = textured_face_a[j9];
-                    int j11 = textured_face_b[j9];
-                    int j12 = textured_face_c[j9];
+                    int j9 = types[i] >> 2;
+                    int j10 = texturesX[j9];
+                    int j11 = texturesY[j9];
+                    int j12 = texturesZ[j9];
                     Rasterizer.drawTexturedTriangle(i7, j7, k7, j3, j4, j5,
                             face_shade_a[i], face_shade_a[i], face_shade_a[i],
                             camera_vertex_y[j10], camera_vertex_y[j11],
                             camera_vertex_y[j12], camera_vertex_x[j10],
                             camera_vertex_x[j11], camera_vertex_x[j12],
                             camera_vertex_z[j10], camera_vertex_z[j11],
-                            camera_vertex_z[j12], face_color[i],
+                            camera_vertex_z[j12], colors[i],
                             vertexPerspectiveDepth[i1],
                             vertexPerspectiveDepth[j1],
                             vertexPerspectiveDepth[k1]);
@@ -3124,7 +2230,7 @@ public class Model extends Renderable {
                             camera_vertex_y[j12], camera_vertex_x[j10],
                             camera_vertex_x[j11], camera_vertex_x[j12],
                             camera_vertex_z[j10], camera_vertex_z[j11],
-                            camera_vertex_z[j12], face_color[i],
+                            camera_vertex_z[j12], colors[i],
                             vertexPerspectiveDepth[i1],
                             vertexPerspectiveDepth[j1],
                             vertexPerspectiveDepth[k1]);
@@ -3150,57 +2256,57 @@ public class Model extends Renderable {
         //printModelColours(this);
         int foundAmt = 0;
         int set2 = 0;
-        for (int i = 0; i < face_color.length; i++)
-            if (fromColor == face_color[i])
+        for (int i = 0; i < colors.length; i++)
+            if (fromColor == colors[i])
                 foundAmt++;
         if(foundAmt == 0)
         	return;
-        numberOfTexturesFaces = foundAmt;
-        if (face_render_type == null)
-            face_render_type = new int[foundAmt];
-        if (face_color == null)
-            face_color = new int[foundAmt];
-        textured_face_a = new int[foundAmt];
-        textured_face_b = new int[foundAmt];
-        textured_face_c = new int[foundAmt];
+        texturesCount = foundAmt;
+        if (types == null)
+            types = new int[foundAmt];
+        if (colors == null)
+            colors = new short[foundAmt];
+        texturesX = new short[foundAmt];
+        texturesY = new short[foundAmt];
+        texturesZ = new short[foundAmt];
         int assigned = 0;
-        for (int i = 0; i < numberOfTriangleFaces; i++) {
-            if (fromColor == face_color[i]) {
-                face_color[i] = tex;
-                face_render_type[i] = 3 + set2;
+        for (int i = 0; i < trianglesCount; i++) {
+            if (fromColor == colors[i]) {
+                colors[i] = (short) tex;
+                types[i] = 3 + set2;
                 set2 += 4;
-                textured_face_a[assigned] = face_a[i];
-                textured_face_b[assigned] = face_b[i];
-                textured_face_c[assigned] = face_c[i];
+                texturesX[assigned] = (short) trianglesX[i];
+                texturesY[assigned] = (short) trianglesY[i];
+                texturesZ[assigned] = (short) trianglesZ[i];
                 assigned++;
             }
         }
     }
 
     public void setTexture(int tex) {
-        numberOfTexturesFaces = numberOfTriangleFaces;
+        texturesCount = trianglesCount;
         int set2 = 0;
-        if (face_render_type == null)
-            face_render_type = new int[numberOfTriangleFaces];
-        if (face_color == null)
-            face_color = new int[numberOfTriangleFaces];
-        textured_face_a = new int[numberOfTriangleFaces];
-        textured_face_b = new int[numberOfTriangleFaces];
-        textured_face_c = new int[numberOfTriangleFaces];
+        if (types == null)
+            types = new int[trianglesCount];
+        if (colors == null)
+            colors = new short[trianglesCount];
+        texturesX = new short[trianglesCount];
+        texturesY = new short[trianglesCount];
+        texturesZ = new short[trianglesCount];
 
-        for (int i = 0; i < numberOfTriangleFaces; i++) {
-            face_color[i] = tex;
-            face_render_type[i] = 3 + set2;
+        for (int i = 0; i < trianglesCount; i++) {
+            colors[i] = (short) tex;
+            types[i] = 3 + set2;
             set2 += 4;
-            textured_face_a[i] = face_a[i];
-            textured_face_b[i] = face_b[i];
-            textured_face_c[i] = face_c[i];
+            texturesX[i] = (short) trianglesX[i];
+            texturesY[i] = (short) trianglesY[i];
+            texturesZ[i] = (short) trianglesZ[i];
         }
     }
 
     public static void printModelColours(Model model) {
         ArrayList<Integer> list = new ArrayList<Integer>();
-        for (int i : model.face_color) {
+        for (int i : model.colors) {
             list.add(i);
         }
         ArrayList<Integer> done = new ArrayList<Integer>();
@@ -3224,26 +2330,26 @@ public class Model extends Renderable {
     private static int anIntArray1623[] = new int[2000];
     private static int anIntArray1624[] = new int[2000];
     private static int anIntArray1625[] = new int[2000];
-    public int numVertices;
-    public int vertexX[];
-    public int vertexY[];
-    public int vertexZ[];
-    public int numberOfTriangleFaces;
-    public int face_a[];
-    public int face_b[];
-    public int face_c[];
+    public int verticesCount;
+    public int[] verticesX;
+    public int[] verticesY;
+    public int[] verticesZ;
+    public int trianglesCount;
+    public int[] trianglesX;
+    public int[] trianglesY;
+    public int[] trianglesZ;
     public int face_shade_a[];
     public int face_shade_b[];
     public int face_shade_c[];
-    public int face_render_type[];
-    public int face_render_priorities[];
-    public int face_alpha[];
-    public int face_color[];
-    public int anInt1641;
-    public int numberOfTexturesFaces;
-    public int textured_face_a[];
-    public int textured_face_b[];
-    public int textured_face_c[];
+    public int types[];
+    public byte[] face_render_priorities;
+    public int alphas[];
+    public short[] colors;
+    public int face_priority;
+    public int texturesCount;
+    public short[] texturesX;
+    public short[] texturesY;
+    public short[] texturesZ;
     public int minimumXVertex;
     public int maximumXVertex;
     public int maximumZVertex;
@@ -3253,8 +2359,8 @@ public class Model extends Renderable {
     public int anInt1652;
     public int anInt1653;
     public int itemDropHeight;
-    public int anIntArray1655[];
-    public int anIntArray1656[];
+    public int vertexData[];
+    public int triangleData[];
     public int vertexGroups[][];
     public int faceGroups[][];
     public boolean aBoolean1659;

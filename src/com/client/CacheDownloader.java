@@ -26,7 +26,7 @@ public class CacheDownloader {
 
 	private final int BUFFER = 1024;
 
-	private final int VERSION = 6;
+	private final int VERSION = 7;
 	private String CACHE_LINK = Configuration.CACHE_LINK;
 
 	private Path FILE_LOCATION = Paths.get(getCacheDir(), getArchivedName());

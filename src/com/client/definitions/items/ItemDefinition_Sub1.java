@@ -433,7 +433,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Lucky elysian spirit shield";
             itemDef.description = "An ethereal shield with a divine sigil attached to it.";
         }
-        if(i == 27431)
+        if(i == 29431)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wield";
@@ -483,7 +483,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Master Sword";
             itemDef.description = "A fine blade from the Zelda.";
         }
-        if(i == 26674)
+        if(i == 28674)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wield";
@@ -508,7 +508,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Auspicious katana";
             itemDef.description = "A fine blade from the Eastern Lands.";
         }
-        if(i == 26213)
+        if(i == 28213)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -537,7 +537,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Orange abyssal whip";
             itemDef.description = "a Orange abyssal whip";
         }
-        if(i == 26214)
+        if(i == 28214)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -566,7 +566,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Purple abyssal whip";
             itemDef.description = "a Purple abyssal whip";
         }
-        if(i == 26215)
+        if(i == 28215)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -595,7 +595,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Unknown Color abyssal whip";
             itemDef.description = "a Unknown Color abyssal whip";
         }
-        if(i == 26216)
+        if(i == 28216)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -624,7 +624,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Red abyssal whip";
             itemDef.description = "a Red abyssal whip";
         }
-        if(i == 26217)
+        if(i == 28217)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -653,7 +653,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Blue abyssal whip";
             itemDef.description = "a Blue abyssal whip";
         }
-        if(i == 26218)
+        if(i == 28218)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -682,7 +682,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Barrows abyssal whip";
             itemDef.description = "a Barrows abyssal whip";
         }
-        if(i == 26219)
+        if(i == 28219)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -711,7 +711,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Gold abyssal whip";
             itemDef.description = "a Gold abyssal whip";
         }
-        if(i == 26220)
+        if(i == 28220)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -740,7 +740,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "White abyssal whip";
             itemDef.description = "a White abyssal whip";
         }
-        if(i == 26221)
+        if(i == 28221)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -771,7 +771,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Purple santa hat ";
             itemDef.description = "Purple santa hat.";
         }
-        if(i == 26222)
+        if(i == 28222)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -802,7 +802,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black santa hat ";
             itemDef.description = "Black santa hat.";
         }
-        if(i == 26223)
+        if(i == 28223)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -833,7 +833,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mithril santa hat ";
             itemDef.description = "Mithril santa hat.";
         }
-        if(i == 26224)
+        if(i == 28224)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -864,7 +864,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune santa hat ";
             itemDef.description = "Rune santa hat.";
         }
-        if(i == 26225)
+        if(i == 28225)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -895,7 +895,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Dragon santa hat ";
             itemDef.description = "Dragon santa hat.";
         }
-        if(i == 26226)
+        if(i == 28226)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -926,7 +926,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Addy santa hat ";
             itemDef.description = "Addy santa hat.";
         }
-        if(i == 26227)
+        if(i == 28227)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -957,7 +957,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Gold santa hat ";
             itemDef.description = "Gold santa hat.";
         }
-        if(i == 26228)
+        if(i == 28228)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -988,7 +988,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Barrows santa hat ";
             itemDef.description = "Barrows santa hat.";
         }
-        if(i == 26229)
+        if(i == 28229)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1019,7 +1019,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Blue santa hat ";
             itemDef.description = "Blue santa hat.";
         }
-        if(i == 26230)
+        if(i == 28230)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1050,7 +1050,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Purple santa hat ";
             itemDef.description = "Purple santa hat.";
         }
-        if(i == 26231)
+        if(i == 28231)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1077,7 +1077,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black partyhat";
             itemDef.description = "An Black partyhat.";
         }
-        if(i == 26232)
+        if(i == 28232)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1104,7 +1104,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Orange partyhat";
             itemDef.description = "An Orange partyhat.";
         }
-        if(i == 26233)
+        if(i == 28233)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1131,7 +1131,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Gold partyhat";
             itemDef.description = "A Gold partyhat.";
         }
-        if(i == 26234)
+        if(i == 28234)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1159,7 +1159,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Grey partyhat";
             itemDef.description = "A Grey partyhat.";
         }
-        if(i == 26235)
+        if(i == 28235)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1187,7 +1187,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Bronze partyhat";
             itemDef.description = "A Bronze partyhat.";
         }
-        if(i == 26236)
+        if(i == 28236)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1215,7 +1215,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel partyhat";
             itemDef.description = "A Steel partyhat.";
         }
-        if(i == 26237)
+        if(i == 28237)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1243,7 +1243,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mithril partyhat";
             itemDef.description = "A Mithril partyhat.";
         }
-        if(i == 26238)
+        if(i == 28238)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1271,7 +1271,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant partyhat";
             itemDef.description = "An Addy partyhat.";
         }
-        if(i == 26239)
+        if(i == 28239)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1299,7 +1299,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune partyhat";
             itemDef.description = "A Rune partyhat.";
         }
-        if(i == 26240)
+        if(i == 28240)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1327,7 +1327,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Dragon partyhat";
             itemDef.description = "A Dragon partyhat.";
         }
-        if(i == 26241)
+        if(i == 28241)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1355,7 +1355,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Barrows partyhat";
             itemDef.description = "A partyhat worn by the Barrows Brothers.";
         }
-        if(i == 26242)
+        if(i == 28242)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wield";
@@ -1386,7 +1386,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Barrows defender";
             itemDef.description = "A defensive weapon.";
         }
-        if(i == 26243)
+        if(i == 28243)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1417,7 +1417,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "2008 H'ween boots";
             itemDef.description = "The 2008 Halloween event boots.";
         }
-        if(i == 26244)
+        if(i == 28244)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1445,7 +1445,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "2008 H'ween legs";
             itemDef.description = "The 2008 Halloween event platelegs.";
         }
-        if(i == 26245)
+        if(i == 28245)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1474,7 +1474,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "2008 H'ween plate";
             itemDef.description = "The 2008 Halloween event Platebody...";
         }
-        if(i == 26246)
+        if(i == 28246)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1502,7 +1502,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "2008 H'ween gloves";
             itemDef.description = "2008 Halloween event gloves.";
         }
-        if(i == 26247)
+        if(i == 28247)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1531,7 +1531,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "2008 Mask";
             itemDef.description = "The 2008 Halloween event abyssal whip.";
         }
-        if(i == 26248)
+        if(i == 28248)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1566,7 +1566,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Dragon platebody (T)";
             itemDef.description = "A dragon platebody (T) by Traxxas.";
         }
-        if(i == 26249)
+        if(i == 28249)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1601,7 +1601,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Dragon Platebody";
             itemDef.description = "A dragon platebody by Traxxas.";
         }
-    	if(i == 26250) //ID
+    	if(i == 28250) //ID
 		{
 			itemDef.itemActions = new String[] {null, "Wear", null, null, null};
 			itemDef.groundActions = new String[] {null};
@@ -1647,7 +1647,7 @@ public class ItemDefinition_Sub1
 			itemDef.placeholderId = 17851;
 			itemDef.placeholderTemplateId = -1;
 		}
-        if(i == 26251)
+        if(i == 28251)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1678,7 +1678,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Admin Platelegs";
             itemDef.description = "A set of administrators platelegs.";
         }
-    	if(i == 26252) //ID
+    	if(i == 28252) //ID
 		{
 			itemDef.itemActions = new String[] {null, "Wear", null, null, null};
 			itemDef.groundActions = new String[] {null};
@@ -1712,7 +1712,7 @@ public class ItemDefinition_Sub1
 		}
 
 
-	if(i == 26253) //ID
+	if(i == 28253) //ID
 		{
 			itemDef.itemActions = new String[] {null, "Wear", null, null, null};
 			itemDef.groundActions = new String[] {null};
@@ -1748,7 +1748,7 @@ public class ItemDefinition_Sub1
 		}
 
 
-	if(i == 26254) //ID
+	if(i == 28254) //ID
 		{
 			itemDef.itemActions = new String[] {null, "Wear", null, null, null};
 			itemDef.groundActions = new String[] {null};
@@ -1784,7 +1784,7 @@ public class ItemDefinition_Sub1
 		}
 
 
-	if(i == 26255) //ID
+	if(i == 28255) //ID
 		{
 			itemDef.itemActions = new String[] {null, "Wear", null, null, null};
 			itemDef.groundActions = new String[] {null};
@@ -1819,7 +1819,7 @@ public class ItemDefinition_Sub1
 			itemDef.placeholderTemplateId = -1;
 		}
 
-        if(i == 26256)
+        if(i == 28256)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1848,7 +1848,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Admin Boots";
             itemDef.description = "Admin boots";
         }
-        if(i == 26257)
+        if(i == 28257)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1879,7 +1879,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Admin Kiteshield";
             itemDef.description = "It's an administrator kiteshield.";
         }
-        if(i == 26258)
+        if(i == 28258)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1908,7 +1908,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Admin abyssal whip";
             itemDef.description = "A abyssal whip for admins.";
         }
-    	if(i == 26259) //ID
+    	if(i == 28259) //ID
 		{
 			itemDef.itemActions = new String[] {null, "Wear", null, null, null};
 			itemDef.groundActions = new String[] {null};
@@ -1954,7 +1954,7 @@ public class ItemDefinition_Sub1
 			itemDef.placeholderId = 17851;
 			itemDef.placeholderTemplateId = -1;
 		}
-        if(i == 26260)
+        if(i == 28260)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -1985,7 +1985,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mod Platelegs";
             itemDef.description = "A set of moderators platelegs.";
         }
-        if(i == 26261)
+        if(i == 28261)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2014,7 +2014,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mod Boots";
             itemDef.description = "Mod boots";
         }
-        if(i == 26262)
+        if(i == 28262)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2045,7 +2045,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mod Kiteshield";
             itemDef.description = "It's an moderator kiteshield.";
         }
-        if(i == 26263)
+        if(i == 28263)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2074,7 +2074,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mod abyssal whip";
             itemDef.description = "A abyssal whip for mods.";
         }
-        if(i == 26264)
+        if(i == 28264)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2107,7 +2107,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Admin Plateskirt";
             itemDef.description = "It's an admin skirt";
         }
-        if(i == 26265)
+        if(i == 28265)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2140,7 +2140,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mod Plateskirt";
             itemDef.description = "It's a mod skirt";
         }
-    	if(i == 26266) //ID
+    	if(i == 28266) //ID
 		{
 			itemDef.itemActions = new String[] {null, "Wear", null, null, null};
 			itemDef.groundActions = new String[] {null};
@@ -2187,7 +2187,7 @@ public class ItemDefinition_Sub1
 			itemDef.placeholderTemplateId = -1;
 		}
 
-        if(i == 26267)
+        if(i == 28267)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2218,7 +2218,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Owners Platelegs";
             itemDef.description = "A set of owners platelegs.";
         }
-        if(i == 26268)
+        if(i == 28268)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2247,7 +2247,7 @@ public class ItemDefinition_Sub1
       		itemDef.unnotedId = -1;
       		itemDef.notedId = -1;
         }
-        if(i == 26269)
+        if(i == 28269)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2278,7 +2278,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Owners Kiteshield";
             itemDef.description = "It's an owners kiteshield.";
         }
-    	if(i == 26270) //ID
+    	if(i == 28270) //ID
 		{
 			itemDef.itemActions = new String[] {null, "Wear", null, null, null};
 			itemDef.groundActions = new String[] {null};
@@ -2313,7 +2313,7 @@ public class ItemDefinition_Sub1
 			itemDef.placeholderTemplateId = -1;
 		}
 
-        if(i == 26271)
+        if(i == 28271)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2340,7 +2340,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune hat";
             itemDef.description = "A gift from santa";
         }
-        if(i == 26272)
+        if(i == 28272)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2371,7 +2371,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Gilded d-hide body";
             itemDef.description = "Golden body of 100% dragon hide. Did this come from a golden dragon?";
         }
-        if(i == 26273)
+        if(i == 28273)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2402,7 +2402,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Gilded d-hide chaps";
             itemDef.description = "Golden chaps of 100% dragon hide. Did this come from a golden dragon?";
         }
-        if(i == 26274)
+        if(i == 28274)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2433,7 +2433,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Platelegs (R)";
             itemDef.description = "It's Black Platelegs (R)";
         }
-        if(i == 26275)
+        if(i == 28275)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2467,7 +2467,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Platebody (R)";
             itemDef.description = "It's a Black Platebody (R)";
         }
-        if(i == 26276)
+        if(i == 28276)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2496,7 +2496,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Helm (R)";
             itemDef.description = "It's a Black Helm (R)";
         }
-        if(i == 26277)
+        if(i == 28277)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2527,7 +2527,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Kiteshield (R)";
             itemDef.description = "It's a Black Kiteshield (R)";
         }
-        if(i == 26278)
+        if(i == 28278)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2560,7 +2560,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Plateskirt (R)";
             itemDef.description = "It's a Black Plateskirt (R)";
         }
-        if(i == 26279)
+        if(i == 28279)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2591,7 +2591,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Platelegs (White)";
             itemDef.description = "It's Black Platelegs (White)";
         }
-        if(i == 26280)
+        if(i == 28280)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2625,7 +2625,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Platebody (White)";
             itemDef.description = "It's a Black Platebody (White)";
         }
-        if(i == 26281)
+        if(i == 28281)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2654,7 +2654,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Helm (White)";
             itemDef.description = "It's a Black Helm (White)";
         }
-        if(i == 26282)
+        if(i == 28282)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2685,7 +2685,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Kiteshield (White)";
             itemDef.description = "It's a Black Kiteshield (White)";
         }
-        if(i == 26283)
+        if(i == 28283)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2718,7 +2718,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Plateskirt (White)";
             itemDef.description = "It's a Black Plateskirt (White)";
         }
-        if(i == 26284)
+        if(i == 28284)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2749,7 +2749,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Platelegs (Blue)";
             itemDef.description = "It's Black Platelegs (Blue)";
         }
-        if(i == 26285)
+        if(i == 28285)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2783,7 +2783,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Platebody (Blue)";
             itemDef.description = "It's a Black Platebody (Blue)";
         }
-        if(i == 26286)
+        if(i == 28286)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2812,7 +2812,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Helm (Blue)";
             itemDef.description = "It's a Black Helm (Blue)";
         }
-        if(i == 26287)
+        if(i == 28287)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2843,7 +2843,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Kiteshield (Blue)";
             itemDef.description = "It's a Black Kiteshield (Blue)";
         }
-        if(i == 26288)
+        if(i == 28288)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2876,7 +2876,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Plateskirt (Blue)";
             itemDef.description = "It's a Black Plateskirt (Blue)";
         }
-        if(i == 26289)
+        if(i == 28289)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2907,7 +2907,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Platelegs (Green)";
             itemDef.description = "It's Black Platelegs (Green)";
         }
-        if(i == 26290)
+        if(i == 28290)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2941,7 +2941,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Platebody (Green)";
             itemDef.description = "It's a Black Platebody (Green)";
         }
-        if(i == 26291)
+        if(i == 28291)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -2970,7 +2970,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Helm (Green)";
             itemDef.description = "It's a Black Helm (Green)";
         }
-        if(i == 26292)
+        if(i == 28292)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3001,7 +3001,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Kiteshield (Green)";
             itemDef.description = "It's a Black Kiteshield (Green)";
         }
-        if(i == 26293)
+        if(i == 28293)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3034,7 +3034,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Plateskirt (Green)";
             itemDef.description = "It's a Black Plateskirt (Green)";
         }
-        if(i == 26294)
+        if(i == 28294)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3065,7 +3065,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Platelegs (Purple)";
             itemDef.description = "It's Black Platelegs (Purple)";
         }
-        if(i == 26295)
+        if(i == 28295)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3099,7 +3099,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Platebody (Purple)";
             itemDef.description = "It's a Black Platebody (Purple)";
         }
-        if(i == 26296)
+        if(i == 28296)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3128,7 +3128,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Helm (Purple)";
             itemDef.description = "It's a Black Helm (Purple)";
         }
-        if(i == 26297)
+        if(i == 28297)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3159,7 +3159,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Kiteshield (Purple)";
             itemDef.description = "It's a Black Kiteshield (Purple)";
         }
-        if(i == 26298)
+        if(i == 28298)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3192,7 +3192,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Plateskirt (Purple)";
             itemDef.description = "It's a Black Plateskirt (Purple)";
         }
-        if(i == 26299)
+        if(i == 28299)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Summon from the";
@@ -3219,7 +3219,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Monkey Bag";
             itemDef.description = "Wear a monkey for FREE!";
         }
-        if(i == 26300)
+        if(i == 28300)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3250,7 +3250,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Lava Helm";
             itemDef.description = "It's a Lava helm";
         }
-        if(i == 26301)
+        if(i == 28301)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3281,7 +3281,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Ivandis helm";
             itemDef.description = "It's a Ivandis helm";
         }
-        if(i == 26302)
+        if(i == 28302)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3312,7 +3312,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Ladies Platelegs";
             itemDef.description = "Ladies platelegs";
         }
-        if(i == 26303)
+        if(i == 28303)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3343,7 +3343,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Ivandis Platelegs";
             itemDef.description = "Stride through enemies territory in a heart beat.";
         }
-        if(i == 26304)
+        if(i == 28304)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3374,7 +3374,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Lava platelegs";
             itemDef.description = "Lava platelegs";
         }
-        if(i == 26305)
+        if(i == 28305)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3405,7 +3405,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Ladies Helm";
             itemDef.description = "It's a Ladies helm";
         }
-        if(i == 26306)
+        if(i == 28306)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3438,7 +3438,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Lava Gauntlets";
             itemDef.description = "Lava Gauntlets.";
         }
-        if(i == 26307)
+        if(i == 28307)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3471,7 +3471,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Ivandis Gauntlets";
             itemDef.description = "Ivandis Gauntlets.";
         }
-        if(i == 26308)
+        if(i == 28308)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3502,7 +3502,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Draconic Top";
             itemDef.description = "A draconic Ahrims top.";
         }
-        if(i == 26309)
+        if(i == 28309)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3533,7 +3533,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Draconic Bottoms";
             itemDef.description = "A draconic Ahrims bottoms.";
         }
-        if(i == 26310)
+        if(i == 28310)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3562,7 +3562,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Draconic Hood";
             itemDef.description = "A draconic Ahrims Hood.";
         }
-        if(i == 26311)
+        if(i == 28311)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wield";
@@ -3591,7 +3591,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Slayer Sword";
             itemDef.description = "A Slayer sword by thedragon.";
         }
-        if(i == 26312)
+        if(i == 28312)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3624,7 +3624,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Ladies Gauntlets";
             itemDef.description = "Ladies Gauntlets.";
         }
-        if(i == 26313)
+        if(i == 28313)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Equip";
@@ -3652,7 +3652,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Demon tail";
             itemDef.description = "A demon tail.";
         }
-        if(i == 26314)
+        if(i == 28314)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Equip";
@@ -3680,7 +3680,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Demon Horns #1";
             itemDef.description = "Horns of a demon.";
         }
-        if(i == 26315)
+        if(i == 28315)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Equip";
@@ -3708,7 +3708,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Demon Horns #2";
             itemDef.description = "Horns of a demon.";
         }
-        if(i == 26316)
+        if(i == 28316)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Equip";
@@ -3736,7 +3736,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Demon Head";
             itemDef.description = "The head of a demon.";
         }
-        if(i == 26317)
+        if(i == 28317)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Equip";
@@ -3764,7 +3764,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Demon Feet";
             itemDef.description = "The feet of a demon.";
         }
-        if(i == 26318)
+        if(i == 28318)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Equip";
@@ -3792,7 +3792,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Demon Hands";
             itemDef.description = "The hands of a demon.";
         }
-        if(i == 26319)
+        if(i == 28319)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3829,7 +3829,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Lava chainbody";
             itemDef.description = "It's a Lava chainbody";
         }
-        if(i == 26320)
+        if(i == 28320)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3866,7 +3866,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Ivandis Chainmail";
             itemDef.description = "Its a Ivandis Chain";
         }
-        if(i == 26321)
+        if(i == 28321)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3895,7 +3895,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Ivandis Boots";
             itemDef.description = "Ivandis boots";
         }
-        if(i == 26322)
+        if(i == 28322)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3932,7 +3932,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Ladies Chainmail";
             itemDef.description = "Its a Ladies Chain";
         }
-        if(i == 26323)
+        if(i == 28323)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3963,7 +3963,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Lava shield";
             itemDef.description = "Lava shield";
         }
-        if(i == 26324)
+        if(i == 28324)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -3994,7 +3994,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Ladies shield";
             itemDef.description = "Ladies shield";
         }
-        if(i == 26325)
+        if(i == 28325)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4023,7 +4023,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Lava Boots";
             itemDef.description = "Lava boots";
         }
-        if(i == 26326)
+        if(i == 28326)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4052,7 +4052,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Ladies Boots";
             itemDef.description = "Ladies boots";
         }
-        if(i == 26327)
+        if(i == 28327)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4077,7 +4077,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Lava scimitar";
             itemDef.description = "";
         }
-        if(i == 26328)
+        if(i == 28328)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4106,7 +4106,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Ladies Blade";
             itemDef.description = "";
         }
-        if(i == 26329)
+        if(i == 28329)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4137,7 +4137,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Blue Crystal shield";
             itemDef.description = "Blue Crystal shield";
         }
-        if(i == 26330)
+        if(i == 28330)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4170,7 +4170,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Blue Crystal shield";
             itemDef.description = "Blue Crystal shield";
         }
-        if(i == 26331)
+        if(i == 28331)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4201,7 +4201,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Ivandis shield";
             itemDef.description = "Ivandis shield";
         }
-        if(i == 26332)
+        if(i == 28332)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4230,7 +4230,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Ivandis Blade";
             itemDef.description = "Show no mercy, led anger rule your fury.";
         }
-        if(i == 26333)
+        if(i == 28333)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4261,7 +4261,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black Crystal shield";
             itemDef.description = "Black Crystal shield";
         }
-        if(i == 26334)
+        if(i == 28334)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4290,7 +4290,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Black h'ween Mask";
             itemDef.description = "Aaaarrrghhh... I'm a monster.";
         }
-        if(i == 26335)
+        if(i == 28335)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4319,7 +4319,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Yellow h'ween Mask";
             itemDef.description = "Aaaarrrghhh... I'm a monster.";
         }
-        if(i == 26336)
+        if(i == 28336)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4348,7 +4348,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune abyssal whip";
             itemDef.description = "A abyssal whip made of Rune";
         }
-        if(i == 26337)
+        if(i == 28337)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4373,7 +4373,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Staff of Light";
             itemDef.description = "Humming with power.";
         }
-        if(i == 26338)
+        if(i == 28338)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wield";
@@ -4398,7 +4398,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Dragon platebody";
             itemDef.description = "Provides excellent protection";
         }
-        if(i == 26339)
+        if(i == 28339)
         {
             itemDef.itemActions = (new String[] {
                 null, "Wear", "Split", null, "Drop"
@@ -4428,7 +4428,7 @@ public class ItemDefinition_Sub1
       		itemDef.unnotedId = -1;
       		itemDef.notedId = -1;
         }
-        if(i == 26340)
+        if(i == 28340)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wield";
@@ -4456,7 +4456,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Ice Torva platebody";
             itemDef.description = "Provides excellent protection";
         }
-        if(i == 26341)
+        if(i == 28341)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4477,7 +4477,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Ice Torva platelegs";
             itemDef.description = "A pair of Ice Torva platelegs";
         }
-        if(i == 26344)
+        if(i == 28344)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4508,7 +4508,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "sky santa hat ";
             itemDef.description = "Sky santa hat.";
         }
-        if(i == 26345)
+        if(i == 28345)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wield";
@@ -4530,7 +4530,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Winged Sandals";
             itemDef.description = "Apollo's gift.";
         }
-        if(i == 26346)
+        if(i == 28346)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "look at";
@@ -4557,7 +4557,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "rum deal";
             itemDef.description = "omfg its the rum deal thingy.";
         }
-        if(i == 26347)
+        if(i == 28347)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4582,7 +4582,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Death Cape";
             itemDef.description = "Death Cape made by death! ";
         }
-        if(i == 26348)
+        if(i == 28348)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4613,7 +4613,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Dark Gray santa hat ";
             itemDef.description = "Dark Gray santa hat.";
         }
-        if(i == 26349)
+        if(i == 28349)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4644,7 +4644,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Lime Green santa hat ";
             itemDef.description = "Lime Green santa hat.";
         }
-        if(i == 26350)
+        if(i == 28350)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4675,7 +4675,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Unknowed White santa hat ";
             itemDef.description = "Unknowed White santa hat.";
         }
-        if(i == 26351)
+        if(i == 28351)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4706,7 +4706,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Deep Purple santa hat ";
             itemDef.description = "Deep Purple santa hat.";
         }
-        if(i == 26352)
+        if(i == 28352)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4737,7 +4737,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Deeper Purple santa hat ";
             itemDef.description = "Deeper Purple santa hat.";
         }
-        if(i == 26353)
+        if(i == 28353)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4768,7 +4768,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Deep Green santa hat ";
             itemDef.description = "Deep Green santa hat.";
         }
-        if(i == 26354)
+        if(i == 28354)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4799,7 +4799,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Dull Orange santa hat ";
             itemDef.description = "Dull Orange santa hat.";
         }
-        if(i == 26355)
+        if(i == 28355)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4830,7 +4830,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Bright Yellow santa hat ";
             itemDef.description = "Bright Yellow santa hat.";
         }
-        if(i == 26356)
+        if(i == 28356)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4861,7 +4861,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Bright Pink santa hat ";
             itemDef.description = "Bright Pink santa hat.";
         }
-        if(i == 26357)
+        if(i == 28357)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4892,7 +4892,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Bright Blue santa hat ";
             itemDef.description = "Bright Blue santa hat.";
         }
-        if(i == 26358)
+        if(i == 28358)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4923,7 +4923,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Bright Gray santa hat ";
             itemDef.description = "Bright Gray santa hat.";
         }
-        if(i == 26359)
+        if(i == 28359)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4954,7 +4954,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Bright Sky Blue santa hat ";
             itemDef.description = "Bright Sky Blue santa hat.";
         }
-        if(i == 26360)
+        if(i == 28360)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -4985,7 +4985,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Teal santa hat ";
             itemDef.description = "Teal santa hat.";
         }
-        if(i == 26361)
+        if(i == 28361)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5016,7 +5016,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Dark Gray santa hat ";
             itemDef.description = "Dark Gray santa hat.";
         }
-        if(i == 26362)
+        if(i == 28362)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5045,7 +5045,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Diamond abyssal whip";
             itemDef.description = "a Diamond abyssal whip";
         }
-        if(i == 26363)
+        if(i == 28363)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5078,7 +5078,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Diamond chainbody";
             itemDef.description = "a Diamond chainbody";
         }
-        if(i == 26364)
+        if(i == 28364)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5111,7 +5111,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Diamond Platebody";
             itemDef.description = "a Diamond Platebody";
         }
-        if(i == 26365)
+        if(i == 28365)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5140,7 +5140,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Diamond Med Helm";
             itemDef.description = "a Diamond Med Helm";
         }
-        if(i == 26366)
+        if(i == 28366)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5171,7 +5171,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Diamond full Helm";
             itemDef.description = "a Diamond full Helm";
         }
-        if(i == 26367)
+        if(i == 28367)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5204,7 +5204,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Diamond Platelegs";
             itemDef.description = "a Diamond platelegs";
         }
-        if(i == 26368)
+        if(i == 28368)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5235,7 +5235,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Blue Dragon Helm";
             itemDef.description = "It's a Blue Dragon helm";
         }
-        if(i == 26369)
+        if(i == 28369)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5266,7 +5266,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Blue Dragon Platelegs";
             itemDef.description = "Blue Dragon platelegs";
         }
-        if(i == 26370)
+        if(i == 28370)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5299,7 +5299,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Blue Dragon Gauntlets";
             itemDef.description = "Blue Dragon Gauntlets.";
         }
-        if(i == 26371)
+        if(i == 28371)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5336,7 +5336,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Blue Dragon chainbody";
             itemDef.description = "It's a Blue Dragon Chain";
         }
-        if(i == 26372)
+        if(i == 28372)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5367,7 +5367,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Blue shield";
             itemDef.description = "Blue shield";
         }
-        if(i == 26373)
+        if(i == 28373)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5396,7 +5396,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Blue Boots";
             itemDef.description = "Blue boots";
         }
-        if(i == 26374)
+        if(i == 28374)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5425,7 +5425,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Blue scimitar";
             itemDef.description = "a Blue scimitar";
         }
-        if(i == 26375)
+        if(i == 28375)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5454,7 +5454,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Barrows cavalier";
             itemDef.description = "a Barrows cavalier";
         }
-        if(i == 26376)
+        if(i == 28376)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5483,7 +5483,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Gold cavalier";
             itemDef.description = "a Gold cavalier";
         }
-        if(i == 26377)
+        if(i == 28377)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5512,7 +5512,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "White cavalier";
             itemDef.description = "a White cavalier";
         }
-        if(i == 26378)
+        if(i == 28378)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5541,7 +5541,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Dragon cavalier";
             itemDef.description = "a Dragon cavalier";
         }
-        if(i == 26379)
+        if(i == 28379)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5572,7 +5572,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Platelegs (Green)";
             itemDef.description = "It's Steel Platelegs (Green)";
         }
-        if(i == 26380)
+        if(i == 28380)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5605,7 +5605,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Platebody (Green)";
             itemDef.description = "It's a Steel Platebody (Green)";
         }
-        if(i == 26381)
+        if(i == 28381)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5634,7 +5634,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Helm (Green)";
             itemDef.description = "It's a Steel Helm (Green)";
         }
-        if(i == 26382)
+        if(i == 28382)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5665,7 +5665,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Kiteshield (Green)";
             itemDef.description = "It's a Steel Kiteshield (Green)";
         }
-        if(i == 26383)
+        if(i == 28383)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5696,7 +5696,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Platelegs (White)";
             itemDef.description = "It's Steel Platelegs (White)";
         }
-        if(i == 26384)
+        if(i == 28384)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5729,7 +5729,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Platebody (White)";
             itemDef.description = "It's a Steel Platebody (White)";
         }
-        if(i == 26385)
+        if(i == 28385)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5758,7 +5758,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Helm (White)";
             itemDef.description = "It's a Steel Helm (White)";
         }
-        if(i == 26386)
+        if(i == 28386)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5789,7 +5789,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Kiteshield (White)";
             itemDef.description = "It's a Steel Kiteshield (White)";
         }
-        if(i == 26387)
+        if(i == 28387)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5820,7 +5820,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Platelegs (Blue)";
             itemDef.description = "It's Steel Platelegs (Blue)";
         }
-        if(i == 26388)
+        if(i == 28388)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5853,7 +5853,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Platebody (Blue)";
             itemDef.description = "It's a Steel Platebody (Blue)";
         }
-        if(i == 26389)
+        if(i == 28389)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5882,7 +5882,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Helm (Blue)";
             itemDef.description = "It's a Steel Helm (Blue)";
         }
-        if(i == 26390)
+        if(i == 28390)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5913,7 +5913,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Kiteshield (Blue)";
             itemDef.description = "It's a Steel Kiteshield (Blue)";
         }
-        if(i == 26391)
+        if(i == 28391)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5944,7 +5944,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Platelegs (Orange)";
             itemDef.description = "It's Steel Platelegs (Orange)";
         }
-        if(i == 26392)
+        if(i == 28392)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -5977,7 +5977,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Platebody (Orange)";
             itemDef.description = "It's a Steel Platebody (Orange)";
         }
-        if(i == 26393)
+        if(i == 28393)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6006,7 +6006,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Helm (Orange)";
             itemDef.description = "It's a Steel Helm (Orange)";
         }
-        if(i == 26394)
+        if(i == 28394)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6037,7 +6037,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Kiteshield (Orange)";
             itemDef.description = "It's a Steel Kiteshield (Orange)";
         }
-        if(i == 26395)
+        if(i == 28395)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6068,7 +6068,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Platelegs (Purple)";
             itemDef.description = "It's Steel Platelegs (Purple)";
         }
-        if(i == 26396)
+        if(i == 28396)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6101,7 +6101,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Platebody (Purple)";
             itemDef.description = "It's a Steel Platebody (Purple)";
         }
-        if(i == 26397)
+        if(i == 28397)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6130,7 +6130,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Helm (Purple)";
             itemDef.description = "It's a Steel Helm (Purple)";
         }
-        if(i == 26398)
+        if(i == 28398)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6161,7 +6161,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Steel Kiteshield (Purple)";
             itemDef.description = "It's a Steel Kiteshield (Purple)";
         }
-        if(i == 26399)
+        if(i == 28399)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6192,7 +6192,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Platelegs (Green)";
             itemDef.description = "It's Mith Platelegs (Green)";
         }
-        if(i == 26400)
+        if(i == 28400)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6225,7 +6225,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Platebody (Green)";
             itemDef.description = "It's a Mith Platebody (Green)";
         }
-        if(i == 26401)
+        if(i == 28401)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6254,7 +6254,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Helm (Green)";
             itemDef.description = "It's a Mith Helm (Green)";
         }
-        if(i == 26402)
+        if(i == 28402)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6285,7 +6285,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Kiteshield (Green)";
             itemDef.description = "It's a Mith Kiteshield (Green)";
         }
-        if(i == 26403)
+        if(i == 28403)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6316,7 +6316,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Platelegs (White)";
             itemDef.description = "It's Mith Platelegs (White)";
         }
-        if(i == 26404)
+        if(i == 28404)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6349,7 +6349,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Platebody (White)";
             itemDef.description = "It's a Mith Platebody (White)";
         }
-        if(i == 26405)
+        if(i == 28405)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6378,7 +6378,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Helm (White)";
             itemDef.description = "It's a Mith Helm (White)";
         }
-        if(i == 26406)
+        if(i == 28406)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6409,7 +6409,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Kiteshield (White)";
             itemDef.description = "It's a Mith Kiteshield (White)";
         }
-        if(i == 26407)
+        if(i == 28407)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6440,7 +6440,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Platelegs (Blue)";
             itemDef.description = "It's Mith Platelegs (Blue)";
         }
-        if(i == 26408)
+        if(i == 28408)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6473,7 +6473,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Platebody (Blue)";
             itemDef.description = "It's a Mith Platebody (Blue)";
         }
-        if(i == 26409)
+        if(i == 28409)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6502,7 +6502,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Helm (Blue)";
             itemDef.description = "It's a Mith Helm (Blue)";
         }
-        if(i == 26410)
+        if(i == 28410)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6533,7 +6533,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Kiteshield (Blue)";
             itemDef.description = "It's a Mith Kiteshield (Blue)";
         }
-        if(i == 26411)
+        if(i == 28411)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6564,7 +6564,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Platelegs (Orange)";
             itemDef.description = "It's Mith Platelegs (Orange)";
         }
-        if(i == 26412)
+        if(i == 28412)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6597,7 +6597,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Platebody (Orange)";
             itemDef.description = "It's a Mith Platebody (Orange)";
         }
-        if(i == 26413)
+        if(i == 28413)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6626,7 +6626,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Helm (Orange)";
             itemDef.description = "It's a Mith Helm (Orange)";
         }
-        if(i == 26414)
+        if(i == 28414)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6657,7 +6657,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Kiteshield (Orange)";
             itemDef.description = "It's a Mith Kiteshield (Orange)";
         }
-        if(i == 26415)
+        if(i == 28415)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6688,7 +6688,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Platelegs (Purple)";
             itemDef.description = "It's Mith Platelegs (Purple)";
         }
-        if(i == 26416)
+        if(i == 28416)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6721,7 +6721,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Platebody (Purple)";
             itemDef.description = "It's a Mith Platebody (Purple)";
         }
-        if(i == 26417)
+        if(i == 28417)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6750,7 +6750,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Helm (Purple)";
             itemDef.description = "It's a Mith Helm (Purple)";
         }
-        if(i == 26418)
+        if(i == 28418)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6781,7 +6781,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Mith Kiteshield (Purple)";
             itemDef.description = "It's a Mith Kiteshield (Purple)";
         }
-        if(i == 26419)
+        if(i == 28419)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6812,7 +6812,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Platelegs (Green)";
             itemDef.description = "It's Adamant Platelegs (Green)";
         }
-        if(i == 26420)
+        if(i == 28420)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6845,7 +6845,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Platebody (Green)";
             itemDef.description = "It's a Adamant Platebody (Green)";
         }
-        if(i == 26421)
+        if(i == 28421)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6874,7 +6874,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Helm (Green)";
             itemDef.description = "It's a Adamant Helm (Green)";
         }
-        if(i == 26422)
+        if(i == 28422)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6905,7 +6905,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Kiteshield (Green)";
             itemDef.description = "It's a Adamant Kiteshield (Green)";
         }
-        if(i == 26423)
+        if(i == 28423)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6936,7 +6936,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Platelegs (White)";
             itemDef.description = "It's Adamant Platelegs (White)";
         }
-        if(i == 26424)
+        if(i == 28424)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6969,7 +6969,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Platebody (White)";
             itemDef.description = "It's a Adamant Platebody (White)";
         }
-        if(i == 26425)
+        if(i == 28425)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -6998,7 +6998,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Helm (White)";
             itemDef.description = "It's a Adamant Helm (White)";
         }
-        if(i == 26426)
+        if(i == 28426)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7029,7 +7029,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Kiteshield (White)";
             itemDef.description = "It's a Adamant Kiteshield (White)";
         }
-        if(i == 26427)
+        if(i == 28427)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7060,7 +7060,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Platelegs (Blue)";
             itemDef.description = "It's Adamant Platelegs (Blue)";
         }
-        if(i == 26428)
+        if(i == 28428)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7092,7 +7092,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Platebody (Blue)";
             itemDef.description = "It's a Adamant Platebody (Blue)";
         }
-        if(i == 26429)
+        if(i == 28429)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7124,7 +7124,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Platebody (Blue)";
             itemDef.description = "It's a Adamant Platebody (Blue)";
         }
-        if(i == 26429)
+        if(i == 28429)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7152,7 +7152,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Helm (Blue)";
             itemDef.description = "It's a Adamant Helm (Blue)";
         }
-        if(i == 26430)
+        if(i == 28430)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7182,7 +7182,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Kiteshield (Blue)";
             itemDef.description = "It's a Adamant Kiteshield (Blue)";
         }
-        if(i == 26431)
+        if(i == 28431)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7212,7 +7212,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Platelegs (Orange)";
             itemDef.description = "It's Adamant Platelegs (Orange)";
         }
-        if(i == 26432)
+        if(i == 28432)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7244,7 +7244,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Platebody (Orange)";
             itemDef.description = "It's a Adamant Platebody (Orange)";
         }
-        if(i == 26433)
+        if(i == 28433)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7272,7 +7272,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Helm (Orange)";
             itemDef.description = "It's a Adamant Helm (Orange)";
         }
-        if(i == 26434)
+        if(i == 28434)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7302,7 +7302,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Kiteshield (Orange)";
             itemDef.description = "It's a Adamant Kiteshield (Orange)";
         }
-        if(i == 26435)
+        if(i == 28435)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7332,7 +7332,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Platelegs (Purple)";
             itemDef.description = "It's Adamant Platelegs (Purple)";
         }
-        if(i == 26436)
+        if(i == 28436)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7364,7 +7364,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Platebody (Purple)";
             itemDef.description = "It's a Adamant Platebody (Purple)";
         }
-        if(i == 26437)
+        if(i == 28437)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7392,7 +7392,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Helm (Purple)";
             itemDef.description = "It's a Adamant Helm (Purple)";
         }
-        if(i == 26438)
+        if(i == 28438)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7422,7 +7422,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Adamant Kiteshield (Purple)";
             itemDef.description = "It's a Adamant Kiteshield (Purple)";
         }
-        if(i == 26439)
+        if(i == 28439)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7452,7 +7452,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Platelegs (Green)";
             itemDef.description = "It's Rune Platelegs (Green)";
         }
-        if(i == 26440)
+        if(i == 28440)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7484,7 +7484,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Platebody (Green)";
             itemDef.description = "It's a Rune Platebody (Green)";
         }
-        if(i == 26441)
+        if(i == 28441)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7512,7 +7512,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Helm (Green)";
             itemDef.description = "It's a Rune Helm (Green)";
         }
-        if(i == 26442)
+        if(i == 28442)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7542,7 +7542,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Kiteshield (Green)";
             itemDef.description = "It's a Rune Kiteshield (Green)";
         }
-        if(i == 26443)
+        if(i == 28443)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7572,7 +7572,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Platelegs (White)";
             itemDef.description = "It's Rune Platelegs (White)";
         }
-        if(i == 26444)
+        if(i == 28444)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7604,7 +7604,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Platebody (White)";
             itemDef.description = "It's a Rune Platebody (White)";
         }
-        if(i == 26445)
+        if(i == 28445)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7632,7 +7632,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Helm (White)";
             itemDef.description = "It's a Rune Helm (White)";
         }
-        if(i == 26446)
+        if(i == 28446)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7662,7 +7662,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Kiteshield (White)";
             itemDef.description = "It's a Rune Kiteshield (White)";
         }
-        if(i == 26447)
+        if(i == 28447)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7692,7 +7692,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Platelegs (Blue)";
             itemDef.description = "It's Rune Platelegs (Blue)";
         }
-        if(i == 26448)
+        if(i == 28448)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7724,7 +7724,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Platebody (Blue)";
             itemDef.description = "It's a Rune Platebody (Blue)";
         }
-        if(i == 26449)
+        if(i == 28449)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7752,7 +7752,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Helm (Blue)";
             itemDef.description = "It's a Rune Helm (Blue)";
         }
-        if(i == 26450)
+        if(i == 28450)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7782,7 +7782,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Kiteshield (Blue)";
             itemDef.description = "It's a Rune Kiteshield (Blue)";
         }
-        if(i == 26451)
+        if(i == 28451)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7812,7 +7812,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Platelegs (Orange)";
             itemDef.description = "It's Rune Platelegs (Orange)";
         }
-        if(i == 26452)
+        if(i == 28452)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7844,7 +7844,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Platebody (Orange)";
             itemDef.description = "It's a Rune Platebody (Orange)";
         }
-        if(i == 26453)
+        if(i == 28453)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7872,7 +7872,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Helm (Orange)";
             itemDef.description = "It's a Rune Helm (Orange)";
         }
-        if(i == 26454)
+        if(i == 28454)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7902,7 +7902,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Kiteshield (Orange)";
             itemDef.description = "It's a Rune Kiteshield (Orange)";
         }
-        if(i == 26455)
+        if(i == 28455)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7932,7 +7932,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Platelegs (Purple)";
             itemDef.description = "It's Rune Platelegs (Purple)";
         }
-        if(i == 26456)
+        if(i == 28456)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7964,7 +7964,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Platebody (Purple)";
             itemDef.description = "It's a Rune Platebody (Purple)";
         }
-        if(i == 26457)
+        if(i == 28457)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -7992,7 +7992,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Helm (Purple)";
             itemDef.description = "It's a Rune Helm (Purple)";
         }
-        if(i == 26458)
+        if(i == 28458)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -8022,7 +8022,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Rune Kiteshield (Purple)";
             itemDef.description = "It's a Rune Kiteshield (Purple)";
         }
-        if(i == 26459)
+        if(i == 28459)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -8049,7 +8049,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Lime Green partyhat.";
             itemDef.description = "Lime Green partyhat.";
         }
-        if(i == 26460)
+        if(i == 28460)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -8076,7 +8076,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Unknowed White Partyhat";
             itemDef.description = "Unknowed White Partyhat";
         }
-        if(i == 26461)
+        if(i == 28461)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -8103,7 +8103,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Deep Purple Partyhat";
             itemDef.description = "Deep Purple Partyhat";
         }
-        if(i == 26462)
+        if(i == 28462)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
@@ -8130,7 +8130,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Deeper Purple Partyhat";
             itemDef.description = "Deeper Purple Partyhat";
         }
-        if(i == 26463)
+        if(i == 28463)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";

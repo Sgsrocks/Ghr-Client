@@ -143,7 +143,7 @@ public class Client extends RSApplet {
     public static boolean inputTaken;
     public static int[] anIntArray1232;
     public static int anInt1290;
-    public static String server = Configuration.LIVE_SERVER ? "192.3.110.201" : "127.0.0.1"; //Configuration.LIVE_SERVER ? "162.252.8.130" : "127.0.0.1";
+    public static String server = Configuration.LIVE_SERVER ? "51.161.57.126" : "127.0.0.1"; //Configuration.LIVE_SERVER ? "162.252.8.130" : "127.0.0.1";
     public static boolean controlIsDown;
     public static int anInt1401 = 256;
     public static long aLong1432;

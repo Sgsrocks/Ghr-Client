@@ -49,7 +49,7 @@ public class Configuration {
 	public static final String CACHE_NAME = ".GodzHell-Cache";
 
 	public static boolean 
-			repackIndexOne = false,
+			repackIndexOne = true,
 			repackIndexTwo = false,
 			repackIndexThree = false,
 			repackIndexFour = false,

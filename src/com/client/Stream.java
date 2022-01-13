@@ -496,4 +496,14 @@ public final class Stream extends NodeSub {
     {
         return (this.readUnsignedByte() << 16) + (this.readUnsignedByte() << 8) + this.readUnsignedByte();
     }
+    public byte readByte() {
+        return this.buffer[++this.currentOffset - 1];
+    }
+    public int readSmart() {
+        int peek = buffer[currentOffset] & 0xFF;
+        return peek < 128 ? this.readUnsignedByte() : this.readUShort() - 0x8000;
+    }
+    public void setOffset(int var11) {
+        currentOffset = var11;
+    }
 }

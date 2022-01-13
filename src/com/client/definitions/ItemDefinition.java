@@ -45,18 +45,7 @@ public final class ItemDefinition {
 		for (int index = 0; index < 10; index++) {
 			cache[index] = new ItemDefinition();
 		}
-		//dumpStackable();
-		//dumpStackableList();
-		//dumpNotes();
-		//dumpNotableList();
-		//dumpCfg();
-		//dumpItemDefs();
-		//itemDump();
-		//dumpCfg();
-		//dumpItems2();
-		//dumpList();
-		//dumpBonus();
-		//dumpNpcList();
+
 	}
 
 	public static ItemDefinition forID(int itemId) {
@@ -104,7 +93,7 @@ public final class ItemDefinition {
 
 	         try {
 	   	 class8.currentcolors = 0;
-	            bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/Osrsitemdump.txt", true));
+	            bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/201itemdump.txt", true));
 
 	   	 bw.newLine();
 	   	 bw.write("	if(i == "+i+") //ID");
@@ -327,7 +316,7 @@ public final class ItemDefinition {
 			try {
 				bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/198gameitem.txt", true));
 				if(class5.name != null) {
-					bw.write("new GameItem(" + i + "),//" + class5.name);
+					bw.write("ID" + i + "),//" + class5.name);
 					bw.newLine();
 					bw.flush();
 					bw.close();

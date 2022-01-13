@@ -2953,19 +2953,20 @@ public class RSInterface {
 		addHoveredButton(42265, "/Interfaces/Teleportation/SPRITE", 0, 157, 40, 42266);
 		addHoverButton(42267, "/Interfaces/Teleportation/SPRITE", -1, 157, 45, "Select", -1, 42268, 1);
 		addHoveredButton(42268, "/Interfaces/Teleportation/SPRITE", 0, 157, 40, 42269);
-		addText(44305, "Dungeons", tda, 2, 0xFF981F, true, true);
+		addText(44305, "Monsters", tda, 2, 0xFF981F, true, true);
 		addText(44306, "Minigames", tda, 2, 0xFF981F, true, true);
 		addText(44307, "Wilderness", tda, 2, 0xFF981F, true, true);
 		addText(44308, "Bosses", tda, 2, 0xFF981F, true, true);
 		addText(44309, "Skilling", tda, 2, 0xFF981F, true, true);
 		addText(44340, "Cities", tda, 2, 0xFF981F, true, true);
 		addText(44341, "Dungeons", tda, 2, 0xFF981F, true, true);
+		addText(44342, "GodzHell", tda, 2, 0xFF981F, true, true);
 
 		RSInterface scroller = addTabInterface(28700);
 		scroller.height = 222;
 		scroller.width = 146;
-		scroller.scrollMax = 310;
-		scroller.totalChildren(21);
+		scroller.scrollMax = 355;
+		scroller.totalChildren(22);
 		setBounds(41249, 9 - 4, 50 - 49, 0, scroller);
 		setBounds(41250, 9 - 4, 50 - 49, 1, scroller);
 		setBounds(41252, 9 - 4, 96 - 50, 2, scroller);
@@ -2987,6 +2988,7 @@ public class RSInterface {
 		setBounds(44309, 81 - 0, 62 + 90 + 90 - 50, 18, scroller);
 		setBounds(44340, 81 - 0, 62 + 90 + 90 + 45 - 50, 19, scroller);
 		setBounds(44341, 81 - 0, 62 + 90 + 90 + 90 - 50, 20, scroller);
+		setBounds(44342, 81 - 0, 62 + 90 + 90 + 90 + 45 - 50, 21, scroller);
 
 		inter.totalChildren(8);
 		addSprite(44001, 2, "/Interfaces/Teleportation/SPRITE");
@@ -5613,7 +5615,7 @@ public class RSInterface {
 			model = method206(anInt233, mediaID);
 		if (model == null)
 			return null;
-		if (k == -1 && j == -1 && model.face_color == null)
+		if (k == -1 && j == -1 && model.colors == null)
 			return model;
 		Model model_1 = new Model(true, FrameLoader.method532(k) & FrameLoader.method532(j), false, model);
 		if (k != -1 || j != -1)

@@ -746,24 +746,24 @@ final class WorldController {
                            boolean flag) {
         anInt488++;
         int l = 0;
-        int ai[] = model_1.vertexX;
-        int i1 = model_1.numVertices;
-        for (int j1 = 0; j1 < model.numVertices; j1++) {
+        int ai[] = model_1.verticesX;
+        int i1 = model_1.verticesCount;
+        for (int j1 = 0; j1 < model.verticesCount; j1++) {
             VertexNormal class33 = model.aClass33Array1425[j1];
             VertexNormal class33_1 = model.alsoVertexNormals[j1];
             if (class33_1.anInt605 != 0) {
-                int i2 = model.vertexY[j1] - j;
+                int i2 = model.verticesY[j1] - j;
                 if (i2 <= model_1.maximumYVertex) {
-                    int j2 = model.vertexX[j1] - i;
+                    int j2 = model.verticesX[j1] - i;
                     if (j2 >= model_1.minimumXVertex && j2 <= model_1.maximumXVertex) {
-                        int k2 = model.vertexZ[j1] - k;
+                        int k2 = model.verticesZ[j1] - k;
                         if (k2 >= model_1.minimumZVertex && k2 <= model_1.maximumZVertex) {
                             for (int l2 = 0; l2 < i1; l2++) {
                                 VertexNormal class33_2 = model_1.aClass33Array1425[l2];
                                 VertexNormal class33_3 = model_1.alsoVertexNormals[l2];
                                 if (j2 == ai[l2]
-                                        && k2 == model_1.vertexZ[l2]
-                                        && i2 == model_1.vertexY[l2]
+                                        && k2 == model_1.verticesZ[l2]
+                                        && i2 == model_1.verticesY[l2]
                                         && class33_3.anInt605 != 0) {
                                     class33.anInt602 += class33_3.anInt602;
                                     class33.anInt603 += class33_3.anInt603;
@@ -787,17 +787,17 @@ final class WorldController {
 
         if (l < 3 || !flag)
             return;
-        for (int k1 = 0; k1 < model.numberOfTriangleFaces; k1++)
-            if (anIntArray486[model.face_a[k1]] == anInt488
-                    && anIntArray486[model.face_b[k1]] == anInt488
-                    && anIntArray486[model.face_c[k1]] == anInt488)
-                model.face_render_type[k1] = -1;
+        for (int k1 = 0; k1 < model.trianglesCount; k1++)
+            if (anIntArray486[model.trianglesX[k1]] == anInt488
+                    && anIntArray486[model.trianglesY[k1]] == anInt488
+                    && anIntArray486[model.trianglesZ[k1]] == anInt488)
+                model.types[k1] = -1;
 
-        for (int l1 = 0; l1 < model_1.numberOfTriangleFaces; l1++)
-            if (anIntArray487[model_1.face_a[l1]] == anInt488
-                    && anIntArray487[model_1.face_b[l1]] == anInt488
-                    && anIntArray487[model_1.face_c[l1]] == anInt488)
-                model_1.face_render_type[l1] = -1;
+        for (int l1 = 0; l1 < model_1.trianglesCount; l1++)
+            if (anIntArray487[model_1.trianglesX[l1]] == anInt488
+                    && anIntArray487[model_1.trianglesY[l1]] == anInt488
+                    && anIntArray487[model_1.trianglesZ[l1]] == anInt488)
+                model_1.types[l1] = -1;
 
     }
 

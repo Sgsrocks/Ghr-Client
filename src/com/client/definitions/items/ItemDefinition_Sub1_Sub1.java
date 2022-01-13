@@ -11,7 +11,7 @@ public class ItemDefinition_Sub1_Sub1
 
     public static ItemDefinition itemDef(int i, ItemDefinition class8)
     {
-        if(i == 26464)
+        if(i == 28464)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -38,7 +38,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Dull Orange Partyhat";
             class8.description = "Dull Orange Partyhat";
         }
-        if(i == 26465)
+        if(i == 28465)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -65,7 +65,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Bright Yellow Partyhat";
             class8.description = "Bright Yellow Partyhat";
         }
-        if(i == 26466)
+        if(i == 28466)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -92,7 +92,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Bright Pink Partyhat";
             class8.description = "Bright Pink Partyhat";
         }
-        if(i == 26467)
+        if(i == 28467)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -119,7 +119,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Bright Blue Partyhat";
             class8.description = "Bright Blue Partyhat";
         }
-        if(i == 26468)
+        if(i == 28468)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -146,7 +146,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Bright Gray Partyhat";
             class8.description = "Bright Gray Partyhat";
         }
-        if(i == 26469)
+        if(i == 28469)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -173,7 +173,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Bright Sky Blue Partyhat";
             class8.description = "Bright Sky Blue Partyhat";
         }
-        if(i == 26470)
+        if(i == 28470)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -200,7 +200,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Teal Partyhat";
             class8.description = "Teal Partyhat";
         }
-        if(i == 26471)
+        if(i == 28471)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -227,7 +227,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Dark Gray Partyhat";
             class8.description = "Dark Gray Partyhat";
         }
-        if(i == 26472)
+        if(i == 28472)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -255,7 +255,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Lime Green abyssal whip";
             class8.description = "Lime Green abyssal whip";
         }
-        if(i == 26473)
+        if(i == 28473)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -283,7 +283,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Unknowed White abyssal whip";
             class8.description = "Unknowed White abyssal whip";
         }
-        if(i == 26474)
+        if(i == 28474)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -311,7 +311,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Deep Purple abyssal whip";
             class8.description = "Deep Purple abyssal whip";
         }
-        if(i == 26475)
+        if(i == 28475)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -339,7 +339,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Deeper Purple abyssal whip";
             class8.description = "Deeper Purple abyssal whip";
         }
-        if(i == 26476)
+        if(i == 28476)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -367,7 +367,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Deep Green abyssal whip";
             class8.description = "Deep Green abyssal whip";
         }
-        if(i == 26477)
+        if(i == 28477)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -395,7 +395,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Dull Orange abyssal whip";
             class8.description = "Dull Orange abyssal whip";
         }
-        if(i == 26478)
+        if(i == 28478)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -423,7 +423,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Bright Yellow abyssal whip";
             class8.description = "Bright Yellow abyssal whip";
         }
-        if(i == 26479)
+        if(i == 28479)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -451,7 +451,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Bright Pink abyssal whip";
             class8.description = "Bright Pink abyssal whip";
         }
-        if(i == 26480)
+        if(i == 28480)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -479,7 +479,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Bright Blue abyssal whip";
             class8.description = "Bright Blue abyssal whip";
         }
-        if(i == 26481)
+        if(i == 28481)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -507,7 +507,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Bright Gray abyssal whip";
             class8.description = "Bright Gray abyssal whip";
         }
-        if(i == 26482)
+        if(i == 28482)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -535,7 +535,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Bright Sky Blue abyssal whip";
             class8.description = "Bright Sky Blue abyssal whip";
         }
-        if(i == 26483)
+        if(i == 28483)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -563,7 +563,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Teal abyssal whip";
             class8.description = "Teal abyssal whip";
         }
-        if(i == 26484)
+        if(i == 28484)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -591,7 +591,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Dark Gray abyssal whip";
             class8.description = "Dark Gray abyssal whip";
         }
-        if(i == 26485)
+        if(i == 28485)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -613,7 +613,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "DeadPool cape";
             class8.description = "Its an DeadPool cape!";
         }
-        if(i == 26486)
+        if(i == 28486)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -635,7 +635,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Flash cape";
             class8.description = "Its an Flash cape!";
         }
-        if(i == 26487)
+        if(i == 28487)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -665,7 +665,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Black dragon platelegs";
             class8.description = "Omg, you killed that thing??";
         }
-        if(i == 26488)
+        if(i == 28488)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -695,7 +695,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Black dragon platebody";
             class8.description = "Is he dead or just sleeping!?";
         }
-        if(i == 26489)
+        if(i == 28489)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -719,7 +719,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Demonic Cape";
             class8.description = "Cache 27";
         }
-        if(i == 26490)
+        if(i == 28490)
         {
             class8.modifiedModelColors = new int[8];
             class8.originalModelColors = new int[8];
@@ -757,7 +757,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Black and red death Cape";
             class8.description = "Its A Black and red death cape";
         }
-        if(i == 26491)
+        if(i == 28491)
         {
             class8.modifiedModelColors = new int[8];
             class8.originalModelColors = new int[8];
@@ -795,7 +795,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Black and light purple death Cape";
             class8.description = "Its A Black and light purple death cape";
         }
-        if(i == 26492)
+        if(i == 28492)
         {
             class8.modifiedModelColors = new int[8];
             class8.originalModelColors = new int[8];
@@ -833,7 +833,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Black and teal death Cape";
             class8.description = "Its A Black and teal death cape";
         }
-        if(i == 26493)
+        if(i == 28493)
         {
             class8.modifiedModelColors = new int[8];
             class8.originalModelColors = new int[8];
@@ -871,7 +871,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Black and light green death Cape";
             class8.description = "Its A Black and light green death cape";
         }
-        if(i == 26494)
+        if(i == 28494)
         {
             class8.modifiedModelColors = new int[8];
             class8.originalModelColors = new int[8];
@@ -909,7 +909,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Black and orange death Cape";
             class8.description = "Its A Black and orange death cape";
         }
-        if(i == 26495)
+        if(i == 28495)
         {
             class8.modifiedModelColors = new int[8];
             class8.originalModelColors = new int[8];
@@ -947,7 +947,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "white and black death Cape";
             class8.description = "Its A white and black death cape";
         }
-        if(i == 26496)
+        if(i == 28496)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -967,7 +967,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Black and Purple death Cape";
             class8.description = "Its A Black and Purple death cape";
         }
-        if(i == 26497)
+        if(i == 28497)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -991,7 +991,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Angel Cape";
             class8.description = "Large winged angel cape";
         }
-        if(i == 26498)
+        if(i == 28498)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1022,7 +1022,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Golden Bunny ears";
             class8.description = "Golden Bunny ears";
         }
-        if(i == 26499)
+        if(i == 28499)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1053,7 +1053,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Blue Bunny ears";
             class8.description = "Its a Blue Bunny ears";
         }
-        if(i == 26500)
+        if(i == 28500)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1083,7 +1083,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Red Bunny ears";
             class8.description = "Its a Red Bunny ears";
         }
-        if(i == 26501)
+        if(i == 28501)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1113,7 +1113,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Purple Bunny ears";
             class8.description = "Its a Purple Bunny ears";
         }
-        if(i == 26502)
+        if(i == 28502)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1143,7 +1143,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Green Bunny ears";
             class8.description = "Its a Green Bunny ears";
         }
-        if(i == 26503)
+        if(i == 28503)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1173,7 +1173,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Orange Bunny ears";
             class8.description = "Its a Orange Bunny ears";
         }
-        if(i == 26504)
+        if(i == 28504)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1203,7 +1203,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Barrows Bunny ears";
             class8.description = "Its A Barrows Bunny ears";
         }
-        if(i == 26505)
+        if(i == 28505)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1233,7 +1233,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Dragon Bunny ears";
             class8.description = "Its A Dragon Bunny ears";
         }
-        if(i == 26506)
+        if(i == 28506)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1263,7 +1263,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Bronze Bunny ears";
             class8.description = "Its A Bronze Bunny ears";
         }
-        if(i == 26507)
+        if(i == 28507)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1293,7 +1293,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Iron Bunny ears";
             class8.description = "Its A Iron Bunny ears";
         }
-        if(i == 26508)
+        if(i == 28508)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1323,7 +1323,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Steel Bunny ears";
             class8.description = "Its A Steel Bunny ears";
         }
-        if(i == 26509)
+        if(i == 28509)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1353,7 +1353,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Black Bunny ears";
             class8.description = "Its A Black Bunny ears";
         }
-        if(i == 26510)
+        if(i == 28510)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1383,7 +1383,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Mith Bunny ears";
             class8.description = "Its A Mith Bunny ears";
         }
-        if(i == 26511)
+        if(i == 28511)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1413,7 +1413,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Rune Bunny ears";
             class8.description = "Its A Rune Bunny ears";
         }
-        if(i == 26512)
+        if(i == 28512)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1443,7 +1443,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Adam Bunny ears";
             class8.description = "Its A Adam Bunny ears";
         }
-        if(i == 26513)
+        if(i == 28513)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1473,7 +1473,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Lava Bunny ears";
             class8.description = "Its A lava Bunny ears";
         }
-        if(i == 26514)
+        if(i == 28514)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1503,7 +1503,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Ivandis Bunny ears";
             class8.description = "Its A Ivandis Bunny ears";
         }
-        if(i == 26515)
+        if(i == 28515)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1533,7 +1533,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Ladies Bunny ears";
             class8.description = "Its A Ladies Bunny ears";
         }
-        if(i == 26516)
+        if(i == 28516)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1565,7 +1565,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Barrows Flowers";
             class8.description = "Its A Barrow Flower";
         }
-        if(i == 26517)
+        if(i == 28517)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1597,7 +1597,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Dragon Flowers";
             class8.description = "Its A Dragon Flowers";
         }
-        if(i == 26518)
+        if(i == 28518)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1629,7 +1629,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Bronze Flowers";
             class8.description = "Its A Bronze Flowers";
         }
-        if(i == 26519)
+        if(i == 28519)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1661,7 +1661,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Iron Flowers";
             class8.description = "Its A Iron Flowers";
         }
-        if(i == 26520)
+        if(i == 28520)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1693,7 +1693,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Steel Flowers";
             class8.description = "Its A Steel Flowers";
         }
-        if(i == 26521)
+        if(i == 28521)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1725,7 +1725,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Mith Flowers";
             class8.description = "Its A Mith Flowers";
         }
-        if(i == 26522)
+        if(i == 28522)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1757,7 +1757,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Adam Flowers";
             class8.description = "Its A Adam Flowers";
         }
-        if(i == 26523)
+        if(i == 28523)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1789,7 +1789,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Rune Flowers";
             class8.description = "Its A Rune Flowers";
         }
-        if(i == 26524)
+        if(i == 28524)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1819,7 +1819,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Light Blue Bunny ears";
             class8.description = "Its A Light Blue Bunny ears";
         }
-        if(i == 26525)
+        if(i == 28525)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1849,7 +1849,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Light Purple Bunny ears";
             class8.description = "Its A Light Purple Bunny ears";
         }
-        if(i == 26526)
+        if(i == 28526)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1879,7 +1879,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Light Yellow Bunny ears";
             class8.description = "Its A Light Yellow Bunny ears";
         }
-        if(i == 26527)
+        if(i == 28527)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1909,7 +1909,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Forest Green Bunny ears";
             class8.description = "Its A Forest Green Bunny ears";
         }
-        if(i == 26528)
+        if(i == 28528)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1949,7 +1949,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.searchable = true;
             class8.description = "It's A Perfect Ring.";
         }
-        if(i == 26529)
+        if(i == 28529)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -1977,7 +1977,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Adam abyssal whip";
             class8.description = "abyssal whip Made Of Adam";
         }
-        if(i == 26530)
+        if(i == 28530)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2005,7 +2005,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Rune abyssal whip";
             class8.description = "abyssal whip Made Of Rune";
         }
-        if(i == 26531)
+        if(i == 28531)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2033,7 +2033,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Mithril abyssal whip";
             class8.description = "abyssal whip Made Of Mithril";
         }
-        if(i == 26532)
+        if(i == 28532)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2061,7 +2061,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Black abyssal whip";
             class8.description = "abyssal whip Made Of Black";
         }
-        if(i == 26533)
+        if(i == 28533)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2089,7 +2089,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Steel abyssal whip";
             class8.description = "abyssal whip Made Of Steel";
         }
-        if(i == 26534)
+        if(i == 28534)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2117,7 +2117,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Iron abyssal whip";
             class8.description = "abyssal whip Made Of Iron";
         }
-        if(i == 26535)
+        if(i == 28535)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2145,7 +2145,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Bronze abyssal whip";
             class8.description = "abyssal whip Made Of Bronze";
         }
-        if(i == 26536)
+        if(i == 28536)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2173,7 +2173,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Dragon abyssal whip";
             class8.description = "A abyssal whip made of Dragon";
         }
-        if(i == 26537)
+        if(i == 28537)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2201,7 +2201,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Sexy abyssal whip";
             class8.description = "hshsh";
         }
-        if(i == 26538)
+        if(i == 28538)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2233,7 +2233,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Santa platelegs";
             class8.description = "Santa platelegs";
         }
-        if(i == 26539)
+        if(i == 28539)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2267,7 +2267,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Santa platebody";
             class8.description = "Santa platebody";
         }
-        if(i == 26540)
+        if(i == 28540)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2299,7 +2299,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Santa kiteshield";
             class8.description = "Santa kiteshield";
         }
-        if(i == 26541)
+        if(i == 28541)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2333,7 +2333,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Santa cape";
             class8.description = "Santa cape";
         }
-        if(i == 26542)
+        if(i == 28542)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2365,7 +2365,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Santa Gloves";
             class8.description = "Santa Gloves";
         }
-        if(i == 26543)
+        if(i == 28543)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2393,7 +2393,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Santa boots";
             class8.description = "Santa boots";
         }
-        if(i == 26544)
+        if(i == 28544)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2425,7 +2425,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Black & Yellow platelegs";
             class8.description = "Black & Yellow platelegs";
         }
-        if(i == 26545)
+        if(i == 28545)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2459,7 +2459,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Black & Yellow platebody";
             class8.description = "Black & Yellow platebody";
         }
-        if(i == 26546)
+        if(i == 28546)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2491,7 +2491,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Black & Yellow kiteshield";
             class8.description = "Black & Yellow kiteshield";
         }
-        if(i == 26547)
+        if(i == 28547)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2525,7 +2525,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Black & Yellow cape";
             class8.description = "Black & Yellow cape";
         }
-        if(i == 26548)
+        if(i == 28548)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2557,7 +2557,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Black & Yellow Gloves";
             class8.description = "Black & Yellow Gloves";
         }
-        if(i == 26549)
+        if(i == 28549)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2585,7 +2585,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Black & Yellow Boots";
             class8.description = "Black & Yellow boots";
         }
-        if(i == 26550)
+        if(i == 28550)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2611,7 +2611,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Pink partyhat";
             class8.description = "A Pink partyhat.";
         }
-        if(i == 26551)
+        if(i == 28551)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2637,7 +2637,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Light blue partyhat";
             class8.description = "A Light blue partyhat.";
         }
-        if(i == 26552)
+        if(i == 28552)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2659,7 +2659,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "dark green partyhat";
             class8.description = "A dark green partyhat.";
         }
-        if(i == 26553)
+        if(i == 28553)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2685,7 +2685,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Dark Blue partyhat";
             class8.description = "A dark blue partyhat.";
         }
-        if(i == 26554)
+        if(i == 28554)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2711,7 +2711,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Blood Red partyhat";
             class8.description = "A Blood Red partyhat.";
         }
-        if(i == 26555)
+        if(i == 28555)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2737,7 +2737,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Lighter blue partyhat";
             class8.description = "Lighter blue partyhat.";
         }
-        if(i == 26556)
+        if(i == 28556)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2763,7 +2763,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Sky partyhat";
             class8.description = "A sky partyhat.";
         }
-        if(i == 26557)
+        if(i == 28557)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
@@ -2788,7 +2788,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Dragon Godsword";
             class8.description = "A godsword From the Greatest Dragons.";
         }
-        if(i == 26558)
+        if(i == 28558)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wield";
@@ -2812,7 +2812,7 @@ public class ItemDefinition_Sub1_Sub1
             class8.name = "Dungeoneering cape";
             class8.description = "A nice looking cape.";
         }
-        if(i == 26559)
+        if(i == 28559)
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wield";
