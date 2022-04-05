@@ -2,7 +2,7 @@ package com.client.features;
 
 import com.client.Client;
 import com.client.Configuration;
-import com.client.DrawingArea;
+import com.client.Rasterizer2D;
 import com.client.Entity;
 import com.client.NPC;
 import com.client.Player;
@@ -59,13 +59,13 @@ public class EntityTarget {
 		int xPos = 6;
 		int yPos = 22 + offset;
 
-		DrawingArea.drawBoxOutline(xPos, yPos, width - 3, 34, 0x393022);
-		DrawingArea.drawAlphaBox(xPos, yPos, width - 3, 33, 0x60574E, 110);
+		Rasterizer2D.drawBoxOutline(xPos, yPos, width - 3, 34, 0x393022);
+		Rasterizer2D.drawAlphaBox(xPos, yPos, width - 3, 33, 0x60574E, 110);
 		Client.latoBold.drawCenteredString(name, xPos + (width / 2) - 2, yPos + 18, 16777215, 0x000000);
 		int barWidth = 124;
 		int fillPercentage = target.currentHealth * barWidth / target.maxHealth;
-		DrawingArea.drawAlphaBox(xPos + 3, yPos + 18, width - 9, 13, 11740160, 160);
-		DrawingArea.drawAlphaBox(xPos + 3, yPos + 18, fillPercentage, 13, 0x00A900, 160);
+		Rasterizer2D.drawAlphaBox(xPos + 3, yPos + 18, width - 9, 13, 11740160, 160);
+		Rasterizer2D.drawAlphaBox(xPos + 3, yPos + 18, fillPercentage, 13, 0x00A900, 160);
 		Client.latoBold.drawCenteredString(target.currentHealth + " / " + target.maxHealth, xPos + (width / 2) - 2, yPos + 33,
 				16777215, 0x000000);
 	}

@@ -5,9 +5,8 @@ import java.util.Map;
 
 import com.client.Client;
 import com.client.Configuration;
-import com.client.Rasterizer;
+import com.client.Rasterizer3D;
 import com.client.features.gameframe.ScreenMode;
-import com.client.graphics.loaders.SpriteLoader;
 
 public class StatusBars {
 
@@ -126,14 +125,14 @@ public class StatusBars {
         int percent = getPercent(getPercent(type,0),250);
 
 
-        Rasterizer.drawBoxOutline(xOffset + 11 + getBarOffsetX(type), 42 + yOffset, 20, 250, 0x000000);
+        Rasterizer3D.drawBoxOutline(xOffset + 11 + getBarOffsetX(type), 42 + yOffset, 20, 250, 0x000000);
 
-        Rasterizer.drawTransparentBox(xOffset + 11 + getBarOffsetX(type), 42 + yOffset, 20, 250 , 0x000000,130);
+        Rasterizer3D.drawTransparentBox(xOffset + 11 + getBarOffsetX(type), 42 + yOffset, 20, 250 , 0x000000,130);
 
-        Rasterizer.drawTransparentBox(xOffset + 12 + getBarOffsetX(type), 242 - percent + 50 + yOffset , 18, percent , backgroundColor,135);
+        Rasterizer3D.drawTransparentBox(xOffset + 12 + getBarOffsetX(type), 242 - percent + 50 + yOffset , 18, percent , backgroundColor,135);
 
         if(restore.type == type && restore != Restore.NONE) {
-            Rasterizer.drawTransparentBox(xOffset + 12 + getBarOffsetX(type), 242 - getPercent(getPercent(type,restore.restore),250) + 50 + yOffset, 18, getPercent(getPercent(type,restore.restore),250) , type.getHeal(),140);
+            Rasterizer3D.drawTransparentBox(xOffset + 12 + getBarOffsetX(type), 242 - getPercent(getPercent(type,restore.restore),250) + 50 + yOffset, 18, getPercent(getPercent(type,restore.restore),250) , type.getHeal(),140);
         }
 
         if(getPercent(type,0) < 20) {

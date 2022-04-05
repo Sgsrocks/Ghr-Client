@@ -43,7 +43,7 @@ public final class RSImageProducer {
 	}
 
 	public void initDrawingArea() {
-		DrawingArea.initDrawingArea(height, width, canvasRaster, null);
+		Rasterizer2D.initDrawingArea(height, width, canvasRaster, null);
 	}
 
 	public final int[] canvasRaster;

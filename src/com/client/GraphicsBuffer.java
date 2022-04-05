@@ -49,6 +49,6 @@ public final class GraphicsBuffer {
 	}
 
 	public void setCanvas() {
-		DrawingArea.initDrawingArea(this.canvasHeight, this.canvasWidth, this.canvasRaster, this.depthBuffer);
+		Rasterizer2D.initDrawingArea(this.canvasHeight, this.canvasWidth, this.canvasRaster, this.depthBuffer);
 	}
 }

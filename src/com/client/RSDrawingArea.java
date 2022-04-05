@@ -1,5 +1,5 @@
 package com.client;
-public class RSDrawingArea extends DrawingArea {
+public class RSDrawingArea extends Rasterizer2D {
 
 	public static int height;
 	public static int bottomX;

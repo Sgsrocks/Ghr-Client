@@ -32,7 +32,7 @@ final class Sounds {
 		for (int i = 0; i < 10; i++) {
 			int j = stream.readUnsignedByte();
 			if (j != 0) {
-				stream.currentOffset--;
+				stream.currentPosition--;
 				samples[i] = new Synthesizer();
 				samples[i].method169(stream);
 			}
@@ -64,7 +64,7 @@ final class Sounds {
 
 	private Stream pack(int i) {
 		int k = encode(i);
-		stream.currentOffset = 0;
+		stream.currentPosition = 0;
 		stream.writeDWord(0x52494646);
 		stream.method403(36 + k);
 		stream.writeDWord(0x57415645);
@@ -78,7 +78,7 @@ final class Sounds {
 		stream.method400(8);
 		stream.writeDWord(0x64617461);
 		stream.method403(k);
-		stream.currentOffset += k;
+		stream.currentPosition += k;
 		return stream;
 	}
 

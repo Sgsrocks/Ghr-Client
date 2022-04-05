@@ -1,6 +1,6 @@
 package com.client.graphics;
 
-import com.client.DrawingArea;
+import com.client.Rasterizer2D;
 import com.client.RSFont;
 
 public class BlackFadingScreen extends FadingScreen {
@@ -26,8 +26,8 @@ public class BlackFadingScreen extends FadingScreen {
 				opacity = 255 - opacity;
 			}
 			if (percentile > -1 && percentile <= 100) {
-				DrawingArea.setDrawingArea(y + height, x, x + width, y);
-				DrawingArea.drawAlphaBox(x, y, width, height, 0x000000, opacity);
+				Rasterizer2D.setDrawingArea(y + height, x, x + width, y);
+				Rasterizer2D.drawAlphaBox(x, y, width, height, 0x000000, opacity);
 				if (percentile > 0 && state == 1 || percentile < 100 && state == -1) {
 					int textYOffset = 0;
 					for (String sentence : wrapped) {

@@ -2,11 +2,11 @@ package com.client.definitions;
 
 import com.client.Client;
 import com.client.Stream;
-import com.client.StreamLoader;
+import com.client.FileArchive;
 
 public final class FloorUnderlayDefinition {
 
-	public static void unpackConfig(StreamLoader streamLoader) {
+	public static void unpackConfig(FileArchive streamLoader) {
 		Stream stream = new Stream(streamLoader.getDataForName("flo.dat"));
 		int cacheSize = stream.readUnsignedShort();
 		if (underlays == null)

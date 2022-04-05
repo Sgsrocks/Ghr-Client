@@ -8,22 +8,18 @@ import java.util.Arrays;
 import com.client.sign.Signlink;
 import org.apache.commons.lang3.StringUtils;
 
-import com.client.FrameLoader;
+import com.client.Frame;
 import com.client.Client;
 import com.client.MRUNodes;
 import com.client.Model;
 import com.client.OnDemandFetcher;
 import com.client.Stream;
-import com.client.StreamLoader;
+import com.client.FileArchive;
 
 public final class ObjectDefinition {
 
 	private int opcode61;
 
-	public void applyTexturing(Model m, int id) {
-		if (id == 26764)
-			m.setTexture(26);
-	}
 
 	public static ObjectDefinition forID(int i) {
 		if (i > streamIndices.length)
@@ -38,7 +34,7 @@ public final class ObjectDefinition {
 
 		cacheIndex = (cacheIndex + 1) % 20;
 		ObjectDefinition objectDef = cache[cacheIndex];
-		stream.currentOffset = streamIndices[i];
+		stream.currentPosition = streamIndices[i];
 		objectDef.type = i;
 		objectDef.setDefaults();
 		objectDef.readValues(stream);
@@ -104,13 +100,6 @@ public final class ObjectDefinition {
 			}
 		}
 	}
-	public void applyTexture(Model model, int id) {
-		switch (id) {
-		case 26764:// Venenatis Webs
-			model.setTexture(26);
-			break;
-		}
-	}
 
 	private void setDefaults() {
 		anIntArray773 = null;
@@ -171,7 +160,7 @@ public final class ObjectDefinition {
 
 	public static int totalObjects;
 
-	public static void unpackConfig(StreamLoader streamLoader) {
+	public static void unpackConfig(FileArchive streamLoader) {
 		stream = new Stream(streamLoader.getDataForName("loc.dat"));
 		Stream stream = new Stream(streamLoader.getDataForName("loc.idx"));
 		totalObjects = stream.readUnsignedShort();
@@ -198,14 +187,12 @@ public final class ObjectDefinition {
 			Model model = (Model) mruNodes2.insertFromCache(type);
 			for (int k = 0; k < anIntArray773.length; k++)
 				flag1 &= Model.isCached(anIntArray773[k] & 0xffff);
-			applyTexturing(model, type);
 			return flag1;
 		}
 		Model model = (Model) mruNodes2.insertFromCache(type);
 		for (int j = 0; j < anIntArray776.length; j++)
 			if (anIntArray776[j] == i)
 				return Model.isCached(anIntArray773[j] & 0xffff);
-		applyTexturing(model, type);
 		return true;
 	}
 
@@ -226,7 +213,7 @@ public final class ObjectDefinition {
 				model.verticesY[i2] += j3 - l1;
 			}
 
-			model.method467();
+			model.computeSphericalBounds();
 		}
 		return model;
 	}
@@ -270,7 +257,6 @@ public final class ObjectDefinition {
 			Model model_1 = (Model) mruNodes2.insertFromCache(l1);
 			if (model_1 != null)
 				return model_1;
-			applyTexture(model, type);
 			if (anIntArray773 == null)
 				return null;
 			boolean flag1 = aBoolean751 ^ (l > 3);
@@ -282,7 +268,6 @@ public final class ObjectDefinition {
 				model = (Model) mruNodes1.insertFromCache(l2);
 				if (model == null) {
 					model = Model.getModel(l2 & 0xffff);
-					applyTexture(model, type);
 					if (model == null)
 						return null;
 					if (flag1)
@@ -317,7 +302,6 @@ public final class ObjectDefinition {
 			model = (Model) mruNodes1.insertFromCache(j2);
 			if (model == null) {
 				model = Model.getModel(j2 & 0xffff);
-				applyTexture(model, type);// try
 				if (model == null)
 					return null;
 				if (flag3)
@@ -329,40 +313,40 @@ public final class ObjectDefinition {
 		flag = thickness != 128 || height != 128 || width != 128;
 		boolean flag2;
 		flag2 = anInt738 != 0 || anInt745 != 0 || anInt783 != 0;
-		Model model_3 = new Model(modifiedModelColors == null && modifiedTexture == null, FrameLoader.method532(k),
-				l == 0 && k == -1 && !flag && !flag2, model);
+		Model model_3 = new Model(modifiedModelColors == null, Frame.noAnimationInProgress(k),
+				l == 0 && k == -1 && !flag && !flag2, modifiedTexture == null,  model);
 		if (k != -1) {
-			model_3.method469();
-			model_3.method470(k);
+			model_3.skin();
+			model_3.applyTransform(k);
 			model_3.faceGroups = null;
 			model_3.vertexGroups = null;
 		}
 		while (l-- > 0)
-			model_3.method473();
+			model_3.rotate90Degrees();
 		if (modifiedModelColors != null) {
 			for (int k2 = 0; k2 < modifiedModelColors.length; k2++)
-				model_3.method476(modifiedModelColors[k2], originalModelColors[k2]);
+				model_3.recolor(modifiedModelColors[k2], originalModelColors[k2]);
 
 		}
 		
 		if (originalTexture != null) {
 			for (int k2 = 0; k2 < originalTexture.length; k2++)
-				model_3.replaceTexture(originalTexture[k2], modifiedTexture[k2]);
+				model_3.retexture(originalTexture[k2], modifiedTexture[k2]);
 
 		}
 
 		if (flag)
-			model_3.method478(thickness, width, height);
+			model_3.scale(thickness, width, height);
 		if (flag2)
-			model_3.method475(anInt738, anInt745, anInt783);
+			model_3.translate(anInt738, anInt745, anInt783);
 		// model_3.method479(64 + aByte737, 768 + aByte742 * 5, -50, -10, -50,
 		// !aBoolean769);
 		// ORIGINAL^
 
-		model_3.method479(aByte737 + 64,  aByte742  * 25 + 768, -50, -10, -50, !aBoolean769);
+		model_3.light(aByte737 + 64,  aByte742  * 25 + 768, -50, -10, -50, !aBoolean769);
 
 		if (anInt760 == 1)
-			model_3.itemDropHeight = model_3.modelHeight;
+			model_3.itemDropHeight = model_3.modelBaseY;
 		mruNodes2.removeFromCache(model_3, l1);
 		return model_3;
 	}
@@ -445,7 +429,7 @@ public final class ObjectDefinition {
 							anIntArray776[k1] = stream.readUnsignedByte();
 						}
 					} else {
-						stream.currentOffset += len * 3;
+						stream.currentPosition += len * 3;
 					}
 				}
 			} else if (type == 2)
@@ -461,7 +445,7 @@ public final class ObjectDefinition {
 						for (int l1 = 0; l1 < len; l1++)
 							anIntArray773[l1] = stream.readUnsignedShort();
 					} else {
-						stream.currentOffset += len * 2;
+						stream.currentPosition += len * 2;
 					}
 				}
 			} else if (type == 14)
@@ -506,11 +490,11 @@ public final class ObjectDefinition {
 				}
 			} else if (type == 41) {
 				int i1 = stream.readUnsignedByte();
-				originalTexture = new int[i1];
-				modifiedTexture = new int[i1];
+				originalTexture = new short[i1];
+				modifiedTexture = new short[i1];
 				for (int i2 = 0; i2 < i1; i2++) {
-					originalTexture[i2] = stream.readUnsignedShort();
-					modifiedTexture[i2] = stream.readUnsignedShort();
+					originalTexture[i2] = (short) stream.readUnsignedShort();
+					modifiedTexture[i2] = (short) stream.readUnsignedShort();
 				}
 				} else if (type == 61) {
 				opcode61 = stream.readUnsignedShort();
@@ -603,8 +587,8 @@ public final class ObjectDefinition {
 		type = -1;
 	}
 
-	private int[] originalTexture;
-	private int[] modifiedTexture;
+	private short[] originalTexture;
+	private short[] modifiedTexture;
 	public boolean aBoolean736;
 	@SuppressWarnings("unused")
 	private byte aByte742;

@@ -24,8 +24,8 @@ public class SpriteLoader {
 		try {
 			Stream index = new Stream(FileOperations.readFile(Signlink.getCacheDirectory() + "sprites.idx"));
 			Stream data = new Stream(FileOperations.readFile(Signlink.getCacheDirectory() + "sprites.dat"));
-			DataInputStream indexFile = new DataInputStream(new GZIPInputStream(new ByteArrayInputStream(index.buffer)));
-			DataInputStream dataFile = new DataInputStream(new GZIPInputStream(new ByteArrayInputStream(data.buffer)));
+			DataInputStream indexFile = new DataInputStream(new GZIPInputStream(new ByteArrayInputStream(index.payload)));
+			DataInputStream dataFile = new DataInputStream(new GZIPInputStream(new ByteArrayInputStream(data.payload)));
 			int totalSprites = indexFile.readInt();
 			if (cache == null) {
 				cache = new SpriteLoader[totalSprites];
@@ -140,8 +140,8 @@ public class SpriteLoader {
 		try {
 			Stream index = new Stream(FileOperations.readFile(Signlink.getCacheDirectory() + "OSRSsprites.idx"));
 			Stream data = new Stream(FileOperations.readFile(Signlink.getCacheDirectory() + "OSRSsprites.dat"));
-			DataInputStream indexFile = new DataInputStream(new GZIPInputStream(new ByteArrayInputStream(index.buffer)));
-			DataInputStream dataFile = new DataInputStream(new GZIPInputStream(new ByteArrayInputStream(data.buffer)));
+			DataInputStream indexFile = new DataInputStream(new GZIPInputStream(new ByteArrayInputStream(index.payload)));
+			DataInputStream dataFile = new DataInputStream(new GZIPInputStream(new ByteArrayInputStream(data.payload)));
 			int totalSprites = indexFile.readInt();
 			if (cache474 == null) {
 				cache474 = new SpriteLoader[totalSprites];

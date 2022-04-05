@@ -1,6 +1,6 @@
 package com.client;
 
-public final class Texture extends DrawingArea {
+public final class Texture extends Rasterizer2D {
 
     public static int TEXTURE_IDX = 7;
 

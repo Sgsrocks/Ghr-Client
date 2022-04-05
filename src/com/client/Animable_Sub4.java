@@ -34,18 +34,18 @@ final class Animable_Sub4 extends Renderable {
 		int j = -1;
 		if (aSpotAnim_1592.aAnimation_407 != null)
 			j = aSpotAnim_1592.aAnimation_407.primaryFrames[anInt1593];
-		Model model_1 = new Model(true, FrameLoader.method532(j), false, model);
+		Model model_1 = new Model(true, Frame.noAnimationInProgress(j), false, model);
 		if (j != -1) {
-			model_1.method469();
-			model_1.method470(j);
+			model_1.skin();
+			model_1.applyTransform(j);
 			model_1.faceGroups = null;
 			model_1.vertexGroups = null;
 		}
 		if (aSpotAnim_1592.anInt410 != 128 || aSpotAnim_1592.anInt411 != 128)
-			model_1.method478(aSpotAnim_1592.anInt410, aSpotAnim_1592.anInt410,
+			model_1.scale(aSpotAnim_1592.anInt410, aSpotAnim_1592.anInt410,
 					aSpotAnim_1592.anInt411);
-		model_1.method474(anInt1596);
-		model_1.method479(64 + aSpotAnim_1592.anInt413,
+		model_1.leanOverX(anInt1596);
+		model_1.light(64 + aSpotAnim_1592.anInt413,
 				850 + aSpotAnim_1592.anInt414, -30, -50, -30, true);
 		return model_1;
 	}

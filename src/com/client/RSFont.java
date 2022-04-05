@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RSFont extends DrawingArea {
+public class RSFont extends Rasterizer2D {
 
 	public int baseCharacterHeight = 0;
 	public int anInt4142;
@@ -56,7 +56,7 @@ public class RSFont extends DrawingArea {
 	public static int transparency;
 	public static int textColor;
 
-	public RSFont(boolean TypeFont, String s, StreamLoader archive) {
+	public RSFont(boolean TypeFont, String s, FileArchive archive) {
 		fontPixels = new byte[256][];
 		characterWidths = new int[256];
 		characterHeights = new int[256];
@@ -65,10 +65,10 @@ public class RSFont extends DrawingArea {
 		characterScreenWidths = new int[256];
 		Stream stream = new Stream(archive.getDataForName(s + ".dat"));
 		Stream stream_1 = new Stream(archive.getDataForName("index.dat"));
-		stream_1.currentOffset = stream.readUnsignedShort() + 4;
+		stream_1.currentPosition = stream.readUnsignedShort() + 4;
 		int k = stream_1.readUnsignedByte();
 		if (k > 0) {
-			stream_1.currentOffset += 3 * (k - 1);
+			stream_1.currentPosition += 3 * (k - 1);
 		}
 		for (int l = 0; l < 256; l++) {
 			characterDrawXOffsets[l] = stream_1.readUnsignedByte();
@@ -754,37 +754,37 @@ public class RSFont extends DrawingArea {
 
 	public void drawTransparentCharacter(int i, int i_11_, int i_12_, int i_13_, int i_14_, int i_15_, int i_16_,
 			boolean bool) {
-		int i_17_ = i_11_ + i_12_ * DrawingArea.width;
-		int i_18_ = DrawingArea.width - i_13_;
+		int i_17_ = i_11_ + i_12_ * Rasterizer2D.width;
+		int i_18_ = Rasterizer2D.width - i_13_;
 		int i_19_ = 0;
 		int i_20_ = 0;
-		if (i_12_ < DrawingArea.topY) {
-			int i_21_ = DrawingArea.topY - i_12_;
+		if (i_12_ < Rasterizer2D.clip_top) {
+			int i_21_ = Rasterizer2D.clip_top - i_12_;
 			i_14_ -= i_21_;
-			i_12_ = DrawingArea.topY;
+			i_12_ = Rasterizer2D.clip_top;
 			i_20_ += i_21_ * i_13_;
-			i_17_ += i_21_ * DrawingArea.width;
+			i_17_ += i_21_ * Rasterizer2D.width;
 		}
-		if (i_12_ + i_14_ > DrawingArea.bottomY) {
-			i_14_ -= i_12_ + i_14_ - DrawingArea.bottomY;
+		if (i_12_ + i_14_ > Rasterizer2D.clip_bottom) {
+			i_14_ -= i_12_ + i_14_ - Rasterizer2D.clip_bottom;
 		}
-		if (i_11_ < DrawingArea.topX) {
-			int i_22_ = DrawingArea.topX - i_11_;
+		if (i_11_ < Rasterizer2D.clip_left) {
+			int i_22_ = Rasterizer2D.clip_left - i_11_;
 			i_13_ -= i_22_;
-			i_11_ = DrawingArea.topX;
+			i_11_ = Rasterizer2D.clip_left;
 			i_20_ += i_22_;
 			i_17_ += i_22_;
 			i_19_ += i_22_;
 			i_18_ += i_22_;
 		}
-		if (i_11_ + i_13_ > DrawingArea.bottomX) {
-			int i_23_ = i_11_ + i_13_ - DrawingArea.bottomX;
+		if (i_11_ + i_13_ > Rasterizer2D.clip_right) {
+			int i_23_ = i_11_ + i_13_ - Rasterizer2D.clip_right;
 			i_13_ -= i_23_;
 			i_19_ += i_23_;
 			i_18_ += i_23_;
 		}
 		if (i_13_ > 0 && i_14_ > 0) {
-			createTransparentCharacterPixels(DrawingArea.pixels, fontPixels[i], i_15_, i_20_, i_17_, i_13_, i_14_,
+			createTransparentCharacterPixels(Rasterizer2D.pixels, fontPixels[i], i_15_, i_20_, i_17_, i_13_, i_14_,
 					i_18_, i_19_, i_16_);
 		}
 	}
@@ -829,37 +829,37 @@ public class RSFont extends DrawingArea {
 	}
 
 	public void drawCharacter(int character, int i_35_, int i_36_, int i_37_, int i_38_, int i_39_, boolean bool) {
-		int i_40_ = i_35_ + i_36_ * DrawingArea.width;
-		int i_41_ = DrawingArea.width - i_37_;
+		int i_40_ = i_35_ + i_36_ * Rasterizer2D.width;
+		int i_41_ = Rasterizer2D.width - i_37_;
 		int i_42_ = 0;
 		int i_43_ = 0;
-		if (i_36_ < DrawingArea.topY) {
-			int i_44_ = DrawingArea.topY - i_36_;
+		if (i_36_ < Rasterizer2D.clip_top) {
+			int i_44_ = Rasterizer2D.clip_top - i_36_;
 			i_38_ -= i_44_;
-			i_36_ = DrawingArea.topY;
+			i_36_ = Rasterizer2D.clip_top;
 			i_43_ += i_44_ * i_37_;
-			i_40_ += i_44_ * DrawingArea.width;
+			i_40_ += i_44_ * Rasterizer2D.width;
 		}
-		if (i_36_ + i_38_ > DrawingArea.bottomY) {
-			i_38_ -= i_36_ + i_38_ - DrawingArea.bottomY;
+		if (i_36_ + i_38_ > Rasterizer2D.clip_bottom) {
+			i_38_ -= i_36_ + i_38_ - Rasterizer2D.clip_bottom;
 		}
-		if (i_35_ < DrawingArea.topX) {
-			int i_45_ = DrawingArea.topX - i_35_;
+		if (i_35_ < Rasterizer2D.clip_left) {
+			int i_45_ = Rasterizer2D.clip_left - i_35_;
 			i_37_ -= i_45_;
-			i_35_ = DrawingArea.topX;
+			i_35_ = Rasterizer2D.clip_left;
 			i_43_ += i_45_;
 			i_40_ += i_45_;
 			i_42_ += i_45_;
 			i_41_ += i_45_;
 		}
-		if (i_35_ + i_37_ > DrawingArea.bottomX) {
-			int i_46_ = i_35_ + i_37_ - DrawingArea.bottomX;
+		if (i_35_ + i_37_ > Rasterizer2D.clip_right) {
+			int i_46_ = i_35_ + i_37_ - Rasterizer2D.clip_right;
 			i_37_ -= i_46_;
 			i_42_ += i_46_;
 			i_41_ += i_46_;
 		}
 		if (i_37_ > 0 && i_38_ > 0) {
-			createCharacterPixels(DrawingArea.pixels, fontPixels[character], i_39_, i_43_, i_40_, i_37_, i_38_, i_41_,
+			createCharacterPixels(Rasterizer2D.pixels, fontPixels[character], i_39_, i_43_, i_40_, i_37_, i_38_, i_41_,
 					i_42_);
 
 		}

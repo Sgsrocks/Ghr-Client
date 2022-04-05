@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import com.client.Client;
-import com.client.DrawingArea;
+import com.client.Rasterizer2D;
 import com.client.Sprite;
 
 public final class GameTimerHandler {
@@ -92,10 +92,10 @@ public final class GameTimerHandler {
 		}
 		
 		x -= drawingWidth;
-		DrawingArea.drawAlphaBox(x, y, drawingWidth, drawingHeight, 0x000000, Byte.MAX_VALUE / 2);
-		DrawingArea.drawAlphaBox(x, y, drawingWidth, 1, 0xCBBB99, 80);
-		DrawingArea.drawAlphaBox(x + drawingWidth - 1, y, 1, drawingHeight, 0xCBBB99, 80);
-		DrawingArea.drawAlphaBox(x, y + 1, 1, drawingHeight - 1, 0xCBBB99, 80);
+		Rasterizer2D.drawAlphaBox(x, y, drawingWidth, drawingHeight, 0x000000, Byte.MAX_VALUE / 2);
+		Rasterizer2D.drawAlphaBox(x, y, drawingWidth, 1, 0xCBBB99, 80);
+		Rasterizer2D.drawAlphaBox(x + drawingWidth - 1, y, 1, drawingHeight, 0xCBBB99, 80);
+		Rasterizer2D.drawAlphaBox(x, y + 1, 1, drawingHeight - 1, 0xCBBB99, 80);
 		x += 2;
 		
 		for(GameTimer timer : timers) {

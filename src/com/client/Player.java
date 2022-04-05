@@ -11,26 +11,27 @@ public final class Player extends Entity {
 		Model model = method452();
 		if (model == null)
 			return null;
-		super.height = model.modelHeight;
-		model.aBoolean1659 = true;
+		super.height = model.modelBaseY;
+		model.fits_on_single_square = true;
 		if (aBoolean1699)
 			return model;
-		if (super.anInt1520 != -1 && super.anInt1521 != -1) {
+		if (super.anInt1520 != -1 && super.currentAnimation != -1) {
 			GraphicsDefinition spotAnim = GraphicsDefinition.cache[super.anInt1520];
-			Model model_2 = spotAnim.getModel();
-			if (model_2 != null) {
-				Model model_3 = new Model(true, FrameLoader.method532(super.anInt1521), false, model_2);
-				model_3.method475(0, -super.anInt1524, 0);
-				model_3.method469();
-				model_3.method470(spotAnim.aAnimation_407.primaryFrames[super.anInt1521]);
+			Model spotAnimationModel = spotAnim.getModel();
+			if (spotAnimationModel != null) {
+				Model model_3 = new Model(true, Frame.noAnimationInProgress(super.currentAnimation), false,
+						spotAnimationModel);
+				model_3.translate(0, -super.anInt1524, 0);
+				model_3.skin();
+				model_3.applyTransform(spotAnim.aAnimation_407.primaryFrames[super.currentAnimation]);
 				model_3.faceGroups = null;
 				model_3.vertexGroups = null;
 				if (spotAnim.anInt410 != 128 || spotAnim.anInt411 != 128)
-					model_3.method478(spotAnim.anInt410, spotAnim.anInt410,
+					model_3.scale(spotAnim.anInt410, spotAnim.anInt410,
 							spotAnim.anInt411);
 				// model_3.method479(64 + spotAnim.anInt413, 850 +
 				// spotAnim.anInt414, -30, -50, -30, true);
-				model_3.method479(84 + spotAnim.anInt413,
+				model_3.light(84 + spotAnim.anInt413,
 						1550 + spotAnim.anInt414, -50, -110, -50, true);
 				Model aclass30_sub2_sub4_sub6_1s[] = { model, model_3 };
 				model = new Model(aclass30_sub2_sub4_sub6_1s);
@@ -41,34 +42,34 @@ public final class Player extends Entity {
 				aModel_1714 = null;
 			if (Client.loopCycle >= anInt1707 && Client.loopCycle < anInt1708) {
 				Model model_1 = aModel_1714;
-				model_1.method475(anInt1711 - super.x, anInt1712 - anInt1709,
+				model_1.translate(anInt1711 - super.x, anInt1712 - anInt1709,
 						anInt1713 - super.y);
 				if (super.turnDirection == 512) {
-					model_1.method473();
-					model_1.method473();
-					model_1.method473();
+					model_1.rotate90Degrees();
+					model_1.rotate90Degrees();
+					model_1.rotate90Degrees();
 				} else if (super.turnDirection == 1024) {
-					model_1.method473();
-					model_1.method473();
+					model_1.rotate90Degrees();
+					model_1.rotate90Degrees();
 				} else if (super.turnDirection == 1536)
-					model_1.method473();
+					model_1.rotate90Degrees();
 				Model aclass30_sub2_sub4_sub6s[] = { model, model_1 };
 				model = new Model(aclass30_sub2_sub4_sub6s);
 				if (super.turnDirection == 512)
-					model_1.method473();
+					model_1.rotate90Degrees();
 				else if (super.turnDirection == 1024) {
-					model_1.method473();
-					model_1.method473();
+					model_1.rotate90Degrees();
+					model_1.rotate90Degrees();
 				} else if (super.turnDirection == 1536) {
-					model_1.method473();
-					model_1.method473();
-					model_1.method473();
+					model_1.rotate90Degrees();
+					model_1.rotate90Degrees();
+					model_1.rotate90Degrees();
 				}
-				model_1.method475(super.x - anInt1711, anInt1709 - anInt1712,
+				model_1.translate(super.x - anInt1711, anInt1709 - anInt1712,
 						super.y - anInt1713);
 			}
 		}
-		model.aBoolean1659 = true;
+		model.fits_on_single_square = true;
 		return model;
 	}
 
@@ -76,7 +77,7 @@ public final class Player extends Entity {
 	public String titleColor;
 
 	public void updatePlayer(Stream stream) {
-		stream.currentOffset = 0;
+		stream.currentPosition = 0;
 		anInt1702 = stream.readUnsignedByte();
 		title = stream.readString();
 		titleColor = stream.readString();
@@ -234,15 +235,15 @@ public final class Player extends Entity {
 			model_1 = new Model(j2, aclass30_sub2_sub4_sub6s);
 			for (int j3 = 0; j3 < 5; j3++)
 				if (anIntArray1700[j3] != 0) {
-					model_1.replaceColor(Client.anIntArrayArray1003[j3][0],
+					model_1.recolor(Client.anIntArrayArray1003[j3][0],
 							Client.anIntArrayArray1003[j3][anIntArray1700[j3]]);
 					if (j3 == 1)
-						model_1.replaceColor(Client.anIntArray1204[0],
+						model_1.recolor(Client.anIntArray1204[0],
 								Client.anIntArray1204[anIntArray1700[j3]]);
 				}
 
-			model_1.method469();
-			 model_1.method479(64, 850, -30, -50, -30, true);
+			model_1.skin();
+			 model_1.light(64, 850, -30, -50, -30, true);
 			//model_1.method479(84, 1000, -90, -580, -90, true);
 			mruNodes.removeFromCache(model_1, l);
 			aLong1697 = l;
@@ -250,12 +251,12 @@ public final class Player extends Entity {
 		if (aBoolean1699)
 			return model_1;
 		Model model_2 = Model.EMPTY_MODEL;
-		model_2.method464(model_1, FrameLoader.method532(k) & FrameLoader.method532(i1));
+		model_2.method464(model_1, Frame.noAnimationInProgress(k) & Frame.noAnimationInProgress(i1));
 		if (k != -1 && i1 != -1)
-			model_2.method471(AnimationDefinition.anims[super.anim].anIntArray357, i1, k);
+			model_2.applyAnimationFrames(AnimationDefinition.anims[super.anim].anIntArray357, i1, k);
 		else if (k != -1)
-			model_2.method470(k);
-		model_2.method466();
+			model_2.applyTransform(k);
+		model_2.calculateDistances();
 		model_2.faceGroups = null;
 		model_2.vertexGroups = null;
 		return model_2;
@@ -303,10 +304,10 @@ public final class Player extends Entity {
 		Model model = new Model(k, aclass30_sub2_sub4_sub6s);
 		for (int j1 = 0; j1 < 5; j1++)
 			if (anIntArray1700[j1] != 0) {
-				model.replaceColor(Client.anIntArrayArray1003[j1][0],
+				model.recolor(Client.anIntArrayArray1003[j1][0],
 						Client.anIntArrayArray1003[j1][anIntArray1700[j1]]);
 				if (j1 == 1)
-					model.replaceColor(Client.anIntArray1204[0],
+					model.recolor(Client.anIntArray1204[0],
 							Client.anIntArray1204[anIntArray1700[j1]]);
 			}
 

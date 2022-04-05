@@ -1,11 +1,11 @@
 package com.client.definitions;
 
 import com.client.Stream;
-import com.client.StreamLoader;
+import com.client.FileArchive;
 
 public final class VarBit {
 
-	public static void unpackConfig(StreamLoader streamLoader) {
+	public static void unpackConfig(FileArchive streamLoader) {
 		Stream stream = new Stream(streamLoader.getDataForName("varbit.dat"));
 		int cacheSize = stream.readUnsignedShort();
 		if (cache == null)
@@ -16,7 +16,7 @@ public final class VarBit {
 			cache[j].readValues(stream);
 		}
 
-		if (stream.currentOffset != stream.buffer.length)
+		if (stream.currentPosition != stream.payload.length)
 			System.out.println("varbit load mismatch");
 	}
 

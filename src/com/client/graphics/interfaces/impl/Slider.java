@@ -2,7 +2,7 @@ package com.client.graphics.interfaces.impl;
 
 import com.client.Client;
 import com.client.RSApplet;
-import com.client.Rasterizer;
+import com.client.Rasterizer3D;
 import com.client.Sprite;
 import com.client.features.gameframe.ScreenMode;
 import com.client.graphics.interfaces.RSInterface;
@@ -106,7 +106,7 @@ public class Slider {
 				break;
 			case BRIGHTNESS:
 				//Client.brightnessState = minValue + maxValue - value;
-				Rasterizer.setBrightness(minValue + maxValue - value);
+				Rasterizer3D.setBrightness(minValue + maxValue - value);
 				break;
 			case MUSIC:
 				Client.instance.changeMusicVolume((int) (minValue + maxValue - value));

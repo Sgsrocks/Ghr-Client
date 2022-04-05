@@ -31,29 +31,29 @@ public final class NPC extends Entity {
 		Model model = method450();
 		if (model == null)
 			return null;
-		super.height = model.modelHeight;
-		if (super.anInt1520 != -1 && super.anInt1521 != -1) {
+		super.height = model.modelBaseY;
+		if (super.anInt1520 != -1 && super.currentAnimation != -1) {
 			GraphicsDefinition spotAnim = GraphicsDefinition.cache[super.anInt1520];
 			Model model_1 = spotAnim.getModel();
 			if (model_1 != null) {
-				int j = spotAnim.aAnimation_407.primaryFrames[super.anInt1521];
-				Model model_2 = new Model(true, FrameLoader.method532(j), false, model_1);
-				model_2.method475(0, -super.anInt1524, 0);
-				model_2.method469();
-				model_2.method470(j);
+				int j = spotAnim.aAnimation_407.primaryFrames[super.currentAnimation];
+				Model model_2 = new Model(true, Frame.noAnimationInProgress(j), false, model_1);
+				model_2.translate(0, -super.anInt1524, 0);
+				model_2.skin();
+				model_2.applyTransform(j);
 				model_2.faceGroups = null;
 				model_2.vertexGroups = null;
 				if (spotAnim.anInt410 != 128 || spotAnim.anInt411 != 128)
-					model_2.method478(spotAnim.anInt410, spotAnim.anInt410,
+					model_2.scale(spotAnim.anInt410, spotAnim.anInt410,
 							spotAnim.anInt411);
-				model_2.method479(64 + spotAnim.anInt413,
+				model_2.light(64 + spotAnim.anInt413,
 						850 + spotAnim.anInt414, -30, -50, -30, true);
 				Model aModel[] = { model, model_2 };
 				model = new Model(aModel);
 			}
 		}
 		if (desc.boundDim == 1)
-			model.aBoolean1659 = true;
+			model.fits_on_single_square = true;
 		return model;
 	}
 

@@ -11,7 +11,7 @@ public class ModelLoader {
         Stream var6 = new Stream(var1);
         Stream var7 = new Stream(var1);
         Stream var8 = new Stream(var1);
-        var2.currentOffset = var1.length - 26;
+        var2.setOffset(var1.length - 26);
         int var9 = var2.readUnsignedShort();
         int var10 = var2.readUnsignedShort();
         int var11 = var2.readUnsignedByte();
@@ -37,7 +37,7 @@ public class ModelLoader {
         if (var11 > 0)
         {
             def.textureTypes = new byte[var11];
-            var2.currentOffset = 0;
+            var2.setOffset(0);
 
             for (var28 = 0; var28 < var11; ++var28)
             {

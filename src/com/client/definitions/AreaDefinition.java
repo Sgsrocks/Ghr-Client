@@ -1,7 +1,7 @@
 package com.client.definitions;
 
 import com.client.Stream;
-import com.client.StreamLoader;
+import com.client.FileArchive;
 import com.client.sign.Signlink;
 
 import java.io.BufferedWriter;
@@ -37,7 +37,7 @@ public final class AreaDefinition {
         area_data = null;
     }
 
-    public static void unpackConfig(StreamLoader archive) {
+    public static void unpackConfig(FileArchive archive) {
 
         area_data = new Stream(archive.getDataForName("areas.dat"));
         Stream stream = new Stream(archive.getDataForName("areas.idx"));
@@ -91,7 +91,7 @@ public final class AreaDefinition {
         cacheIndex = (cacheIndex + 1) % 10;
         AreaDefinition itemDef = cache[cacheIndex];
         if (itemId > 0)
-            area_data.currentOffset = streamIndices[itemId];
+            area_data.currentPosition = streamIndices[itemId];
         itemDef.id = itemId;
         itemDef.readValues(area_data);
         switch(itemId){

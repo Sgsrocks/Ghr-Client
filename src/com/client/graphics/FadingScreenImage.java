@@ -5,7 +5,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 import com.client.Client;
-import com.client.DrawingArea;
+import com.client.Rasterizer2D;
 import com.client.RSFont;
 import com.client.Sprite;
 
@@ -57,8 +57,8 @@ public class FadingScreenImage extends FadingScreen {
 				opacity = 255 - opacity;
 			}
 			if (percentile > -1 && percentile <= 100) {
-				DrawingArea.setDrawingArea(y + height, x, x + width, y);
-				DrawingArea.drawAlphaBox(x + 4, y + 4, width - 8, height - 8, 0x000000, opacity);
+				Rasterizer2D.setDrawingArea(y + height, x, x + width, y);
+				Rasterizer2D.drawAlphaBox(x + 4, y + 4, width - 8, height - 8, 0x000000, opacity);
 				background.drawAdvancedTransparentSprite(x, y, opacity);
 				int textYOffset = 22;
 				for (String sentence : wrapped) {

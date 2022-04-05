@@ -28,8 +28,8 @@ public class SpriteLoader3 {
 			Stream data = new Stream(
 					FileOperations.readFile(Signlink.getCacheDirectory() + "media_archives/media_archive3.dat"));
 			DataInputStream indexFile = new DataInputStream(
-					new GZIPInputStream(new ByteArrayInputStream(index.buffer)));
-			DataInputStream dataFile = new DataInputStream(new GZIPInputStream(new ByteArrayInputStream(data.buffer)));
+					new GZIPInputStream(new ByteArrayInputStream(index.payload)));
+			DataInputStream dataFile = new DataInputStream(new GZIPInputStream(new ByteArrayInputStream(data.payload)));
 			int totalSprites = indexFile.readInt();
 			if (cache == null) {
 				cache = new SpriteLoader3[totalSprites];

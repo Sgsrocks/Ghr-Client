@@ -1,12 +1,12 @@
 package com.client.definitions;
 
-import com.client.FrameLoader;
+import com.client.Frame;
 import com.client.Stream;
-import com.client.StreamLoader;
+import com.client.FileArchive;
 
 public final class AnimationDefinition {
 
-	public static void unpackConfig(StreamLoader streamLoader) {
+	public static void unpackConfig(FileArchive streamLoader) {
 		Stream stream = new Stream(streamLoader.getDataForName("seq.dat"));
 		int length = stream.readUnsignedShort();
 		if (anims == null)
@@ -30,7 +30,7 @@ public final class AnimationDefinition {
 	public int method258(int i) {
 		int j = durations[i];
 		if (j == 0) {
-			FrameLoader class36 = FrameLoader.forId(primaryFrames[i]);
+			Frame class36 = Frame.forId(primaryFrames[i]);
 			if (class36 != null)
 				j = durations[i] = class36.anInt636;
 		}

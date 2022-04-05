@@ -5,7 +5,7 @@ package com.client;
 
 final class Censor {
 
-	public static void loadConfig(StreamLoader streamLoader) {
+	public static void loadConfig(FileArchive streamLoader) {
 		Stream stream = new Stream(
 				streamLoader.getDataForName("fragmentsenc.txt"));
 		Stream stream_1 = new Stream(streamLoader.getDataForName("badenc.txt"));

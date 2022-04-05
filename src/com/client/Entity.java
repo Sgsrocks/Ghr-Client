@@ -184,7 +184,7 @@ public class Entity extends Renderable {
 	int anInt1518;
 	int anInt1519;
 	int anInt1520;
-	int anInt1521;
+	int currentAnimation;
 	int anInt1522;
 	int anInt1523;
 	int anInt1524;

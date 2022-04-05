@@ -24,30 +24,30 @@ final class Animable_Sub3 extends Renderable {
 		if (model == null)
 			return null;
 		int j = aSpotAnim_1568.aAnimation_407.primaryFrames[anInt1569];
-		Model model_1 = new Model(true, FrameLoader.method532(j), false, model);
+		Model model_1 = new Model(true, Frame.noAnimationInProgress(j), false, model);
 		if (!aBoolean1567) {
-			model_1.method469();
-			model_1.method470(j);
+			model_1.skin();
+			model_1.applyTransform(j);
 			model_1.faceGroups = null;
 			model_1.vertexGroups = null;
 		}
 		if (aSpotAnim_1568.anInt410 != 128 || aSpotAnim_1568.anInt411 != 128)
-			model_1.method478(aSpotAnim_1568.anInt410, aSpotAnim_1568.anInt410,
+			model_1.scale(aSpotAnim_1568.anInt410, aSpotAnim_1568.anInt410,
 					aSpotAnim_1568.anInt411);
 		if (aSpotAnim_1568.anInt412 != 0) {
 			if (aSpotAnim_1568.anInt412 == 90)
-				model_1.method473();
+				model_1.rotate90Degrees();
 			if (aSpotAnim_1568.anInt412 == 180) {
-				model_1.method473();
-				model_1.method473();
+				model_1.rotate90Degrees();
+				model_1.rotate90Degrees();
 			}
 			if (aSpotAnim_1568.anInt412 == 270) {
-				model_1.method473();
-				model_1.method473();
-				model_1.method473();
+				model_1.rotate90Degrees();
+				model_1.rotate90Degrees();
+				model_1.rotate90Degrees();
 			}
 		}
-		model_1.method479(64 + aSpotAnim_1568.anInt413,
+		model_1.light(64 + aSpotAnim_1568.anInt413,
 				850 + aSpotAnim_1568.anInt414, -30, -50, -30, true);
 		return model_1;
 	}

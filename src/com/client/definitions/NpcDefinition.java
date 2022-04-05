@@ -13,13 +13,13 @@ import java.io.FileWriter;
 //import org.apache.commons.io.FileUtils;
 import java.io.IOException;
 
-import com.client.FrameLoader;
+import com.client.Frame;
 import com.client.Client;
 import com.client.Configuration;
 import com.client.MRUNodes;
 import com.client.Model;
 import com.client.Stream;
-import com.client.StreamLoader;
+import com.client.FileArchive;
 import com.client.sign.Signlink;
 
 public final class NpcDefinition {
@@ -33,7 +33,7 @@ public final class NpcDefinition {
 
 		anInt56 = (anInt56 + 1) % 20;
 		NpcDefinition entityDef = cache[anInt56] = new NpcDefinition();
-		stream.currentOffset = streamIndices[i];
+		stream.currentPosition = streamIndices[i];
 		entityDef.interfaceType = i;
 		entityDef.readValues(stream);
 
@@ -56,7 +56,7 @@ public final class NpcDefinition {
 
 	public static int totalAmount;
 
-	public static void unpackConfig(StreamLoader streamLoader) {
+	public static void unpackConfig(FileArchive streamLoader) {
 		stream = new Stream(streamLoader.getDataForName("npc.dat"));
 		Stream stream = new Stream(streamLoader.getDataForName("npc.idx"));
 		totalAmount = stream.readUnsignedShort();
@@ -245,7 +245,7 @@ bw.close();
 
 		if (originalColors != null)
 			for (int k = 0; k < originalColors.length; k++)
-				model.replaceColor(originalColors[k], newColors[k]);
+				model.recolor(originalColors[k], newColors[k]);
 
 		return model;
 	}
@@ -297,27 +297,27 @@ bw.close();
 				model = new Model(aclass30_sub2_sub4_sub6s.length, aclass30_sub2_sub4_sub6s);
 			if (originalColors != null) {
 				for (int k1 = 0; k1 < originalColors.length; k1++)
-					model.replaceColor(originalColors[k1], newColors[k1]);
+					model.recolor(originalColors[k1], newColors[k1]);
 
 			}
-			model.method469();
-			model.method479(64 + anInt85, 850 + anInt92, -30, -50, -30, true);
+			model.skin();
+			model.light(64 + anInt85, 850 + anInt92, -30, -50, -30, true);
 			// model.method479(84 + anInt85, 1000 + anInt92, -90, -580, -90, true);
 			mruNodes.removeFromCache(model, interfaceType);
 		}
 		Model model_1 = Model.EMPTY_MODEL;
-		model_1.method464(model, FrameLoader.method532(k) & FrameLoader.method532(j));
+		model_1.method464(model, Frame.noAnimationInProgress(k) & Frame.noAnimationInProgress(j));
 		if (k != -1 && j != -1)
-			model_1.method471(ai, j, k);
+			model_1.applyAnimationFrames(ai, j, k);
 		else if (k != -1)
-			model_1.method470(k);
+			model_1.applyTransform(k);
 		if (anInt91 != 128 || anInt86 != 128)
-			model_1.method478(anInt91, anInt91, anInt86);
-		model_1.method466();
+			model_1.scale(anInt91, anInt91, anInt86);
+		model_1.calculateDistances();
 		model_1.faceGroups = null;
 		model_1.vertexGroups = null;
 		if (boundDim == 1)
-			model_1.aBoolean1659 = true;
+			model_1.fits_on_single_square = true;
 		return model_1;
 	}
 

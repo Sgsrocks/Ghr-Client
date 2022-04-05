@@ -267,7 +267,7 @@ final class ObjectManager {
 							int minimapRgb = 0;
 							boolean check = !Configuration.enableTileBlending || !Configuration.enableSmoothShading;
 							if (paletteIndexA != -1) {
-								minimapRgb = Rasterizer.hslToRgb[method187(paletteIndexA, 96)];
+								minimapRgb = Rasterizer3D.hslToRgb[method187(paletteIndexA, 96)];
 							}
 							if (overlayA == 0) {
 								worldController.addTile(l, x, z, 0, 0, -1, tileHeightA, tileHeightB, tileHeightC,
@@ -290,23 +290,23 @@ final class ObjectManager {
 									textureId = 3;
 								}
 								if (textureId >= 0) {
-									minimapColor = Rasterizer.getOverallColour(textureId);
+									minimapColor = Rasterizer3D.getOverallColour(textureId);
 									floorId = -1;
 								} else if (def_over.rgb == 0xff00ff) {
 									minimapColor = 0;
 									floorId = -2;
 									textureId = -1;
 								} else if (def_over.rgb == 0x333333) {
-									minimapColor = Rasterizer.hslToRgb[checkedLight(def_over.hsl16, 96)];
+									minimapColor = Rasterizer3D.hslToRgb[checkedLight(def_over.hsl16, 96)];
 									floorId = -2;
 									textureId = -1;
 								} else {
 									floorId = encode(def_over.hue, def_over.saturation, def_over.luminance);
-									minimapColor = Rasterizer.hslToRgb[checkedLight(def_over.hsl16, 96)];
+									minimapColor = Rasterizer3D.hslToRgb[checkedLight(def_over.hsl16, 96)];
 								}
 								if (minimapColor == 0x000000 && def_over.anotherRgb != -1) {
 									int newMinimapColor = encode(def_over.hue, def_over.saturation, def_over.luminance);
-									minimapColor = Rasterizer.hslToRgb[checkedLight(newMinimapColor, 96)];
+									minimapColor = Rasterizer3D.hslToRgb[checkedLight(newMinimapColor, 96)];
 								}
 								worldController.addTile(l, x, z, shape, angle, textureId, tileHeightA, tileHeightB,
 										tileHeightC, tileHeightD, method187(paletteIndexA, tileShadowA),
@@ -605,7 +605,7 @@ final class ObjectManager {
 					if (model != null) {
 						for (int j5 = 0; j5 <= j4; j5++) {
 							for (int k5 = 0; k5 <= l4; k5++) {
-								int l5 = model.maxVertexDistanceXZPlane / 4;
+								int l5 = model.XYZMag / 4;
 								if (l5 > 30)
 									l5 = 30;
 								if (l5 > shading[z][x + j5][y + k5])
@@ -1001,7 +1001,7 @@ final class ObjectManager {
 			Stream stream = new Stream(abyte0);
 			int l1 = -1;
 			do {
-				int i2 = stream.readUSmart2();
+				int i2 = stream.readUnsignedIntSmartShortCompat();
 				if (i2 == 0)
 					break label0;
 				l1 += i2;
@@ -1037,7 +1037,7 @@ final class ObjectManager {
 	}
 
 	private static int method184(int i, int j, int k, int l) {
-		int i1 = 0x10000 - Rasterizer.anIntArray1471[(k * 1024) / l] >> 1;
+		int i1 = 0x10000 - Rasterizer3D.COSINE[(k * 1024) / l] >> 1;
 		return (i * (0x10000 - i1) >> 16) + (j * i1 >> 16);
 	}
 

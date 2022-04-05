@@ -3,17 +3,17 @@ package com.client.graphics.interfaces;
 import java.awt.Dimension;
 import java.util.Objects;
 
-import com.client.FrameLoader;
+import com.client.Frame;
 import com.client.Client;
 import com.client.Configuration;
-import com.client.DrawingArea;
+import com.client.Rasterizer2D;
 import com.client.MRUNodes;
 import com.client.Model;
 import com.client.RSFont;
 import com.client.RSMenuItem;
 import com.client.Sprite;
 import com.client.Stream;
-import com.client.StreamLoader;
+import com.client.FileArchive;
 import com.client.TextClass;
 import com.client.TextDrawingArea;
 import com.client.definitions.ItemDefinition;
@@ -28,8 +28,8 @@ public class RSInterface {
 	public static boolean showIds = false;
 	public static RSFont[] newFonts;
 
-	public static void unpack(StreamLoader streamLoader, TextDrawingArea textDrawingAreas[],
-			StreamLoader streamLoader_1, RSFont[] newFontSystem) {
+	public static void unpack(FileArchive streamLoader, TextDrawingArea textDrawingAreas[],
+                              FileArchive streamLoader_1, RSFont[] newFontSystem) {
 		aMRUNodes_238 = new MRUNodes(200000);
 		Stream stream = new Stream(streamLoader.getDataForName("data"));
 		newFonts = newFontSystem;
@@ -37,7 +37,7 @@ public class RSInterface {
 		int j = stream.readUnsignedShort();
 		System.out.println(""+j);
 		interfaceCache = new RSInterface[200000];
-		while (stream.currentOffset < stream.buffer.length) {
+		while (stream.currentPosition < stream.payload.length) {
 			int k = stream.readUnsignedShort();
 			if (k == 65535) {
 				i = stream.readUnsignedShort();
@@ -4822,24 +4822,24 @@ public class RSInterface {
 
 	public static void drawBlackBox(int xPos, int yPos) {
 		// /Light Coloured Borders\\\
-		DrawingArea.drawPixels(71, yPos - 1, xPos - 2, 0x726451, 1); // Left
+		Rasterizer2D.drawPixels(71, yPos - 1, xPos - 2, 0x726451, 1); // Left
 																		// line
-		DrawingArea.drawPixels(69, yPos, xPos + 174, 0x726451, 1); // Right line
-		DrawingArea.drawPixels(1, yPos - 2, xPos - 2, 0x726451, 178); // Top
+		Rasterizer2D.drawPixels(69, yPos, xPos + 174, 0x726451, 1); // Right line
+		Rasterizer2D.drawPixels(1, yPos - 2, xPos - 2, 0x726451, 178); // Top
 																		// Line
-		DrawingArea.drawPixels(1, yPos + 68, xPos, 0x726451, 174); // Bottom
+		Rasterizer2D.drawPixels(1, yPos + 68, xPos, 0x726451, 174); // Bottom
 																	// Line
 
 		// /Dark Coloured Borders\\\
-		DrawingArea.drawPixels(71, yPos - 1, xPos - 1, 0x2E2B23, 1); // Left
+		Rasterizer2D.drawPixels(71, yPos - 1, xPos - 1, 0x2E2B23, 1); // Left
 																		// line
-		DrawingArea.drawPixels(71, yPos - 1, xPos + 175, 0x2E2B23, 1); // Right
+		Rasterizer2D.drawPixels(71, yPos - 1, xPos + 175, 0x2E2B23, 1); // Right
 																		// line
-		DrawingArea.drawPixels(1, yPos - 1, xPos, 0x2E2B23, 175); // Top line
-		DrawingArea.drawPixels(1, yPos + 69, xPos, 0x2E2B23, 175); // Top line
+		Rasterizer2D.drawPixels(1, yPos - 1, xPos, 0x2E2B23, 175); // Top line
+		Rasterizer2D.drawPixels(1, yPos + 69, xPos, 0x2E2B23, 175); // Top line
 
 		// /Black Box\\\
-		DrawingArea.method335(0x000000, yPos, 174, 68, 220, xPos); // Yes
+		Rasterizer2D.method335(0x000000, yPos, 174, 68, 220, xPos); // Yes
 																	// method335
 																	// is
 																	// galkons
@@ -5583,7 +5583,7 @@ public class RSInterface {
 		return model;
 	}
 
-	private static Sprite method207(int i, StreamLoader streamLoader, String s) {
+	private static Sprite method207(int i, FileArchive streamLoader, String s) {
 		long l = (TextClass.method585(s) << 8) + (long) i;
 		Sprite sprite = (Sprite) aMRUNodes_238.insertFromCache(l);
 		if (sprite != null)
@@ -5617,14 +5617,14 @@ public class RSInterface {
 			return null;
 		if (k == -1 && j == -1 && model.colors == null)
 			return model;
-		Model model_1 = new Model(true, FrameLoader.method532(k) & FrameLoader.method532(j), false, model);
+		Model model_1 = new Model(true, Frame.noAnimationInProgress(k) & Frame.noAnimationInProgress(j), false, model);
 		if (k != -1 || j != -1)
-			model_1.method469();
+			model_1.skin();
 		if (k != -1)
-			model_1.method470(k);
+			model_1.applyTransform(k);
 		if (j != -1)
-			model_1.method470(j);
-		model_1.method479(64, 768, -50, -10, -50, true);
+			model_1.applyTransform(j);
+		model_1.light(64, 768, -50, -10, -50, true);
 		return model_1;
 	}
 
@@ -5649,7 +5649,7 @@ public class RSInterface {
 	public RSInterface() {
 	}
 
-	public static StreamLoader aClass44;
+	public static FileArchive aClass44;
 	public boolean drawsTransparent;
 	public Sprite sprite1;
 	public int anInt208;

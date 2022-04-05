@@ -95,7 +95,7 @@ public final class OnDemandFetcher extends OnDemandFetcherParent implements Runn
 		}
 	}
 //fuck you if you think you can ddos LMFAO
-	public void start(StreamLoader streamLoader, Client client) {
+	public void start(FileArchive streamLoader, Client client) {
 		byte[] fileData = streamLoader.getDataForName("map_index");
 		Stream stream = new Stream(fileData);
 		int length = stream.readUnsignedShort();
@@ -106,7 +106,7 @@ public final class OnDemandFetcher extends OnDemandFetcherParent implements Runn
 			mapIndices1[i2] = stream.readUnsignedShort();
 			mapIndices2[i2] = stream.readUnsignedShort();
 			mapIndices3[i2] = stream.readUnsignedShort();
-			//System.out.println(mapIndices1[i2] + " " + mapIndices2[i2] + " " + mapIndices3[i2]);
+			System.out.println(mapIndices1[i2] + " " + mapIndices2[i2] + " " + mapIndices3[i2]);
 		}
 		fileData = streamLoader.getDataForName("midi_index");
 		stream = new Stream(fileData);

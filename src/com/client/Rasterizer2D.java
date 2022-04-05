@@ -1,13 +1,12 @@
 package com.client;
 
 
-import java.awt.*;
-import java.awt.geom.Arc2D;
-import java.awt.image.Raster;
+public class Rasterizer2D extends NodeSub {
 
-public class DrawingArea extends NodeSub {
+	public static float[] depthBuffer;
 
 	public static void initDrawingArea(int i, int j, int[] ai, float[] depth) {
+		depthBuffer = depth;
 		pixels = ai;
 		width = j;
 		height = i;
@@ -15,24 +14,24 @@ public class DrawingArea extends NodeSub {
 	}
 
 	public static void drawTransparentBox(int leftX, int topY, int width, int height, int rgbColour, int opacity){
-		if(leftX < DrawingArea.topX){
-			width -= DrawingArea.topX - leftX;
-			leftX = DrawingArea.topX;
+		if(leftX < Rasterizer2D.clip_left){
+			width -= Rasterizer2D.clip_left - leftX;
+			leftX = Rasterizer2D.clip_left;
 		}
-		if(topY < DrawingArea.topY){
-			height -= DrawingArea.topY - topY;
-			topY = DrawingArea.topY;
+		if(topY < Rasterizer2D.clip_top){
+			height -= Rasterizer2D.clip_top - topY;
+			topY = Rasterizer2D.clip_top;
 		}
-		if(leftX + width > bottomX)
-			width = bottomX - leftX;
-		if(topY + height > bottomY)
-			height = bottomY - topY;
+		if(leftX + width > clip_right)
+			width = clip_right - leftX;
+		if(topY + height > clip_bottom)
+			height = clip_bottom - topY;
 		int transparency = 256 - opacity;
 		int red = (rgbColour >> 16 & 0xff) * opacity;
 		int green = (rgbColour >> 8 & 0xff) * opacity;
 		int blue = (rgbColour & 0xff) * opacity;
-		int leftOver = DrawingArea.width - width;
-		int pixelIndex = leftX + topY * DrawingArea.width;
+		int leftOver = Rasterizer2D.width - width;
+		int pixelIndex = leftX + topY * Rasterizer2D.width;
 		for(int rowIndex = 0; rowIndex < height; rowIndex++){
 			for(int columnIndex = 0; columnIndex < width; columnIndex++){
 				int otherRed = (pixels[pixelIndex] >> 16 & 0xff) * transparency;
@@ -64,18 +63,18 @@ public class DrawingArea extends NodeSub {
 	}
 
 	public static void method336(int i, int j, int k, int l, int i1) {
-		if (k < topX) {
-			i1 -= topX - k;
-			k = topX;
+		if (k < clip_left) {
+			i1 -= clip_left - k;
+			k = clip_left;
 		}
-		if (j < topY) {
-			i -= topY - j;
-			j = topY;
+		if (j < clip_top) {
+			i -= clip_top - j;
+			j = clip_top;
 		}
-		if (k + i1 > bottomX)
-			i1 = bottomX - k;
-		if (j + i > bottomY)
-			i = bottomY - j;
+		if (k + i1 > clip_right)
+			i1 = clip_right - k;
+		if (j + i > clip_bottom)
+			i = clip_bottom - j;
 		int k1 = width - i1;
 		int l1 = k + j * width;
 		for (int i2 = -i; i2 < 0; i2++) {
@@ -124,19 +123,19 @@ public class DrawingArea extends NodeSub {
 
     public static void drawPixelsWithOpacity(int color, int yPos, int pixelWidth, int pixelHeight, int opacityLevel,
 											 int xPos) {
-		if (xPos < topX) {
-			pixelWidth -= topX - xPos;
-			xPos = topX;
+		if (xPos < clip_left) {
+			pixelWidth -= clip_left - xPos;
+			xPos = clip_left;
 		}
-		if (yPos < topY) {
-			pixelHeight -= topY - yPos;
-			yPos = topY;
+		if (yPos < clip_top) {
+			pixelHeight -= clip_top - yPos;
+			yPos = clip_top;
 		}
-		if (xPos + pixelWidth > bottomX) {
-			pixelWidth = bottomX - xPos;
+		if (xPos + pixelWidth > clip_right) {
+			pixelWidth = clip_right - xPos;
 		}
-		if (yPos + pixelHeight > bottomY) {
-			pixelHeight = bottomY - yPos;
+		if (yPos + pixelHeight > clip_bottom) {
+			pixelHeight = clip_bottom - yPos;
 		}
 		int l1 = 256 - opacityLevel;
 		int i2 = (color >> 16 & 0xFF) * opacityLevel;
@@ -169,14 +168,14 @@ public class DrawingArea extends NodeSub {
 	}
 
 	public static void method339(int i, int j, int k, int l) {
-		if (i < topY || i >= bottomY)
+		if (i < clip_top || i >= clip_bottom)
 			return;
-		if (l < topX) {
-			k -= topX - l;
-			l = topX;
+		if (l < clip_left) {
+			k -= clip_left - l;
+			l = clip_left;
 		}
-		if (l + k > bottomX)
-			k = bottomX - l;
+		if (l + k > clip_right)
+			k = clip_right - l;
 		int i1 = l + i * width;
 		for (int j1 = 0; j1 < k; j1++)
 			pixels[i1 + j1] = j;
@@ -184,14 +183,14 @@ public class DrawingArea extends NodeSub {
 	}
 
 	private static void method340(int i, int j, int k, int l, int i1) {
-		if (k < topY || k >= bottomY)
+		if (k < clip_top || k >= clip_bottom)
 			return;
-		if (i1 < topX) {
-			j -= topX - i1;
-			i1 = topX;
+		if (i1 < clip_left) {
+			j -= clip_left - i1;
+			i1 = clip_left;
 		}
-		if (i1 + j > bottomX)
-			j = bottomX - i1;
+		if (i1 + j > clip_right)
+			j = clip_right - i1;
 		int j1 = 256 - l;
 		int k1 = (i >> 16 & 0xff) * l;
 		int l1 = (i >> 8 & 0xff) * l;
@@ -208,14 +207,14 @@ public class DrawingArea extends NodeSub {
 	}
 
 	public static void method341(int i, int j, int k, int l) {
-		if (l < topX || l >= bottomX)
+		if (l < clip_left || l >= clip_right)
 			return;
-		if (i < topY) {
-			k -= topY - i;
-			i = topY;
+		if (i < clip_top) {
+			k -= clip_top - i;
+			i = clip_top;
 		}
-		if (i + k > bottomY)
-			k = bottomY - i;
+		if (i + k > clip_bottom)
+			k = clip_bottom - i;
 		int j1 = l + i * width;
 		for (int k1 = 0; k1 < k; k1++)
 			pixels[j1 + k1 * width] = j;
@@ -223,14 +222,14 @@ public class DrawingArea extends NodeSub {
 	}
 
 	private static void method342(int i, int j, int k, int l, int i1) {
-		if (j < topX || j >= bottomX)
+		if (j < clip_left || j >= clip_right)
 			return;
-		if (l < topY) {
-			i1 -= topY - l;
-			l = topY;
+		if (l < clip_top) {
+			i1 -= clip_top - l;
+			l = clip_top;
 		}
-		if (l + i1 > bottomY)
-			i1 = bottomY - l;
+		if (l + i1 > clip_bottom)
+			i1 = clip_bottom - l;
 		int j1 = 256 - k;
 		int k1 = (i >> 16 & 0xff) * k;
 		int l1 = (i >> 8 & 0xff) * k;
@@ -246,20 +245,20 @@ public class DrawingArea extends NodeSub {
 		}
 	}
 	public static void drawBox(int leftX, int topY, int width, int height, int rgbColour) {
-		if (leftX < DrawingArea.topX) {
-			width -= DrawingArea.topX - leftX;
-			leftX = DrawingArea.topX;
+		if (leftX < Rasterizer2D.clip_left) {
+			width -= Rasterizer2D.clip_left - leftX;
+			leftX = Rasterizer2D.clip_left;
 		}
-		if (topY < DrawingArea.topY) {
-			height -= DrawingArea.topY - topY;
-			topY = DrawingArea.topY;
+		if (topY < Rasterizer2D.clip_top) {
+			height -= Rasterizer2D.clip_top - topY;
+			topY = Rasterizer2D.clip_top;
 		}
-		if (leftX + width > bottomX)
-			width = bottomX - leftX;
-		if (topY + height > bottomY)
-			height = bottomY - topY;
-		int leftOver = DrawingArea.width - width;
-		int pixelIndex = leftX + topY * DrawingArea.width;
+		if (leftX + width > clip_right)
+			width = clip_right - leftX;
+		if (topY + height > clip_bottom)
+			height = clip_bottom - topY;
+		int leftOver = Rasterizer2D.width - width;
+		int pixelIndex = leftX + topY * Rasterizer2D.width;
 		for (int rowIndex = 0; rowIndex < height; rowIndex++) {
 			for (int columnIndex = 0; columnIndex < width; columnIndex++)
 				pixels[pixelIndex++] = rgbColour;
@@ -268,29 +267,29 @@ public class DrawingArea extends NodeSub {
 	}
 
 	public static void drawVerticalLine2(int xPosition, int yPosition, int height, int rgbColour){
-		if(xPosition < topX || xPosition >= bottomX)
+		if(xPosition < clip_left || xPosition >= clip_right)
 			return;
-		if(yPosition < topY){
-			height -= topY - yPosition;
-			yPosition = topY;
+		if(yPosition < clip_top){
+			height -= clip_top - yPosition;
+			yPosition = clip_top;
 		}
-		if(yPosition + height > bottomY)
-			height = bottomY - yPosition;
+		if(yPosition + height > clip_bottom)
+			height = clip_bottom - yPosition;
 		int pixelIndex = xPosition + yPosition * width;
 		for(int rowIndex = 0; rowIndex < height; rowIndex++)
 			pixels[pixelIndex + rowIndex * width] = rgbColour;
 	}
 
 	public static void drawHorizontalLine2(int xPosition, int yPosition, int width, int rgbColour){
-		if(yPosition < topY || yPosition >= bottomY)
+		if(yPosition < clip_top || yPosition >= clip_bottom)
 			return;
-		if(xPosition < topX){
-			width -= topX - xPosition;
-			xPosition = topX;
+		if(xPosition < clip_left){
+			width -= clip_left - xPosition;
+			xPosition = clip_left;
 		}
-		if(xPosition + width > bottomX)
-			width = bottomX - xPosition;
-		int pixelIndex = xPosition + yPosition * DrawingArea.width;
+		if(xPosition + width > clip_right)
+			width = clip_right - xPosition;
+		int pixelIndex = xPosition + yPosition * Rasterizer2D.width;
 		for(int i = 0; i < width; i++)
 			pixels[pixelIndex + i] = rgbColour;
 	}
@@ -303,39 +302,39 @@ public class DrawingArea extends NodeSub {
 	}
 
 	public static void drawVerticalLine(int xPosition, int yPosition, int height, int rgbColour) {
-		if (xPosition < topX || xPosition >= bottomX)
+		if (xPosition < clip_left || xPosition >= clip_right)
 			return;
-		if (yPosition < topY) {
-			height -= topY - yPosition;
-			yPosition = topY;
+		if (yPosition < clip_top) {
+			height -= clip_top - yPosition;
+			yPosition = clip_top;
 		}
-		if (yPosition + height > bottomY)
-			height = bottomY - yPosition;
+		if (yPosition + height > clip_bottom)
+			height = clip_bottom - yPosition;
 		int pixelIndex = xPosition + yPosition * width;
 		for (int rowIndex = 0; rowIndex < height; rowIndex++)
 			pixels[pixelIndex + rowIndex * width] = rgbColour;
 	}
 
 	public static void drawAlphaBox(int x, int y, int lineWidth, int lineHeight, int color, int alpha) {// drawAlphaHorizontalLine
-		if (y < topY) {
-			if (y > (topY - lineHeight)) {
-				lineHeight -= (topY - y);
-				y += (topY - y);
+		if (y < clip_top) {
+			if (y > (clip_top - lineHeight)) {
+				lineHeight -= (clip_top - y);
+				y += (clip_top - y);
 			} else {
 				return;
 			}
 		}
-		if (y + lineHeight > bottomY) {
-			lineHeight -= y + lineHeight - bottomY;
+		if (y + lineHeight > clip_bottom) {
+			lineHeight -= y + lineHeight - clip_bottom;
 		}
 		//if (y >= bottomY - lineHeight)
 		//return;
-		if (x < topX) {
-			lineWidth -= topX - x;
-			x = topX;
+		if (x < clip_left) {
+			lineWidth -= clip_left - x;
+			x = clip_left;
 		}
-		if (x + lineWidth > bottomX)
-			lineWidth = bottomX - x;
+		if (x + lineWidth > clip_right)
+			lineWidth = clip_right - x;
 		for(int yOff = 0; yOff < lineHeight; yOff++) {
 			int i3 = x + (y + (yOff)) * width;
 			for (int j3 = 0; j3 < lineWidth; j3++) {
@@ -355,31 +354,31 @@ public class DrawingArea extends NodeSub {
 	}
 
 	public static void defaultDrawingAreaSize() {
-		topX = 0;
-		topY = 0;
-		bottomX = width;
-		bottomY = height;
-		centerX = bottomX;
-		centerY = bottomX / 2;
+		clip_left = 0;
+		clip_top = 0;
+		clip_right = width;
+		clip_bottom = height;
+		lastX = clip_right;
+		viewportCenterX = clip_right / 2;
 	}
 
 	public void drawAlphaGradient(int x, int y, int gradientWidth,
 								  int gradientHeight, int startColor, int endColor, int alpha) {
 		int k1 = 0;
 		int l1 = 0x10000 / gradientHeight;
-		if (x < topX) {
-			gradientWidth -= topX - x;
-			x = topX;
+		if (x < clip_left) {
+			gradientWidth -= clip_left - x;
+			x = clip_left;
 		}
-		if (y < topY) {
-			k1 += (topY - y) * l1;
-			gradientHeight -= topY - y;
-			y = topY;
+		if (y < clip_top) {
+			k1 += (clip_top - y) * l1;
+			gradientHeight -= clip_top - y;
+			y = clip_top;
 		}
-		if (x + gradientWidth > bottomX)
-			gradientWidth = bottomX - x;
-		if (y + gradientHeight > bottomY)
-			gradientHeight = bottomY - y;
+		if (x + gradientWidth > clip_right)
+			gradientWidth = clip_right - x;
+		if (y + gradientHeight > clip_bottom)
+			gradientHeight = clip_bottom - y;
 		int i2 = width - gradientWidth;
 		int result_alpha = 256 - alpha;
 		int total_pixels = x + y * width;
@@ -407,19 +406,19 @@ public class DrawingArea extends NodeSub {
 										  int gradientHeight, int startColor, int endColor, int alpha) {
 		int k1 = 0;
 		int l1 = 0x10000 / gradientHeight;
-		if (x < topX) {
-			gradientWidth -= topX - x;
-			x = topX;
+		if (x < clip_left) {
+			gradientWidth -= clip_left - x;
+			x = clip_left;
 		}
-		if (y < topY) {
-			k1 += (topY - y) * l1;
-			gradientHeight -= topY - y;
-			y = topY;
+		if (y < clip_top) {
+			k1 += (clip_top - y) * l1;
+			gradientHeight -= clip_top - y;
+			y = clip_top;
 		}
-		if (x + gradientWidth > bottomX)
-			gradientWidth = bottomX - x;
-		if (y + gradientHeight > bottomY)
-			gradientHeight = bottomY - y;
+		if (x + gradientWidth > clip_right)
+			gradientWidth = clip_right - x;
+		if (y + gradientHeight > clip_bottom)
+			gradientHeight = clip_bottom - y;
 		int i2 = width - gradientWidth;
 		int result_alpha = 256 - alpha;
 		int total_pixels = x + y * width;
@@ -454,31 +453,114 @@ public class DrawingArea extends NodeSub {
 			k = width;
 		if (i > height)
 			i = height;
-		topX = j;
-		topY = l;
-		bottomX = k;
-		bottomY = i;
-		centerX = bottomX;
-		centerY = bottomX / 2;
-		anInt1387 = bottomY / 2;
+		clip_left = j;
+		clip_top = l;
+		clip_right = k;
+		clip_bottom = i;
+		lastX = clip_right;
+		viewportCenterX = clip_right / 2;
+		viewportCenterY = clip_bottom / 2;
+	}
+	public static void drawAlpha(int[] pixels, int index, int color, int alpha) {
+		if (alpha <= 0) {
+			return;
+		}
+		int prevColor = pixels[index];
+
+		if ((prevColor & 0xFF000000) == 0 || alpha == 255) {
+			// No transparency, so we can cheat to save CPU resources
+			pixels[index] = (color & 0xFFFFFF) | (alpha << 24);
+			return;
+		}
+
+		if ((prevColor & 0xFF000000) == 0xFF000000) {
+			// When the background is opaque, the result will also be opaque,
+			// so we can simply use the value calculated by Jagex.
+			pixels[index] = color | 0xFF000000;
+			return;
+		}
+
+		int prevAlpha = (prevColor >>> 24) * (255 - alpha) >>> 8;
+		int finalAlpha = alpha + prevAlpha;
+
+		// Scale alphas so (relativeAlpha >>> 8) is approximately equal to (alpha /
+		// finalAlpha).
+		// Avoiding extra divisions increase performance by quite a bit.
+		// And with divisions we get a problems if dividing a number where
+		// the last bit is 1 (as it will become negative).
+		int relativeAlpha1 = (alpha << 8) / finalAlpha;
+		int relativeAlpha2 = (prevAlpha << 8) / finalAlpha;
+
+		// Red and blue are calculated at the same time to save CPU cycles
+		int finalColor = (((color & 0xFF00FF) * relativeAlpha1 + (prevColor & 0xFF00FF) * relativeAlpha2 & 0xFF00FF00) | ((color & 0x00FF00) * relativeAlpha1 + (prevColor & 0x00FF00) * relativeAlpha2 & 0x00FF0000)) >>> 8;
+
+		pixels[index] = finalColor | (finalAlpha << 24);
+	}
+	public static void drawAlpha2(int[] pixels, int index, int value, int color, int alpha) {
+		if (alpha == 0) {
+			return;
+		}
+
+		int prevColor = pixels[index];
+
+		if ((prevColor & 0xFF000000) == 0 || alpha == 255) {
+			// No transparency, so we can cheat to save CPU resources
+			pixels[index] = (color & 0xFFFFFF) | (alpha << 24);
+			return;
+		}
+
+		if ((prevColor & 0xFF000000) == 0xFF000000) {
+			// When the background is opaque, the result will also be opaque,
+			// so we can simply use the value calculated by Jagex.
+			pixels[index] = value | 0xFF000000;
+			return;
+		}
+
+		int prevAlpha = (prevColor >>> 24) * (255 - alpha) >>> 8;
+		int finalAlpha = alpha + prevAlpha;
+
+		// Scale alphas so (relativeAlpha >>> 8) is approximately equal to (alpha /
+		// finalAlpha).
+		// Avoiding extra divisions increase performance by quite a bit.
+		// And with divisions we get a problems if dividing a number where
+		// the last bit is 1 (as it will become negative).
+		int relativeAlpha1 = (alpha << 8) / finalAlpha;
+		int relativeAlpha2 = (prevAlpha << 8) / finalAlpha;
+
+		// Red and blue are calculated at the same time to save CPU cycles
+		int finalColor = (((color & 0xFF00FF) * relativeAlpha1 + (prevColor & 0xFF00FF) * relativeAlpha2 & 0xFF00FF00) | ((color & 0x00FF00) * relativeAlpha1 + (prevColor & 0x00FF00) * relativeAlpha2 & 0x00FF0000)) >>> 8;
+
+		pixels[index] = finalColor | (finalAlpha << 24);
+	}
+
+	public static void drawAlpha(byte[] pixels, int index, byte color, int alpha) {
+
+		if (alpha <= 0) {
+			return;
+		}
+
+		alpha += (pixels[index] >>> 24) * (255 - alpha) >>> 8;
+		pixels[index] = (byte) (color & 16777215 | alpha << 24);
 	}
 
 	public static void setAllPixelsToZero() {
 		int i = width * height;
-		for (int j = 0; j < i; j++)
+		for (int j = 0; j < i; j++) {
 			pixels[j] = 0;
+			//depthBuffer[j] = Float.MAX_VALUE;
+		}
 	}
 
 	public static boolean drawHorizontalLine(int yPos, int lineColor, int lineWidth, int xPos) {// method339
-		if (yPos < topY || yPos >= bottomY) {
+		if (yPos < clip_top || yPos >= clip_bottom) {
 			return false;
 		}
-		if (xPos < topX) {
-			lineWidth -= topX - xPos;
-			xPos = topX;
+		if (xPos < clip_left) {
+			lineWidth -= clip_left - xPos;
+			xPos = clip_left;
 		}
-		if (xPos + lineWidth > bottomX)
-			lineWidth = bottomX - xPos;
+		if (xPos + lineWidth > clip_right)
+			lineWidth = clip_right - xPos;
 		int i1 = xPos + yPos * width;
 		for (int j1 = 0; j1 < lineWidth; j1++)
 			pixels[i1 + j1] = lineColor;
@@ -486,18 +568,18 @@ public class DrawingArea extends NodeSub {
 	}
 
 	public static void method335(int i, int j, int k, int l, int i1, int k1) {
-		if (k1 < topX) {
-			k -= topX - k1;
-			k1 = topX;
+		if (k1 < clip_left) {
+			k -= clip_left - k1;
+			k1 = clip_left;
 		}
-		if (j < topY) {
-			l -= topY - j;
-			j = topY;
+		if (j < clip_top) {
+			l -= clip_top - j;
+			j = clip_top;
 		}
-		if (k1 + k > bottomX)
-			k = bottomX - k1;
-		if (j + l > bottomY)
-			l = bottomY - j;
+		if (k1 + k > clip_right)
+			k = clip_right - k1;
+		if (j + l > clip_bottom)
+			l = clip_bottom - j;
 		int l1 = 256 - i1;
 		int i2 = (i >> 16 & 0xff) * i1;
 		int j2 = (i >> 8 & 0xff) * i1;
@@ -519,18 +601,18 @@ public class DrawingArea extends NodeSub {
 	}
 
 	public static void drawPixels(int i, int j, int k, int l, int i1) {
-		if (k < topX) {
-			i1 -= topX - k;
-			k = topX;
+		if (k < clip_left) {
+			i1 -= clip_left - k;
+			k = clip_left;
 		}
-		if (j < topY) {
-			i -= topY - j;
-			j = topY;
+		if (j < clip_top) {
+			i -= clip_top - j;
+			j = clip_top;
 		}
-		if (k + i1 > bottomX)
-			i1 = bottomX - k;
-		if (j + i > bottomY)
-			i = bottomY - j;
+		if (k + i1 > clip_right)
+			i1 = clip_right - k;
+		if (j + i > clip_bottom)
+			i = clip_bottom - j;
 		int k1 = width - i1;
 		int l1 = k + j * width;
 		for (int i2 = -i; i2 < 0; i2++) {
@@ -543,20 +625,20 @@ public class DrawingArea extends NodeSub {
 	}
 
 	public static void fillRectangle(int x, int y, int width, int height, int colour) {
-		if (x < topX) {
-			width -= topX - x;
-			x = topX;
+		if (x < clip_left) {
+			width -= clip_left - x;
+			x = clip_left;
 		}
-		if (y < topY) {
-			height -= topY - y;
-			y = topY;
+		if (y < clip_top) {
+			height -= clip_top - y;
+			y = clip_top;
 		}
-		if (x + width > bottomX)
-			width = bottomX - x;
-		if (y + height > bottomY)
-			height = bottomY - y;
-		int k1 = DrawingArea.width - width;
-		int l1 = x + y * DrawingArea.width;
+		if (x + width > clip_right)
+			width = clip_right - x;
+		if (y + height > clip_bottom)
+			height = clip_bottom - y;
+		int k1 = Rasterizer2D.width - width;
+		int l1 = x + y * Rasterizer2D.width;
 		if (l1 > pixels.length - 1) {
 			l1 = pixels.length - 1;
 		}
@@ -577,18 +659,18 @@ public class DrawingArea extends NodeSub {
 	}
 
 
-	DrawingArea() {
+	Rasterizer2D() {
 	}
 
 	public static int pixels[];
 	public static int width;
 	public static int height;
-	public static int topY;
-	public static int bottomY;
-	public static int topX;
-	public static int bottomX;
-	public static int centerX;
-	public static int centerY;
-	public static int anInt1387;
+	public static int clip_top;
+	public static int clip_bottom;
+	public static int clip_left;
+	public static int clip_right;
+	public static int lastX;
+	public static int viewportCenterX;
+	public static int viewportCenterY;
 
 }

@@ -7,7 +7,7 @@ public final class Varp {
 
 	public static int cacheSize;
 	
-	public static void unpackConfig(StreamLoader streamLoader) {
+	public static void unpackConfig(FileArchive streamLoader) {
 		Stream stream = new Stream(streamLoader.getDataForName("varp.dat"));
 		anInt702 = 0;
 		cacheSize = stream.readUnsignedShort();
@@ -20,7 +20,7 @@ public final class Varp {
 				cache[j] = new Varp();
 			cache[j].readValues(stream, j);
 		}
-		if (stream.currentOffset != stream.buffer.length)
+		if (stream.currentPosition != stream.payload.length)
 			System.out.println("varptype load mismatch");
 	}
 

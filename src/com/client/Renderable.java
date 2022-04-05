@@ -6,7 +6,7 @@ public class Renderable extends NodeSub {
                               int l1, int i2, int newuid) {
         Model model = getRotatedModel();
         if (model != null) {
-            modelHeight = model.modelHeight;
+            modelBaseY = model.modelBaseY;
             model.renderAtPoint(i, j, k, l, i1, j1, k1, l1, i2, newuid);
         }
     }
@@ -16,9 +16,9 @@ public class Renderable extends NodeSub {
     }
 
     Renderable() {
-        modelHeight = 1000;
+        modelBaseY = 1000;
     }
 
-    VertexNormal aClass33Array1425[];
-    public int modelHeight;
+    VertexNormal vertexNormals[];
+    public int modelBaseY;
 }

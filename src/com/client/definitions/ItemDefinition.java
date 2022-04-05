@@ -13,13 +13,13 @@ import java.net.URLConnection;
 import java.util.Arrays;
 import java.util.HashMap;
 
-import com.client.DrawingArea;
+import com.client.Rasterizer2D;
 import com.client.MRUNodes;
 import com.client.Model;
-import com.client.Rasterizer;
+import com.client.Rasterizer3D;
 import com.client.Sprite;
 import com.client.Stream;
-import com.client.StreamLoader;
+import com.client.FileArchive;
 import com.client.definitions.items.*;
 import com.client.sign.Signlink;
 
@@ -27,7 +27,7 @@ public final class ItemDefinition {
 
 	private int opcode94;
 
-	public static void unpackConfig(final StreamLoader streamLoader) {
+	public static void unpackConfig(final FileArchive streamLoader) {
 		 stream = new Stream(streamLoader.getDataForName("obj.dat"));
 		 Stream stream = new Stream(streamLoader.getDataForName("obj.idx"));
 		//stream = new Stream(FileOperations.readFile(Signlink.getCacheDirectory() + "/data/obj.dat"));
@@ -62,7 +62,7 @@ public final class ItemDefinition {
 
 		cacheIndex = (cacheIndex + 1) % 10;
 		ItemDefinition itemDef = cache[cacheIndex];
-		stream.currentOffset = streamIndices[itemId];
+		stream.currentPosition = streamIndices[itemId];
 		itemDef.id = itemId;
 		itemDef.setDefaults();
 		itemDef.readValues(stream);
@@ -527,9 +527,9 @@ public final class ItemDefinition {
 			else if (opcode == 112)
 				groundScaleZ = stream.readUnsignedShort();
 			else if (opcode == 113)
-				ambience = stream.readSignedByte();
+				ambient = stream.readSignedByte();
 			else if (opcode == 114)
-				diffusion = stream.readSignedByte() * 5;
+				contrast = stream.readSignedByte() * 5;
 			else if (opcode == 115)
 				team = stream.readUnsignedByte();
 			else if (opcode == 139)
@@ -608,12 +608,12 @@ public final class ItemDefinition {
 		}
 		if (modifiedModelColors != null) {
 			for (int i1 = 0; i1 < modifiedModelColors.length; i1++)
-				model.method476(modifiedModelColors[i1], originalModelColors[i1]);
+				model.recolor(modifiedModelColors[i1], originalModelColors[i1]);
 
 		}
 		if (originalTextureColors != null) {
 			for (int k2 = 0; k2 < originalTextureColors.length; k2++)
-				model.replaceTexture(originalTextureColors[k2], modifiedTextureColors[k2]);
+				model.retexture(originalTextureColors[k2], modifiedTextureColors[k2]);
 
 		}
 		return model;
@@ -664,17 +664,17 @@ public final class ItemDefinition {
 				model = new Model(2, aclass30_sub2_sub4_sub6s);
 			}
 		if (i == 0 && maleTranslation != 0)
-			model.method475(0, maleTranslation, 0);
+			model.translate(0, maleTranslation, 0);
 		if (i == 1 && femaleTranslation != 0)
-			model.method475(0, femaleTranslation, 0);
+			model.translate(0, femaleTranslation, 0);
 		if (modifiedModelColors != null) {
 			for (int i1 = 0; i1 < modifiedModelColors.length; i1++)
-				model.method476(modifiedModelColors[i1], originalModelColors[i1]);
+				model.recolor(modifiedModelColors[i1], originalModelColors[i1]);
 
 		}
 		if (originalTextureColors != null) {
 			for (int k2 = 0; k2 < originalTextureColors.length; k2++)
-				model.replaceTexture(originalTextureColors[k2], modifiedTextureColors[k2]);
+				model.retexture(originalTextureColors[k2], modifiedTextureColors[k2]);
 
 		}
 		return model;
@@ -720,8 +720,8 @@ public final class ItemDefinition {
 		groundScaleX = 128;
 		groundScaleY = 128;
 		groundScaleZ = 128;
-		ambience = 0;
-		diffusion = 0;
+		ambient = 0;
+		contrast = 0;
 		team = 0;
 
 		notedId = -1;
@@ -1128,25 +1128,25 @@ public final class ItemDefinition {
 			}
 		}
 		Sprite enabledSprite = new Sprite(18, 18);
-		int k1 = Rasterizer.textureInt1;
-		int l1 = Rasterizer.textureInt2;
-		int ai[] = Rasterizer.anIntArray1472;
-		int ai1[] = DrawingArea.pixels;
-		int i2 = DrawingArea.width;
-		int j2 = DrawingArea.height;
-		int k2 = DrawingArea.topX;
-		int l2 = DrawingArea.bottomX;
-		int i3 = DrawingArea.topY;
-		int j3 = DrawingArea.bottomY;
-		Rasterizer.aBoolean1464 = false;
-		DrawingArea.initDrawingArea(18, 18, enabledSprite.myPixels, new float[1024]);
-		DrawingArea.method336(18, 0, 0, 0, 18);
-		Rasterizer.method364();
+		int k1 = Rasterizer3D.originViewX;
+		int l1 = Rasterizer3D.originViewY;
+		int ai[] = Rasterizer3D.scanOffsets;
+		int ai1[] = Rasterizer2D.pixels;
+		int i2 = Rasterizer2D.width;
+		int j2 = Rasterizer2D.height;
+		int k2 = Rasterizer2D.clip_left;
+		int l2 = Rasterizer2D.clip_right;
+		int i3 = Rasterizer2D.clip_top;
+		int j3 = Rasterizer2D.clip_bottom;
+		Rasterizer3D.aBoolean1464 = false;
+		Rasterizer2D.initDrawingArea(18, 18, enabledSprite.myPixels, new float[1024]);
+		Rasterizer2D.method336(18, 0, 0, 0, 18);
+		Rasterizer3D.useViewport();
 		int k3 = (int) (itemDef.spriteScale * 1.6D);
-		int l3 = Rasterizer.anIntArray1470[itemDef.spritePitch] * k3 >> 16;
-		int i4 = Rasterizer.anIntArray1471[itemDef.spritePitch] * k3 >> 16;
+		int l3 = Rasterizer3D.anIntArray1470[itemDef.spritePitch] * k3 >> 16;
+		int i4 = Rasterizer3D.COSINE[itemDef.spritePitch] * k3 >> 16;
 		model.method482(itemDef.spriteCameraRoll, itemDef.spriteCameraYaw, itemDef.spritePitch, itemDef.spriteTranslateX,
-				l3 + model.modelHeight / 2 + itemDef.spriteTranslateY, i4 + itemDef.spriteTranslateY);
+				l3 + model.modelBaseY / 2 + itemDef.spriteTranslateY, i4 + itemDef.spriteTranslateY);
 		if (itemDef.certTemplateID != -1) {
 			int l5 = sprite1.maxWidth;
 			int j6 = sprite1.maxHeight;
@@ -1156,12 +1156,12 @@ public final class ItemDefinition {
 			sprite1.maxWidth = l5;
 			sprite1.maxHeight = j6;
 		}
-		DrawingArea.initDrawingArea(j2, i2, ai1, new float[1024]);
-		DrawingArea.setDrawingArea(j3, k2, l2, i3);
-		Rasterizer.textureInt1 = k1;
-		Rasterizer.textureInt2 = l1;
-		Rasterizer.anIntArray1472 = ai;
-		Rasterizer.aBoolean1464 = true;
+		Rasterizer2D.initDrawingArea(j2, i2, ai1, new float[1024]);
+		Rasterizer2D.setDrawingArea(j3, k2, l2, i3);
+		Rasterizer3D.originViewX = k1;
+		Rasterizer3D.originViewY = l1;
+		Rasterizer3D.scanOffsets = ai;
+		Rasterizer3D.aBoolean1464 = true;
 
 		enabledSprite.maxWidth = 18;
 		enabledSprite.maxHeight = 18;
@@ -1209,20 +1209,20 @@ public final class ItemDefinition {
 				return null;
 		}
 		Sprite sprite2 = new Sprite(32, 32);
-		int k1 = Rasterizer.textureInt1;
-		int l1 = Rasterizer.textureInt2;
-		int ai[] = Rasterizer.anIntArray1472;
-		int ai1[] = DrawingArea.pixels;
-		int i2 = DrawingArea.width;
-		int j2 = DrawingArea.height;
-		int k2 = DrawingArea.topX;
-		int l2 = DrawingArea.bottomX;
-		int i3 = DrawingArea.topY;
-		int j3 = DrawingArea.bottomY;
-		Rasterizer.aBoolean1464 = false;
-		DrawingArea.initDrawingArea(32, 32, sprite2.myPixels, new float[1024]);
-		DrawingArea.method336(32, 0, 0, 0, 32);
-		Rasterizer.method364();
+		int k1 = Rasterizer3D.originViewX;
+		int l1 = Rasterizer3D.originViewY;
+		int ai[] = Rasterizer3D.scanOffsets;
+		int ai1[] = Rasterizer2D.pixels;
+		int i2 = Rasterizer2D.width;
+		int j2 = Rasterizer2D.height;
+		int k2 = Rasterizer2D.clip_left;
+		int l2 = Rasterizer2D.clip_right;
+		int i3 = Rasterizer2D.clip_top;
+		int j3 = Rasterizer2D.clip_bottom;
+		Rasterizer3D.aBoolean1464 = false;
+		Rasterizer2D.initDrawingArea(32, 32, sprite2.myPixels, new float[1024]);
+		Rasterizer2D.method336(32, 0, 0, 0, 32);
+		Rasterizer3D.useViewport();
 		if (itemDef.placeholderTemplateId != -1) {
 			int l5 = sprite.maxWidth;
 			int j6 = sprite.maxHeight;
@@ -1237,9 +1237,9 @@ public final class ItemDefinition {
 			k3 = (int) ((double) k3 * 1.5D);
 		if (highlightColor > 0)
 			k3 = (int) ((double) k3 * 1.04D);
-        int l3 = Rasterizer.anIntArray1470[itemDef.spritePitch] * k3 >> 16;
-        int i4 = Rasterizer.anIntArray1471[itemDef.spritePitch] * k3 >> 16;
-        model.method482(itemDef.spriteCameraRoll, itemDef.spriteCameraYaw, itemDef.spritePitch, itemDef.spriteTranslateX, l3 + model.modelHeight / 2 + itemDef.spriteTranslateY, i4 + itemDef.spriteTranslateY);
+        int l3 = Rasterizer3D.anIntArray1470[itemDef.spritePitch] * k3 >> 16;
+        int i4 = Rasterizer3D.COSINE[itemDef.spritePitch] * k3 >> 16;
+        model.method482(itemDef.spriteCameraRoll, itemDef.spriteCameraYaw, itemDef.spritePitch, itemDef.spriteTranslateX, l3 + model.modelBaseY / 2 + itemDef.spriteTranslateY, i4 + itemDef.spriteTranslateY);
 
 		for (int i5 = 31; i5 >= 0; i5--) {
 			for (int j4 = 31; j4 >= 0; j4--)
@@ -1300,12 +1300,12 @@ public final class ItemDefinition {
 		}
 		if (highlightColor == 0)
 			mruNodes1.removeFromCache(sprite2, itemId);
-		DrawingArea.initDrawingArea(j2, i2, ai1, new float[1024]);
-		DrawingArea.setDrawingArea(j3, k2, l2, i3);
-		Rasterizer.textureInt1 = k1;
-		Rasterizer.textureInt2 = l1;
-		Rasterizer.anIntArray1472 = ai;
-		Rasterizer.aBoolean1464 = true;
+		Rasterizer2D.initDrawingArea(j2, i2, ai1, new float[1024]);
+		Rasterizer2D.setDrawingArea(j3, k2, l2, i3);
+		Rasterizer3D.originViewX = k1;
+		Rasterizer3D.originViewY = l1;
+		Rasterizer3D.scanOffsets = ai;
+		Rasterizer3D.aBoolean1464 = true;
 		if (itemDef.stackable)
 			sprite2.maxWidth = 33;
 		else
@@ -1331,19 +1331,21 @@ public final class ItemDefinition {
 		if (model == null)
 			return null;
 		if (groundScaleX != 128 || groundScaleY != 128 || groundScaleZ != 128)
-			model.method478(groundScaleX, groundScaleZ, groundScaleY);
+			model.scale(groundScaleX, groundScaleZ, groundScaleY);
 		if (modifiedModelColors != null) {
 			for (int l = 0; l < modifiedModelColors.length; l++)
-				model.method476(modifiedModelColors[l], originalModelColors[l]);
+				model.recolor(modifiedModelColors[l], originalModelColors[l]);
 
 		}
 		if (originalTextureColors != null) {
 			for (int k2 = 0; k2 < originalTextureColors.length; k2++)
-				model.replaceTexture(originalTextureColors[k2], modifiedTextureColors[k2]);
+				model.retexture(originalTextureColors[k2], modifiedTextureColors[k2]);
 
 		}
-		model.method479(64 + ambience, 768 + diffusion, -50, -10, -50, true);
-		model.aBoolean1659 = true;
+		int lightInt = 64 + ambient;
+		int lightMag = 768 + contrast;
+			model.light(lightInt, lightMag, -50, -10, -50, true);
+		model.fits_on_single_square = true;
 		mruNodes2.removeFromCache(model, id);
 		return model;
 	}
@@ -1363,12 +1365,12 @@ public final class ItemDefinition {
 			return null;
 		if (modifiedModelColors != null) {
 			for (int l = 0; l < modifiedModelColors.length; l++)
-				model.method476(modifiedModelColors[l], originalModelColors[l]);
+				model.recolor(modifiedModelColors[l], originalModelColors[l]);
 
 		}
 		if (originalTextureColors != null) {
 			for (int k2 = 0; k2 < originalTextureColors.length; k2++)
-				model.replaceTexture(originalTextureColors[k2], modifiedTextureColors[k2]);
+				model.retexture(originalTextureColors[k2], modifiedTextureColors[k2]);
 
 		}
 		return model;
@@ -1476,7 +1478,7 @@ public final class ItemDefinition {
 	private static int cacheIndex;
 	public int spriteScale;
 	private static Stream stream;
-	private int diffusion;
+	private int contrast;
 	private int tertiaryMaleEquipmentModel;
 	public int secondaryMaleModel;
 	public String itemActions[];
@@ -1487,7 +1489,7 @@ public final class ItemDefinition {
 	public int[] stackIDs;
 	public int spriteTranslateY;
 	private static int[] streamIndices;
-	private int ambience;
+	private int ambient;
 	public int primaryFemaleHeadPiece;
 	public int spriteCameraRoll;
 	public int primaryFemaleModel;

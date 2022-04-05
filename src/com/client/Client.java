@@ -492,10 +492,10 @@ public class Client extends RSApplet {
     private int coloredItemColor = 0xffffff;
     private Sprite[] chatButtons;
     private Sprite chatArea;
-    private Background titleBox;
+    private IndexedImage titleBox;
     private Sprite loginHover;
     private Sprite boxHover;
-    private Background titleButton;
+    private IndexedImage titleButton;
     private int ignoreCount;
     private long aLong824;
     private int[][] anIntArrayArray825;
@@ -626,11 +626,11 @@ public class Client extends RSApplet {
     private boolean aBoolean1047;
     private int anInt1048;
     private String aString1049;
-    private StreamLoader titleStreamLoader;
+    private FileArchive titleStreamLoader;
     private int anInt1054;
     private int anInt1055;
     private NodeList aClass19_1056;
-    private Background[] mapScenes;
+    private IndexedImage[] mapScenes;
     private int friendsListAction;
     private int mouseInvInterfaceIndex;
     private int lastActiveInvInterface;
@@ -691,7 +691,7 @@ public class Client extends RSApplet {
     private boolean aBoolean1149;
     private Sprite[] crosses;
     private boolean musicEnabled;
-    private Background[] aBackgroundArray1152s;
+    private IndexedImage[] aBackgroundArray1152s;
     private int unreadMessages;
     private boolean canMute;
     private boolean aBoolean1159;
@@ -878,7 +878,7 @@ public class Client extends RSApplet {
         aClass19_1056 = new NodeList();
         anIntArray1057 = new int[33];
         aClass9_1059 = new RSInterface();
-        mapScenes = new Background[200];
+        mapScenes = new IndexedImage[200];
         barFillColor = 0x4d4233;
         anIntArray1065 = new int[7];
         anIntArray1072 = new int[1000];
@@ -1335,7 +1335,7 @@ public class Client extends RSApplet {
         for (int i8 = 0; i8 < 9; i8++) {
             int k8 = 128 + i8 * 32 + 15;
             int l8 = 600 + k8 * 3;
-            int i9 = Rasterizer.anIntArray1470[k8];
+            int i9 = Rasterizer3D.anIntArray1470[k8];
             ai[i8] = (l8 * i9 >> 16);
         }
         if (currentScreenMode == ScreenMode.FIXED && (currentGameWidth >= 756) && (currentGameWidth <= 1025)
@@ -1428,25 +1428,25 @@ public class Client extends RSApplet {
 
     private void updateGameScreen() {
         antialiasingPixels = new int[Client.gameScreenWidth * Client.gameScreenHeight << 2];
-        Rasterizer.method365(Client.gameScreenWidth << 1, Client.gameScreenHeight << 1);
-        antialiasingOffsets = Rasterizer.anIntArray1472;
-        Rasterizer.method365(Client.gameScreenHeight, Client.gameScreenHeight);
-        Rasterizer.method365(gameScreenWidth, gameScreenHeight);
-        this.fullScreenTextureArray = Rasterizer.anIntArray1472;
-        Rasterizer.method365(
+        Rasterizer3D.reposition(Client.gameScreenWidth << 1, Client.gameScreenHeight << 1);
+        antialiasingOffsets = Rasterizer3D.scanOffsets;
+        Rasterizer3D.reposition(Client.gameScreenHeight, Client.gameScreenHeight);
+        Rasterizer3D.reposition(gameScreenWidth, gameScreenHeight);
+        this.fullScreenTextureArray = Rasterizer3D.scanOffsets;
+        Rasterizer3D.reposition(
                 currentScreenMode == ScreenMode.FIXED ? 516
                         : gameScreenWidth,
                 currentScreenMode == ScreenMode.FIXED ? 168
                         : gameScreenHeight);
-        anIntArray1180 = Rasterizer.anIntArray1472;
-        Rasterizer.method365(
+        anIntArray1180 = Rasterizer3D.scanOffsets;
+        Rasterizer3D.reposition(
                 currentScreenMode == ScreenMode.FIXED ? 249
                         : gameScreenWidth,
                 currentScreenMode == ScreenMode.FIXED ? 335
                         : gameScreenHeight);
-        this.anIntArray1181 = Rasterizer.anIntArray1472;
-        Rasterizer.method365(gameScreenWidth, gameScreenHeight);
-        this.anIntArray1182 = Rasterizer.anIntArray1472;
+        this.anIntArray1181 = Rasterizer3D.scanOffsets;
+        Rasterizer3D.reposition(gameScreenWidth, gameScreenHeight);
+        this.anIntArray1182 = Rasterizer3D.scanOffsets;
         method456();
     }
 
@@ -1600,7 +1600,7 @@ public class Client extends RSApplet {
         final int yOffset = currentScreenMode == ScreenMode.FIXED ? 0 : currentGameHeight - 165;
         final int yOffset2 = currentScreenMode == ScreenMode.FIXED ? 338 : 0;
 
-        Rasterizer.anIntArray1472 = anIntArray1180;
+        Rasterizer3D.scanOffsets = anIntArray1180;
 
         if (hideChatArea)
             drawChannelButtons();
@@ -1635,8 +1635,8 @@ public class Client extends RSApplet {
                 newBoldFont.drawCenteredString("Amount you want to sell:", 259, 60 + yOffset, 0, -1);
                 newBoldFont.drawCenteredString(amountOrNameInput + "*", 259, 80 + yOffset, 128, -1);
             } else if (inputDialogState == 3) {
-                DrawingArea.fillPixels(8, 505, 108, 0x463214, 28 + yOffset);
-                DrawingArea.drawAlphaBox(8, 28 + yOffset, 505, 108, 0x746346, 75);
+                Rasterizer2D.fillPixels(8, 505, 108, 0x463214, 28 + yOffset);
+                Rasterizer2D.drawAlphaBox(8, 28 + yOffset, 505, 108, 0x746346, 75);
 
                 newBoldFont.drawCenteredString("@bla@What would you like to buy? @blu@" + amountOrNameInput + "*", 259,
                         20 + yOffset, 128, -1);
@@ -1656,7 +1656,7 @@ public class Client extends RSApplet {
                     } else if (itemAmount == 0) {
                         newRegularFont.drawCenteredString("No matching items found!", 259, 70 + yOffset, 0, -1);
                     } else {
-                        DrawingArea.setDrawingArea(134 + yOffset, 8, 497, 29 + yOffset);
+                        Rasterizer2D.setDrawingArea(134 + yOffset, 8, 497, 29 + yOffset);
                         for (int itemId = 0; itemId < itemAmount; itemId++) {
                             int[] itemResults = grandExchangeItemSearch.getItemSearchResults();
 
@@ -1673,7 +1673,7 @@ public class Client extends RSApplet {
                                 if (super.mouseX >= startX && super.mouseX <= startX + 160) {
                                     if (super.mouseY >= (startY + yOffset2)
                                             && super.mouseY <= (startY + yOffset2) + 35) {
-                                        DrawingArea.drawAlphaBox(startX, startY, 160, 35, 0xFFFFFF, 120);
+                                        Rasterizer2D.drawAlphaBox(startX, startY, 160, 35, 0xFFFFFF, 120);
 
                                         if (super.clickMode3 == 1)
                                             handleGEItemSearchClick(itemDef.id);
@@ -1688,7 +1688,7 @@ public class Client extends RSApplet {
                                 rowCountX = 0;
                             }
                         }
-                        DrawingArea.defaultDrawingAreaSize();
+                        Rasterizer2D.defaultDrawingAreaSize();
                     }
 
                     int maxScrollPosition = itemAmount / 3 * 35;
@@ -1707,7 +1707,7 @@ public class Client extends RSApplet {
             } else {
                 int j77 = -3;
                 int j = 0;
-                DrawingArea.setDrawingArea(122 + yOffset, 8, 497, 7 + yOffset);
+                Rasterizer2D.setDrawingArea(122 + yOffset, 8, 497, 7 + yOffset);
                 for (int k = 0; k < 500; k++)
                     if (chatMessages[k] != null) {
                         // System.out.println(chatMessages[k]);
@@ -1914,7 +1914,7 @@ public class Client extends RSApplet {
                             }
                         }
                     }
-                DrawingArea.defaultDrawingAreaSize();
+                Rasterizer2D.defaultDrawingAreaSize();
                 chatAreaScrollLength = j * 14 + 7 + 5;
                 if (chatAreaScrollLength < 111)
                     chatAreaScrollLength = 111;
@@ -1948,7 +1948,7 @@ public class Client extends RSApplet {
                 if (!isFieldInFocus())
                     newRegularFont.drawBasicString(inputString + ((loopCycle % 40 < 20) ? "*" : "*"),
                             xOffset + textDrawingArea.getTextWidth(s + ": "), 133 + yOffset, 255, -1);
-                DrawingArea.method339(120 + yOffset, 0x807660, 506, 7);
+                Rasterizer2D.method339(120 + yOffset, 0x807660, 506, 7);
             }
 
         }
@@ -1959,7 +1959,7 @@ public class Client extends RSApplet {
             chatAreaGraphicsBuffer.drawGraphics(0, 338, super.graphics);
 
         mainGameGraphicsBuffer.setCanvas();
-        Rasterizer.anIntArray1472 = anIntArray1182;
+        Rasterizer3D.scanOffsets = anIntArray1182;
     }
 
     @Override
@@ -2237,7 +2237,7 @@ public class Client extends RSApplet {
             anInt985 = -1;
             aClass19_1056.removeAll();
             aClass19_1013.removeAll();
-            Rasterizer.method366();
+            Rasterizer3D.method366();
             unlinkMRUNodes();
             worldController.initToNull();
             System.gc();
@@ -2411,7 +2411,7 @@ public class Client extends RSApplet {
         stream.createFrame(210);
         stream.writeDWord(0x3f008edd);
         System.gc();
-        Rasterizer.method367();
+        Rasterizer3D.method367();
         onDemandFetcher.method566();
 
         int k = (mapRegionsX - 6) / 8 - 1;
@@ -3168,120 +3168,120 @@ public class Client extends RSApplet {
     public void drawScrollbar(int height, int scrollPosition, int yPosition, int xPosition, int scrollMax) {
         scrollBar1.drawSprite(xPosition, yPosition);
         scrollBar2.drawSprite(xPosition, (yPosition + height) - 16);
-        DrawingArea.drawPixels(height - 32, yPosition + 16, xPosition, 0x000001, 16);
-        DrawingArea.drawPixels(height - 32, yPosition + 16, xPosition, 0x3d3426, 15);
-        DrawingArea.drawPixels(height - 32, yPosition + 16, xPosition, 0x342d21, 13);
-        DrawingArea.drawPixels(height - 32, yPosition + 16, xPosition, 0x2e281d, 11);
-        DrawingArea.drawPixels(height - 32, yPosition + 16, xPosition, 0x29241b, 10);
-        DrawingArea.drawPixels(height - 32, yPosition + 16, xPosition, 0x252019, 9);
-        DrawingArea.drawPixels(height - 32, yPosition + 16, xPosition, 0x000001, 1);
+        Rasterizer2D.drawPixels(height - 32, yPosition + 16, xPosition, 0x000001, 16);
+        Rasterizer2D.drawPixels(height - 32, yPosition + 16, xPosition, 0x3d3426, 15);
+        Rasterizer2D.drawPixels(height - 32, yPosition + 16, xPosition, 0x342d21, 13);
+        Rasterizer2D.drawPixels(height - 32, yPosition + 16, xPosition, 0x2e281d, 11);
+        Rasterizer2D.drawPixels(height - 32, yPosition + 16, xPosition, 0x29241b, 10);
+        Rasterizer2D.drawPixels(height - 32, yPosition + 16, xPosition, 0x252019, 9);
+        Rasterizer2D.drawPixels(height - 32, yPosition + 16, xPosition, 0x000001, 1);
         int k1 = ((height - 32) * height) / scrollMax;
         if (k1 < 8)
             k1 = 8;
         int l1 = ((height - 32 - k1) * scrollPosition) / (scrollMax - height);
-        DrawingArea.drawPixels(k1, yPosition + 16 + l1, xPosition, barFillColor, 16);
-        DrawingArea.method341(yPosition + 16 + l1, 0x000001, k1, xPosition);
-        DrawingArea.method341(yPosition + 16 + l1, 0x817051, k1, xPosition + 1);
-        DrawingArea.method341(yPosition + 16 + l1, 0x73654a, k1, xPosition + 2);
-        DrawingArea.method341(yPosition + 16 + l1, 0x6a5c43, k1, xPosition + 3);
-        DrawingArea.method341(yPosition + 16 + l1, 0x6a5c43, k1, xPosition + 4);
-        DrawingArea.method341(yPosition + 16 + l1, 0x655841, k1, xPosition + 5);
-        DrawingArea.method341(yPosition + 16 + l1, 0x655841, k1, xPosition + 6);
-        DrawingArea.method341(yPosition + 16 + l1, 0x61553e, k1, xPosition + 7);
-        DrawingArea.method341(yPosition + 16 + l1, 0x61553e, k1, xPosition + 8);
-        DrawingArea.method341(yPosition + 16 + l1, 0x5d513c, k1, xPosition + 9);
-        DrawingArea.method341(yPosition + 16 + l1, 0x5d513c, k1, xPosition + 10);
-        DrawingArea.method341(yPosition + 16 + l1, 0x594e3a, k1, xPosition + 11);
-        DrawingArea.method341(yPosition + 16 + l1, 0x594e3a, k1, xPosition + 12);
-        DrawingArea.method341(yPosition + 16 + l1, 0x514635, k1, xPosition + 13);
-        DrawingArea.method341(yPosition + 16 + l1, 0x4b4131, k1, xPosition + 14);
-        DrawingArea.method339(yPosition + 16 + l1, 0x000001, 15, xPosition);
-        DrawingArea.method339(yPosition + 17 + l1, 0x000001, 15, xPosition);
-        DrawingArea.method339(yPosition + 17 + l1, 0x655841, 14, xPosition);
-        DrawingArea.method339(yPosition + 17 + l1, 0x6a5c43, 13, xPosition);
-        DrawingArea.method339(yPosition + 17 + l1, 0x6d5f48, 11, xPosition);
-        DrawingArea.method339(yPosition + 17 + l1, 0x73654a, 10, xPosition);
-        DrawingArea.method339(yPosition + 17 + l1, 0x76684b, 7, xPosition);
-        DrawingArea.method339(yPosition + 17 + l1, 0x7b6a4d, 5, xPosition);
-        DrawingArea.method339(yPosition + 17 + l1, 0x7e6e50, 4, xPosition);
-        DrawingArea.method339(yPosition + 17 + l1, 0x817051, 3, xPosition);
-        DrawingArea.method339(yPosition + 17 + l1, 0x000001, 2, xPosition);
-        DrawingArea.method339(yPosition + 18 + l1, 0x000001, 16, xPosition);
-        DrawingArea.method339(yPosition + 18 + l1, 0x564b38, 15, xPosition);
-        DrawingArea.method339(yPosition + 18 + l1, 0x5d513c, 14, xPosition);
-        DrawingArea.method339(yPosition + 18 + l1, 0x625640, 11, xPosition);
-        DrawingArea.method339(yPosition + 18 + l1, 0x655841, 10, xPosition);
-        DrawingArea.method339(yPosition + 18 + l1, 0x6a5c43, 7, xPosition);
-        DrawingArea.method339(yPosition + 18 + l1, 0x6e6046, 5, xPosition);
-        DrawingArea.method339(yPosition + 18 + l1, 0x716247, 4, xPosition);
-        DrawingArea.method339(yPosition + 18 + l1, 0x7b6a4d, 3, xPosition);
-        DrawingArea.method339(yPosition + 18 + l1, 0x817051, 2, xPosition);
-        DrawingArea.method339(yPosition + 18 + l1, 0x000001, 1, xPosition);
-        DrawingArea.method339(yPosition + 19 + l1, 0x000001, 16, xPosition);
-        DrawingArea.method339(yPosition + 19 + l1, 0x514635, 15, xPosition);
-        DrawingArea.method339(yPosition + 19 + l1, 0x564b38, 14, xPosition);
-        DrawingArea.method339(yPosition + 19 + l1, 0x5d513c, 11, xPosition);
-        DrawingArea.method339(yPosition + 19 + l1, 0x61553e, 9, xPosition);
-        DrawingArea.method339(yPosition + 19 + l1, 0x655841, 7, xPosition);
-        DrawingArea.method339(yPosition + 19 + l1, 0x6a5c43, 5, xPosition);
-        DrawingArea.method339(yPosition + 19 + l1, 0x6e6046, 4, xPosition);
-        DrawingArea.method339(yPosition + 19 + l1, 0x73654a, 3, xPosition);
-        DrawingArea.method339(yPosition + 19 + l1, 0x817051, 2, xPosition);
-        DrawingArea.method339(yPosition + 19 + l1, 0x000001, 1, xPosition);
-        DrawingArea.method339(yPosition + 20 + l1, 0x000001, 16, xPosition);
-        DrawingArea.method339(yPosition + 20 + l1, 0x4b4131, 15, xPosition);
-        DrawingArea.method339(yPosition + 20 + l1, 0x544936, 14, xPosition);
-        DrawingArea.method339(yPosition + 20 + l1, 0x594e3a, 13, xPosition);
-        DrawingArea.method339(yPosition + 20 + l1, 0x5d513c, 10, xPosition);
-        DrawingArea.method339(yPosition + 20 + l1, 0x61553e, 8, xPosition);
-        DrawingArea.method339(yPosition + 20 + l1, 0x655841, 6, xPosition);
-        DrawingArea.method339(yPosition + 20 + l1, 0x6a5c43, 4, xPosition);
-        DrawingArea.method339(yPosition + 20 + l1, 0x73654a, 3, xPosition);
-        DrawingArea.method339(yPosition + 20 + l1, 0x817051, 2, xPosition);
-        DrawingArea.method339(yPosition + 20 + l1, 0x000001, 1, xPosition);
-        DrawingArea.method341(yPosition + 16 + l1, 0x000001, k1, xPosition + 15);
-        DrawingArea.method339(yPosition + 15 + l1 + k1, 0x000001, 16, xPosition);
-        DrawingArea.method339(yPosition + 14 + l1 + k1, 0x000001, 15, xPosition);
-        DrawingArea.method339(yPosition + 14 + l1 + k1, 0x3f372a, 14, xPosition);
-        DrawingArea.method339(yPosition + 14 + l1 + k1, 0x443c2d, 10, xPosition);
-        DrawingArea.method339(yPosition + 14 + l1 + k1, 0x483e2f, 9, xPosition);
-        DrawingArea.method339(yPosition + 14 + l1 + k1, 0x4a402f, 7, xPosition);
-        DrawingArea.method339(yPosition + 14 + l1 + k1, 0x4b4131, 4, xPosition);
-        DrawingArea.method339(yPosition + 14 + l1 + k1, 0x564b38, 3, xPosition);
-        DrawingArea.method339(yPosition + 14 + l1 + k1, 0x000001, 2, xPosition);
-        DrawingArea.method339(yPosition + 13 + l1 + k1, 0x000001, 16, xPosition);
-        DrawingArea.method339(yPosition + 13 + l1 + k1, 0x443c2d, 15, xPosition);
-        DrawingArea.method339(yPosition + 13 + l1 + k1, 0x4b4131, 11, xPosition);
-        DrawingArea.method339(yPosition + 13 + l1 + k1, 0x514635, 9, xPosition);
-        DrawingArea.method339(yPosition + 13 + l1 + k1, 0x544936, 7, xPosition);
-        DrawingArea.method339(yPosition + 13 + l1 + k1, 0x564b38, 6, xPosition);
-        DrawingArea.method339(yPosition + 13 + l1 + k1, 0x594e3a, 4, xPosition);
-        DrawingArea.method339(yPosition + 13 + l1 + k1, 0x625640, 3, xPosition);
-        DrawingArea.method339(yPosition + 13 + l1 + k1, 0x6a5c43, 2, xPosition);
-        DrawingArea.method339(yPosition + 13 + l1 + k1, 0x000001, 1, xPosition);
-        DrawingArea.method339(yPosition + 12 + l1 + k1, 0x000001, 16, xPosition);
-        DrawingArea.method339(yPosition + 12 + l1 + k1, 0x443c2d, 15, xPosition);
-        DrawingArea.method339(yPosition + 12 + l1 + k1, 0x4b4131, 14, xPosition);
-        DrawingArea.method339(yPosition + 12 + l1 + k1, 0x544936, 12, xPosition);
-        DrawingArea.method339(yPosition + 12 + l1 + k1, 0x564b38, 11, xPosition);
-        DrawingArea.method339(yPosition + 12 + l1 + k1, 0x594e3a, 10, xPosition);
-        DrawingArea.method339(yPosition + 12 + l1 + k1, 0x5d513c, 7, xPosition);
-        DrawingArea.method339(yPosition + 12 + l1 + k1, 0x61553e, 4, xPosition);
-        DrawingArea.method339(yPosition + 12 + l1 + k1, 0x6e6046, 3, xPosition);
-        DrawingArea.method339(yPosition + 12 + l1 + k1, 0x7b6a4d, 2, xPosition);
-        DrawingArea.method339(yPosition + 12 + l1 + k1, 0x000001, 1, xPosition);
-        DrawingArea.method339(yPosition + 11 + l1 + k1, 0x000001, 16, xPosition);
-        DrawingArea.method339(yPosition + 11 + l1 + k1, 0x4b4131, 15, xPosition);
-        DrawingArea.method339(yPosition + 11 + l1 + k1, 0x514635, 14, xPosition);
-        DrawingArea.method339(yPosition + 11 + l1 + k1, 0x564b38, 13, xPosition);
-        DrawingArea.method339(yPosition + 11 + l1 + k1, 0x594e3a, 11, xPosition);
-        DrawingArea.method339(yPosition + 11 + l1 + k1, 0x5d513c, 9, xPosition);
-        DrawingArea.method339(yPosition + 11 + l1 + k1, 0x61553e, 7, xPosition);
-        DrawingArea.method339(yPosition + 11 + l1 + k1, 0x655841, 5, xPosition);
-        DrawingArea.method339(yPosition + 11 + l1 + k1, 0x6a5c43, 4, xPosition);
-        DrawingArea.method339(yPosition + 11 + l1 + k1, 0x73654a, 3, xPosition);
-        DrawingArea.method339(yPosition + 11 + l1 + k1, 0x7b6a4d, 2, xPosition);
-        DrawingArea.method339(yPosition + 11 + l1 + k1, 0x000001, 1, xPosition);
+        Rasterizer2D.drawPixels(k1, yPosition + 16 + l1, xPosition, barFillColor, 16);
+        Rasterizer2D.method341(yPosition + 16 + l1, 0x000001, k1, xPosition);
+        Rasterizer2D.method341(yPosition + 16 + l1, 0x817051, k1, xPosition + 1);
+        Rasterizer2D.method341(yPosition + 16 + l1, 0x73654a, k1, xPosition + 2);
+        Rasterizer2D.method341(yPosition + 16 + l1, 0x6a5c43, k1, xPosition + 3);
+        Rasterizer2D.method341(yPosition + 16 + l1, 0x6a5c43, k1, xPosition + 4);
+        Rasterizer2D.method341(yPosition + 16 + l1, 0x655841, k1, xPosition + 5);
+        Rasterizer2D.method341(yPosition + 16 + l1, 0x655841, k1, xPosition + 6);
+        Rasterizer2D.method341(yPosition + 16 + l1, 0x61553e, k1, xPosition + 7);
+        Rasterizer2D.method341(yPosition + 16 + l1, 0x61553e, k1, xPosition + 8);
+        Rasterizer2D.method341(yPosition + 16 + l1, 0x5d513c, k1, xPosition + 9);
+        Rasterizer2D.method341(yPosition + 16 + l1, 0x5d513c, k1, xPosition + 10);
+        Rasterizer2D.method341(yPosition + 16 + l1, 0x594e3a, k1, xPosition + 11);
+        Rasterizer2D.method341(yPosition + 16 + l1, 0x594e3a, k1, xPosition + 12);
+        Rasterizer2D.method341(yPosition + 16 + l1, 0x514635, k1, xPosition + 13);
+        Rasterizer2D.method341(yPosition + 16 + l1, 0x4b4131, k1, xPosition + 14);
+        Rasterizer2D.method339(yPosition + 16 + l1, 0x000001, 15, xPosition);
+        Rasterizer2D.method339(yPosition + 17 + l1, 0x000001, 15, xPosition);
+        Rasterizer2D.method339(yPosition + 17 + l1, 0x655841, 14, xPosition);
+        Rasterizer2D.method339(yPosition + 17 + l1, 0x6a5c43, 13, xPosition);
+        Rasterizer2D.method339(yPosition + 17 + l1, 0x6d5f48, 11, xPosition);
+        Rasterizer2D.method339(yPosition + 17 + l1, 0x73654a, 10, xPosition);
+        Rasterizer2D.method339(yPosition + 17 + l1, 0x76684b, 7, xPosition);
+        Rasterizer2D.method339(yPosition + 17 + l1, 0x7b6a4d, 5, xPosition);
+        Rasterizer2D.method339(yPosition + 17 + l1, 0x7e6e50, 4, xPosition);
+        Rasterizer2D.method339(yPosition + 17 + l1, 0x817051, 3, xPosition);
+        Rasterizer2D.method339(yPosition + 17 + l1, 0x000001, 2, xPosition);
+        Rasterizer2D.method339(yPosition + 18 + l1, 0x000001, 16, xPosition);
+        Rasterizer2D.method339(yPosition + 18 + l1, 0x564b38, 15, xPosition);
+        Rasterizer2D.method339(yPosition + 18 + l1, 0x5d513c, 14, xPosition);
+        Rasterizer2D.method339(yPosition + 18 + l1, 0x625640, 11, xPosition);
+        Rasterizer2D.method339(yPosition + 18 + l1, 0x655841, 10, xPosition);
+        Rasterizer2D.method339(yPosition + 18 + l1, 0x6a5c43, 7, xPosition);
+        Rasterizer2D.method339(yPosition + 18 + l1, 0x6e6046, 5, xPosition);
+        Rasterizer2D.method339(yPosition + 18 + l1, 0x716247, 4, xPosition);
+        Rasterizer2D.method339(yPosition + 18 + l1, 0x7b6a4d, 3, xPosition);
+        Rasterizer2D.method339(yPosition + 18 + l1, 0x817051, 2, xPosition);
+        Rasterizer2D.method339(yPosition + 18 + l1, 0x000001, 1, xPosition);
+        Rasterizer2D.method339(yPosition + 19 + l1, 0x000001, 16, xPosition);
+        Rasterizer2D.method339(yPosition + 19 + l1, 0x514635, 15, xPosition);
+        Rasterizer2D.method339(yPosition + 19 + l1, 0x564b38, 14, xPosition);
+        Rasterizer2D.method339(yPosition + 19 + l1, 0x5d513c, 11, xPosition);
+        Rasterizer2D.method339(yPosition + 19 + l1, 0x61553e, 9, xPosition);
+        Rasterizer2D.method339(yPosition + 19 + l1, 0x655841, 7, xPosition);
+        Rasterizer2D.method339(yPosition + 19 + l1, 0x6a5c43, 5, xPosition);
+        Rasterizer2D.method339(yPosition + 19 + l1, 0x6e6046, 4, xPosition);
+        Rasterizer2D.method339(yPosition + 19 + l1, 0x73654a, 3, xPosition);
+        Rasterizer2D.method339(yPosition + 19 + l1, 0x817051, 2, xPosition);
+        Rasterizer2D.method339(yPosition + 19 + l1, 0x000001, 1, xPosition);
+        Rasterizer2D.method339(yPosition + 20 + l1, 0x000001, 16, xPosition);
+        Rasterizer2D.method339(yPosition + 20 + l1, 0x4b4131, 15, xPosition);
+        Rasterizer2D.method339(yPosition + 20 + l1, 0x544936, 14, xPosition);
+        Rasterizer2D.method339(yPosition + 20 + l1, 0x594e3a, 13, xPosition);
+        Rasterizer2D.method339(yPosition + 20 + l1, 0x5d513c, 10, xPosition);
+        Rasterizer2D.method339(yPosition + 20 + l1, 0x61553e, 8, xPosition);
+        Rasterizer2D.method339(yPosition + 20 + l1, 0x655841, 6, xPosition);
+        Rasterizer2D.method339(yPosition + 20 + l1, 0x6a5c43, 4, xPosition);
+        Rasterizer2D.method339(yPosition + 20 + l1, 0x73654a, 3, xPosition);
+        Rasterizer2D.method339(yPosition + 20 + l1, 0x817051, 2, xPosition);
+        Rasterizer2D.method339(yPosition + 20 + l1, 0x000001, 1, xPosition);
+        Rasterizer2D.method341(yPosition + 16 + l1, 0x000001, k1, xPosition + 15);
+        Rasterizer2D.method339(yPosition + 15 + l1 + k1, 0x000001, 16, xPosition);
+        Rasterizer2D.method339(yPosition + 14 + l1 + k1, 0x000001, 15, xPosition);
+        Rasterizer2D.method339(yPosition + 14 + l1 + k1, 0x3f372a, 14, xPosition);
+        Rasterizer2D.method339(yPosition + 14 + l1 + k1, 0x443c2d, 10, xPosition);
+        Rasterizer2D.method339(yPosition + 14 + l1 + k1, 0x483e2f, 9, xPosition);
+        Rasterizer2D.method339(yPosition + 14 + l1 + k1, 0x4a402f, 7, xPosition);
+        Rasterizer2D.method339(yPosition + 14 + l1 + k1, 0x4b4131, 4, xPosition);
+        Rasterizer2D.method339(yPosition + 14 + l1 + k1, 0x564b38, 3, xPosition);
+        Rasterizer2D.method339(yPosition + 14 + l1 + k1, 0x000001, 2, xPosition);
+        Rasterizer2D.method339(yPosition + 13 + l1 + k1, 0x000001, 16, xPosition);
+        Rasterizer2D.method339(yPosition + 13 + l1 + k1, 0x443c2d, 15, xPosition);
+        Rasterizer2D.method339(yPosition + 13 + l1 + k1, 0x4b4131, 11, xPosition);
+        Rasterizer2D.method339(yPosition + 13 + l1 + k1, 0x514635, 9, xPosition);
+        Rasterizer2D.method339(yPosition + 13 + l1 + k1, 0x544936, 7, xPosition);
+        Rasterizer2D.method339(yPosition + 13 + l1 + k1, 0x564b38, 6, xPosition);
+        Rasterizer2D.method339(yPosition + 13 + l1 + k1, 0x594e3a, 4, xPosition);
+        Rasterizer2D.method339(yPosition + 13 + l1 + k1, 0x625640, 3, xPosition);
+        Rasterizer2D.method339(yPosition + 13 + l1 + k1, 0x6a5c43, 2, xPosition);
+        Rasterizer2D.method339(yPosition + 13 + l1 + k1, 0x000001, 1, xPosition);
+        Rasterizer2D.method339(yPosition + 12 + l1 + k1, 0x000001, 16, xPosition);
+        Rasterizer2D.method339(yPosition + 12 + l1 + k1, 0x443c2d, 15, xPosition);
+        Rasterizer2D.method339(yPosition + 12 + l1 + k1, 0x4b4131, 14, xPosition);
+        Rasterizer2D.method339(yPosition + 12 + l1 + k1, 0x544936, 12, xPosition);
+        Rasterizer2D.method339(yPosition + 12 + l1 + k1, 0x564b38, 11, xPosition);
+        Rasterizer2D.method339(yPosition + 12 + l1 + k1, 0x594e3a, 10, xPosition);
+        Rasterizer2D.method339(yPosition + 12 + l1 + k1, 0x5d513c, 7, xPosition);
+        Rasterizer2D.method339(yPosition + 12 + l1 + k1, 0x61553e, 4, xPosition);
+        Rasterizer2D.method339(yPosition + 12 + l1 + k1, 0x6e6046, 3, xPosition);
+        Rasterizer2D.method339(yPosition + 12 + l1 + k1, 0x7b6a4d, 2, xPosition);
+        Rasterizer2D.method339(yPosition + 12 + l1 + k1, 0x000001, 1, xPosition);
+        Rasterizer2D.method339(yPosition + 11 + l1 + k1, 0x000001, 16, xPosition);
+        Rasterizer2D.method339(yPosition + 11 + l1 + k1, 0x4b4131, 15, xPosition);
+        Rasterizer2D.method339(yPosition + 11 + l1 + k1, 0x514635, 14, xPosition);
+        Rasterizer2D.method339(yPosition + 11 + l1 + k1, 0x564b38, 13, xPosition);
+        Rasterizer2D.method339(yPosition + 11 + l1 + k1, 0x594e3a, 11, xPosition);
+        Rasterizer2D.method339(yPosition + 11 + l1 + k1, 0x5d513c, 9, xPosition);
+        Rasterizer2D.method339(yPosition + 11 + l1 + k1, 0x61553e, 7, xPosition);
+        Rasterizer2D.method339(yPosition + 11 + l1 + k1, 0x655841, 5, xPosition);
+        Rasterizer2D.method339(yPosition + 11 + l1 + k1, 0x6a5c43, 4, xPosition);
+        Rasterizer2D.method339(yPosition + 11 + l1 + k1, 0x73654a, 3, xPosition);
+        Rasterizer2D.method339(yPosition + 11 + l1 + k1, 0x7b6a4d, 2, xPosition);
+        Rasterizer2D.method339(yPosition + 11 + l1 + k1, 0x000001, 1, xPosition);
     }
 
     /**
@@ -3309,14 +3309,14 @@ public class Client extends RSApplet {
         }
 
         // Cheaphax fix to it doesnt throw exception and boot player
-        if (stream.currentOffset == -1 || stream.currentOffset != i) {
+        if (stream.currentPosition == -1 || stream.currentPosition != i) {
             System.out.println("[NPC] Size mismatch : returning");
             return;
         }
 
-        if (stream.currentOffset != i) {
+        if (stream.currentPosition != i) {
             Signlink.reporterror(
-                    myUsername + " size mismatch in getnpcpos - pos:" + stream.currentOffset + " psize:" + i);
+                    myUsername + " size mismatch in getnpcpos - pos:" + stream.currentPosition + " psize:" + i);
             throw new RuntimeException("eek");
         }
         for (int i1 = 0; i1 < npcCount; i1++)
@@ -3411,13 +3411,13 @@ public class Client extends RSApplet {
         int k = variousSettings[i];
         if (j == 1) {
             if (k == 1)
-                Rasterizer.setBrightness(0.90000000000000002D);
+                Rasterizer3D.setBrightness(0.90000000000000002D);
             if (k == 2)
-                Rasterizer.setBrightness(0.80000000000000004D);
+                Rasterizer3D.setBrightness(0.80000000000000004D);
             if (k == 3)
-                Rasterizer.setBrightness(0.69999999999999996D);
+                Rasterizer3D.setBrightness(0.69999999999999996D);
             if (k == 4)
-                Rasterizer.setBrightness(0.59999999999999998D);
+                Rasterizer3D.setBrightness(0.59999999999999998D);
             ItemDefinition.mruNodes1.unlinkAll();
             welcomeScreenRaised = true;
         }
@@ -3627,11 +3627,11 @@ public class Client extends RSApplet {
                             if (i1 > 30)
                                 i1 = 30;
                             if (((Entity) (obj)).maxHealth >= 255) {
-                                DrawingArea.drawPixels(5, spriteDrawY - 3, spriteDrawX - 15, 65280, i2);
-                                DrawingArea.drawPixels(5, spriteDrawY - 3, (spriteDrawX - 15) + i2, 0xff0000, 30 - i2);
+                                Rasterizer2D.drawPixels(5, spriteDrawY - 3, spriteDrawX - 15, 65280, i2);
+                                Rasterizer2D.drawPixels(5, spriteDrawY - 3, (spriteDrawX - 15) + i2, 0xff0000, 30 - i2);
                             } else {
-                                DrawingArea.drawPixels(5, spriteDrawY - 3, spriteDrawX - 15, 65280, i1);
-                                DrawingArea.drawPixels(5, spriteDrawY - 3, (spriteDrawX - 15) + i1, 0xff0000, 30 - i1);
+                                Rasterizer2D.drawPixels(5, spriteDrawY - 3, spriteDrawX - 15, 65280, i1);
+                                Rasterizer2D.drawPixels(5, spriteDrawY - 3, (spriteDrawX - 15) + i1, 0xff0000, 30 - i1);
                             }
                             // DrawingArea.drawPixels(5, spriteDrawY - 3, spriteDrawX - 15, 65280, i1);
                             // DrawingArea.drawPixels(5, spriteDrawY - 3, (spriteDrawX - 15) + i1, 0xff0000,
@@ -3746,10 +3746,10 @@ public class Client extends RSApplet {
                     if (anIntArray981[k] == 4) {
                         int i4 = chatTextDrawingArea.method384(s);
                         int k4 = ((150 - anIntArray982[k]) * (i4 + 100)) / 150;
-                        DrawingArea.setDrawingArea(334, spriteDrawX - 50, spriteDrawX + 50, 0);
+                        Rasterizer2D.setDrawingArea(334, spriteDrawX - 50, spriteDrawX + 50, 0);
                         chatTextDrawingArea.method385(0, s, spriteDrawY + 1, (spriteDrawX + 50) - k4);
                         chatTextDrawingArea.method385(i3, s, spriteDrawY, (spriteDrawX + 50) - k4);
-                        DrawingArea.defaultDrawingAreaSize();
+                        Rasterizer2D.defaultDrawingAreaSize();
                     }
                     if (anIntArray981[k] == 5) {
                         int j4 = 150 - anIntArray982[k];
@@ -3758,11 +3758,11 @@ public class Client extends RSApplet {
                             l4 = j4 - 25;
                         else if (j4 > 125)
                             l4 = j4 - 125;
-                        DrawingArea.setDrawingArea(spriteDrawY + 5, 0, 516,
+                        Rasterizer2D.setDrawingArea(spriteDrawY + 5, 0, 516,
                                 spriteDrawY - chatTextDrawingArea.anInt1497 - 1);
                         chatTextDrawingArea.drawText(0, s, spriteDrawY + 1 + l4, spriteDrawX);
                         chatTextDrawingArea.drawText(i3, s, spriteDrawY + l4, spriteDrawX);
-                        DrawingArea.defaultDrawingAreaSize();
+                        Rasterizer2D.defaultDrawingAreaSize();
                     }
                 } else {
                     chatTextDrawingArea.drawText(0, s, spriteDrawY + 1, spriteDrawX);
@@ -3804,7 +3804,7 @@ public class Client extends RSApplet {
         if (currentScreenMode == ScreenMode.FIXED && loginScreenGraphicsBuffer == null && tabAreaGraphicsBuffer != null)
             tabAreaGraphicsBuffer.initDrawingArea();
 
-        Rasterizer.anIntArray1472 = anIntArray1181;
+        Rasterizer3D.scanOffsets = anIntArray1181;
         if (currentScreenMode == ScreenMode.FIXED) {
             tabAreaFixed.drawSprite(0, 0);
             if (invOverlayInterfaceID == -1)
@@ -3845,7 +3845,7 @@ public class Client extends RSApplet {
             tabAreaGraphicsBuffer.drawGraphics(516, 168, super.graphics);
 
         mainGameGraphicsBuffer.setCanvas();
-        Rasterizer.anIntArray1472 = anIntArray1182;
+        Rasterizer3D.scanOffsets = anIntArray1182;
 
     }
 
@@ -3985,9 +3985,9 @@ public class Client extends RSApplet {
 
     public void writeBackgroundTexture(int j) {
         if (!lowMem) {
-            if (Rasterizer.textureLastUsed[17] >= j) {
-                Background background = Rasterizer.textures[17];
-                int k = background.width * background.anInt1453 - 1;
+            if (Rasterizer3D.textureLastUsed[17] >= j) {
+                IndexedImage background = Rasterizer3D.textures[17];
+                int k = background.width * background.height - 1;
                 int j1 = background.width * tickDelta * 2;
                 byte[] abyte0 = background.palettePixels;
                 byte[] abyte3 = aByteArray912;
@@ -3996,13 +3996,13 @@ public class Client extends RSApplet {
 
                 background.palettePixels = abyte3;
                 aByteArray912 = abyte0;
-                Rasterizer.requestTextureUpdate(17);
+                Rasterizer3D.requestTextureUpdate(17);
                 anInt854++;
                 if (anInt854 > 1235) {
                     anInt854 = 0;
                     stream.createFrame(226);
                     stream.writeWordBigEndian(0);
-                    int l2 = stream.currentOffset;
+                    int l2 = stream.currentPosition;
                     stream.writeWord(58722);
                     stream.writeWordBigEndian(240);
                     stream.writeWord((int) (Math.random() * 65536D));
@@ -4014,12 +4014,12 @@ public class Client extends RSApplet {
                     stream.writeWord(7130);
                     stream.writeWord((int) (Math.random() * 65536D));
                     stream.writeWord(61657);
-                    stream.writeBytes(stream.currentOffset - l2);
+                    stream.writeBytes(stream.currentPosition - l2);
                 }
             }
-            if (Rasterizer.textureLastUsed[24] >= j) {
-                Background background_1 = Rasterizer.textures[24];
-                int l = background_1.width * background_1.anInt1453 - 1;
+            if (Rasterizer3D.textureLastUsed[24] >= j) {
+                IndexedImage background_1 = Rasterizer3D.textures[24];
+                int l = background_1.width * background_1.height - 1;
                 int k1 = background_1.width * tickDelta * 2;
                 byte[] abyte1 = background_1.palettePixels;
                 byte[] abyte4 = aByteArray912;
@@ -4028,11 +4028,11 @@ public class Client extends RSApplet {
 
                 background_1.palettePixels = abyte4;
                 aByteArray912 = abyte1;
-                Rasterizer.requestTextureUpdate(24);
+                Rasterizer3D.requestTextureUpdate(24);
             }
-            if (Rasterizer.textureLastUsed[34] >= j) {
-                Background background_2 = Rasterizer.textures[34];
-                int i1 = background_2.width * background_2.anInt1453 - 1;
+            if (Rasterizer3D.textureLastUsed[34] >= j) {
+                IndexedImage background_2 = Rasterizer3D.textures[34];
+                int i1 = background_2.width * background_2.height - 1;
                 int l1 = background_2.width * tickDelta * 2;
                 byte[] abyte2 = background_2.palettePixels;
                 byte[] abyte5 = aByteArray912;
@@ -4040,11 +4040,11 @@ public class Client extends RSApplet {
                     abyte5[k2] = abyte2[k2 - l1 & i1];
                 background_2.palettePixels = abyte5;
                 aByteArray912 = abyte2;
-                Rasterizer.requestTextureUpdate(34);
+                Rasterizer3D.requestTextureUpdate(34);
             }
-            if (Rasterizer.textureLastUsed[40] >= j) {
-                Background background_2 = Rasterizer.textures[40];
-                int i1 = background_2.width * background_2.anInt1453 - 1;
+            if (Rasterizer3D.textureLastUsed[40] >= j) {
+                IndexedImage background_2 = Rasterizer3D.textures[40];
+                int i1 = background_2.width * background_2.height - 1;
                 int l1 = background_2.width * tickDelta * 1;
                 byte[] abyte2 = background_2.palettePixels;
                 byte[] abyte5 = aByteArray912;
@@ -4052,12 +4052,12 @@ public class Client extends RSApplet {
                     abyte5[k2] = abyte2[k2 - l1 & i1];
                 background_2.palettePixels = abyte5;
                 aByteArray912 = abyte2;
-                Rasterizer.requestTextureUpdate(40);
+                Rasterizer3D.requestTextureUpdate(40);
             }
 
-            if (Rasterizer.textureLastUsed[59] >= j) {
-                Background background_2 = Rasterizer.textures[59];
-                int i1 = background_2.width * background_2.anInt1453 - 1;
+            if (Rasterizer3D.textureLastUsed[59] >= j) {
+                IndexedImage background_2 = Rasterizer3D.textures[59];
+                int i1 = background_2.width * background_2.height - 1;
                 int l1 = background_2.width * tickDelta * 2;
                 byte[] abyte2 = background_2.palettePixels;
                 byte[] abyte5 = aByteArray912;
@@ -4065,11 +4065,11 @@ public class Client extends RSApplet {
                     abyte5[k2] = abyte2[k2 - l1 & i1];
                 background_2.palettePixels = abyte5;
                 aByteArray912 = abyte2;
-                Rasterizer.requestTextureUpdate(59);
+                Rasterizer3D.requestTextureUpdate(59);
             }
-            if (Rasterizer.textureLastUsed[91] >= j) {
-                Background background_2 = Rasterizer.textures[91];
-                int i1 = background_2.width * background_2.anInt1453 - 1;
+            if (Rasterizer3D.textureLastUsed[91] >= j) {
+                IndexedImage background_2 = Rasterizer3D.textures[91];
+                int i1 = background_2.width * background_2.height - 1;
                 int l1 = background_2.width * tickDelta * 2;
                 byte[] abyte2 = background_2.palettePixels;
                 byte[] abyte5 = aByteArray912;
@@ -4077,11 +4077,11 @@ public class Client extends RSApplet {
                     abyte5[k2] = abyte2[k2 - l1 & i1];
                 background_2.palettePixels = abyte5;
                 aByteArray912 = abyte2;
-                Rasterizer.requestTextureUpdate(91);
+                Rasterizer3D.requestTextureUpdate(91);
             }
-            if (Rasterizer.textureLastUsed[92] >= j) {
-                Background background_2 = Rasterizer.textures[92];
-                int i1 = background_2.width * background_2.anInt1453 - 1;
+            if (Rasterizer3D.textureLastUsed[92] >= j) {
+                IndexedImage background_2 = Rasterizer3D.textures[92];
+                int i1 = background_2.width * background_2.height - 1;
                 int l1 = background_2.width * tickDelta * 2;
                 byte[] abyte2 = background_2.palettePixels;
                 byte[] abyte5 = aByteArray912;
@@ -4089,11 +4089,11 @@ public class Client extends RSApplet {
                     abyte5[k2] = abyte2[k2 - l1 & i1];
                 background_2.palettePixels = abyte5;
                 aByteArray912 = abyte2;
-                Rasterizer.requestTextureUpdate(92);
+                Rasterizer3D.requestTextureUpdate(92);
             }
-            if (Rasterizer.textureLastUsed[93] >= j) {
-                Background background_2 = Rasterizer.textures[93];
-                int i1 = background_2.width * background_2.anInt1453 - 1;
+            if (Rasterizer3D.textureLastUsed[93] >= j) {
+                IndexedImage background_2 = Rasterizer3D.textures[93];
+                int i1 = background_2.width * background_2.height - 1;
                 int l1 = background_2.width * tickDelta * 2;
                 byte[] abyte2 = background_2.palettePixels;
                 byte[] abyte5 = aByteArray912;
@@ -4101,11 +4101,11 @@ public class Client extends RSApplet {
                     abyte5[k2] = abyte2[k2 - l1 & i1];
                 background_2.palettePixels = abyte5;
                 aByteArray912 = abyte2;
-                Rasterizer.requestTextureUpdate(93);
+                Rasterizer3D.requestTextureUpdate(93);
             }
-            if (Rasterizer.textureLastUsed[56] >= j) {
-                Background background_2 = Rasterizer.textures[56];
-                int i1 = background_2.width * background_2.anInt1453 - 1;
+            if (Rasterizer3D.textureLastUsed[56] >= j) {
+                IndexedImage background_2 = Rasterizer3D.textures[56];
+                int i1 = background_2.width * background_2.height - 1;
                 int l1 = background_2.width * tickDelta * 2;
                 byte[] abyte2 = background_2.palettePixels;
                 byte[] abyte5 = aByteArray912;
@@ -4113,11 +4113,11 @@ public class Client extends RSApplet {
                     abyte5[k2] = abyte2[k2 - l1 & i1];
                 background_2.palettePixels = abyte5;
                 aByteArray912 = abyte2;
-                Rasterizer.requestTextureUpdate(56);
+                Rasterizer3D.requestTextureUpdate(56);
             }
-            if (Rasterizer.textureLastUsed[57] >= j) {
-                Background background_2 = Rasterizer.textures[57];
-                int i1 = background_2.width * background_2.anInt1453 - 1;
+            if (Rasterizer3D.textureLastUsed[57] >= j) {
+                IndexedImage background_2 = Rasterizer3D.textures[57];
+                int i1 = background_2.width * background_2.height - 1;
                 int l1 = background_2.width * tickDelta * 2;
                 byte[] abyte2 = background_2.palettePixels;
                 byte[] abyte5 = aByteArray912;
@@ -4125,7 +4125,7 @@ public class Client extends RSApplet {
                     abyte5[k2] = abyte2[k2 - l1 & i1];
                 background_2.palettePixels = abyte5;
                 aByteArray912 = abyte2;
-                Rasterizer.requestTextureUpdate(57);
+                Rasterizer3D.requestTextureUpdate(57);
             }
         }
     }
@@ -4242,9 +4242,9 @@ public class Client extends RSApplet {
         needDrawTabArea = true;
         inputTaken = true;
         tabAreaAltered = true;
-        DrawingArea.drawBox(xPos, yPos, menuW, menuH, 0x5d5447);
-        DrawingArea.drawBox(xPos + 1, yPos + 1, menuW - 2, 16, 0);
-        DrawingArea.drawBoxOutline(xPos + 1, yPos + 18, menuW - 2, menuH - 19, 0);
+        Rasterizer2D.drawBox(xPos, yPos, menuW, menuH, 0x5d5447);
+        Rasterizer2D.drawBox(xPos + 1, yPos + 1, menuW - 2, 16, 0);
+        Rasterizer2D.drawBoxOutline(xPos + 1, yPos + 18, menuW - 2, menuH - 19, 0);
         newBoldFont.drawBasicString("Choose Option", xPos + 3, yPos + 14, 0x5d5447, 0x000000);
         int mouseX = super.mouseX - (xOffSet);
         int mouseY = (-yOffSet) + super.mouseY;
@@ -4656,10 +4656,10 @@ public class Client extends RSApplet {
             int l3 = worldController.fetchObjectMeshNewUID(j1, l, i);//uid >> 14 & 0x7fff;
             ObjectDefinition class46_1 = ObjectDefinition.forID(l3);
             if (class46_1.anInt758 != -1) {
-                Background background_1 = mapScenes[class46_1.anInt758];
+                IndexedImage background_1 = mapScenes[class46_1.anInt758];
                 if (background_1 != null) {
                     int j5 = (class46_1.anInt744 * 4 - background_1.width) / 2;
-                    int k5 = (class46_1.anInt761 * 4 - background_1.anInt1453) / 2;
+                    int k5 = (class46_1.anInt761 * 4 - background_1.height) / 2;
                     background_1.drawBackground(48 + l * 4 + j5, 48 + (104 - i - class46_1.anInt761) * 4 + k5);
                 }
             } else if (j3 == 9) {
@@ -4686,10 +4686,10 @@ public class Client extends RSApplet {
             //int j2 = k1 >> 14 & 0x7fff;
             ObjectDefinition class46 = ObjectDefinition.forID(k1);
             if (class46.anInt758 != -1) {
-                Background background = mapScenes[class46.anInt758];
+                IndexedImage background = mapScenes[class46.anInt758];
                 if (background != null) {
                     int i4 = (class46.anInt744 * 4 - background.width) / 2;
-                    int j4 = (class46.anInt761 * 4 - background.anInt1453) / 2;
+                    int j4 = (class46.anInt761 * 4 - background.height) / 2;
                     background.drawBackground(48 + l * 4 + i4, 48 + (104 - i - class46.anInt761) * 4 + j4);
                 }
             }
@@ -4697,9 +4697,9 @@ public class Client extends RSApplet {
     }
 
     private void loadTitleScreen() {
-        titleBox = new Background(titleStreamLoader, "titlebox", 0);
-        titleButton = new Background(titleStreamLoader, "titlebutton", 0);
-        aBackgroundArray1152s = new Background[12];
+        titleBox = new IndexedImage(titleStreamLoader, "titlebox", 0);
+        titleButton = new IndexedImage(titleStreamLoader, "titlebutton", 0);
+        aBackgroundArray1152s = new IndexedImage[12];
         int j = 0;
         try {
             j = Integer.parseInt(getParameter("fl_icon"));
@@ -4707,11 +4707,11 @@ public class Client extends RSApplet {
         }
         if (j == 0) {
             for (int k = 0; k < 12; k++)
-                aBackgroundArray1152s[k] = new Background(titleStreamLoader, "runes", k);
+                aBackgroundArray1152s[k] = new IndexedImage(titleStreamLoader, "runes", k);
 
         } else {
             for (int l = 0; l < 12; l++)
-                aBackgroundArray1152s[l] = new Background(titleStreamLoader, "runes", 12 + (l & 3));
+                aBackgroundArray1152s[l] = new IndexedImage(titleStreamLoader, "runes", 12 + (l & 3));
 
         }
         aClass30_Sub2_Sub1_Sub1_1201 = new Sprite(128, 265);
@@ -4888,7 +4888,7 @@ public class Client extends RSApplet {
                         inputTaken = true;
                 }
                 if (onDemandData.dataType == 1 && onDemandData.buffer != null)
-                    FrameLoader.load(onDemandData.ID, onDemandData.buffer);
+                    Frame.load(onDemandData.ID, onDemandData.buffer);
                 if (onDemandData.dataType == 2 && onDemandData.ID == nextSong && onDemandData.buffer != null)
                     this.playMidi(onDemandData.buffer);
                 if (onDemandData.dataType == 3 && loadingStage == 1) {
@@ -5031,10 +5031,10 @@ public class Client extends RSApplet {
                 if (super.clickMode3 != 0 || mouseDetection.coordsIndex >= 40) {
                     stream.createFrame(45);
                     stream.writeWordBigEndian(0);
-                    int j2 = stream.currentOffset;
+                    int j2 = stream.currentPosition;
                     int j3 = 0;
                     for (int j4 = 0; j4 < mouseDetection.coordsIndex; j4++) {
-                        if (j2 - stream.currentOffset >= 240)
+                        if (j2 - stream.currentPosition >= 240)
                             break;
                         j3++;
                         int l4 = mouseDetection.coordsY[j4];
@@ -5076,7 +5076,7 @@ public class Client extends RSApplet {
                         }
                     }
 
-                    stream.writeBytes(stream.currentOffset - j2);
+                    stream.writeBytes(stream.currentPosition - j2);
                     if (j3 >= mouseDetection.coordsIndex) {
                         mouseDetection.coordsIndex = 0;
                     } else {
@@ -5309,9 +5309,9 @@ public class Client extends RSApplet {
         if (anInt1010 > 50)
             stream.createFrame(0);
         try {
-            if (socketStream != null && stream.currentOffset > 0) {
-                socketStream.queueBytes(stream.currentOffset, stream.buffer);
-                stream.currentOffset = 0;
+            if (socketStream != null && stream.currentPosition > 0) {
+                socketStream.queueBytes(stream.currentPosition, stream.payload);
+                stream.currentPosition = 0;
                 anInt1010 = 0;
             }
         } catch (IOException _ex) {
@@ -5330,11 +5330,11 @@ public class Client extends RSApplet {
 
                 try {
                     Stream j = Sounds.method241(this.soundType[i], this.sound[i]);
-                    new SoundPlayer(new ByteArrayInputStream(j.buffer, 0, j.currentOffset), this.soundVolume[i],
+                    new SoundPlayer(new ByteArrayInputStream(j.payload, 0, j.currentPosition), this.soundVolume[i],
                             this.soundDelay[i]);
-                    if (System.currentTimeMillis() + (long) (j.currentOffset / 22) > this.aLong1172
+                    if (System.currentTimeMillis() + (long) (j.currentPosition / 22) > this.aLong1172
                             + (long) (this.anInt1257 / 22)) {
-                        this.anInt1257 = j.currentOffset;
+                        this.anInt1257 = j.currentPosition;
                         this.aLong1172 = System.currentTimeMillis();
                     }
                 } catch (Exception var4) {
@@ -5425,23 +5425,23 @@ public class Client extends RSApplet {
         aRSImageProducer_1124 = null;
         aRSImageProducer_1125 = null;
         aRSImageProducer_1110 = new RSImageProducer(128, 265, getGameComponent());
-        DrawingArea.setAllPixelsToZero();
+        Rasterizer2D.setAllPixelsToZero();
         aRSImageProducer_1111 = new RSImageProducer(128, 265, getGameComponent());
-        DrawingArea.setAllPixelsToZero();
+        Rasterizer2D.setAllPixelsToZero();
         aRSImageProducer_1107 = new RSImageProducer(509, 171, getGameComponent());
-        DrawingArea.setAllPixelsToZero();
+        Rasterizer2D.setAllPixelsToZero();
         aRSImageProducer_1108 = new RSImageProducer(360, 132, getGameComponent());
-        DrawingArea.setAllPixelsToZero();
+        Rasterizer2D.setAllPixelsToZero();
         aRSImageProducer_1109 = new RSImageProducer(360, 200, getGameComponent());
-        DrawingArea.setAllPixelsToZero();
+        Rasterizer2D.setAllPixelsToZero();
         aRSImageProducer_1112 = new RSImageProducer(202, 238, getGameComponent());
-        DrawingArea.setAllPixelsToZero();
+        Rasterizer2D.setAllPixelsToZero();
         aRSImageProducer_1113 = new RSImageProducer(203, 238, getGameComponent());
-        DrawingArea.setAllPixelsToZero();
+        Rasterizer2D.setAllPixelsToZero();
         aRSImageProducer_1114 = new RSImageProducer(74, 94, getGameComponent());
-        DrawingArea.setAllPixelsToZero();
+        Rasterizer2D.setAllPixelsToZero();
         aRSImageProducer_1115 = new RSImageProducer(75, 94, getGameComponent());
-        DrawingArea.setAllPixelsToZero();
+        Rasterizer2D.setAllPixelsToZero();
         if (titleStreamLoader != null) {
             drawLogo();
             loadTitleScreen();
@@ -5537,10 +5537,10 @@ public class Client extends RSApplet {
         byte byte1 = 20;
         chatTextDrawingArea.drawText(0xffffff, "GodzHell is loading - please wait...", c1 / 2 - 26 - byte1, c / 2);
         int j = c1 / 2 - 18 - byte1;
-        DrawingArea.fillPixels(c / 2 - 152, 304, 34, 0x8c1111, j);
-        DrawingArea.fillPixels(c / 2 - 151, 302, 32, 0, j + 1);
-        DrawingArea.drawPixels(30, j + 2, c / 2 - 150, 0x8c1111, i * 3);
-        DrawingArea.drawPixels(30, j + 2, (c / 2 - 150) + i * 3, 0, 300 - i * 3);
+        Rasterizer2D.fillPixels(c / 2 - 152, 304, 34, 0x8c1111, j);
+        Rasterizer2D.fillPixels(c / 2 - 151, 302, 32, 0, j + 1);
+        Rasterizer2D.drawPixels(30, j + 2, c / 2 - 150, 0x8c1111, i * 3);
+        Rasterizer2D.drawPixels(30, j + 2, (c / 2 - 150) + i * 3, 0, 300 - i * 3);
         chatTextDrawingArea.drawText(0xffffff, s, (c1 / 2 + 5) - byte1, c / 2);
         aRSImageProducer_1109.drawGraphics(202, 171, super.graphics);
         if (welcomeScreenRaised) {
@@ -5620,7 +5620,7 @@ public class Client extends RSApplet {
         return true;
     }
 
-    private StreamLoader streamLoaderForName(int i, String s, String s1, int j, int k) {
+    private FileArchive streamLoaderForName(int i, String s, String s1, int j, int k) {
         byte[] abyte0 = null;
         try {
             if (decompressors[0] != null) {
@@ -5630,7 +5630,7 @@ public class Client extends RSApplet {
             e.printStackTrace();
         }
         if (abyte0 != null) {
-            StreamLoader streamLoader = new StreamLoader(abyte0, s);
+            FileArchive streamLoader = new FileArchive(abyte0, s);
             return streamLoader;
         }
         return null;
@@ -5654,8 +5654,8 @@ public class Client extends RSApplet {
             return;
         }
         mainGameGraphicsBuffer.setCanvas();
-        DrawingArea.fillPixels(2, 229, 39, 0xffffff, 2);
-        DrawingArea.drawPixels(37, 3, 3, 0, 227);
+        Rasterizer2D.fillPixels(2, 229, 39, 0xffffff, 2);
+        Rasterizer2D.drawPixels(37, 3, 3, 0, 227);
         drawLoadingMessages(2, "Connection lost.", "Please wait - attempting to reestablish.");
         mainGameGraphicsBuffer.drawGraphics(0, super.graphics, 0);
         minimapState = 0;
@@ -7376,8 +7376,8 @@ public class Client extends RSApplet {
             menuActionRow++;
         }
         int j = -1;
-        for (int k = 0; k < Model.objectsRendered; k++) {
-            int l = Model.anIntArray1688[k];
+        for (int k = 0; k < Model.obj_loaded; k++) {
+            int l = Model.obj_key[k];
             int i1 = l & 0x7f;//x
             int j1 = l >> 7 & 0x7f;//y
             int k1 = l >> 29 & 3;//face
@@ -7716,10 +7716,10 @@ public class Client extends RSApplet {
         Varp.cache = null;
         super.fullGameScreen = null;
         Player.mruNodes = null;
-        Rasterizer.nullLoader();
+        Rasterizer3D.nullLoader();
         WorldController.nullLoader();
         Model.nullLoader();
-        FrameLoader.nullLoader();
+        Frame.nullLoader();
         System.gc();
     }
 
@@ -7834,10 +7834,10 @@ public class Client extends RSApplet {
                     if (friendsListAction == 3 && promptInput.length() > 0) {
                         stream.createFrame(126);
                         stream.writeWordBigEndian(0);
-                        int k = stream.currentOffset;
+                        int k = stream.currentPosition;
                         stream.writeQWord(aLong953);
                         TextInput.method526(promptInput, stream);
-                        stream.writeBytes(stream.currentOffset - k);
+                        stream.writeBytes(stream.currentPosition - k);
                         promptInput = TextInput.processText(promptInput);
                         // promptInput = Censor.doCensor(promptInput);
                         pushMessage(promptInput, 6, TextClass.fixName(TextClass.nameForLong(aLong953)));
@@ -8197,9 +8197,9 @@ public class Client extends RSApplet {
                             // titleStreamLoader);
                             TextDrawingArea[] aclass30_sub2_sub1_sub4s = {smallText, aTextDrawingArea_1271,
                                     chatTextDrawingArea, aTextDrawingArea_1273};
-                            StreamLoader streamLoader_1 = streamLoaderForName(3, "interface", "interface",
+                            FileArchive streamLoader_1 = streamLoaderForName(3, "interface", "interface",
                                     expectedCRCs[3], 35);
-                            StreamLoader streamLoader_2 = streamLoaderForName(4, "2d graphics", "media",
+                            FileArchive streamLoader_2 = streamLoaderForName(4, "2d graphics", "media",
                                     expectedCRCs[4], 40);
                             RSInterface.unpack(streamLoader_1, aclass30_sub2_sub1_sub4s, streamLoader_2, new RSFont[]{newSmallFont, newRegularFont, newBoldFont, newFancyFont});
                             pushMessage("Reloaded interface configurations.", 0, "");
@@ -8395,9 +8395,9 @@ public class Client extends RSApplet {
                                     titleStreamLoader);
                             TextDrawingArea[] aclass30_sub2_sub1_sub4s = {smallText, XPFONT, aTextDrawingArea_1271,
                                     aTextDrawingArea_1273};
-                            StreamLoader streamLoader_1 = streamLoaderForName(3, "interface", "interface",
+                            FileArchive streamLoader_1 = streamLoaderForName(3, "interface", "interface",
                                     expectedCRCs[3], 35);
-                            StreamLoader streamLoader_2 = streamLoaderForName(4, "2d graphics", "media",
+                            FileArchive streamLoader_2 = streamLoaderForName(4, "2d graphics", "media",
                                     expectedCRCs[4], 40);
                             RSInterface.unpack(streamLoader_1, aclass30_sub2_sub1_sub4s, streamLoader_2, new RSFont[]{newSmallFont, newRegularFont, newBoldFont, newFancyFont});
                         }
@@ -8517,13 +8517,13 @@ public class Client extends RSApplet {
                             }
                             stream.createFrame(4);
                             stream.writeWordBigEndian(0);
-                            int j3 = stream.currentOffset;
+                            int j3 = stream.currentPosition;
                             stream.method425(i3);
                             stream.method425(j2);
-                            aStream_834.currentOffset = 0;
+                            aStream_834.currentPosition = 0;
                             TextInput.method526(inputString, aStream_834);
-                            stream.method441(0, aStream_834.buffer, aStream_834.currentOffset);
-                            stream.writeBytes(stream.currentOffset - j3);
+                            stream.method441(0, aStream_834.payload, aStream_834.currentPosition);
+                            stream.writeBytes(stream.currentPosition - j3);
                             inputString = TextInput.processText(inputString);
                             // inputString = Censor.doCensor(inputString);
                             myPlayer.textSpoken = inputString;
@@ -8840,8 +8840,8 @@ public class Client extends RSApplet {
         }
 
 
-        DrawingArea.drawBoxOutline(mouseX, mouseY + 5, 150, 36, 0x696969);
-        DrawingArea.drawTransparentBox(mouseX + 1, mouseY + 6, 150, 37, 0x000000, 90);
+        Rasterizer2D.drawBoxOutline(mouseX, mouseY + 5, 150, 36, 0x696969);
+        Rasterizer2D.drawTransparentBox(mouseX + 1, mouseY + 6, 150, 37, 0x000000, 90);
 
         Client.instance.newSmallFont.drawBasicString(itemName, mouseX + 150 / (12 + Client.instance.newSmallFont.getTextWidth(itemName)) + 30, mouseY + 17, color, 1);
         Client.instance.newSmallFont.drawBasicString("Press CTRL to view the stats", mouseX + 4, mouseY + 35, color, 1);
@@ -8909,8 +8909,8 @@ public class Client extends RSApplet {
         int prayerBonus = getItemBonuses(itemId)[11];
         int strengthBonus = getItemBonuses(itemId)[10];
 
-        DrawingArea.drawBoxOutline(mouseX, mouseY + 5, 150, 120, 0x696969);
-        DrawingArea.drawTransparentBox(mouseX + 1, mouseY + 6, 150, 121, 0x000000, 90);
+        Rasterizer2D.drawBoxOutline(mouseX, mouseY + 5, 150, 120, 0x696969);
+        Rasterizer2D.drawTransparentBox(mouseX + 1, mouseY + 6, 150, 121, 0x000000, 90);
 
         Client.instance.newSmallFont.drawBasicString(itemName, mouseX + 150 / (12 + Client.instance.newSmallFont.getTextWidth(itemName)) + 30, mouseY + 17, color, 1);
 
@@ -9218,16 +9218,16 @@ public class Client extends RSApplet {
                 Model model = new Model(i2, aclass30_sub2_sub4_sub6s);
                 for (int l2 = 0; l2 < 5; l2++)
                     if (anIntArray990[l2] != 0) {
-                        model.replaceColor(anIntArrayArray1003[l2][0], anIntArrayArray1003[l2][anIntArray990[l2]]);
+                        model.recolor(anIntArrayArray1003[l2][0], anIntArrayArray1003[l2][anIntArray990[l2]]);
                         if (l2 == 1)
-                            model.replaceColor(anIntArray1204[0], anIntArray1204[anIntArray990[l2]]);
+                            model.recolor(anIntArray1204[0], anIntArray1204[anIntArray990[l2]]);
                         // if(l2 == 1)
                         // model.method476(Legs2[0], Legs2[anIntArray990[l2]]);
                     }
 
-                model.method469();
-                model.method470(AnimationDefinition.anims[myPlayer.anInt1511].primaryFrames[0]);
-                model.method479(64, 1300, 0, -570, 0, true);
+                model.skin();
+                model.applyTransform(AnimationDefinition.anims[myPlayer.anInt1511].primaryFrames[0]);
+                model.light(64, 1300, 0, -570, 0, true);
                 class9.anInt233 = 5;
                 class9.mediaID = 0;
                 RSInterface.method208(aBoolean994, model);
@@ -9244,14 +9244,14 @@ public class Client extends RSApplet {
                 Model characterDisplay = myPlayer.method452();
                 for (int l2 = 0; l2 < 5; l2++)
                     if (anIntArray990[l2] != 0) {
-                        characterDisplay.replaceColor(anIntArrayArray1003[l2][0],
+                        characterDisplay.recolor(anIntArrayArray1003[l2][0],
                                 anIntArrayArray1003[l2][anIntArray990[l2]]);
                         if (l2 == 1)
-                            characterDisplay.replaceColor(anIntArray1204[0], anIntArray1204[anIntArray990[l2]]);
+                            characterDisplay.recolor(anIntArray1204[0], anIntArray1204[anIntArray990[l2]]);
                     }
                 int staticFrame = myPlayer.anInt1511;
-                characterDisplay.method469();
-                characterDisplay.method470(AnimationDefinition.anims[staticFrame].primaryFrames[0]);
+                characterDisplay.skin();
+                characterDisplay.applyTransform(AnimationDefinition.anims[staticFrame].primaryFrames[0]);
                 // characterDisplay.method479(64, 850, -30, -50, -30, true);
                 rsInterface.anInt233 = 5;
                 rsInterface.mediaID = 0;
@@ -9585,7 +9585,7 @@ public class Client extends RSApplet {
         aRSImageProducer_1115 = null;
         chatAreaGraphicsBuffer = new RSImageProducer(516, 165, getGameComponent());
         mapAreaGraphicsBuffer = new RSImageProducer(249, 168, getGameComponent());
-        DrawingArea.setAllPixelsToZero();
+        Rasterizer2D.setAllPixelsToZero();
         tabAreaGraphicsBuffer = new RSImageProducer(249, 335, getGameComponent());
         mainGameGraphicsBuffer = new GraphicsBuffer(
                 currentScreenMode == ScreenMode.FIXED ? 516 : currentScreenMode.getWidth(),
@@ -9593,7 +9593,7 @@ public class Client extends RSApplet {
         aRSImageProducer_1123 = new RSImageProducer(496, 50, getGameComponent());
         aRSImageProducer_1124 = new RSImageProducer(269, 37, getGameComponent());
         aRSImageProducer_1125 = new RSImageProducer(249, 45, getGameComponent());
-        DrawingArea.setAllPixelsToZero();
+        Rasterizer2D.setAllPixelsToZero();
         welcomeScreenRaised = true;
     }
 
@@ -9953,10 +9953,10 @@ public class Client extends RSApplet {
             socketStream = new RSSocket(this, openSocket(port + portOff));
             long l = TextClass.longForName(s);
             int i = (int) (l >> 16 & 31L);
-            stream.currentOffset = 0;
+            stream.currentPosition = 0;
             stream.writeWordBigEndian(14);
             stream.writeWordBigEndian(i);
-            socketStream.queueBytes(2, stream.buffer);
+            socketStream.queueBytes(2, stream.payload);
             for (int j = 0; j < 8; j++)
                 socketStream.read();
 
@@ -9969,15 +9969,15 @@ public class Client extends RSApplet {
                 } catch (FileNotFoundException fnfe) {
                     fnfe.printStackTrace();
                 }
-                socketStream.flushInputStream(inStream.buffer, 8);
-                inStream.currentOffset = 0;
+                socketStream.flushInputStream(inStream.payload, 8);
+                inStream.currentPosition = 0;
                 aLong1215 = inStream.readQWord();
                 int[] ai = new int[4];
                 ai[0] = (int) (Math.random() * 99999999D);
                 ai[1] = (int) (Math.random() * 99999999D);
                 ai[2] = (int) (aLong1215 >> 32);
                 ai[3] = (int) aLong1215;
-                stream.currentOffset = 0;
+                stream.currentPosition = 0;
                 stream.writeWordBigEndian(10);
                 stream.writeDWord(ai[0]);
                 stream.writeDWord(ai[1]);
@@ -9989,25 +9989,25 @@ public class Client extends RSApplet {
                 stream.writeString(macAddress);
                 stream.writeString(Identity.getIndentity());
                 stream.doKeys();
-                aStream_847.currentOffset = 0;
+                aStream_847.currentPosition = 0;
                 if (flag)
                     aStream_847.writeWordBigEndian(18);
                 else
                     aStream_847.writeWordBigEndian(16);
-                aStream_847.writeWordBigEndian(stream.currentOffset + 36 + 1 + 1 + 2);
+                aStream_847.writeWordBigEndian(stream.currentPosition + 36 + 1 + 1 + 2);
                 aStream_847.writeWordBigEndian(255);
                 aStream_847.writeWord(Configuration.CLIENT_VERSION);
                 aStream_847.writeWordBigEndian(lowMem ? 1 : 0);
                 for (int l1 = 0; l1 < 9; l1++)
                     aStream_847.writeDWord(expectedCRCs[l1]);
 
-                aStream_847.writeBytes(stream.buffer, stream.currentOffset, 0);
+                aStream_847.writeBytes(stream.payload, stream.currentPosition, 0);
                 stream.encryption = new ISAACRandomGen(ai);
                 for (int j2 = 0; j2 < 4; j2++)
                     ai[j2] += 50;
 
                 encryption = new ISAACRandomGen(ai);
-                socketStream.queueBytes(aStream_847.currentOffset, aStream_847.buffer);
+                socketStream.queueBytes(aStream_847.currentPosition, aStream_847.payload);
                 k = socketStream.read();
             }
             if (k == 1) {
@@ -10037,8 +10037,8 @@ public class Client extends RSApplet {
                     }
                     AccountManager.saveAccount();
                 }
-                stream.currentOffset = 0;
-                inStream.currentOffset = 0;
+                stream.currentPosition = 0;
+                inStream.currentPosition = 0;
                 incomingPacket = -1;
                 dealtWithPacket = -1;
                 previousPacket1 = -1;
@@ -10191,8 +10191,8 @@ public class Client extends RSApplet {
             }
             if (k == 15) {
                 loggedIn = true;
-                stream.currentOffset = 0;
-                inStream.currentOffset = 0;
+                stream.currentPosition = 0;
+                inStream.currentPosition = 0;
                 incomingPacket = -1;
                 dealtWithPacket = -1;
                 previousPacket1 = -1;
@@ -10530,10 +10530,10 @@ public class Client extends RSApplet {
                 int k1 = stream.readDWord();
                 npc.anInt1524 = k1 >> 16;
                 npc.anInt1523 = loopCycle + (k1 & 0xffff);
-                npc.anInt1521 = 0;
+                npc.currentAnimation = 0;
                 npc.anInt1522 = 0;
                 if (npc.anInt1523 > loopCycle)
-                    npc.anInt1521 = -1;
+                    npc.currentAnimation = -1;
                 if (npc.anInt1520 == 65535)
                     npc.anInt1520 = -1;
             }
@@ -12006,13 +12006,13 @@ public class Client extends RSApplet {
             drawLogo();
             loadTitleScreen();
             //createScreenImages();
-            StreamLoader streamLoader = streamLoaderForName(2, "config", "config", expectedCRCs[2], 30);
-            StreamLoader streamLoader_1 = streamLoaderForName(3, "interface", "interface", expectedCRCs[3], 35);
-            StreamLoader streamLoader_2 = streamLoaderForName(4, "2d graphics", "media", expectedCRCs[4], 40);
-            StreamLoader streamLoader_3 = streamLoaderForName(6, "textures", "textures", expectedCRCs[6], 45);
-            StreamLoader streamLoader_4 = streamLoaderForName(7, "chat system", "wordenc", expectedCRCs[7], 50);
+            FileArchive streamLoader = streamLoaderForName(2, "config", "config", expectedCRCs[2], 30);
+            FileArchive streamLoader_1 = streamLoaderForName(3, "interface", "interface", expectedCRCs[3], 35);
+            FileArchive streamLoader_2 = streamLoaderForName(4, "2d graphics", "media", expectedCRCs[4], 40);
+            FileArchive streamLoader_3 = streamLoaderForName(6, "textures", "textures", expectedCRCs[6], 45);
+            FileArchive streamLoader_4 = streamLoaderForName(7, "chat system", "wordenc", expectedCRCs[7], 50);
             @SuppressWarnings("unused")
-            StreamLoader streamLoader_5 = streamLoaderForName(8, "sound effects", "sounds", expectedCRCs[8], 55);
+            FileArchive streamLoader_5 = streamLoaderForName(8, "sound effects", "sounds", expectedCRCs[8], 55);
             //Sounds.unpack(stream);
             byteGroundArray = new byte[4][104][104];
             intGroundArray = new int[4][105][105];
@@ -12022,12 +12022,12 @@ public class Client extends RSApplet {
 
             minimapImage = new Sprite(512, 512);
             //repackCacheIndex(4);
-            StreamLoader streamLoader_6 = streamLoaderForName(5, "update list", "versionlist", expectedCRCs[5], 60);
+            FileArchive streamLoader_6 = streamLoaderForName(5, "update list", "versionlist", expectedCRCs[5], 60);
             drawLoadingText(60, "Connecting to update server");
             onDemandFetcher = new OnDemandFetcher();
             onDemandFetcher.start(streamLoader_6, this);
 
-            FrameLoader.method528();
+            Frame.method528();
 
             Model.method459(onDemandFetcher.getModelCount(), onDemandFetcher);
             ModelDecompressor.loadModels();
@@ -12099,7 +12099,7 @@ public class Client extends RSApplet {
 
             try {
                 for (int k3 = 0; k3 < 300; k3++)
-                    mapScenes[k3] = new Background(streamLoader_2, "mapscene", k3);
+                    mapScenes[k3] = new IndexedImage(streamLoader_2, "mapscene", k3);
             } catch (Exception _ex) {
             }
             try {
@@ -12166,9 +12166,9 @@ public class Client extends RSApplet {
             }
 
             drawLoadingText(83, "Unpacking textures");
-            Rasterizer.method368(streamLoader_3);
-            Rasterizer.setBrightness(0.80000000000000004D);
-            Rasterizer.method367();
+            Rasterizer3D.loadTextures(streamLoader_3);
+            Rasterizer3D.setBrightness(0.80000000000000004D);
+            Rasterizer3D.method367();
             drawLoadingText(83, "Unpacking config");
             AnimationDefinition.unpackConfig(streamLoader);
             ObjectDefinition.unpackConfig(streamLoader);
@@ -12286,7 +12286,7 @@ public class Client extends RSApplet {
             Animable_Sub5.clientInstance = this;
             ObjectDefinition.clientInstance = this;
             NpcDefinition.clientInstance = this;
-            FrameLoader.clientInstance = this;
+            Frame.clientInstance = this;
             AccountManager.loadAccount();
             return;
         } catch (Exception exception) {
@@ -12348,8 +12348,8 @@ public class Client extends RSApplet {
                 i -= 73;
                 j -= 75;
                 int k = viewRotation + minimapRotation & 0x7ff;
-                int i1 = Rasterizer.anIntArray1470[k];
-                int j1 = Rasterizer.anIntArray1471[k];
+                int i1 = Rasterizer3D.anIntArray1470[k];
+                int j1 = Rasterizer3D.COSINE[k];
                 i1 = i1 * (minimapZoom + 256) >> 8;
                 j1 = j1 * (minimapZoom + 256) >> 8;
                 int k1 = j * i1 + i * j1 >> 11;
@@ -12380,7 +12380,7 @@ public class Client extends RSApplet {
                 anInt1117 = 0;
                 stream.createFrame(246);
                 stream.writeWordBigEndian(0);
-                int l = stream.currentOffset;
+                int l = stream.currentPosition;
                 if ((int) (Math.random() * 2D) == 0)
                     stream.writeWordBigEndian(101);
                 stream.writeWordBigEndian(197);
@@ -12394,7 +12394,7 @@ public class Client extends RSApplet {
                 if ((int) (Math.random() * 2D) == 0)
                     stream.writeWordBigEndian(220);
                 stream.writeWordBigEndian(180);
-                stream.writeBytes(stream.currentOffset - l);
+                stream.writeBytes(stream.currentPosition - l);
             }
         }
     }
@@ -12726,24 +12726,24 @@ public class Client extends RSApplet {
             }
         }
         if (entity.anInt1520 != -1 && loopCycle >= entity.anInt1523) {
-            if (entity.anInt1521 < 0)
-                entity.anInt1521 = 0;
+            if (entity.currentAnimation < 0)
+                entity.currentAnimation = 0;
             AnimationDefinition animation_1 = GraphicsDefinition.cache[entity.anInt1520].aAnimation_407;
             if (animation_1 == null) {
                 return;
             }
             // Animation sound
             if (entity.anInt1522 == 1) {
-                if (animation_1.getFrameSound(entity.anInt1521) != -1) {
-                    entity.makeSound(animation_1.getFrameSound(entity.anInt1521));
+                if (animation_1.getFrameSound(entity.currentAnimation) != -1) {
+                    entity.makeSound(animation_1.getFrameSound(entity.currentAnimation));
                 }
             }
-            for (entity.anInt1522++; entity.anInt1521 < animation_1.anInt352
-                    && entity.anInt1522 > animation_1.method258(entity.anInt1521); entity.anInt1521++)
-                entity.anInt1522 -= animation_1.method258(entity.anInt1521);
+            for (entity.anInt1522++; entity.currentAnimation < animation_1.anInt352
+                    && entity.anInt1522 > animation_1.method258(entity.currentAnimation); entity.currentAnimation++)
+                entity.anInt1522 -= animation_1.method258(entity.currentAnimation);
 
-            if (entity.anInt1521 >= animation_1.anInt352
-                    && (entity.anInt1521 < 0 || entity.anInt1521 >= animation_1.anInt352))
+            if (entity.currentAnimation >= animation_1.anInt352
+                    && (entity.currentAnimation < 0 || entity.currentAnimation >= animation_1.anInt352))
                 entity.anInt1520 = -1;
         }
         if (entity.anim != -1 && entity.anInt1529 <= 1) {
@@ -12926,8 +12926,8 @@ public class Client extends RSApplet {
                 tickDelta = 0;
                 resetAllImageProducers();
                 super.fullGameScreen.initDrawingArea();
-                Rasterizer.anIntArray1472 = fullScreenTextureArray;
-                DrawingArea.setAllPixelsToZero();
+                Rasterizer3D.scanOffsets = fullScreenTextureArray;
+                Rasterizer2D.setAllPixelsToZero();
                 welcomeScreenRaised = true;
                 if (openInterfaceID != -1) {
                     RSInterface rsInterface_1 = RSInterface.interfaceCache[openInterfaceID];
@@ -13021,12 +13021,12 @@ public class Client extends RSApplet {
         if (rsInterface.parentID == 28000 && !Configuration.bountyHunter) {
             return;
         }
-        int clipLeft = DrawingArea.topX;
-        int clipTop = DrawingArea.topY;
-        int clipRight = DrawingArea.bottomX;
-        int clipBottom = DrawingArea.bottomY;
+        int clipLeft = Rasterizer2D.clip_left;
+        int clipTop = Rasterizer2D.clip_top;
+        int clipRight = Rasterizer2D.clip_right;
+        int clipBottom = Rasterizer2D.clip_bottom;
         int alpha = rsInterface.transparency;
-        DrawingArea.setDrawingArea(yPosition + rsInterface.height, xPosition, xPosition + rsInterface.width, yPosition);
+        Rasterizer2D.setDrawingArea(yPosition + rsInterface.height, xPosition, xPosition + rsInterface.width, yPosition);
         int childCount = rsInterface.children.length;
         for (int childId = 0; childId < childCount; childId++) {
             int _x = rsInterface.childX[childId] + xPosition;
@@ -13131,8 +13131,8 @@ public class Client extends RSApplet {
                                 int k6 = 0;
                                 int j7 = 0;
                                 int j9 = class9_1.inv[i3] - 1;
-                                if (k5 > DrawingArea.topX - 32 && k5 < DrawingArea.bottomX && j6 > DrawingArea.topY - 32
-                                        && j6 < DrawingArea.bottomY || activeInterfaceType != 0 && anInt1085 == i3) {
+                                if (k5 > Rasterizer2D.clip_left - 32 && k5 < Rasterizer2D.clip_right && j6 > Rasterizer2D.clip_top - 32
+                                        && j6 < Rasterizer2D.clip_bottom || activeInterfaceType != 0 && anInt1085 == i3) {
                                     int l9 = 0;
                                     if (itemSelected == 1 && anInt1283 == i3 && anInt1284 == class9_1.id)
                                         l9 = 0xffffff;
@@ -13182,8 +13182,8 @@ public class Client extends RSApplet {
                                                 j7 = 0;
                                             }
                                             itemSprite.drawSprite(k5 + k6, j6 + j7);
-                                            if (j6 + j7 < DrawingArea.topY && rsInterface.scrollPosition > 0) {
-                                                int i10 = (tickDelta * (DrawingArea.topY - j6 - j7)) / 3;
+                                            if (j6 + j7 < Rasterizer2D.clip_top && rsInterface.scrollPosition > 0) {
+                                                int i10 = (tickDelta * (Rasterizer2D.clip_top - j6 - j7)) / 3;
                                                 if (i10 > tickDelta * 10)
                                                     i10 = tickDelta * 10;
                                                 if (i10 > rsInterface.scrollPosition)
@@ -13191,10 +13191,10 @@ public class Client extends RSApplet {
                                                 rsInterface.scrollPosition -= i10;
                                                 anInt1088 += i10;
                                             }
-                                            if (j6 + j7 + 32 > DrawingArea.bottomY
+                                            if (j6 + j7 + 32 > Rasterizer2D.clip_bottom
                                                     && rsInterface.scrollPosition < rsInterface.scrollMax
                                                     - rsInterface.height) {
-                                                int j10 = (tickDelta * ((j6 + j7 + 32) - DrawingArea.bottomY)) / 3;
+                                                int j10 = (tickDelta * ((j6 + j7 + 32) - Rasterizer2D.clip_bottom)) / 3;
                                                 if (j10 > tickDelta * 10)
                                                     j10 = tickDelta * 10;
                                                 if (j10 > rsInterface.scrollMax - rsInterface.height
@@ -13217,10 +13217,10 @@ public class Client extends RSApplet {
                                                 && class9_1.itemSearchSelectedSlot > -1
                                                 && class9_1.itemSearchSelectedSlot == i3) {
                                             for (int i = 32; i > 0; i--) {
-                                                DrawingArea.method338(j6 + j7, i, 256 - Byte.MAX_VALUE, 0x395D84, i,
+                                                Rasterizer2D.method338(j6 + j7, i, 256 - Byte.MAX_VALUE, 0x395D84, i,
                                                         k5 + k6);
                                             }
-                                            DrawingArea.method338(j6 + j7, 32, 256, 0x395D84, 32, k5 + k6);
+                                            Rasterizer2D.method338(j6 + j7, 32, 256, 0x395D84, 32, k5 + k6);
                                         }
 
                                         if (!smallSprite) {
@@ -13270,14 +13270,14 @@ public class Client extends RSApplet {
                     }
                     if (class9_1.aByte254 == 0) {
                         if (class9_1.aBoolean227)
-                            DrawingArea.drawPixels(class9_1.height, l2, _x, colour, class9_1.width);
+                            Rasterizer2D.drawPixels(class9_1.height, l2, _x, colour, class9_1.width);
                         else
-                            DrawingArea.fillPixels(_x, class9_1.width, class9_1.height, colour, l2);
+                            Rasterizer2D.fillPixels(_x, class9_1.width, class9_1.height, colour, l2);
                     } else if (class9_1.aBoolean227)
-                        DrawingArea.method335(colour, l2, class9_1.width, class9_1.height,
+                        Rasterizer2D.method335(colour, l2, class9_1.width, class9_1.height,
                                 256 - (class9_1.aByte254 & 0xff), _x);
                     else
-                        DrawingArea.method338(l2, class9_1.height, 256 - (class9_1.aByte254 & 0xff), colour,
+                        Rasterizer2D.method338(l2, class9_1.height, 256 - (class9_1.aByte254 & 0xff), colour,
                                 class9_1.width, _x);
                 } else if (class9_1.type == 4) {
                     TextDrawingArea textDrawingArea = class9_1.textDrawingAreas;
@@ -13419,12 +13419,12 @@ public class Client extends RSApplet {
                     if (sprite != null)
                         sprite.drawSprite(_x, l2);
                 } else if (class9_1.type == 6) {
-                    int k3 = Rasterizer.textureInt1;
-                    int j4 = Rasterizer.textureInt2;
-                    Rasterizer.textureInt1 = _x + class9_1.width / 2;
-                    Rasterizer.textureInt2 = l2 + class9_1.height / 2;
-                    int i5 = Rasterizer.anIntArray1470[class9_1.spritePitch] * class9_1.spriteScale >> 16;
-                    int l5 = Rasterizer.anIntArray1471[class9_1.spritePitch] * class9_1.spriteScale >> 16;
+                    int k3 = Rasterizer3D.originViewX;
+                    int j4 = Rasterizer3D.originViewY;
+                    Rasterizer3D.originViewX = _x + class9_1.width / 2;
+                    Rasterizer3D.originViewY = l2 + class9_1.height / 2;
+                    int i5 = Rasterizer3D.anIntArray1470[class9_1.spritePitch] * class9_1.spriteScale >> 16;
+                    int l5 = Rasterizer3D.COSINE[class9_1.spritePitch] * class9_1.spriteScale >> 16;
                     boolean flag2 = interfaceIsSelected(class9_1);
                     int i7;
                     if (flag2)
@@ -13444,8 +13444,8 @@ public class Client extends RSApplet {
 
                     if (model != null)
                         model.method482(class9_1.spriteCameraRoll, 0, class9_1.spritePitch, 0, i5, l5);
-                    Rasterizer.textureInt1 = k3;
-                    Rasterizer.textureInt2 = j4;
+                    Rasterizer3D.originViewX = k3;
+                    Rasterizer3D.originViewY = j4;
                 } else if (class9_1.type == 7) {
                     TextDrawingArea textDrawingArea_1 = class9_1.textDrawingAreas;
                     int k4 = 0;
@@ -13592,8 +13592,8 @@ public class Client extends RSApplet {
                             }
                         }
                     }
-                    DrawingArea.drawPixels(boxHeight, yPos, xPos, 0xFFFFA0, boxWidth);
-                    DrawingArea.fillPixels(xPos, boxWidth, boxHeight, 0, yPos);
+                    Rasterizer2D.drawPixels(boxHeight, yPos, xPos, 0xFFFFA0, boxWidth);
+                    Rasterizer2D.fillPixels(xPos, boxWidth, boxHeight, 0, yPos);
                     String s2 = class9_1.message;
                     for (int j11 = yPos + textDrawingArea_2.anInt1497 + 2; s2
                             .length() > 0; j11 += textDrawingArea_2.anInt1497 + 1) {// anInt1497
@@ -13708,9 +13708,9 @@ public class Client extends RSApplet {
                         bgColour = class9_1.dropdownColours[3];
                     }
 
-                    DrawingArea.drawPixels(20, l2, _x, class9_1.dropdownColours[0], d.getWidth());
-                    DrawingArea.drawPixels(18, l2 + 1, _x + 1, class9_1.dropdownColours[1], d.getWidth() - 2);
-                    DrawingArea.drawPixels(16, l2 + 2, _x + 2, bgColour, d.getWidth() - 4);
+                    Rasterizer2D.drawPixels(20, l2, _x, class9_1.dropdownColours[0], d.getWidth());
+                    Rasterizer2D.drawPixels(18, l2 + 1, _x + 1, class9_1.dropdownColours[1], d.getWidth() - 2);
+                    Rasterizer2D.drawPixels(16, l2 + 2, _x + 2, bgColour, d.getWidth() - 4);
 
                     int xOffset = class9_1.centerText ? 3 : 16;
                     if (rsInterface.id == 41900) {
@@ -13725,19 +13725,19 @@ public class Client extends RSApplet {
                         // Up arrow
                         cacheSprite3[29].drawSprite(_x + d.getWidth() - 18, l2 + 2);
 
-                        DrawingArea.drawPixels(d.getHeight(), l2 + 19, _x, class9_1.dropdownColours[0], d.getWidth());
-                        DrawingArea.drawPixels(d.getHeight() - 2, l2 + 20, _x + 1, class9_1.dropdownColours[1],
+                        Rasterizer2D.drawPixels(d.getHeight(), l2 + 19, _x, class9_1.dropdownColours[0], d.getWidth());
+                        Rasterizer2D.drawPixels(d.getHeight() - 2, l2 + 20, _x + 1, class9_1.dropdownColours[1],
                                 d.getWidth() - 2);
-                        DrawingArea.drawPixels(d.getHeight() - 4, l2 + 21, _x + 2, class9_1.dropdownColours[3],
+                        Rasterizer2D.drawPixels(d.getHeight() - 4, l2 + 21, _x + 2, class9_1.dropdownColours[3],
                                 d.getWidth() - 4);
 
                         int yy = 2;
                         for (int i = 0; i < d.getOptions().length; i++) {
                             if (class9_1.dropdownHover == i) {
                                 if (class9_1.id == 28102) {
-                                    DrawingArea.drawAlphaBox(_x + 2, l2 + 19 + yy, d.getWidth() - 4, 13, 0xd0914d, 80);
+                                    Rasterizer2D.drawAlphaBox(_x + 2, l2 + 19 + yy, d.getWidth() - 4, 13, 0xd0914d, 80);
                                 } else {
-                                    DrawingArea.drawPixels(13, l2 + 19 + yy, _x + 2, class9_1.dropdownColours[4],
+                                    Rasterizer2D.drawPixels(13, l2 + 19 + yy, _x + 2, class9_1.dropdownColours[4],
                                             d.getWidth() - 4);
                                 }
                                 if (rsInterface.id == 41900) {
@@ -13749,7 +13749,7 @@ public class Client extends RSApplet {
                                 }
 
                             } else {
-                                DrawingArea.drawPixels(13, l2 + 19 + yy, _x + 2, class9_1.dropdownColours[3],
+                                Rasterizer2D.drawPixels(13, l2 + 19 + yy, _x + 2, class9_1.dropdownColours[3],
                                         d.getWidth() - 4);
                                 if (rsInterface.id == 41900) {
                                     newRegularFont.drawCenteredString(d.getOptions()[i],
@@ -13778,8 +13778,8 @@ public class Client extends RSApplet {
                         continue;
                     }
 
-                    DrawingArea.drawPixels(18, l2 + 1, _x + 1, 0x544834, d.getWidth() - 2);
-                    DrawingArea.drawPixels(16, l2 + 2, _x + 2, 0x2e281d, d.getWidth() - 4);
+                    Rasterizer2D.drawPixels(18, l2 + 1, _x + 1, 0x544834, d.getWidth() - 2);
+                    Rasterizer2D.drawPixels(16, l2 + 2, _x + 2, 0x2e281d, d.getWidth() - 4);
                     newRegularFont.drawBasicString(d.getSelected(), _x + 7, l2 + 15, 0xff8a1f, 0);
                     cacheSprite3[82].drawSprite(_x + d.getWidth() - 18, l2 + 2); // Arrow TODO
 
@@ -13795,8 +13795,8 @@ public class Client extends RSApplet {
                             dropdownInversionFlag = 2;
                         }
 
-                        DrawingArea.drawPixels(d.getHeight() + 12, yPos, _x + 1, 0x544834, d.getWidth() - 2);
-                        DrawingArea.drawPixels(d.getHeight() + 10, yPos + 1, _x + 2, 0x2e281d, d.getWidth() - 4);
+                        Rasterizer2D.drawPixels(d.getHeight() + 12, yPos, _x + 1, 0x544834, d.getWidth() - 2);
+                        Rasterizer2D.drawPixels(d.getHeight() + 10, yPos + 1, _x + 2, 0x2e281d, d.getWidth() - 4);
 
                         int yy = 2;
                         int xx = 0;
@@ -13826,15 +13826,15 @@ public class Client extends RSApplet {
                     }
                 } else if (class9_1.type == RSInterface.TYPE_ADJUSTABLE_CONFIG) {
                     if (class9_1.id != 37010) {
-                        DrawingArea.setDrawingArea(currentGameHeight, 0, currentGameWidth, 0);
+                        Rasterizer2D.setDrawingArea(currentGameHeight, 0, currentGameWidth, 0);
                     }
                     if (class9_1.id == 37100) {
                         if (l2 < 41 || l2 > 230) {
                             return;
                         }
                     }
-                    DrawingArea.drawAlphaBox(_x, l2, class9_1.width, class9_1.height, class9_1.fillColor, class9_1.opacity);
-                    DrawingArea.setDrawingArea(yPosition + class9_1.height, xPosition, xPosition + class9_1.width, yPosition);
+                    Rasterizer2D.drawAlphaBox(_x, l2, class9_1.width, class9_1.height, class9_1.fillColor, class9_1.opacity);
+                    Rasterizer2D.setDrawingArea(yPosition + class9_1.height, xPosition, xPosition + class9_1.width, yPosition);
                     /**
                      int totalWidth = class9_1.width;
                      int spriteWidth = class9_1.sprite2.myWidth;
@@ -13857,14 +13857,14 @@ public class Client extends RSApplet {
                     drawInputField(class9_1, _x, l2, class9_1.width, class9_1.height);
                 } else if (class9_1.type == RSInterface.TYPE_BOX) {
                     // Draw outline
-                    DrawingArea.drawBox(_x - 2, l2 - 2, class9_1.width + 4, class9_1.height + 4, 0x0e0e0c);
-                    DrawingArea.drawBox(_x - 1, l2 - 1, class9_1.width + 2, class9_1.height + 2, 0x474745);
+                    Rasterizer2D.drawBox(_x - 2, l2 - 2, class9_1.width + 4, class9_1.height + 4, 0x0e0e0c);
+                    Rasterizer2D.drawBox(_x - 1, l2 - 1, class9_1.width + 2, class9_1.height + 2, 0x474745);
                     // Draw base box
                     if (class9_1.toggled) {
-                        DrawingArea.drawBox(_x, l2, class9_1.width, class9_1.height, class9_1.anInt239);
+                        Rasterizer2D.drawBox(_x, l2, class9_1.width, class9_1.height, class9_1.anInt239);
                         class9_1.toggled = false;
                     } else {
-                        DrawingArea.drawBox(_x, l2, class9_1.width, class9_1.height, class9_1.hoverTextColor);
+                        Rasterizer2D.drawBox(_x, l2, class9_1.width, class9_1.height, class9_1.hoverTextColor);
                     }
                 } else if (class9_1.type == 19) {
                     if (class9_1.backgroundSprites.length > 1) {
@@ -13874,13 +13874,13 @@ public class Client extends RSApplet {
                     }
                 }
         }
-        DrawingArea.setDrawingArea(clipBottom, clipLeft, clipRight, clipTop);
+        Rasterizer2D.setDrawingArea(clipBottom, clipLeft, clipRight, clipTop);
         if (rsInterface.id == 42000) {
             cacheSprite2[76].flashSprite(24, 280, 200 + (int) (50 * Math.sin(loopCycle / 15.0)));
         }
         if (rsInterface.id == 16244) {
             if (super.mouseX > 165 && super.mouseX < 610 && super.mouseY > 428 && super.mouseY < 470) {
-                DrawingArea.drawAlphaBox(165, 428, 444, 42, 0xffffff, 40);
+                Rasterizer2D.drawAlphaBox(165, 428, 444, 42, 0xffffff, 40);
             }
             // cacheSprite2[76].drawSprite1(24, 280,
             // 200 + (int) (50 * Math.sin(tick / 15.0)));
@@ -13913,8 +13913,8 @@ public class Client extends RSApplet {
         for (int i = 1; i < results.length; i++)
             if (width <= aTextDrawingArea_1271.getTextWidth(results[i]) + 6)
                 width = aTextDrawingArea_1271.getTextWidth(results[i]) + 6;
-        DrawingArea.drawPixels(height, yPos, xPos, 0xFFFFA0, width);
-        DrawingArea.fillPixels(xPos, width, height, 0, yPos);
+        Rasterizer2D.drawPixels(height, yPos, xPos, 0xFFFFA0, width);
+        Rasterizer2D.fillPixels(xPos, width, height, 0, yPos);
         yPos += 14;
         for (int i = 0; i < results.length; i++) {
             aTextDrawingArea_1271.method389(false, xPos + 3, 0, results[i], yPos);
@@ -13923,15 +13923,15 @@ public class Client extends RSApplet {
     }
 
     public void drawBlackBox(int xPos, int yPos) {
-        DrawingArea.drawPixels(71, yPos - 1, xPos - 2, 0x726451, 1);
-        DrawingArea.drawPixels(69, yPos, xPos + 174, 0x726451, 1);
-        DrawingArea.drawPixels(1, yPos - 2, xPos - 2, 0x726451, 178);
-        DrawingArea.drawPixels(1, yPos + 68, xPos, 0x726451, 174);
-        DrawingArea.drawPixels(71, yPos - 1, xPos - 1, 0x2E2B23, 1);
-        DrawingArea.drawPixels(71, yPos - 1, xPos + 175, 0x2E2B23, 1);
-        DrawingArea.drawPixels(1, yPos - 1, xPos, 0x2E2B23, 175);
-        DrawingArea.drawPixels(1, yPos + 69, xPos, 0x2E2B23, 175);
-        DrawingArea.method335(0, yPos, 174, 68, 220, xPos);
+        Rasterizer2D.drawPixels(71, yPos - 1, xPos - 2, 0x726451, 1);
+        Rasterizer2D.drawPixels(69, yPos, xPos + 174, 0x726451, 1);
+        Rasterizer2D.drawPixels(1, yPos - 2, xPos - 2, 0x726451, 178);
+        Rasterizer2D.drawPixels(1, yPos + 68, xPos, 0x726451, 174);
+        Rasterizer2D.drawPixels(71, yPos - 1, xPos - 1, 0x2E2B23, 1);
+        Rasterizer2D.drawPixels(71, yPos - 1, xPos + 175, 0x2E2B23, 1);
+        Rasterizer2D.drawPixels(1, yPos - 1, xPos, 0x2E2B23, 175);
+        Rasterizer2D.drawPixels(1, yPos + 69, xPos, 0x2E2B23, 175);
+        Rasterizer2D.method335(0, yPos, 174, 68, 220, xPos);
     }
 
     public void loadTabArea() {
@@ -13975,7 +13975,7 @@ public class Client extends RSApplet {
         }
     }
 
-    public void randomizeBackground(Background background) {
+    public void randomizeBackground(IndexedImage background) {
         int j = 256;
         for (int k = 0; k < anIntArray1190.length; k++)
             anIntArray1190[k] = 0;
@@ -13999,11 +13999,11 @@ public class Client extends RSApplet {
         }
         if (background != null) {
             int l1 = 0;
-            for (int j2 = 0; j2 < background.anInt1453; j2++) {
+            for (int j2 = 0; j2 < background.height; j2++) {
                 for (int l2 = 0; l2 < background.width; l2++)
                     if (background.palettePixels[l1++] != 0) {
-                        int i3 = l2 + 16 + background.anInt1454;
-                        int j3 = j2 + 16 + background.anInt1455;
+                        int i3 = l2 + 16 + background.drawOffsetX;
+                        int j3 = j2 + 16 + background.drawOffsetY;
                         int k3 = i3 + (j3 << 7);
                         anIntArray1190[k3] = 0;
                     }
@@ -14027,10 +14027,10 @@ public class Client extends RSApplet {
             int k = stream.readDWord();
             player.anInt1524 = k >> 16;
             player.anInt1523 = loopCycle + (k & 0xffff);
-            player.anInt1521 = 0;
+            player.currentAnimation = 0;
             player.anInt1522 = 0;
             if (player.anInt1523 > loopCycle)
-                player.anInt1521 = -1;
+                player.currentAnimation = -1;
             if (player.anInt1520 == 65535)
                 player.anInt1520 = -1;
         }
@@ -14074,7 +14074,7 @@ public class Client extends RSApplet {
             int i1 = stream.method434();
             int j2 = stream.readUnsignedByte();
             int j3 = stream.method427();
-            int k3 = stream.currentOffset;
+            int k3 = stream.currentPosition;
             if (player.name != null && player.visible) {
                 long l3 = TextClass.longForName(player.name);
                 boolean flag = false;
@@ -14089,9 +14089,9 @@ public class Client extends RSApplet {
                 }
                 if (!flag && anInt1251 == 0)
                     try {
-                        aStream_834.currentOffset = 0;
-                        stream.method442(j3, 0, aStream_834.buffer);
-                        aStream_834.currentOffset = 0;
+                        aStream_834.currentPosition = 0;
+                        stream.method442(j3, 0, aStream_834.payload);
+                        aStream_834.currentPosition = 0;
                         String s = TextInput.method525(j3, aStream_834);
                         player.textSpoken = s;
                         player.anInt1513 = i1 >> 8;
@@ -14107,7 +14107,7 @@ public class Client extends RSApplet {
                         Signlink.reporterror("cde2");
                     }
             }
-            stream.currentOffset = k3 + j3;
+            stream.currentPosition = k3 + j3;
         }
         if ((i & 1) != 0) {
             player.interactingEntity = stream.method434();
@@ -14197,7 +14197,7 @@ public class Client extends RSApplet {
                 anInt1005 = 0;
                 stream.createFrame(77);
                 stream.writeWordBigEndian(0);
-                int i2 = stream.currentOffset;
+                int i2 = stream.currentPosition;
                 stream.writeWordBigEndian((int) (Math.random() * 256D));
                 stream.writeWordBigEndian(101);
                 stream.writeWordBigEndian(233);
@@ -14209,7 +14209,7 @@ public class Client extends RSApplet {
                 stream.writeWordBigEndian(38);
                 stream.writeWord((int) (Math.random() * 65536D));
                 stream.writeWord((int) (Math.random() * 65536D));
-                stream.writeBytes(stream.currentOffset - i2);
+                stream.writeBytes(stream.currentPosition - i2);
             }
             int j2 = k1 * 192;
             if (j2 > 0x17f00)
@@ -15199,7 +15199,7 @@ public class Client extends RSApplet {
             markMinimap(mapFlag, j2, l4);
         }
 
-        DrawingArea.drawPixels(3, (currentScreenMode == ScreenMode.FIXED ? 83 : 81),
+        Rasterizer2D.drawPixels(3, (currentScreenMode == ScreenMode.FIXED ? 83 : 81),
                 (currentScreenMode == ScreenMode.FIXED ? 125 : currentGameWidth - 85), 0xffffff, 3);
 
         if (currentScreenMode == ScreenMode.FIXED) {
@@ -15383,7 +15383,7 @@ public class Client extends RSApplet {
         if (Configuration.osbuddyGameframe) {
             //loadSpecialOrb(xOffset);
         }
-        DrawingArea.drawAlphaBox(0, 0, 1, 200, 0x332B16, 250);
+        Rasterizer2D.drawAlphaBox(0, 0, 1, 200, 0x332B16, 250);
     }
 
     public int getOrbTextColor(int i) {
@@ -15504,7 +15504,7 @@ public class Client extends RSApplet {
     }
 
     public void calcEntityScreenPos(int i, int j, int l) {
-        WorldController.focalLength = Rasterizer.width;
+        WorldController.focalLength = Rasterizer3D.width;
         if ((i < 128) || (l < 128) || (i > 13056) || (l > 13056)) {
             this.spriteDrawX = -1;
             this.spriteDrawY = -1;
@@ -15526,9 +15526,9 @@ public class Client extends RSApplet {
         i1 = j2;
         if (l >= 50) {
             if (currentScreenMode == ScreenMode.FIXED) {
-                this.spriteDrawX = (Rasterizer.textureInt1 + i
+                this.spriteDrawX = (Rasterizer3D.originViewX + i
                         * WorldController.focalLength / l);
-                this.spriteDrawY = (Rasterizer.textureInt2 + i1
+                this.spriteDrawY = (Rasterizer3D.originViewY + i1
                         * WorldController.focalLength / l);
             } else {
                 //this.spriteDrawX = (Rasterizer.textureInt1 + i
@@ -15537,9 +15537,9 @@ public class Client extends RSApplet {
                 // WorldController.focalLength = Rasterizer.width;i1
                 //* WorldController.focalLength / l);
                 WorldController.focalLength = 512;
-                this.spriteDrawX = (Rasterizer.textureInt1 + i
+                this.spriteDrawX = (Rasterizer3D.originViewX + i
                         * WorldController.focalLength / l);
-                this.spriteDrawY = (Rasterizer.textureInt2 + i1
+                this.spriteDrawY = (Rasterizer3D.originViewY + i1
                         * WorldController.focalLength / l);
                 //this.spriteDrawX = Rasterizer.textureInt1 + (i << WorldController.viewDistance) / l;
                 //this.spriteDrawY = (Rasterizer.textureInt2 + (i1 << WorldController.viewDistance) / l) + 30;
@@ -16388,8 +16388,8 @@ public class Client extends RSApplet {
                 players[l] = null;
         }
 
-        if (stream.currentOffset != i) {
-            Signlink.reporterror("Error packet size mismatch in getplayer pos:" + stream.currentOffset + " psize:" + i);
+        if (stream.currentPosition != i) {
+            Signlink.reporterror("Error packet size mismatch in getplayer pos:" + stream.currentPosition + " psize:" + i);
             throw new RuntimeException("eek");
         }
         for (int i1 = 0; i1 < playerCount; i1++)
@@ -16522,8 +16522,8 @@ public class Client extends RSApplet {
             if (i == 0)
                 return false;
             if (incomingPacket == -1) {
-                socketStream.flushInputStream(inStream.buffer, 1);
-                incomingPacket = inStream.buffer[0] & 0xff;
+                socketStream.flushInputStream(inStream.payload, 1);
+                incomingPacket = inStream.payload[0] & 0xff;
                 if (encryption != null)
                     incomingPacket = incomingPacket - encryption.getNextKey() & 0xff;
                 packetSize = SizeConstants.packetSizes[incomingPacket];
@@ -16531,16 +16531,16 @@ public class Client extends RSApplet {
             }
             if (packetSize == -1)
                 if (i > 0) {
-                    socketStream.flushInputStream(inStream.buffer, 1);
-                    packetSize = inStream.buffer[0] & 0xff;
+                    socketStream.flushInputStream(inStream.payload, 1);
+                    packetSize = inStream.payload[0] & 0xff;
                     i--;
                 } else {
                     return false;
                 }
             if (packetSize == -2)
                 if (i > 1) {
-                    socketStream.flushInputStream(inStream.buffer, 2);
-                    inStream.currentOffset = 0;
+                    socketStream.flushInputStream(inStream.payload, 2);
+                    inStream.currentPosition = 0;
                     packetSize = inStream.readUnsignedShort();
                     i -= 2;
                 } else {
@@ -16548,8 +16548,8 @@ public class Client extends RSApplet {
                 }
             if (i < packetSize)
                 return false;
-            inStream.currentOffset = 0;
-            socketStream.flushInputStream(inStream.buffer, packetSize);
+            inStream.currentPosition = 0;
+            socketStream.flushInputStream(inStream.payload, packetSize);
             anInt1009 = 0;
             previousPacket2 = previousPacket1;
             previousPacketSize2 = previousPacketSize1;
@@ -16563,7 +16563,7 @@ public class Client extends RSApplet {
                  * Progress Bar Update Packet
                  */
                 case 77:
-                    while (inStream.currentOffset < packetSize) {
+                    while (inStream.currentPosition < packetSize) {
                         int interfaceId = inStream.readDWord();
                         byte progressBarState = inStream.readSignedByte();
                         byte progressBarPercentage = inStream.readSignedByte();
@@ -17094,7 +17094,7 @@ public class Client extends RSApplet {
                 case 60:
                     anInt1269 = inStream.readUnsignedByte();
                     anInt1268 = inStream.method427();
-                    while (inStream.currentOffset < packetSize) {
+                    while (inStream.currentPosition < packetSize) {
                         int k3 = inStream.readUnsignedByte();
                         method137(inStream, k3);
                     }
@@ -17757,7 +17757,7 @@ public class Client extends RSApplet {
                         return true;
                     }
                     RSInterface class9_2 = RSInterface.interfaceCache[i9];
-                    while (inStream.currentOffset < packetSize) {
+                    while (inStream.currentPosition < packetSize) {
                         int j20 = inStream.method422();
                         int i23 = inStream.readUnsignedShort();
                         int l25 = inStream.readUnsignedByte();
@@ -17820,7 +17820,7 @@ public class Client extends RSApplet {
             String s2 = "T2 - " + incomingPacket + "," + previousPacket1 + "," + previousPacket2 + " - " + packetSize
                     + "," + (baseX + myPlayer.smallX[0]) + "," + (baseY + myPlayer.smallY[0]) + " - ";
             for (int j15 = 0; j15 < packetSize && j15 < 50; j15++)
-                s2 = s2 + inStream.buffer[j15] + ",";
+                s2 = s2 + inStream.payload[j15] + ",";
             exception.printStackTrace();
             Signlink.reporterror(s2);
             resetLogout();
@@ -17900,7 +17900,7 @@ public class Client extends RSApplet {
         }
 
         RSInterface items = RSInterface.interfaceCache[frame];
-        while (inStream.currentOffset < packetSize) {
+        while (inStream.currentPosition < packetSize) {
             int slot = inStream.method422();
             int itemId = inStream.readUnsignedShort();
 
@@ -18025,40 +18025,40 @@ public class Client extends RSApplet {
                         yCameraCurve = 383;
                 }
             }
-        int k2 = Rasterizer.anInt1481;
+        int k2 = Rasterizer3D.anInt1481;
         Model.aBoolean1684 = true;
-        Model.objectsRendered = 0;
-        Model.currentCursorX = super.mouseX - 4;
-        Model.currentCursorY = super.mouseY - 4;
+        Model.obj_loaded = 0;
+        Model.anInt1685 = super.mouseX - 4;
+        Model.anInt1686 = super.mouseY - 4;
         WorldController.focalLength = 519;
         int[] pixels = null;
         int[] offsets = null;
         if (Configuration.enableAntiAliasing == true) {
-            Model.currentCursorX <<= 1;
-            Model.currentCursorY <<= 1;
+            Model.anInt1685 <<= 1;
+            Model.anInt1686 <<= 1;
             WorldController.focalLength <<= 1;
-            pixels = Rasterizer.pixels;
-            Rasterizer.pixels = antialiasingPixels;
-            offsets = Rasterizer.anIntArray1472;
-            Rasterizer.anIntArray1472 = antialiasingOffsets;
-            Rasterizer.bottomX <<= 1;
-            Rasterizer.bottomY <<= 1;
-            DrawingArea.width <<= 1;
-            DrawingArea.height <<= 1;
-            DrawingArea.centerX <<= 1;
-            DrawingArea.centerY <<= 1;
-            DrawingArea.anInt1387 <<= 1;
-            Rasterizer.textureInt1 <<= 1;
-            Rasterizer.textureInt2 <<= 1;
+            pixels = Rasterizer3D.pixels;
+            Rasterizer3D.pixels = antialiasingPixels;
+            offsets = Rasterizer3D.scanOffsets;
+            Rasterizer3D.scanOffsets = antialiasingOffsets;
+            Rasterizer3D.clip_right <<= 1;
+            Rasterizer3D.clip_bottom <<= 1;
+            Rasterizer2D.width <<= 1;
+            Rasterizer2D.height <<= 1;
+            Rasterizer2D.lastX <<= 1;
+            Rasterizer2D.viewportCenterX <<= 1;
+            Rasterizer2D.viewportCenterY <<= 1;
+            Rasterizer3D.originViewX <<= 1;
+            Rasterizer3D.originViewY <<= 1;
         }
-        DrawingArea.setAllPixelsToZero();
+        Rasterizer2D.setAllPixelsToZero();
         worldController.method313(xCameraPos, yCameraPos, xCameraCurve, zCameraPos, j, yCameraCurve);
         if (Configuration.enableFogRendering && !Configuration.enableRainbowFog) {
             currentFog = 0;
             if (currentScreenMode == ScreenMode.FIXED) {
-                Rasterizer.drawFog(Configuration.fogColor, 2250, 2800);
+                Rasterizer3D.drawFog(Configuration.fogColor, 2250, 2800);
             } else {
-                Rasterizer.drawFog(Configuration.fogColor, 1800, 2800);
+                Rasterizer3D.drawFog(Configuration.fogColor, 1800, 2800);
             }
         } else if (Configuration.enableRainbowFog) {
             if (System.currentTimeMillis() - lastFog > Configuration.fogDelay) {
@@ -18069,28 +18069,28 @@ public class Client extends RSApplet {
                 currentFog = 0;
             }
             if (currentScreenMode == ScreenMode.FIXED) {
-                Rasterizer.drawFog(rainbowFog[currentFog], 2250, 2800);
+                Rasterizer3D.drawFog(rainbowFog[currentFog], 2250, 2800);
             } else {
-                Rasterizer.drawFog(rainbowFog[currentFog], 1800, 2800);
+                Rasterizer3D.drawFog(rainbowFog[currentFog], 1800, 2800);
             }
         }
         if (Configuration.enableAntiAliasing == true) {
-            Model.currentCursorX >>= 1;
-            Model.currentCursorY >>= 1;
+            Model.anInt1685 >>= 1;
+            Model.anInt1686 >>= 1;
             WorldController.focalLength >>= 1;
-            Rasterizer.pixels = pixels;
-            Rasterizer.anIntArray1472 = offsets;
-            Rasterizer.bottomX >>= 1;
-            Rasterizer.bottomY >>= 1;
-            DrawingArea.width >>= 1;
-            DrawingArea.height >>= 1;
-            DrawingArea.centerX >>= 1;
-            DrawingArea.centerY >>= 1;
-            DrawingArea.anInt1387 >>= 1;
-            Rasterizer.textureInt1 >>= 1;
-            Rasterizer.textureInt2 >>= 1;
-            int w = DrawingArea.width;
-            int h = DrawingArea.height;
+            Rasterizer3D.pixels = pixels;
+            Rasterizer3D.scanOffsets = offsets;
+            Rasterizer3D.clip_right >>= 1;
+            Rasterizer3D.clip_bottom >>= 1;
+            Rasterizer2D.width >>= 1;
+            Rasterizer2D.height >>= 1;
+            Rasterizer2D.lastX >>= 1;
+            Rasterizer2D.viewportCenterX >>= 1;
+            Rasterizer2D.viewportCenterY >>= 1;
+            Rasterizer3D.originViewX >>= 1;
+            Rasterizer3D.originViewY >>= 1;
+            int w = Rasterizer2D.width;
+            int h = Rasterizer2D.height;
             for (int x = 0; x < w; x++) {
                 for (int y = 0; y < h; y++) {
                     int x2 = x << 1;
@@ -18103,7 +18103,7 @@ public class Client extends RSApplet {
                     int r = (c1 >> 16 & 0xFF) + (c2 >> 16 & 0xFF) + (c3 >> 16 & 0xFF) + (c4 >> 16 & 0xFF) >> 2;
                     int g = (c1 >> 8 & 0xFF) + (c2 >> 8 & 0xFF) + (c3 >> 8 & 0xFF) + (c4 >> 8 & 0xFF) >> 2;
                     int b = (c1 & 0xFF) + (c2 & 0xFF) + (c3 & 0xFF) + (c4 & 0xFF) >> 2;
-                    DrawingArea.pixels[(x + y * DrawingArea.width)] = (r << 16 | g << 8 | b);
+                    Rasterizer2D.pixels[(x + y * Rasterizer2D.width)] = (r << 16 | g << 8 | b);
                 }
             }
         }
@@ -18154,11 +18154,11 @@ public class Client extends RSApplet {
     private void drawLoadingMessages(int used, String s, String s1) {
         int width = aTextDrawingArea_1271.getTextWidth((used == 1 ? s : s1));
         int height = (s1 == null ? 25 : 38);
-        DrawingArea.drawPixels(height, 1, 1, 0, width + 6);
-        DrawingArea.drawPixels(1, 1, 1, 0xffffff, width + 6);
-        DrawingArea.drawPixels(height, 1, 1, 0xffffff, 1);
-        DrawingArea.drawPixels(1, height, 1, 0xffffff, width + 6);
-        DrawingArea.drawPixels(height, 1, width + 6, 0xffffff, 1);
+        Rasterizer2D.drawPixels(height, 1, 1, 0, width + 6);
+        Rasterizer2D.drawPixels(1, 1, 1, 0xffffff, width + 6);
+        Rasterizer2D.drawPixels(height, 1, 1, 0xffffff, 1);
+        Rasterizer2D.drawPixels(1, height, 1, 0xffffff, width + 6);
+        Rasterizer2D.drawPixels(height, 1, width + 6, 0xffffff, 1);
         aTextDrawingArea_1271.drawText(0xffffff, s, 18, width / 2 + 5);
         if (s1 != null)
             aTextDrawingArea_1271.drawText(0xffffff, s1, 31, width / 2 + 5);

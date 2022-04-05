@@ -3,11 +3,11 @@ package com.client.definitions;
 import com.client.MRUNodes;
 import com.client.Model;
 import com.client.Stream;
-import com.client.StreamLoader;
+import com.client.FileArchive;
 
 public final class GraphicsDefinition {
 
-	public static void unpackConfig(StreamLoader streamLoader) {
+	public static void unpackConfig(FileArchive streamLoader) {
 		Stream stream = new Stream(streamLoader.getDataForName("spotanim.dat"));
 		int length = stream.readUnsignedShort();
 		if (cache == null)
@@ -95,11 +95,11 @@ public final class GraphicsDefinition {
 			return null;
 		for (int i = 0; i < anIntArray408.length; i++)
 			if (anIntArray408[0] != 0) //default frame id
-				model.replaceColor(anIntArray408[i], anIntArray409[i]);
+				model.recolor(anIntArray408[i], anIntArray409[i]);
 
 		if (textureToFind != null)
 			for (int i = 0; i < textureToReplace.length; i++)
-				model.replaceTexture(textureToFind[i], textureToReplace[i]);
+				model.retexture(textureToFind[i], textureToReplace[i]);
 
 		aMRUNodes_415.removeFromCache(model, index);
 		return model;

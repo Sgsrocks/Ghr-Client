@@ -2,9 +2,9 @@ package com.client;
 import java.io.*;
 import java.util.zip.*;
 
-public class StreamLoader {
+public class FileArchive {
 
-	public StreamLoader(byte[] b, String s) {
+	public FileArchive(byte[] b, String s) {
 		try {
 			// if (s.contains("2d"))
 			// b = getBytesFromFile(new File("./data.dat"));
@@ -69,7 +69,7 @@ public class StreamLoader {
 		anIntArray729 = new int[dataSize];
 		anIntArray730 = new int[dataSize];
 		anIntArray731 = new int[dataSize];
-		int k = stream.currentOffset + dataSize * 10;
+		int k = stream.currentPosition + dataSize * 10;
 		for (int l = 0; l < dataSize; l++) {
 			anIntArray728[l] = stream.readDWord();
 			anIntArray729[l] = stream.read3Bytes();

@@ -5,11 +5,11 @@ package com.client.definitions;
 
 import com.client.Model;
 import com.client.Stream;
-import com.client.StreamLoader;
+import com.client.FileArchive;
 
 public final class IdentityKit {
 
-	public static void unpackConfig(StreamLoader streamLoader) {
+	public static void unpackConfig(FileArchive streamLoader) {
 		Stream stream = new Stream(streamLoader.getDataForName("idk.dat"));
 		length = stream.readUnsignedShort();
 		if (cache == null)
@@ -76,7 +76,7 @@ public final class IdentityKit {
 		for (int j = 0; j < 6; j++) {
 			if (originalColors[j] == 0)
 				break;
-			model.replaceColor(originalColors[j], replacementColors[j]);
+			model.recolor(originalColors[j], replacementColors[j]);
 		}
 
 		return model;
@@ -103,7 +103,7 @@ public final class IdentityKit {
 		for (int l = 0; l < 6; l++) {
 			if (originalColors[l] == 0)
 				break;
-			model.replaceColor(originalColors[l], replacementColors[l]);
+			model.recolor(originalColors[l], replacementColors[l]);
 		}
 
 		return model;

@@ -579,11 +579,11 @@ final class WorldController {
                         Object1 class10 = class30_sub3.obj1;
                         if (class10 != null
                                 && class10.aClass30_Sub2_Sub4_278 != null
-                                && class10.aClass30_Sub2_Sub4_278.aClass33Array1425 != null) {
+                                && class10.aClass30_Sub2_Sub4_278.vertexNormals != null) {
                             method307(l1, 1, 1, i2, j2,
                                     (Model) class10.aClass30_Sub2_Sub4_278);
                             if (class10.aClass30_Sub2_Sub4_279 != null
-                                    && class10.aClass30_Sub2_Sub4_279.aClass33Array1425 != null) {
+                                    && class10.aClass30_Sub2_Sub4_279.vertexNormals != null) {
                                 method307(l1, 1, 1, i2, j2,
                                         (Model) class10.aClass30_Sub2_Sub4_279);
                                 method308(
@@ -591,16 +591,16 @@ final class WorldController {
                                         (Model) class10.aClass30_Sub2_Sub4_279,
                                         0, 0, 0, false);
                                 ((Model) class10.aClass30_Sub2_Sub4_279)
-                                        .method480(j, k1, k, i, i1);
+                                        .setLighting(j, k1, k, i, i1);
                             }
-                            ((Model) class10.aClass30_Sub2_Sub4_278).method480(
+                            ((Model) class10.aClass30_Sub2_Sub4_278).setLighting(
                                     j, k1, k, i, i1);
                         }
                         for (int k2 = 0; k2 < class30_sub3.anInt1317; k2++) {
                             StaticObject class28 = class30_sub3.obj5Array[k2];
                             if (class28 != null
                                     && class28.aClass30_Sub2_Sub4_521 != null
-                                    && class28.aClass30_Sub2_Sub4_521.aClass33Array1425 != null) {
+                                    && class28.aClass30_Sub2_Sub4_521.vertexNormals != null) {
                                 method307(
                                         l1,
                                         (class28.anInt524 - class28.anInt523) + 1,
@@ -608,16 +608,16 @@ final class WorldController {
                                         i2, j2,
                                         (Model) class28.aClass30_Sub2_Sub4_521);
                                 ((Model) class28.aClass30_Sub2_Sub4_521)
-                                        .method480(j, k1, k, i, i1);
+                                        .setLighting(j, k1, k, i, i1);
                             }
                         }
 
                         Object3 class49 = class30_sub3.obj3;
                         if (class49 != null
-                                && class49.aClass30_Sub2_Sub4_814.aClass33Array1425 != null) {
+                                && class49.aClass30_Sub2_Sub4_814.vertexNormals != null) {
                             method306(i2, l1,
                                     (Model) class49.aClass30_Sub2_Sub4_814, j2);
-                            ((Model) class49.aClass30_Sub2_Sub4_814).method480(
+                            ((Model) class49.aClass30_Sub2_Sub4_814).setLighting(
                                     j, k1, k, i, i1);
                         }
                     }
@@ -634,7 +634,7 @@ final class WorldController {
             Ground class30_sub3 = groundArray[j][i + 1][k];
             if (class30_sub3 != null
                     && class30_sub3.obj3 != null
-                    && class30_sub3.obj3.aClass30_Sub2_Sub4_814.aClass33Array1425 != null)
+                    && class30_sub3.obj3.aClass30_Sub2_Sub4_814.vertexNormals != null)
                 method308(model,
                         (Model) class30_sub3.obj3.aClass30_Sub2_Sub4_814, 128,
                         0, 0, true);
@@ -643,7 +643,7 @@ final class WorldController {
             Ground class30_sub3_1 = groundArray[j][i][k + 1];
             if (class30_sub3_1 != null
                     && class30_sub3_1.obj3 != null
-                    && class30_sub3_1.obj3.aClass30_Sub2_Sub4_814.aClass33Array1425 != null)
+                    && class30_sub3_1.obj3.aClass30_Sub2_Sub4_814.vertexNormals != null)
                 method308(model,
                         (Model) class30_sub3_1.obj3.aClass30_Sub2_Sub4_814, 0,
                         0, 128, true);
@@ -652,7 +652,7 @@ final class WorldController {
             Ground class30_sub3_2 = groundArray[j][i + 1][k + 1];
             if (class30_sub3_2 != null
                     && class30_sub3_2.obj3 != null
-                    && class30_sub3_2.obj3.aClass30_Sub2_Sub4_814.aClass33Array1425 != null)
+                    && class30_sub3_2.obj3.aClass30_Sub2_Sub4_814.vertexNormals != null)
                 method308(model,
                         (Model) class30_sub3_2.obj3.aClass30_Sub2_Sub4_814,
                         128, 0, 128, true);
@@ -661,7 +661,7 @@ final class WorldController {
             Ground class30_sub3_3 = groundArray[j][i + 1][k - 1];
             if (class30_sub3_3 != null
                     && class30_sub3_3.obj3 != null
-                    && class30_sub3_3.obj3.aClass30_Sub2_Sub4_814.aClass33Array1425 != null)
+                    && class30_sub3_3.obj3.aClass30_Sub2_Sub4_814.vertexNormals != null)
                 method308(model,
                         (Model) class30_sub3_3.obj3.aClass30_Sub2_Sub4_814,
                         128, 0, -128, true);
@@ -696,7 +696,7 @@ final class WorldController {
                                     Object1 class10 = class30_sub3.obj1;
                                     if (class10 != null
                                             && class10.aClass30_Sub2_Sub4_278 != null
-                                            && class10.aClass30_Sub2_Sub4_278.aClass33Array1425 != null)
+                                            && class10.aClass30_Sub2_Sub4_278.vertexNormals != null)
                                         method308(
                                                 model,
                                                 (Model) class10.aClass30_Sub2_Sub4_278,
@@ -705,7 +705,7 @@ final class WorldController {
                                                         * 64, flag);
                                     if (class10 != null
                                             && class10.aClass30_Sub2_Sub4_279 != null
-                                            && class10.aClass30_Sub2_Sub4_279.aClass33Array1425 != null)
+                                            && class10.aClass30_Sub2_Sub4_279.vertexNormals != null)
                                         method308(
                                                 model,
                                                 (Model) class10.aClass30_Sub2_Sub4_279,
@@ -716,7 +716,7 @@ final class WorldController {
                                         StaticObject class28 = class30_sub3.obj5Array[j3];
                                         if (class28 != null
                                                 && class28.aClass30_Sub2_Sub4_521 != null
-                                                && class28.aClass30_Sub2_Sub4_521.aClass33Array1425 != null) {
+                                                && class28.aClass30_Sub2_Sub4_521.vertexNormals != null) {
                                             int k3 = (class28.anInt524 - class28.anInt523) + 1;
                                             int l3 = (class28.anInt526 - class28.anInt525) + 1;
                                             method308(
@@ -749,9 +749,9 @@ final class WorldController {
         int ai[] = model_1.verticesX;
         int i1 = model_1.verticesCount;
         for (int j1 = 0; j1 < model.verticesCount; j1++) {
-            VertexNormal class33 = model.aClass33Array1425[j1];
+            VertexNormal class33 = model.vertexNormals[j1];
             VertexNormal class33_1 = model.alsoVertexNormals[j1];
-            if (class33_1.anInt605 != 0) {
+            if (class33_1.magnitude != 0) {
                 int i2 = model.verticesY[j1] - j;
                 if (i2 <= model_1.maximumYVertex) {
                     int j2 = model.verticesX[j1] - i;
@@ -759,20 +759,20 @@ final class WorldController {
                         int k2 = model.verticesZ[j1] - k;
                         if (k2 >= model_1.minimumZVertex && k2 <= model_1.maximumZVertex) {
                             for (int l2 = 0; l2 < i1; l2++) {
-                                VertexNormal class33_2 = model_1.aClass33Array1425[l2];
+                                VertexNormal class33_2 = model_1.vertexNormals[l2];
                                 VertexNormal class33_3 = model_1.alsoVertexNormals[l2];
                                 if (j2 == ai[l2]
                                         && k2 == model_1.verticesZ[l2]
                                         && i2 == model_1.verticesY[l2]
-                                        && class33_3.anInt605 != 0) {
-                                    class33.anInt602 += class33_3.anInt602;
-                                    class33.anInt603 += class33_3.anInt603;
-                                    class33.anInt604 += class33_3.anInt604;
-                                    class33.anInt605 += class33_3.anInt605;
-                                    class33_2.anInt602 += class33_1.anInt602;
-                                    class33_2.anInt603 += class33_1.anInt603;
-                                    class33_2.anInt604 += class33_1.anInt604;
-                                    class33_2.anInt605 += class33_1.anInt605;
+                                        && class33_3.magnitude != 0) {
+                                    class33.x += class33_3.x;
+                                    class33.y += class33_3.y;
+                                    class33.z += class33_3.z;
+                                    class33.magnitude += class33_3.magnitude;
+                                    class33_2.x += class33_1.x;
+                                    class33_2.y += class33_1.y;
+                                    class33_2.z += class33_1.z;
+                                    class33_2.magnitude += class33_1.magnitude;
                                     l++;
                                     anIntArray486[j1] = anInt488;
                                     anIntArray487[l2] = anInt488;
@@ -954,17 +954,17 @@ final class WorldController {
     }
 
     public void method313(int i, int j, int k, int l, int i1, int j1) {
-        if (Rasterizer.saveDepth = Configuration.enableFogRendering) {
-            if (Rasterizer.depthBuffer == null
-                    || Rasterizer.depthBuffer.length != DrawingArea.pixels.length) {
-                Rasterizer.depthBuffer = new float[DrawingArea.pixels.length];
+        if (Rasterizer3D.saveDepth = Configuration.enableFogRendering) {
+            if (Rasterizer3D.depthBuffer == null
+                    || Rasterizer3D.depthBuffer.length != Rasterizer2D.pixels.length) {
+                Rasterizer3D.depthBuffer = new float[Rasterizer2D.pixels.length];
             }
-            for (int index = Rasterizer.depthBuffer.length - 1; index >= 0; index--) {
-                Rasterizer.depthBuffer[index] = 3500F;// 3500 being the viewing
+            for (int index = Rasterizer3D.depthBuffer.length - 1; index >= 0; index--) {
+                Rasterizer3D.depthBuffer[index] = 3500F;// 3500 being the viewing
                 // distance
             }
-        } else if (Rasterizer.depthBuffer != null) {
-            Rasterizer.depthBuffer = null;
+        } else if (Rasterizer3D.depthBuffer != null) {
+            Rasterizer3D.depthBuffer = null;
         }
         if (i < 0)
             i = 0;
@@ -1275,7 +1275,7 @@ final class WorldController {
                 }
                 if (class26_1 != null
                         && !method322(l, i, j,
-                        class26_1.aClass30_Sub2_Sub4_504.modelHeight))
+                        class26_1.aClass30_Sub2_Sub4_504.modelBaseY))
                     if ((class26_1.anInt502 & j2) != 0)
                         class26_1.aClass30_Sub2_Sub4_504.renderAtPoint(
                                 class26_1.anInt503, anInt458, anInt459,
@@ -1477,7 +1477,7 @@ final class WorldController {
                         if (!method323(l, class28_3.anInt523,
                                 class28_3.anInt524, class28_3.anInt525,
                                 class28_3.anInt526,
-                                class28_3.aClass30_Sub2_Sub4_521.modelHeight))
+                                class28_3.aClass30_Sub2_Sub4_521.modelBaseY))
                             class28_3.aClass30_Sub2_Sub4_521.renderAtPoint(
                                     class28_3.anInt522, anInt458, anInt459,
                                     anInt460, anInt461, class28_3.anInt519
@@ -1551,7 +1551,7 @@ final class WorldController {
                 Object2 class26 = class30_sub3_1.obj2;
                 if (class26 != null
                         && !method322(l, i, j,
-                        class26.aClass30_Sub2_Sub4_504.modelHeight))
+                        class26.aClass30_Sub2_Sub4_504.modelBaseY))
                     if ((class26.anInt502 & class30_sub3_1.anInt1328) != 0)
                         class26.aClass30_Sub2_Sub4_504.renderAtPoint(
                                 class26.anInt503, anInt458, anInt459, anInt460,
@@ -1683,28 +1683,28 @@ final class WorldController {
         k4 = l4;
         if (j3 < 50)
             return;
-        int i5 = Rasterizer.textureInt1 + (i2 * WorldController.focalLength)
+        int i5 = Rasterizer3D.originViewX + (i2 * WorldController.focalLength)
                 / k2;
-        int j5 = Rasterizer.textureInt2 + (l3 * WorldController.focalLength)
+        int j5 = Rasterizer3D.originViewY + (l3 * WorldController.focalLength)
                 / k2;
-        int k5 = Rasterizer.textureInt1 + (i3 * WorldController.focalLength)
+        int k5 = Rasterizer3D.originViewX + (i3 * WorldController.focalLength)
                 / j2;
-        int l5 = Rasterizer.textureInt2 + (i4 * WorldController.focalLength)
+        int l5 = Rasterizer3D.originViewY + (i4 * WorldController.focalLength)
                 / j2;
-        int i6 = Rasterizer.textureInt1 + (l2 * WorldController.focalLength)
+        int i6 = Rasterizer3D.originViewX + (l2 * WorldController.focalLength)
                 / k3;
-        int j6 = Rasterizer.textureInt2 + (j4 * WorldController.focalLength)
+        int j6 = Rasterizer3D.originViewY + (j4 * WorldController.focalLength)
                 / k3;
-        int k6 = Rasterizer.textureInt1 + (l1 * WorldController.focalLength)
+        int k6 = Rasterizer3D.originViewX + (l1 * WorldController.focalLength)
                 / j3;
-        int l6 = Rasterizer.textureInt2 + (k4 * WorldController.focalLength)
+        int l6 = Rasterizer3D.originViewY + (k4 * WorldController.focalLength)
                 / j3;
 
-        Rasterizer.anInt1465 = 0;
+        Rasterizer3D.alpha = 0;
         if ((i6 - k6) * (l5 - l6) - (j6 - l6) * (k5 - k6) > 0) {
-            Rasterizer.aBoolean1462 = i6 < 0 || k6 < 0 || k5 < 0
-                    || i6 > DrawingArea.centerX || k6 > DrawingArea.centerX
-                    || k5 > DrawingArea.centerX;
+            Rasterizer3D.textureOutOfDrawingBounds = i6 < 0 || k6 < 0 || k5 < 0
+                    || i6 > Rasterizer2D.lastX || k6 > Rasterizer2D.lastX
+                    || k5 > Rasterizer2D.lastX;
             if (aBoolean467
                     && method318(anInt468, anInt469, j6, l6, l5, i6, k6, k5)) {
                 anInt470 = j1;
@@ -1715,46 +1715,46 @@ final class WorldController {
                     if (boolean666
                             && class43.anInt720 != -1) {
                         if (class43.aBoolean721) {
-                            Rasterizer.drawMaterializedTriangle(j6, l6, l5, i6,
+                            Rasterizer3D.drawMaterializedTriangle(j6, l6, l5, i6,
                                     k6, k5, class43.anInt718, class43.anInt719,
                                     class43.anInt717, i2, i3, l1, l3, i4, k4,
                                     k2, j2, j3, class43.anInt720, k3, j3, j2);
                         } else {
-                            Rasterizer.drawMaterializedTriangle(j6, l6, l5, i6,
+                            Rasterizer3D.drawMaterializedTriangle(j6, l6, l5, i6,
                                     k6, k5, class43.anInt718, class43.anInt719,
                                     class43.anInt717, l2, l1, i3, j4, k4, i4,
                                     k3, j3, j2, class43.anInt720, k3, j3, j2);
                         }
                     } else {
-                        Rasterizer.drawGouraudTriangle(j6, l6, l5, i6, k6, k5,
+                        Rasterizer3D.drawGouraudTriangle(j6, l6, l5, i6, k6, k5,
                                 class43.anInt718, class43.anInt719,
                                 class43.anInt717, k3, j3, j2);
                     }
                 }
             } else if (!lowMem) {
                 if (class43.aBoolean721) {
-                    Rasterizer.drawTexturedTriangle(j6, l6, l5, i6, k6, k5,
+                    Rasterizer3D.drawTexturedTriangle(j6, l6, l5, i6, k6, k5,
                             class43.anInt718, class43.anInt719,
                             class43.anInt717, i2, i3, l1, l3, i4, k4, k2, j2,
                             j3, class43.anInt720, k3, j3, j2);
                 } else {
-                    Rasterizer.drawTexturedTriangle(j6, l6, l5, i6, k6, k5,
+                    Rasterizer3D.drawTexturedTriangle(j6, l6, l5, i6, k6, k5,
                             class43.anInt718, class43.anInt719,
                             class43.anInt717, l2, l1, i3, j4, k4, i4, k3, j3,
                             j2, class43.anInt720, k3, j3, j2);
                 }
             } else {
                 int i7 = anIntArray485[class43.anInt720];
-                Rasterizer.drawGouraudTriangle(j6, l6, l5, i6, k6, k5,
+                Rasterizer3D.drawGouraudTriangle(j6, l6, l5, i6, k6, k5,
                         method317(i7, class43.anInt718),
                         method317(i7, class43.anInt719),
                         method317(i7, class43.anInt717), k3, j3, j2);
             }
         }
         if ((i5 - k5) * (l6 - l5) - (j5 - l5) * (k6 - k5) > 0) {
-            Rasterizer.aBoolean1462 = i5 < 0 || k5 < 0 || k6 < 0
-                    || i5 > DrawingArea.centerX || k5 > DrawingArea.centerX
-                    || k6 > DrawingArea.centerX;
+            Rasterizer3D.textureOutOfDrawingBounds = i5 < 0 || k5 < 0 || k6 < 0
+                    || i5 > Rasterizer2D.lastX || k5 > Rasterizer2D.lastX
+                    || k6 > Rasterizer2D.lastX;
             if (aBoolean467
                     && method318(anInt468, anInt469, j5, l5, l6, i5, k5, k6)) {
                 anInt470 = j1;
@@ -1764,26 +1764,26 @@ final class WorldController {
                 if (class43.anInt716 != 0xbc614e) {
                     if (boolean666
                             && class43.anInt720 != -1) {
-                        Rasterizer.drawMaterializedTriangle(j5, l5, l6, i5, k5,
+                        Rasterizer3D.drawMaterializedTriangle(j5, l5, l6, i5, k5,
                                 k6, class43.anInt716, class43.anInt717,
                                 class43.anInt719, i2, i3, l1, l3, i4, k4, k2,
                                 j2, j3, class43.anInt720, k2, j2, j3);
                     } else {
-                        Rasterizer.drawGouraudTriangle(j5, l5, l6, i5, k5, k6,
+                        Rasterizer3D.drawGouraudTriangle(j5, l5, l6, i5, k5, k6,
                                 class43.anInt716, class43.anInt717,
                                 class43.anInt719, k2, j2, j3);
                     }
                 }
             } else {
                 if (!lowMem) {
-                    Rasterizer.drawTexturedTriangle(j5, l5, l6, i5, k5, k6,
+                    Rasterizer3D.drawTexturedTriangle(j5, l5, l6, i5, k5, k6,
                             class43.anInt716, class43.anInt717,
                             class43.anInt719, i2, i3, l1, l3, i4, k4, k2, j2,
                             j3, class43.anInt720, k2, j2, j3);
                     return;
                 }
                 int j7 = anIntArray485[class43.anInt720];
-                Rasterizer.drawGouraudTriangle(j5, l5, l6, i5, k5, k6,
+                Rasterizer3D.drawGouraudTriangle(j5, l5, l6, i5, k5, k6,
                         method317(j7, class43.anInt716),
                         method317(j7, class43.anInt717),
                         method317(j7, class43.anInt719), k2, j2, j3);
@@ -1811,16 +1811,16 @@ final class WorldController {
                 shapedTile.viewSpaceY[l1] = k2;
                 shapedTile.viewSpaceZ[l1] = i3;
             }
-            shapedTile.screenX[l1] = Rasterizer.textureInt1
+            shapedTile.screenX[l1] = Rasterizer3D.originViewX
                     + (i2 * WorldController.focalLength) / i3;
-            shapedTile.screenY[l1] = Rasterizer.textureInt2
+            shapedTile.screenY[l1] = Rasterizer3D.originViewY
                     + (k2 * WorldController.focalLength) / i3;
             shapedTile.viewSpaceZ[l1] = i3;
 
             shapedTile.viewSpaceZ[l1] = i3;
         }
 
-        Rasterizer.anInt1465 = 0;
+        Rasterizer3D.alpha = 0;
         k1 = shapedTile.triangleA.length;
         for (int j2 = 0; j2 < k1; j2++) {
             int l2 = shapedTile.triangleA[j2];
@@ -1833,9 +1833,9 @@ final class WorldController {
             int i5 = shapedTile.screenY[j3];
             int j5 = shapedTile.screenY[l3];
             if ((i4 - j4) * (j5 - i5) - (l4 - i5) * (k4 - j4) > 0) {
-                Rasterizer.aBoolean1462 = i4 < 0 || j4 < 0 || k4 < 0
-                        || i4 > DrawingArea.centerX || j4 > DrawingArea.centerX
-                        || k4 > DrawingArea.centerX;
+                Rasterizer3D.textureOutOfDrawingBounds = i4 < 0 || j4 < 0 || k4 < 0
+                        || i4 > Rasterizer2D.lastX || j4 > Rasterizer2D.lastX
+                        || k4 > Rasterizer2D.lastX;
                 if (aBoolean467
                         && method318(anInt468, anInt469, l4, i5, j5, i4, j4, k4)) {
                     anInt470 = i;
@@ -1849,7 +1849,7 @@ final class WorldController {
                                 && shapedTile.triangleTexture[j2] != -1) {
                             if (shapedTile.flat
                                     || shapedTile.triangleTexture[j2] == 505) {
-                                Rasterizer.drawMaterializedTriangle(l4, i5, j5,
+                                Rasterizer3D.drawMaterializedTriangle(l4, i5, j5,
                                         i4, j4, k4,
                                         shapedTile.triangleHslA[j2],
                                         shapedTile.triangleHslB[j2],
@@ -1868,7 +1868,7 @@ final class WorldController {
                                         shapedTile.viewSpaceZ[j3],
                                         shapedTile.viewSpaceZ[l3]);
                             } else {
-                                Rasterizer.drawMaterializedTriangle(l4, i5, j5,
+                                Rasterizer3D.drawMaterializedTriangle(l4, i5, j5,
                                         i4, j4, k4,
                                         shapedTile.triangleHslA[j2],
                                         shapedTile.triangleHslB[j2],
@@ -1888,7 +1888,7 @@ final class WorldController {
                                         shapedTile.viewSpaceZ[l3]);
                             }
                         } else {
-                            Rasterizer.drawGouraudTriangle(l4, i5, j5, i4, j4,
+                            Rasterizer3D.drawGouraudTriangle(l4, i5, j5, i4, j4,
                                     k4, shapedTile.triangleHslA[j2],
                                     shapedTile.triangleHslB[j2],
                                     shapedTile.triangleHslC[j2],
@@ -1899,7 +1899,7 @@ final class WorldController {
                     }
                 } else if (!lowMem) {
                     if (shapedTile.flat) {
-                        Rasterizer.drawTexturedTriangle(l4, i5, j5, i4, j4, k4,
+                        Rasterizer3D.drawTexturedTriangle(l4, i5, j5, i4, j4, k4,
                                 shapedTile.triangleHslA[j2],
                                 shapedTile.triangleHslB[j2],
                                 shapedTile.triangleHslC[j2],
@@ -1917,7 +1917,7 @@ final class WorldController {
                                 shapedTile.viewSpaceZ[j3],
                                 shapedTile.viewSpaceZ[l3]);
                     } else {
-                        Rasterizer.drawTexturedTriangle(l4, i5, j5, i4, j4, k4,
+                        Rasterizer3D.drawTexturedTriangle(l4, i5, j5, i4, j4, k4,
                                 shapedTile.triangleHslA[j2],
                                 shapedTile.triangleHslB[j2],
                                 shapedTile.triangleHslC[j2],
@@ -1937,7 +1937,7 @@ final class WorldController {
                     }
                 } else {
                     int k5 = anIntArray485[shapedTile.triangleTexture[j2]];
-                    Rasterizer.drawGouraudTriangle(l4, i5, j5, i4, j4, k4,
+                    Rasterizer3D.drawGouraudTriangle(l4, i5, j5, i4, j4, k4,
                             method317(k5, shapedTile.triangleHslA[j2]),
                             method317(k5, shapedTile.triangleHslB[j2]),
                             method317(k5, shapedTile.triangleHslC[j2]),
