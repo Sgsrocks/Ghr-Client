@@ -18025,7 +18025,7 @@ public class Client extends RSApplet {
                         yCameraCurve = 383;
                 }
             }
-        int k2 = Rasterizer3D.anInt1481;
+        int k2 = Rasterizer3D.lastTextureRetrievalCount;
         Model.aBoolean1684 = true;
         Model.obj_loaded = 0;
         Model.anInt1685 = super.mouseX - 4;

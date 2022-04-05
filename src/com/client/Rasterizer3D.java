@@ -26,10 +26,10 @@ public final class Rasterizer3D extends Rasterizer2D {
     private static boolean[] textureIsTransparant = new boolean[textureAmount];
     private static int[] averageTextureColours = new int[textureAmount];
     private static int textureRequestBufferPointer;
-    private static int[][] anIntArrayArray1478;
+    private static int[][] textureRequestPixelBuffer;
     private static int[][] texturesPixelBuffer = new int[textureAmount][];
     public static int textureLastUsed[] = new int[textureAmount];
-    public static int anInt1481;
+    public static int lastTextureRetrievalCount;
     public static int hslToRgb[] = new int[0x10000];
     private static int[][] currentPalette = new int[textureAmount][];
 
@@ -59,7 +59,7 @@ public final class Rasterizer3D extends Rasterizer2D {
         textures = null;
         textureIsTransparant = null;
         averageTextureColours = null;
-        anIntArrayArray1478 = null;
+        textureRequestPixelBuffer = null;
         texturesPixelBuffer = null;
         textureLastUsed = null;
         hslToRgb = null;
@@ -169,16 +169,16 @@ public final class Rasterizer3D extends Rasterizer2D {
     }
 
     public static void method366() {
-        anIntArrayArray1478 = null;
+        textureRequestPixelBuffer = null;
         for (int j = 0; j < textureAmount; j++) {
             texturesPixelBuffer[j] = null;
         }
     }
 
     public static void method367() {
-        if (anIntArrayArray1478 == null) {
+        if (textureRequestPixelBuffer == null) {
             textureRequestBufferPointer = 20;
-            anIntArrayArray1478 = new int[textureRequestBufferPointer][0x10000];
+            textureRequestPixelBuffer = new int[textureRequestBufferPointer][0x10000];
             for (int k = 0; k < textureAmount; k++) {
                 texturesPixelBuffer[k] = null;
             }
@@ -194,6 +194,7 @@ public final class Rasterizer3D extends Rasterizer2D {
                     textures[index].downscale();
                 } else {
                     textures[index].resize();
+                    textures[index].setTransparency(255, 0, 255);
                 }
                 textureCount++;
             } catch (Exception ex) {
@@ -229,15 +230,16 @@ public final class Rasterizer3D extends Rasterizer2D {
             if (texturesPixelBuffer[texture] == null) {
                 return;
             }
-            anIntArrayArray1478[textureRequestBufferPointer++] = texturesPixelBuffer[texture];
+            textureRequestPixelBuffer[textureRequestBufferPointer++] = texturesPixelBuffer[texture];
             texturesPixelBuffer[texture] = null;
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
     public static int getOverallColour(int textureId) {
-        if (averageTextureColours[textureId] != 0)
+        if (averageTextureColours[textureId] != 0) {
             return averageTextureColours[textureId];
+        }
         int totalRed = 0;
         int totalGreen = 0;
         int totalBlue = 0;
@@ -248,151 +250,186 @@ public final class Rasterizer3D extends Rasterizer2D {
             totalBlue += currentPalette[textureId][ptr] & 0xff;
         }
 
-        int avgPaletteColour = (totalRed / colourCount << 16) + (totalGreen / colourCount << 8) + totalBlue / colourCount;
+        int avgPaletteColour = (totalRed / colourCount << 16) + (totalGreen / colourCount << 8)
+                + totalBlue / colourCount;
         avgPaletteColour = adjustBrightness(avgPaletteColour, 1.3999999999999999D);
-        if (avgPaletteColour == 0)
+        if (avgPaletteColour == 0) {
             avgPaletteColour = 1;
+        }
         averageTextureColours[textureId] = avgPaletteColour;
         return avgPaletteColour;
     }
 
-    public static void requestTextureUpdate(int i) {
-        if (i > 50 && i != 59 && i != 91 && i != 92 && i != 93 && i != 56 && i != 57){
+    public static void requestTextureUpdate(int textureId) {
+        if (texturesPixelBuffer[textureId] == null) {
             return;
         }
-        if (texturesPixelBuffer[i] == null)
-            return;
-        anIntArrayArray1478[textureRequestBufferPointer++] = texturesPixelBuffer[i];
-        texturesPixelBuffer[i] = null;
+        textureRequestPixelBuffer[textureRequestBufferPointer++] = texturesPixelBuffer[textureId];
+        texturesPixelBuffer[textureId] = null;
     }
 
-    private static int[] getTexturePixels(int textureId) {
-        textureLastUsed[textureId] = anInt1481++;
-        if (texturesPixelBuffer[textureId] != null)
+    public static int[] getTexturePixels(int textureId) {
+        textureLastUsed[textureId] = lastTextureRetrievalCount++;
+        if (texturesPixelBuffer[textureId] != null) {
             return texturesPixelBuffer[textureId];
+        }
         int texturePixels[];
         if (textureRequestBufferPointer > 0) {
-            texturePixels = anIntArrayArray1478[--textureRequestBufferPointer];
-            anIntArrayArray1478[textureRequestBufferPointer] = null;
+            texturePixels = textureRequestPixelBuffer[--textureRequestBufferPointer];
+            textureRequestPixelBuffer[textureRequestBufferPointer] = null;
         } else {
             int lastUsed = 0;
             int target = -1;
-            for (int l = 0; l < textureCount; l++)
-                if (texturesPixelBuffer[l] != null
-                        && (textureLastUsed[l] < lastUsed || target == -1)) {
+            for (int l = 0; l < textureCount; l++) {
+                if (texturesPixelBuffer[l] != null && (textureLastUsed[l] < lastUsed || target == -1)) {
                     lastUsed = textureLastUsed[l];
                     target = l;
                 }
+            }
 
             texturePixels = texturesPixelBuffer[target];
             texturesPixelBuffer[target] = null;
         }
         texturesPixelBuffer[textureId] = texturePixels;
         IndexedImage background = textures[textureId];
-        int ai1[] = currentPalette[textureId];
+        int texturePalette[] = currentPalette[textureId];
+        if (lowMem) {
+            textureIsTransparant[textureId] = false;
+            for (int i1 = 0; i1 < 4096; i1++) {
+                int colour = texturePixels[i1] = texturePalette[background.palettePixels[i1]] & 0xf8f8ff;
+                if (colour == 0) {
+                    textureIsTransparant[textureId] = true;
+                }
+                texturePixels[4096 + i1] = colour - (colour >>> 3) & 0xf8f8ff;
+                texturePixels[8192 + i1] = colour - (colour >>> 2) & 0xf8f8ff;
+                texturePixels[12288 + i1] = colour - (colour >>> 2) - (colour >>> 3) & 0xf8f8ff;
+            }
+
+        } else {
             if (background.width == 64) {
-                for (int j1 = 0; j1 < 128; j1++) {
-                    for (int j2 = 0; j2 < 128; j2++)
-                        texturePixels[j2 + (j1 << 7)] = ai1[background.palettePixels[(j2 >> 1)
-                                + ((j1 >> 1) << 6)]];
+                for (int x = 0; x < 128; x++) {
+                    for (int y = 0; y < 128; y++) {
+                        texturePixels[y
+                                + (x << 7)] = texturePalette[background.palettePixels[(y >> 1) + ((x >> 1) << 6)]];
+                    }
+                }
+            } else {
+                for (int i = 0; i < 16384; i++) {
+                    try {
+                        texturePixels[i] = texturePalette[background.palettePixels[i]];
+                    } catch (Exception e) {
+
+                    }
 
                 }
-
-            } else {
-                for (int k1 = 0; k1 < 16384; k1++)
-                    texturePixels[k1] = ai1[background.palettePixels[k1]];
-
             }
             textureIsTransparant[textureId] = false;
-            for (int l1 = 0; l1 < 16384; l1++) {
-                texturePixels[l1] &= 0xf8f8ff;
-                int colour = texturePixels[l1];
-                if (colour == 0)
+            for (int i = 0; i < 16384; i++) {
+                texturePixels[i] &= 0xf8f8ff;
+                int colour = texturePixels[i];
+                if (colour == 0) {
                     textureIsTransparant[textureId] = true;
-                texturePixels[16384 + l1] = colour - (colour >>> 3) & 0xf8f8ff;
-                texturePixels[32768 + l1] = colour - (colour >>> 2) & 0xf8f8ff;
-                texturePixels[49152 + l1] = colour - (colour >>> 2) - (colour >>> 3) & 0xf8f8ff;
+                }
+                texturePixels[16384 + i] = colour - (colour >>> 3) & 0xf8f8ff;
+                texturePixels[32768 + i] = colour - (colour >>> 2) & 0xf8f8ff;
+                texturePixels[49152 + i] = colour - (colour >>> 2) - (colour >>> 3) & 0xf8f8ff;
             }
+
+        }
         return texturePixels;
     }
 
-    public static void setBrightness(double d) {
-    		Texture.setBrightness(d * 2);
-    		int j = 0;
+    public static double brightness = 0;
+    public static void setBrightness(double bright) {
+        brightness = bright;
+        int j = 0;
         for (int k = 0; k < 512; k++) {
             double d1 = k / 8 / 64D + 0.0078125D;
             double d2 = (k & 7) / 8D + 0.0625D;
             for (int k1 = 0; k1 < 128; k1++) {
                 double d3 = k1 / 128D;
-                double d4 = d3;
-                double d5 = d3;
-                double d6 = d3;
+                double r = d3;
+                double g = d3;
+                double b = d3;
                 if (d2 != 0.0D) {
                     double d7;
-                    if (d3 < 0.5D)
+                    if (d3 < 0.5D) {
                         d7 = d3 * (1.0D + d2);
-                    else
+                    } else {
                         d7 = (d3 + d2) - d3 * d2;
+                    }
                     double d8 = 2D * d3 - d7;
                     double d9 = d1 + 0.33333333333333331D;
-                    if (d9 > 1.0D)
+                    if (d9 > 1.0D) {
                         d9--;
+                    }
                     double d10 = d1;
                     double d11 = d1 - 0.33333333333333331D;
-                    if (d11 < 0.0D)
+                    if (d11 < 0.0D) {
                         d11++;
-                    if (6D * d9 < 1.0D)
-                        d4 = d8 + (d7 - d8) * 6D * d9;
-                    else if (2D * d9 < 1.0D)
-                        d4 = d7;
-                    else if (3D * d9 < 2D)
-                        d4 = d8 + (d7 - d8) * (0.66666666666666663D - d9) * 6D;
-                    else
-                        d4 = d8;
-                    if (6D * d10 < 1.0D)
-                        d5 = d8 + (d7 - d8) * 6D * d10;
-                    else if (2D * d10 < 1.0D)
-                        d5 = d7;
-                    else if (3D * d10 < 2D)
-                        d5 = d8 + (d7 - d8) * (0.66666666666666663D - d10) * 6D;
-                    else
-                        d5 = d8;
-                    if (6D * d11 < 1.0D)
-                        d6 = d8 + (d7 - d8) * 6D * d11;
-                    else if (2D * d11 < 1.0D)
-                        d6 = d7;
-                    else if (3D * d11 < 2D)
-                        d6 = d8 + (d7 - d8) * (0.66666666666666663D - d11) * 6D;
-                    else
-                        d6 = d8;
+                    }
+                    if (6D * d9 < 1.0D) {
+                        r = d8 + (d7 - d8) * 6D * d9;
+                    } else if (2D * d9 < 1.0D) {
+                        r = d7;
+                    } else if (3D * d9 < 2D) {
+                        r = d8 + (d7 - d8) * (0.66666666666666663D - d9) * 6D;
+                    } else {
+                        r = d8;
+                    }
+                    if (6D * d10 < 1.0D) {
+                        g = d8 + (d7 - d8) * 6D * d10;
+                    } else if (2D * d10 < 1.0D) {
+                        g = d7;
+                    } else if (3D * d10 < 2D) {
+                        g = d8 + (d7 - d8) * (0.66666666666666663D - d10) * 6D;
+                    } else {
+                        g = d8;
+                    }
+                    if (6D * d11 < 1.0D) {
+                        b = d8 + (d7 - d8) * 6D * d11;
+                    } else if (2D * d11 < 1.0D) {
+                        b = d7;
+                    } else if (3D * d11 < 2D) {
+                        b = d8 + (d7 - d8) * (0.66666666666666663D - d11) * 6D;
+                    } else {
+                        b = d8;
+                    }
                 }
-                int byteR = (int) (d4 * 256D);
-                int byteG = (int) (d5 * 256D);
-                int byteB = (int) (d6 * 256D);
+                int byteR = (int) (r * 256D);
+                int byteG = (int) (g * 256D);
+                int byteB = (int) (b * 256D);
                 int rgb = (byteR << 16) + (byteG << 8) + byteB;
-                rgb = adjustBrightness(rgb, d);
-                if (rgb == 0)
+                rgb = adjustBrightness(rgb, bright);
+                if (rgb == 0) {
                     rgb = 1;
+                }
                 hslToRgb[j++] = rgb;
             }
 
         }
 
-        for (int textureId = 0; textureId < textureAmount; textureId++)
+        for (int textureId = 0; textureId < textureAmount; textureId++) {
             if (textures[textureId] != null) {
                 int originalPalette[] = textures[textureId].palette;
                 currentPalette[textureId] = new int[originalPalette.length];
                 for (int colourId = 0; colourId < originalPalette.length; colourId++) {
-                    currentPalette[textureId][colourId] = adjustBrightness(originalPalette[colourId], d);
-                    if ((currentPalette[textureId][colourId] & 0xf8f8ff) == 0 && colourId != 0)
+                    currentPalette[textureId][colourId] = adjustBrightness(originalPalette[colourId],
+                            bright);
+                    if ((currentPalette[textureId][colourId] & 0xf8f8ff) == 0 && colourId != 0) {
                         currentPalette[textureId][colourId] = 1;
+                    }
                 }
 
             }
+        }
 
-        for (int textureId = 0; textureId < textureAmount + 1; textureId++)
+        for (int textureId = 0; textureId < textureAmount; textureId++) {
             requestTextureUpdate(textureId);
+        }
+
     }
+
     static int adjustBrightness(int color, double amt) {
         double red = (color >> 16) / 256D;
         double green = (color >> 8 & 0xff) / 256D;
@@ -4532,920 +4569,917 @@ public final class Rasterizer3D extends Rasterizer2D {
         }
     }
 
-    public static void drawTexturedTriangle(int y1, int y2, int y3, int x1, int x2, int x3, int c1, int c2, int c3,
-                                            int tx1, int tx2, int tx3, int ty1, int ty2, int ty3, int tz1, int tz2, int tz3, int tex, float z1, float z2,
-                                            float z3) {
-        if (!saveDepth) {
-            z1 = z2 = z3 = 0;
-        }
-        if ((tex == 8 || tex == 30 || tex == 33 || tex == 41) || !aBoolean1464) {
-            drawTexturedTriangle317(y1, y2, y3, x1, x2, x3, c1, c2, c3, tx1, tx2, tx3, ty1, ty2, ty3, tz1, tz2, tz3,
-                    tex, z1, z2, z3);
+    public static void drawTexturedTriangle(int y_a, int y_b, int y_c, int x_a, int x_b, int x_c,
+                                            int k1, int l1, int i2, int Px, int Mx, int Nx, int Pz, int Mz, int Nz, int Py, int My,
+                                            int Ny, int k4, float z_a, float z_b, float z_c) {
+        if (z_a < 0 || z_b < 0 || z_c < 0) {
             return;
         }
-        c1 = 0x7f - c1 << 1;
-        c2 = 0x7f - c2 << 1;
-        c3 = 0x7f - c3 << 1;
-        int texels[] = getTexturePixels(tex);
-        aBoolean1463 = !textureIsTransparant[tex];
-        tx2 = tx1 - tx2;
-        ty2 = ty1 - ty2;
-        tz2 = tz1 - tz2;
-        tx3 -= tx1;
-        ty3 -= ty1;
-        tz3 -= tz1;
-        int l4 = (tx3 * ty1 - ty3 * tx1) * WorldController.focalLength << 5;
-        int i5 = ty3 * tz1 - tz3 * ty1 << 8;
-        int j5 = tz3 * tx1 - tx3 * tz1 << 5;
-        int k5 = (tx2 * ty1 - ty2 * tx1) * WorldController.focalLength << 5;
-        ;
-        int l5 = ty2 * tz1 - tz2 * ty1 << 8;
-        int i6 = tz2 * tx1 - tx2 * tz1 << 5;
-        int j6 = (ty2 * tx3 - tx2 * ty3) * WorldController.focalLength << 5;
-        ;
-        int k6 = tz2 * ty3 - ty2 * tz3 << 8;
-        int l6 = tx2 * tz3 - tz2 * tx3 << 5;
-        int i7 = 0;
-        int j7 = 0;
-        if (y2 != y1) {
-            i7 = (x2 - x1 << 16) / (y2 - y1);
-            j7 = (c2 - c1 << 16) / (y2 - y1);
-        }
-        int k7 = 0;
-        int l7 = 0;
-        if (y3 != y2) {
-            k7 = (x3 - x2 << 16) / (y3 - y2);
-            l7 = (c3 - c2 << 16) / (y3 - y2);
-        }
-        int i8 = 0;
-        int j8 = 0;
-        if (y3 != y1) {
-            i8 = (x1 - x3 << 16) / (y1 - y3);
-            j8 = (c1 - c3 << 16) / (y1 - y3);
-        }
+        int texture[] = getTexturePixels(k4);
+        aBoolean1463 = !textureIsTransparant[k4];
+        Mx = Px - Mx;
+        Mz = Pz - Mz;
+        My = Py - My;
+        Nx -= Px;
+        Nz -= Pz;
+        Ny -= Py;
+        int Oa = (Nx * Pz - Nz * Px) * WorldController.focalLength << 5;
+        int Ha = Nz * Py - Ny * Pz << 8;
+        int Va = Ny * Px - Nx * Py << 5;
 
-        float x21 = x2 - x1;
-        float y32 = y2 - y1;
-        float x31 = x3 - x1;
-        float y31 = y3 - y1;
-        float z21 = z2 - z1;
-        float z31 = z3 - z1;
+        int Ob = (Mx * Pz - Mz * Px) * WorldController.focalLength << 5;
+        int Hb = Mz * Py - My * Pz << 8;
+        int Vb = My * Px - Mx * Py << 5;
 
-        float div = x21 * y31 - x31 * y32;
-        float depthSlope = (z21 * y31 - z31 * y32) / div;
-        float depthScale = (z31 * x21 - z21 * x31) / div;
+        int Oc = (Mz * Nx - Mx * Nz) * WorldController.focalLength << 5;
+        int Hc = My * Nz - Mz * Ny << 8;
+        int Vc = Mx * Ny - My * Nx << 5;
+        int a_to_b = 0;
+        int grad_a_off = 0;
+        if (y_b != y_a) {
+            a_to_b = (x_b - x_a << 16) / (y_b - y_a);
+            grad_a_off = (l1 - k1 << 16) / (y_b - y_a);
+        }
+        int b_to_c = 0;
+        int grad_b_off = 0;
+        if (y_c != y_b) {
+            b_to_c = (x_c - x_b << 16) / (y_c - y_b);
+            grad_b_off = (i2 - l1 << 16) / (y_c - y_b);
+        }
+        int c_to_a = 0;
+        int grad_c_off = 0;
+        if (y_c != y_a) {
+            c_to_a = (x_a - x_c << 16) / (y_a - y_c);
+            grad_c_off = (k1 - i2 << 16) / (y_a - y_c);
+        }
+        float b_aX = x_b - x_a;
+        float b_aY = y_b - y_a;
+        float c_aX = x_c - x_a;
+        float c_aY = y_c - y_a;
+        float b_aZ = z_b - z_a;
+        float c_aZ = z_c - z_a;
 
-        if (y1 <= y2 && y1 <= y3) {
-            if (y1 >= Rasterizer2D.clip_bottom) {
+        float div = b_aX * c_aY - c_aX * b_aY;
+        float depth_slope = (b_aZ * c_aY - c_aZ * b_aY) / div;
+        float depth_increment = (c_aZ * b_aX - b_aZ * c_aX) / div;
+        if (y_a <= y_b && y_a <= y_c) {
+            if (y_a >= Rasterizer2D.clip_bottom) {
                 return;
             }
-            if (y2 > Rasterizer2D.clip_bottom) {
-                y2 = Rasterizer2D.clip_bottom;
+            if (y_b > Rasterizer2D.clip_bottom) {
+                y_b = Rasterizer2D.clip_bottom;
             }
-            if (y3 > Rasterizer2D.clip_bottom) {
-                y3 = Rasterizer2D.clip_bottom;
+            if (y_c > Rasterizer2D.clip_bottom) {
+                y_c = Rasterizer2D.clip_bottom;
             }
-            z1 = z1 - depthSlope * x1 + depthSlope;
-            if (y2 < y3) {
-                x3 = x1 <<= 16;
-                c3 = c1 <<= 16;
-                if (y1 < 0) {
-                    x3 -= i8 * y1;
-                    x1 -= i7 * y1;
-                    z1 -= depthScale * y1;
-                    c3 -= j8 * y1;
-                    c1 -= j7 * y1;
-                    y1 = 0;
+            z_a = z_a - depth_slope * x_a + depth_slope;
+            if (y_b < y_c) {
+                x_c = x_a <<= 16;
+                i2 = k1 <<= 16;
+                if (y_a < 0) {
+                    x_c -= c_to_a * y_a;
+                    x_a -= a_to_b * y_a;
+                    z_a -= depth_increment * y_a;
+                    i2 -= grad_c_off * y_a;
+                    k1 -= grad_a_off * y_a;
+                    y_a = 0;
                 }
-                x2 <<= 16;
-                c2 <<= 16;
-                if (y2 < 0) {
-                    x2 -= k7 * y2;
-                    c2 -= l7 * y2;
-                    y2 = 0;
+                x_b <<= 16;
+                l1 <<= 16;
+                if (y_b < 0) {
+                    x_b -= b_to_c * y_b;
+                    l1 -= grad_b_off * y_b;
+                    y_b = 0;
                 }
-                int k8 = y1 - originViewY;
-                l4 += j5 * k8;
-                k5 += i6 * k8;
-                j6 += l6 * k8;
-                if (y1 != y2 && i8 < i7 || y1 == y2 && i8 > k7) {
-                    y3 -= y2;
-                    y2 -= y1;
-                    y1 = scanOffsets[y1];
-                    while (--y2 >= 0) {
-                        drawTexturedScanline(Rasterizer2D.pixels, texels, y1, x3 >> 16, x1 >> 16, c3, c1, l4, k5, j6, i5,
-                                l5, k6, z1, depthSlope);
-                        z1 += depthScale;
-                        x3 += i8;
-                        x1 += i7;
-                        c3 += j8;
-                        c1 += j7;
-                        y1 += Rasterizer2D.width;
-                        l4 += j5;
-                        k5 += i6;
-                        j6 += l6;
+                int k8 = y_a - originViewY;
+                Oa += Va * k8;
+                Ob += Vb * k8;
+                Oc += Vc * k8;
+                if (y_a != y_b && c_to_a < a_to_b || y_a == y_b && c_to_a > b_to_c) {
+                    y_c -= y_b;
+                    y_b -= y_a;
+                    y_a = scanOffsets[y_a];
+                    while (--y_b >= 0) {
+                        drawTexturedScanline(Rasterizer2D.pixels, texture, y_a, x_c >> 16, x_a >> 16, i2 >> 8,
+                                k1 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_a, depth_slope);
+                        x_c += c_to_a;
+                        x_a += a_to_b;
+                        z_a += depth_increment;
+                        i2 += grad_c_off;
+                        k1 += grad_a_off;
+                        y_a += Rasterizer2D.width;
+                        Oa += Va;
+                        Ob += Vb;
+                        Oc += Vc;
                     }
-                    while (--y3 >= 0) {
-                        drawTexturedScanline(Rasterizer2D.pixels, texels, y1, x3 >> 16, x2 >> 16, c3, c2, l4, k5, j6, i5,
-                                l5, k6, z1, depthSlope);
-                        z1 += depthScale;
-                        x3 += i8;
-                        x2 += k7;
-                        c3 += j8;
-                        c2 += l7;
-                        y1 += Rasterizer2D.width;
-                        l4 += j5;
-                        k5 += i6;
-                        j6 += l6;
+                    while (--y_c >= 0) {
+                        drawTexturedScanline(Rasterizer2D.pixels, texture, y_a, x_c >> 16, x_b >> 16, i2 >> 8,
+                                l1 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_a, depth_slope);
+                        x_c += c_to_a;
+                        x_b += b_to_c;
+                        z_a += depth_increment;
+                        i2 += grad_c_off;
+                        l1 += grad_b_off;
+                        y_a += Rasterizer2D.width;
+                        Oa += Va;
+                        Ob += Vb;
+                        Oc += Vc;
                     }
                     return;
                 }
-                y3 -= y2;
-                y2 -= y1;
-                y1 = scanOffsets[y1];
-                while (--y2 >= 0) {
-                    drawTexturedScanline(Rasterizer2D.pixels, texels, y1, x1 >> 16, x3 >> 16, c1, c3, l4, k5, j6, i5, l5,
-                            k6, z1, depthSlope);
-                    z1 += depthScale;
-                    x3 += i8;
-                    x1 += i7;
-                    c3 += j8;
-                    c1 += j7;
-                    y1 += Rasterizer2D.width;
-                    l4 += j5;
-                    k5 += i6;
-                    j6 += l6;
+                y_c -= y_b;
+                y_b -= y_a;
+                y_a = scanOffsets[y_a];
+                while (--y_b >= 0) {
+                    drawTexturedScanline(Rasterizer2D.pixels, texture, y_a, x_a >> 16, x_c >> 16, k1 >> 8,
+                            i2 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_a, depth_slope);
+                    x_c += c_to_a;
+                    x_a += a_to_b;
+                    z_a += depth_increment;
+                    i2 += grad_c_off;
+                    k1 += grad_a_off;
+                    y_a += Rasterizer2D.width;
+                    Oa += Va;
+                    Ob += Vb;
+                    Oc += Vc;
                 }
-                while (--y3 >= 0) {
-                    drawTexturedScanline(Rasterizer2D.pixels, texels, y1, x2 >> 16, x3 >> 16, c2, c3, l4, k5, j6, i5, l5,
-                            k6, z1, depthSlope);
-                    z1 += depthScale;
-                    x3 += i8;
-                    x2 += k7;
-                    c3 += j8;
-                    c2 += l7;
-                    y1 += Rasterizer2D.width;
-                    l4 += j5;
-                    k5 += i6;
-                    j6 += l6;
-                }
-                return;
-            }
-            x2 = x1 <<= 16;
-            c2 = c1 <<= 16;
-            if (y1 < 0) {
-                x2 -= i8 * y1;
-                z1 -= depthScale * y1;
-                x1 -= i7 * y1;
-                c2 -= j8 * y1;
-                c1 -= j7 * y1;
-                y1 = 0;
-            }
-            x3 <<= 16;
-            c3 <<= 16;
-            if (y3 < 0) {
-                x3 -= k7 * y3;
-                c3 -= l7 * y3;
-                y3 = 0;
-            }
-            int l8 = y1 - originViewY;
-            l4 += j5 * l8;
-            k5 += i6 * l8;
-            j6 += l6 * l8;
-            if (y1 != y3 && i8 < i7 || y1 == y3 && k7 > i7) {
-                y2 -= y3;
-                y3 -= y1;
-                y1 = scanOffsets[y1];
-                while (--y3 >= 0) {
-                    drawTexturedScanline(Rasterizer2D.pixels, texels, y1, x2 >> 16, x1 >> 16, c2, c1, l4, k5, j6, i5, l5,
-                            k6, z1, depthSlope);
-                    z1 += depthScale;
-                    x2 += i8;
-                    x1 += i7;
-                    c2 += j8;
-                    c1 += j7;
-                    y1 += Rasterizer2D.width;
-                    l4 += j5;
-                    k5 += i6;
-                    j6 += l6;
-                }
-                while (--y2 >= 0) {
-                    drawTexturedScanline(Rasterizer2D.pixels, texels, y1, x3 >> 16, x1 >> 16, c3, c1, l4, k5, j6, i5, l5,
-                            k6, z1, depthSlope);
-                    z1 += depthScale;
-                    x3 += k7;
-                    x1 += i7;
-                    c3 += l7;
-                    c1 += j7;
-                    y1 += Rasterizer2D.width;
-                    l4 += j5;
-                    k5 += i6;
-                    j6 += l6;
+                while (--y_c >= 0) {
+                    drawTexturedScanline(Rasterizer2D.pixels, texture, y_a, x_b >> 16, x_c >> 16, l1 >> 8,
+                            i2 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_a, depth_slope);
+                    x_c += c_to_a;
+                    x_b += b_to_c;
+                    z_a += depth_increment;
+                    i2 += grad_c_off;
+                    l1 += grad_b_off;
+                    y_a += Rasterizer2D.width;
+                    Oa += Va;
+                    Ob += Vb;
+                    Oc += Vc;
                 }
                 return;
             }
-            y2 -= y3;
-            y3 -= y1;
-            y1 = scanOffsets[y1];
-            while (--y3 >= 0) {
-                drawTexturedScanline(Rasterizer2D.pixels, texels, y1, x1 >> 16, x2 >> 16, c1, c2, l4, k5, j6, i5, l5, k6,
-                        z1, depthSlope);
-                z1 += depthScale;
-                x2 += i8;
-                x1 += i7;
-                c2 += j8;
-                c1 += j7;
-                y1 += Rasterizer2D.width;
-                l4 += j5;
-                k5 += i6;
-                j6 += l6;
+            x_b = x_a <<= 16;
+            l1 = k1 <<= 16;
+            if (y_a < 0) {
+                x_b -= c_to_a * y_a;
+                x_a -= a_to_b * y_a;
+                z_a -= depth_increment * y_a;
+                l1 -= grad_c_off * y_a;
+                k1 -= grad_a_off * y_a;
+                y_a = 0;
             }
-            while (--y2 >= 0) {
-                drawTexturedScanline(Rasterizer2D.pixels, texels, y1, x1 >> 16, x3 >> 16, c1, c3, l4, k5, j6, i5, l5, k6,
-                        z1, depthSlope);
-                z1 += depthScale;
-                x3 += k7;
-                x1 += i7;
-                c3 += l7;
-                c1 += j7;
-                y1 += Rasterizer2D.width;
-                l4 += j5;
-                k5 += i6;
-                j6 += l6;
+            x_c <<= 16;
+            i2 <<= 16;
+            if (y_c < 0) {
+                x_c -= b_to_c * y_c;
+                i2 -= grad_b_off * y_c;
+                y_c = 0;
+            }
+            int l8 = y_a - originViewY;
+            Oa += Va * l8;
+            Ob += Vb * l8;
+            Oc += Vc * l8;
+            if (y_a != y_c && c_to_a < a_to_b || y_a == y_c && b_to_c > a_to_b) {
+                y_b -= y_c;
+                y_c -= y_a;
+                y_a = scanOffsets[y_a];
+                while (--y_c >= 0) {
+                    drawTexturedScanline(Rasterizer2D.pixels, texture, y_a, x_b >> 16, x_a >> 16, l1 >> 8,
+                            k1 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_a, depth_slope);
+                    x_b += c_to_a;
+                    x_a += a_to_b;
+                    l1 += grad_c_off;
+                    k1 += grad_a_off;
+                    z_a += depth_increment;
+                    y_a += Rasterizer2D.width;
+                    Oa += Va;
+                    Ob += Vb;
+                    Oc += Vc;
+                }
+                while (--y_b >= 0) {
+                    drawTexturedScanline(Rasterizer2D.pixels, texture, y_a, x_c >> 16, x_a >> 16, i2 >> 8,
+                            k1 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_a, depth_slope);
+                    x_c += b_to_c;
+                    x_a += a_to_b;
+                    i2 += grad_b_off;
+                    k1 += grad_a_off;
+                    z_a += depth_increment;
+                    y_a += Rasterizer2D.width;
+                    Oa += Va;
+                    Ob += Vb;
+                    Oc += Vc;
+                }
+                return;
+            }
+            y_b -= y_c;
+            y_c -= y_a;
+            y_a = scanOffsets[y_a];
+            while (--y_c >= 0) {
+                drawTexturedScanline(Rasterizer2D.pixels, texture, y_a, x_a >> 16, x_b >> 16, k1 >> 8,
+                        l1 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_a, depth_slope);
+                x_b += c_to_a;
+                x_a += a_to_b;
+                l1 += grad_c_off;
+                k1 += grad_a_off;
+                z_a += depth_increment;
+                y_a += Rasterizer2D.width;
+                Oa += Va;
+                Ob += Vb;
+                Oc += Vc;
+            }
+            while (--y_b >= 0) {
+                drawTexturedScanline(Rasterizer2D.pixels, texture, y_a, x_a >> 16, x_c >> 16, k1 >> 8,
+                        i2 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_a, depth_slope);
+                x_c += b_to_c;
+                x_a += a_to_b;
+                i2 += grad_b_off;
+                k1 += grad_a_off;
+                z_a += depth_increment;
+                y_a += Rasterizer2D.width;
+                Oa += Va;
+                Ob += Vb;
+                Oc += Vc;
             }
             return;
         }
-        if (y2 <= y3) {
-            if (y2 >= Rasterizer2D.clip_bottom) {
+        if (y_b <= y_c) {
+            if (y_b >= Rasterizer2D.clip_bottom) {
                 return;
             }
-            if (y3 > Rasterizer2D.clip_bottom) {
-                y3 = Rasterizer2D.clip_bottom;
+            if (y_c > Rasterizer2D.clip_bottom) {
+                y_c = Rasterizer2D.clip_bottom;
             }
-            if (y1 > Rasterizer2D.clip_bottom) {
-                y1 = Rasterizer2D.clip_bottom;
+            if (y_a > Rasterizer2D.clip_bottom) {
+                y_a = Rasterizer2D.clip_bottom;
             }
-            z2 = z2 - depthSlope * x2 + depthSlope;
-            if (y3 < y1) {
-                x1 = x2 <<= 16;
-                c1 = c2 <<= 16;
-                if (y2 < 0) {
-                    x1 -= i7 * y2;
-                    x2 -= k7 * y2;
-                    z2 -= depthScale * y2;
-                    c1 -= j7 * y2;
-                    c2 -= l7 * y2;
-                    y2 = 0;
+            z_b = z_b - depth_slope * x_b + depth_slope;
+            if (y_c < y_a) {
+                x_a = x_b <<= 16;
+                k1 = l1 <<= 16;
+                if (y_b < 0) {
+                    x_a -= a_to_b * y_b;
+                    x_b -= b_to_c * y_b;
+                    z_b -= depth_increment * y_b;
+                    k1 -= grad_a_off * y_b;
+                    l1 -= grad_b_off * y_b;
+                    y_b = 0;
                 }
-                x3 <<= 16;
-                c3 <<= 16;
-                if (y3 < 0) {
-                    x3 -= i8 * y3;
-                    c3 -= j8 * y3;
-                    y3 = 0;
+                x_c <<= 16;
+                i2 <<= 16;
+                if (y_c < 0) {
+                    x_c -= c_to_a * y_c;
+                    i2 -= grad_c_off * y_c;
+                    y_c = 0;
                 }
-                int i9 = y2 - originViewY;
-                l4 += j5 * i9;
-                k5 += i6 * i9;
-                j6 += l6 * i9;
-                if (y2 != y3 && i7 < k7 || y2 == y3 && i7 > i8) {
-                    y1 -= y3;
-                    y3 -= y2;
-                    y2 = scanOffsets[y2];
-                    while (--y3 >= 0) {
-                        drawTexturedScanline(Rasterizer2D.pixels, texels, y2, x1 >> 16, x2 >> 16, c1, c2, l4, k5, j6, i5,
-                                l5, k6, z2, depthSlope);
-                        z2 += depthScale;
-                        x1 += i7;
-                        x2 += k7;
-                        c1 += j7;
-                        c2 += l7;
-                        y2 += Rasterizer2D.width;
-                        l4 += j5;
-                        k5 += i6;
-                        j6 += l6;
+                int i9 = y_b - originViewY;
+                Oa += Va * i9;
+                Ob += Vb * i9;
+                Oc += Vc * i9;
+                if (y_b != y_c && a_to_b < b_to_c || y_b == y_c && a_to_b > c_to_a) {
+                    y_a -= y_c;
+                    y_c -= y_b;
+                    y_b = scanOffsets[y_b];
+                    while (--y_c >= 0) {
+                        drawTexturedScanline(Rasterizer2D.pixels, texture, y_b, x_a >> 16, x_b >> 16, k1 >> 8,
+                                l1 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_b, depth_slope);
+                        x_a += a_to_b;
+                        x_b += b_to_c;
+                        k1 += grad_a_off;
+                        l1 += grad_b_off;
+                        z_b += depth_increment;
+                        y_b += Rasterizer2D.width;
+                        Oa += Va;
+                        Ob += Vb;
+                        Oc += Vc;
                     }
-                    while (--y1 >= 0) {
-                        drawTexturedScanline(Rasterizer2D.pixels, texels, y2, x1 >> 16, x3 >> 16, c1, c3, l4, k5, j6, i5,
-                                l5, k6, z2, depthSlope);
-                        z2 += depthScale;
-                        x1 += i7;
-                        x3 += i8;
-                        c1 += j7;
-                        c3 += j8;
-                        y2 += Rasterizer2D.width;
-                        l4 += j5;
-                        k5 += i6;
-                        j6 += l6;
+                    while (--y_a >= 0) {
+                        drawTexturedScanline(Rasterizer2D.pixels, texture, y_b, x_a >> 16, x_c >> 16, k1 >> 8,
+                                i2 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_b, depth_slope);
+                        x_a += a_to_b;
+                        x_c += c_to_a;
+                        k1 += grad_a_off;
+                        i2 += grad_c_off;
+                        z_b += depth_increment;
+                        y_b += Rasterizer2D.width;
+                        Oa += Va;
+                        Ob += Vb;
+                        Oc += Vc;
                     }
                     return;
                 }
-                y1 -= y3;
-                y3 -= y2;
-                y2 = scanOffsets[y2];
-                while (--y3 >= 0) {
-                    drawTexturedScanline(Rasterizer2D.pixels, texels, y2, x2 >> 16, x1 >> 16, c2, c1, l4, k5, j6, i5, l5,
-                            k6, z2, depthSlope);
-                    z2 += depthScale;
-                    x1 += i7;
-                    x2 += k7;
-                    c1 += j7;
-                    c2 += l7;
-                    y2 += Rasterizer2D.width;
-                    l4 += j5;
-                    k5 += i6;
-                    j6 += l6;
+                y_a -= y_c;
+                y_c -= y_b;
+                y_b = scanOffsets[y_b];
+                while (--y_c >= 0) {
+                    drawTexturedScanline(Rasterizer2D.pixels, texture, y_b, x_b >> 16, x_a >> 16, l1 >> 8,
+                            k1 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_b, depth_slope);
+                    x_a += a_to_b;
+                    x_b += b_to_c;
+                    k1 += grad_a_off;
+                    l1 += grad_b_off;
+                    z_b += depth_increment;
+                    y_b += Rasterizer2D.width;
+                    Oa += Va;
+                    Ob += Vb;
+                    Oc += Vc;
                 }
-                while (--y1 >= 0) {
-                    drawTexturedScanline(Rasterizer2D.pixels, texels, y2, x3 >> 16, x1 >> 16, c3, c1, l4, k5, j6, i5, l5,
-                            k6, z2, depthSlope);
-                    z2 += depthScale;
-                    x1 += i7;
-                    x3 += i8;
-                    c1 += j7;
-                    c3 += j8;
-                    y2 += Rasterizer2D.width;
-                    l4 += j5;
-                    k5 += i6;
-                    j6 += l6;
-                }
-                return;
-            }
-            x3 = x2 <<= 16;
-            c3 = c2 <<= 16;
-            if (y2 < 0) {
-                x3 -= i7 * y2;
-                z2 -= depthScale * y2;
-                x2 -= k7 * y2;
-                c3 -= j7 * y2;
-                c2 -= l7 * y2;
-                y2 = 0;
-            }
-            x1 <<= 16;
-            c1 <<= 16;
-            if (y1 < 0) {
-                x1 -= i8 * y1;
-                c1 -= j8 * y1;
-                y1 = 0;
-            }
-            int j9 = y2 - originViewY;
-            l4 += j5 * j9;
-            k5 += i6 * j9;
-            j6 += l6 * j9;
-            if (i7 < k7) {
-                y3 -= y1;
-                y1 -= y2;
-                y2 = scanOffsets[y2];
-                while (--y1 >= 0) {
-                    drawTexturedScanline(Rasterizer2D.pixels, texels, y2, x3 >> 16, x2 >> 16, c3, c2, l4, k5, j6, i5, l5,
-                            k6, z2, depthSlope);
-                    z2 += depthScale;
-                    x3 += i7;
-                    x2 += k7;
-                    c3 += j7;
-                    c2 += l7;
-                    y2 += Rasterizer2D.width;
-                    l4 += j5;
-                    k5 += i6;
-                    j6 += l6;
-                }
-                while (--y3 >= 0) {
-                    drawTexturedScanline(Rasterizer2D.pixels, texels, y2, x1 >> 16, x2 >> 16, c1, c2, l4, k5, j6, i5, l5,
-                            k6, z2, depthSlope);
-                    z2 += depthScale;
-                    x1 += i8;
-                    x2 += k7;
-                    c1 += j8;
-                    c2 += l7;
-                    y2 += Rasterizer2D.width;
-                    l4 += j5;
-                    k5 += i6;
-                    j6 += l6;
+                while (--y_a >= 0) {
+                    drawTexturedScanline(Rasterizer2D.pixels, texture, y_b, x_c >> 16, x_a >> 16, i2 >> 8,
+                            k1 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_b, depth_slope);
+                    x_a += a_to_b;
+                    x_c += c_to_a;
+                    k1 += grad_a_off;
+                    i2 += grad_c_off;
+                    z_b += depth_increment;
+                    y_b += Rasterizer2D.width;
+                    Oa += Va;
+                    Ob += Vb;
+                    Oc += Vc;
                 }
                 return;
             }
-            y3 -= y1;
-            y1 -= y2;
-            y2 = scanOffsets[y2];
-            while (--y1 >= 0) {
-                drawTexturedScanline(Rasterizer2D.pixels, texels, y2, x2 >> 16, x3 >> 16, c2, c3, l4, k5, j6, i5, l5, k6,
-                        z2, depthSlope);
-                z2 += depthScale;
-                x3 += i7;
-                x2 += k7;
-                c3 += j7;
-                c2 += l7;
-                y2 += Rasterizer2D.width;
-                l4 += j5;
-                k5 += i6;
-                j6 += l6;
+            x_c = x_b <<= 16;
+            i2 = l1 <<= 16;
+            if (y_b < 0) {
+                x_c -= a_to_b * y_b;
+                x_b -= b_to_c * y_b;
+                z_b -= depth_increment * y_b;
+                i2 -= grad_a_off * y_b;
+                l1 -= grad_b_off * y_b;
+                y_b = 0;
             }
-            while (--y3 >= 0) {
-                drawTexturedScanline(Rasterizer2D.pixels, texels, y2, x2 >> 16, x1 >> 16, c2, c1, l4, k5, j6, i5, l5, k6,
-                        z2, depthSlope);
-                z2 += depthScale;
-                x1 += i8;
-                x2 += k7;
-                c1 += j8;
-                c2 += l7;
-                y2 += Rasterizer2D.width;
-                l4 += j5;
-                k5 += i6;
-                j6 += l6;
+            x_a <<= 16;
+            k1 <<= 16;
+            if (y_a < 0) {
+                x_a -= c_to_a * y_a;
+                k1 -= grad_c_off * y_a;
+                y_a = 0;
             }
-            return;
-        }
-        if (y3 >= Rasterizer2D.clip_bottom) {
-            return;
-        }
-        if (y1 > Rasterizer2D.clip_bottom) {
-            y1 = Rasterizer2D.clip_bottom;
-        }
-        if (y2 > Rasterizer2D.clip_bottom) {
-            y2 = Rasterizer2D.clip_bottom;
-        }
-        z3 = z3 - depthSlope * x3 + depthSlope;
-        if (y1 < y2) {
-            x2 = x3 <<= 16;
-            c2 = c3 <<= 16;
-            if (y3 < 0) {
-                x2 -= k7 * y3;
-                x3 -= i8 * y3;
-                z3 -= depthScale * y3;
-                c2 -= l7 * y3;
-                c3 -= j8 * y3;
-                y3 = 0;
-            }
-            x1 <<= 16;
-            c1 <<= 16;
-            if (y1 < 0) {
-                x1 -= i7 * y1;
-                c1 -= j7 * y1;
-                y1 = 0;
-            }
-            int k9 = y3 - originViewY;
-            l4 += j5 * k9;
-            k5 += i6 * k9;
-            j6 += l6 * k9;
-            if (k7 < i8) {
-                y2 -= y1;
-                y1 -= y3;
-                y3 = scanOffsets[y3];
-                while (--y1 >= 0) {
-                    drawTexturedScanline(Rasterizer2D.pixels, texels, y3, x2 >> 16, x3 >> 16, c2, c3, l4, k5, j6, i5, l5,
-                            k6, z3, depthSlope);
-                    z3 += depthScale;
-                    x2 += k7;
-                    x3 += i8;
-                    c2 += l7;
-                    c3 += j8;
-                    y3 += Rasterizer2D.width;
-                    l4 += j5;
-                    k5 += i6;
-                    j6 += l6;
+            int j9 = y_b - originViewY;
+            Oa += Va * j9;
+            Ob += Vb * j9;
+            Oc += Vc * j9;
+            if (a_to_b < b_to_c) {
+                y_c -= y_a;
+                y_a -= y_b;
+                y_b = scanOffsets[y_b];
+                while (--y_a >= 0) {
+                    drawTexturedScanline(Rasterizer2D.pixels, texture, y_b, x_c >> 16, x_b >> 16, i2 >> 8,
+                            l1 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_b, depth_slope);
+                    x_c += a_to_b;
+                    x_b += b_to_c;
+                    i2 += grad_a_off;
+                    l1 += grad_b_off;
+                    z_b += depth_increment;
+                    y_b += Rasterizer2D.width;
+                    Oa += Va;
+                    Ob += Vb;
+                    Oc += Vc;
                 }
-                while (--y2 >= 0) {
-                    drawTexturedScanline(Rasterizer2D.pixels, texels, y3, x2 >> 16, x1 >> 16, c2, c1, l4, k5, j6, i5, l5,
-                            k6, z3, depthSlope);
-                    z3 += depthScale;
-                    x2 += k7;
-                    x1 += i7;
-                    c2 += l7;
-                    c1 += j7;
-                    y3 += Rasterizer2D.width;
-                    l4 += j5;
-                    k5 += i6;
-                    j6 += l6;
+                while (--y_c >= 0) {
+                    drawTexturedScanline(Rasterizer2D.pixels, texture, y_b, x_a >> 16, x_b >> 16, k1 >> 8,
+                            l1 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_b, depth_slope);
+                    x_a += c_to_a;
+                    x_b += b_to_c;
+                    k1 += grad_c_off;
+                    l1 += grad_b_off;
+                    z_b += depth_increment;
+                    y_b += Rasterizer2D.width;
+                    Oa += Va;
+                    Ob += Vb;
+                    Oc += Vc;
                 }
                 return;
             }
-            y2 -= y1;
-            y1 -= y3;
-            y3 = scanOffsets[y3];
-            while (--y1 >= 0) {
-                drawTexturedScanline(Rasterizer2D.pixels, texels, y3, x3 >> 16, x2 >> 16, c3, c2, l4, k5, j6, i5, l5, k6,
-                        z3, depthSlope);
-                z3 += depthScale;
-                x2 += k7;
-                x3 += i8;
-                c2 += l7;
-                c3 += j8;
-                y3 += Rasterizer2D.width;
-                l4 += j5;
-                k5 += i6;
-                j6 += l6;
+            y_c -= y_a;
+            y_a -= y_b;
+            y_b = scanOffsets[y_b];
+            while (--y_a >= 0) {
+                drawTexturedScanline(Rasterizer2D.pixels, texture, y_b, x_b >> 16, x_c >> 16, l1 >> 8,
+                        i2 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_b, depth_slope);
+                x_c += a_to_b;
+                x_b += b_to_c;
+                i2 += grad_a_off;
+                l1 += grad_b_off;
+                z_b += depth_increment;
+                y_b += Rasterizer2D.width;
+                Oa += Va;
+                Ob += Vb;
+                Oc += Vc;
             }
-            while (--y2 >= 0) {
-                drawTexturedScanline(Rasterizer2D.pixels, texels, y3, x1 >> 16, x2 >> 16, c1, c2, l4, k5, j6, i5, l5, k6,
-                        z3, depthSlope);
-                z3 += depthScale;
-                x2 += k7;
-                x1 += i7;
-                c2 += l7;
-                c1 += j7;
-                y3 += Rasterizer2D.width;
-                l4 += j5;
-                k5 += i6;
-                j6 += l6;
-            }
-            return;
-        }
-        x1 = x3 <<= 16;
-        c1 = c3 <<= 16;
-        if (y3 < 0) {
-            x1 -= k7 * y3;
-            x3 -= i8 * y3;
-            z3 -= depthScale * y3;
-            c1 -= l7 * y3;
-            c3 -= j8 * y3;
-            y3 = 0;
-        }
-        x2 <<= 16;
-        c2 <<= 16;
-        if (y2 < 0) {
-            x2 -= i7 * y2;
-            c2 -= j7 * y2;
-            y2 = 0;
-        }
-        int l9 = y3 - originViewY;
-        l4 += j5 * l9;
-        k5 += i6 * l9;
-        j6 += l6 * l9;
-        if (k7 < i8) {
-            y1 -= y2;
-            y2 -= y3;
-            y3 = scanOffsets[y3];
-            while (--y2 >= 0) {
-                drawTexturedScanline(Rasterizer2D.pixels, texels, y3, x1 >> 16, x3 >> 16, c1, c3, l4, k5, j6, i5, l5, k6,
-                        z3, depthSlope);
-                z3 += depthScale;
-                x1 += k7;
-                x3 += i8;
-                c1 += l7;
-                c3 += j8;
-                y3 += Rasterizer2D.width;
-                l4 += j5;
-                k5 += i6;
-                j6 += l6;
-            }
-            while (--y1 >= 0) {
-                drawTexturedScanline(Rasterizer2D.pixels, texels, y3, x2 >> 16, x3 >> 16, c2, c3, l4, k5, j6, i5, l5, k6,
-                        z3, depthSlope);
-                z3 += depthScale;
-                x2 += i7;
-                x3 += i8;
-                c2 += j7;
-                c3 += j8;
-                y3 += Rasterizer2D.width;
-                l4 += j5;
-                k5 += i6;
-                j6 += l6;
+            while (--y_c >= 0) {
+                drawTexturedScanline(Rasterizer2D.pixels, texture, y_b, x_b >> 16, x_a >> 16, l1 >> 8,
+                        k1 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_b, depth_slope);
+                x_a += c_to_a;
+                x_b += b_to_c;
+                k1 += grad_c_off;
+                l1 += grad_b_off;
+                z_b += depth_increment;
+                y_b += Rasterizer2D.width;
+                Oa += Va;
+                Ob += Vb;
+                Oc += Vc;
             }
             return;
         }
-        y1 -= y2;
-        y2 -= y3;
-        y3 = scanOffsets[y3];
-        while (--y2 >= 0) {
-            drawTexturedScanline(Rasterizer2D.pixels, texels, y3, x3 >> 16, x1 >> 16, c3, c1, l4, k5, j6, i5, l5, k6, z3,
-                    depthSlope);
-            z3 += depthScale;
-            x1 += k7;
-            x3 += i8;
-            c1 += l7;
-            c3 += j8;
-            y3 += Rasterizer2D.width;
-            l4 += j5;
-            k5 += i6;
-            j6 += l6;
+        if (y_c >= Rasterizer2D.clip_bottom) {
+            return;
         }
-        while (--y1 >= 0) {
-            drawTexturedScanline(Rasterizer2D.pixels, texels, y3, x3 >> 16, x2 >> 16, c3, c2, l4, k5, j6, i5, l5, k6, z3,
-                    depthSlope);
-            z3 += depthScale;
-            x2 += i7;
-            x3 += i8;
-            c2 += j7;
-            c3 += j8;
-            y3 += Rasterizer2D.width;
-            l4 += j5;
-            k5 += i6;
-            j6 += l6;
+        if (y_a > Rasterizer2D.clip_bottom) {
+            y_a = Rasterizer2D.clip_bottom;
+        }
+        if (y_b > Rasterizer2D.clip_bottom) {
+            y_b = Rasterizer2D.clip_bottom;
+        }
+        z_c = z_c - depth_slope * x_c + depth_slope;
+        if (y_a < y_b) {
+            x_b = x_c <<= 16;
+            l1 = i2 <<= 16;
+            if (y_c < 0) {
+                x_b -= b_to_c * y_c;
+                x_c -= c_to_a * y_c;
+                z_c -= depth_increment * y_c;
+                l1 -= grad_b_off * y_c;
+                i2 -= grad_c_off * y_c;
+                y_c = 0;
+            }
+            x_a <<= 16;
+            k1 <<= 16;
+            if (y_a < 0) {
+                x_a -= a_to_b * y_a;
+                k1 -= grad_a_off * y_a;
+                y_a = 0;
+            }
+            int k9 = y_c - originViewY;
+            Oa += Va * k9;
+            Ob += Vb * k9;
+            Oc += Vc * k9;
+            if (b_to_c < c_to_a) {
+                y_b -= y_a;
+                y_a -= y_c;
+                y_c = scanOffsets[y_c];
+                while (--y_a >= 0) {
+                    drawTexturedScanline(Rasterizer2D.pixels, texture, y_c, x_b >> 16, x_c >> 16, l1 >> 8,
+                            i2 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_c, depth_slope);
+                    x_b += b_to_c;
+                    x_c += c_to_a;
+                    l1 += grad_b_off;
+                    i2 += grad_c_off;
+                    z_c += depth_increment;
+                    y_c += Rasterizer2D.width;
+                    Oa += Va;
+                    Ob += Vb;
+                    Oc += Vc;
+                }
+                while (--y_b >= 0) {
+                    drawTexturedScanline(Rasterizer2D.pixels, texture, y_c, x_b >> 16, x_a >> 16, l1 >> 8,
+                            k1 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_c, depth_slope);
+                    x_b += b_to_c;
+                    x_a += a_to_b;
+                    l1 += grad_b_off;
+                    k1 += grad_a_off;
+                    z_c += depth_increment;
+                    y_c += Rasterizer2D.width;
+                    Oa += Va;
+                    Ob += Vb;
+                    Oc += Vc;
+                }
+                return;
+            }
+            y_b -= y_a;
+            y_a -= y_c;
+            y_c = scanOffsets[y_c];
+            while (--y_a >= 0) {
+                drawTexturedScanline(Rasterizer2D.pixels, texture, y_c, x_c >> 16, x_b >> 16, i2 >> 8,
+                        l1 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_c, depth_slope);
+                x_b += b_to_c;
+                x_c += c_to_a;
+                l1 += grad_b_off;
+                i2 += grad_c_off;
+                z_c += depth_increment;
+                y_c += Rasterizer2D.width;
+                Oa += Va;
+                Ob += Vb;
+                Oc += Vc;
+            }
+            while (--y_b >= 0) {
+                drawTexturedScanline(Rasterizer2D.pixels, texture, y_c, x_a >> 16, x_b >> 16, k1 >> 8,
+                        l1 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_c, depth_slope);
+                x_b += b_to_c;
+                x_a += a_to_b;
+                l1 += grad_b_off;
+                k1 += grad_a_off;
+                z_c += depth_increment;
+                y_c += Rasterizer2D.width;
+                Oa += Va;
+                Ob += Vb;
+                Oc += Vc;
+            }
+            return;
+        }
+        x_a = x_c <<= 16;
+        k1 = i2 <<= 16;
+        if (y_c < 0) {
+            x_a -= b_to_c * y_c;
+            x_c -= c_to_a * y_c;
+            z_c -= depth_increment * y_c;
+            k1 -= grad_b_off * y_c;
+            i2 -= grad_c_off * y_c;
+            y_c = 0;
+        }
+        x_b <<= 16;
+        l1 <<= 16;
+        if (y_b < 0) {
+            x_b -= a_to_b * y_b;
+            l1 -= grad_a_off * y_b;
+            y_b = 0;
+        }
+        int l9 = y_c - originViewY;
+        Oa += Va * l9;
+        Ob += Vb * l9;
+        Oc += Vc * l9;
+        if (b_to_c < c_to_a) {
+            y_a -= y_b;
+            y_b -= y_c;
+            y_c = scanOffsets[y_c];
+            while (--y_b >= 0) {
+                drawTexturedScanline(Rasterizer2D.pixels, texture, y_c, x_a >> 16, x_c >> 16, k1 >> 8,
+                        i2 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_c, depth_slope);
+                x_a += b_to_c;
+                x_c += c_to_a;
+                k1 += grad_b_off;
+                i2 += grad_c_off;
+                z_c += depth_increment;
+                y_c += Rasterizer2D.width;
+                Oa += Va;
+                Ob += Vb;
+                Oc += Vc;
+            }
+            while (--y_a >= 0) {
+                drawTexturedScanline(Rasterizer2D.pixels, texture, y_c, x_b >> 16, x_c >> 16, l1 >> 8,
+                        i2 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_c, depth_slope);
+                x_b += a_to_b;
+                x_c += c_to_a;
+                l1 += grad_a_off;
+                i2 += grad_c_off;
+                z_c += depth_increment;
+                y_c += Rasterizer2D.width;
+                Oa += Va;
+                Ob += Vb;
+                Oc += Vc;
+            }
+            return;
+        }
+        y_a -= y_b;
+        y_b -= y_c;
+        y_c = scanOffsets[y_c];
+        while (--y_b >= 0) {
+            drawTexturedScanline(Rasterizer2D.pixels, texture, y_c, x_c >> 16, x_a >> 16, i2 >> 8,
+                    k1 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_c, depth_slope);
+            x_a += b_to_c;
+            x_c += c_to_a;
+            k1 += grad_b_off;
+            i2 += grad_c_off;
+            z_c += depth_increment;
+            y_c += Rasterizer2D.width;
+            Oa += Va;
+            Ob += Vb;
+            Oc += Vc;
+        }
+        while (--y_a >= 0) {
+            drawTexturedScanline(Rasterizer2D.pixels, texture, y_c, x_c >> 16, x_b >> 16, i2 >> 8,
+                    l1 >> 8, Oa, Ob, Oc, Ha, Hb, Hc, z_c, depth_slope);
+            x_b += a_to_b;
+            x_c += c_to_a;
+            l1 += grad_a_off;
+            i2 += grad_c_off;
+            z_c += depth_increment;
+            y_c += Rasterizer2D.width;
+            Oa += Va;
+            Ob += Vb;
+            Oc += Vc;
         }
     }
 
-    private static void drawTexturedScanline(int dest[], int src[], int offset, int x1, int x2, int hsl1, int hsl2,
-                                             int t1, int t2, int t3, int t4, int t5, int t6, float z1, float z2) {
-        int darken = 0;
-        int srcPos = 0;
-        if (x1 >= x2) {
+    public static void drawTexturedScanline(int dest[], int texture[], int dest_off, int start_x,
+                                            int end_x, int shadeValue, int gradient, int l1, int i2, int j2, int k2, int l2, int i3,
+                                            float depth, float depth_slope) {
+        int rgb = 0;
+        int loops = 0;
+        if (start_x >= end_x) {
             return;
         }
-        int dl = (hsl2 - hsl1) / (x2 - x1);
-        int n;
+        int j3;
+        int k3;
         if (textureOutOfDrawingBounds) {
-            if (x2 > Rasterizer2D.lastX) {
-                x2 = Rasterizer2D.lastX;
+            j3 = (gradient - shadeValue) / (end_x - start_x);
+            if (end_x > Rasterizer2D.lastX) {
+                end_x = Rasterizer2D.lastX;
             }
-            if (x1 < 0) {
-                hsl1 -= x1 * dl;
-                x1 = 0;
+            if (start_x < 0) {
+                shadeValue -= start_x * j3;
+                start_x = 0;
             }
+            if (start_x >= end_x) {
+                return;
+            }
+            k3 = end_x - start_x >> 3;
+            j3 <<= 12;
+            shadeValue <<= 9;
+        } else {
+            if (end_x - start_x > 7) {
+                k3 = end_x - start_x >> 3;
+                j3 = (gradient - shadeValue) * anIntArray1468[k3] >> 6;
+            } else {
+                k3 = 0;
+                j3 = 0;
+            }
+            shadeValue <<= 9;
         }
-        if (x1 >= x2) {
+        dest_off += start_x;
+        depth += depth_slope * start_x;
+        if (lowMem) {
+            int i4 = 0;
+            int k4 = 0;
+            int k6 = start_x - originViewX;
+            l1 += (k2 >> 3) * k6;
+            i2 += (l2 >> 3) * k6;
+            j2 += (i3 >> 3) * k6;
+            int i5 = j2 >> 12;
+            if (i5 != 0) {
+                rgb = l1 / i5;
+                loops = i2 / i5;
+                if (rgb < 0) {
+                    rgb = 0;
+                } else if (rgb > 4032) {
+                    rgb = 4032;
+                }
+            }
+            l1 += k2;
+            i2 += l2;
+            j2 += i3;
+            i5 = j2 >> 12;
+            if (i5 != 0) {
+                i4 = l1 / i5;
+                k4 = i2 / i5;
+                if (i4 < 7) {
+                    i4 = 7;
+                } else if (i4 > 4032) {
+                    i4 = 4032;
+                }
+            }
+            int i7 = i4 - rgb >> 3;
+            int k7 = k4 - loops >> 3;
+            rgb += (shadeValue & 0x600000) >> 3;
+            int i8 = shadeValue >> 23;
+            if (aBoolean1463) {
+                while (k3-- > 0) {
+                    for (int i = 0; i < 8; i++) {
+                        if (true) {
+                            drawAlpha(
+                                    dest,
+                                    dest_off,
+                                    texture[(loops & 0xfc0) + (rgb >> 6)] >>> i8,
+                                    255);
+                            Rasterizer2D.depthBuffer[dest_off] = depth;
+                        }
+                        dest_off++;
+                        depth += depth_slope;
+                        rgb += i7;
+                        loops += k7;
+                    }
+                    rgb = i4;
+                    loops = k4;
+                    l1 += k2;
+                    i2 += l2;
+                    j2 += i3;
+                    int j5 = j2 >> 12;
+                    if (j5 != 0) {
+                        i4 = l1 / j5;
+                        k4 = i2 / j5;
+                        if (i4 < 7) {
+                            i4 = 7;
+                        } else if (i4 > 4032) {
+                            i4 = 4032;
+                        }
+                    }
+                    i7 = i4 - rgb >> 3;
+                    k7 = k4 - loops >> 3;
+                    shadeValue += j3;
+                    rgb += (shadeValue & 0x600000) >> 3;
+                    i8 = shadeValue >> 23;
+                }
+                for (k3 = end_x - start_x & 7; k3-- > 0;) {
+                    if (true) {
+                        drawAlpha(
+                                dest,
+                                dest_off,
+                                texture[(loops & 0xfc0) + (rgb >> 6)] >>> i8,
+                                255);
+                        Rasterizer2D.depthBuffer[dest_off] = depth;
+                    }
+                    dest_off++;
+                    depth += depth_slope;
+                    rgb += i7;
+                    loops += k7;
+                }
+
+                return;
+            }
+            while (k3-- > 0) {
+                int k8;
+                for (int i = 0; i < 8; i++) {
+                    if ((k8 = texture[(loops & 0xfc0) + (rgb >> 6)] >>> i8) != 0) {
+                        drawAlpha(
+                                dest,
+                                dest_off,
+                                k8,
+                                255);
+                        Rasterizer2D.depthBuffer[dest_off] = depth;
+                    }
+                    dest_off++;
+                    depth += depth_slope;
+                    rgb += i7;
+                    loops += k7;
+                }
+
+                rgb = i4;
+                loops = k4;
+                l1 += k2;
+                i2 += l2;
+                j2 += i3;
+                int k5 = j2 >> 12;
+                if (k5 != 0) {
+                    i4 = l1 / k5;
+                    k4 = i2 / k5;
+                    if (i4 < 7) {
+                        i4 = 7;
+                    } else if (i4 > 4032) {
+                        i4 = 4032;
+                    }
+                }
+                i7 = i4 - rgb >> 3;
+                k7 = k4 - loops >> 3;
+                shadeValue += j3;
+                rgb += (shadeValue & 0x600000) >> 3;
+                i8 = shadeValue >> 23;
+            }
+            for (k3 = end_x - start_x & 7; k3-- > 0;) {
+                int l8;
+                if ((l8 = texture[(loops & 0xfc0) + (rgb >> 6)] >>> i8) != 0) {
+                    drawAlpha(
+                            dest,
+                            dest_off,
+                            l8,
+                            255);
+                    Rasterizer2D.depthBuffer[dest_off] = depth;
+                }
+                dest_off++;
+                depth += depth_slope;
+                rgb += i7;
+                loops += k7;
+            }
+
             return;
         }
-        n = x2 - x1 >> 3;
-        offset += x1;
-        z1 += z2 * x1;
         int j4 = 0;
         int l4 = 0;
-        int l6 = x1 - originViewX;
-        t1 += (t4 >> 3) * l6;
-        t2 += (t5 >> 3) * l6;
-        t3 += (t6 >> 3) * l6;
-        int l5 = t3 >> 14;
+        int l6 = start_x - originViewX;
+        l1 += (k2 >> 3) * l6;
+        i2 += (l2 >> 3) * l6;
+        j2 += (i3 >> 3) * l6;
+        int l5 = j2 >> 14;
         if (l5 != 0) {
-            darken = t1 / l5;
-            srcPos = t2 / l5;
-            if (darken < 0) {
-                darken = 0;
-            } else if (darken > 16256) {
-                darken = 16256;
+            rgb = l1 / l5;
+            loops = i2 / l5;
+            if (rgb < 0) {
+                rgb = 0;
+            } else if (rgb > 16256) {
+                rgb = 16256;
             }
         }
-        t1 += t4;
-        t2 += t5;
-        t3 += t6;
-        l5 = t3 >> 14;
+        l1 += k2;
+        i2 += l2;
+        j2 += i3;
+        l5 = j2 >> 14;
         if (l5 != 0) {
-            j4 = t1 / l5;
-            l4 = t2 / l5;
+            j4 = l1 / l5;
+            l4 = i2 / l5;
             if (j4 < 7) {
                 j4 = 7;
             } else if (j4 > 16256) {
                 j4 = 16256;
             }
         }
-        int j7 = j4 - darken >> 3;
-        int l7 = l4 - srcPos >> 3;
+        int j7 = j4 - rgb >> 3;
+        int l7 = l4 - loops >> 3;
+        rgb += shadeValue & 0x600000;
+        int j8 = shadeValue >> 23;
         if (aBoolean1463) {
-            while (n-- > 0) {
-                int rgb;
-                int l;
-                rgb = src[(srcPos & 0x3f80) + (darken >> 7)];
-                l = hsl1 >> 16;
-                dest[offset] = ((rgb & 0xff00ff) * l & ~0xff00ff) + ((rgb & 0xff00) * l & 0xff0000) >> 8;
-                if (saveDepth) {
-                    depthBuffer[offset] = z1;
+            while (k3-- > 0) {
+                for (int i = 0; i < 8; i++) {
+                    if (true) {
+                        drawAlpha(
+                                dest,
+                                dest_off,
+                                texture[(loops & 0x3f80) + (rgb >> 7)] >>> j8,
+                                255);
+                        Rasterizer2D.depthBuffer[dest_off] = depth;
+                    }
+                    depth += depth_slope;
+                    dest_off++;
+                    rgb += j7;
+                    loops += l7;
                 }
-                offset++;
-                z1 += z2;
-                darken += j7;
-                srcPos += l7;
-                hsl1 += dl;
-                rgb = src[(srcPos & 0x3f80) + (darken >> 7)];
-                l = hsl1 >> 16;
-                dest[offset] = ((rgb & 0xff00ff) * l & ~0xff00ff) + ((rgb & 0xff00) * l & 0xff0000) >> 8;
-                if (saveDepth) {
-                    depthBuffer[offset] = z1;
-                }
-                offset++;
-                z1 += z2;
-                darken += j7;
-                srcPos += l7;
-                hsl1 += dl;
-                rgb = src[(srcPos & 0x3f80) + (darken >> 7)];
-                l = hsl1 >> 16;
-                dest[offset] = ((rgb & 0xff00ff) * l & ~0xff00ff) + ((rgb & 0xff00) * l & 0xff0000) >> 8;
-                if (saveDepth) {
-                    depthBuffer[offset] = z1;
-                }
-                offset++;
-                z1 += z2;
-                darken += j7;
-                srcPos += l7;
-                hsl1 += dl;
-                rgb = src[(srcPos & 0x3f80) + (darken >> 7)];
-                l = hsl1 >> 16;
-                dest[offset] = ((rgb & 0xff00ff) * l & ~0xff00ff) + ((rgb & 0xff00) * l & 0xff0000) >> 8;
-                if (saveDepth) {
-                    depthBuffer[offset] = z1;
-                }
-                offset++;
-                z1 += z2;
-                darken += j7;
-                srcPos += l7;
-                hsl1 += dl;
-                rgb = src[(srcPos & 0x3f80) + (darken >> 7)];
-                l = hsl1 >> 16;
-                dest[offset] = ((rgb & 0xff00ff) * l & ~0xff00ff) + ((rgb & 0xff00) * l & 0xff0000) >> 8;
-                if (saveDepth) {
-                    depthBuffer[offset] = z1;
-                }
-                offset++;
-                z1 += z2;
-                darken += j7;
-                srcPos += l7;
-                hsl1 += dl;
-                rgb = src[(srcPos & 0x3f80) + (darken >> 7)];
-                l = hsl1 >> 16;
-                dest[offset] = ((rgb & 0xff00ff) * l & ~0xff00ff) + ((rgb & 0xff00) * l & 0xff0000) >> 8;
-                if (saveDepth) {
-                    depthBuffer[offset] = z1;
-                }
-                offset++;
-                z1 += z2;
-                darken += j7;
-                srcPos += l7;
-                hsl1 += dl;
-                rgb = src[(srcPos & 0x3f80) + (darken >> 7)];
-                l = hsl1 >> 16;
-                dest[offset] = ((rgb & 0xff00ff) * l & ~0xff00ff) + ((rgb & 0xff00) * l & 0xff0000) >> 8;
-                if (saveDepth) {
-                    depthBuffer[offset] = z1;
-                }
-                offset++;
-                z1 += z2;
-                darken += j7;
-                srcPos += l7;
-                hsl1 += dl;
-                rgb = src[(srcPos & 0x3f80) + (darken >> 7)];
-                l = hsl1 >> 16;
-                dest[offset] = ((rgb & 0xff00ff) * l & ~0xff00ff) + ((rgb & 0xff00) * l & 0xff0000) >> 8;
-                if (saveDepth) {
-                    depthBuffer[offset] = z1;
-                }
-                offset++;
-                z1 += z2;
-                darken += j7;
-                srcPos += l7;
-                hsl1 += dl;
-                t1 += t4;
-                t2 += t5;
-                t3 += t6;
-                int i6 = t3 >> 14;
+                rgb = j4;
+                loops = l4;
+                l1 += k2;
+                i2 += l2;
+                j2 += i3;
+                int i6 = j2 >> 14;
                 if (i6 != 0) {
-                    j4 = t1 / i6;
-                    l4 = t2 / i6;
+                    j4 = l1 / i6;
+                    l4 = i2 / i6;
                     if (j4 < 7) {
                         j4 = 7;
                     } else if (j4 > 16256) {
                         j4 = 16256;
                     }
                 }
-                j7 = j4 - darken >> 3;
-                l7 = l4 - srcPos >> 3;
-                hsl1 += dl;
+                j7 = j4 - rgb >> 3;
+                l7 = l4 - loops >> 3;
+                shadeValue += j3;
+                rgb += shadeValue & 0x600000;
+                j8 = shadeValue >> 23;
             }
-            for (n = x2 - x1 & 7; n-- > 0;) {
-                int rgb;
-                int l;
-                rgb = src[(srcPos & 0x3f80) + (darken >> 7)];
-                l = hsl1 >> 16;
-                dest[offset] = ((rgb & 0xff00ff) * l & ~0xff00ff) + ((rgb & 0xff00) * l & 0xff0000) >> 8;
-                if (saveDepth) {
-                    depthBuffer[offset] = z1;
+            for (k3 = end_x - start_x & 7; k3-- > 0;) {
+                if (true) {
+                    drawAlpha(
+                            dest,
+                            dest_off,
+                            texture[(loops & 0x3f80) + (rgb >> 7)] >>> j8,
+                            255);
+                    Rasterizer2D.depthBuffer[dest_off] = depth;
                 }
-                z1 += z2;
-                offset++;
-                darken += j7;
-                srcPos += l7;
-                hsl1 += dl;
+                dest_off++;
+                depth += depth_slope;
+                rgb += j7;
+                loops += l7;
             }
+
             return;
         }
-        while (n-- > 0) {
+        while (k3-- > 0) {
             int i9;
-            int l;
-            if ((i9 = src[(srcPos & 0x3f80) + (darken >> 7)]) != 0) {
-                l = hsl1 >> 16;
-                dest[offset] = ((i9 & 0xff00ff) * l & ~0xff00ff) + ((i9 & 0xff00) * l & 0xff0000) >> 8;
-                if (saveDepth) {
-                    depthBuffer[offset] = z1;
+            for (int i = 0; i < 8; i++) {
+                if ((i9 = texture[(loops & 0x3f80) + (rgb >> 7)] >>> j8) != 0) {
+                    drawAlpha(
+                            dest,
+                            dest_off,
+                            i9,
+                            255);
+                    Rasterizer2D.depthBuffer[dest_off] = depth;
                 }
+                dest_off++;
+                depth += depth_slope;
+                rgb += j7;
+                loops += l7;
             }
-            z1 += z2;
-            offset++;
-            darken += j7;
-            srcPos += l7;
-            hsl1 += dl;
-            if ((i9 = src[(srcPos & 0x3f80) + (darken >> 7)]) != 0) {
-                l = hsl1 >> 16;
-                dest[offset] = ((i9 & 0xff00ff) * l & ~0xff00ff) + ((i9 & 0xff00) * l & 0xff0000) >> 8;
-                if (saveDepth) {
-                    depthBuffer[offset] = z1;
-                }
-            }
-            z1 += z2;
-            offset++;
-            darken += j7;
-            srcPos += l7;
-            hsl1 += dl;
-            if ((i9 = src[(srcPos & 0x3f80) + (darken >> 7)]) != 0) {
-                l = hsl1 >> 16;
-                dest[offset] = ((i9 & 0xff00ff) * l & ~0xff00ff) + ((i9 & 0xff00) * l & 0xff0000) >> 8;
-                if (saveDepth) {
-                    depthBuffer[offset] = z1;
-                }
-            }
-            z1 += z2;
-            offset++;
-            darken += j7;
-            srcPos += l7;
-            hsl1 += dl;
-            if ((i9 = src[(srcPos & 0x3f80) + (darken >> 7)]) != 0) {
-                l = hsl1 >> 16;
-                dest[offset] = ((i9 & 0xff00ff) * l & ~0xff00ff) + ((i9 & 0xff00) * l & 0xff0000) >> 8;
-                if (saveDepth) {
-                    depthBuffer[offset] = z1;
-                }
-            }
-            z1 += z2;
-            offset++;
-            darken += j7;
-            srcPos += l7;
-            hsl1 += dl;
-            if ((i9 = src[(srcPos & 0x3f80) + (darken >> 7)]) != 0) {
-                l = hsl1 >> 16;
-                dest[offset] = ((i9 & 0xff00ff) * l & ~0xff00ff) + ((i9 & 0xff00) * l & 0xff0000) >> 8;
-                if (saveDepth) {
-                    depthBuffer[offset] = z1;
-                }
-            }
-            z1 += z2;
-            offset++;
-            darken += j7;
-            srcPos += l7;
-            hsl1 += dl;
-            if ((i9 = src[(srcPos & 0x3f80) + (darken >> 7)]) != 0) {
-                l = hsl1 >> 16;
-                dest[offset] = ((i9 & 0xff00ff) * l & ~0xff00ff) + ((i9 & 0xff00) * l & 0xff0000) >> 8;
-                if (saveDepth) {
-                    depthBuffer[offset] = z1;
-                }
-            }
-            z1 += z2;
-            offset++;
-            darken += j7;
-            srcPos += l7;
-            hsl1 += dl;
-            if ((i9 = src[(srcPos & 0x3f80) + (darken >> 7)]) != 0) {
-                l = hsl1 >> 16;
-                dest[offset] = ((i9 & 0xff00ff) * l & ~0xff00ff) + ((i9 & 0xff00) * l & 0xff0000) >> 8;
-                if (saveDepth) {
-                    depthBuffer[offset] = z1;
-                }
-            }
-            z1 += z2;
-            offset++;
-            darken += j7;
-            srcPos += l7;
-            hsl1 += dl;
-            if ((i9 = src[(srcPos & 0x3f80) + (darken >> 7)]) != 0) {
-                l = hsl1 >> 16;
-                dest[offset] = ((i9 & 0xff00ff) * l & ~0xff00ff) + ((i9 & 0xff00) * l & 0xff0000) >> 8;
-                if (saveDepth) {
-                    depthBuffer[offset] = z1;
-                }
-            }
-            z1 += z2;
-            offset++;
-            darken += j7;
-            srcPos += l7;
-            hsl1 += dl;
-            t1 += t4;
-            t2 += t5;
-            t3 += t6;
-            int j6 = t3 >> 14;
+            rgb = j4;
+            loops = l4;
+            l1 += k2;
+            i2 += l2;
+            j2 += i3;
+            int j6 = j2 >> 14;
             if (j6 != 0) {
-                j4 = t1 / j6;
-                l4 = t2 / j6;
+                j4 = l1 / j6;
+                l4 = i2 / j6;
                 if (j4 < 7) {
                     j4 = 7;
                 } else if (j4 > 16256) {
                     j4 = 16256;
                 }
             }
-            j7 = j4 - darken >> 3;
-            l7 = l4 - srcPos >> 3;
-            hsl1 += dl;
+            j7 = j4 - rgb >> 3;
+            l7 = l4 - loops >> 3;
+            shadeValue += j3;
+            rgb += shadeValue & 0x600000;
+            j8 = shadeValue >> 23;
         }
-        for (int l3 = x2 - x1 & 7; l3-- > 0;) {
+        for (int l3 = end_x - start_x & 7; l3-- > 0;) {
             int j9;
-            int l;
-            if ((j9 = src[(srcPos & 0x3f80) + (darken >> 7)]) != 0) {
-                l = hsl1 >> 16;
-                dest[offset] = ((j9 & 0xff00ff) * l & ~0xff00ff) + ((j9 & 0xff00) * l & 0xff0000) >> 8;
-                if (saveDepth) {
-                    depthBuffer[offset] = z1;
-                }
+            if ((j9 = texture[(loops & 0x3f80) + (rgb >> 7)] >>> j8) != 0) {
+                drawAlpha(
+                        dest,
+                        dest_off,
+                        j9,
+                        255);
+                Rasterizer2D.depthBuffer[dest_off] = depth;
             }
-            z1 += z2;
-            offset++;
-            darken += j7;
-            srcPos += l7;
-            hsl1 += dl;
+            depth += depth_slope;
+            dest_off++;
+            rgb += j7;
+            loops += l7;
         }
     }
 }

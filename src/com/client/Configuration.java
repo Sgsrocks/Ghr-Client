@@ -50,9 +50,9 @@ public class Configuration {
 
 	public static boolean 
 			repackIndexOne = false,
-			repackIndexTwo = true,
+			repackIndexTwo = false,
 			repackIndexThree = false,
-			repackIndexFour = true,
+			repackIndexFour = false,
 			repackIndexFive = false,
 			repackIndexSix = false;
 
