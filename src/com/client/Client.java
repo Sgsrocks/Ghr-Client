@@ -2237,7 +2237,7 @@ public class Client extends RSApplet {
             anInt985 = -1;
             aClass19_1056.removeAll();
             aClass19_1013.removeAll();
-            Rasterizer3D.method366();
+            Rasterizer3D.clearTextureCache();
             unlinkMRUNodes();
             worldController.initToNull();
             System.gc();
@@ -2411,7 +2411,7 @@ public class Client extends RSApplet {
         stream.createFrame(210);
         stream.writeDWord(0x3f008edd);
         System.gc();
-        Rasterizer3D.method367();
+        Rasterizer3D.initiateRequestBuffers();
         onDemandFetcher.method566();
 
         int k = (mapRegionsX - 6) / 8 - 1;
@@ -3411,13 +3411,14 @@ public class Client extends RSApplet {
         int k = variousSettings[i];
         if (j == 1) {
             if (k == 1)
-                Rasterizer3D.setBrightness(0.90000000000000002D);
+                Rasterizer3D.setBrightness(0.9);
+           // savePlayerData();
             if (k == 2)
-                Rasterizer3D.setBrightness(0.80000000000000004D);
+                Rasterizer3D.setBrightness(0.8);
             if (k == 3)
-                Rasterizer3D.setBrightness(0.69999999999999996D);
+                Rasterizer3D.setBrightness(0.7);
             if (k == 4)
-                Rasterizer3D.setBrightness(0.59999999999999998D);
+                Rasterizer3D.setBrightness(0.6);
             ItemDefinition.mruNodes1.unlinkAll();
             welcomeScreenRaised = true;
         }
@@ -4660,7 +4661,7 @@ public class Client extends RSApplet {
                 if (background_1 != null) {
                     int j5 = (class46_1.anInt744 * 4 - background_1.width) / 2;
                     int k5 = (class46_1.anInt761 * 4 - background_1.height) / 2;
-                    background_1.drawBackground(48 + l * 4 + j5, 48 + (104 - i - class46_1.anInt761) * 4 + k5);
+                    background_1.draw(48 + l * 4 + j5, 48 + (104 - i - class46_1.anInt761) * 4 + k5);
                 }
             } else if (j3 == 9) {
                 int l4 = 0xeeeeee;
@@ -4690,7 +4691,7 @@ public class Client extends RSApplet {
                 if (background != null) {
                     int i4 = (class46.anInt744 * 4 - background.width) / 2;
                     int j4 = (class46.anInt761 * 4 - background.height) / 2;
-                    background.drawBackground(48 + l * 4 + i4, 48 + (104 - i - class46.anInt761) * 4 + j4);
+                    background.draw(48 + l * 4 + i4, 48 + (104 - i - class46.anInt761) * 4 + j4);
                 }
             }
         }
@@ -5244,16 +5245,16 @@ public class Client extends RSApplet {
                 super.clickMode3 = 0;
             }
         }
-        if (WorldController.anInt470 != -1) {
-            int k = WorldController.anInt470;
-            int k1 = WorldController.anInt471;
+        if (WorldController.clickedTileX != -1) {
+            int k = WorldController.clickedTileX;
+            int k1 = WorldController.clickedTileY;
             boolean flag = false;
             if (myPlayer.getRights() == 3 && controlIsDown) {
                 teleport(baseX + k, baseY + k1);
             } else {
                 flag = doWalkTo(0, 0, 0, 0, myPlayer.smallY[0], 0, 0, k1, myPlayer.smallX[0], true, k);
             }
-            WorldController.anInt470 = -1;
+            WorldController.clickedTileX = -1;
             if (flag) {
                 crossX = super.saveClickX;
                 crossY = super.saveClickY;
@@ -12162,13 +12163,13 @@ public class Client extends RSApplet {
                 if (mapFunctions[i6] != null)
                     mapFunctions[i6].method344(i5 + l5, j5 + l5, k5 + l5);
                 if (mapScenes[i6] != null)
-                    mapScenes[i6].method360(i5 + l5, j5 + l5, k5 + l5);
+                    mapScenes[i6].offsetColor(i5 + l5, j5 + l5, k5 + l5);
             }
 
             drawLoadingText(83, "Unpacking textures");
             Rasterizer3D.loadTextures(streamLoader_3);
             Rasterizer3D.setBrightness(0.80000000000000004D);
-            Rasterizer3D.method367();
+            Rasterizer3D.initiateRequestBuffers();
             drawLoadingText(83, "Unpacking config");
             AnimationDefinition.unpackConfig(streamLoader);
             ObjectDefinition.unpackConfig(streamLoader);
@@ -15742,7 +15743,7 @@ public class Client extends RSApplet {
     private void drawLoginScreen(boolean flag) {
         resetImageProducers();
         aRSImageProducer_1109.initDrawingArea();
-        titleBox.drawBackground(0, 0);
+        titleBox.draw(0, 0);
         char c = '\u0168';
         char c1 = '\310';
         if (loginScreenState == 0) {
@@ -15753,10 +15754,10 @@ public class Client extends RSApplet {
             i += 30;
             int l = c / 2 - 80;
             int k1 = c1 / 2 + 20;
-            titleButton.drawBackground(l - 73, k1 - 20);
+            titleButton.draw(l - 73, k1 - 20);
             chatTextDrawingArea.method382(0xffffff, l, "New User", k1 + 5, true);
             l = c / 2 + 80;
-            titleButton.drawBackground(l - 73, k1 - 20);
+            titleButton.draw(l - 73, k1 - 20);
             chatTextDrawingArea.method382(0xffffff, l, "Existing User", k1 + 5, true);
         }
         if (loginScreenState == 2) {
@@ -15778,10 +15779,10 @@ public class Client extends RSApplet {
             if (!flag) {
                 int i1 = c / 2 - 80;
                 int l1 = c1 / 2 + 50;
-                titleButton.drawBackground(i1 - 73, l1 - 20);
+                titleButton.draw(i1 - 73, l1 - 20);
                 chatTextDrawingArea.method382(0xffffff, i1, "Login", l1 + 5, true);
                 i1 = c / 2 + 80;
-                titleButton.drawBackground(i1 - 73, l1 - 20);
+                titleButton.draw(i1 - 73, l1 - 20);
                 chatTextDrawingArea.method382(0xffffff, i1, "Cancel", l1 + 5, true);
             }
         }
@@ -15798,7 +15799,7 @@ public class Client extends RSApplet {
             k += 15;
             int j1 = c / 2;
             int i2 = c1 / 2 + 50;
-            titleButton.drawBackground(j1 - 73, i2 - 20);
+            titleButton.draw(j1 - 73, i2 - 20);
             chatTextDrawingArea.method382(0xffffff, j1, "Cancel", i2 + 5, true);
         }
         aRSImageProducer_1109.drawGraphics(202, 171, super.graphics);

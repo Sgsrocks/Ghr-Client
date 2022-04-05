@@ -1169,8 +1169,8 @@ public final class ItemDefinition {
 		return enabledSprite;
 	}
 
-	public static Sprite getSprite(int itemId, int itemAmount, int highlightColor) {
-		if (highlightColor == 0) {
+	public static Sprite getSprite(int itemId, int itemAmount, int outlineColor) {
+		if (outlineColor == 0) {
 			Sprite sprite = (Sprite) mruNodes1.insertFromCache(itemId);
 			if (sprite != null && sprite.maxHeight != itemAmount && sprite.maxHeight != -1) {
 				sprite.unlink();
@@ -1233,9 +1233,9 @@ public final class ItemDefinition {
 			sprite.maxHeight = j6;
 		}
 		int k3 = itemDef.spriteScale;
-		if (highlightColor == -1)
+		if (outlineColor == -1)
 			k3 = (int) ((double) k3 * 1.5D);
-		if (highlightColor > 0)
+		if (outlineColor > 0)
 			k3 = (int) ((double) k3 * 1.04D);
         int l3 = Rasterizer3D.anIntArray1470[itemDef.spritePitch] * k3 >> 16;
         int i4 = Rasterizer3D.COSINE[itemDef.spritePitch] * k3 >> 16;
@@ -1255,22 +1255,22 @@ public final class ItemDefinition {
 
 		}
 
-		if (highlightColor > 0) {
+		if (outlineColor > 0) {
 			for (int j5 = 31; j5 >= 0; j5--) {
 				for (int k4 = 31; k4 >= 0; k4--)
 					if (sprite2.myPixels[j5 + k4 * 32] == 0)
 						if (j5 > 0 && sprite2.myPixels[(j5 - 1) + k4 * 32] == 1)
-							sprite2.myPixels[j5 + k4 * 32] = highlightColor;
+							sprite2.myPixels[j5 + k4 * 32] = outlineColor;
 						else if (k4 > 0 && sprite2.myPixels[j5 + (k4 - 1) * 32] == 1)
-							sprite2.myPixels[j5 + k4 * 32] = highlightColor;
+							sprite2.myPixels[j5 + k4 * 32] = outlineColor;
 						else if (j5 < 31 && sprite2.myPixels[j5 + 1 + k4 * 32] == 1)
-							sprite2.myPixels[j5 + k4 * 32] = highlightColor;
+							sprite2.myPixels[j5 + k4 * 32] = outlineColor;
 						else if (k4 < 31 && sprite2.myPixels[j5 + (k4 + 1) * 32] == 1)
-							sprite2.myPixels[j5 + k4 * 32] = highlightColor;
+							sprite2.myPixels[j5 + k4 * 32] = outlineColor;
 
 			}
 
-		} else if (highlightColor == 0) {
+		} else if (outlineColor == 0) {
 			for (int k5 = 31; k5 >= 0; k5--) {
 				for (int l4 = 31; l4 >= 0; l4--)
 					if (sprite2.myPixels[k5 + l4 * 32] == 0 && k5 > 0 && l4 > 0
@@ -1298,8 +1298,16 @@ public final class ItemDefinition {
 			sprite.maxWidth = l5;
 			sprite.maxHeight = j6;
 		}
-		if (highlightColor == 0)
+		if (outlineColor == 0) {
 			mruNodes1.removeFromCache(sprite2, itemId);
+		}
+		sprite2.outline(1);
+		if (outlineColor > 0) {
+			sprite2.outline(16777215);
+		}
+		if (outlineColor == 0) {
+			sprite2.shadow(3153952);
+		}
 		Rasterizer2D.initDrawingArea(j2, i2, ai1, new float[1024]);
 		Rasterizer2D.setDrawingArea(j3, k2, l2, i3);
 		Rasterizer3D.originViewX = k1;

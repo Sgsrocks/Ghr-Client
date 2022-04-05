@@ -33,7 +33,39 @@ public class Sprite extends Rasterizer2D {
 		myHeight = maxHeight = j;
 		anInt1442 = anInt1443 = 0;
 	}
-	
+	public void outline(int color) {
+		int[] raster = new int[myWidth * myHeight];
+		int start = 0;
+		for(int y = 0; y < myHeight; y++) {
+			for(int x = 0; x < myWidth; x++) {
+				int outline = myPixels[start];
+				if(outline == 0) {
+					if(x > 0 && myPixels[start - 1] != 0) {
+						outline = color;
+					} else if(y > 0 && myPixels[start - myWidth] != 0) {
+						outline = color;
+					} else if(x < myWidth - 1 && myPixels[start + 1] != 0) {
+						outline = color;
+					} else if(y < myHeight - 1 && myPixels[start + myWidth] != 0) {
+						outline = color;
+					}
+				}
+				raster[start++] = outline;
+			}
+		}
+		myPixels = raster;
+	}
+
+	public void shadow(int color) {
+		for(int y = myHeight - 1; y > 0; y--) {
+			int pos = y * myWidth;
+			for(int x = myWidth - 1; x > 0; x--) {
+				if(myPixels[x + pos] == 0 && myPixels[x + pos - 1 - myWidth] != 0) {
+					myPixels[x + pos] = color;
+				}
+			}
+		}
+	}
 	public static Sprite getEmptySprite(int width, int height) {
 		Sprite sprite = new Sprite(width, height);
 		sprite.setTransparency(255, 0, 255);

@@ -330,8 +330,8 @@ public final class ObjectDefinition {
 		}
 		
 		if (originalTexture != null) {
-			for (int k2 = 0; k2 < originalTexture.length; k2++)
-				model_3.retexture(originalTexture[k2], modifiedTexture[k2]);
+			for (int k2 = 0; k2 < modifiedTexture.length; k2++)
+				model_3.retexture(modifiedTexture[k2], originalTexture[k2]);
 
 		}
 

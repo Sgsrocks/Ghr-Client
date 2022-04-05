@@ -47,41 +47,6 @@ public final class IndexedImage extends Rasterizer2D {
 		}
 	}
 
-	public void method356() {
-		resizeWidth /= 2;
-		resizeHeight /= 2;
-		byte abyte0[] = new byte[resizeWidth * resizeHeight];
-		int i = 0;
-		for (int j = 0; j < height; j++) {
-			for (int k = 0; k < width; k++)
-				abyte0[(k + drawOffsetX >> 1) + (j + drawOffsetY >> 1) * resizeWidth] = palettePixels[i++];
-
-		}
-
-		palettePixels = abyte0;
-		width = resizeWidth;
-		height = resizeHeight;
-		drawOffsetX = 0;
-		drawOffsetY = 0;
-	}
-
-	public void method357() {
-		if (width == resizeWidth && height == resizeHeight)
-			return;
-		byte abyte0[] = new byte[resizeWidth * resizeHeight];
-		int i = 0;
-		for (int j = 0; j < height; j++) {
-			for (int k = 0; k < width; k++)
-				abyte0[k + drawOffsetX + (j + drawOffsetY) * resizeWidth] = palettePixels[i++];
-
-		}
-
-		palettePixels = abyte0;
-		width = resizeWidth;
-		height = resizeHeight;
-		drawOffsetX = 0;
-		drawOffsetY = 0;
-	}
 	public void downscale() {
 		resizeWidth /= 2;
 		resizeHeight /= 2;
@@ -120,135 +85,152 @@ public final class IndexedImage extends Rasterizer2D {
 		drawOffsetY = 0;
 	}
 
-	public void method358() {
-		byte abyte0[] = new byte[width * height];
-		int j = 0;
-		for (int k = 0; k < height; k++) {
-			for (int l = width - 1; l >= 0; l--)
-				abyte0[j++] = palettePixels[l + k * width];
-
+	public void flipHorizontally() {
+		byte raster[] = new byte[width * height];
+		int pixel = 0;
+		for (int y = 0; y < height; y++) {
+			for (int x = width - 1; x >= 0; x--) {
+				raster[pixel++] = raster[x + y * width];
+			}
 		}
-
-		palettePixels = abyte0;
+		this.palettePixels = raster;
 		drawOffsetX = resizeWidth - width - drawOffsetX;
 	}
 
-	public void method359() {
-		byte abyte0[] = new byte[width * height];
-		int i = 0;
-		for (int j = height - 1; j >= 0; j--) {
-			for (int k = 0; k < width; k++)
-				abyte0[i++] = palettePixels[k + j * width];
-
+	public void flipVertically() {
+		byte raster[] = new byte[width * height];
+		int pixel = 0;
+		for (int y = height - 1; y >= 0; y--) {
+			for (int x = 0; x < width; x++) {
+				raster[pixel++] = raster[x + y * width];
+			}
 		}
-
-		palettePixels = abyte0;
+		this.palettePixels = raster;
 		drawOffsetY = resizeHeight - height - drawOffsetY;
 	}
 
-	public void method360(int i, int j, int k) {
-		for (int i1 = 0; i1 < palette.length; i1++) {
-			int j1 = palette[i1] >> 16 & 0xff;
-			j1 += i;
-			if (j1 < 0)
-				j1 = 0;
-			else if (j1 > 255)
-				j1 = 255;
-			int k1 = palette[i1] >> 8 & 0xff;
-			k1 += j;
-			if (k1 < 0)
-				k1 = 0;
-			else if (k1 > 255)
-				k1 = 255;
-			int l1 = palette[i1] & 0xff;
-			l1 += k;
-			if (l1 < 0)
-				l1 = 0;
-			else if (l1 > 255)
-				l1 = 255;
-			palette[i1] = (j1 << 16) + (k1 << 8) + l1;
+	public void offsetColor(int redOffset, int greenOffset, int blueOffset) {
+		for (int index = 0; index < palette.length; index++) {
+			int red = palette[index] >> 16 & 0xff;
+			red += redOffset;
+
+			if (red < 0) {
+				red = 0;
+			} else if (red > 255) {
+				red = 255;
+			}
+
+			int green = palette[index] >> 8 & 0xff;
+
+			green += greenOffset;
+			if (green < 0) {
+				green = 0;
+			} else if (green > 255) {
+				green = 255;
+			}
+
+			int blue = palette[index] & 0xff;
+
+			blue += blueOffset;
+			if (blue < 0) {
+				blue = 0;
+			} else if (blue > 255) {
+				blue = 255;
+			}
+			palette[index] = (red << 16) + (green << 8) + blue;
 		}
 	}
 
-	public void drawBackground(int i, int k) {
-		i += drawOffsetX;
-		k += drawOffsetY;
-		int l = i + k * Rasterizer2D.width;
-		int i1 = 0;
-		int j1 = height;
-		int k1 = width;
-		int l1 = Rasterizer2D.width - k1;
-		int i2 = 0;
-		if (k < Rasterizer2D.clip_top) {
-			int j2 = Rasterizer2D.clip_top - k;
-			j1 -= j2;
-			k = Rasterizer2D.clip_top;
-			i1 += j2 * k1;
-			l += j2 * Rasterizer2D.width;
+	public void draw(int x, int y) {
+		x += drawOffsetX;
+		y += drawOffsetY;
+		int destOffset = x + y * Rasterizer2D.width;
+		int sourceOffset = 0;
+		int height = this.height;
+		int width = this.width;
+		int destStep = Rasterizer2D.width - width;
+		int sourceStep = 0;
+
+		if (y < Rasterizer2D.clip_top) {
+			int dy = Rasterizer2D.clip_top - y;
+			height -= dy;
+			y = Rasterizer2D.clip_top;
+			sourceOffset += dy * width;
+			destOffset += dy * Rasterizer2D.width;
 		}
-		if (k + j1 > Rasterizer2D.clip_bottom)
-			j1 -= (k + j1) - Rasterizer2D.clip_bottom;
-		if (i < Rasterizer2D.clip_left) {
-			int k2 = Rasterizer2D.clip_left - i;
-			k1 -= k2;
-			i = Rasterizer2D.clip_left;
-			i1 += k2;
-			l += k2;
-			i2 += k2;
-			l1 += k2;
+
+		if (y + height > Rasterizer2D.clip_bottom) {
+			height -= (y + height) - Rasterizer2D.clip_bottom;
 		}
-		if (i + k1 > Rasterizer2D.clip_right) {
-			int l2 = (i + k1) - Rasterizer2D.clip_right;
-			k1 -= l2;
-			i2 += l2;
-			l1 += l2;
+
+		if (x < Rasterizer2D.clip_left) {
+			int k2 = Rasterizer2D.clip_left - x;
+			width -= k2;
+			x = Rasterizer2D.clip_left;
+			sourceOffset += k2;
+			destOffset += k2;
+			sourceStep += k2;
+			destStep += k2;
 		}
-		if (!(k1 <= 0 || j1 <= 0)) {
-			method362(j1, Rasterizer2D.pixels, palettePixels, l1, l, k1, i1,
-                    palette, i2);
+
+		if (x + width > Rasterizer2D.clip_right) {
+			int dx = (x + width) - Rasterizer2D.clip_right;
+			width -= dx;
+			sourceStep += dx;
+			destStep += dx;
 		}
+
+		if (!(width <= 0 || height <= 0)) {
+			draw(height, Rasterizer2D.pixels, palettePixels, destStep, destOffset, width, sourceOffset,
+					palette, sourceStep);
+		}
+
 	}
 
-	private void method362(int i, int ai[], byte abyte0[], int j, int k, int l,
-			int i1, int ai1[], int j1) {
-		int k1 = -(l >> 2);
-		l = -(l & 3);
-		for (int l1 = -i; l1 < 0; l1++) {
-			for (int i2 = k1; i2 < 0; i2++) {
-				byte byte1 = abyte0[i1++];
-				if (byte1 != 0)
-					ai[k++] = ai1[byte1 & 0xff];
-				else
-					k++;
-				byte1 = abyte0[i1++];
-				if (byte1 != 0)
-					ai[k++] = ai1[byte1 & 0xff];
-				else
-					k++;
-				byte1 = abyte0[i1++];
-				if (byte1 != 0)
-					ai[k++] = ai1[byte1 & 0xff];
-				else
-					k++;
-				byte1 = abyte0[i1++];
-				if (byte1 != 0)
-					ai[k++] = ai1[byte1 & 0xff];
-				else
-					k++;
-			}
+	private void draw(int i, int raster[], byte image[], int destStep, int destIndex, int width,
+					  int sourceIndex, int ai1[], int sourceStep) {
+		int minX = -(width >> 2);
+		width = -(width & 3);
+		for (int y = -i; y < 0; y++) {
+			for (int x = minX; x < 0; x++) {
 
-			for (int j2 = l; j2 < 0; j2++) {
-				byte byte2 = abyte0[i1++];
-				if (byte2 != 0)
-					ai[k++] = ai1[byte2 & 0xff];
-				else
-					k++;
-			}
+				byte pixel = image[sourceIndex++];
 
-			k += j;
-			i1 += j1;
+				if (pixel != 0) {
+					raster[destIndex++] = ai1[pixel & 0xff];
+				} else {
+					destIndex++;
+				}
+				pixel = image[sourceIndex++];
+				if (pixel != 0) {
+					raster[destIndex++] = ai1[pixel & 0xff];
+				} else {
+					destIndex++;
+				}
+				pixel = image[sourceIndex++];
+				if (pixel != 0) {
+					raster[destIndex++] = ai1[pixel & 0xff];
+				} else {
+					destIndex++;
+				}
+				pixel = image[sourceIndex++];
+				if (pixel != 0) {
+					raster[destIndex++] = ai1[pixel & 0xff];
+				} else {
+					destIndex++;
+				}
+			}
+			for (int x = width; x < 0; x++) {
+				byte pixel = image[sourceIndex++];
+				if (pixel != 0) {
+					raster[destIndex++] = ai1[pixel & 0xff];
+				} else {
+					destIndex++;
+				}
+			}
+			destIndex += destStep;
+			sourceIndex += sourceStep;
 		}
-
 	}
 
 	public void setTransparency(int transRed, int transGreen, int transBlue) {

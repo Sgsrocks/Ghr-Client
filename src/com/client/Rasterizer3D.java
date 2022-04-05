@@ -1,6 +1,5 @@
 package com.client;
 
-import static com.client.ObjectManager.lowMem;
 
 public final class Rasterizer3D extends Rasterizer2D {
 
@@ -12,6 +11,7 @@ public final class Rasterizer3D extends Rasterizer2D {
     private static boolean aBoolean1463;
     public static boolean aBoolean1464 = true;
     public static int alpha;
+    public static boolean lowMem = false;
     public static int originViewX;
     public static int originViewY;
     public static int textureInt3;
@@ -45,11 +45,10 @@ public final class Rasterizer3D extends Rasterizer2D {
             anIntArray1469[j] = 0x10000 / j;
         }
         for (int k = 0; k < 2048; k++) {
-            anIntArray1470[k] = (int) (65536D * Math.sin((double) k * 0.0030679614999999999D));
-            COSINE[k] = (int) (65536D * Math.cos((double) k * 0.0030679614999999999D));
+            anIntArray1470[k] = (int) (65536D * Math.sin(k * 0.0030679614999999999D));
+            COSINE[k] = (int) (65536D * Math.cos(k * 0.0030679614999999999D));
         }
     }
-
     public static void nullLoader() {
         anIntArray1468 = null;
         anIntArray1468 = null;
@@ -65,7 +64,13 @@ public final class Rasterizer3D extends Rasterizer2D {
         hslToRgb = null;
         currentPalette = null;
     }
+    public static double getBrightness() {
+        return brightness;
+    }
 
+    public static void setBrightnesss(final double b) {
+        brightness = b;
+    }
     public static void useViewport() {
         scanOffsets = new int[Rasterizer2D.height];
         for (int j = 0; j < Rasterizer2D.height; j++) {
@@ -168,23 +173,26 @@ public final class Rasterizer3D extends Rasterizer2D {
         }
     }
 
-    public static void method366() {
+    public static void clearTextureCache() {
         textureRequestPixelBuffer = null;
         for (int j = 0; j < textureAmount; j++) {
             texturesPixelBuffer[j] = null;
         }
     }
 
-    public static void method367() {
+    public static void initiateRequestBuffers() {
         if (textureRequestPixelBuffer == null) {
             textureRequestBufferPointer = 20;
-            textureRequestPixelBuffer = new int[textureRequestBufferPointer][0x10000];
-            for (int k = 0; k < textureAmount; k++) {
-                texturesPixelBuffer[k] = null;
+            if (lowMem) {
+                textureRequestPixelBuffer = new int[textureRequestBufferPointer][16384];
+            } else {
+                textureRequestPixelBuffer = new int[textureRequestBufferPointer][0x10000];
+            }
+            for (int i = 0; i < textureAmount; i++) {
+                texturesPixelBuffer[i] = null;
             }
         }
     }
-
     public static void loadTextures(FileArchive archive) {
         textureCount = 0;
         for (int index = 0; index < textureAmount; index++) {
@@ -225,17 +233,6 @@ public final class Rasterizer3D extends Rasterizer2D {
         return color;
     }
 
-    public static void method370(int texture) {
-        try {
-            if (texturesPixelBuffer[texture] == null) {
-                return;
-            }
-            textureRequestPixelBuffer[textureRequestBufferPointer++] = texturesPixelBuffer[texture];
-            texturesPixelBuffer[texture] = null;
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
     public static int getOverallColour(int textureId) {
         if (averageTextureColours[textureId] != 0) {
             return averageTextureColours[textureId];
@@ -430,17 +427,17 @@ public final class Rasterizer3D extends Rasterizer2D {
 
     }
 
-    static int adjustBrightness(int color, double amt) {
-        double red = (color >> 16) / 256D;
-        double green = (color >> 8 & 0xff) / 256D;
-        double blue = (color & 0xff) / 256D;
-        red = Math.pow(red, amt);
-        green = Math.pow(green, amt);
-        blue = Math.pow(blue, amt);
-        final int red2 = (int) (red * 256D);
-        final int green2 = (int) (green * 256D);
-        final int blue2 = (int) (blue * 256D);
-        return (red2 << 16) + (green2 << 8) + blue2;
+    private static int adjustBrightness(int rgb, double intensity) {
+        double r = (rgb >> 16) / 256D;
+        double g = (rgb >> 8 & 0xff) / 256D;
+        double b = (rgb & 0xff) / 256D;
+        r = Math.pow(r, intensity);
+        g = Math.pow(g, intensity);
+        b = Math.pow(b, intensity);
+        int r_byte = (int) (r * 256D);
+        int g_byte = (int) (g * 256D);
+        int b_byte = (int) (b * 256D);
+        return (r_byte << 16) + (g_byte << 8) + b_byte;
     }
 
     public static boolean enableHDTextures = false;
