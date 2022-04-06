@@ -7706,8 +7706,8 @@ public class Client extends RSApplet {
         ObjectDefinition.nullLoader();
         NpcDefinition.nullLoader();
         ItemDefinition.nullLoader();
-        FloorUnderlayDefinition.underlays = null;
-        FloorOverlayDefinition.overlays = null;
+        FloorDefinition.underlays = null;
+        FloorDefinition.overlays = null;
         IdentityKit.cache = null;
         RSInterface.interfaceCache = null;
         DummyClass.cache = null;
@@ -12173,7 +12173,7 @@ public class Client extends RSApplet {
             drawLoadingText(83, "Unpacking config");
             AnimationDefinition.unpackConfig(streamLoader);
             ObjectDefinition.unpackConfig(streamLoader);
-            FloorUnderlayDefinition.unpackConfig(streamLoader);
+            FloorDefinition.init(streamLoader);
             //FloorOverlayDefinition.unpackConfig(streamLoader);
             ItemDefinition.unpackConfig(streamLoader);
             NpcDefinition.unpackConfig(streamLoader);

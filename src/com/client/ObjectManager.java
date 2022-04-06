@@ -5,8 +5,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import com.client.definitions.FloorOverlayDefinition;
-import com.client.definitions.FloorUnderlayDefinition;
+import com.client.definitions.FloorDefinition;
 import com.client.definitions.ObjectDefinition;
 
 /**
@@ -141,7 +140,7 @@ final class ObjectManager {
 					if (xForwardOffset < regionSizeX) {
 						int underlayId = underlays[l][xForwardOffset][z] & 0xff;
 						if (underlayId > 0) {
-							FloorUnderlayDefinition flo = FloorUnderlayDefinition.underlays[underlayId - 1];
+							FloorDefinition flo = FloorDefinition.underlays[underlayId - 1];
 							hues[z] += flo.blendHue;
 							saturations[z] += flo.saturation;
 							luminances[z] += flo.luminance;
@@ -153,7 +152,7 @@ final class ObjectManager {
 					if (xBackwardOffset >= 0) {
 						int underlayId = underlays[l][xBackwardOffset][z] & 0xff;
 						if (underlayId > 0) {
-							FloorUnderlayDefinition flo_1 = FloorUnderlayDefinition.underlays[underlayId - 1];
+							FloorDefinition flo_1 = FloorDefinition.underlays[underlayId - 1];
 							hues[z] -= flo_1.blendHue;
 							saturations[z] -= flo_1.saturation;
 							luminances[z] -= flo_1.luminance;
@@ -189,7 +188,7 @@ final class ObjectManager {
 							int hue = (hueSum * 256) / dividerSum;
 							int sat = saturationSum / sizeSum;
 							int light = lightnessSum / sizeSum;
-							paletteIndices[x][z] = FloorOverlayDefinition.hsl24to16(hue, sat, light);
+							paletteIndices[x][z] = FloorDefinition.hsl24to16(hue, sat, light);
 						}
 					}
 				}
@@ -255,7 +254,7 @@ final class ObjectManager {
 									occlude = false;
 								}
 
-								if (overlayA > 0 && !FloorOverlayDefinition.overlays[overlayA - 1].occlude) {
+								if (overlayA > 0 && !FloorDefinition.overlays[overlayA - 1].occlude) {
 									occlude = false;
 								}
 
@@ -279,15 +278,15 @@ final class ObjectManager {
 							} else {
 								int shape = overlayTypes[l][x][z] + 1;
 								byte angle = overlayOrientations[l][x][z];
-								if (overlayA - 1 > FloorOverlayDefinition.overlays.length) {
-									overlayA = FloorOverlayDefinition.overlays.length;
+								if (overlayA - 1 > FloorDefinition.overlays.length) {
+									overlayA = FloorDefinition.overlays.length;
 								}
-								FloorOverlayDefinition def_over = FloorOverlayDefinition.overlays[overlayA - 1];
+								FloorDefinition def_over = FloorDefinition.overlays[overlayA - 1];
 								int textureId = def_over.texture;
 								int floorId;
 								int minimapColor;
-								if (textureId == 51) {
-									textureId = 3;
+								if (textureId > 50) {
+									textureId = -1;
 								}
 								if (textureId >= 0) {
 									minimapColor = Rasterizer3D.getOverallColour(textureId);

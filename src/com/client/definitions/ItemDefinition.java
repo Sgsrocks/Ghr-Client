@@ -45,7 +45,7 @@ public final class ItemDefinition {
 		for (int index = 0; index < 10; index++) {
 			cache[index] = new ItemDefinition();
 		}
-
+		dumpList();
 	}
 
 	public static ItemDefinition forID(int itemId) {
@@ -298,13 +298,17 @@ public final class ItemDefinition {
 	   }
 	   }
 	private static void customItems(int itemId) {
-		ItemDefinition itemDef = forID(itemId);
-		ItemDefinition_Sub1.itemDef(itemId, itemDef);
-		ItemDefinition_Sub1_Sub1.itemDef(itemId, itemDef);
-		ItemDefinition_Sub2.itemDef(itemId, itemDef);
-		ItemDefinition_Sub2_Sub1.itemDef(itemId, itemDef);
-		 ItemDefinition_Sub3.itemDef(itemId, itemDef);
-		ItemDefinition_Sub4.itemDef(itemId, itemDef);
+	   	try {
+			ItemDefinition itemDef = forID(itemId);
+			ItemDefinition_Sub1.itemDef(itemId, itemDef);
+			ItemDefinition_Sub1_Sub1.itemDef(itemId, itemDef);
+			ItemDefinition_Sub2.itemDef(itemId, itemDef);
+			ItemDefinition_Sub2_Sub1.itemDef(itemId, itemDef);
+			ItemDefinition_Sub3.itemDef(itemId, itemDef);
+			ItemDefinition_Sub4.itemDef(itemId, itemDef);
+		} catch (ArrayIndexOutOfBoundsException e){
+	   		e.printStackTrace();
+		}
 		switch (itemId) {
 		}
 	}
@@ -337,8 +341,8 @@ public final class ItemDefinition {
 		spriteTranslateY = itemcomposition_1.spriteTranslateY;
 		originalModelColors = itemcomposition_1.originalModelColors;
 		modifiedModelColors = itemcomposition_1.modifiedModelColors;
-		//textureToReplace = itemcomposition_1.textureToReplace;
-		//textToReplaceWith = itemcomposition_1.textToReplaceWith;
+		originalTextureColors = itemcomposition_1.originalTextureColors;
+		modifiedTextureColors = itemcomposition_1.modifiedTextureColors;
 		name = itemcomposition_2.name;
 		membersObject = itemcomposition_2.membersObject;
 		value = itemcomposition_2.value;
@@ -376,8 +380,8 @@ public final class ItemDefinition {
 		spriteTranslateY = var1.spriteTranslateY * 1;
 		originalModelColors = var2.originalModelColors;
 		modifiedModelColors = var2.modifiedModelColors;
-		// originalTextureColors = var2.originalTextureColors;
-		// modifiedTextureColors = var2.modifiedTextureColors;
+		 originalTextureColors = var2.originalTextureColors;
+		 modifiedTextureColors = var2.modifiedTextureColors;
 		name = var2.name;
 		membersObject = var2.membersObject;
 		stackable = var2.stackable;
@@ -611,9 +615,9 @@ public final class ItemDefinition {
 				model.recolor(modifiedModelColors[i1], originalModelColors[i1]);
 
 		}
-		if (originalTextureColors != null) {
-			for (int k2 = 0; k2 < originalTextureColors.length; k2++)
-				model.retexture(originalTextureColors[k2], modifiedTextureColors[k2]);
+		if (modifiedTextureColors != null) {
+			for (int k2 = 0; k2 < modifiedTextureColors.length; k2++)
+				model.retexture(modifiedTextureColors[k2], originalTextureColors[k2]);
 
 		}
 		return model;
@@ -993,7 +997,7 @@ public final class ItemDefinition {
 
 	public static void dumpList() {
 		try {
-			BufferedWriter fw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/198itemlist.txt"));
+			BufferedWriter fw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/204itemlist.txt"));
 			for (int i = 0; i < totalItems; i++) {
 				ItemDefinition itemDefinition = ItemDefinition.forID(i);
 				fw.write("id: " + itemDefinition.id + " - " + itemDefinition.name + "\n");
@@ -1352,7 +1356,11 @@ public final class ItemDefinition {
 		}
 		int lightInt = 64 + ambient;
 		int lightMag = 768 + contrast;
+		try {
 			model.light(lightInt, lightMag, -50, -10, -50, true);
+		} catch(ArrayIndexOutOfBoundsException e) {
+			e.printStackTrace();
+		}
 		model.fits_on_single_square = true;
 		mruNodes2.removeFromCache(model, id);
 		return model;

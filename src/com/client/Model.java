@@ -519,6 +519,7 @@ public class Model extends Renderable {
 
             }
         }
+        repeatTexture = model.repeatTexture;
         vertexData = model.vertexData;
         triangleData = model.triangleData;
         types = model.types;
@@ -596,6 +597,7 @@ public class Model extends Renderable {
         verticesZ = model.verticesZ;
         colors = model.colors;
         alphas = model.alphas;
+        repeatTexture = model.repeatTexture;
         face_render_priorities = model.face_render_priorities;
         face_priority = model.face_priority;
         trianglesX = model.trianglesX;
@@ -654,6 +656,7 @@ public class Model extends Renderable {
 
             }
         }
+        repeatTexture = model.repeatTexture;
         types = model.types;
         colors = model.colors;
         face_render_priorities = model.face_render_priorities;
@@ -1903,6 +1906,11 @@ public class Model extends Renderable {
         } else {
             Rasterizer3D.alpha = alphas[i];
         }
+        if (repeatTexture == null) {
+            Rasterizer3D.repeatTexture = false;
+        } else {
+            Rasterizer3D.repeatTexture = repeatTexture[i];
+        }
         int type;
         if (types == null) {
             type = 0;
@@ -2215,10 +2223,10 @@ public class Model extends Renderable {
     private boolean aBoolean1618;
     public static int anInt1620;
     public static Model EMPTY_MODEL = new Model(true);
-    private static int anIntArray1622[] = new int[4700];
-    private static int anIntArray1623[] = new int[4700];
-    private static int anIntArray1624[] = new int[4700];
-    private static int anIntArray1625[] = new int[4700];
+    private static int anIntArray1622[] = new int[8700];
+    private static int anIntArray1623[] = new int[8700];
+    private static int anIntArray1624[] = new int[8700];
+    private static int anIntArray1625[] = new int[8700];
     public int verticesCount;
     public int verticesX[];
     public int verticesY[];
@@ -2233,6 +2241,7 @@ public class Model extends Renderable {
     public int types[];
     public byte face_render_priorities[];
     public int alphas[];
+    public boolean repeatTexture[];
     public short colors[];
     public byte face_priority;
     public int texturesCount;
@@ -2258,15 +2267,15 @@ public class Model extends Renderable {
     public FaceNormal[] faceNormals;
     static ModelHeader aClass21Array1661[];
     static OnDemandFetcherParent resourceProvider;
-    static boolean hasAnEdgeToRestrict[] = new boolean[4700];
-    static boolean outOfReach[] = new boolean[4700];
-    static int projected_verticesX[] = new int[4700];
-    static int projected_verticesY[] = new int[4700];
-    static int projected_verticesZ[] = new int[4700];
-    static int anIntArray1668[] = new int[4700];
-    static int camera_verticesY[] = new int[4700];
-    static int viewportTextureZ[] = new int[4700];
-    static int camera_verticesZ[] = new int[4700];
+    static boolean hasAnEdgeToRestrict[] = new boolean[8700];
+    static boolean outOfReach[] = new boolean[8700];
+    static int projected_verticesX[] = new int[8700];
+    static int projected_verticesY[] = new int[8700];
+    static int projected_verticesZ[] = new int[8700];
+    static int anIntArray1668[] = new int[8700];
+    static int camera_verticesY[] = new int[8700];
+    static int viewportTextureZ[] = new int[8700];
+    static int camera_verticesZ[] = new int[8700];
     static int depthListIndices[] = new int[1600];
     static int faceLists[][] = new int[1600][512];
     static int anIntArray1673[] = new int[12];

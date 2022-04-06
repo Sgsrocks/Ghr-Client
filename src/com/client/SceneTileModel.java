@@ -1,10 +1,11 @@
 package com.client;
 
-final class ShapedTile {
+final class SceneTileModel {
 
-    public ShapedTile(int i, int j, int k, int l, int i1, int j1, int k1, int l1,
-                      int i2, int j2, int k2, int l2, int i3, int j3, int k3, int l3,
-                      int i4, int k4, int l4) {
+
+    public SceneTileModel(int i, int j, int k, int l, int i1, int j1, int k1, int l1,
+                          int i2, int j2, int k2, int l2, int i3, int j3, int k3, int l3,
+                          int i4, int k4, int l4) {
         flat = !(i3 != l2 || i3 != l || i3 != k2);
         shape = j3;
         rotation = k1;
@@ -214,11 +215,12 @@ final class ShapedTile {
     final int rotation;
     final int colourRGB;
     final int colourRGBA;
-    static final int[] screenX = new int[6];
-    static final int[] screenY = new int[6];
-    static final int[] viewSpaceX = new int[6];
-    static final int[] viewSpaceY = new int[6];
-    static final int[] viewSpaceZ = new int[6];
+    static final int[] anIntArray688 = new int[6];
+    static final int[] anIntArray689 = new int[6];
+    static final int[] anIntArray690 = new int[6];
+    static final int[] anIntArray691 = new int[6];
+    static final int[] anIntArray692 = new int[6];
+    static final int[] depthPoint = new int[6];
     static final int[] anIntArray693 = {1, 0};
     static final int[] anIntArray694 = {2, 1};
     static final int[] anIntArray695 = {3, 3};

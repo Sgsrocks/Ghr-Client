@@ -131,7 +131,7 @@ final class WorldController {
             tiles[i][j][k].aClass43_1311 = class43_1;
             return;
         }
-        ShapedTile class40 = new ShapedTile(k, k3, j3, i2, j1, i4, i1, k2, k4, i3,
+        SceneTileModel class40 = new SceneTileModel(k, k3, j3, i2, j1, i4, i1, k2, k4, i3,
                 j2, l1, k1, l, j4, l3, l2, j, l4);
         for (int k5 = i; k5 >= 0; k5--)
             if (tiles[k5][j][k] == null)
@@ -567,7 +567,7 @@ final class WorldController {
 	}
 
     public void method305(int i, int k, int i1) {
-    		int j = 100;
+    		int j = 64;
 		int l = 768;
 		int j1 = (int)Math.sqrt(k * k + i * i + i1 * i1);
 		int k1 = l * j1 >> 8;
@@ -821,7 +821,7 @@ final class WorldController {
 
             return;
         }
-        ShapedTile class40 = class30_sub3.aClass40_1312;
+        SceneTileModel class40 = class30_sub3.aClass40_1312;
         if (class40 == null)
             return;
         int l1 = class40.shape;
@@ -863,7 +863,7 @@ final class WorldController {
         viewportHeight = l;
         centerX = k / 2;
         centerY = l / 2;
-        boolean aflag[][][][] = new boolean[9][32][(300 * 2) + 3][(300 * 2) + 3];
+        boolean aflag[][][][] = new boolean[9][32][(25 * 2) + 3][(25 * 2) + 3];
         for (int i1 = 128; i1 <= 384; i1 += 32) {
             for (int j1 = 0; j1 < 2048; j1 += 64) {
                 camUpDownY = Model.SINE[i1];
@@ -954,18 +954,6 @@ final class WorldController {
     }
 
     public void method313(int i, int j, int k, int l, int i1, int j1) {
-        if (Rasterizer3D.saveDepth = Configuration.enableFogRendering) {
-            if (Rasterizer3D.depthBuffer == null
-                    || Rasterizer3D.depthBuffer.length != Rasterizer2D.pixels.length) {
-                Rasterizer3D.depthBuffer = new float[Rasterizer2D.pixels.length];
-            }
-            for (int index = Rasterizer3D.depthBuffer.length - 1; index >= 0; index--) {
-                Rasterizer3D.depthBuffer[index] = 3500F;// 3500 being the viewing
-                // distance
-            }
-        } else if (Rasterizer3D.depthBuffer != null) {
-            Rasterizer3D.depthBuffer = null;
-        }
         if (i < 0)
             i = 0;
         else if (i >= xRegionSize * 128)
@@ -1746,9 +1734,9 @@ final class WorldController {
             } else {
                 int i7 = TEXTURE_COLORS[class43.anInt720];
                 Rasterizer3D.drawShadedTriangle(j6, l6, l5, i6, k6, k5,
-                        method317(i7, class43.anInt718),
-                        method317(i7, class43.anInt719),
-                        method317(i7, class43.anInt717), k3, j3, j2);
+                        light(i7, class43.anInt718),
+                        light(i7, class43.anInt719),
+                        light(i7, class43.anInt717), k3, j3, j2);
             }
         }
         if ((i5 - k5) * (l6 - l5) - (j5 - l5) * (k6 - k5) > 0) {
@@ -1784,172 +1772,98 @@ final class WorldController {
                 }
                 int j7 = TEXTURE_COLORS[class43.anInt720];
                 Rasterizer3D.drawShadedTriangle(j5, l5, l6, i5, k5, k6,
-                        method317(j7, class43.anInt716),
-                        method317(j7, class43.anInt717),
-                        method317(j7, class43.anInt719), k2, j2, j3);
+                        light(j7, class43.anInt716),
+                        light(j7, class43.anInt717),
+                        light(j7, class43.anInt719), k2, j2, j3);
             }
         }
     }
 
-    private void method316(int i, int j, int k, ShapedTile shapedTile, int l,
+    private void method316(int i, int j, int k, SceneTileModel tile, int l,
                            int i1, int j1) {
-        int k1 = shapedTile.origVertexX.length;
+        int k1 = tile.origVertexX.length;
         for (int l1 = 0; l1 < k1; l1++) {
-            int i2 = shapedTile.origVertexX[l1] - cameraX2;
-            int k2 = shapedTile.origVertexY[l1] - cameraY2;
-            int i3 = shapedTile.origVertexZ[l1] - cameraZ2;
+            int i2 = tile.origVertexX[l1] - cameraX2;
+            int k2 = tile.origVertexY[l1] - cameraY2;
+            int i3 = tile.origVertexZ[l1] - cameraZ2;
             int k3 = i3 * k + i2 * j1 >> 16;
             i3 = i3 * j1 - i2 * k >> 16;
             i2 = k3;
             k3 = k2 * l - i3 * j >> 16;
             i3 = k2 * j + i3 * l >> 16;
             k2 = k3;
-            if (i3 < 50)
+            if (i3 < 50) {
                 return;
-            if (shapedTile.triangleTexture != null) {
-                shapedTile.viewSpaceX[l1] = i2;
-                shapedTile.viewSpaceY[l1] = k2;
-                shapedTile.viewSpaceZ[l1] = i3;
             }
-            shapedTile.screenX[l1] = Rasterizer3D.originViewX
-                    + (i2 * WorldController.focalLength) / i3;
-            shapedTile.screenY[l1] = Rasterizer3D.originViewY
-                    + (k2 * WorldController.focalLength) / i3;
-            shapedTile.viewSpaceZ[l1] = i3;
-
-            shapedTile.viewSpaceZ[l1] = i3;
+            if (tile.triangleTexture != null) {
+                tile.anIntArray690[l1] = i2;
+                tile.anIntArray691[l1] = k2;
+                tile.anIntArray692[l1] = i3;
+            }
+            tile.anIntArray688[l1] = Rasterizer3D.originViewX + (i2 * WorldController.focalLength) / i3;
+            tile.anIntArray689[l1] = Rasterizer3D.originViewY + (k2 * WorldController.focalLength) / i3;
+            SceneTileModel.depthPoint[l1] = i3;
         }
 
         Rasterizer3D.alpha = 0;
-        k1 = shapedTile.triangleA.length;
+        k1 = tile.triangleA.length;
         for (int j2 = 0; j2 < k1; j2++) {
-            int l2 = shapedTile.triangleA[j2];
-            int j3 = shapedTile.triangleB[j2];
-            int l3 = shapedTile.triangleC[j2];
-            int i4 = shapedTile.screenX[l2];
-            int j4 = shapedTile.screenX[j3];
-            int k4 = shapedTile.screenX[l3];
-            int l4 = shapedTile.screenY[l2];
-            int i5 = shapedTile.screenY[j3];
-            int j5 = shapedTile.screenY[l3];
+            int l2 = tile.triangleA[j2];
+            int j3 = tile.triangleB[j2];
+            int l3 = tile.triangleC[j2];
+            int i4 = tile.anIntArray688[l2];
+            int j4 = tile.anIntArray688[j3];
+            int k4 = tile.anIntArray688[l3];
+            int l4 = tile.anIntArray689[l2];
+            int i5 = tile.anIntArray689[j3];
+            int j5 = tile.anIntArray689[l3];
             if ((i4 - j4) * (j5 - i5) - (l4 - i5) * (k4 - j4) > 0) {
                 Rasterizer3D.textureOutOfDrawingBounds = i4 < 0 || j4 < 0 || k4 < 0
                         || i4 > Rasterizer2D.lastX || j4 > Rasterizer2D.lastX
                         || k4 > Rasterizer2D.lastX;
-                if (clicked
-                        && method318(clickScreenX, clickScreenY, l4, i5, j5, i4, j4, k4)) {
+                if (clicked && method318(clickScreenX, clickScreenY, l4, i5, j5, i4, j4, k4)) {
                     clickedTileX = i;
                     clickedTileY = i1;
                 }
-                if (shapedTile.triangleTexture == null
-                        || shapedTile.triangleTexture[j2] == -1
-                        || shapedTile.triangleTexture[j2] > 50) {
-                    if (shapedTile.triangleHslA[j2] != 0xbc614e) {
-                        if (shapedTile.triangleTexture != null
-                                && shapedTile.triangleTexture[j2] != -1) {
-                            if (shapedTile.flat
-                                    || shapedTile.triangleTexture[j2] == 505) {
-                                Rasterizer3D.drawTexturedTriangle(l4, i5, j5,
-                                        i4, j4, k4,
-                                        shapedTile.triangleHslA[j2],
-                                        shapedTile.triangleHslB[j2],
-                                        shapedTile.triangleHslC[j2],
-                                        shapedTile.viewSpaceX[0],
-                                        shapedTile.viewSpaceX[1],
-                                        shapedTile.viewSpaceX[3],
-                                        shapedTile.viewSpaceY[0],
-                                        shapedTile.viewSpaceY[1],
-                                        shapedTile.viewSpaceY[3],
-                                        shapedTile.viewSpaceZ[0],
-                                        shapedTile.viewSpaceZ[1],
-                                        shapedTile.viewSpaceZ[3],
-                                        shapedTile.triangleTexture[j2],
-                                        shapedTile.viewSpaceZ[l2],
-                                        shapedTile.viewSpaceZ[j3],
-                                        shapedTile.viewSpaceZ[l3]);
-                            } else {
-                                Rasterizer3D.drawTexturedTriangle(l4, i5, j5,
-                                        i4, j4, k4,
-                                        shapedTile.triangleHslA[j2],
-                                        shapedTile.triangleHslB[j2],
-                                        shapedTile.triangleHslC[j2],
-                                        shapedTile.viewSpaceX[l2],
-                                        shapedTile.viewSpaceX[j3],
-                                        shapedTile.viewSpaceX[l3],
-                                        shapedTile.viewSpaceY[l2],
-                                        shapedTile.viewSpaceY[j3],
-                                        shapedTile.viewSpaceY[l3],
-                                        shapedTile.viewSpaceZ[l2],
-                                        shapedTile.viewSpaceZ[j3],
-                                        shapedTile.viewSpaceZ[l3],
-                                        shapedTile.triangleTexture[j2],
-                                        shapedTile.viewSpaceZ[l2],
-                                        shapedTile.viewSpaceZ[j3],
-                                        shapedTile.viewSpaceZ[l3]);
-                            }
-                        } else {
-                            Rasterizer3D.drawShadedTriangle(l4, i5, j5, i4, j4,
-                                    k4, shapedTile.triangleHslA[j2],
-                                    shapedTile.triangleHslB[j2],
-                                    shapedTile.triangleHslC[j2],
-                                    shapedTile.viewSpaceZ[l2],
-                                    shapedTile.viewSpaceZ[j3],
-                                    shapedTile.viewSpaceZ[l3]);
-                        }
+                Rasterizer3D.drawDepthTriangle(i4, j4, k4, l4, i5, j5, SceneTileModel.depthPoint[l2],
+                        SceneTileModel.depthPoint[j3], SceneTileModel.depthPoint[l3]);
+                if (tile.triangleTexture == null || tile.triangleTexture[j2] == -1) {
+                    if (tile.triangleHslA[j2] != 0xbc614e) {
+                        Rasterizer3D.drawShadedTriangle(l4, i5, j5, i4, j4, k4, tile.triangleHslA[j2],
+                                tile.triangleHslB[j2], tile.triangleHslC[j2], SceneTileModel.depthPoint[l2],
+                                SceneTileModel.depthPoint[j3], SceneTileModel.depthPoint[l3]);
                     }
                 } else if (!lowMem) {
-                    if (shapedTile.flat) {
-                        Rasterizer3D.drawTexturedTriangle(l4, i5, j5, i4, j4, k4,
-                                shapedTile.triangleHslA[j2],
-                                shapedTile.triangleHslB[j2],
-                                shapedTile.triangleHslC[j2],
-                                shapedTile.viewSpaceX[0],
-                                shapedTile.viewSpaceX[1],
-                                shapedTile.viewSpaceX[3],
-                                shapedTile.viewSpaceY[0],
-                                shapedTile.viewSpaceY[1],
-                                shapedTile.viewSpaceY[3],
-                                shapedTile.viewSpaceZ[0],
-                                shapedTile.viewSpaceZ[1],
-                                shapedTile.viewSpaceZ[3],
-                                shapedTile.triangleTexture[j2],
-                                shapedTile.viewSpaceZ[l2],
-                                shapedTile.viewSpaceZ[j3],
-                                shapedTile.viewSpaceZ[l3]);
+                    if (tile.flat) {
+                        Rasterizer3D.drawTexturedTriangle(l4, i5, j5, i4, j4, k4, tile.triangleHslA[j2],
+                                tile.triangleHslB[j2], tile.triangleHslC[j2], SceneTileModel.anIntArray690[0],
+                                SceneTileModel.anIntArray690[1], SceneTileModel.anIntArray690[3],
+                                SceneTileModel.anIntArray691[0], SceneTileModel.anIntArray691[1],
+                                SceneTileModel.anIntArray691[3], SceneTileModel.anIntArray692[0],
+                                SceneTileModel.anIntArray692[1], SceneTileModel.anIntArray692[3], tile.triangleTexture[j2],
+                                SceneTileModel.depthPoint[l2], SceneTileModel.depthPoint[j3], SceneTileModel.depthPoint[l3]);
                     } else {
-                        Rasterizer3D.drawTexturedTriangle(l4, i5, j5, i4, j4, k4,
-                                shapedTile.triangleHslA[j2],
-                                shapedTile.triangleHslB[j2],
-                                shapedTile.triangleHslC[j2],
-                                shapedTile.viewSpaceX[l2],
-                                shapedTile.viewSpaceX[j3],
-                                shapedTile.viewSpaceX[l3],
-                                shapedTile.viewSpaceY[l2],
-                                shapedTile.viewSpaceY[j3],
-                                shapedTile.viewSpaceY[l3],
-                                shapedTile.viewSpaceZ[l2],
-                                shapedTile.viewSpaceZ[j3],
-                                shapedTile.viewSpaceZ[l3],
-                                shapedTile.triangleTexture[j2],
-                                shapedTile.viewSpaceZ[l2],
-                                shapedTile.viewSpaceZ[j3],
-                                shapedTile.viewSpaceZ[l3]);
+                        Rasterizer3D.drawTexturedTriangle(l4, i5, j5, i4, j4, k4, tile.triangleHslA[j2],
+                                tile.triangleHslB[j2], tile.triangleHslC[j2], SceneTileModel.anIntArray690[l2],
+                                SceneTileModel.anIntArray690[j3], SceneTileModel.anIntArray690[l3],
+                                SceneTileModel.anIntArray691[l2], SceneTileModel.anIntArray691[j3],
+                                SceneTileModel.anIntArray691[l3], SceneTileModel.anIntArray692[l2],
+                                SceneTileModel.anIntArray692[j3], SceneTileModel.anIntArray692[l3],
+                                tile.triangleTexture[j2], SceneTileModel.depthPoint[l2], SceneTileModel.depthPoint[j3],
+                                SceneTileModel.depthPoint[l3]);
                     }
                 } else {
-                    int k5 = TEXTURE_COLORS[shapedTile.triangleTexture[j2]];
-                    Rasterizer3D.drawGouraudTriangle(l4, i5, j5, i4, j4, k4,
-                            method317(k5, shapedTile.triangleHslA[j2]),
-                            method317(k5, shapedTile.triangleHslB[j2]),
-                            method317(k5, shapedTile.triangleHslC[j2]),
-                            shapedTile.viewSpaceZ[l2],
-                            shapedTile.viewSpaceZ[j3],
-                            shapedTile.viewSpaceZ[l3]);
+                    int k5 = TEXTURE_COLORS[tile.triangleTexture[j2]];
+                    Rasterizer3D.drawShadedTriangle(l4, i5, j5, i4, j4, k4,
+                            light(k5, tile.triangleHslA[j2]), light(k5, tile.triangleHslB[j2]),
+                            light(k5, tile.triangleHslC[j2]), SceneTileModel.depthPoint[l2],
+                            SceneTileModel.depthPoint[j3], SceneTileModel.depthPoint[l3]);
                 }
             }
         }
     }
 
-    private int method317(int j, int k) {
+    private int light(int j, int k) {
         k = 127 - k;
         k = (k * (j & 0x7f)) / 160;
         if (k < 2)
@@ -2404,7 +2318,7 @@ final class WorldController {
     public static int focalLength = 512;
 	public static int viewDistance = 9;
     static {
-        aBooleanArrayArrayArrayArray491 = new boolean[8][32][(300 * 2) + 1][(300 * 2) + 1];
+        aBooleanArrayArrayArrayArray491 = new boolean[8][32][(25 * 2) + 1][(25 * 2) + 1];
         focalLength = 512;
         cullingClusterPlaneCount = 4;
         sceneClusterCounts = new int[cullingClusterPlaneCount];

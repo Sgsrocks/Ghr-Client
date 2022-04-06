@@ -3,9 +3,8 @@ package com.client;
 
 public class Rasterizer2D extends NodeSub {
 
-	public static float[] depthBuffer;
 
-	public static void initDrawingArea(int i, int j, int[] ai, float[] depth) {
+	public static void initDrawingArea(int i, int j, int[] ai, float depth[]) {
 		depthBuffer = depth;
 		pixels = ai;
 		width = j;
@@ -547,7 +546,7 @@ public class Rasterizer2D extends NodeSub {
 		int i = width * height;
 		for (int j = 0; j < i; j++) {
 			pixels[j] = 0;
-			//depthBuffer[j] = Float.MAX_VALUE;
+			depthBuffer[j] = Float.MAX_VALUE;
 		}
 	}
 
@@ -661,7 +660,7 @@ public class Rasterizer2D extends NodeSub {
 
 	Rasterizer2D() {
 	}
-
+	public static float depthBuffer[];
 	public static int pixels[];
 	public static int width;
 	public static int height;

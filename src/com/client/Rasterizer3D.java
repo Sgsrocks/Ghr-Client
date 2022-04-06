@@ -1,6 +1,8 @@
 package com.client;
 
 
+import static com.client.Model.EMPTY_MODEL;
+
 public final class Rasterizer3D extends Rasterizer2D {
 
     public static boolean saveDepth;
@@ -32,6 +34,7 @@ public final class Rasterizer3D extends Rasterizer2D {
     public static int lastTextureRetrievalCount;
     public static int hslToRgb[] = new int[0x10000];
     private static int[][] currentPalette = new int[textureAmount][];
+    public static boolean repeatTexture;
 
     static {
         anIntArray1468 = new int[512];
@@ -91,9 +94,9 @@ public final class Rasterizer3D extends Rasterizer2D {
 
     public static void drawFog(int rgb, int begin, int end) {
         float length = end - begin;// Store as a float for division later
-        for (int index = 0; index < pixels.length; index++) {
-            float factor = (depthBuffer[index] - begin) / length;
-            pixels[index] = blend(pixels[index], rgb, factor);
+        for (int index = 0; index < Rasterizer2D.pixels.length; index++) {
+            float factor = (Rasterizer2D.depthBuffer[index] - begin) / length;
+            Rasterizer2D.pixels[index] = blend(Rasterizer2D.pixels[index], rgb, factor);
         }
     }
 
@@ -5206,10 +5209,12 @@ public final class Rasterizer3D extends Rasterizer2D {
             if (i5 != 0) {
                 rgb = l1 / i5;
                 loops = i2 / i5;
-                if (rgb < 0) {
-                    rgb = 0;
-                } else if (rgb > 4032) {
-                    rgb = 4032;
+                if (!repeatTexture) {
+                    if (rgb < 0) {
+                        rgb = 0;
+                    } else if (rgb > 4032) {
+                        rgb = 4032;
+                    }
                 }
             }
             l1 += k2;
@@ -5479,4 +5484,445 @@ public final class Rasterizer3D extends Rasterizer2D {
             loops += l7;
         }
     }
+
+    public static void drawDepthTriangle(int x_a, int x_b, int x_c, int y_a, int y_b, int y_c,
+                                         float z_a, float z_b, float z_c) {
+        int a_to_b = 0;
+        if (y_b != y_a) {
+            a_to_b = (x_b - x_a << 16) / (y_b - y_a);
+        }
+        int b_to_c = 0;
+        if (y_c != y_b) {
+            b_to_c = (x_c - x_b << 16) / (y_c - y_b);
+        }
+        int c_to_a = 0;
+        if (y_c != y_a) {
+            c_to_a = (x_a - x_c << 16) / (y_a - y_c);
+        }
+
+        float b_aX = x_b - x_a;
+        float b_aY = y_b - y_a;
+        float c_aX = x_c - x_a;
+        float c_aY = y_c - y_a;
+        float b_aZ = z_b - z_a;
+        float c_aZ = z_c - z_a;
+
+        float div = b_aX * c_aY - c_aX * b_aY;
+        float depth_slope = (b_aZ * c_aY - c_aZ * b_aY) / div;
+        float depth_increment = (c_aZ * b_aX - b_aZ * c_aX) / div;
+        if (y_a <= y_b && y_a <= y_c) {
+            if (y_a < Rasterizer2D.clip_bottom) {
+                if (y_b > Rasterizer2D.clip_bottom) {
+                    y_b = Rasterizer2D.clip_bottom;
+                }
+                if (y_c > Rasterizer2D.clip_bottom) {
+                    y_c = Rasterizer2D.clip_bottom;
+                }
+                z_a = z_a - depth_slope * x_a + depth_slope;
+                if (y_b < y_c) {
+                    x_c = x_a <<= 16;
+                    if (y_a < 0) {
+                        x_c -= c_to_a * y_a;
+                        x_a -= a_to_b * y_a;
+                        z_a -= depth_increment * y_a;
+                        y_a = 0;
+                    }
+                    x_b <<= 16;
+                    if (y_b < 0) {
+                        x_b -= b_to_c * y_b;
+                        y_b = 0;
+                    }
+                    if (y_a != y_b && c_to_a < a_to_b || y_a == y_b && c_to_a > b_to_c) {
+                        y_c -= y_b;
+                        y_b -= y_a;
+                        y_a = scanOffsets[y_a];
+                        while (--y_b >= 0) {
+                            drawDepthTriangleScanline(y_a, x_c >> 16, x_a >> 16, z_a, depth_slope);
+                            x_c += c_to_a;
+                            x_a += a_to_b;
+                            z_a += depth_increment;
+                            y_a += Rasterizer2D.width;
+                        }
+                        while (--y_c >= 0) {
+                            drawDepthTriangleScanline(y_a, x_c >> 16, x_b >> 16, z_a, depth_slope);
+                            x_c += c_to_a;
+                            x_b += b_to_c;
+                            z_a += depth_increment;
+                            y_a += Rasterizer2D.width;
+                        }
+                    } else {
+                        y_c -= y_b;
+                        y_b -= y_a;
+                        y_a = scanOffsets[y_a];
+                        while (--y_b >= 0) {
+                            drawDepthTriangleScanline(y_a, x_a >> 16, x_c >> 16, z_a, depth_slope);
+                            x_c += c_to_a;
+                            x_a += a_to_b;
+                            z_a += depth_increment;
+                            y_a += Rasterizer2D.width;
+                        }
+                        while (--y_c >= 0) {
+                            drawDepthTriangleScanline(y_a, x_b >> 16, x_c >> 16, z_a, depth_slope);
+                            x_c += c_to_a;
+                            x_b += b_to_c;
+                            z_a += depth_increment;
+                            y_a += Rasterizer2D.width;
+                        }
+                    }
+                } else {
+                    x_b = x_a <<= 16;
+                    if (y_a < 0) {
+                        x_b -= c_to_a * y_a;
+                        x_a -= a_to_b * y_a;
+                        z_a -= depth_increment * y_a;
+                        y_a = 0;
+                    }
+                    x_c <<= 16;
+                    if (y_c < 0) {
+                        x_c -= b_to_c * y_c;
+                        y_c = 0;
+                    }
+                    if (y_a != y_c && c_to_a < a_to_b || y_a == y_c && b_to_c > a_to_b) {
+                        y_b -= y_c;
+                        y_c -= y_a;
+                        y_a = scanOffsets[y_a];
+                        while (--y_c >= 0) {
+                            drawDepthTriangleScanline(y_a, x_b >> 16, x_a >> 16, z_a, depth_slope);
+                            x_b += c_to_a;
+                            x_a += a_to_b;
+                            z_a += depth_increment;
+                            y_a += Rasterizer2D.width;
+                        }
+                        while (--y_b >= 0) {
+                            drawDepthTriangleScanline(y_a, x_c >> 16, x_a >> 16, z_a, depth_slope);
+                            x_c += b_to_c;
+                            x_a += a_to_b;
+                            z_a += depth_increment;
+                            y_a += Rasterizer2D.width;
+                        }
+                    } else {
+                        y_b -= y_c;
+                        y_c -= y_a;
+                        y_a = scanOffsets[y_a];
+                        while (--y_c >= 0) {
+                            drawDepthTriangleScanline(y_a, x_a >> 16, x_b >> 16, z_a, depth_slope);
+                            x_b += c_to_a;
+                            x_a += a_to_b;
+                            z_a += depth_increment;
+                            y_a += Rasterizer2D.width;
+                        }
+                        while (--y_b >= 0) {
+                            drawDepthTriangleScanline(y_a, x_a >> 16, x_c >> 16, z_a, depth_slope);
+                            x_c += b_to_c;
+                            x_a += a_to_b;
+                            z_a += depth_increment;
+                            y_a += Rasterizer2D.width;
+                        }
+                    }
+                }
+            }
+        } else if (y_b <= y_c) {
+            if (y_b < Rasterizer2D.clip_bottom) {
+                if (y_c > Rasterizer2D.clip_bottom) {
+                    y_c = Rasterizer2D.clip_bottom;
+                }
+                if (y_a > Rasterizer2D.clip_bottom) {
+                    y_a = Rasterizer2D.clip_bottom;
+                }
+                z_b = z_b - depth_slope * x_b + depth_slope;
+                if (y_c < y_a) {
+                    x_a = x_b <<= 16;
+                    if (y_b < 0) {
+                        x_a -= a_to_b * y_b;
+                        x_b -= b_to_c * y_b;
+                        z_b -= depth_increment * y_b;
+                        y_b = 0;
+                    }
+                    x_c <<= 16;
+                    if (y_c < 0) {
+                        x_c -= c_to_a * y_c;
+                        y_c = 0;
+                    }
+                    if (y_b != y_c && a_to_b < b_to_c || y_b == y_c && a_to_b > c_to_a) {
+                        y_a -= y_c;
+                        y_c -= y_b;
+                        y_b = scanOffsets[y_b];
+                        while (--y_c >= 0) {
+                            drawDepthTriangleScanline(y_b, x_a >> 16, x_b >> 16, z_b, depth_slope);
+                            x_a += a_to_b;
+                            x_b += b_to_c;
+                            z_b += depth_increment;
+                            y_b += Rasterizer2D.width;
+                        }
+                        while (--y_a >= 0) {
+                            drawDepthTriangleScanline(y_b, x_a >> 16, x_c >> 16, z_b, depth_slope);
+                            x_a += a_to_b;
+                            x_c += c_to_a;
+                            z_b += depth_increment;
+                            y_b += Rasterizer2D.width;
+                        }
+                    } else {
+                        y_a -= y_c;
+                        y_c -= y_b;
+                        y_b = scanOffsets[y_b];
+                        while (--y_c >= 0) {
+                            drawDepthTriangleScanline(y_b, x_b >> 16, x_a >> 16, z_b, depth_slope);
+                            x_a += a_to_b;
+                            x_b += b_to_c;
+                            z_b += depth_increment;
+                            y_b += Rasterizer2D.width;
+                        }
+                        while (--y_a >= 0) {
+                            drawDepthTriangleScanline(y_b, x_c >> 16, x_a >> 16, z_b, depth_slope);
+                            x_a += a_to_b;
+                            x_c += c_to_a;
+                            z_b += depth_increment;
+                            y_b += Rasterizer2D.width;
+                        }
+                    }
+                } else {
+                    x_c = x_b <<= 16;
+                    if (y_b < 0) {
+                        x_c -= a_to_b * y_b;
+                        x_b -= b_to_c * y_b;
+                        z_b -= depth_increment * y_b;
+                        y_b = 0;
+                    }
+                    x_a <<= 16;
+                    if (y_a < 0) {
+                        x_a -= c_to_a * y_a;
+                        y_a = 0;
+                    }
+                    if (a_to_b < b_to_c) {
+                        y_c -= y_a;
+                        y_a -= y_b;
+                        y_b = scanOffsets[y_b];
+                        while (--y_a >= 0) {
+                            drawDepthTriangleScanline(y_b, x_c >> 16, x_b >> 16, z_b, depth_slope);
+                            x_c += a_to_b;
+                            x_b += b_to_c;
+                            z_b += depth_increment;
+                            y_b += Rasterizer2D.width;
+                        }
+                        while (--y_c >= 0) {
+                            drawDepthTriangleScanline(y_b, x_a >> 16, x_b >> 16, z_b, depth_slope);
+                            x_a += c_to_a;
+                            x_b += b_to_c;
+                            z_b += depth_increment;
+                            y_b += Rasterizer2D.width;
+                        }
+                    } else {
+                        y_c -= y_a;
+                        y_a -= y_b;
+                        y_b = scanOffsets[y_b];
+                        while (--y_a >= 0) {
+                            drawDepthTriangleScanline(y_b, x_b >> 16, x_c >> 16, z_b, depth_slope);
+                            x_c += a_to_b;
+                            x_b += b_to_c;
+                            z_b += depth_increment;
+                            y_b += Rasterizer2D.width;
+                        }
+                        while (--y_c >= 0) {
+                            drawDepthTriangleScanline(y_b, x_b >> 16, x_a >> 16, z_b, depth_slope);
+                            x_a += c_to_a;
+                            x_b += b_to_c;
+                            z_b += depth_increment;
+                            y_b += Rasterizer2D.width;
+                        }
+                    }
+                }
+            }
+        } else if (y_c < Rasterizer2D.clip_bottom) {
+            if (y_a > Rasterizer2D.clip_bottom) {
+                y_a = Rasterizer2D.clip_bottom;
+            }
+            if (y_b > Rasterizer2D.clip_bottom) {
+                y_b = Rasterizer2D.clip_bottom;
+            }
+            z_c = z_c - depth_slope * x_c + depth_slope;
+            if (y_a < y_b) {
+                x_b = x_c <<= 16;
+                if (y_c < 0) {
+                    x_b -= b_to_c * y_c;
+                    x_c -= c_to_a * y_c;
+                    z_c -= depth_increment * y_c;
+                    y_c = 0;
+                }
+                x_a <<= 16;
+                if (y_a < 0) {
+                    x_a -= a_to_b * y_a;
+                    y_a = 0;
+                }
+                if (b_to_c < c_to_a) {
+                    y_b -= y_a;
+                    y_a -= y_c;
+                    y_c = scanOffsets[y_c];
+                    while (--y_a >= 0) {
+                        drawDepthTriangleScanline(y_c, x_b >> 16, x_c >> 16, z_c, depth_slope);
+                        x_b += b_to_c;
+                        x_c += c_to_a;
+                        z_c += depth_increment;
+                        y_c += Rasterizer2D.width;
+                    }
+                    while (--y_b >= 0) {
+                        drawDepthTriangleScanline(y_c, x_b >> 16, x_a >> 16, z_c, depth_slope);
+                        x_b += b_to_c;
+                        x_a += a_to_b;
+                        z_c += depth_increment;
+                        y_c += Rasterizer2D.width;
+                    }
+                } else {
+                    y_b -= y_a;
+                    y_a -= y_c;
+                    y_c = scanOffsets[y_c];
+                    while (--y_a >= 0) {
+                        drawDepthTriangleScanline(y_c, x_c >> 16, x_b >> 16, z_c, depth_slope);
+                        x_b += b_to_c;
+                        x_c += c_to_a;
+                        z_c += depth_increment;
+                        y_c += Rasterizer2D.width;
+                    }
+                    while (--y_b >= 0) {
+                        drawDepthTriangleScanline(y_c, x_a >> 16, x_b >> 16, z_c, depth_slope);
+                        x_b += b_to_c;
+                        x_a += a_to_b;
+                        z_c += depth_increment;
+                        y_c += Rasterizer2D.width;
+                    }
+                }
+            } else {
+                x_a = x_c <<= 16;
+                if (y_c < 0) {
+                    x_a -= b_to_c * y_c;
+                    x_c -= c_to_a * y_c;
+                    z_c -= depth_increment * y_c;
+                    y_c = 0;
+                }
+                x_b <<= 16;
+                if (y_b < 0) {
+                    x_b -= a_to_b * y_b;
+                    y_b = 0;
+                }
+                if (b_to_c < c_to_a) {
+                    y_a -= y_b;
+                    y_b -= y_c;
+                    y_c = scanOffsets[y_c];
+                    while (--y_b >= 0) {
+                        drawDepthTriangleScanline(y_c, x_a >> 16, x_c >> 16, z_c, depth_slope);
+                        x_a += b_to_c;
+                        x_c += c_to_a;
+                        z_c += depth_increment;
+                        y_c += Rasterizer2D.width;
+                    }
+                    while (--y_a >= 0) {
+                        drawDepthTriangleScanline(y_c, x_b >> 16, x_c >> 16, z_c, depth_slope);
+                        x_b += a_to_b;
+                        x_c += c_to_a;
+                        z_c += depth_increment;
+                        y_c += Rasterizer2D.width;
+                    }
+                } else {
+                    y_a -= y_b;
+                    y_b -= y_c;
+                    y_c = scanOffsets[y_c];
+                    while (--y_b >= 0) {
+                        drawDepthTriangleScanline(y_c, x_c >> 16, x_a >> 16, z_c, depth_slope);
+                        x_a += b_to_c;
+                        x_c += c_to_a;
+                        z_c += depth_increment;
+                        y_c += Rasterizer2D.width;
+                    }
+                    while (--y_a >= 0) {
+                        drawDepthTriangleScanline(y_c, x_c >> 16, x_b >> 16, z_c, depth_slope);
+                        x_b += a_to_b;
+                        x_c += c_to_a;
+                        z_c += depth_increment;
+                        y_c += Rasterizer2D.width;
+                    }
+                }
+            }
+        }
+    }
+
+    private static void drawDepthTriangleScanline(int dest_off, int start_x, int end_x, float depth,
+                                                  float depth_slope) {
+
+        int dbl = Rasterizer2D.depthBuffer.length;
+        if (textureOutOfDrawingBounds) {
+            if (end_x > Rasterizer2D.width) {
+                end_x = Rasterizer2D.width;
+            }
+            if (start_x < 0) {
+                start_x = 0;
+            }
+        }
+        if (start_x >= end_x) {
+            return;
+        }
+        dest_off += start_x - 1;
+        int loops = end_x - start_x >> 2;
+        depth += depth_slope * start_x;
+        if (alpha == 0) {
+            while (--loops >= 0) {
+                dest_off++;
+                if (dest_off >= 0 && dest_off < dbl) {
+                    Rasterizer2D.depthBuffer[dest_off] = depth;
+                }
+                depth += depth_slope;
+                dest_off++;
+                if (dest_off >= 0 && dest_off < dbl) {
+                    Rasterizer2D.depthBuffer[dest_off] = depth;
+                }
+                depth += depth_slope;
+                dest_off++;
+                if (dest_off >= 0 && dest_off < dbl) {
+                    Rasterizer2D.depthBuffer[dest_off] = depth;
+                }
+                depth += depth_slope;
+                dest_off++;
+                if (dest_off >= 0 && dest_off < dbl) {
+                    Rasterizer2D.depthBuffer[dest_off] = depth;
+                }
+                depth += depth_slope;
+            }
+            for (loops = end_x - start_x & 3; --loops >= 0;) {
+                dest_off++;
+                if (dest_off >= 0 && dest_off < dbl) {
+                    Rasterizer2D.depthBuffer[dest_off] = depth;
+                }
+                depth += depth_slope;
+            }
+            return;
+        }
+        while (--loops >= 0) {
+            dest_off++;
+            if (dest_off >= 0 && dest_off < dbl) {
+                Rasterizer2D.depthBuffer[dest_off] = depth;
+            }
+            depth += depth_slope;
+            dest_off++;
+            if (dest_off >= 0 && dest_off < dbl) {
+                Rasterizer2D.depthBuffer[dest_off] = depth;
+            }
+            depth += depth_slope;
+            dest_off++;
+            if (dest_off >= 0 && dest_off < dbl) {
+                Rasterizer2D.depthBuffer[dest_off] = depth;
+            }
+            depth += depth_slope;
+            dest_off++;
+            if (dest_off >= 0 && dest_off < dbl) {
+                Rasterizer2D.depthBuffer[dest_off] = depth;
+            }
+            depth += depth_slope;
+        }
+        for (loops = end_x - start_x & 3; --loops >= 0;) {
+            dest_off++;
+            if (dest_off >= 0 && dest_off < dbl) {
+                Rasterizer2D.depthBuffer[dest_off] = depth;
+            }
+            depth += depth_slope;
+        }
+    }
+
 }

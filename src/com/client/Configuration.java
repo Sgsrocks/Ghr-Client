@@ -52,7 +52,7 @@ public class Configuration {
 			repackIndexOne = false,
 			repackIndexTwo = false,
 			repackIndexThree = false,
-			repackIndexFour = false,
+			repackIndexFour = true,
 			repackIndexFive = false,
 			repackIndexSix = false;
 
@@ -82,4 +82,5 @@ public class Configuration {
 
 	public static boolean statusBars = false;
 
+    public static boolean snow = false;
 }

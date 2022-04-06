@@ -12,6 +12,7 @@ public final class RSImageProducer {
 		this.component = component;
 		int count = width * height;
 		canvasRaster = new int[count];
+		depthbuffer = new float[this.width * this.height];
 		image = new BufferedImage(COLOR_MODEL, Raster.createWritableRaster(
 				COLOR_MODEL.createCompatibleSampleModel(width, height),
 				new DataBufferInt(canvasRaster, count), null), false,
@@ -43,9 +44,10 @@ public final class RSImageProducer {
 	}
 
 	public void initDrawingArea() {
-		Rasterizer2D.initDrawingArea(height, width, canvasRaster, null);
+		Rasterizer2D.initDrawingArea(height, width, canvasRaster, depthbuffer);
 	}
 
+	public float[] depthbuffer;
 	public final int[] canvasRaster;
 	public final int width;
 	public final int height;

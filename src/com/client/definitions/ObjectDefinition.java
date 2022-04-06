@@ -42,7 +42,7 @@ public final class ObjectDefinition {
 			objectDef.actions = new String[] { "Choose", null, null, null, null };
 		}
 		if(i >= 25000) {
-			objectDef.aBoolean769 = false;
+			objectDef.delayShading = false;
 		}
 		switch (i) {
 
@@ -116,12 +116,12 @@ public final class ObjectDefinition {
 		aBoolean757 = true;
 		hasActions = false;
 		aBoolean762 = false;
-		aBoolean769 = false;
+		delayShading = false;
 		aBoolean764 = false;
 		animation = -1;
 		anInt775 = 16;
-		aByte737 = 0;
-		aByte742 = 0;
+		ambientLighting = 0;
+		lightDiffusion = 0;
 		actions = null;
 		AreaType = -1;
 		anInt758 = -1;
@@ -200,8 +200,8 @@ public final class ObjectDefinition {
 		Model model = method581(i, k1, j);
 		if (model == null)
 			return null;
-		if (aBoolean762 || aBoolean769)
-			model = new Model(aBoolean762, aBoolean769, model);
+		if (aBoolean762 || delayShading)
+			model = new Model(aBoolean762, delayShading, model);
 		if (aBoolean762) {
 			int l1 = (k + l + i1 + j1) / 4;
 			for (int i2 = 0; i2 < model.verticesCount; i2++) {
@@ -324,17 +324,17 @@ public final class ObjectDefinition {
 		while (l-- > 0)
 			model_3.rotate90Degrees();
 		if (modifiedModelColors != null) {
-			for (int k2 = 0; k2 < modifiedModelColors.length; k2++)
+			for (int k2 = 0; k2 < modifiedModelColors.length; k2++) {
 				model_3.recolor(modifiedModelColors[k2], originalModelColors[k2]);
+			}
 
 		}
-		
-		if (originalTexture != null) {
-			for (int k2 = 0; k2 < modifiedTexture.length; k2++)
+		if (modifiedTexture != null) {
+			for (int k2 = 0; k2 < modifiedTexture.length; k2++) {
 				model_3.retexture(modifiedTexture[k2], originalTexture[k2]);
+			}
 
 		}
-
 		if (flag)
 			model_3.scale(thickness, width, height);
 		if (flag2)
@@ -343,7 +343,7 @@ public final class ObjectDefinition {
 		// !aBoolean769);
 		// ORIGINAL^
 
-		model_3.light(aByte737 + 64,  aByte742  * 25 + 768, -50, -10, -50, !aBoolean769);
+		model_3.light(64 + ambientLighting, 1300 + (lightDiffusion * 5), -90, -280, -70, !delayShading);
 
 		if (anInt760 == 1)
 			model_3.itemDropHeight = model_3.modelBaseY;
@@ -461,7 +461,7 @@ public final class ObjectDefinition {
 			else if (type == 21)
 				aBoolean762 = true;
 			else if (type == 22)
-				aBoolean769 = true;
+				delayShading = true;
 			else if (type == 23)
 				aBoolean764 = true;
 			else if (type == 24) { // Object Animations
@@ -471,9 +471,9 @@ public final class ObjectDefinition {
 			} else if (type == 28)
 				anInt775 = stream.readUnsignedByte();
 			else if (type == 29)
-				aByte737 = stream.readSignedByte();
+				ambientLighting = stream.readSignedByte();
 			else if (type == 39)
-				aByte742 = stream.readSignedByte();
+				lightDiffusion = stream.readSignedByte();
 			else if (type >= 30 && type < 39) {
 				if (actions == null)
 					actions = new String[10];
@@ -591,9 +591,9 @@ public final class ObjectDefinition {
 	private short[] modifiedTexture;
 	public boolean aBoolean736;
 	@SuppressWarnings("unused")
-	private byte aByte742;
+	private byte lightDiffusion;
 	@SuppressWarnings("unused")
-	private byte aByte737;
+	private byte ambientLighting;
 	private int anInt738;
 	public String name;
 	private int width;
@@ -620,7 +620,7 @@ public final class ObjectDefinition {
 	private boolean aBoolean766;
 	public boolean aBoolean767;
 	public int anInt768;
-	private boolean aBoolean769;
+	private boolean delayShading;
 	private static int cacheIndex;
 	private int height;
 	public int[] anIntArray773;

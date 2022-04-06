@@ -5237,7 +5237,7 @@ if(i == 28826) //ID
 		class8.unnotedId = -1;
 		class8.notedId = -1;
 }
-if (i == 26827)
+if (i == 28827)
 {
         class8.itemActions = new String[5];
         class8.itemActions[1] = "Wield";
@@ -5262,7 +5262,7 @@ if (i == 26827)
         class8.name = "Energy sword";
         class8.description = "A strong sword made of energy.";
 }
-if (i == 26828)
+if (i == 28828)
 {
         class8.itemActions = new String[5];
         class8.itemActions[1] = "Wield";
@@ -5287,7 +5287,7 @@ if (i == 26828)
         class8.name = "Red Energy sword";
         class8.description = "A strong sword made of red energy.";
 }
-if (i == 26829)
+if (i == 28829)
 {
 class8.itemActions = new String[5];
 class8.itemActions[1] = "Wield";
@@ -5312,7 +5312,7 @@ class8.certID = -1;
 class8.name = "Black Energy";
 class8.description = "A strong sword made of Black energy.";
 }
-if (i == 26830)
+if (i == 28830)
 {
 class8.itemActions = new String[5];
 class8.itemActions[1] = "Wield";
@@ -5337,7 +5337,7 @@ class8.certID = -1;
 class8.name = "Easter Energy sword";
 class8.description = "From the easter bunny. =)";
 }
-if (i == 26831)
+if (i == 28831)
 {
 class8.itemActions = new String[5];
 class8.itemActions[1] = "Wield";
@@ -5363,7 +5363,7 @@ class8.name = "Green Energy sword";
 class8.description = "An Green Energy Sword";
 }
 
-if (i == 26832)
+if (i == 28832)
 {
 class8.itemActions = new String[5];
 class8.itemActions[1] = "Wield";
@@ -5388,7 +5388,7 @@ class8.certID = -1;
 class8.name = "Purple Energy sword";
 class8.description = "An Purple Energy Sword";
 }
-if (i == 26833)
+if (i == 28833)
 {
 class8.itemActions = new String[5];
 class8.itemActions[1] = "Wield";
@@ -5413,7 +5413,7 @@ class8.certID = -1;
 class8.name = "Orange Energy sword";
 class8.description = "An Orange Energy Sword";
 }
-if (i == 26834)
+if (i == 28834)
 {
 class8.itemActions = new String[5];
 class8.itemActions[1] = "Wield";
@@ -5438,7 +5438,7 @@ class8.certID = -1;
 class8.name = "Halloween Energy sword";
 class8.description = "From traxxas Have a Happy Halloween =)";
 }
-if (i == 26835)
+if (i == 28835)
 {
 class8.itemActions = new String[5];
 class8.itemActions[1] = "Wield";
@@ -5463,7 +5463,7 @@ class8.certID = -1;
 class8.name = "Bronze Energy sword";
 class8.description = "an energy sword made of bronze.";
 }
-if (i == 26837)
+if (i == 28837)
 {
 class8.itemActions = new String[5];
 class8.itemActions[1] = "Wield";
@@ -5488,7 +5488,7 @@ class8.certID = -1;
 class8.name = "Steel Energy sword";
 class8.description = "an energy sword made of steel.";
 }
-if (i == 26838)
+if (i == 28838)
 {
 class8.itemActions = new String[5];
 class8.itemActions[1] = "Wield";
@@ -5513,7 +5513,7 @@ class8.certID = -1;
 class8.name = "Mithril Energy sword";
 class8.description = "an energy sword made of mithril.";
 }
-if (i == 26839)
+if (i == 28839)
 {
 class8.itemActions = new String[5];
 class8.itemActions[1] = "Wield";
@@ -5538,7 +5538,7 @@ class8.certID = -1;
 class8.name = "Adamant Energy sword";
 class8.description = "an energy sword made of adamant.";
 }
-if (i == 26840)
+if (i == 28840)
 {
 class8.itemActions = new String[5];
 class8.itemActions[1] = "Wield";
@@ -9385,486 +9385,7 @@ class8.certID = -1;
 	class8.unnotedId = -1;
 	class8.notedId = -1;
 }
-if(i == 28969) //ID
-{
-	class8.itemActions = new String[] {null, "Wield", null, null, null};
-	class8.name = "Air talisman staff"; //Name
-	class8.description = "Its an Air talisman staff"; //Description
-	class8.modelId = 41527;
-	class8.spriteScale = 1974;
-	class8.spritePitch = 227;
-	class8.spriteCameraRoll = 1965;
-	class8.spriteCameraYaw = 0;
-	class8.spriteTranslateX = 1;
-	class8.spriteTranslateY = -16;
-	class8.primaryMaleModel = 41406;
-	class8.primaryFemaleModel = 41406;
-	class8.secondaryMaleModel = -1;
-	class8.secondaryFemaleModel = -1;
-	class8.primaryMaleHeadPiece = -1;
-	class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;      		
-    class8.certID = -1;
-		class8.certTemplateID = -1;
-		class8.unnotedId = -1;
-		class8.notedId = -1;
-}
-if(i == 28970) //ID
-{
-	class8.itemActions = new String[] {null, "Wield", null, null, null};
-	class8.name = "Mind talisman staff"; //Name
-	class8.description = "Its an Mind talisman staff"; //Description
-	class8.modifiedModelColors = new int[1];
-	class8.originalModelColors = new int[1];
-	class8.modifiedModelColors[0] = 0;
-	class8.originalModelColors[0] = 1;
-	class8.modelId = 41530;
-	class8.spriteScale = 2018;
-	class8.spritePitch = 260;
-	class8.spriteCameraRoll = 2028;
-	class8.spriteCameraYaw = 0;
-	class8.spriteTranslateX = -3;
-	class8.spriteTranslateY = -8;
-	class8.primaryMaleModel = 41393;
-	class8.primaryFemaleModel = 41393;
-	class8.secondaryMaleModel = -1;
-	class8.secondaryFemaleModel = -1;
-	class8.primaryMaleHeadPiece = -1;
-	class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;      		
-    class8.certID = -1;
-		class8.certTemplateID = -1;
-		class8.unnotedId = -1;
-		class8.notedId = -1;
-}
 
-
-if(i == 28971) //ID
-{
-	class8.itemActions = new String[] {null, "Wield", null, null, null};
-	class8.name = "Water talisman staff"; //Name
-	class8.description = "Its an Water talisman staff"; //Description
-	class8.modifiedModelColors = new int[1];
-	class8.originalModelColors = new int[1];
-	class8.modifiedModelColors[0] = 0;
-	class8.originalModelColors[0] = 1;
-	class8.modelId = 41559;
-	class8.spriteScale = 2146;
-	class8.spritePitch = 236;
-	class8.spriteCameraRoll = 1995;
-	class8.spriteCameraYaw = 0;
-	class8.spriteTranslateX = -3;
-	class8.spriteTranslateY = -37;
-	class8.primaryMaleModel = 41399;
-	class8.primaryFemaleModel = 41399;
-	class8.secondaryMaleModel = -1;
-	class8.secondaryFemaleModel = -1;
-	class8.primaryMaleHeadPiece = -1;
-	class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;      		
-    class8.certID = -1;
-		class8.certTemplateID = -1;
-		class8.unnotedId = -1;
-		class8.notedId = -1;
-}
-
-
-if(i == 28973) //ID
-{
-	class8.itemActions = new String[] {null, "Wield", null, null, null};
-	class8.name = "Earth talisman staff"; //Name
-	class8.description = "Its an Earth talisman staff"; //Description
-	class8.modifiedModelColors = new int[1];
-	class8.originalModelColors = new int[1];
-	class8.modifiedModelColors[0] = 0;
-	class8.originalModelColors[0] = 1;
-	class8.modelId = 41549;
-	class8.spriteScale = 2146;
-	class8.spritePitch = 227;
-	class8.spriteCameraRoll = 1965;
-	class8.spriteCameraYaw = 0;
-	class8.spriteTranslateX = -3;
-	class8.spriteTranslateY = -8;
-	class8.primaryMaleModel = 41408;
-	class8.primaryFemaleModel = 41408;
-	class8.secondaryMaleModel = -1;
-	class8.secondaryFemaleModel = -1;
-	class8.primaryMaleHeadPiece = -1;
-	class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;      		
-    class8.certID = -1;
-		class8.certTemplateID = -1;
-		class8.unnotedId = -1;
-		class8.notedId = -1;
-}
-
-
-if(i == 28974) //ID
-{
-	class8.itemActions = new String[] {null, "Wield", null, null, null};
-	class8.name = "Fire talisman staff"; //Name
-	class8.description = "Its an Fire talisman staff"; //Description
-	class8.modifiedModelColors = new int[1];
-	class8.originalModelColors = new int[1];
-	class8.modifiedModelColors[0] = 0;
-	class8.originalModelColors[0] = 1;
-	class8.modelId = 41569;
-	class8.spriteScale = 2146;
-	class8.spritePitch = 227;
-	class8.spriteCameraRoll = 1965;
-	class8.spriteCameraYaw = 0;
-	class8.spriteTranslateX = -3;
-	class8.spriteTranslateY = -8;
-	class8.primaryMaleModel = 41407;
-	class8.primaryFemaleModel = 41407;
-	class8.secondaryMaleModel = -1;
-	class8.secondaryFemaleModel = -1;
-	class8.primaryMaleHeadPiece = -1;
-	class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;      		
-    class8.certID = -1;
-		class8.certTemplateID = -1;
-		class8.unnotedId = -1;
-		class8.notedId = -1;
-}
-
-
-if(i == 28975) //ID
-{
-	class8.itemActions = new String[] {null, "Wield", null, null, null};
-	class8.name = "Body talisman staff"; //Name
-	class8.description = "Its an Body talisman staff"; //Description
-	class8.modifiedModelColors = new int[1];
-	class8.originalModelColors = new int[1];
-	class8.modifiedModelColors[0] = 0;
-	class8.originalModelColors[0] = 1;
-	class8.modelId = 41573;
-	class8.spriteScale = 2146;
-	class8.spritePitch = 227;
-	class8.spriteCameraRoll = 1965;
-	class8.spriteCameraYaw = 0;
-	class8.spriteTranslateX = -3;
-	class8.spriteTranslateY = -8;
-	class8.primaryMaleModel = 41400;
-	class8.primaryFemaleModel = 41400;
-	class8.secondaryMaleModel = -1;
-	class8.secondaryFemaleModel = -1;
-	class8.primaryMaleHeadPiece = -1;
-	class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;      		
-    class8.certID = -1;
-		class8.certTemplateID = -1;
-		class8.unnotedId = -1;
-		class8.notedId = -1;
-}
-
-
-if(i == 28976) //ID
-{
-	class8.itemActions = new String[] {null, "Wield", null, null, null};
-	class8.name = "Cosmic talisman staff"; //Name
-	class8.description = "Its an Cosmic talisman staff"; //Description
-	class8.modifiedModelColors = new int[1];
-	class8.originalModelColors = new int[1];
-	class8.modifiedModelColors[0] = 0;
-	class8.originalModelColors[0] = 1;
-	class8.modelId = 41565;
-	class8.spriteScale = 2146;
-	class8.spritePitch = 227;
-	class8.spriteCameraRoll = 1965;
-	class8.spriteCameraYaw = 0;
-	class8.spriteTranslateX = -3;
-	class8.spriteTranslateY = -8;
-	class8.primaryMaleModel = 41396;
-	class8.primaryFemaleModel = 41396;
-	class8.secondaryMaleModel = -1;
-	class8.secondaryFemaleModel = -1;
-	class8.primaryMaleHeadPiece = -1;
-	class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;      		
-    class8.certID = -1;
-		class8.certTemplateID = -1;
-		class8.unnotedId = -1;
-		class8.notedId = -1;
-}
-
-
-if(i == 28977) //ID
-{
-	class8.itemActions = new String[] {null, "Wield", null, null, null};
-	class8.name = "Chaos talisman staff"; //Name
-	class8.description = "Its an Chaos talisman staff"; //Description
-	class8.modifiedModelColors = new int[1];
-	class8.originalModelColors = new int[1];
-	class8.modifiedModelColors[0] = 0;
-	class8.originalModelColors[0] = 1;
-	class8.modelId = 41547;
-	class8.spriteScale = 2146;
-	class8.spritePitch = 227;
-	class8.spriteCameraRoll = 1965;
-	class8.spriteCameraYaw = 0;
-	class8.spriteTranslateX = -3;
-	class8.spriteTranslateY = -8;
-	class8.primaryMaleModel = 41405;
-	class8.primaryFemaleModel = 41405;
-	class8.secondaryMaleModel = -1;
-	class8.secondaryFemaleModel = -1;
-	class8.primaryMaleHeadPiece = -1;
-	class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;      		
-    class8.certID = -1;
-		class8.certTemplateID = -1;
-		class8.unnotedId = -1;
-		class8.notedId = -1;
-}
-
-
-if(i == 28978) //ID
-{
-	class8.itemActions = new String[] {null, "Wield", null, null, null};
-	class8.name = "Nature talisman staff"; //Name
-	class8.description = "Its an Nature talisman staff"; //Description
-	class8.modifiedModelColors = new int[1];
-	class8.originalModelColors = new int[1];
-	class8.modifiedModelColors[0] = 0;
-	class8.originalModelColors[0] = 1;
-	class8.modelId = 41532;
-	class8.spriteScale = 2146;
-	class8.spritePitch = 227;
-	class8.spriteCameraRoll = 1965;
-	class8.spriteCameraYaw = 0;
-	class8.spriteTranslateX = -3;
-	class8.spriteTranslateY = -8;
-	class8.primaryMaleModel = 41391;
-	class8.primaryFemaleModel = 41391;
-	class8.secondaryMaleModel = -1;
-	class8.secondaryFemaleModel = -1;
-	class8.primaryMaleHeadPiece = -1;
-	class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;      		
-    class8.certID = -1;
-		class8.certTemplateID = -1;
-		class8.unnotedId = -1;
-		class8.notedId = -1;
-}
-
-
-if(i == 28979) //ID
-{
-	class8.itemActions = new String[] {null, "Wield", null, null, null};
-	class8.name = "Law talisman staff"; //Name
-	class8.description = "Its an Law talisman staff"; //Description
-	class8.modifiedModelColors = new int[1];
-	class8.originalModelColors = new int[1];
-	class8.modifiedModelColors[0] = 0;
-	class8.originalModelColors[0] = 1;
-	class8.modelId = 41544;
-	class8.spriteScale = 2146;
-	class8.spritePitch = 227;
-	class8.spriteCameraRoll = 1965;
-	class8.spriteCameraYaw = 0;
-	class8.spriteTranslateX = -3;
-	class8.spriteTranslateY = -8;
-	class8.primaryMaleModel = 41395;
-	class8.primaryFemaleModel = 41395;
-	class8.secondaryMaleModel = -1;
-	class8.secondaryFemaleModel = -1;
-	class8.primaryMaleHeadPiece = -1;
-	class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;      		
-    class8.certID = -1;
-		class8.certTemplateID = -1;
-		class8.unnotedId = -1;
-		class8.notedId = -1;
-}
-
-
-if(i == 28980) //ID
-{
-	class8.itemActions = new String[] {null, "Wield", null, null, null};
-	class8.name = "Death talisman staff"; //Name
-	class8.description = "Its an Death talisman staff"; //Description
-	class8.modifiedModelColors = new int[1];
-	class8.originalModelColors = new int[1];
-	class8.modifiedModelColors[0] = 0;
-	class8.originalModelColors[0] = 1;
-	class8.modelId = 41525;
-	class8.spriteScale = 2146;
-	class8.spritePitch = 227;
-	class8.spriteCameraRoll = 1965;
-	class8.spriteCameraYaw = 0;
-	class8.spriteTranslateX = -3;
-	class8.spriteTranslateY = -8;
-	class8.primaryMaleModel = 41409;
-	class8.primaryFemaleModel = 41409;
-	class8.secondaryMaleModel = -1;
-	class8.secondaryFemaleModel = -1;
-	class8.primaryMaleHeadPiece = -1;
-	class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;      		
-    class8.certID = -1;
-		class8.certTemplateID = -1;
-		class8.unnotedId = -1;
-		class8.notedId = -1;
-}
-
-
-if(i == 28981) //ID
-{
-	class8.itemActions = new String[] {null, "Wield", null, null, null};
-	class8.name = "Blood talisman staff"; //Name
-	class8.description = "Its an Blood talisman staff"; //Description
-	class8.modifiedModelColors = new int[1];
-	class8.originalModelColors = new int[1];
-	class8.modifiedModelColors[0] = 0;
-	class8.originalModelColors[0] = 1;
-	class8.modelId = 41536;
-	class8.spriteScale = 2146;
-	class8.spritePitch = 227;
-	class8.spriteCameraRoll = 1965;
-	class8.spriteCameraYaw = 0;
-	class8.spriteTranslateX = -3;
-	class8.spriteTranslateY = -8;
-	class8.primaryMaleModel = 41392;
-	class8.primaryFemaleModel = 41392;
-	class8.secondaryMaleModel = -1;
-	class8.secondaryFemaleModel = -1;
-	class8.primaryMaleHeadPiece = -1;
-	class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;      		
-    class8.certID = -1;
-		class8.certTemplateID = -1;
-		class8.unnotedId = -1;
-		class8.notedId = -1;
-}
-
-
-if(i == 28982) //ID
-{
-	class8.itemActions = new String[] {null, "Wield", null, null, null};
-	class8.name = "Omni-talisman staff"; //Name
-	class8.description = "Its an Omni-talisman staff"; //Description
-	class8.modifiedModelColors = new int[1];
-	class8.originalModelColors = new int[1];
-	class8.modifiedModelColors[0] = 0;
-	class8.originalModelColors[0] = 1;
-	class8.modelId = 41509;
-	class8.spriteScale = 2022;
-	class8.spritePitch = 249;
-	class8.spriteCameraRoll = 2001;
-	class8.spriteCameraYaw = 0;
-	class8.spriteTranslateX = 3;
-	class8.spriteTranslateY = -36;
-	class8.primaryMaleModel = 41401;
-	class8.primaryFemaleModel = 41401;
-	class8.secondaryMaleModel = -1;
-	class8.secondaryFemaleModel = -1;
-	class8.primaryMaleHeadPiece = -1;
-	class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;      		
-    class8.certID = -1;
-		class8.certTemplateID = -1;
-		class8.unnotedId = -1;
-		class8.notedId = -1;
-}
-if(i == 28983) //ID
-{
-	class8.itemActions = new String[] {null, null, null, null, "Destroy"};
-	class8.name = "Omni-talisman"; //Name
-	class8.description = "Its an Omni-talisman"; //Description
-	class8.modelId = 41520;
-	class8.spriteScale = 1160;
-	class8.spritePitch = 352;
-	class8.spriteCameraRoll = 160;
-	class8.spriteCameraYaw = 0;
-	class8.spriteTranslateX = 2;
-	class8.spriteTranslateY = 20;
-	class8.primaryMaleModel = -1;
-	class8.primaryFemaleModel = -1;
-	class8.secondaryMaleModel = -1;
-	class8.secondaryFemaleModel = -1;
-	class8.primaryMaleHeadPiece = -1;
-	class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;      		
-    class8.certID = -1;
-		class8.certTemplateID = -1;
-		class8.unnotedId = -1;
-		class8.notedId = -1;
-}
-if(i == 28984) //ID
-{
-	class8.itemActions = new String[] {null, "Wield", "Check-charges", null, "Drop"};
-	class8.name = "Chaotic rapier"; //Name
-	class8.description = "Its an Chaotic rapier"; //Description
-	class8.modelId = 54197;
-	class8.spriteScale = 1447;
-	class8.spritePitch = 1522;
-	class8.spriteCameraRoll = 1710;
-	class8.spriteCameraYaw = 1158;
-	class8.spriteTranslateX = 9;
-	class8.spriteTranslateY = -7;
-	class8.primaryMaleModel = 56252;
-	class8.primaryFemaleModel = 56252;
-	class8.secondaryMaleModel = -1;
-	class8.secondaryFemaleModel = -1;
-	class8.primaryMaleHeadPiece = -1;
-	class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;      		
-    class8.certID = -1;
-		class8.certTemplateID = -1;
-		class8.unnotedId = -1;
-		class8.notedId = -1;
-}
-if(i == 28985) //ID
-{
-	class8.itemActions = new String[] {null, "Wield", "Check-charges", null, "Drop"};
-	class8.name = "Chaotic longsword"; //Name
-	class8.description = "Its an Chaotic longsword"; //Description
-	class8.modelId = 54204;
-	class8.spriteScale = 1579;
-	class8.spritePitch = 1603;
-	class8.spriteCameraRoll = 1805;
-	class8.spriteCameraYaw = 916;
-	class8.spriteTranslateX = 3;
-	class8.spriteTranslateY = 0;
-	class8.primaryMaleModel = 56237;
-	class8.primaryFemaleModel = 56237;
-	class8.secondaryMaleModel = -1;
-	class8.secondaryFemaleModel = -1;
-	class8.primaryMaleHeadPiece = -1;
-	class8.primaryFemaleHeadPiece = -1;
-}
-if(i == 28986) //ID
-{
-	class8.itemActions = new String[] {null, "Wield", "Check-charges", null, "Drop"};
-	class8.name = "Chaotic maul"; //Name
-	class8.description = "Its an Chaotic maul"; //Description
-	class8.modelId = 56294;
-	class8.spriteScale = 1447;
-	class8.spritePitch = 525;
-	class8.spriteCameraRoll = 350;
-	class8.spriteCameraYaw = 40;
-	class8.spriteTranslateX = 5;
-	class8.spriteTranslateY = 3;
-	class8.primaryMaleModel = 56294;
-	class8.primaryFemaleModel = 56294;
-	class8.secondaryMaleModel = -1;
-	class8.secondaryFemaleModel = -1;
-	class8.primaryMaleHeadPiece = -1;
-	class8.primaryFemaleHeadPiece = -1;
-}
-if(i == 28987) //ID
-{
-	class8.itemActions = new String[] {null, "Wield", "Check-charges", null, "Drop"};
-	class8.name = "Chaotic staff"; //Name
-	class8.description = "Its an Chaotic staff"; //Description
-	class8.modifiedModelColors = new int[1];
-	class8.originalModelColors = new int[1];
-	class8.modifiedModelColors[0] = 0;
-	class8.originalModelColors[0] = 1;
-	class8.modelId = 54367;
-	class8.spriteScale = 1711;
-	class8.spritePitch = 471;
-	class8.spriteCameraRoll = 391;
-	class8.spriteCameraYaw = 2047;
-	class8.spriteTranslateX = 0;
-	class8.spriteTranslateY = -1;
-	class8.primaryMaleModel = 56286;
-	class8.primaryFemaleModel = 56286;
-	class8.secondaryMaleModel = -1;
-	class8.secondaryFemaleModel = -1;
-	class8.primaryMaleHeadPiece = -1;
-	class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;      		
-    class8.certID = -1;
-		class8.certTemplateID = -1;
-		class8.unnotedId = -1;
-		class8.notedId = -1;
-}
 if (i == 26988)
 {
         class8.itemActions = new String[5];
