@@ -8393,7 +8393,7 @@ if(i == 28993) //ID
 	class8.modifiedModelColors[0] = 10394;
 	class8.modifiedModelColors[1] = 6020;
 	class8.originalModelColors[0] = 7114;
-	class8.originalModelColors[1] = 7114;
+	class8.originalModelColors[1] = 7097;
 	class8.modelId = 6583;
 	class8.spriteScale = 860;
 	class8.spritePitch = 2012;
@@ -8426,9 +8426,9 @@ if(i == 28994) //ID
 	class8.modifiedModelColors[3] = 21555;
 	class8.modifiedModelColors[4] = 21563;
 	class8.originalModelColors[0] = 7114;
-	class8.originalModelColors[1] = 7114;
+	class8.originalModelColors[1] = 7097;
 	class8.originalModelColors[2] = 7114;
-	class8.originalModelColors[3] = 7114;
+	class8.originalModelColors[3] = 7097;
 	class8.originalModelColors[4] = 7114;
 	class8.modelId = 6598;
 	class8.spriteScale = 1470;
@@ -8459,7 +8459,7 @@ if(i == 28995) //ID
 	class8.modifiedModelColors[0] = 10394;
 	class8.modifiedModelColors[1] = 10291;
 	class8.originalModelColors[0] = 7114;
-	class8.originalModelColors[1] = 7114;
+	class8.originalModelColors[1] = 7097;
 	class8.modelId = 6586;
 	class8.spriteScale = 960;
 	class8.spritePitch = 412;
@@ -8491,7 +8491,7 @@ if(i == 28996) //ID
 	class8.modifiedModelColors[1] = 10394;
 	class8.modifiedModelColors[2] = 10388;
 	class8.originalModelColors[0] = 7114;
-	class8.originalModelColors[1] = 7114;
+	class8.originalModelColors[1] = 7097;
 	class8.originalModelColors[2] = 7114;
 	class8.modelId = 6593;
 	class8.spriteScale = 1720;
@@ -8523,7 +8523,7 @@ class8.groundActions = new String[] {null, null, "Take", null, null};
 		class8.modifiedModelColors[0] = 10394;
 		class8.modifiedModelColors[1] = 10388;
 		class8.originalModelColors[0] = 7114;
-		class8.originalModelColors[1] = 7114;
+		class8.originalModelColors[1] = 7097;
 		class8.modelId = 6580;
 		class8.spriteScale = 660;
 		class8.spritePitch = 96;
@@ -8554,7 +8554,7 @@ if(i == 28998) //ID
 		class8.modifiedModelColors[1] = 10299;
 		class8.modifiedModelColors[2] = 10514;
 		class8.originalModelColors[0] = 7114;
-		class8.originalModelColors[1] = 7114;
+		class8.originalModelColors[1] = 7097;
 		class8.originalModelColors[2] = 7114;
 		class8.modelId = 6579;
 		class8.spriteScale = 1710;
@@ -8585,7 +8585,7 @@ if(i == 28999) //ID
 		class8.modifiedModelColors[0] = 10394;
 		class8.modifiedModelColors[1] = 10291;
 		class8.originalModelColors[0] = 7114;
-		class8.originalModelColors[1] = 7114;
+		class8.originalModelColors[1] = 7097;
 		class8.modelId = 6582;
 		class8.spriteScale = 1260;
 		class8.spritePitch = 464;
@@ -8616,7 +8616,7 @@ if(i == 29000) //ID
 		class8.modifiedModelColors[0] = 10394;
 		class8.modifiedModelColors[1] = 10388;
 		class8.originalModelColors[0] = 7114;
-		class8.originalModelColors[1] = 7114;
+		class8.originalModelColors[1] = 7097;
 		class8.modelId = 6581;
 		class8.spriteScale = 1660;
 		class8.spritePitch = 456;

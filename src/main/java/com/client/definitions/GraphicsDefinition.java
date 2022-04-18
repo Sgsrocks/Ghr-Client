@@ -23,6 +23,7 @@ public final class GraphicsDefinition {
 			cache[j].setDefault();
 			cache[j].readValues(stream);
 		}
+		System.out.println("Graphics total "+length);
 		cache[1282] = new GraphicsDefinition();
 		cache[1282].index = 1282;
 		cache[1282].modelId = 44811;

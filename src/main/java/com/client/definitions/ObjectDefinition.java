@@ -105,7 +105,21 @@ public final class ObjectDefinition {
 			}
 		}
 	}
-
+	public static void dumpopendoors() {
+		for(int i = 0; i < totalObjects; i++) {
+			ObjectDefinition class5 = forID(i);
+			BufferedWriter bw = null;
+			try {
+				bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/opendoor.txt", true));
+				if(class5.name.equalsIgnoreCase("door") || class5.actions[1].equalsIgnoreCase("close")) {
+					bw.write(i+", ");
+					bw.flush();
+					bw.close();
+				}
+			} catch (IOException ioe2) {
+			}
+		}
+	}
 	private void setDefaults() {
 		anIntArray773 = null;
 		anIntArray776 = null;
@@ -180,6 +194,7 @@ public final class ObjectDefinition {
 			cache[k] = new ObjectDefinition();
 		//dumpList();
 		//dumpObjectList();
+		//dumpopendoors();
 	}
 
 	public boolean method577(int i) {
