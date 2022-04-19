@@ -5754,7 +5754,8 @@ public class Client extends RSApplet {
         int j = menuActionCmd2[i];
         int buttonPressed = menuActionCmd3[i];
         int l = menuActionID[i];
-        int i1 = (int) menuActionCmd1[i];
+
+        int clicked = (int) menuActionCmd1[i];
         long keyLong = menuActionCmd1[i];
 
         //then replace / edit these actions
@@ -5840,11 +5841,11 @@ public class Client extends RSApplet {
         } else if (l == 770) {
             RSInterface d = RSInterface.interfaceCache[j];
             RSInterface p = RSInterface.interfaceCache[buttonPressed];
-            if (i1 >= d.dropdown.getOptions().length)
+            if (clicked >= d.dropdown.getOptions().length)
                 return;
-            d.dropdown.setSelected(d.dropdown.getOptions()[i1]);
+            d.dropdown.setSelected(d.dropdown.getOptions()[clicked]);
             d.dropdown.setOpen(false);
-            d.dropdown.getDrop().selectOption(i1, d);
+            d.dropdown.getDrop().selectOption(clicked, d);
             p.dropdownOpen = null;
         }
         if (l == 850) {
@@ -5856,22 +5857,22 @@ public class Client extends RSApplet {
         if (l == 661) { // intid, slot, itemid;
             stream.createFrame(232);
             stream.method432(1);
-            stream.method432(i1);
+            stream.method432(clicked);
         }
         if (l == 662) {
             stream.createFrame(232);
             stream.method432(2);
-            stream.method432(i1);
+            stream.method432(clicked);
         }
         if (l == 663) {
             stream.createFrame(232);
             stream.method432(3);
-            stream.method432(i1);
+            stream.method432(clicked);
         }
         if (l == 664) {
             stream.createFrame(232);
             stream.method432(4);
-            stream.method432(i1);
+            stream.method432(clicked);
         }
 
         switch (l) {
@@ -5904,7 +5905,7 @@ public class Client extends RSApplet {
             stream.createFrame(141);
             stream.method432(j);
             stream.writeWord(buttonPressed);
-            stream.method432(i1);
+            stream.method432(clicked);
             stream.writeDWord(modifiableXValue);
         }
         if (l == 291) { //issue with bank vs selling...
@@ -5913,7 +5914,7 @@ public class Client extends RSApplet {
                 //pushMessage("int: " + openInterfaceID, 0, "int: " + openInterfaceID);
                 stream.createFrame(140);
                 stream.method433(buttonPressed);
-                stream.method433(i1);
+                stream.method433(clicked);
                 stream.method431(j);
                 atInventoryLoopCycle = 0;
                 atInventoryInterface = buttonPressed;
@@ -5927,7 +5928,7 @@ public class Client extends RSApplet {
                 stream.createFrame(141);
                 stream.method432(j);
                 stream.writeWord(buttonPressed);
-                stream.method432(i1);
+                stream.method432(clicked);
                 stream.writeDWord(modifiableXValue);
             }
 
@@ -5950,7 +5951,7 @@ public class Client extends RSApplet {
 		}*/
 
         if (l == 582) {
-            NPC npc = npcs[i1];
+            NPC npc = npcs[clicked];
             if (npc != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, npc.smallY[0], myPlayer.smallX[0], false, npc.smallX[0]);
                 crossX = super.saveClickX;
@@ -5959,7 +5960,7 @@ public class Client extends RSApplet {
                 crossIndex = 0;
                 stream.createFrame(57);
                 stream.method432(anInt1285);
-                stream.method432(i1);
+                stream.method432(clicked);
                 stream.method431(anInt1283);
                 stream.method432(anInt1284);
             }
@@ -5974,13 +5975,13 @@ public class Client extends RSApplet {
             crossIndex = 0;
             stream.createFrame(236);
             stream.method431(buttonPressed + baseY);
-            stream.writeWord(i1);
+            stream.writeWord(clicked);
             stream.method431(j + baseX);
         }
         if (l == 62 && clickObject(keyLong, buttonPressed, j)) {
             stream.createFrame(192);
             stream.writeWord(anInt1284);
-            stream.writeDWord(ObjectKey.getObjectId(keyLong));
+            stream.method432(clicked);
             stream.method433(buttonPressed + baseY);
             stream.method431(anInt1283);
             stream.method433(j + baseX);
@@ -5997,7 +5998,7 @@ public class Client extends RSApplet {
             stream.createFrame(25);
             stream.method431(anInt1284);
             stream.method432(anInt1285);
-            stream.writeWord(i1);
+            stream.writeWord(clicked);
             stream.method432(buttonPressed + baseY);
             stream.method433(anInt1283);
             stream.writeWord(j + baseX);
@@ -6006,7 +6007,7 @@ public class Client extends RSApplet {
             stream.createFrame(122);
             stream.method433(buttonPressed);
             stream.method432(j);
-            stream.method431(i1);
+            stream.method431(clicked);
             atInventoryLoopCycle = 0;
             atInventoryInterface = buttonPressed;
             atInventoryIndex = j;
@@ -6187,7 +6188,7 @@ public class Client extends RSApplet {
             }
         }
         if (l == 561) {
-            Player player = players[i1];
+            Player player = players[clicked];
             if (player != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, player.smallY[0], myPlayer.smallX[0], false,
                         player.smallX[0]);
@@ -6195,21 +6196,21 @@ public class Client extends RSApplet {
                 crossY = super.saveClickY;
                 crossType = 2;
                 crossIndex = 0;
-                anInt1188 += i1;
+                anInt1188 += clicked;
                 if (anInt1188 >= 90) {
                     stream.createFrame(136);
                     anInt1188 = 0;
                 }
                 stream.createFrame(128);
-                stream.writeWord(i1);
+                stream.writeWord(clicked);
             }
         }
         if (l == 745) {
             stream.createFrame(8);
-            stream.writeDWord(i1);
+            stream.method432(clicked);
         }
         if (l == 20) {
-            NPC class30_sub2_sub4_sub1_sub1_1 = npcs[i1];
+            NPC class30_sub2_sub4_sub1_sub1_1 = npcs[clicked];
             if (class30_sub2_sub4_sub1_sub1_1 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub1_1.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub1_1.smallX[0]);
@@ -6218,11 +6219,11 @@ public class Client extends RSApplet {
                 crossType = 2;
                 crossIndex = 0;
                 stream.createFrame(155);
-                stream.method431(i1);
+                stream.method431(clicked);
             }
         }
         if (l == 779) {
-            Player class30_sub2_sub4_sub1_sub2_1 = players[i1];
+            Player class30_sub2_sub4_sub1_sub2_1 = players[clicked];
             if (class30_sub2_sub4_sub1_sub2_1 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub2_1.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub2_1.smallX[0]);
@@ -6231,7 +6232,7 @@ public class Client extends RSApplet {
                 crossType = 2;
                 crossIndex = 0;
                 stream.createFrame(153);
-                stream.method431(i1);
+                stream.method431(clicked);
             }
         }
         if (l == 516) {
@@ -6259,7 +6260,7 @@ public class Client extends RSApplet {
             }
             clickObject(keyLong, buttonPressed, j);
             stream.createFrame(228);
-            stream.writeDWord(ObjectKey.getObjectId(keyLong));
+            stream.method432(clicked);
             stream.method432(buttonPressed + baseY);
             stream.writeWord(j + baseX);
         }
@@ -6272,7 +6273,7 @@ public class Client extends RSApplet {
             stream.createFrame(129);
             stream.method432(j);
             stream.writeWord(buttonPressed);
-            stream.method432(i1);
+            stream.method432(clicked);
             atInventoryLoopCycle = 0;
             atInventoryInterface = buttonPressed;
             atInventoryIndex = j;
@@ -6298,7 +6299,7 @@ public class Client extends RSApplet {
             }
         }
         if (l == 1337) { // Placeholders
-            inputString = "::placeholder-" + j + "-" + i1;
+            inputString = "::placeholder-" + j + "-" + clicked;
             stream.createFrame(103);
             stream.writeWordBigEndian(inputString.length() - 1);
             stream.writeString(inputString.substring(2));
@@ -6308,7 +6309,7 @@ public class Client extends RSApplet {
             stream.createFrame(135);
             stream.method431(j);
             stream.method432(buttonPressed);
-            stream.method431(i1);
+            stream.method431(clicked);
             atInventoryLoopCycle = 0;
             atInventoryInterface = buttonPressed;
             atInventoryIndex = j;
@@ -6330,7 +6331,7 @@ public class Client extends RSApplet {
 
             stream.method432(j);
             stream.writeWord(buttonPressed);
-            stream.method432(i1);
+            stream.method432(clicked);
             stream.writeDWord(modifiableXValue);
         }
 
@@ -6345,7 +6346,7 @@ public class Client extends RSApplet {
 		 */
         if (l == 539) {
             stream.createFrame(16);
-            stream.method432(i1);
+            stream.method432(clicked);
             stream.method433(j);
             stream.method433(buttonPressed);
             atInventoryLoopCycle = 0;
@@ -6376,7 +6377,7 @@ public class Client extends RSApplet {
                         stream.method431(playerIndices[j3]);
                     }
                     if (l == 6) {
-                        anInt1188 += i1;
+                        anInt1188 += clicked;
                         if (anInt1188 >= 90) {
                             stream.createFrame(136);
                             anInt1188 = 0;
@@ -6396,7 +6397,7 @@ public class Client extends RSApplet {
             stream.createFrame(53);
             stream.writeWord(j);
             stream.method432(anInt1283);
-            stream.method433(i1);
+            stream.method433(clicked);
             stream.writeWord(anInt1284);
             stream.method431(anInt1285);
             stream.writeWord(buttonPressed);
@@ -6411,7 +6412,7 @@ public class Client extends RSApplet {
         }
         if (l == 847) {
             stream.createFrame(87);
-            stream.method432(i1);
+            stream.method432(clicked);
             stream.writeWord(buttonPressed);
             stream.method432(j);
             atInventoryLoopCycle = 0;
@@ -6473,7 +6474,7 @@ public class Client extends RSApplet {
         if (l == 78) {
             stream.createFrame(117);
             stream.method433(buttonPressed);
-            stream.method433(i1);
+            stream.method433(clicked);
             stream.method431(j);
             atInventoryLoopCycle = 0;
             atInventoryInterface = buttonPressed;
@@ -6485,7 +6486,7 @@ public class Client extends RSApplet {
                 atInventoryInterfaceType = 3;
         }
         if (l == 27) {
-            Player class30_sub2_sub4_sub1_sub2_2 = players[i1];
+            Player class30_sub2_sub4_sub1_sub2_2 = players[clicked];
             if (class30_sub2_sub4_sub1_sub2_2 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub2_2.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub2_2.smallX[0]);
@@ -6493,14 +6494,14 @@ public class Client extends RSApplet {
                 crossY = super.saveClickY;
                 crossType = 2;
                 crossIndex = 0;
-                anInt986 += i1;
+                anInt986 += clicked;
                 if (anInt986 >= 54) {
                     stream.createFrame(189);
                     stream.writeWordBigEndian(234);
                     anInt986 = 0;
                 }
                 stream.createFrame(73);
-                stream.method431(i1);
+                stream.method431(clicked);
             }
         }
         if (l == 213) {
@@ -6513,14 +6514,14 @@ public class Client extends RSApplet {
             crossIndex = 0;
             stream.createFrame(79);
             stream.method431(buttonPressed + baseY);
-            stream.writeWord(i1);
+            stream.writeWord(clicked);
             stream.method432(j + baseX);
         }
         if (l == 632) {
             stream.createFrame(145);
             stream.method432(buttonPressed);
             stream.method432(j);
-            stream.method432(i1);
+            stream.method432(clicked);
             atInventoryLoopCycle = 0;
             atInventoryInterface = buttonPressed;
             atInventoryIndex = j;
@@ -6693,7 +6694,7 @@ public class Client extends RSApplet {
             stream.createFrame(75);
             stream.method433(buttonPressed);
             stream.method431(j);
-            stream.method432(i1);
+            stream.method432(clicked);
             atInventoryLoopCycle = 0;
             atInventoryInterface = buttonPressed;
             atInventoryIndex = j;
@@ -6714,7 +6715,7 @@ public class Client extends RSApplet {
             stream.createFrame(156);
             stream.method432(j + baseX);
             stream.method431(buttonPressed + baseY);
-            stream.method433(i1);
+            stream.method433(clicked);
         }
         if (l == 94) {
             boolean flag5 = doWalkTo(2, 0, 0, 0, myPlayer.smallY[0], 0, 0, buttonPressed, myPlayer.smallX[0], false, j);
@@ -6726,7 +6727,7 @@ public class Client extends RSApplet {
             crossIndex = 0;
             stream.createFrame(181);
             stream.method431(buttonPressed + baseY);
-            stream.writeWord(i1);
+            stream.writeWord(clicked);
             stream.method431(j + baseX);
             stream.method432(anInt1137);
         }
@@ -6822,7 +6823,7 @@ public class Client extends RSApplet {
             }
         }
         if (l == 225) {
-            NPC class30_sub2_sub4_sub1_sub1_2 = npcs[i1];
+            NPC class30_sub2_sub4_sub1_sub1_2 = npcs[clicked];
             if (class30_sub2_sub4_sub1_sub1_2 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub1_2.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub1_2.smallX[0]);
@@ -6830,18 +6831,18 @@ public class Client extends RSApplet {
                 crossY = super.saveClickY;
                 crossType = 2;
                 crossIndex = 0;
-                anInt1226 += i1;
+                anInt1226 += clicked;
                 if (anInt1226 >= 85) {
                     stream.createFrame(230);
                     stream.writeWordBigEndian(239);
                     anInt1226 = 0;
                 }
                 stream.createFrame(17);
-                stream.method433(i1);
+                stream.method433(clicked);
             }
         }
         if (l == 965) {
-            NPC class30_sub2_sub4_sub1_sub1_3 = npcs[i1];
+            NPC class30_sub2_sub4_sub1_sub1_3 = npcs[clicked];
             if (class30_sub2_sub4_sub1_sub1_3 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub1_3.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub1_3.smallX[0]);
@@ -6856,11 +6857,11 @@ public class Client extends RSApplet {
                     anInt1134 = 0;
                 }
                 stream.createFrame(21);
-                stream.writeWord(i1);
+                stream.writeWord(clicked);
             }
         }
         if (l == 413) {
-            NPC class30_sub2_sub4_sub1_sub1_4 = npcs[i1];
+            NPC class30_sub2_sub4_sub1_sub1_4 = npcs[clicked];
             if (class30_sub2_sub4_sub1_sub1_4 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub1_4.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub1_4.smallX[0]);
@@ -6869,7 +6870,7 @@ public class Client extends RSApplet {
                 crossType = 2;
                 crossIndex = 0;
                 stream.createFrame(131);
-                stream.method433(i1);
+                stream.method433(clicked);
                 stream.method432(anInt1137);
             }
         }
@@ -6901,7 +6902,7 @@ public class Client extends RSApplet {
         }
 
         if (l == 1025) {
-            NPC class30_sub2_sub4_sub1_sub1_5 = npcs[i1];
+            NPC class30_sub2_sub4_sub1_sub1_5 = npcs[clicked];
             if (class30_sub2_sub4_sub1_sub1_5 != null) {
                 NpcDefinition entityDef = class30_sub2_sub4_sub1_sub1_5.desc;
                 if (entityDef.childrenIDs != null)
@@ -6926,12 +6927,12 @@ public class Client extends RSApplet {
         if (l == 900) {
             clickObject(keyLong, buttonPressed, j);
             stream.createFrame(252);
-            stream.writeDWord(ObjectKey.getObjectId(keyLong));
+            stream.method432(clicked);
             stream.method431(buttonPressed + baseY);
             stream.method432(j + baseX);
         }
         if (l == 412) {
-            NPC class30_sub2_sub4_sub1_sub1_6 = npcs[i1];
+            NPC class30_sub2_sub4_sub1_sub1_6 = npcs[clicked];
             if (class30_sub2_sub4_sub1_sub1_6 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub1_6.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub1_6.smallX[0]);
@@ -6940,11 +6941,11 @@ public class Client extends RSApplet {
                 crossType = 2;
                 crossIndex = 0;
                 stream.createFrame(72);
-                stream.method432(i1);
+                stream.method432(clicked);
             }
         }
         if (l == 365) {
-            Player class30_sub2_sub4_sub1_sub2_3 = players[i1];
+            Player class30_sub2_sub4_sub1_sub2_3 = players[clicked];
             if (class30_sub2_sub4_sub1_sub2_3 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub2_3.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub2_3.smallX[0]);
@@ -6953,12 +6954,12 @@ public class Client extends RSApplet {
                 crossType = 2;
                 crossIndex = 0;
                 stream.createFrame(249);
-                stream.method432(i1);
+                stream.method432(clicked);
                 stream.method431(anInt1137);
             }
         }
         if (l == 729) {
-            Player class30_sub2_sub4_sub1_sub2_4 = players[i1];
+            Player class30_sub2_sub4_sub1_sub2_4 = players[clicked];
             if (class30_sub2_sub4_sub1_sub2_4 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub2_4.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub2_4.smallX[0]);
@@ -6967,11 +6968,11 @@ public class Client extends RSApplet {
                 crossType = 2;
                 crossIndex = 0;
                 stream.createFrame(39);
-                stream.method431(i1);
+                stream.method431(clicked);
             }
         }
         if (l == 577) {
-            Player class30_sub2_sub4_sub1_sub2_5 = players[i1];
+            Player class30_sub2_sub4_sub1_sub2_5 = players[clicked];
             if (class30_sub2_sub4_sub1_sub2_5 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub2_5.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub2_5.smallX[0]);
@@ -6980,7 +6981,7 @@ public class Client extends RSApplet {
                 crossType = 2;
                 crossIndex = 0;
                 stream.createFrame(139);
-                stream.method431(i1);
+                stream.method431(clicked);
             }
         }
         if (l == 956 && clickObject(keyLong, buttonPressed, j)) {
@@ -6988,7 +6989,7 @@ public class Client extends RSApplet {
             stream.method431(j + baseX);
             stream.method432(anInt1137);
             stream.method432(buttonPressed + baseY);
-            stream.writeDWord(ObjectKey.getObjectId(keyLong));
+            stream.method432(clicked);
         }
         if (l == 567) {
             boolean flag6 = doWalkTo(2, 0, 0, 0, myPlayer.smallY[0], 0, 0, buttonPressed, myPlayer.smallX[0], false, j);
@@ -7000,11 +7001,11 @@ public class Client extends RSApplet {
             crossIndex = 0;
             stream.createFrame(23);
             stream.method431(buttonPressed + baseY);
-            stream.method431(i1);
+            stream.method431(clicked);
             stream.method431(j + baseX);
         }
         if (l == 867) {
-            if ((i1 & 3) == 0)
+            if ((clicked & 3) == 0)
                 anInt1175++;
             if (anInt1175 >= 59) {
                 stream.createFrame(200);
@@ -7014,7 +7015,7 @@ public class Client extends RSApplet {
             }
             stream.createFrame(43);
             stream.method431(buttonPressed);
-            stream.method432(i1);
+            stream.method432(clicked);
             stream.method432(j);
             atInventoryLoopCycle = 0;
             atInventoryInterface = buttonPressed;
@@ -7028,7 +7029,7 @@ public class Client extends RSApplet {
         if (l == 543) {
             stream.createFrame(237);
             stream.writeWord(j);
-            stream.method432(i1);
+            stream.method432(clicked);
             stream.writeWord(buttonPressed);
             stream.method432(anInt1137);
             atInventoryLoopCycle = 0;
@@ -7060,7 +7061,7 @@ public class Client extends RSApplet {
                 }
         }
         if (l == 491) {
-            Player class30_sub2_sub4_sub1_sub2_6 = players[i1];
+            Player class30_sub2_sub4_sub1_sub2_6 = players[clicked];
             if (class30_sub2_sub4_sub1_sub2_6 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub2_6.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub2_6.smallX[0]);
@@ -7070,7 +7071,7 @@ public class Client extends RSApplet {
                 crossIndex = 0;
                 stream.createFrame(14);
                 stream.method432(anInt1284);
-                stream.writeWord(i1);
+                stream.writeWord(clicked);
                 stream.writeWord(anInt1285);
                 stream.method431(anInt1283);
             }
@@ -7114,7 +7115,7 @@ public class Client extends RSApplet {
 
         if (l == 454) {
             stream.createFrame(41);
-            stream.writeWord(i1);
+            stream.writeWord(clicked);
             stream.method432(j);
             stream.method432(buttonPressed);
             atInventoryLoopCycle = 0;
@@ -7132,7 +7133,7 @@ public class Client extends RSApplet {
 
         }
         if (l == 478) {
-            NPC class30_sub2_sub4_sub1_sub1_7 = npcs[i1];
+            NPC class30_sub2_sub4_sub1_sub1_7 = npcs[clicked];
             if (class30_sub2_sub4_sub1_sub1_7 != null) {
                 doWalkTo(2, 0, 1, 0, myPlayer.smallY[0], 1, 0, class30_sub2_sub4_sub1_sub1_7.smallY[0],
                         myPlayer.smallX[0], false, class30_sub2_sub4_sub1_sub1_7.smallX[0]);
@@ -7140,7 +7141,7 @@ public class Client extends RSApplet {
                 crossY = super.saveClickY;
                 crossType = 2;
                 crossIndex = 0;
-                if ((i1 & 3) == 0)
+                if ((clicked & 3) == 0)
                     anInt1155++;
                 if (anInt1155 >= 53) {
                     stream.createFrame(85);
@@ -7148,7 +7149,7 @@ public class Client extends RSApplet {
                     anInt1155 = 0;
                 }
                 stream.createFrame(18);
-                stream.method431(i1);
+                stream.method431(clicked);
             }
         }
         if (l == 113) {
@@ -7156,24 +7157,24 @@ public class Client extends RSApplet {
             stream.createFrame(70);
             stream.method431(j + baseX);
             stream.writeWord(buttonPressed + baseY);
-            stream.writeDWord(ObjectKey.getObjectId(keyLong));
+            stream.method432(clicked);
         }
         if (l == 872) {
             clickObject(keyLong, buttonPressed, j);
             stream.createFrame(234);
             stream.method433(j + baseX);
-            stream.writeDWord(ObjectKey.getObjectId(keyLong));
+            stream.method432(clicked);
             stream.method433(buttonPressed + baseY);
         }
         if (l == 502) {
             clickObject(keyLong, buttonPressed, j);
             stream.createFrame(132);
             stream.method433(j + baseX);
-            stream.writeDWord(ObjectKey.getObjectId(keyLong));
+            stream.method432(clicked);
             stream.method432(buttonPressed + baseY);
         }
         if (l == 1125) {
-            ItemDefinition itemDef = ItemDefinition.forID(i1);
+            ItemDefinition itemDef = ItemDefinition.forID(clicked);
             RSInterface class9_4 = RSInterface.interfaceCache[buttonPressed];
             String s5;
             if (class9_4 != null && class9_4.invStackSizes[j] >= 0x186a0)
@@ -7207,14 +7208,14 @@ public class Client extends RSApplet {
             itemSelected = 1;
             anInt1283 = j;
             anInt1284 = buttonPressed;
-            anInt1285 = i1;
-            selectedItemName = ItemDefinition.forID(i1).name;
+            anInt1285 = clicked;
+            selectedItemName = ItemDefinition.forID(clicked).name;
             spellSelected = 0;
             needDrawTabArea = true;
             return;
         }
         if (l == 1226) {
-            int ObjectId = i1 >> 14 & 0x7fff;
+            int ObjectId = clicked >> 14 & 0x7fff;
             ObjectDefinition class46 = ObjectDefinition.forID(ObjectId);
             String s10;
             if (class46.description != null) {
@@ -7222,7 +7223,10 @@ public class Client extends RSApplet {
             } else {
                 s10 = "It's a " + class46.name + ".";
             }
-            pushMessage(s10, 0, "");
+            stream.createFrame(146);
+            stream.method433(j + baseX);
+            stream.method432(clicked);
+            stream.method432(buttonPressed + baseY);
         }
         if (l == 244) {
             boolean flag7 = doWalkTo(2, 0, 0, 0, myPlayer.smallY[0], 0, 0, buttonPressed, myPlayer.smallX[0], false, j);
@@ -7235,10 +7239,10 @@ public class Client extends RSApplet {
             stream.createFrame(253);
             stream.method431(j + baseX);
             stream.method433(buttonPressed + baseY);
-            stream.method432(i1);
+            stream.method432(clicked);
         }
         if (l == 1448) {
-            ItemDefinition itemDef_1 = ItemDefinition.forID(i1);
+            ItemDefinition itemDef_1 = ItemDefinition.forID(clicked);
             String s6;
             if (itemDef_1.description != null)
                 s6 = itemDef_1.description;
@@ -9918,9 +9922,9 @@ public class Client extends RSApplet {
                         k = menuActionCmd3[j];
                         menuActionCmd3[j] = menuActionCmd3[j + 1];
                         menuActionCmd3[j + 1] = k;
-                        k = (int) menuActionCmd1[j];
+                       long k2 = (int) menuActionCmd1[j];
                         menuActionCmd1[j] = menuActionCmd1[j + 1];
-                        menuActionCmd1[j + 1] = k;
+                        menuActionCmd1[j + 1] = k2;
                         flag = false;
                     }
                 }
@@ -16390,13 +16394,12 @@ public class Client extends RSApplet {
                 i2 = worldController.method302(j, i1, i);
             if (j1 == 3)
                 i2 = worldController.method303(j, i1, i);
-            if (i2 != 0) {
-                int j2 = ObjectKey.getObjectId(i2);
+            if (i2 != 0L) {
                 int k2 = ObjectKey.getObjectType(i2);
                 int l2 = ObjectKey.getObjectOrientation(i2);
                 if (j1 == 0) {
                     worldController.method291(i1, j, i, (byte) -119);
-                    ObjectDefinition class46 = ObjectDefinition.forID(j2);
+                    ObjectDefinition class46 = ObjectDefinition.forID(ObjectKey.getObjectId(i2));
                     if (class46.solid)
                         aClass11Array1230[j].method215(l2, k2, class46.impenetrable, i1, i);
                 }
@@ -16404,7 +16407,7 @@ public class Client extends RSApplet {
                     worldController.method292(i, j, i1);
                 if (j1 == 2) {
                     worldController.method293(j, i1, i);
-                    ObjectDefinition class46_1 = ObjectDefinition.forID(j2);
+                    ObjectDefinition class46_1 = ObjectDefinition.forID(ObjectKey.getObjectId(i2));
                     if (i1 + class46_1.objectSizeX > 103 || i + class46_1.objectSizeX > 103 || i1 + class46_1.objectSizeY > 103
                             || i + class46_1.objectSizeY > 103)
                         return;
@@ -16414,7 +16417,7 @@ public class Client extends RSApplet {
                 }
                 if (j1 == 3) {
                     worldController.method294(j, i, i1);
-                    ObjectDefinition class46_2 = ObjectDefinition.forID(j2);
+                    ObjectDefinition class46_2 = ObjectDefinition.forID(ObjectKey.getObjectId(i2));
                     if (class46_2.solid && class46_2.isInteractive)
                         aClass11Array1230[j].method218(i, i1);
                 }

@@ -139,8 +139,7 @@ final class WorldController {
         tiles[i][j][k].aClass40_1312 = class40;
     }
 
-    public void method280(int i, int j, int k, Renderable class30_sub2_sub4,
-                          byte byte0, long i1, int j1) {
+    public void method280(int i, int j, int k, Renderable class30_sub2_sub4, long i1, int j1) {
         if (class30_sub2_sub4 == null)
             return;
         GroundObject class49 = new GroundObject();
@@ -149,7 +148,7 @@ final class WorldController {
         class49.anInt813 = k * 128 + 64;
         class49.anInt811 = j;
         class49.uid = i1;
-        class49.aByte816 = byte0;
+       // class49.aByte816 = byte0;
         if (tiles[i][j1][k] == null)
             tiles[i][j1][k] = new Tile(i, j1, k);
         tiles[i][j1][k].groundObject = class49;
@@ -183,14 +182,12 @@ final class WorldController {
         tiles[l][i][i1].obj4 = object4;
     }
 
-    public void method282(int i, Renderable class30_sub2_sub4, long j, int k,
-                          byte byte0, int l, Renderable class30_sub2_sub4_1, int i1, int j1,
+    public void method282(int i, Renderable class30_sub2_sub4, long j, int k, int l, Renderable class30_sub2_sub4_1, int i1, int j1,
                           int k1) {
         if (class30_sub2_sub4 == null && class30_sub2_sub4_1 == null)
             return;
         WallObject object1 = new WallObject();
         object1.uid = j;
-        object1.aByte281 = byte0;
         object1.anInt274 = l * 128 + 64;
         object1.anInt275 = k * 128 + 64;
         object1.anInt273 = i1;
@@ -206,12 +203,11 @@ final class WorldController {
     }
 
     public void method283(long i, int j, int k, int i1, int j1, int k1,
-                          Renderable class30_sub2_sub4, int l1, byte byte0, int i2, int j2) {
+                          Renderable class30_sub2_sub4, int l1, int i2, int j2) {
         if (class30_sub2_sub4 == null)
             return;
         Object2 class26 = new Object2();
         class26.uid = i;
-        class26.aByte506 = byte0;
         class26.anInt500 = l1 * 128 + 64 + j1;
         class26.anInt501 = j * 128 + 64 + i2;
         class26.anInt499 = k1;
@@ -225,7 +221,7 @@ final class WorldController {
         tiles[i1][l1][j].obj2 = class26;
     }
 
-    public boolean method284(long i, byte byte0, int j, int k,
+    public boolean method284(long i, int j, int k,
                              Renderable class30_sub2_sub4, int l, int i1, int j1, int k1, int l1) {
         if (class30_sub2_sub4 == null) {
             return true;
@@ -233,7 +229,7 @@ final class WorldController {
             int i2 = l1 * 128 + 64 * l;
             int j2 = k1 * 128 + 64 * k;
             return method287(i1, l1, k1, l, k, i2, j2, j, class30_sub2_sub4,
-                    j1, false, i, byte0);
+                    j1, false, i);
         }
     }
 
@@ -260,19 +256,19 @@ final class WorldController {
         j2 /= 128;
         k2 /= 128;
         return method287(i, l1, i2, (j2 - l1) + 1, (k2 - i2) + 1, k1, i1, k,
-                class30_sub2_sub4, j, true, k3, (byte) 0);
+                class30_sub2_sub4, j, true, k3);
     }
 
     public boolean method286(int j, int k, Renderable class30_sub2_sub4, int l,
                              int i1, int j1, int k1, int l1, int i2, long j2, int k2) {
         return class30_sub2_sub4 == null
                 || method287(j, l1, k2, (i2 - l1) + 1, (i1 - k2) + 1, j1, k,
-                k1, class30_sub2_sub4, l, true, j2, (byte) 0);
+                k1, class30_sub2_sub4, l, true, j2);
     }
 
     private boolean method287(int i, int j, int k, int l, int i1, int j1,
                               int k1, int l1, Renderable class30_sub2_sub4, int i2, boolean flag,
-                              long j2, byte byte0) {
+                              long j2) {
         for (int k2 = j; k2 < j + l; k2++) {
             for (int l2 = k; l2 < k + i1; l2++) {
                 if (k2 < 0 || l2 < 0 || k2 >= xRegionSize || l2 >= yRegionSize)
@@ -286,7 +282,6 @@ final class WorldController {
 
         GameObject class28 = new GameObject();
         class28.uid = j2;
-        class28.mask = byte0;
         class28.zLoc = i;
         class28.xPos = j1;
         class28.yPos = k1;

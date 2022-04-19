@@ -554,7 +554,6 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 		key |= 0x400000L;
 	}
 	key |= (long) id << 32;
-	byte byte0 = (byte) ((orientation << 6) + type);
 	if (type == 22) {
 		if (lowMem && !definition.isInteractive && !definition.obstructsGround)
 			return;
@@ -563,7 +562,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 			obj = definition.modelAt(22, orientation, k1, l1, i2, j2, -1);
 		else
 			obj = new Animable_Sub5(id, orientation, 22, l1, i2, k1, j2, definition.animation, true);
-		worldController.method280(z, k2, y, ((Renderable) (obj)), byte0, key, x);
+		worldController.method280(z, k2, y, ((Renderable) (obj)), key, x);
 		if (definition.solid && definition.isInteractive && class11 != null)
 			class11.method213(y, x);
 		return;
@@ -587,7 +586,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 				j4 = definition.objectSizeX;
 				l4 = definition.objectSizeY;
 			}
-			if (worldController.method284(key, byte0, k2, l4, ((Renderable) (obj1)), j4, z, i5, y, x)
+			if (worldController.method284(key, k2, l4, ((Renderable) (obj1)), j4, z, i5, y, x)
 					&& definition.castsShadow) {
 				Model model;
 				if (obj1 instanceof Model)
@@ -619,7 +618,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 			obj2 = definition.modelAt(type, orientation, k1, l1, i2, j2, -1);
 		else
 			obj2 = new Animable_Sub5(id, orientation, type, l1, i2, k1, j2, definition.animation, true);
-		worldController.method284(key, byte0, k2, 1, ((Renderable) (obj2)), 1, z, 0, y, x);
+		worldController.method284(key, k2, 1, ((Renderable) (obj2)), 1, z, 0, y, x);
 		if (type >= 12 && type <= 17 && type != 13 && z > 0)
 			anIntArrayArrayArray135[z][x][y] |= 0x924;
 		if (definition.solid && class11 != null)
@@ -632,7 +631,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 			obj3 = definition.modelAt(0, orientation, k1, l1, i2, j2, -1);
 		else
 			obj3 = new Animable_Sub5(id, orientation, 0, l1, i2, k1, j2, definition.animation, true);
-		worldController.method282(anIntArray152[orientation], ((Renderable) (obj3)), key, y, byte0, x, null, k2, 0, z);
+		worldController.method282(anIntArray152[orientation], ((Renderable) (obj3)), key, y, x, null, k2, 0, z);
 		if (orientation == 0) {
 			if (definition.castsShadow) {
 				shading[z][x][y] = 50;
@@ -674,7 +673,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 			obj4 = definition.modelAt(1, orientation, k1, l1, i2, j2, -1);
 		else
 			obj4 = new Animable_Sub5(id, orientation, 1, l1, i2, k1, j2, definition.animation, true);
-		worldController.method282(anIntArray140[orientation], ((Renderable) (obj4)), key, y, byte0, x, null, k2, 0, z);
+		worldController.method282(anIntArray140[orientation], ((Renderable) (obj4)), key, y, x, null, k2, 0, z);
 		if (definition.castsShadow)
 			if (orientation == 0)
 				shading[z][x][y + 1] = 50;
@@ -699,7 +698,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 			obj11 = new Animable_Sub5(id, 4 + orientation, 2, l1, i2, k1, j2, definition.animation, true);
 			obj12 = new Animable_Sub5(id, i3, 2, l1, i2, k1, j2, definition.animation, true);
 		}
-		worldController.method282(anIntArray152[orientation], ((Renderable) (obj11)), key, y, byte0, x,
+		worldController.method282(anIntArray152[orientation], ((Renderable) (obj11)), key, y, x,
 				((Renderable) (obj12)), k2, anIntArray152[i3], z);
 		if (definition.occludes)
 			if (orientation == 0) {
@@ -727,7 +726,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 			obj5 = definition.modelAt(3, orientation, k1, l1, i2, j2, -1);
 		else
 			obj5 = new Animable_Sub5(id, orientation, 3, l1, i2, k1, j2, definition.animation, true);
-		worldController.method282(anIntArray140[orientation], ((Renderable) (obj5)), key, y, byte0, x, null, k2, 0, z);
+		worldController.method282(anIntArray140[orientation], ((Renderable) (obj5)), key, y, x, null, k2, 0, z);
 		if (definition.castsShadow)
 			if (orientation == 0)
 				shading[z][x][y + 1] = 50;
@@ -747,7 +746,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 			obj6 = definition.modelAt(type, orientation, k1, l1, i2, j2, -1);
 		else
 			obj6 = new Animable_Sub5(id, orientation, type, l1, i2, k1, j2, definition.animation, true);
-		worldController.method284(key, byte0, k2, 1, ((Renderable) (obj6)), 1, z, 0, y, x);
+		worldController.method284(key, k2, 1, ((Renderable) (obj6)), 1, z, 0, y, x);
 		if (definition.solid && class11 != null)
 			class11.method212(definition.impenetrable, definition.objectSizeX, definition.objectSizeY, x, y, orientation);
 		return;
@@ -779,7 +778,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 			obj7 = definition.modelAt(4, 0, k1, l1, i2, j2, -1);
 		else
 			obj7 = new Animable_Sub5(id, 0, 4, l1, i2, k1, j2, definition.animation, true);
-		worldController.method283(key, y, orientation * 512, z, 0, k2, ((Renderable) (obj7)), x, byte0, 0,
+		worldController.method283(key, y, orientation * 512, z, 0, k2, ((Renderable) (obj7)), x, 0,
 				anIntArray152[orientation]);
 		return;
 	}
@@ -793,7 +792,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 			obj13 = definition.modelAt(4, 0, k1, l1, i2, j2, -1);
 		else
 			obj13 = new Animable_Sub5(id, 0, 4, l1, i2, k1, j2, definition.animation, true);
-		worldController.method283(key, y, orientation * 512, z, anIntArray137[orientation] * i4, k2, ((Renderable) (obj13)), x, byte0,
+		worldController.method283(key, y, orientation * 512, z, anIntArray137[orientation] * i4, k2, ((Renderable) (obj13)), x,
 				anIntArray144[orientation] * i4, anIntArray152[orientation]);
 		return;
 	}
@@ -803,7 +802,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 			obj8 = definition.modelAt(4, 0, k1, l1, i2, j2, -1);
 		else
 			obj8 = new Animable_Sub5(id, 0, 4, l1, i2, k1, j2, definition.animation, true);
-		worldController.method283(key, y, orientation, z, 0, k2, ((Renderable) (obj8)), x, byte0, 0, 256);
+		worldController.method283(key, y, orientation, z, 0, k2, ((Renderable) (obj8)), x, 0, 256);
 		return;
 	}
 	if (type == 7) {
@@ -812,7 +811,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 			obj9 = definition.modelAt(4, 0, k1, l1, i2, j2, -1);
 		else
 			obj9 = new Animable_Sub5(id, 0, 4, l1, i2, k1, j2, definition.animation, true);
-		worldController.method283(key, y, orientation, z, 0, k2, ((Renderable) (obj9)), x, byte0, 0, 512);
+		worldController.method283(key, y, orientation, z, 0, k2, ((Renderable) (obj9)), x, 0, 512);
 		return;
 	}
 	if (type == 8) {
@@ -821,7 +820,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 			obj10 = definition.modelAt(4, 0, k1, l1, i2, j2, -1);
 		else
 			obj10 = new Animable_Sub5(id, 0, 4, l1, i2, k1, j2, definition.animation, true);
-		worldController.method283(key, y, orientation, z, 0, k2, ((Renderable) (obj10)), x, byte0, 0, 768);
+		worldController.method283(key, y, orientation, z, 0, k2, ((Renderable) (obj10)), x, 0, 768);
 	}
 }
 	private static int interpolatedNoise(int i, int j, int k) {
@@ -1070,14 +1069,13 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 			key |= 0x400000L;
 		}
 		key |= (long) id << 32;
-		byte byte1 = (byte) ((orientation << 6) + type);
 		if (type == 22) {
 			Object obj;
 			if (definition.animation == -1 && definition.childrenIDs == null)
 				obj = definition.modelAt(22, orientation, l1, i2, j2, k2, -1);
 			else
 				obj = new Animable_Sub5(id, orientation, 22, i2, j2, l1, k2, definition.animation, true);
-			worldController.method280(k1, l2, y, ((Renderable) (obj)), byte1, key, x);
+			worldController.method280(k1, l2, y, ((Renderable) (obj)), key, x);
 			if (definition.solid && definition.isInteractive)
 				class11.method213(y, x);
 			return;
@@ -1101,7 +1099,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 					k4 = definition.objectSizeX;
 					i5 = definition.objectSizeY;
 				}
-				worldController.method284(key, byte1, l2, i5, ((Renderable) (obj1)), k4, k1, j5, y, x);
+				worldController.method284(key, l2, i5, ((Renderable) (obj1)), k4, k1, j5, y, x);
 			}
 			if (definition.solid)
 				class11.method212(definition.impenetrable, definition.objectSizeX, definition.objectSizeY, x, y, orientation);
@@ -1113,7 +1111,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 				obj2 = definition.modelAt(type, orientation, l1, i2, j2, k2, -1);
 			else
 				obj2 = new Animable_Sub5(id, orientation, type, i2, j2, l1, k2, definition.animation, true);
-			worldController.method284(key, byte1, l2, 1, ((Renderable) (obj2)), 1, k1, 0, y, x);
+			worldController.method284(key, l2, 1, ((Renderable) (obj2)), 1, k1, 0, y, x);
 			if (definition.solid)
 				class11.method212(definition.impenetrable, definition.objectSizeX, definition.objectSizeY, x, y, orientation);
 			return;
@@ -1124,7 +1122,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 				obj3 = definition.modelAt(0, orientation, l1, i2, j2, k2, -1);
 			else
 				obj3 = new Animable_Sub5(id, orientation, 0, i2, j2, l1, k2, definition.animation, true);
-			worldController.method282(anIntArray152[orientation], ((Renderable) (obj3)), key, y, byte1, x, null, l2, 0, k1);
+			worldController.method282(anIntArray152[orientation], ((Renderable) (obj3)), key, y, x, null, l2, 0, k1);
 			if (definition.solid)
 				class11.method211(y, orientation, x, type, definition.impenetrable);
 			return;
@@ -1135,7 +1133,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 				obj4 = definition.modelAt(1, orientation, l1, i2, j2, k2, -1);
 			else
 				obj4 = new Animable_Sub5(id, orientation, 1, i2, j2, l1, k2, definition.animation, true);
-			worldController.method282(anIntArray140[orientation], ((Renderable) (obj4)), key, y, byte1, x, null, l2, 0, k1);
+			worldController.method282(anIntArray140[orientation], ((Renderable) (obj4)), key, y, x, null, l2, 0, k1);
 			if (definition.solid)
 				class11.method211(y, orientation, x, type, definition.impenetrable);
 			return;
@@ -1151,7 +1149,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 				obj11 = new Animable_Sub5(id, 4 + orientation, 2, i2, j2, l1, k2, definition.animation, true);
 				obj12 = new Animable_Sub5(id, j3, 2, i2, j2, l1, k2, definition.animation, true);
 			}
-			worldController.method282(anIntArray152[orientation], ((Renderable) (obj11)), key, y, byte1, x,
+			worldController.method282(anIntArray152[orientation], ((Renderable) (obj11)), key, y, x,
 					((Renderable) (obj12)), l2, anIntArray152[j3], k1);
 			if (definition.solid)
 				class11.method211(y, orientation, x, type, definition.impenetrable);
@@ -1163,7 +1161,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 				obj5 = definition.modelAt(3, orientation, l1, i2, j2, k2, -1);
 			else
 				obj5 = new Animable_Sub5(id, orientation, 3, i2, j2, l1, k2, definition.animation, true);
-			worldController.method282(anIntArray140[orientation], ((Renderable) (obj5)), key, y, byte1, x, null, l2, 0, k1);
+			worldController.method282(anIntArray140[orientation], ((Renderable) (obj5)), key, y, x, null, l2, 0, k1);
 			if (definition.solid)
 				class11.method211(y, orientation, x, type, definition.impenetrable);
 			return;
@@ -1174,7 +1172,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 				obj6 = definition.modelAt(type, orientation, l1, i2, j2, k2, -1);
 			else
 				obj6 = new Animable_Sub5(id, orientation, type, i2, j2, l1, k2, definition.animation, true);
-			worldController.method284(key, byte1, l2, 1, ((Renderable) (obj6)), 1, k1, 0, y, x);
+			worldController.method284(key, l2, 1, ((Renderable) (obj6)), 1, k1, 0, y, x);
 			if (definition.solid)
 				class11.method212(definition.impenetrable, definition.objectSizeX, definition.objectSizeY, x, y, orientation);
 			return;
@@ -1206,7 +1204,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 				obj7 = definition.modelAt(4, 0, l1, i2, j2, k2, -1);
 			else
 				obj7 = new Animable_Sub5(id, 0, 4, i2, j2, l1, k2, definition.animation, true);
-			worldController.method283(key, y, orientation * 512, k1, 0, l2, ((Renderable) (obj7)), x, byte1, 0, anIntArray152[orientation]);
+			worldController.method283(key, y, orientation * 512, k1, 0, l2, ((Renderable) (obj7)), x, 0, anIntArray152[orientation]);
 			return;
 		}
 		if (type == 5) {
@@ -1219,7 +1217,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 				obj13 = definition.modelAt(4, 0, l1, i2, j2, k2, -1);
 			else
 				obj13 = new Animable_Sub5(id, 0, 4, i2, j2, l1, k2, definition.animation, true);
-			worldController.method283(key, y, orientation * 512, k1, anIntArray137[orientation] * j4, l2, ((Renderable) (obj13)), x, byte1,
+			worldController.method283(key, y, orientation * 512, k1, anIntArray137[orientation] * j4, l2, ((Renderable) (obj13)), x,
 					anIntArray144[orientation] * j4, anIntArray152[orientation]);
 			return;
 		}
@@ -1229,7 +1227,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 				obj8 = definition.modelAt(4, 0, l1, i2, j2, k2, -1);
 			else
 				obj8 = new Animable_Sub5(id, 0, 4, i2, j2, l1, k2, definition.animation, true);
-			worldController.method283(key, y, orientation, k1, 0, l2, ((Renderable) (obj8)), x, byte1, 0, 256);
+			worldController.method283(key, y, orientation, k1, 0, l2, ((Renderable) (obj8)), x, 0, 256);
 			return;
 		}
 		if (type == 7) {
@@ -1238,7 +1236,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 				obj9 = definition.modelAt(4, 0, l1, i2, j2, k2, -1);
 			else
 				obj9 = new Animable_Sub5(id, 0, 4, i2, j2, l1, k2, definition.animation, true);
-			worldController.method283(key, y, orientation, k1, 0, l2, ((Renderable) (obj9)), x, byte1, 0, 512);
+			worldController.method283(key, y, orientation, k1, 0, l2, ((Renderable) (obj9)), x, 0, 512);
 			return;
 		}
 		if (type == 8) {
@@ -1247,7 +1245,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 				obj10 = definition.modelAt(4, 0, l1, i2, j2, k2, -1);
 			else
 				obj10 = new Animable_Sub5(id, 0, 4, i2, j2, l1, k2, definition.animation, true);
-			worldController.method283(key, y, orientation, k1, 0, l2, ((Renderable) (obj10)), x, byte1, 0, 768);
+			worldController.method283(key, y, orientation, k1, 0, l2, ((Renderable) (obj10)), x, 0, 768);
 		}
 	}
 
