@@ -129,8 +129,8 @@ public final class ObjectDefinition {
 		originalModelColors = null;
 		originalTexture = null;
 		modifiedTexture = null;
-		anInt744 = 1;
-		anInt761 = 1;
+		objectSizeX = 1;
+		objectSizeY = 1;
 		solid = true;
 		aBoolean757 = true;
 		hasActions = false;
@@ -143,7 +143,7 @@ public final class ObjectDefinition {
 		lightDiffusion = 0;
 		actions = null;
 		AreaType = -1;
-		anInt758 = -1;
+		mapscene = -1;
 		aBoolean751 = false;
 		aBoolean779 = true;
 		thickness = 128;
@@ -156,7 +156,7 @@ public final class ObjectDefinition {
 		aBoolean736 = false;
 		aBoolean766 = false;
 		field3621 = true;
-		anInt760 = -1;
+		supportItems = -1;
 		anInt774 = -1;
 		anInt749 = -1;
 		childrenIDs = null;
@@ -365,7 +365,7 @@ public final class ObjectDefinition {
 
 		model_3.light(64 + ambientLighting,    768 + lightDiffusion  * 5, -50, -10, -50, !delayShading);
 
-		if (anInt760 == 1)
+		if (supportItems == 1)
 			model_3.itemDropHeight = model_3.modelBaseY;
 		mruNodes2.removeFromCache(model_3, l1);
 		return model_3;
@@ -408,9 +408,9 @@ public final class ObjectDefinition {
 					}
 				}
 			} else if (type == 14)
-				anInt744 = stream.readUnsignedByte();
+				objectSizeX = stream.readUnsignedByte();
 			else if (type == 15)
-				anInt761 = stream.readUnsignedByte();
+				objectSizeY = stream.readUnsignedByte();
 			else if (type == 17)
 				solid = false;
 			else if (type == 18)
@@ -468,7 +468,7 @@ public final class ObjectDefinition {
 			else if (type == 67)
 				width = stream.readUnsignedShort();
 			else if (type == 68)
-				anInt758 = stream.readUnsignedShort();
+				mapscene = stream.readUnsignedShort();
 			else if (type == 69)
 				anInt768 = stream.readUnsignedByte();
 			else if (type == 70)
@@ -482,7 +482,7 @@ public final class ObjectDefinition {
 			else if (type == 74)
 				aBoolean766 = true;
 			else if (type == 75)
-				anInt760 = stream.readUnsignedByte();
+				supportItems = stream.readUnsignedByte();
 			else if (type == 77 || type == 92) {
 				anInt774 = stream.readUnsignedShort();
 				if (anInt774 == 65535)
@@ -538,8 +538,8 @@ public final class ObjectDefinition {
 			solid = false;
 			aBoolean757 = false;
 		}
-		if (anInt760 == -1)
-			anInt760 = solid ? 1 : 0;
+		if (supportItems == -1)
+			supportItems = solid ? 1 : 0;
 	}
 
 	private ObjectDefinition() {
@@ -557,7 +557,7 @@ public final class ObjectDefinition {
 	public String name;
 	private int width;
 	private static final Model[] aModelArray741s = new Model[4];
-	public int anInt744;
+	public int objectSizeX;
 	private int anInt745;
 	public int AreaType;
 	private int[] originalModelColors;
@@ -569,10 +569,10 @@ public final class ObjectDefinition {
 	public int type;
 	public static int[] streamIndices;
 	public boolean aBoolean757;
-	public int anInt758;
+	public int mapscene;
 	public int childrenIDs[];
-	private int anInt760;
-	public int anInt761;
+	public int supportItems;
+	public int objectSizeY;
 	public boolean contouredGround;
 	public boolean aBoolean764;
 	public static Client clientInstance;

@@ -1605,7 +1605,7 @@ public class Model extends Renderable {
         }
 
         try {
-            method483(false, false, 0, 0);
+            method483(false, false, 0);
             return;
         } catch (Exception _ex) {
             return;
@@ -1625,7 +1625,7 @@ public class Model extends Renderable {
      * @param l1
      * @param i2
      */
-    public final void renderAtPoint(int i, int j, int k, int l, int i1, int j1, int k1, int l1, int i2, int var) {
+    public final void renderAtPoint(int i, int j, int k, int l, int i1, int j1, int k1, int l1, long i2) {
         int j2 = l1 * i1 - j1 * l >> 16;
         int k2 = k1 * j + j2 * k >> 16;
         int l2 = XYZMag * k >> 16;
@@ -1682,7 +1682,6 @@ public class Model extends Renderable {
             int k6 = anInt1686 - Rasterizer3D.originViewY;
             if (i6 > k3 && i6 < l3 && k6 > i5 && k6 < k4) {
                 if (fits_on_single_square) {
-                	anIntArray1689[obj_loaded] = var;
                     obj_key[obj_loaded++] = i2;
                 } else {
                     flag1 = true;
@@ -1736,14 +1735,14 @@ public class Model extends Renderable {
         }
 
         try {
-            method483(flag, flag1, i2, var);
+            method483(flag, flag1, i2);
             return;
         } catch (Exception _ex) {
             return;
         }
     }
 
-    private final void method483(boolean flag, boolean flag1, int i, int id) {
+    private final void method483(boolean flag, boolean flag1, long i) {
         for (int j = 0; j < maxRenderDepth; j++)
             depthListIndices[j] = 0;
 
@@ -1766,7 +1765,6 @@ public class Model extends Renderable {
                             projected_verticesY[l],
                             projected_verticesY[k1],
                             projected_verticesY[j2], i3, l3, k4)) {
-                    	anIntArray1689[obj_loaded] = id;
                         obj_key[obj_loaded++] = i;
                         flag1 = false;
                     }
@@ -2317,8 +2315,7 @@ public class Model extends Renderable {
     public static int anInt1685;
     public static int anInt1686;
     public static int obj_loaded;
-    public static int obj_key[] = new int[1000];
-    public static int anIntArray1689[] = new int[1000];
+    public static long obj_key[] = new long[1000];
     public static int SINE[];
     public static int COSINE[];
     static int modelIntArray3[];

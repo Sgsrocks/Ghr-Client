@@ -64,6 +64,9 @@ public final class NPC extends Entity {
 
 	NPC() {
 	}
-
+	public boolean isShowMenuOnHover() {
+		return npcPetType == 0 || npcPetType == 2;
+	}
+	public int npcPetType;
 	public NpcDefinition desc;
 }

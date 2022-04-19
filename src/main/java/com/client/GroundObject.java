@@ -12,28 +12,7 @@ public final class GroundObject {
 	int anInt812;
 	int anInt813;
 	public Renderable renderable;
-	public int uid;
+	public long uid;
 	int groundDecorUID;
 	byte aByte816;
-int newuid;
-	
-	/**
-	 * Mutator method for the newuid variable
-	 * @param newUIDReplacement the value assigned towards the newuid variable 
-	 * @return newuid new universal identification
-	 */
-	
-	public int setNewUID(int newUIDReplacement)
-	{
-		return newuid = newUIDReplacement;
-	}
-	
-	/**
-	 * Gets the new uid
-	 * @return newuid the new universal identifier
-	 */
-	public int getNewUID()
-	{
-		return newuid;
-	}
 }

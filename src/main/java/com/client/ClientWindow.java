@@ -1,5 +1,7 @@
 package com.client;
 
+import java.awt.event.MouseEvent;
+import java.awt.geom.Point2D;
 import java.net.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -93,7 +95,15 @@ public class ClientWindow extends Client implements ActionListener, WindowListen
 	public void actionPerformed(ActionEvent evt) {
 		
 	}
-	
+	public static Point getStretchedMouseCoordinates(MouseEvent mouseEvent) {
+		//return mouseEvent.getPoint();
+		return getStretchedMouseCoordinates(mouseEvent.getPoint());
+	}
+
+	public static Point getStretchedMouseCoordinates(Point point) {
+		Point2D.Double scale = RSImageProducer.getStretchScale();
+		return new Point((int) (point.getX() / scale.getX()), (int) (point.getY() / scale.getY()));
+	}
 	private static JFrame frame;
 	
 	public static JFrame getFrame() {

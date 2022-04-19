@@ -84,4 +84,5 @@ public class Configuration {
 
     public static boolean snow = false;
     public static boolean dumpAnimationData = false;
+    public static boolean developerMode = true;
 }

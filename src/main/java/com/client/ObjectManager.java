@@ -8,6 +8,7 @@ import java.io.IOException;
 import com.client.definitions.FloorOverlayDefinition;
 import com.client.definitions.FloorUnderlayDefinition;
 import com.client.definitions.ObjectDefinition;
+import com.client.utilities.ObjectKey;
 
 /**
  * Scene Objects
@@ -496,7 +497,7 @@ final class ObjectManager {
 
 //jump
 	private void renderObject(int y, WorldController worldController, CollisionMap class11, int type, int z, int x,
-			int id, int j1) {
+			int id, int orientation) {
 		if (lowMem && (tileFlags[0][x][y] & 2) == 0) {
 			if ((tileFlags[z][x][y] & 0x10) != 0)
 				return;
@@ -508,12 +509,12 @@ final class ObjectManager {
 		ObjectDefinition definition = ObjectDefinition.forID(id);
 		int size1;
 		int size2;
-		if(j1 == 1 || j1 == 3) {
-			size1 = definition.anInt761;//objectSizeY
-			size2 = definition.anInt744;//objectSizeX
+		if(orientation == 1 || orientation == 3) {
+			size1 = definition.objectSizeY;//objectSizeY
+			size2 = definition.objectSizeX;//objectSizeX
 		} else {
-			size1 = definition.anInt744;
-			size2 = definition.anInt761;
+			size1 = definition.objectSizeX;
+			size2 = definition.objectSizeY;
 		}
 		int modX;
 		int modX1;
@@ -544,19 +545,24 @@ final class ObjectManager {
 		int j2 = tileHeights[z][x][y + 1];
 		int k2 = k1 + l1 + i2 + j2 >> 2;*/
 		//ObjectDefinition definition = ObjectDefinition.forID(id);
-		int key = x + (y << 7) + ((id > 0x7fff ? id & 0x7fff : id) << 14) + 0x40000000;
-		if (!definition.hasActions)
-			key += 0x80000000;
-		byte byte0 = (byte) ((j1 << 6) + type);
+		long key = (long) (orientation << 20 | type << 14 | (y << 7 | x) + 0x40000000);
+		if(!definition.hasActions) {
+			key |= ~0x7fffffffffffffffL;
+		}
+		if(definition.supportItems == 1) {
+			key |= 0x400000L;
+		}
+		key |= (long) id << 32;
+		byte byte0 = (byte) ((orientation << 6) + type);
 		if (type == 22) {
 			if (lowMem && !definition.hasActions && !definition.aBoolean736)
 				return;
 			Object obj;
 			if (definition.animation == -1 && definition.childrenIDs == null)
-				obj = definition.modelAt(22, j1, k1, l1, i2, j2, -1);
+				obj = definition.modelAt(22, orientation, k1, l1, i2, j2, -1);
 			else
-				obj = new Animable_Sub5(id, j1, 22, l1, i2, k1, j2, definition.animation, true);
-			worldController.method280(z, k2, y, ((Renderable) (obj)), byte0, key, x, id);
+				obj = new Animable_Sub5(id, orientation, 22, l1, i2, k1, j2, definition.animation, true);
+			worldController.method280(z, k2, y, ((Renderable) (obj)), byte0, key, x);
 			if (definition.solid && definition.hasActions && class11 != null)
 				class11.method213(y, x);
 			return;
@@ -564,29 +570,29 @@ final class ObjectManager {
 		if (type == 10 || type == 11) {
 			Object obj1;
 			if (definition.animation == -1 && definition.childrenIDs == null)
-				obj1 = definition.modelAt(10, j1, k1, l1, i2, j2, -1);
+				obj1 = definition.modelAt(10, orientation, k1, l1, i2, j2, -1);
 			else
-				obj1 = new Animable_Sub5(id, j1, 10, l1, i2, k1, j2, definition.animation, true);
+				obj1 = new Animable_Sub5(id, orientation, 10, l1, i2, k1, j2, definition.animation, true);
 			if (obj1 != null) {
 				int i5 = 0;
 				if (type == 11)
 					i5 += 256;
 				int j4;
 				int l4;
-				if (j1 == 1 || j1 == 3) {
-					j4 = definition.anInt761;
-					l4 = definition.anInt744;
+				if (orientation == 1 || orientation == 3) {
+					j4 = definition.objectSizeY;
+					l4 = definition.objectSizeX;
 				} else {
-					j4 = definition.anInt744;
-					l4 = definition.anInt761;
+					j4 = definition.objectSizeX;
+					l4 = definition.objectSizeY;
 				}
-				if (worldController.addTiledObject(key, byte0, k2, l4, ((Renderable) (obj1)), j4, z, i5, y, x, id)
+				if (worldController.addTiledObject(key, byte0, k2, l4, ((Renderable) (obj1)), j4, z, i5, y, x)
 						&& definition.aBoolean779) {
 					Model model;
 					if (obj1 instanceof Model)
 						model = (Model) obj1;
 					else
-						model = definition.modelAt(10, j1, k1, l1, i2, j2, -1);
+						model = definition.modelAt(10, orientation, k1, l1, i2, j2, -1);
 					if (model != null) {
 						for (int j5 = 0; j5 <= j4; j5++) {
 							for (int k5 = 0; k5 <= l4; k5++) {
@@ -603,51 +609,51 @@ final class ObjectManager {
 				}
 			}
 			if (definition.solid && class11 != null)
-				class11.method212(definition.aBoolean757, definition.anInt744, definition.anInt761, x, y, j1);
+				class11.method212(definition.aBoolean757, definition.objectSizeX, definition.objectSizeY, x, y, orientation);
 			return;
 		}
 		if (type >= 12) {
 			Object obj2;
 			if (definition.animation == -1 && definition.childrenIDs == null)
-				obj2 = definition.modelAt(type, j1, k1, l1, i2, j2, -1);
+				obj2 = definition.modelAt(type, orientation, k1, l1, i2, j2, -1);
 			else
-				obj2 = new Animable_Sub5(id, j1, type, l1, i2, k1, j2, definition.animation, true);
-			worldController.addTiledObject(key, byte0, k2, 1, ((Renderable) (obj2)), 1, z, 0, y, x, id);
+				obj2 = new Animable_Sub5(id, orientation, type, l1, i2, k1, j2, definition.animation, true);
+			worldController.addTiledObject(key, byte0, k2, 1, ((Renderable) (obj2)), 1, z, 0, y, x);
 			if (type >= 12 && type <= 17 && type != 13 && z > 0)
 				anIntArrayArrayArray135[z][x][y] |= 0x924;
 			if (definition.solid && class11 != null)
-				class11.method212(definition.aBoolean757, definition.anInt744, definition.anInt761, x, y, j1);
+				class11.method212(definition.aBoolean757, definition.objectSizeX, definition.objectSizeY, x, y, orientation);
 			return;
 		}
 		if (type == 0) {
 			Object obj3;
 			if (definition.animation == -1 && definition.childrenIDs == null)
-				obj3 = definition.modelAt(0, j1, k1, l1, i2, j2, -1);
+				obj3 = definition.modelAt(0, orientation, k1, l1, i2, j2, -1);
 			else
-				obj3 = new Animable_Sub5(id, j1, 0, l1, i2, k1, j2, definition.animation, true);
-			worldController.addWallObject(anIntArray152[j1], ((Renderable) (obj3)), key, y, byte0, x, null, k2, 0, z, id);
-			if (j1 == 0) {
+				obj3 = new Animable_Sub5(id, orientation, 0, l1, i2, k1, j2, definition.animation, true);
+			worldController.addWallObject(anIntArray152[orientation], ((Renderable) (obj3)), key, y, byte0, x, null, k2, 0, z);
+			if (orientation == 0) {
 				if (definition.aBoolean779) {
 					shading[z][x][y] = 50;
 					shading[z][x][y + 1] = 50;
 				}
 				if (definition.aBoolean764)
 					anIntArrayArrayArray135[z][x][y] |= 0x249;
-			} else if (j1 == 1) {
+			} else if (orientation == 1) {
 				if (definition.aBoolean779) {
 					shading[z][x][y + 1] = 50;
 					shading[z][x + 1][y + 1] = 50;
 				}
 				if (definition.aBoolean764)
 					anIntArrayArrayArray135[z][x][y + 1] |= 0x492;
-			} else if (j1 == 2) {
+			} else if (orientation == 2) {
 				if (definition.aBoolean779) {
 					shading[z][x + 1][y] = 50;
 					shading[z][x + 1][y + 1] = 50;
 				}
 				if (definition.aBoolean764)
 					anIntArrayArrayArray135[z][x + 1][y] |= 0x249;
-			} else if (j1 == 3) {
+			} else if (orientation == 3) {
 				if (definition.aBoolean779) {
 					shading[z][x][y] = 50;
 					shading[z][x + 1][y] = 50;
@@ -656,7 +662,7 @@ final class ObjectManager {
 					anIntArrayArrayArray135[z][x][y] |= 0x492;
 			}
 			if (definition.solid && class11 != null)
-				class11.method211(y, j1, x, type, definition.aBoolean757);
+				class11.method211(y, orientation, x, type, definition.aBoolean757);
 			if (definition.anInt775 != 16)
 				worldController.method290(y, definition.anInt775, x, z);
 			return;
@@ -664,52 +670,52 @@ final class ObjectManager {
 		if (type == 1) {
 			Object obj4;
 			if (definition.animation == -1 && definition.childrenIDs == null)
-				obj4 = definition.modelAt(1, j1, k1, l1, i2, j2, -1);
+				obj4 = definition.modelAt(1, orientation, k1, l1, i2, j2, -1);
 			else
-				obj4 = new Animable_Sub5(id, j1, 1, l1, i2, k1, j2, definition.animation, true);
-			worldController.addWallObject(anIntArray140[j1], ((Renderable) (obj4)), key, y, byte0, x, null, k2, 0, z, id);
+				obj4 = new Animable_Sub5(id, orientation, 1, l1, i2, k1, j2, definition.animation, true);
+			worldController.addWallObject(anIntArray140[orientation], ((Renderable) (obj4)), key, y, byte0, x, null, k2, 0, z);
 			if (definition.aBoolean779)
-				if (j1 == 0)
+				if (orientation == 0)
 					shading[z][x][y + 1] = 50;
-				else if (j1 == 1)
+				else if (orientation == 1)
 					shading[z][x + 1][y + 1] = 50;
-				else if (j1 == 2)
+				else if (orientation == 2)
 					shading[z][x + 1][y] = 50;
-				else if (j1 == 3)
+				else if (orientation == 3)
 					shading[z][x][y] = 50;
 			if (definition.solid && class11 != null)
-				class11.method211(y, j1, x, type, definition.aBoolean757);
+				class11.method211(y, orientation, x, type, definition.aBoolean757);
 			return;
 		}
 		if (type == 2) {
-			int i3 = j1 + 1 & 3;
+			int i3 = orientation + 1 & 3;
 			Object obj11;
 			Object obj12;
 			if (definition.animation == -1 && definition.childrenIDs == null) {
-				obj11 = definition.modelAt(2, 4 + j1, k1, l1, i2, j2, -1);
+				obj11 = definition.modelAt(2, 4 + orientation, k1, l1, i2, j2, -1);
 				obj12 = definition.modelAt(2, i3, k1, l1, i2, j2, -1);
 			} else {
-				obj11 = new Animable_Sub5(id, 4 + j1, 2, l1, i2, k1, j2, definition.animation, true);
+				obj11 = new Animable_Sub5(id, 4 + orientation, 2, l1, i2, k1, j2, definition.animation, true);
 				obj12 = new Animable_Sub5(id, i3, 2, l1, i2, k1, j2, definition.animation, true);
 			}
-			worldController.addWallObject(anIntArray152[j1], ((Renderable) (obj11)), key, y, byte0, x,
-					((Renderable) (obj12)), k2, anIntArray152[i3], z, id);
+			worldController.addWallObject(anIntArray152[orientation], ((Renderable) (obj11)), key, y, byte0, x,
+					((Renderable) (obj12)), k2, anIntArray152[i3], z);
 			if (definition.aBoolean764)
-				if (j1 == 0) {
+				if (orientation == 0) {
 					anIntArrayArrayArray135[z][x][y] |= 0x249;
 					anIntArrayArrayArray135[z][x][y + 1] |= 0x492;
-				} else if (j1 == 1) {
+				} else if (orientation == 1) {
 					anIntArrayArrayArray135[z][x][y + 1] |= 0x492;
 					anIntArrayArrayArray135[z][x + 1][y] |= 0x249;
-				} else if (j1 == 2) {
+				} else if (orientation == 2) {
 					anIntArrayArrayArray135[z][x + 1][y] |= 0x249;
 					anIntArrayArrayArray135[z][x][y] |= 0x492;
-				} else if (j1 == 3) {
+				} else if (orientation == 3) {
 					anIntArrayArrayArray135[z][x][y] |= 0x492;
 					anIntArrayArrayArray135[z][x][y] |= 0x249;
 				}
 			if (definition.solid && class11 != null)
-				class11.method211(y, j1, x, type, definition.aBoolean757);
+				class11.method211(y, orientation, x, type, definition.aBoolean757);
 			if (definition.anInt775 != 16)
 				worldController.method290(y, definition.anInt775, x, z);
 			return;
@@ -717,49 +723,49 @@ final class ObjectManager {
 		if (type == 3) {
 			Object obj5;
 			if (definition.animation == -1 && definition.childrenIDs == null)
-				obj5 = definition.modelAt(3, j1, k1, l1, i2, j2, -1);
+				obj5 = definition.modelAt(3, orientation, k1, l1, i2, j2, -1);
 			else
-				obj5 = new Animable_Sub5(id, j1, 3, l1, i2, k1, j2, definition.animation, true);
-			worldController.addWallObject(anIntArray140[j1], ((Renderable) (obj5)), key, y, byte0, x, null, k2, 0, z, id);
+				obj5 = new Animable_Sub5(id, orientation, 3, l1, i2, k1, j2, definition.animation, true);
+			worldController.addWallObject(anIntArray140[orientation], ((Renderable) (obj5)), key, y, byte0, x, null, k2, 0, z);
 			if (definition.aBoolean779)
-				if (j1 == 0)
+				if (orientation == 0)
 					shading[z][x][y + 1] = 50;
-				else if (j1 == 1)
+				else if (orientation == 1)
 					shading[z][x + 1][y + 1] = 50;
-				else if (j1 == 2)
+				else if (orientation == 2)
 					shading[z][x + 1][y] = 50;
-				else if (j1 == 3)
+				else if (orientation == 3)
 					shading[z][x][y] = 50;
 			if (definition.solid && class11 != null)
-				class11.method211(y, j1, x, type, definition.aBoolean757);
+				class11.method211(y, orientation, x, type, definition.aBoolean757);
 			return;
 		}
 		if (type == 9) {
 			Object obj6;
 			if (definition.animation == -1 && definition.childrenIDs == null)
-				obj6 = definition.modelAt(type, j1, k1, l1, i2, j2, -1);
+				obj6 = definition.modelAt(type, orientation, k1, l1, i2, j2, -1);
 			else
-				obj6 = new Animable_Sub5(id, j1, type, l1, i2, k1, j2, definition.animation, true);
-			worldController.addTiledObject(key, byte0, k2, 1, ((Renderable) (obj6)), 1, z, 0, y, x, id);
+				obj6 = new Animable_Sub5(id, orientation, type, l1, i2, k1, j2, definition.animation, true);
+			worldController.addTiledObject(key, byte0, k2, 1, ((Renderable) (obj6)), 1, z, 0, y, x);
 			if (definition.solid && class11 != null)
-				class11.method212(definition.aBoolean757, definition.anInt744, definition.anInt761, x, y, j1);
+				class11.method212(definition.aBoolean757, definition.objectSizeX, definition.objectSizeY, x, y, orientation);
 			return;
 		}
 		if (definition.contouredGround)
-			if (j1 == 1) {
+			if (orientation == 1) {
 				int j3 = j2;
 				j2 = i2;
 				i2 = l1;
 				l1 = k1;
 				k1 = j3;
-			} else if (j1 == 2) {
+			} else if (orientation == 2) {
 				int k3 = j2;
 				j2 = l1;
 				l1 = k3;
 				k3 = i2;
 				i2 = k1;
 				k1 = k3;
-			} else if (j1 == 3) {
+			} else if (orientation == 3) {
 				int l3 = j2;
 				j2 = k1;
 				k1 = l1;
@@ -772,22 +778,22 @@ final class ObjectManager {
 				obj7 = definition.modelAt(4, 0, k1, l1, i2, j2, -1);
 			else
 				obj7 = new Animable_Sub5(id, 0, 4, l1, i2, k1, j2, definition.animation, true);
-			worldController.addWallDecoration(key, y, j1 * 512, z, 0, k2, ((Renderable) (obj7)), x, byte0, 0,
-					anIntArray152[j1], id);
+			worldController.addWallDecoration(key, y, orientation * 512, z, 0, k2, ((Renderable) (obj7)), x, byte0, 0,
+					anIntArray152[orientation]);
 			return;
 		}
 		if (type == 5) {
 			int i4 = 16;
-			int k4 = worldController.getWallObjectUid(z, x, y);
+			long k4 = worldController.method300(z, x, y);
 			if (k4 > 0)
-				i4 = ObjectDefinition.forID(worldController.fetchWallObjectNewUID(z, x, y)).anInt775;
+				i4 = ObjectDefinition.forID(ObjectKey.getObjectId(k4)).anInt775;
 			Object obj13;
 			if (definition.animation == -1 && definition.childrenIDs == null)
 				obj13 = definition.modelAt(4, 0, k1, l1, i2, j2, -1);
 			else
 				obj13 = new Animable_Sub5(id, 0, 4, l1, i2, k1, j2, definition.animation, true);
-			worldController.addWallDecoration(key, y, j1 * 512, z, anIntArray137[j1] * i4, k2, ((Renderable) (obj13)), x, byte0,
-					anIntArray144[j1] * i4, anIntArray152[j1], id);
+			worldController.addWallDecoration(key, y, orientation * 512, z, anIntArray137[orientation] * i4, k2, ((Renderable) (obj13)), x, byte0,
+					anIntArray144[orientation] * i4, anIntArray152[orientation]);
 			return;
 		}
 		if (type == 6) {
@@ -796,7 +802,7 @@ final class ObjectManager {
 				obj8 = definition.modelAt(4, 0, k1, l1, i2, j2, -1);
 			else
 				obj8 = new Animable_Sub5(id, 0, 4, l1, i2, k1, j2, definition.animation, true);
-			worldController.addWallDecoration(key, y, j1, z, 0, k2, ((Renderable) (obj8)), x, byte0, 0, 256, id);
+			worldController.addWallDecoration(key, y, orientation, z, 0, k2, ((Renderable) (obj8)), x, byte0, 0, 256);
 			return;
 		}
 		if (type == 7) {
@@ -805,7 +811,7 @@ final class ObjectManager {
 				obj9 = definition.modelAt(4, 0, k1, l1, i2, j2, -1);
 			else
 				obj9 = new Animable_Sub5(id, 0, 4, l1, i2, k1, j2, definition.animation, true);
-			worldController.addWallDecoration(key, y, j1, z, 0, k2, ((Renderable) (obj9)), x, byte0, 0, 512, id);
+			worldController.addWallDecoration(key, y, orientation, z, 0, k2, ((Renderable) (obj9)), x, byte0, 0, 512);
 			return;
 		}
 		if (type == 8) {
@@ -814,7 +820,7 @@ final class ObjectManager {
 				obj10 = definition.modelAt(4, 0, k1, l1, i2, j2, -1);
 			else
 				obj10 = new Animable_Sub5(id, 0, 4, l1, i2, k1, j2, definition.animation, true);
-			worldController.addWallDecoration(key, y, j1, z, 0, k2, ((Renderable) (obj10)), x, byte0, 0, 768, id);
+			worldController.addWallDecoration(key, y, orientation, z, 0, k2, ((Renderable) (obj10)), x, byte0, 0, 768);
 		}
 	}
 
@@ -1004,8 +1010,8 @@ final class ObjectManager {
 					int rotation = objOtherInfo & 3;
 					if (plane == i && localX >= i1 && localX < i1 + 8 && localY >= k && localY < k + 8) {
 						ObjectDefinition class46 = ObjectDefinition.forID(l1);
-						int j4 = j + Class4.method157(j1, class46.anInt761, localX & 7, localY & 7, class46.anInt744);
-						int k4 = k1 + Class4.method158(localY & 7, class46.anInt761, j1, class46.anInt744, localX & 7);
+						int j4 = j + Class4.method157(j1, class46.objectSizeY, localX & 7, localY & 7, class46.objectSizeX);
+						int k4 = k1 + Class4.method158(localY & 7, class46.objectSizeY, j1, class46.objectSizeX, localX & 7);
 						if (j4 > 0 && k4 > 0 && j4 < 103 && k4 < 103) {
 							int l4 = plane;
 							if ((tileFlags[1][j4][k4] & 2) == 2)
@@ -1048,195 +1054,200 @@ final class ObjectManager {
 	}
 
 
-	public static void method188(WorldController worldController, int i, int j, int k, int l, CollisionMap class11,
-			int ai[][][], int i1, int j1, int k1) {
-		int l1 = ai[l][i1][j];
-		int i2 = ai[l][i1 + 1][j];
-		int j2 = ai[l][i1 + 1][j + 1];
-		int k2 = ai[l][i1][j + 1];
+	public static void method188(WorldController worldController, int orientation, int y, int type, int plane, CollisionMap class11,
+			int tileHeights[][][], int x, int id, int k1) {
+		int l1 = tileHeights[plane][x][y];
+		int i2 = tileHeights[plane][x + 1][y];
+		int j2 = tileHeights[plane][x + 1][y + 1];
+		int k2 = tileHeights[plane][x][y + 1];
 		int l2 = l1 + i2 + j2 + k2 >> 2;
-		ObjectDefinition class46 = ObjectDefinition.forID(j1);
-		int i3 = i1 + (j << 7) + ((j1 << 14) & 32767) + 0x40000000;
-		if (!class46.hasActions)
-			i3 += 0x80000000;
-		byte byte1 = (byte) ((i << 6) + k);
-		if (k == 22) {
+		ObjectDefinition definition = ObjectDefinition.forID(id);
+		long key = (long) (orientation << 20 | type << 14 | (y << 7 | x) + 0x40000000);
+		if(!definition.hasActions) {
+			key |= ~0x7fffffffffffffffL;
+		}
+		if(definition.supportItems == 1) {
+			key |= 0x400000L;
+		}
+		key |= (long) id << 32;
+		byte byte1 = (byte) ((orientation << 6) + type);
+		if (type == 22) {
 			Object obj;
-			if (class46.animation == -1 && class46.childrenIDs == null)
-				obj = class46.modelAt(22, i, l1, i2, j2, k2, -1);
+			if (definition.animation == -1 && definition.childrenIDs == null)
+				obj = definition.modelAt(22, orientation, l1, i2, j2, k2, -1);
 			else
-				obj = new Animable_Sub5(j1, i, 22, i2, j2, l1, k2, class46.animation, true);
-			worldController.method280(k1, l2, j, ((Renderable) (obj)), byte1, i3, i1, j1);
-			if (class46.solid && class46.hasActions)
-				class11.method213(j, i1);
+				obj = new Animable_Sub5(id, orientation, 22, i2, j2, l1, k2, definition.animation, true);
+			worldController.method280(k1, l2, y, ((Renderable) (obj)), byte1, key, x);
+			if (definition.solid && definition.hasActions)
+				class11.method213(y, x);
 			return;
 		}
-		if (k == 10 || k == 11) {
+		if (type == 10 || type == 11) {
 			Object obj1;
-			if (class46.animation == -1 && class46.childrenIDs == null)
-				obj1 = class46.modelAt(10, i, l1, i2, j2, k2, -1);
+			if (definition.animation == -1 && definition.childrenIDs == null)
+				obj1 = definition.modelAt(10, orientation, l1, i2, j2, k2, -1);
 			else
-				obj1 = new Animable_Sub5(j1, i, 10, i2, j2, l1, k2, class46.animation, true);
+				obj1 = new Animable_Sub5(id, orientation, 10, i2, j2, l1, k2, definition.animation, true);
 			if (obj1 != null) {
 				int j5 = 0;
-				if (k == 11)
+				if (type == 11)
 					j5 += 256;
 				int k4;
 				int i5;
-				if (i == 1 || i == 3) {
-					k4 = class46.anInt761;
-					i5 = class46.anInt744;
+				if (orientation == 1 || orientation == 3) {
+					k4 = definition.objectSizeY;
+					i5 = definition.objectSizeX;
 				} else {
-					k4 = class46.anInt744;
-					i5 = class46.anInt761;
+					k4 = definition.objectSizeX;
+					i5 = definition.objectSizeY;
 				}
-				worldController.addTiledObject(i3, byte1, l2, i5, ((Renderable) (obj1)), k4, k1, j5, j, i1, j1);
+				worldController.addTiledObject(key, byte1, l2, i5, ((Renderable) (obj1)), k4, k1, j5, y, x);
 			}
-			if (class46.solid)
-				class11.method212(class46.aBoolean757, class46.anInt744, class46.anInt761, i1, j, i);
+			if (definition.solid)
+				class11.method212(definition.aBoolean757, definition.objectSizeX, definition.objectSizeY, x, y, orientation);
 			return;
 		}
-		if (k >= 12) {
+		if (type >= 12) {
 			Object obj2;
-			if (class46.animation == -1 && class46.childrenIDs == null)
-				obj2 = class46.modelAt(k, i, l1, i2, j2, k2, -1);
+			if (definition.animation == -1 && definition.childrenIDs == null)
+				obj2 = definition.modelAt(type, orientation, l1, i2, j2, k2, -1);
 			else
-				obj2 = new Animable_Sub5(j1, i, k, i2, j2, l1, k2, class46.animation, true);
-			worldController.addTiledObject(i3, byte1, l2, 1, ((Renderable) (obj2)), 1, k1, 0, j, i1, j1);
-			if (class46.solid)
-				class11.method212(class46.aBoolean757, class46.anInt744, class46.anInt761, i1, j, i);
+				obj2 = new Animable_Sub5(id, orientation, type, i2, j2, l1, k2, definition.animation, true);
+			worldController.addTiledObject(key, byte1, l2, 1, ((Renderable) (obj2)), 1, k1, 0, y, x);
+			if (definition.solid)
+				class11.method212(definition.aBoolean757, definition.objectSizeX, definition.objectSizeY, x, y, orientation);
 			return;
 		}
-		if (k == 0) {
+		if (type == 0) {
 			Object obj3;
-			if (class46.animation == -1 && class46.childrenIDs == null)
-				obj3 = class46.modelAt(0, i, l1, i2, j2, k2, -1);
+			if (definition.animation == -1 && definition.childrenIDs == null)
+				obj3 = definition.modelAt(0, orientation, l1, i2, j2, k2, -1);
 			else
-				obj3 = new Animable_Sub5(j1, i, 0, i2, j2, l1, k2, class46.animation, true);
-			worldController.addWallObject(anIntArray152[i], ((Renderable) (obj3)), i3, j, byte1, i1, null, l2, 0, k1, j1);
-			if (class46.solid)
-				class11.method211(j, i, i1, k, class46.aBoolean757);
+				obj3 = new Animable_Sub5(id, orientation, 0, i2, j2, l1, k2, definition.animation, true);
+			worldController.addWallObject(anIntArray152[orientation], ((Renderable) (obj3)), key, y, byte1, x, null, l2, 0, k1);
+			if (definition.solid)
+				class11.method211(y, orientation, x, type, definition.aBoolean757);
 			return;
 		}
-		if (k == 1) {
+		if (type == 1) {
 			Object obj4;
-			if (class46.animation == -1 && class46.childrenIDs == null)
-				obj4 = class46.modelAt(1, i, l1, i2, j2, k2, -1);
+			if (definition.animation == -1 && definition.childrenIDs == null)
+				obj4 = definition.modelAt(1, orientation, l1, i2, j2, k2, -1);
 			else
-				obj4 = new Animable_Sub5(j1, i, 1, i2, j2, l1, k2, class46.animation, true);
-			worldController.addWallObject(anIntArray140[i], ((Renderable) (obj4)), i3, j, byte1, i1, null, l2, 0, k1, j1);
-			if (class46.solid)
-				class11.method211(j, i, i1, k, class46.aBoolean757);
+				obj4 = new Animable_Sub5(id, orientation, 1, i2, j2, l1, k2, definition.animation, true);
+			worldController.addWallObject(anIntArray140[orientation], ((Renderable) (obj4)), key, y, byte1, x, null, l2, 0, k1);
+			if (definition.solid)
+				class11.method211(y, orientation, x, type, definition.aBoolean757);
 			return;
 		}
-		if (k == 2) {
-			int j3 = i + 1 & 3;
+		if (type == 2) {
+			int j3 = orientation + 1 & 3;
 			Object obj11;
 			Object obj12;
-			if (class46.animation == -1 && class46.childrenIDs == null) {
-				obj11 = class46.modelAt(2, 4 + i, l1, i2, j2, k2, -1);
-				obj12 = class46.modelAt(2, j3, l1, i2, j2, k2, -1);
+			if (definition.animation == -1 && definition.childrenIDs == null) {
+				obj11 = definition.modelAt(2, 4 + orientation, l1, i2, j2, k2, -1);
+				obj12 = definition.modelAt(2, j3, l1, i2, j2, k2, -1);
 			} else {
-				obj11 = new Animable_Sub5(j1, 4 + i, 2, i2, j2, l1, k2, class46.animation, true);
-				obj12 = new Animable_Sub5(j1, j3, 2, i2, j2, l1, k2, class46.animation, true);
+				obj11 = new Animable_Sub5(id, 4 + orientation, 2, i2, j2, l1, k2, definition.animation, true);
+				obj12 = new Animable_Sub5(id, j3, 2, i2, j2, l1, k2, definition.animation, true);
 			}
-			worldController.addWallObject(anIntArray152[i], ((Renderable) (obj11)), i3, j, byte1, i1,
-					((Renderable) (obj12)), l2, anIntArray152[j3], k1, j1);
-			if (class46.solid)
-				class11.method211(j, i, i1, k, class46.aBoolean757);
+			worldController.addWallObject(anIntArray152[orientation], ((Renderable) (obj11)), key, y, byte1, x,
+					((Renderable) (obj12)), l2, anIntArray152[j3], k1);
+			if (definition.solid)
+				class11.method211(y, orientation, x, type, definition.aBoolean757);
 			return;
 		}
-		if (k == 3) {
+		if (type == 3) {
 			Object obj5;
-			if (class46.animation == -1 && class46.childrenIDs == null)
-				obj5 = class46.modelAt(3, i, l1, i2, j2, k2, -1);
+			if (definition.animation == -1 && definition.childrenIDs == null)
+				obj5 = definition.modelAt(3, orientation, l1, i2, j2, k2, -1);
 			else
-				obj5 = new Animable_Sub5(j1, i, 3, i2, j2, l1, k2, class46.animation, true);
-			worldController.addWallObject(anIntArray140[i], ((Renderable) (obj5)), i3, j, byte1, i1, null, l2, 0, k1, j1);
-			if (class46.solid)
-				class11.method211(j, i, i1, k, class46.aBoolean757);
+				obj5 = new Animable_Sub5(id, orientation, 3, i2, j2, l1, k2, definition.animation, true);
+			worldController.addWallObject(anIntArray140[orientation], ((Renderable) (obj5)), key, y, byte1, x, null, l2, 0, k1);
+			if (definition.solid)
+				class11.method211(y, orientation, x, type, definition.aBoolean757);
 			return;
 		}
-		if (k == 9) {
+		if (type == 9) {
 			Object obj6;
-			if (class46.animation == -1 && class46.childrenIDs == null)
-				obj6 = class46.modelAt(k, i, l1, i2, j2, k2, -1);
+			if (definition.animation == -1 && definition.childrenIDs == null)
+				obj6 = definition.modelAt(type, orientation, l1, i2, j2, k2, -1);
 			else
-				obj6 = new Animable_Sub5(j1, i, k, i2, j2, l1, k2, class46.animation, true);
-			worldController.addTiledObject(i3, byte1, l2, 1, ((Renderable) (obj6)), 1, k1, 0, j, i1, j1);
-			if (class46.solid)
-				class11.method212(class46.aBoolean757, class46.anInt744, class46.anInt761, i1, j, i);
+				obj6 = new Animable_Sub5(id, orientation, type, i2, j2, l1, k2, definition.animation, true);
+			worldController.addTiledObject(key, byte1, l2, 1, ((Renderable) (obj6)), 1, k1, 0, y, x);
+			if (definition.solid)
+				class11.method212(definition.aBoolean757, definition.objectSizeX, definition.objectSizeY, x, y, orientation);
 			return;
 		} // try
-		if (class46.contouredGround)
-			if (i == 1) {
+		if (definition.contouredGround)
+			if (orientation == 1) {
 				int k3 = k2;
 				k2 = j2;
 				j2 = i2;
 				i2 = l1;
 				l1 = k3;
-			} else if (i == 2) {
+			} else if (orientation == 2) {
 				int l3 = k2;
 				k2 = i2;
 				i2 = l3;
 				l3 = j2;
 				j2 = l1;
 				l1 = l3;
-			} else if (i == 3) {
+			} else if (orientation == 3) {
 				int i4 = k2;
 				k2 = l1;
 				l1 = i2;
 				i2 = j2;
 				j2 = i4;
 			}
-		if (k == 4) {
+		if (type == 4) {
 			Object obj7;
-			if (class46.animation == -1 && class46.childrenIDs == null)
-				obj7 = class46.modelAt(4, 0, l1, i2, j2, k2, -1);
+			if (definition.animation == -1 && definition.childrenIDs == null)
+				obj7 = definition.modelAt(4, 0, l1, i2, j2, k2, -1);
 			else
-				obj7 = new Animable_Sub5(j1, 0, 4, i2, j2, l1, k2, class46.animation, true);
-			worldController.addWallDecoration(i3, j, i * 512, k1, 0, l2, ((Renderable) (obj7)), i1, byte1, 0, anIntArray152[i], j1);
+				obj7 = new Animable_Sub5(id, 0, 4, i2, j2, l1, k2, definition.animation, true);
+			worldController.addWallDecoration(key, y, orientation * 512, k1, 0, l2, ((Renderable) (obj7)), x, byte1, 0, anIntArray152[orientation]);
 			return;
 		}
-		if (k == 5) {
+		if (type == 5) {
 			int j4 = 16;
-			int l4 = worldController.getWallObjectUid(k1, i1, j);
+			long l4 = worldController.method300(k1, x, y);
 			if (l4 > 0)
-				j4 = ObjectDefinition.forID(worldController.fetchWallObjectNewUID(k1, i1, j)).anInt775;
+				j4 = ObjectDefinition.forID(ObjectKey.getObjectId(l4)).anInt775;
 			Object obj13;
-			if (class46.animation == -1 && class46.childrenIDs == null)
-				obj13 = class46.modelAt(4, 0, l1, i2, j2, k2, -1);
+			if (definition.animation == -1 && definition.childrenIDs == null)
+				obj13 = definition.modelAt(4, 0, l1, i2, j2, k2, -1);
 			else
-				obj13 = new Animable_Sub5(j1, 0, 4, i2, j2, l1, k2, class46.animation, true);
-			worldController.addWallDecoration(i3, j, i * 512, k1, anIntArray137[i] * j4, l2, ((Renderable) (obj13)), i1, byte1,
-					anIntArray144[i] * j4, anIntArray152[i], j1);
+				obj13 = new Animable_Sub5(id, 0, 4, i2, j2, l1, k2, definition.animation, true);
+			worldController.addWallDecoration(key, y, orientation * 512, k1, anIntArray137[orientation] * j4, l2, ((Renderable) (obj13)), x, byte1,
+					anIntArray144[orientation] * j4, anIntArray152[orientation]);
 			return;
 		}
-		if (k == 6) {
+		if (type == 6) {
 			Object obj8;
-			if (class46.animation == -1 && class46.childrenIDs == null)
-				obj8 = class46.modelAt(4, 0, l1, i2, j2, k2, -1);
+			if (definition.animation == -1 && definition.childrenIDs == null)
+				obj8 = definition.modelAt(4, 0, l1, i2, j2, k2, -1);
 			else
-				obj8 = new Animable_Sub5(j1, 0, 4, i2, j2, l1, k2, class46.animation, true);
-			worldController.addWallDecoration(i3, j, i, k1, 0, l2, ((Renderable) (obj8)), i1, byte1, 0, 256, j1);
+				obj8 = new Animable_Sub5(id, 0, 4, i2, j2, l1, k2, definition.animation, true);
+			worldController.addWallDecoration(key, y, orientation, k1, 0, l2, ((Renderable) (obj8)), x, byte1, 0, 256);
 			return;
 		}
-		if (k == 7) {
+		if (type == 7) {
 			Object obj9;
-			if (class46.animation == -1 && class46.childrenIDs == null)
-				obj9 = class46.modelAt(4, 0, l1, i2, j2, k2, -1);
+			if (definition.animation == -1 && definition.childrenIDs == null)
+				obj9 = definition.modelAt(4, 0, l1, i2, j2, k2, -1);
 			else
-				obj9 = new Animable_Sub5(j1, 0, 4, i2, j2, l1, k2, class46.animation, true);
-			worldController.addWallDecoration(i3, j, i, k1, 0, l2, ((Renderable) (obj9)), i1, byte1, 0, 512, j1);
+				obj9 = new Animable_Sub5(id, 0, 4, i2, j2, l1, k2, definition.animation, true);
+			worldController.addWallDecoration(key, y, orientation, k1, 0, l2, ((Renderable) (obj9)), x, byte1, 0, 512);
 			return;
 		}
-		if (k == 8) {
+		if (type == 8) {
 			Object obj10;
-			if (class46.animation == -1 && class46.childrenIDs == null)
-				obj10 = class46.modelAt(4, 0, l1, i2, j2, k2, -1);
+			if (definition.animation == -1 && definition.childrenIDs == null)
+				obj10 = definition.modelAt(4, 0, l1, i2, j2, k2, -1);
 			else
-				obj10 = new Animable_Sub5(j1, 0, 4, i2, j2, l1, k2, class46.animation, true);
-			worldController.addWallDecoration(i3, j, i, k1, 0, l2, ((Renderable) (obj10)), i1, byte1, 0, 768, j1);
+				obj10 = new Animable_Sub5(id, 0, 4, i2, j2, l1, k2, definition.animation, true);
+			worldController.addWallDecoration(key, y, orientation, k1, 0, l2, ((Renderable) (obj10)), x, byte1, 0, 768);
 		}
 	}
 

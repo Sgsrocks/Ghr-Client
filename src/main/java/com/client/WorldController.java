@@ -140,7 +140,7 @@ final class WorldController {
     }
 
     public void method280(int i, int j, int k, Renderable class30_sub2_sub4,
-                          byte byte0, int i1, int j1, int var) {
+                          byte byte0, long i1, int j1) {
         if (class30_sub2_sub4 == null)
             return;
         GroundObject class49 = new GroundObject();
@@ -150,13 +150,12 @@ final class WorldController {
         class49.anInt811 = j;
         class49.uid = i1;
         class49.aByte816 = byte0;
-        class49.setNewUID(var);
         if (tiles[i][j1][k] == null)
             tiles[i][j1][k] = new Tile(i, j1, k);
         tiles[i][j1][k].groundObject = class49;
     }
 
-    public void method281(int i, int j, Renderable class30_sub2_sub4, int k,
+    public void method281(int i, long j, Renderable class30_sub2_sub4, int k,
                           Renderable class30_sub2_sub4_1, Renderable class30_sub2_sub4_2, int l,
                           int i1) {
         Object4 object4 = new Object4();
@@ -184,9 +183,9 @@ final class WorldController {
         tiles[l][i][i1].obj4 = object4;
     }
 
-    public void addWallObject(int i, Renderable class30_sub2_sub4, int j, int k,
+    public void addWallObject(int i, Renderable class30_sub2_sub4, long j, int k,
                               byte byte0, int l, Renderable class30_sub2_sub4_1, int i1, int j1,
-                              int k1, int var) {
+                              int k1) {
         if (class30_sub2_sub4 == null && class30_sub2_sub4_1 == null)
             return;
         WallObject object1 = new WallObject();
@@ -199,7 +198,6 @@ final class WorldController {
         object1.renderable2 = class30_sub2_sub4_1;
         object1.orientation = i;
         object1.orientation1 = j1;
-        object1.setNewUID(var);
         for (int l1 = k1; l1 >= 0; l1--)
             if (tiles[l1][l][k] == null)
                 tiles[l1][l][k] = new Tile(l1, l, k);
@@ -207,8 +205,8 @@ final class WorldController {
         tiles[k1][l][k].wallObject = object1;
     }
 
-    public void addWallDecoration(int i, int j, int k, int i1, int j1, int k1,
-                                  Renderable class30_sub2_sub4, int l1, byte byte0, int i2, int j2, int var) {
+    public void addWallDecoration(long i, int j, int k, int i1, int j1, int k1,
+                                  Renderable class30_sub2_sub4, int l1, byte byte0, int i2, int j2) {
         if (class30_sub2_sub4 == null)
             return;
         Object2 class26 = new Object2();
@@ -220,7 +218,6 @@ final class WorldController {
         class26.aClass30_Sub2_Sub4_504 = class30_sub2_sub4;
         class26.anInt502 = j2;
         class26.anInt503 = k;
-        class26.setNewUID(var);
         for (int k2 = i1; k2 >= 0; k2--)
             if (tiles[k2][l1][j] == null)
                 tiles[k2][l1][j] = new Tile(k2, l1, j);
@@ -228,19 +225,19 @@ final class WorldController {
         tiles[i1][l1][j].obj2 = class26;
     }
 
-    public boolean addTiledObject(int i, byte byte0, int j, int k,
-                                  Renderable class30_sub2_sub4, int l, int i1, int j1, int k1, int l1, int var11) {
+    public boolean addTiledObject(long i, byte byte0, int j, int k,
+                                  Renderable class30_sub2_sub4, int l, int i1, int j1, int k1, int l1) {
         if (class30_sub2_sub4 == null) {
             return true;
         } else {
             int i2 = l1 * 128 + 64 * l;
             int j2 = k1 * 128 + 64 * k;
             return method287(i1, l1, k1, l, k, i2, j2, j, class30_sub2_sub4,
-                    j1, false, i, byte0, var11);
+                    j1, false, i, byte0);
         }
     }
 
-    public boolean method285(int i, int j, int k, int l, int i1, int j1,
+    public boolean method285(int i, int j, int k, long l, int i1, int j1,
                              int k1, Renderable class30_sub2_sub4, boolean flag) {
         if (class30_sub2_sub4 == null)
             return true;
@@ -263,19 +260,19 @@ final class WorldController {
         j2 /= 128;
         k2 /= 128;
         return method287(i, l1, i2, (j2 - l1) + 1, (k2 - i2) + 1, k1, i1, k,
-                class30_sub2_sub4, j, true, l, (byte) 0, 0);
+                class30_sub2_sub4, j, true, l, (byte) 0);
     }
 
     public boolean method286(int j, int k, Renderable class30_sub2_sub4, int l,
-                             int i1, int j1, int k1, int l1, int i2, int j2, int k2) {
+                             int i1, int j1, int k1, int l1, int i2, long j2, int k2) {
         return class30_sub2_sub4 == null
                 || method287(j, l1, k2, (i2 - l1) + 1, (i1 - k2) + 1, j1, k,
-                k1, class30_sub2_sub4, l, true, j2, (byte) 0, 0);
+                k1, class30_sub2_sub4, l, true, j2, (byte) 0);
     }
 
     private boolean method287(int i, int j, int k, int l, int i1, int j1,
                               int k1, int l1, Renderable class30_sub2_sub4, int i2, boolean flag,
-                              int j2, byte byte0, int var) {
+                              long j2, byte byte0) {
         for (int k2 = j; k2 < j + l; k2++) {
             for (int l2 = k; l2 < k + i1; l2++) {
                 if (k2 < 0 || l2 < 0 || k2 >= xRegionSize || l2 >= yRegionSize)
@@ -300,7 +297,6 @@ final class WorldController {
         class28.yLocHigh = k;
         class28.xLocHigh = (j + l) - 1;
         class28.yLocLow = (k + i1) - 1;
-        class28.setNewUID(var);
         for (int i3 = j; i3 < j + l; i3++) {
             for (int j3 = k; j3 < k + i1; j3++) {
                 int k3 = 0;
@@ -465,43 +461,26 @@ final class WorldController {
     }
 
 	//fetchWallObjectUID
-	public int getWallObjectUid(int i, int j, int k) {
+	public long method300(int i, int j, int k) {
 		Tile tile = tiles[i][j][k];
 		if(tile == null || tile.wallObject == null)
 			return 0;
 		else
 			return tile.wallObject.uid;
 	}
-	
-	//fetchWallObjectNewUID
-	public int fetchWallObjectNewUID(int i, int j, int k) {
-		Tile tile = tiles[i][j][k];
-		if(tile == null || tile.wallObject == null)
-			return 0;
-		else
-			return tile.wallObject.newuid;
-	}
-	
+
 	//fetchWallDecorationUID
-	public int method301(int i, int j, int l) {
+	public long method301(int i, int j, int l) {
 		Tile tile = tiles[i][j][l];
 		if(tile == null || tile.obj2 == null)
 			return 0;
 		else
 			return tile.obj2.uid;
 	}
-	
-	//fetchWallDecorationNewUID
-	public int fetchWallDecorationNewUID(int i, int j, int l) {
-		Tile tile = tiles[i][j][l];
-		if(tile == null || tile.obj2 == null)
-			return 0;
-		else
-			return tile.obj2.newuid;
-	}
+
 
 	//fetchObjectMeshUID
-	public int method302(int z, int x, int y) {
+	public long method302(int z, int x, int y) {
 		Tile tile = tiles[z][x][y];
 		if(tile == null)
 			return 0;
@@ -514,41 +493,19 @@ final class WorldController {
 		}
 		return 0;
 	}
-	
-	//fetchObjectMeshNewUID
-	public int fetchObjectMeshNewUID(int z, int x, int y) {
-		Tile tile = tiles[z][x][y];
-		if(tile == null)
-			return 0;
-		for(int l = 0; l < tile.gameObjectIndex; l++) {
-			GameObject interactableObject = tile.objects[l];
-			if((interactableObject.uid >> 29 & 3) == 2 && 
-					interactableObject.xLocLow == x && interactableObject.yLocHigh == y) {
-				return interactableObject.newuid;
-			}
-		}
-		return 0;
-	}
+
 	//fetchGroundDecorationUID
-	public int method303(int i, int j, int k) {
+	public long method303(int i, int j, int k) {
 		Tile tile = tiles[i][j][k];
 		if(tile == null || tile.groundObject == null)
 			return 0;
 		else
 			return tile.groundObject.uid;
 	}
-	
-	//fetchGroundDecorationNewUID
-	public int fetchGroundDecorationNewUID(int i, int j, int k) {
-		Tile tile = tiles[i][j][k];
-		if(tile == null || tile.groundObject == null)
-			return 0;
-		else
-			return tile.groundObject.newuid;
-	}
+
 
 	//fetchObjectIDTAGForXYZ
-	public int method304(int z, int x, int y, int objectMesh) {//fecthObjectIDXYZ
+	public int method304old(int z, int x, int y, long objectMesh) {//fecthObjectIDXYZ
 		Tile tile = tiles[z][x][y];
 		if(tile == null)
 			return -1;
@@ -564,7 +521,22 @@ final class WorldController {
 
 			return -1;
 	}
+    public int method304(int i, int j, int k, long l) {
+        Tile class30_sub3 = tiles[i][j][k];
+        if (class30_sub3 == null)
+            return -1;
+        if (class30_sub3.wallObject != null && class30_sub3.wallObject.uid == l)
+            return class30_sub3.wallObject.aByte281 & 0xff;
+        if (class30_sub3.obj2 != null && class30_sub3.obj2.uid == l)
+            return class30_sub3.obj2.aByte506 & 0xff;
+        if (class30_sub3.groundObject != null && class30_sub3.groundObject.uid == l)
+            return class30_sub3.groundObject.aByte816 & 0xff;
+        for (int i1 = 0; i1 < class30_sub3.gameObjectIndex; i1++)
+            if (class30_sub3.objects[i1].uid == l)
+                return class30_sub3.objects[i1].mask & 0xff;
 
+        return -1;
+    }
     public void shadeModels(int lightY, int lightX, int lightZ) {
         int intensity = 64;// was parameter
         int diffusion = 768;// was parameter
@@ -1156,7 +1128,7 @@ final class WorldController {
                                 camUpDownX, camLeftRightY, camLeftRightX, class10.anInt274
                                         - cameraX2,
                                 class10.anInt273 - cameraY2, class10.anInt275
-                                        - cameraZ2, class10.uid, class10.getNewUID());
+                                        - cameraZ2, class10.uid);
                     for (int i2 = 0; i2 < class30_sub3_7.gameObjectIndex; i2++) {
                         GameObject class28 = class30_sub3_7.objects[i2];
                         if (class28 != null)
@@ -1165,7 +1137,7 @@ final class WorldController {
                                     camLeftRightY, camLeftRightX, class28.xPos
                                             - cameraX2, class28.tileHeight
                                             - cameraY2, class28.yPos
-                                            - cameraZ2, class28.uid, class28.getNewUID());
+                                            - cameraZ2, class28.uid);
                     }
 
                 }
@@ -1226,14 +1198,14 @@ final class WorldController {
                                 camUpDownX, camLeftRightY, camLeftRightX,
                                 class10_3.anInt274 - cameraX2,
                                 class10_3.anInt273 - cameraY2,
-                                class10_3.anInt275 - cameraZ2, class10_3.uid, class10_3.getNewUID());
+                                class10_3.anInt275 - cameraZ2, class10_3.uid);
                     if ((class10_3.orientation1 & j2) != 0
                             && !method321(l, i, j, class10_3.orientation1))
                         class10_3.renderable2.renderAtPoint(0, camUpDownY,
                                 camUpDownX, camLeftRightY, camLeftRightX,
                                 class10_3.anInt274 - cameraX2,
                                 class10_3.anInt273 - cameraY2,
-                                class10_3.anInt275 - cameraZ2, class10_3.uid, class10_3.getNewUID());
+                                class10_3.anInt275 - cameraZ2, class10_3.uid);
                 }
                 if (class26_1 != null
                         && !method322(l, i, j,
@@ -1244,7 +1216,7 @@ final class WorldController {
                                 camLeftRightY, camLeftRightX, class26_1.anInt500
                                         - cameraX2, class26_1.anInt499
                                         - cameraY2, class26_1.anInt501
-                                        - cameraZ2, class26_1.uid, class26_1.getNewUID());
+                                        - cameraZ2, class26_1.uid);
                     else if ((class26_1.anInt502 & 0x300) != 0) {
                         int j4 = class26_1.anInt500 - cameraX2;
                         int l5 = class26_1.anInt499 - cameraY2;
@@ -1266,7 +1238,7 @@ final class WorldController {
                             class26_1.aClass30_Sub2_Sub4_504.renderAtPoint(
                                     i8 * 512 + 256, camUpDownY, camUpDownX,
                                     camLeftRightY, camLeftRightX, i11, l5, k11,
-                                    class26_1.uid, class26_1.getNewUID());
+                                    class26_1.uid);
                         }
                         if ((class26_1.anInt502 & 0x200) != 0 && k10 > k9) {
                             int j11 = j4 + anIntArray465[i8];
@@ -1274,7 +1246,7 @@ final class WorldController {
                             class26_1.aClass30_Sub2_Sub4_504.renderAtPoint(
                                     i8 * 512 + 1280 & 0x7ff, camUpDownY,
                                     camUpDownX, camLeftRightY, camLeftRightX, j11, l5, l11,
-                                    class26_1.uid, class26_1.getNewUID());
+                                    class26_1.uid);
                         }
                     }
                 if (flag1) {
@@ -1284,7 +1256,7 @@ final class WorldController {
                                 camUpDownX, camLeftRightY, camLeftRightX, class49.anInt812
                                         - cameraX2,
                                 class49.anInt811 - cameraY2, class49.anInt813
-                                        - cameraZ2, class49.uid, class49.getNewUID());
+                                        - cameraZ2, class49.uid);
                     Object4 object4_1 = class30_sub3_1.obj4;
                     if (object4_1 != null && object4_1.anInt52 == 0) {
                         if (object4_1.aClass30_Sub2_Sub4_49 != null)
@@ -1294,7 +1266,7 @@ final class WorldController {
                                                     - cameraX2,
                                             object4_1.anInt45 - cameraY2,
                                             object4_1.anInt47 - cameraZ2,
-                                            object4_1.uid, object4_1.getNewUID());
+                                            object4_1.uid);
                         if (object4_1.aClass30_Sub2_Sub4_50 != null)
                             object4_1.aClass30_Sub2_Sub4_50
                                     .renderAtPoint(0, camUpDownY, camUpDownX, camLeftRightY,
@@ -1302,7 +1274,7 @@ final class WorldController {
                                                     - cameraX2,
                                             object4_1.anInt45 - cameraY2,
                                             object4_1.anInt47 - cameraZ2,
-                                            object4_1.uid, object4_1.getNewUID());
+                                            object4_1.uid);
                         if (object4_1.aClass30_Sub2_Sub4_48 != null)
                             object4_1.aClass30_Sub2_Sub4_48
                                     .renderAtPoint(0, camUpDownY, camUpDownX, camLeftRightY,
@@ -1310,7 +1282,7 @@ final class WorldController {
                                                     - cameraX2,
                                             object4_1.anInt45 - cameraY2,
                                             object4_1.anInt47 - cameraZ2,
-                                            object4_1.uid, object4_1.getNewUID());
+                                            object4_1.uid);
                     }
                 }
                 int k4 = class30_sub3_1.totalTiledObjectMask;
@@ -1358,7 +1330,7 @@ final class WorldController {
                                 camUpDownX, camLeftRightY, camLeftRightX,
                                 class10_1.anInt274 - cameraX2,
                                 class10_1.anInt273 - cameraY2,
-                                class10_1.anInt275 - cameraZ2, class10_1.uid, class10_1.getNewUID());
+                                class10_1.anInt275 - cameraZ2, class10_1.uid);
                     class30_sub3_1.anInt1325 = 0;
                 }
             }
@@ -1445,7 +1417,7 @@ final class WorldController {
                                     camLeftRightY, camLeftRightX, class28_3.xPos
                                             - cameraX2, class28_3.tileHeight
                                             - cameraY2, class28_3.yPos
-                                            - cameraZ2, class28_3.uid, class28_3.getNewUID());
+                                            - cameraZ2, class28_3.uid);
                         for (int k7 = class28_3.xLocLow; k7 <= class28_3.xLocHigh; k7++) {
                             for (int l8 = class28_3.yLocHigh; l8 <= class28_3.yLocLow; l8++) {
                                 Tile class30_sub3_22 = aclass30_sub3[k7][l8];
@@ -1495,19 +1467,19 @@ final class WorldController {
                             camUpDownX, camLeftRightY, camLeftRightX, object4.anInt46
                                     - cameraX2, object4.anInt45 - cameraY2
                                     - object4.anInt52, object4.anInt47
-                                    - cameraZ2, object4.uid, object4.getNewUID());
+                                    - cameraZ2, object4.uid);
                 if (object4.aClass30_Sub2_Sub4_50 != null)
                     object4.aClass30_Sub2_Sub4_50.renderAtPoint(0, camUpDownY,
                             camUpDownX, camLeftRightY, camLeftRightX, object4.anInt46
                                     - cameraX2, object4.anInt45 - cameraY2
                                     - object4.anInt52, object4.anInt47
-                                    - cameraZ2, object4.uid, object4.getNewUID());
+                                    - cameraZ2, object4.uid);
                 if (object4.aClass30_Sub2_Sub4_48 != null)
                     object4.aClass30_Sub2_Sub4_48.renderAtPoint(0, camUpDownY,
                             camUpDownX, camLeftRightY, camLeftRightX, object4.anInt46
                                     - cameraX2, object4.anInt45 - cameraY2
                                     - object4.anInt52, object4.anInt47
-                                    - cameraZ2, object4.uid, object4.getNewUID());
+                                    - cameraZ2, object4.uid);
             }
             if (class30_sub3_1.anInt1328 != 0) {
                 Object2 class26 = class30_sub3_1.obj2;
@@ -1519,7 +1491,7 @@ final class WorldController {
                                 class26.anInt503, camUpDownY, camUpDownX, camLeftRightY,
                                 camLeftRightX, class26.anInt500 - cameraX2,
                                 class26.anInt499 - cameraY2, class26.anInt501
-                                        - cameraZ2, class26.uid, class26.getNewUID());
+                                        - cameraZ2, class26.uid);
                     else if ((class26.anInt502 & 0x300) != 0) {
                         int l2 = class26.anInt500 - cameraX2;
                         int j3 = class26.anInt499 - cameraY2;
@@ -1541,7 +1513,7 @@ final class WorldController {
                             class26.aClass30_Sub2_Sub4_504.renderAtPoint(
                                     k5 * 512 + 256, camUpDownY, camUpDownX,
                                     camLeftRightY, camLeftRightX, i9, j3, i10,
-                                    class26.uid, class26.getNewUID());
+                                    class26.uid);
                         }
                         if ((class26.anInt502 & 0x200) != 0 && l7 <= j6) {
                             int j9 = l2 + anIntArray465[k5];
@@ -1549,7 +1521,7 @@ final class WorldController {
                             class26.aClass30_Sub2_Sub4_504.renderAtPoint(
                                     k5 * 512 + 1280 & 0x7ff, camUpDownY,
                                     camUpDownX, camLeftRightY, camLeftRightX, j9, j3, j10,
-                                    class26.uid, class26.getNewUID());
+                                    class26.uid);
                         }
                     }
                 WallObject class10_2 = class30_sub3_1.wallObject;
@@ -1560,14 +1532,14 @@ final class WorldController {
                                 camUpDownX, camLeftRightY, camLeftRightX,
                                 class10_2.anInt274 - cameraX2,
                                 class10_2.anInt273 - cameraY2,
-                                class10_2.anInt275 - cameraZ2, class10_2.uid, class10_2.getNewUID());
+                                class10_2.anInt275 - cameraZ2, class10_2.uid);
                     if ((class10_2.orientation & class30_sub3_1.anInt1328) != 0
                             && !method321(l, i, j, class10_2.orientation))
                         class10_2.renderable1.renderAtPoint(0, camUpDownY,
                                 camUpDownX, camLeftRightY, camLeftRightX,
                                 class10_2.anInt274 - cameraX2,
                                 class10_2.anInt273 - cameraY2,
-                                class10_2.anInt275 - cameraZ2, class10_2.uid, class10_2.getNewUID());
+                                class10_2.anInt275 - cameraZ2, class10_2.uid);
                 }
             }
             if (k < numberOfZ - 1) {

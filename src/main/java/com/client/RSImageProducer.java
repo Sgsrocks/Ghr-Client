@@ -1,5 +1,8 @@
 package com.client;
 
+import com.client.features.gameframe.ScreenMode;
+
+import java.awt.geom.Point2D;
 import java.util.*;
 import java.awt.*;
 import java.awt.image.*;
@@ -20,7 +23,18 @@ public final class RSImageProducer {
 		initDrawingArea();
 	}
 
-	public void drawGraphics(int x, int y, Graphics gfx) {
+	public static Point2D.Double getStretchScale() {
+		if (Client.currentScreenMode == ScreenMode.FIXED) {
+			double widthScale = (double) Client.instance.getGameComponent().getWidth() / (double) ScreenMode.FIXED.getWidth();
+			double heightScale = (double) Client.instance.getGameComponent().getHeight() / (double) ScreenMode.FIXED.getHeight();
+			return new Point2D.Double(Math.max(1, widthScale), Math.max(1, heightScale));
+		}
+
+		return new Point2D.Double(1, 1);
+	}
+
+
+    public void drawGraphics(int x, int y, Graphics gfx) {
 		draw(gfx, x, y);
 	}
 

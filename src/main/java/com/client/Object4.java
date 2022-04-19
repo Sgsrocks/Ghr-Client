@@ -14,27 +14,6 @@ final class Object4 {
 	Renderable aClass30_Sub2_Sub4_48;
 	Renderable aClass30_Sub2_Sub4_49;
 	Renderable aClass30_Sub2_Sub4_50;
-	int uid;
+	long uid;
 	int anInt52;
-private int newuid;
-	
-	/**
-	 * Mutator method for the newuid variable
-	 * @param newUIDReplacement the value assigned towards the newuid variable 
-	 * @return newuid new universal identification
-	 */
-	
-	public int setNewUID(int newUIDReplacement)
-	{
-		return newuid = newUIDReplacement;
-	}
-	
-	/**
-	 * Gets the new uid
-	 * @return newuid the new universal identifier
-	 */
-	public int getNewUID()
-	{
-		return newuid;
-	}
 }

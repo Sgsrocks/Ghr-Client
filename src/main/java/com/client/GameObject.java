@@ -17,27 +17,6 @@ public final class GameObject {
     int yLocLow;
     int anInt527;
     int anInt528;
-    public int uid;
+    public long uid;
     byte mask;
-int newuid;
-	
-	/**
-	 * Mutator method for the newuid variable
-	 * @param newUIDReplacement the value assigned towards the newuid variable 
-	 * @return newuid new universal identification
-	 */
-	
-	public int setNewUID(int newUIDReplacement)
-	{
-		return newuid = newUIDReplacement;
-	}
-	
-	/**
-	 * Gets the new uid
-	 * @return newuid the new universal identifier
-	 */
-	public int getNewUID()
-	{
-		return newuid;
-	}
 }

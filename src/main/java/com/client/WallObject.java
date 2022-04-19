@@ -15,28 +15,7 @@ public final class WallObject {
 	int orientation1;
 	public Renderable renderable1;
 	public Renderable renderable2;
-	public int uid;
+	public long uid;
 	int wallObjUID;
 	byte aByte281;
-int newuid;
-	
-	/**
-	 * Mutator method for the newuid variable
-	 * @param newUIDReplacement the value assigned towards the newuid variable 
-	 * @return newuid new universal identification
-	 */
-	
-	public int setNewUID(int newUIDReplacement)
-	{
-		return newuid = newUIDReplacement;
-	}
-	
-	/**
-	 * Gets the new uid
-	 * @return newuid the new universal identifier
-	 */
-	public int getNewUID()
-	{
-		return newuid;
-	}
 }
