@@ -204,7 +204,7 @@ bw.close();
 				childrenIDs[i1 + 1] = var3;
 				
 			} else if (opcode == 107)
-				aBoolean84 = false;
+				clickable = false;
 			else if(opcode == 111 || opcode == 107 || opcode == 109) {
 				
 			} else {
@@ -335,7 +335,7 @@ bw.close();
 		interfaceType = -1L;
 		getDegreesToTurn = 32;
 		anInt83 = -1;
-		aBoolean84 = true;
+		clickable = true;
 		anInt86 = 128;
 		onMinimap = true;
 		anInt91 = 128;
@@ -440,7 +440,7 @@ bw.close();
 	public static NpcDefinition[] cache;
 	public static Client clientInstance;
 	public int anInt83;
-	public boolean aBoolean84;
+	public boolean clickable;
 	public int anInt85;
 	public int anInt86;
 	public boolean onMinimap;

@@ -2541,7 +2541,7 @@ public class Client extends RSApplet {
                 obj2 = class30_sub2_sub4_sub2_1;
         }
 
-        int i1 = i + (j << 7) + 0x60000000;
+        long i1 = i + (j << 7) | 0x60000000;
         worldController.method281(i, i1, ((Renderable) (obj1)), getCenterHeight(plane, j * 128 + 64, i * 128 + 64),
                 ((Renderable) (obj2)), ((Renderable) (obj)), plane, j);
     }
@@ -2549,7 +2549,7 @@ public class Client extends RSApplet {
     public void method26(boolean flag) {
         for (int j = 0; j < npcCount; j++) {
             NPC npc = npcs[npcIndices[j]];
-            int k = 0x20000000 + (npcIndices[j] << 14);
+            long k = 0x20000000L |  (long) (npcIndices[j] << 32);
             if (npc == null || !npc.isVisible() || npc.desc.aBoolean93 != flag)
                 continue;
             int l = npc.x >> 7;
@@ -2561,8 +2561,9 @@ public class Client extends RSApplet {
                     continue;
                 anIntArrayArray929[l][i1] = anInt1265;
             }
-            if (!npc.desc.aBoolean84)
-                k += 0x80000000;
+            if (!npc.desc.clickable)
+                k |= ~0x7fffffffffffffffL;
+
             worldController.method285(plane, npc.anInt1552, getCenterHeight(plane, npc.y, npc.x), k, npc.y,
                     (npc.anInt1540 - 1) * 64 + 60, npc.x, npc, npc.aBoolean1541);
         }
@@ -4642,8 +4643,8 @@ public class Client extends RSApplet {
         long k1 = worldController.method300(j1, l, i);
         if (k1 != 0) {
             int l1 = worldController.method304(j1, l, i, k1);
-            int k2 = l1 >> 6 & 3;
-            int i3 = l1 & 0x1f;
+            int k2 = ObjectKey.getObjectOrientation(k1);
+            int i3 = ObjectKey.getObjectType(k1);
             int k3 = k;
             if (k1 > 0)
                 k3 = i1;
@@ -4715,10 +4716,10 @@ public class Client extends RSApplet {
             }
         }
         k1 = worldController.method302(j1, l, i);
-        if (k1 != 0) {
+        if (k1 != 0l) {
             int i2 = worldController.method304(j1, l, i, k1);
-            int l2 = i2 >> 6 & 3;
-            int j3 = i2 & 0x1f;
+            int l2 = ObjectKey.getObjectOrientation(k1);
+            int j3 = ObjectKey.getObjectType(k1);
             int l3 = ObjectKey.getObjectId(k1);
             ObjectDefinition class46_1 = ObjectDefinition.forID(l3);
             if (class46_1.mapscene != -1) {
@@ -5659,7 +5660,7 @@ public class Client extends RSApplet {
     }
 
     //might be needed
-    private boolean method66(long i, int j, int k) {
+    private boolean clickObject(long i, int j, int k) {
         int i1 = ObjectKey.getObjectId(i);
         int j1 = worldController.method304(plane, k, j, i);
         if (i == -1)
@@ -5982,7 +5983,7 @@ public class Client extends RSApplet {
             stream.writeWord(i1);
             stream.method431(j + baseX);
         }
-        if (l == 62 && method66(keyLong, buttonPressed, j)) {
+        if (l == 62 && clickObject(keyLong, buttonPressed, j)) {
             stream.createFrame(192);
             stream.writeWord(anInt1284);
             stream.writeDWord(ObjectKey.getObjectId(keyLong));
@@ -6262,7 +6263,7 @@ public class Client extends RSApplet {
                 stream.writeDWordBigEndian(0xe63271);
                 anInt924 = 0;
             }
-            method66(keyLong, buttonPressed, j);
+            clickObject(keyLong, buttonPressed, j);
             stream.createFrame(228);
             stream.writeDWord(ObjectKey.getObjectId(keyLong));
             stream.method432(buttonPressed + baseY);
@@ -6929,7 +6930,7 @@ public class Client extends RSApplet {
             }
         }
         if (l == 900) {
-            method66(keyLong, buttonPressed, j);
+            clickObject(keyLong, buttonPressed, j);
             stream.createFrame(252);
             stream.writeDWord(ObjectKey.getObjectId(keyLong));
             stream.method431(buttonPressed + baseY);
@@ -6988,7 +6989,7 @@ public class Client extends RSApplet {
                 stream.method431(i1);
             }
         }
-        if (l == 956 && method66(keyLong, buttonPressed, j)) {
+        if (l == 956 && clickObject(keyLong, buttonPressed, j)) {
             stream.createFrame(35);
             stream.method431(j + baseX);
             stream.method432(anInt1137);
@@ -7157,21 +7158,21 @@ public class Client extends RSApplet {
             }
         }
         if (l == 113) {
-            method66(keyLong, buttonPressed, j);
+            clickObject(keyLong, buttonPressed, j);
             stream.createFrame(70);
             stream.method431(j + baseX);
             stream.writeWord(buttonPressed + baseY);
             stream.writeDWord(ObjectKey.getObjectId(keyLong));
         }
         if (l == 872) {
-            method66(keyLong, buttonPressed, j);
+            clickObject(keyLong, buttonPressed, j);
             stream.createFrame(234);
             stream.method433(j + baseX);
             stream.writeDWord(ObjectKey.getObjectId(keyLong));
             stream.method433(buttonPressed + baseY);
         }
         if (l == 502) {
-            method66(keyLong, buttonPressed, j);
+            clickObject(keyLong, buttonPressed, j);
             stream.createFrame(132);
             stream.method433(j + baseX);
             stream.writeDWord(ObjectKey.getObjectId(keyLong));
@@ -7438,19 +7439,18 @@ public class Client extends RSApplet {
             menuActionCmd3[menuActionRow] = super.getMouseY();
             menuActionRow++;
         }
-        long j = -1;
+        long previous = -1L;
         for (int k = 0; k < Model.obj_loaded; k++) {
-            long l = Model.obj_key[k];
-            int i1 = ObjectKey.getObjectX(l);
-            int j1 = ObjectKey.getObjectY(l);
-            int k1 = ObjectKey.getObjectOpcode(l);
-            int l1 = ObjectKey.getObjectId(l);
-            int type = ObjectKey.getObjectType(l);
-            if (l == j)
+            long current = Model.obj_key[k];
+            int x = ObjectKey.getObjectX(current);
+            int y = ObjectKey.getObjectY(current);
+            int opcode = ObjectKey.getObjectOpcode(current);
+            int uid = ObjectKey.getObjectId(current);
+            if (current == previous)
                 continue;
-            j = l;
-            if (k1 == 2 && worldController.method304(plane, i1, j1, l) >= 0) {
-                ObjectDefinition class46 = ObjectDefinition.forID(l1);
+            previous = current;
+            if (opcode == 2 && worldController.method304(plane, x, y, current) >= 0) {
+                ObjectDefinition class46 = ObjectDefinition.forID(uid);
                 if (class46.childrenIDs != null) {
                     class46 = class46.method580();
                 }
@@ -7463,17 +7463,17 @@ public class Client extends RSApplet {
                 if (itemSelected == 1) {
                     menuActionName[menuActionRow] = "Use " + selectedItemName + " with @cya@" + class46.name;
                     menuActionID[menuActionRow] = 62;
-                    menuActionCmd1[menuActionRow] = l;
-                    menuActionCmd2[menuActionRow] = i1;
-                    menuActionCmd3[menuActionRow] = j1;
+                    menuActionCmd1[menuActionRow] = current;
+                    menuActionCmd2[menuActionRow] = x;
+                    menuActionCmd3[menuActionRow] = y;
                     menuActionRow++;
                 } else if (spellSelected == 1) {
                     if ((spellUsableOn & 4) == 4) {
                         menuActionName[menuActionRow] = spellTooltip + " @cya@" + class46.name;
                         menuActionID[menuActionRow] = 956;
-                        menuActionCmd1[menuActionRow] = l;
-                        menuActionCmd2[menuActionRow] = i1;
-                        menuActionCmd3[menuActionRow] = j1;
+                        menuActionCmd1[menuActionRow] = current;
+                        menuActionCmd2[menuActionRow] = x;
+                        menuActionCmd3[menuActionRow] = y;
                         menuActionRow++;
                     }
                 } else {
@@ -7491,78 +7491,81 @@ public class Client extends RSApplet {
                                     menuActionID[menuActionRow] = 872;
                                 if (i2 == 4)
                                     menuActionID[menuActionRow] = 1062;
-                                menuActionCmd1[menuActionRow] = l;
-                                menuActionCmd2[menuActionRow] = i1;
-                                menuActionCmd3[menuActionRow] = j1;
+                                menuActionCmd1[menuActionRow] = current;
+                                menuActionCmd2[menuActionRow] = x;
+                                menuActionCmd3[menuActionRow] = y;
                                 menuActionRow++;
                             }
 
                     }
                     if (myPlayer.getRights() == 3)
-                        menuActionName[menuActionRow] = "Examine @cya@" + class46.name + " @whi@(" + l1 + ") ("
-                                + (i1 + baseX) + "," + (j1 + baseY) + ")";
+                        menuActionName[menuActionRow] = "Examine @cya@" + class46.name + " @whi@(" + uid + ") ("
+                                + (x + baseX) + "," + (y + baseY) + ")";
                     else
                         menuActionName[menuActionRow] = "Examine @cya@" + class46.name;
                     if (debugModels == true) {
-                        menuActionName[menuActionRow] = "Examine @cya@" + class46.name + " @gre@ID: @whi@" + l1
-                                + " @gre@X, Y: @whi@" + (i1 + baseX) + "," + (j1 + baseY) + " @gre@Models: @whi@"
+                        menuActionName[menuActionRow] = "Examine @cya@" + class46.name + " @gre@ID: @whi@" + uid
+                                + " @gre@X, Y: @whi@" + (x + baseX) + "," + (y + baseY) + " @gre@Models: @whi@"
                                 + Arrays.toString(class46.anIntArray773);
 
                     }
 
                     menuActionID[menuActionRow] = 1226;
                     menuActionCmd1[menuActionRow] = class46.type << 14;
-                    menuActionCmd2[menuActionRow] = i1;
-                    menuActionCmd3[menuActionRow] = j1;
+                    menuActionCmd2[menuActionRow] = x;
+                    menuActionCmd3[menuActionRow] = y;
                     menuActionRow++;
                 }
             }
-            if (k1 == 1) {
-                NPC npc = npcs[l1];
-                if (npc.desc.boundDim == 1 && (npc.x & 0x7f) == 64 && (npc.y & 0x7f) == 64) {
-                    for (int j2 = 0; j2 < npcCount; j2++) {
-                        NPC npc2 = npcs[npcIndices[j2]];
-                        if (npc2 != null && npc2 != npc && npc2.desc.boundDim == 1 && npc2.x == npc.x && npc2.y == npc.y && npc2.isShowMenuOnHover()) {
-                            buildAtNPCMenu(npc2.desc, npcIndices[j2], j1, i1);
+            if (opcode == 1) {
+                try {
+                    NPC npc = npcs[uid];
+                    if (npc.desc.boundDim == 1 && (npc.x & 0x7f) == 64 && (npc.y & 0x7f) == 64) {
+                        for (int j2 = 0; j2 < npcCount; j2++) {
+                            NPC npc2 = npcs[npcIndices[j2]];
+                            if (npc2 != null && npc2 != npc && npc2.desc.boundDim == 1 && npc2.x == npc.x && npc2.y == npc.y && npc2.isShowMenuOnHover()) {
+                                buildAtNPCMenu(npc2.desc, npcIndices[j2], y, x);
+                            }
                         }
-                    }
 
-                    for (int l2 = 0; l2 < playerCount; l2++) {
-                        Player player = players[playerIndices[l2]];
-                        if (player != null && player.x == npc.x && player.y == npc.y) {
-                            buildAtPlayerMenu(i1, playerIndices[l2], player, j1);
+                        for (int l2 = 0; l2 < playerCount; l2++) {
+                            Player player = players[playerIndices[l2]];
+                            if (player != null && player.x == npc.x && player.y == npc.y) {
+                                buildAtPlayerMenu(x, playerIndices[l2], player, y);
+                            }
                         }
-                    }
 
-                }
-                if (npc.isShowMenuOnHover()) {
-                    buildAtNPCMenu(npc.desc, l1, j1, i1);
+                    }
+                    if (npc.isShowMenuOnHover()) {
+                        buildAtNPCMenu(npc.desc, uid, y, x);
+                    }
+                } catch (Exception e) {
                 }
             }
-            if (k1 == 0) {
-                Player player = players[l1];
-                if ((player.x & 0x7f) == 64 && (player.y & 0x7f) == 64) {
+            if (opcode == 0) {
+                Player player = players[uid];
+                if ((player.x & 0x7f) == 64 && (player.y & 0x7f) == 64) {//(Client.java:7546)
                     for (int k2 = 0; k2 < npcCount; k2++) {
-                        NPC class30_sub2_sub4_sub1_sub1_2 = npcs[npcIndices[k2]];
-                        if (class30_sub2_sub4_sub1_sub1_2 != null && class30_sub2_sub4_sub1_sub1_2.desc.boundDim == 1
-                                && class30_sub2_sub4_sub1_sub1_2.x == player.x
-                                && class30_sub2_sub4_sub1_sub1_2.y == player.y && class30_sub2_sub4_sub1_sub1_2.isShowMenuOnHover())
-                            buildAtNPCMenu(class30_sub2_sub4_sub1_sub1_2.desc, npcIndices[k2], j1, i1);
+                        NPC npc = npcs[npcIndices[k2]];
+                        if (npc != null && npc.desc.boundDim == 1
+                                && npc.x == player.x
+                                && npc.y == player.y)
+                            buildAtNPCMenu(npc.desc, npcIndices[k2], y, x);
                     }
 
                     for (int i3 = 0; i3 < playerCount; i3++) {
-                        Player class30_sub2_sub4_sub1_sub2_2 = players[playerIndices[i3]];
-                        if (class30_sub2_sub4_sub1_sub2_2 != null && class30_sub2_sub4_sub1_sub2_2 != player
-                                && class30_sub2_sub4_sub1_sub2_2.x == player.x
-                                && class30_sub2_sub4_sub1_sub2_2.y == player.y)
-                            buildAtPlayerMenu(i1, playerIndices[i3], class30_sub2_sub4_sub1_sub2_2, j1);
+                        Player player1 = players[playerIndices[i3]];
+                        if (player1 != null && player1 != player
+                                && player1.x == player.x
+                                && player1.y == player.y)
+                            buildAtPlayerMenu(x, playerIndices[i3], player1, y);
                     }
 
                 }
-                buildAtPlayerMenu(i1, l1, player, j1);
+                buildAtPlayerMenu(x, uid, player, y);
             }
-            if (k1 == 3) {
-                NodeList class19 = groundArray[plane][i1][j1];
+            if (opcode == 3) {
+                NodeList class19 = groundArray[plane][x][y];
                 if (class19 != null) {
                     for (Item item = (Item) class19.getFirst(); item != null; item = (Item) class19.getNext()) {
                         ItemDefinition itemDef = ItemDefinition.forID(item.ID);
@@ -7570,16 +7573,16 @@ public class Client extends RSApplet {
                             menuActionName[menuActionRow] = "Use " + selectedItemName + " with @lre@" + itemDef.name;
                             menuActionID[menuActionRow] = 511;
                             menuActionCmd1[menuActionRow] = item.ID;
-                            menuActionCmd2[menuActionRow] = i1;
-                            menuActionCmd3[menuActionRow] = j1;
+                            menuActionCmd2[menuActionRow] = x;
+                            menuActionCmd3[menuActionRow] = y;
                             menuActionRow++;
                         } else if (spellSelected == 1) {
                             if ((spellUsableOn & 1) == 1) {
                                 menuActionName[menuActionRow] = spellTooltip + " @lre@" + itemDef.name + "";
                                 menuActionID[menuActionRow] = 94;
                                 menuActionCmd1[menuActionRow] = item.ID;
-                                menuActionCmd2[menuActionRow] = i1;
-                                menuActionCmd3[menuActionRow] = j1;
+                                menuActionCmd2[menuActionRow] = x;
+                                menuActionCmd3[menuActionRow] = y;
                                 menuActionRow++;
                             }
                         } else {
@@ -7597,15 +7600,15 @@ public class Client extends RSApplet {
                                     if (j3 == 4)
                                         menuActionID[menuActionRow] = 213;
                                     menuActionCmd1[menuActionRow] = item.ID;
-                                    menuActionCmd2[menuActionRow] = i1;
-                                    menuActionCmd3[menuActionRow] = j1;
+                                    menuActionCmd2[menuActionRow] = x;
+                                    menuActionCmd3[menuActionRow] = y;
                                     menuActionRow++;
                                 } else if (j3 == 2) {
                                     menuActionName[menuActionRow] = "Take @lre@" + itemDef.name;
                                     menuActionID[menuActionRow] = 234;
                                     menuActionCmd1[menuActionRow] = item.ID;
-                                    menuActionCmd2[menuActionRow] = i1;
-                                    menuActionCmd3[menuActionRow] = j1;
+                                    menuActionCmd2[menuActionRow] = x;
+                                    menuActionCmd3[menuActionRow] = y;
                                     menuActionRow++;
                                 }
                             menuActionName[menuActionRow] = "Examine @lre@" + itemDef.name;
@@ -7615,8 +7618,8 @@ public class Client extends RSApplet {
                             }
                             menuActionID[menuActionRow] = 1448;
                             menuActionCmd1[menuActionRow] = item.ID;
-                            menuActionCmd2[menuActionRow] = i1;
-                            menuActionCmd3[menuActionRow] = j1;
+                            menuActionCmd2[menuActionRow] = x;
+                            menuActionCmd3[menuActionRow] = y;
                             menuActionRow++;
                         }
                     }
@@ -9921,9 +9924,9 @@ public class Client extends RSApplet {
                         k = menuActionCmd3[j];
                         menuActionCmd3[j] = menuActionCmd3[j + 1];
                         menuActionCmd3[j + 1] = k;
-                        long k2 = menuActionCmd1[j];
+                        k = (int) menuActionCmd1[j];
                         menuActionCmd1[j] = menuActionCmd1[j + 1];
-                        menuActionCmd1[j + 1] = k2;
+                        menuActionCmd1[j + 1] = k;
                         flag = false;
                     }
                 }
@@ -10629,7 +10632,7 @@ public class Client extends RSApplet {
             entityDef = entityDef.method161();
         if (entityDef == null)
             return;
-        if (!entityDef.aBoolean84)
+        if (!entityDef.clickable)
             return;
         String s = entityDef.name;
         if (entityDef.combatLevel != 0)
@@ -10811,7 +10814,7 @@ public class Client extends RSApplet {
     }
 
     public void method89(Class30_Sub1 class30_sub1) {
-        long i = 0;
+        long i = 0L;
         int j = -1;
         int k = 0;
         int l = 0;
@@ -10823,12 +10826,10 @@ public class Client extends RSApplet {
             i = worldController.method302(class30_sub1.anInt1295, class30_sub1.anInt1297, class30_sub1.anInt1298);
         if (class30_sub1.anInt1296 == 3)
             i = worldController.method303(class30_sub1.anInt1295, class30_sub1.anInt1297, class30_sub1.anInt1298);
-        if (i != 0) {
-            int i1 = worldController.method304(class30_sub1.anInt1295, class30_sub1.anInt1297, class30_sub1.anInt1298,
-                    i);
+        if (i != 0l) {
             j = ObjectKey.getObjectId(i);
-            k = i1 & 0x1f;
-            l = i1 >> 6;
+            k = ObjectKey.getObjectType(i);
+            l = ObjectKey.getObjectOrientation(i);
         }
         class30_sub1.anInt1299 = j;
         class30_sub1.anInt1301 = k;
@@ -15180,7 +15181,7 @@ public class Client extends RSApplet {
                 NpcDefinition entityDef = npc.desc;
                 if (entityDef.childrenIDs != null)
                     entityDef = entityDef.method161();
-                if (entityDef != null && entityDef.onMinimap && entityDef.aBoolean84) {
+                if (entityDef != null && entityDef.onMinimap && entityDef.clickable) {
                     int i1 = npc.x / 32 - myPlayer.x / 32;
                     int k3 = npc.y / 32 - myPlayer.y / 32;
                     markMinimap(mapDotNPC, i1, k3);
@@ -16404,7 +16405,7 @@ public class Client extends RSApplet {
                     worldController.method291(i1, j, i, (byte) -119);
                     ObjectDefinition class46 = ObjectDefinition.forID(j2);
                     if (class46.solid)
-                        aClass11Array1230[j].method215(l2, k2, class46.aBoolean757, i1, i);
+                        aClass11Array1230[j].method215(l2, k2, class46.impenetrable, i1, i);
                 }
                 if (j1 == 1)
                     worldController.method292(i, j, i1);
@@ -16416,12 +16417,12 @@ public class Client extends RSApplet {
                         return;
                     if (class46_1.solid)
                         aClass11Array1230[j].method216(l2, class46_1.objectSizeX, i1, i, class46_1.objectSizeY,
-                                class46_1.aBoolean757);
+                                class46_1.impenetrable);
                 }
                 if (j1 == 3) {
                     worldController.method294(j, i, i1);
                     ObjectDefinition class46_2 = ObjectDefinition.forID(j2);
-                    if (class46_2.solid && class46_2.hasActions)
+                    if (class46_2.solid && class46_2.isInteractive)
                         aClass11Array1230[j].method218(i, i1);
                 }
             }

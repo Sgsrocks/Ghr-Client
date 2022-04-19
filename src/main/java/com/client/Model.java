@@ -2315,7 +2315,7 @@ public class Model extends Renderable {
     public static int anInt1685;
     public static int anInt1686;
     public static int obj_loaded;
-    public static long obj_key[] = new long[1000];
+    public static long[] obj_key = new long[1000];
     public static int SINE[];
     public static int COSINE[];
     static int modelIntArray3[];

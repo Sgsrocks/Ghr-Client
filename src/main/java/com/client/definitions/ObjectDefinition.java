@@ -59,7 +59,7 @@ public final class ObjectDefinition {
 			if (objectDef.name == null || objectDef.name.equalsIgnoreCase("null"))
 				objectDef.name = "test";
 
-			objectDef.hasActions = true;
+			objectDef.isInteractive = true;
 		}
 		return objectDef;
 	}
@@ -132,20 +132,20 @@ public final class ObjectDefinition {
 		objectSizeX = 1;
 		objectSizeY = 1;
 		solid = true;
-		aBoolean757 = true;
-		hasActions = false;
+		impenetrable = true;
+		isInteractive = false;
 		contouredGround = false;
 		delayShading = false;
-		aBoolean764 = false;
+		occludes = false;
 		animation = -1;
-		anInt775 = 16;
+		decorDisplacement = 16;
 		ambientLighting = 0;
 		lightDiffusion = 0;
 		actions = null;
 		AreaType = -1;
 		mapscene = -1;
 		aBoolean751 = false;
-		aBoolean779 = true;
+		castsShadow = true;
 		thickness = 128;
 		height = 128;
 		width = 128;
@@ -153,7 +153,7 @@ public final class ObjectDefinition {
 		anInt738 = 0;
 		anInt745 = 0;
 		anInt783 = 0;
-		aBoolean736 = false;
+		obstructsGround = false;
 		aBoolean766 = false;
 		field3621 = true;
 		supportItems = -1;
@@ -414,21 +414,21 @@ public final class ObjectDefinition {
 			else if (type == 17)
 				solid = false;
 			else if (type == 18)
-				aBoolean757 = false;
+				impenetrable = false;
 			else if (type == 19)
-				hasActions = (stream.readUnsignedByte() == 1);
+				isInteractive = (stream.readUnsignedByte() == 1);
 			else if (type == 21)
 				contouredGround = true;
 			else if (type == 22)
 				delayShading = true;
 			else if (type == 23)
-				aBoolean764 = true;
+				occludes = true;
 			else if (type == 24) { // Object Animations
 				animation = stream.readUnsignedShort();
 				if (animation == 65535)
 					animation = -1;
 			} else if (type == 28)
-				anInt775 = stream.readUnsignedByte();
+				decorDisplacement = stream.readUnsignedByte();
 			else if (type == 29)
 				ambientLighting = stream.readSignedByte();
 			else if (type == 39)
@@ -460,7 +460,7 @@ public final class ObjectDefinition {
 			} else if (type == 62)
 				aBoolean751 = true;
 			else if (type == 64)
-				aBoolean779 = false;
+				castsShadow = false;
 			else if (type == 65)
 				thickness = stream.readUnsignedShort();
 			else if (type == 66)
@@ -478,7 +478,7 @@ public final class ObjectDefinition {
 			else if (type == 72)
 				anInt783 = stream.readSignedWord();
 			else if (type == 73)
-				aBoolean736 = true;
+				obstructsGround = true;
 			else if (type == 74)
 				aBoolean766 = true;
 			else if (type == 75)
@@ -530,13 +530,13 @@ public final class ObjectDefinition {
 			}
 		} while (true);
 		if (flag == -1 && name != "null" && name != null) {
-			hasActions = anIntArray773 != null && (anIntArray776 == null || anIntArray776[0] == 10);
+			isInteractive = anIntArray773 != null && (anIntArray776 == null || anIntArray776[0] == 10);
 			if (actions != null)
-				hasActions = true;
+				isInteractive = true;
 		}
 		if (aBoolean766) {
 			solid = false;
-			aBoolean757 = false;
+			impenetrable = false;
 		}
 		if (supportItems == -1)
 			supportItems = solid ? 1 : 0;
@@ -548,7 +548,7 @@ public final class ObjectDefinition {
 
 	private short[] originalTexture;
 	private short[] modifiedTexture;
-	public boolean aBoolean736;
+	public boolean obstructsGround;
 	@SuppressWarnings("unused")
 	private byte lightDiffusion;
 	@SuppressWarnings("unused")
@@ -568,13 +568,13 @@ public final class ObjectDefinition {
 	private static Buffer stream;
 	public int type;
 	public static int[] streamIndices;
-	public boolean aBoolean757;
+	public boolean impenetrable;
 	public int mapscene;
 	public int childrenIDs[];
 	public int supportItems;
 	public int objectSizeY;
 	public boolean contouredGround;
-	public boolean aBoolean764;
+	public boolean occludes;
 	public static Client clientInstance;
 	private boolean aBoolean766;
 	public boolean solid;
@@ -584,11 +584,11 @@ public final class ObjectDefinition {
 	private int height;
 	public int[] anIntArray773;
 	public int anInt774;
-	public int anInt775;
+	public int decorDisplacement;
 	private int[] anIntArray776;
 	public String description;
-	public boolean hasActions;
-	public boolean aBoolean779;
+	public boolean isInteractive;
+	public boolean castsShadow;
 	public static MRUNodes mruNodes2 = new MRUNodes(30);
 	public int animation;
 	private static ObjectDefinition[] cache;
