@@ -170,7 +170,7 @@ final class WorldController {
         Tile class30_sub3 = tiles[l][i][i1];
         if (class30_sub3 != null) {
             for (int k1 = 0; k1 < class30_sub3.gameObjectIndex; k1++)
-                if (class30_sub3.objects[k1].renderable instanceof Model) {
+                if ((class30_sub3.objects[k1].uid & 0x400000L) == 4194304L && class30_sub3.objects[k1].renderable instanceof Model) {
                     int l1 = ((Model) class30_sub3.objects[k1].renderable).itemDropHeight;
                     if (l1 > j1)
                         j1 = l1;
@@ -464,7 +464,7 @@ final class WorldController {
 	public long method300(int i, int j, int k) {
 		Tile tile = tiles[i][j][k];
 		if(tile == null || tile.wallObject == null)
-			return 0;
+			return 0L;
 		else
 			return tile.wallObject.uid;
 	}
@@ -473,7 +473,7 @@ final class WorldController {
 	public long method301(int i, int j, int l) {
 		Tile tile = tiles[i][j][l];
 		if(tile == null || tile.obj2 == null)
-			return 0;
+			return 0L;
 		else
 			return tile.obj2.uid;
 	}
@@ -483,22 +483,22 @@ final class WorldController {
 	public long method302(int z, int x, int y) {
 		Tile tile = tiles[z][x][y];
 		if(tile == null)
-			return 0;
+			return 0L;
 		for(int l = 0; l < tile.gameObjectIndex; l++) {
 			GameObject interactableObject = tile.objects[l];
-			if((interactableObject.uid >> 29 & 3) == 2 && 
+			if((interactableObject.uid >> 29 & 0x3L) == 2L &&
 					interactableObject.xLocLow == x && interactableObject.yLocHigh == y) {
 				return interactableObject.uid;
 			}
 		}
-		return 0;
+		return 0L;
 	}
 
 	//fetchGroundDecorationUID
 	public long method303(int i, int j, int k) {
 		Tile tile = tiles[i][j][k];
 		if(tile == null || tile.groundObject == null)
-			return 0;
+			return 0L;
 		else
 			return tile.groundObject.uid;
 	}
@@ -521,7 +521,7 @@ final class WorldController {
 
 			return -1;
 	}
-    public int method304(int i, int j, int k, long l) {
+    public int method3042(int i, int j, int k, long l) {
         Tile class30_sub3 = tiles[i][j][k];
         if (class30_sub3 == null)
             return -1;
@@ -536,6 +536,27 @@ final class WorldController {
                 return class30_sub3.objects[i1].mask & 0xff;
 
         return -1;
+    }
+    public boolean method304(int i, int j, int k, long l) {//method1952 // method298
+        Tile class30_sub3 = tiles[i][j][k];
+        if (class30_sub3 == null) {
+            return false;
+        }
+        if (class30_sub3.wallObject != null && class30_sub3.wallObject.uid == l) {
+            return true;
+        }
+        if (class30_sub3.obj2 != null && class30_sub3.obj2.uid == l) {
+            return true;
+        }
+        if (class30_sub3.groundObject != null && class30_sub3.groundObject.uid == l) {
+            return true;
+        }
+        for (int i1 = 0; i1 < class30_sub3.gameObjectIndex; i1++) {
+            if (class30_sub3.objects[i1].uid == l) {
+                return true;
+            }
+        }
+        return false;
     }
     public void shadeModels(int lightY, int lightX, int lightZ) {
         int intensity = 64;// was parameter

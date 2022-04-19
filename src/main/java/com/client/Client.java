@@ -224,7 +224,7 @@ public class Client extends RSApplet {
     private final int[] anIntArray873;
     private final boolean[] aBooleanArray876;
     private final int maxPlayers;
-    private final int myPlayerIndex;
+    private final int maxPlayerCount;
     private final long[] ignoreListAsLongs;
     private final int[] anIntArray928;
     private final int[] chatTypes;
@@ -821,7 +821,7 @@ public class Client extends RSApplet {
         menuOpen = false;
         inputString = "";
         maxPlayers = 2048;
-        myPlayerIndex = 2047;
+        maxPlayerCount = 2047;
         players = new Player[maxPlayers];
         playerIndices = new int[maxPlayers];
         anIntArray894 = new int[maxPlayers];
@@ -2546,7 +2546,7 @@ public class Client extends RSApplet {
                 ((Renderable) (obj2)), ((Renderable) (obj)), plane, j);
     }
 
-    public void method26(boolean flag) {
+    public void renderNpcList(boolean flag) {
         for (int j = 0; j < npcCount; j++) {
             NPC npc = npcs[npcIndices[j]];
             long k = 0x20000000L |  (long) (npcIndices[j] << 32);
@@ -4195,7 +4195,7 @@ public class Client extends RSApplet {
         for (int i = -1; i < playerCount; i++) {
             int j;
             if (i == -1)
-                j = myPlayerIndex;
+                j = maxPlayerCount;
             else
                 j = playerIndices[i];
             Player player = players[j];
@@ -4487,13 +4487,13 @@ public class Client extends RSApplet {
             j = 1;
         for (int l = 0; l < j; l++) {
             Player player;
-            int i1;
+            long i1;
             if (flag) {
                 player = myPlayer;
-                i1 = myPlayerIndex << 14;
+                i1 = (long) maxPlayerCount << 32;
             } else {
                 player = players[playerIndices[l]];
-                i1 = playerIndices[l] << 14;
+                i1 = (long) playerIndices[l] << 32;
             }
             if (player == null || !player.isVisible())
                 continue;
@@ -4642,7 +4642,6 @@ public class Client extends RSApplet {
     public void method50(int i, int k, int l, int i1, int j1) {
         long k1 = worldController.method300(j1, l, i);
         if (k1 != 0) {
-            int l1 = worldController.method304(j1, l, i, k1);
             int k2 = ObjectKey.getObjectOrientation(k1);
             int i3 = ObjectKey.getObjectType(k1);
             int k3 = k;
@@ -4717,7 +4716,6 @@ public class Client extends RSApplet {
         }
         k1 = worldController.method302(j1, l, i);
         if (k1 != 0l) {
-            int i2 = worldController.method304(j1, l, i, k1);
             int l2 = ObjectKey.getObjectOrientation(k1);
             int j3 = ObjectKey.getObjectType(k1);
             int l3 = ObjectKey.getObjectId(k1);
@@ -5661,17 +5659,13 @@ public class Client extends RSApplet {
 
     //might be needed
     private boolean clickObject(long i, int j, int k) {
-        int i1 = ObjectKey.getObjectId(i);
-        int j1 = worldController.method304(plane, k, j, i);
-        if (i == -1)
-            return false;
-        int k1 = j1 & 0x1f;
-        int l1 = j1 >> 6 & 3;
-        if (k1 == 10 || k1 == 11 || k1 == 22) {
-            ObjectDefinition class46 = ObjectDefinition.forID(i1);
+        int objectType = ObjectKey.getObjectType(i);
+        int orientation = ObjectKey.getObjectOrientation(i);
+        if (objectType == 10 || objectType == 11 || objectType == 22) {
+            ObjectDefinition class46 = ObjectDefinition.forID(ObjectKey.getObjectId(i));
             int i2;
             int j2;
-            if (l1 == 0 || l1 == 2) {
+            if (orientation == 0 || orientation == 2) {
                 i2 = class46.objectSizeX;
                 j2 = class46.objectSizeY;
             } else {
@@ -5679,11 +5673,11 @@ public class Client extends RSApplet {
                 j2 = class46.objectSizeX;
             }
             int k2 = class46.anInt768;
-            if (l1 != 0)
-                k2 = (k2 << l1 & 0xf) + (k2 >> 4 - l1);
+            if (orientation != 0)
+                k2 = (k2 << orientation & 0xf) + (k2 >> 4 - orientation);
             doWalkTo(2, 0, j2, 0, myPlayer.smallY[0], i2, k2, j, myPlayer.smallX[0], false, k);
         } else {
-            doWalkTo(2, l1, 0, k1 + 1, myPlayer.smallY[0], 0, 0, j, myPlayer.smallX[0], false, k);
+            doWalkTo(2, orientation, 0, orientation + 1, myPlayer.smallY[0], 0, 0, j, myPlayer.smallX[0], false, k);
         }
         crossX = super.saveClickX;
         crossY = super.saveClickY;
@@ -7449,7 +7443,7 @@ public class Client extends RSApplet {
             if (current == previous)
                 continue;
             previous = current;
-            if (opcode == 2 && worldController.method304(plane, x, y, current) >= 0) {
+            if (opcode == 2 && worldController.method304(plane, x, y, current)) {
                 ObjectDefinition class46 = ObjectDefinition.forID(uid);
                 if (class46.childrenIDs != null) {
                     class46 = class46.method580();
@@ -10130,7 +10124,7 @@ public class Client extends RSApplet {
                 for (int k2 = 0; k2 < 16384; k2++)
                     npcs[k2] = null;
 
-                myPlayer = players[myPlayerIndex] = new Player();
+                myPlayer = players[maxPlayerCount] = new Player();
                 aClass19_1013.removeAll();
                 aClass19_1056.removeAll();
                 for (int l2 = 0; l2 < 4; l2++) {
@@ -10826,7 +10820,7 @@ public class Client extends RSApplet {
             i = worldController.method302(class30_sub1.anInt1295, class30_sub1.anInt1297, class30_sub1.anInt1298);
         if (class30_sub1.anInt1296 == 3)
             i = worldController.method303(class30_sub1.anInt1295, class30_sub1.anInt1297, class30_sub1.anInt1298);
-        if (i != 0l) {
+        if (i != 0L) {
             j = ObjectKey.getObjectId(i);
             k = ObjectKey.getObjectType(i);
             l = ObjectKey.getObjectOrientation(i);
@@ -12719,7 +12713,7 @@ public class Client extends RSApplet {
         if (entity.interactingEntity >= 32768) {
             int j = entity.interactingEntity - 32768;
             if (j == unknownInt10)
-                j = myPlayerIndex;
+                j = maxPlayerCount;
             Player player = players[j];
             if (player != null) {
                 int l1 = entity.x - player.x;
@@ -14611,7 +14605,7 @@ public class Client extends RSApplet {
         for (int i = -1; i < playerCount; i++) {
             int j;
             if (i == -1)
-                j = myPlayerIndex;
+                j = maxPlayerCount;
             else
                 j = playerIndices[i];
             Player player = players[j];
@@ -14706,7 +14700,7 @@ public class Client extends RSApplet {
             return;
         int k = stream.readBits(2);
         if (k == 0) {
-            anIntArray894[anInt893++] = myPlayerIndex;
+            anIntArray894[anInt893++] = maxPlayerCount;
             return;
         }
         if (k == 1) {
@@ -14714,7 +14708,7 @@ public class Client extends RSApplet {
             myPlayer.moveInDir(false, l);
             int k1 = stream.readBits(1);
             if (k1 == 1)
-                anIntArray894[anInt893++] = myPlayerIndex;
+                anIntArray894[anInt893++] = maxPlayerCount;
             return;
         }
         if (k == 2) {
@@ -14724,7 +14718,7 @@ public class Client extends RSApplet {
             myPlayer.moveInDir(true, l1);
             int j2 = stream.readBits(1);
             if (j2 == 1)
-                anIntArray894[anInt893++] = myPlayerIndex;
+                anIntArray894[anInt893++] = maxPlayerCount;
             return;
         }
         if (k == 3) {
@@ -14732,7 +14726,7 @@ public class Client extends RSApplet {
             int j1 = stream.readBits(1);
             int i2 = stream.readBits(1);
             if (i2 == 1)
-                anIntArray894[anInt893++] = myPlayerIndex;
+                anIntArray894[anInt893++] = maxPlayerCount;
             int k2 = stream.readBits(7);
             int l2 = stream.readBits(7);
             myPlayer.setPos(l2, k2, j1 == 1);
@@ -16397,10 +16391,9 @@ public class Client extends RSApplet {
             if (j1 == 3)
                 i2 = worldController.method303(j, i1, i);
             if (i2 != 0) {
-                int i3 = worldController.method304(j, i1, i, i2);
                 int j2 = ObjectKey.getObjectId(i2);
-                int k2 = i3 & 0x1f;
-                int l2 = i3 >> 6;
+                int k2 = ObjectKey.getObjectType(i2);
+                int l2 = ObjectKey.getObjectOrientation(i2);
                 if (j1 == 0) {
                     worldController.method291(i1, j, i, (byte) -119);
                     ObjectDefinition class46 = ObjectDefinition.forID(j2);
@@ -18034,9 +18027,9 @@ public class Client extends RSApplet {
     public void method146() {
         anInt1265++;
         method47(true);
-        method26(true);
+        renderNpcList(true);
         method47(false);
-        method26(false);
+        renderNpcList(false);
         method55();
         method104();
         if (!aBoolean1160) {
