@@ -52,11 +52,11 @@ public class Configuration {
 			repackIndexOne = false,
 			repackIndexTwo = false,
 			repackIndexThree = false,
-			repackIndexFour = true,
+			repackIndexFour = false,
 			repackIndexFive = false,
 			repackIndexSix = false;
 
-	public static final String CACHE_LINK = "https://www.dropbox.com/s/z80j5p2eksojlfd/cache.zip?dl=1"; // Link for every client below client
+	public static final String CACHE_LINK = "http://godzhell.org/cache/cache.zip"; // Link for every client below client
 
 	public static final boolean DUMP_OBJECTS = false;
 	

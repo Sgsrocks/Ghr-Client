@@ -1,12 +1,12 @@
 package com.client;
 
-final class SceneTileModel {
+final class ShapedTile {
 
 
 
-    public SceneTileModel(int yLoc, int j, int k, int l, int texture, int j1, int rotation, int l1,
-                          int i2, int j2, int k2, int l2, int i3, int j3, int k3, int l3,
-                          int i4, int xLoc, int l4) {
+    public ShapedTile(int yLoc, int j, int k, int l, int texture, int j1, int rotation, int l1,
+                      int i2, int j2, int k2, int l2, int i3, int j3, int k3, int l3,
+                      int i4, int xLoc, int l4) {
         flat = !(i3 != l2 || i3 != l || i3 != k2);
         shape = j3;
         this.rotation = rotation;
@@ -227,7 +227,7 @@ final class SceneTileModel {
     static final int[] anIntArray690 = new int[6];
     static final int[] anIntArray691 = new int[6];
     static final int[] anIntArray692 = new int[6];
-    static final int[] depthPoint = new int[6];
+    static final int[] viewSpaceZ = new int[6];
     static final int[] anIntArray693 = {1, 0};
     static final int[] anIntArray694 = {2, 1};
     static final int[] anIntArray695 = {3, 3};

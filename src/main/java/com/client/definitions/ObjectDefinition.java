@@ -366,7 +366,7 @@ public final class ObjectDefinition {
 		model_3.light(64 + ambientLighting,    768 + lightDiffusion  * 5, -50, -10, -50, !delayShading);
 
 		if (supportItems == 1)
-			model_3.itemDropHeight = model_3.modelBaseY;
+			model_3.itemDropHeight = model_3.modelHeight;
 		mruNodes2.removeFromCache(model_3, l1);
 		return model_3;
 	}

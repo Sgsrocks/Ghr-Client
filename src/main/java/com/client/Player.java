@@ -11,7 +11,7 @@ public final class Player extends Entity {
 		Model model = method452();
 		if (model == null)
 			return null;
-		super.height = model.modelBaseY;
+		super.height = model.modelHeight;
 		model.fits_on_single_square = true;
 		if (aBoolean1699)
 			return model;

@@ -3,15 +3,15 @@ package com.client;
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) 
 
-public final class GroundObject {
+public final class Object3 {
 
-	public GroundObject() {
+	public Object3() {
 	}
 
 	int anInt811;
 	int anInt812;
 	int anInt813;
-	public Renderable renderable;
+	public Renderable aClass30_Sub2_Sub4_814;
 	public long uid;
 	int groundDecorUID;
 	byte aByte816;

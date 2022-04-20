@@ -8,11 +8,11 @@ final class Class47 {
 	Class47() {
 	}
 
-	int anInt787;
+	int minTileX;
 	int anInt788;
 	int anInt789;
 	int anInt790;
-	int anInt791;
+	int type;
 	int anInt792;
 	int anInt793;
 	int anInt794;

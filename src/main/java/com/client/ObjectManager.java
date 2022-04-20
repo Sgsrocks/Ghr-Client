@@ -40,9 +40,12 @@ final class ObjectManager {
 	/**
 	 * Encodes the hue, saturation, and luminance into a colour value.
 	 *
-	 * @param hue The hue.
-	 * @param saturation The saturation.
-	 * @param luminance The luminance.
+	 * @param hue
+	 *            The hue.
+	 * @param saturation
+	 *            The saturation.
+	 * @param luminance
+	 *            The luminance.
 	 * @return The colour.
 	 */
 	private int encode(int hue, int saturation, int luminance) {
@@ -56,6 +59,18 @@ final class ObjectManager {
 			saturation /= 2;
 		return (hue / 4 << 10) + (saturation / 32 << 7) + luminance / 2;
 	}
+	/**
+	 * Returns the plane that actually contains the collision flag, to adjust for
+	 * objects such as bridges.
+	 *
+	 * @param x
+	 *            The x coordinate.
+	 * @param y
+	 *            The y coordinate.
+	 * @param z
+	 *            The z coordinate.
+	 * @return The correct z coordinate.
+	 */
 	private int getCollisionPlane(int y, int z, int x) {
 		if ((tileFlags[z][x][y] & FORCE_LOWEST_PLANE) != 0) {
 			return 0;
@@ -311,7 +326,7 @@ final class ObjectManager {
 					worldController.method278(l, i10, j8, method182(j8, l, i10));
 			}
 		}
-		worldController.shadeModels(-10, -50, -50);
+		worldController.method305(-10, -50, -50);
 		for (int j1 = 0; j1 < regionSizeX; j1++) {
 			for (int l1 = 0; l1 < regionSizeY; l1++)
 				if ((tileFlags[1][j1][l1] & 2) == 2)
@@ -457,6 +472,7 @@ final class ObjectManager {
 			mapHeight = 60;
 		return mapHeight;
 	}
+
 	public static void passiveRequestGameObjectModels(Buffer stream, OnDemandFetcher class42_sub1) {
 		label0: {
 			int i = -1;
@@ -554,6 +570,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 		key |= 0x400000L;
 	}
 	key |= (long) id << 32;
+	byte byte0 = (byte) ((orientation << 6) + type);
 	if (type == 22) {
 		if (lowMem && !definition.isInteractive && !definition.obstructsGround)
 			return;
@@ -847,7 +864,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 	}
 
 	public final void method179(int i, int j, CollisionMap aclass11[], int l, int i1, byte abyte0[], int j1, int k1,
-			int l1) {
+								int l1) {
 		for (int i2 = 0; i2 < 8; i2++) {
 			for (int j2 = 0; j2 < 8; j2++)
 				if (l + i2 > 0 && l + i2 < 103 && l1 + j2 > 0 && l1 + j2 < 103)
@@ -986,7 +1003,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 	}
 
 	public final void method183(CollisionMap aclass11[], WorldController worldController, int i, int j, int k, int l,
-			byte abyte0[], int i1, int j1, int k1) {
+								byte abyte0[], int i1, int j1, int k1) {
 		label0: {
 			Buffer stream = new Buffer(abyte0);
 			int l1 = -1;
@@ -995,30 +1012,30 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 				if (i2 == 0)
 					break label0;
 				l1 += i2;
-				int objPosInfo = 0;
+				int j2 = 0;
 				do {
-					int objPosInfoOffset = stream.readUSmart();
-					if (objPosInfoOffset == 0)
+					int k2 = stream.readSmart();
+					if (k2 == 0)
 						break;
-					objPosInfo += objPosInfoOffset - 1;
-					int localY = objPosInfo & 0x3f;
-					int localX = objPosInfo >> 6 & 0x3f;
-					int plane = objPosInfo >> 12;
-					int objOtherInfo = stream.readUnsignedByte();
-					int type = objOtherInfo >> 2;
-					int rotation = objOtherInfo & 3;
-					if (plane == i && localX >= i1 && localX < i1 + 8 && localY >= k && localY < k + 8) {
+					j2 += k2 - 1;
+					int l2 = j2 & 0x3f;
+					int i3 = j2 >> 6 & 0x3f;
+					int j3 = j2 >> 12;
+					int k3 = stream.readUnsignedByte();
+					int l3 = k3 >> 2;
+					int i4 = k3 & 3;
+					if (j3 == i && i3 >= i1 && i3 < i1 + 8 && l2 >= k && l2 < k + 8) {
 						ObjectDefinition class46 = ObjectDefinition.forID(l1);
-						int j4 = j + Class4.method157(j1, class46.objectSizeY, localX & 7, localY & 7, class46.objectSizeX);
-						int k4 = k1 + Class4.method158(localY & 7, class46.objectSizeY, j1, class46.objectSizeX, localX & 7);
+						int j4 = j + Class4.method157(j1, class46.objectSizeY, i3 & 7, l2 & 7, class46.objectSizeX);
+						int k4 = k1 + Class4.method158(l2 & 7, class46.objectSizeY, j1, class46.objectSizeX, i3 & 7);
 						if (j4 > 0 && k4 > 0 && j4 < 103 && k4 < 103) {
-							int l4 = plane;
+							int l4 = j3;
 							if ((tileFlags[1][j4][k4] & 2) == 2)
 								l4--;
 							CollisionMap class11 = null;
 							if (l4 >= 0)
 								class11 = aclass11[l4];
-							renderObject(k4, worldController, class11, type, l, j4, l1, rotation + j1 & 3);
+							renderObject(k4, worldController, class11, l3, l, j4, l1, i4 + j1 & 3);
 						}
 					}
 				} while (true);
@@ -1041,6 +1058,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 		return k / 16 + l / 8 + i1 / 4;
 	}
 
+
 	private static int method187(int i, int j) {
 		if (i == -1)
 			return 0xbc614e;
@@ -1051,7 +1069,6 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 			j = 126;
 		return (i & 0xff80) + j;
 	}
-
 
 	public static void method188(WorldController worldController, int orientation, int y, int type, int plane, CollisionMap class11,
 								 int tileHeights[][][], int x, int id, int k1) {
@@ -1069,6 +1086,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 			key |= 0x400000L;
 		}
 		key |= (long) id << 32;
+		byte byte1 = (byte) ((orientation << 6) + type);
 		if (type == 22) {
 			Object obj;
 			if (definition.animation == -1 && definition.childrenIDs == null)

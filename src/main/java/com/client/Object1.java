@@ -3,9 +3,9 @@ package com.client;
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) 
 
-public final class WallObject {
+public final class Object1 {
 
-	public WallObject() {
+	public Object1() {
 	}
 
 	int anInt273;
@@ -13,8 +13,8 @@ public final class WallObject {
 	int anInt275;
 	int orientation;
 	int orientation1;
-	public Renderable renderable1;
-	public Renderable renderable2;
+	public Renderable aClass30_Sub2_Sub4_278;
+	public Renderable aClass30_Sub2_Sub4_279;
 	public long uid;
 	int wallObjUID;
 	byte aByte281;

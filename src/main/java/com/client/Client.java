@@ -1669,9 +1669,9 @@ public class Client extends RSApplet {
                                 ItemDefinition itemDef = ItemDefinition.forID(itemResults[itemId]);
                                 newRegularFont.drawBasicString(itemDef.name, startX + 40, startY + 14, 0, -1);
 
-                                if (super.mouseX >= startX && super.mouseX <= startX + 160) {
-                                    if (super.mouseY >= (startY + yOffset2)
-                                            && super.mouseY <= (startY + yOffset2) + 35) {
+                                if (super.getMouseX() >= startX && super.getMouseX() <= startX + 160) {
+                                    if (super.getMouseY() >= (startY + yOffset2)
+                                            && super.getMouseY() <= (startY + yOffset2) + 35) {
                                         Rasterizer2D.drawAlphaBox(startX, startY, 160, 35, 0xFFFFFF, 120);
 
                                         if (super.clickMode3 == 1)
@@ -2002,8 +2002,8 @@ public class Client extends RSApplet {
             j = 0;
         if (menuOpen) {
             if (j != 1) {
-                int k = super.mouseX;
-                int j1 = super.mouseY;
+                int k = super.getMouseX();
+                int j1 = super.getMouseY();
                 if (menuScreenArea == 0) {
                     k -= 0;
                     j1 -= 0;
@@ -2105,27 +2105,27 @@ public class Client extends RSApplet {
     private final void minimapHovers() {
         final boolean fixed = currentScreenMode == ScreenMode.FIXED;
         prayHover = fixed
-                ? prayHover = super.mouseX >= 517 && super.mouseX <= 573
-                && super.mouseY >= (Configuration.osbuddyGameframe ? 81 : 76)
-                && super.mouseY < (Configuration.osbuddyGameframe ? 109 : 107)
-                : super.mouseX >= currentGameWidth - 210 && super.mouseX <= currentGameWidth - 157
-                && super.mouseY >= (Configuration.osbuddyGameframe ? 90 : 55)
-                && super.mouseY < (Configuration.osbuddyGameframe ? 119 : 104);
+                ? prayHover = super.getMouseX() >= 517 && super.getMouseX() <= 573
+                && super.getMouseY() >= (Configuration.osbuddyGameframe ? 81 : 76)
+                && super.getMouseY() < (Configuration.osbuddyGameframe ? 109 : 107)
+                : super.getMouseX() >= currentGameWidth - 210 && super.getMouseX() <= currentGameWidth - 157
+                && super.getMouseY() >= (Configuration.osbuddyGameframe ? 90 : 55)
+                && super.getMouseY() < (Configuration.osbuddyGameframe ? 119 : 104);
         runHover = fixed
-                ? runHover = super.mouseX >= (Configuration.osbuddyGameframe ? 530 : 522)
-                && super.mouseX <= (Configuration.osbuddyGameframe ? 582 : 594)
-                && super.mouseY >= (Configuration.osbuddyGameframe ? 114 : 109)
-                && super.mouseY < (Configuration.osbuddyGameframe ? 142 : 142)
-                : super.mouseX >= currentGameWidth - (Configuration.osbuddyGameframe ? 196 : 186)
-                && super.mouseX <= currentGameWidth - (Configuration.osbuddyGameframe ? 142 : 132)
-                && super.mouseY >= (Configuration.osbuddyGameframe ? 123 : 132)
-                && super.mouseY < (Configuration.osbuddyGameframe ? 150 : 159);
-        counterHover = fixed ? super.mouseX >= 522 && super.mouseX <= 544 && super.mouseY >= 20 && super.mouseY <= 47
-                : super.mouseX >= currentGameWidth - 205 && super.mouseX <= currentGameWidth - 184 && super.mouseY >= 27
-                && super.mouseY <= 44;
-        worldHover = fixed ? super.mouseX >= 715 && super.mouseX <= 740 && super.mouseY >= 132 && super.mouseY <= 160
-                : super.mouseX >= currentGameWidth - 34 && super.mouseX <= currentGameWidth - 5 && super.mouseY >= 143
-                && super.mouseY <= 172;
+                ? runHover = super.getMouseX() >= (Configuration.osbuddyGameframe ? 530 : 522)
+                && super.getMouseX() <= (Configuration.osbuddyGameframe ? 582 : 594)
+                && super.getMouseY() >= (Configuration.osbuddyGameframe ? 114 : 109)
+                && super.getMouseY() < (Configuration.osbuddyGameframe ? 142 : 142)
+                : super.getMouseX() >= currentGameWidth - (Configuration.osbuddyGameframe ? 196 : 186)
+                && super.getMouseX() <= currentGameWidth - (Configuration.osbuddyGameframe ? 142 : 132)
+                && super.getMouseY() >= (Configuration.osbuddyGameframe ? 123 : 132)
+                && super.getMouseY() < (Configuration.osbuddyGameframe ? 150 : 159);
+        counterHover = fixed ? super.getMouseX() >= 522 && super.getMouseX() <= 544 && super.getMouseY() >= 20 && super.getMouseY() <= 47
+                : super.getMouseX() >= currentGameWidth - 205 && super.getMouseX() <= currentGameWidth - 184 && super.getMouseY() >= 27
+                && super.getMouseY() <= 44;
+        worldHover = fixed ? super.getMouseX() >= 715 && super.getMouseX() <= 740 && super.getMouseY() >= 132 && super.getMouseY() <= 160
+                : super.getMouseX() >= currentGameWidth - 34 && super.getMouseX() <= currentGameWidth - 5 && super.getMouseY() >= 143
+                && super.getMouseY() <= 172;
     }
 
     public String indexLocation(int cacheIndex, int index) {
@@ -3340,26 +3340,26 @@ public class Client extends RSApplet {
     }
 
     public void processChatModeClick() {
-        if (super.mouseY >= currentGameHeight - 22 && super.mouseY <= currentGameHeight) {
-            if (super.mouseX >= 5 && super.mouseX <= 61) {
+        if (super.getMouseY() >= currentGameHeight - 22 && super.getMouseY() <= currentGameHeight) {
+            if (super.getMouseX() >= 5 && super.getMouseX() <= 61) {
                 channelButtonHoverPosition = 0;
                 inputTaken = true;
-            } else if (super.mouseX >= 71 && super.mouseX <= 127) {
+            } else if (super.getMouseX() >= 71 && super.getMouseX() <= 127) {
                 channelButtonHoverPosition = 1;
                 inputTaken = true;
-            } else if (super.mouseX >= 137 && super.mouseX <= 193) {
+            } else if (super.getMouseX() >= 137 && super.getMouseX() <= 193) {
                 channelButtonHoverPosition = 2;
                 inputTaken = true;
-            } else if (super.mouseX >= 203 && super.mouseX <= 259) {
+            } else if (super.getMouseX() >= 203 && super.getMouseX() <= 259) {
                 channelButtonHoverPosition = 3;
                 inputTaken = true;
-            } else if (super.mouseX >= 269 && super.mouseX <= 325) {
+            } else if (super.getMouseX() >= 269 && super.getMouseX() <= 325) {
                 channelButtonHoverPosition = 4;
                 inputTaken = true;
-            } else if (super.mouseX >= 335 && super.mouseX <= 391) {
+            } else if (super.getMouseX() >= 335 && super.getMouseX() <= 391) {
                 channelButtonHoverPosition = 5;
                 inputTaken = true;
-            } else if (super.mouseX >= 404 && super.mouseX <= 515) {
+            } else if (super.getMouseX() >= 404 && super.getMouseX() <= 515) {
                 channelButtonHoverPosition = 6;
                 inputTaken = true;
             }
@@ -4307,8 +4307,8 @@ public class Client extends RSApplet {
         Rasterizer2D.drawBox(xPos + 1, yPos + 1, menuW - 2, 16, 0);
         Rasterizer2D.drawBoxOutline(xPos + 1, yPos + 18, menuW - 2, menuH - 19, 0);
         newBoldFont.drawBasicString("Choose Option", xPos + 3, yPos + 14, 0x5d5447, 0x000000);
-        int mouseX = super.mouseX - (xOffSet);
-        int mouseY = (-yOffSet) + super.mouseY;
+        int mouseX = super.getMouseX() - (xOffSet);
+        int mouseY = (-yOffSet) + super.getMouseY();
         for (int l1 = 0; l1 < menuActionRow; l1++) {
             int textY = yPos + 31 + (menuActionRow - 1 - l1) * 15;
             int disColor = 0xffffff;
@@ -5232,8 +5232,8 @@ public class Client extends RSApplet {
         }
         if (activeInterfaceType != 0) {
             anInt989++;
-            if (super.mouseX > anInt1087 + 5 || super.mouseX < anInt1087 - 5 || super.mouseY > anInt1088 + 5
-                    || super.mouseY < anInt1088 - 5)
+            if (super.getMouseX() > anInt1087 + 5 || super.getMouseX() < anInt1087 - 5 || super.getMouseY() > anInt1088 + 5
+                    || super.getMouseY() < anInt1088 - 5)
                 aBoolean1242 = true;
             if (super.clickMode2 == 0) {
                 if (activeInterfaceType == 2)
@@ -5256,8 +5256,8 @@ public class Client extends RSApplet {
                         for (int i = 0; i < slots.length; i++)
                             slots[i] = i == 0 ? (int) southWest.getX() : (41 * i) + (int) southWest.getX();
                         for (int i = 0; i < slots.length; i++) {
-                            if (super.mouseX >= slots[i] && super.mouseX <= slots[i] + 42
-                                    && super.mouseY >= northEast.getY() && super.mouseY <= southWest.getY()) {
+                            if (super.getMouseX() >= slots[i] && super.getMouseX() <= slots[i] + 42
+                                    && super.getMouseY() >= northEast.getY() && super.getMouseY() <= southWest.getY()) {
                                 RSInterface rsi = RSInterface.interfaceCache[58050 + i];
                                 if (rsi.isMouseoverTriggered) {
                                     continue;
@@ -5313,16 +5313,16 @@ public class Client extends RSApplet {
                 super.clickMode3 = 0;
             }
         }
-        if (WorldController.clickedTileX != -1) {
-            int k = WorldController.clickedTileX;
-            int k1 = WorldController.clickedTileY;
+        if (WorldController.anInt470 != -1) {
+            int k = WorldController.anInt470;
+            int k1 = WorldController.anInt471;
             boolean flag = false;
             if (myPlayer.getRights() == 3 && controlIsDown) {
                 teleport(baseX + k, baseY + k1);
             } else {
                 flag = doWalkTo(0, 0, 0, 0, myPlayer.smallY[0], 0, 0, k1, myPlayer.smallX[0], true, k);
             }
-            WorldController.clickedTileX = -1;
+            WorldController.anInt470 = -1;
             if (flag) {
                 crossX = super.saveClickX;
                 crossY = super.saveClickY;
@@ -5981,7 +5981,8 @@ public class Client extends RSApplet {
         if (l == 62 && clickObject(keyLong, buttonPressed, j)) {
             stream.createFrame(192);
             stream.writeWord(anInt1284);
-            stream.method432(clicked);
+            stream.writeDWord(ObjectKey.getObjectId(keyLong));
+            System.out.println(keyLong);
             stream.method433(buttonPressed + baseY);
             stream.method431(anInt1283);
             stream.method433(j + baseX);
@@ -6259,8 +6260,9 @@ public class Client extends RSApplet {
                 anInt924 = 0;
             }
             clickObject(keyLong, buttonPressed, j);
+            System.out.println(keyLong);
             stream.createFrame(228);
-            stream.method432(clicked);
+            stream.writeDWord(ObjectKey.getObjectId(keyLong));
             stream.method432(buttonPressed + baseY);
             stream.writeWord(j + baseX);
         }
@@ -6926,8 +6928,9 @@ public class Client extends RSApplet {
         }
         if (l == 900) {
             clickObject(keyLong, buttonPressed, j);
+            System.out.println(ObjectKey.getObjectId(keyLong));
             stream.createFrame(252);
-            stream.method432(clicked);
+            stream.writeDWord(ObjectKey.getObjectId(keyLong));
             stream.method431(buttonPressed + baseY);
             stream.method432(j + baseX);
         }
@@ -6986,10 +6989,11 @@ public class Client extends RSApplet {
         }
         if (l == 956 && clickObject(keyLong, buttonPressed, j)) {
             stream.createFrame(35);
+            System.out.println(ObjectKey.getObjectId(keyLong));
             stream.method431(j + baseX);
             stream.method432(anInt1137);
             stream.method432(buttonPressed + baseY);
-            stream.method432(clicked);
+            stream.writeDWord(ObjectKey.getObjectId(keyLong));
         }
         if (l == 567) {
             boolean flag6 = doWalkTo(2, 0, 0, 0, myPlayer.smallY[0], 0, 0, buttonPressed, myPlayer.smallX[0], false, j);
@@ -7154,23 +7158,26 @@ public class Client extends RSApplet {
         }
         if (l == 113) {
             clickObject(keyLong, buttonPressed, j);
+            System.out.println(ObjectKey.getObjectId(keyLong));
             stream.createFrame(70);
             stream.method431(j + baseX);
             stream.writeWord(buttonPressed + baseY);
-            stream.method432(clicked);
+            stream.writeDWord(ObjectKey.getObjectId(keyLong));
         }
         if (l == 872) {
             clickObject(keyLong, buttonPressed, j);
+            System.out.println(ObjectKey.getObjectId(keyLong));
             stream.createFrame(234);
             stream.method433(j + baseX);
-            stream.method432(clicked);
+            stream.writeDWord(ObjectKey.getObjectId(keyLong));
             stream.method433(buttonPressed + baseY);
         }
         if (l == 502) {
             clickObject(keyLong, buttonPressed, j);
+            System.out.println(ObjectKey.getObjectId(keyLong));
             stream.createFrame(132);
             stream.method433(j + baseX);
-            stream.method432(clicked);
+            stream.writeDWord(ObjectKey.getObjectId(keyLong));
             stream.method432(buttonPressed + baseY);
         }
         if (l == 1125) {
@@ -9524,8 +9531,8 @@ public class Client extends RSApplet {
                         && (k == 7 || privateChatMode == 0 || privateChatMode == 1 && isFriendOrSelf(s))) {
                     int yPosition = (currentScreenMode == ScreenMode.FIXED ? 330 : currentGameHeight - 173) - i * 13;
                     int messageLength = newRegularFont.getTextWidth("From:  " + s + chatMessages[j]) + 25;
-                    if (super.mouseX >= 0 && super.mouseX <= messageLength) {
-                        if (super.mouseY >= yPosition - 10 && mouseY <= yPosition + 3) {
+                    if (super.getMouseX() >= 0 && super.getMouseX() <= messageLength) {
+                        if (super.getMouseY() >= yPosition - 10 && mouseY <= yPosition + 3) {
                             if (messageLength > 450)
                                 messageLength = 450;
                             if (myPlayer.getRights() >= 1) {
@@ -9685,14 +9692,14 @@ public class Client extends RSApplet {
     }
 
     private void rightClickChatButtons() {
-        if (super.mouseY >= (currentScreenMode == ScreenMode.FIXED ? 482 : currentGameHeight - 22)
-                && super.mouseY <= (currentScreenMode == ScreenMode.FIXED ? 503 : currentGameHeight)) {
+        if (super.getMouseY() >= (currentScreenMode == ScreenMode.FIXED ? 482 : currentGameHeight - 22)
+                && super.getMouseY() <= (currentScreenMode == ScreenMode.FIXED ? 503 : currentGameHeight)) {
 
-            if (super.mouseX >= 5 && super.mouseX <= 61) {
+            if (super.getMouseX() >= 5 && super.getMouseX() <= 61) {
                 menuActionName[1] = "View All";
                 menuActionID[1] = 999;
                 menuActionRow = 2;
-            } else if (super.mouseX >= 71 && super.mouseX <= 127) {
+            } else if (super.getMouseX() >= 71 && super.getMouseX() <= 127) {
 
                 menuActionName[1] = "Switch tab";
                 menuActionID[1] = 998;
@@ -9701,7 +9708,7 @@ public class Client extends RSApplet {
                 menuActionName[3] = "@yel@Game: @whi@Filter";
                 menuActionID[3] = 1005;
                 menuActionRow = 4;
-            } else if (super.mouseX >= 137 && super.mouseX <= 193) {
+            } else if (super.getMouseX() >= 137 && super.getMouseX() <= 193) {
                 menuActionName[1] = "@bl3@Setup your autochat";
                 menuActionID[1] = 496;
                 menuActionName[2] = "@gre@Filter public chat";
@@ -9721,7 +9728,7 @@ public class Client extends RSApplet {
                 menuActionName[9] = "Switch tab";
                 menuActionID[9] = 993;
                 menuActionRow = 10;
-            } else if (super.mouseX >= 203 && super.mouseX <= 259) {
+            } else if (super.getMouseX() >= 203 && super.getMouseX() <= 259) {
                 menuActionName[1] = "@yel@Private: @whi@Clear history";
                 menuActionID[1] = 2992;
                 menuActionName[2] = "@yel@Private: @whi@Off";
@@ -9733,7 +9740,7 @@ public class Client extends RSApplet {
                 menuActionName[5] = "Switch tab";
                 menuActionID[5] = 989;
                 menuActionRow = 6;
-            } else if (super.mouseX >= 269 && super.mouseX <= 325) {
+            } else if (super.getMouseX() >= 269 && super.getMouseX() <= 325) {
                 menuActionName[1] = "@yel@Clan: @whi@Off";
                 menuActionID[1] = 1003;
                 menuActionName[2] = "@yel@Clan: @whi@Show friends";
@@ -9743,7 +9750,7 @@ public class Client extends RSApplet {
                 menuActionName[4] = "Switch tab";
                 menuActionID[4] = 1000;
                 menuActionRow = 5;
-            } else if (super.mouseX >= 335 && super.mouseX <= 391) {
+            } else if (super.getMouseX() >= 335 && super.getMouseX() <= 391) {
                 menuActionName[1] = "@yel@Trade: @whi@Off";
                 menuActionID[1] = 987;
                 menuActionName[2] = "@yel@Trade: @whi@Show friends";
@@ -9795,8 +9802,8 @@ public class Client extends RSApplet {
                     anInt886 = 0;
                     anInt1315 = 0;
                     buildInterfaceMenu((currentGameWidth / 2) - 765 / 2,
-                            RSInterface.interfaceCache[fullscreenInterfaceID], super.mouseX,
-                            (currentGameHeight / 2) - 503 / 2, super.mouseY, 0);
+                            RSInterface.interfaceCache[fullscreenInterfaceID], super.getMouseX(),
+                            (currentGameHeight / 2) - 503 / 2, super.getMouseY(), 0);
                     if (anInt886 != anInt1026) {
                         anInt1026 = anInt886;
                     }
@@ -9934,9 +9941,9 @@ public class Client extends RSApplet {
 
     private void processMinimapActions() {
         final boolean fixed = currentScreenMode == ScreenMode.FIXED;
-        if (fixed ? super.mouseX >= 542 && super.mouseX <= 579 && super.mouseY >= 2 && super.mouseY <= 38
-                : super.mouseX >= Client.currentGameWidth - 180 && super.mouseX <= Client.currentGameWidth - 139
-                && super.mouseY >= 0 && super.mouseY <= 40) {
+        if (fixed ? super.getMouseX() >= 542 && super.getMouseX() <= 579 && super.getMouseY() >= 2 && super.getMouseY() <= 38
+                : super.getMouseX() >= Client.currentGameWidth - 180 && super.getMouseX() <= Client.currentGameWidth - 139
+                && super.getMouseY() >= 0 && super.getMouseY() <= 40) {
             menuActionName[1] = "Look North";
             menuActionID[1] = 696;
             menuActionRow = 2;
@@ -12380,8 +12387,8 @@ public class Client extends RSApplet {
     }
 
     public boolean mouseMapPosition() {
-		return super.mouseX < currentGameWidth - 21 || super.mouseX > currentGameWidth || super.mouseY < 0
-				|| super.mouseY > 21;
+		return super.getMouseX() < currentGameWidth - 21 || super.getMouseX() > currentGameWidth || super.getMouseY() < 0
+				|| super.getMouseY() > 21;
 	}
 
     private void processMainScreenClick() {
@@ -12916,7 +12923,7 @@ public class Client extends RSApplet {
         }
 
         if (loadingStage == 2) {
-            if (super.mouseY >= 127 && super.mouseY <= 158) {
+            if (super.getMouseY() >= 127 && super.getMouseY() <= 158) {
                 int mouseX1 = currentScreenMode == ScreenMode.FIXED ? 572 : currentGameWidth - 175;
                 int mouseX2 = currentScreenMode == ScreenMode.FIXED ? 600 : currentGameWidth - 150;
                 if (runHover) {
@@ -12954,17 +12961,6 @@ public class Client extends RSApplet {
             }
         }
 
-        if (anInt1054 != -1)
-            tabAreaAltered = true;
-        if (tabAreaAltered) {
-            if (anInt1054 != -1 && anInt1054 == tabID) {
-                anInt1054 = -1;
-                stream.createFrame(120);
-                stream.writeWordBigEndian(tabID);
-            }
-            tabAreaAltered = false;
-            mainGameGraphicsBuffer.setCanvas();
-        }
         tickDelta = 0;
         // loginBackground2.drawSprite(0,0);
         if (fullscreenInterfaceID != -1 && (loadingStage == 2 || super.fullGameScreen != null)) {
@@ -13220,8 +13216,8 @@ public class Client extends RSApplet {
                                     }
                                     if (itemSprite != null) {
                                         if (activeInterfaceType != 0 && anInt1085 == i3 && anInt1084 == class9_1.id) {
-                                            k6 = super.mouseX - anInt1087;
-                                            j7 = super.mouseY - anInt1088;
+                                            k6 = super.getMouseX() - anInt1087;
+                                            j7 = super.getMouseY() - anInt1088;
                                             if (k6 < 5 && k6 > -5)
                                                 k6 = 0;
                                             if (j7 < 5 && j7 > -5)
@@ -13365,9 +13361,9 @@ public class Client extends RSApplet {
                         }
                     }
                     if (class9_1.hoverText != null && !class9_1.hoverText.isEmpty()) {
-                        if (super.mouseX > _x
-                                && super.mouseX < _x + class9_1.textDrawingAreas.getTextWidth(class9_1.message)
-                                && super.mouseY > l2 && super.mouseY < l2 + 15) {
+                        if (super.getMouseX() > _x
+                                && super.getMouseX() < _x + class9_1.textDrawingAreas.getTextWidth(class9_1.message)
+                                && super.getMouseY() > l2 && super.getMouseY() < l2 + 15) {
                             s = class9_1.hoverText;
                             i4 = class9_1.hoverTextColor;
                         }
@@ -13929,7 +13925,7 @@ public class Client extends RSApplet {
             cacheSprite2[76].flashSprite(24, 280, 200 + (int) (50 * Math.sin(loopCycle / 15.0)));
         }
         if (rsInterface.id == 16244) {
-            if (super.mouseX > 165 && super.mouseX < 610 && super.mouseY > 428 && super.mouseY < 470) {
+            if (super.getMouseX() > 165 && super.getMouseX() < 610 && super.getMouseY() > 428 && super.getMouseY() < 470) {
                 Rasterizer2D.drawAlphaBox(165, 428, 444, 42, 0xffffff, 40);
             }
             // cacheSprite2[76].drawSprite1(24, 280,
@@ -14542,7 +14538,7 @@ public class Client extends RSApplet {
             aTextDrawingArea_1271.method385(0xffff00, "Fps: " + super.fps, 111, 5);
             aTextDrawingArea_1271.method385(0xffff00, "Memory Used: " + j1 + "k", 125, 5);
             aTextDrawingArea_1271.method385(0xffff00,
-                    "Mouse Position: X: " + super.mouseX + " , Mouse Y: " + super.mouseY, 139, 5);
+                    "Mouse Position: X: " + super.getMouseX() + " , Mouse Y: " + super.getMouseY(), 139, 5);
             aTextDrawingArea_1271.method385(0xffff00, "Coordinates: X: " + x + ", Y: " + y, 153, 5);
 
             aTextDrawingArea_1271.method385(0xffff00,
@@ -15048,10 +15044,10 @@ public class Client extends RSApplet {
         toolTip = s;
         chatTextDrawingArea.method390(8, 0xffffff, s, loopCycle / 1000, 19);
         /*
-         * DrawingArea.drawBoxOutline(super.mouseX, super.mouseY - 23, width - 64, 20,
-         * 0x393022); DrawingArea.drawAlphaBox(super.mouseX , super.mouseY - 23, width -
-         * 64, 20, 0x60574E, 140); webFonts[0].drawString(s, super.mouseX + 7,
-         * super.mouseY + 15 - 23, 16777215, true);
+         * DrawingArea.drawBoxOutline(super.getMouseX(), super.getMouseY() - 23, width - 64, 20,
+         * 0x393022); DrawingArea.drawAlphaBox(super.getMouseX() , super.getMouseY() - 23, width -
+         * 64, 20, 0x60574E, 140); webFonts[0].drawString(s, super.getMouseX() + 7,
+         * super.getMouseY() + 15 - 23, 16777215, true);
          */
     }
 
@@ -15885,8 +15881,8 @@ public class Client extends RSApplet {
                 AccountData account = AccountManager.getAccounts().get(index);
                 if (account != null) {
                     screenImages.get("account_select").drawAdvancedSprite(x, centerY + 155);
-                    if (super.mouseX >= x + 83 && super.mouseX <= x + 103 && super.mouseY >= centerY + 155
-                            && super.mouseY <= centerY + 174) {
+                    if (super.getMouseX() >= x + 83 && super.getMouseX() <= x + 103 && super.getMouseY() >= centerY + 155
+                            && super.getMouseY() <= centerY + 174) {
                         screenImages.get("del_button_hover").drawAdvancedSprite(x + 83, centerY + 155);
                     } else {
                         screenImages.get("del_button").drawAdvancedSprite(x + 83, centerY + 155);
@@ -16028,16 +16024,16 @@ public class Client extends RSApplet {
                 int l19 = intGroundArray[plane][j4 + 1][i7 + 1];
                 int k20 = intGroundArray[plane][j4][i7 + 1];
                 if (j16 == 0) {
-                    WallObject class10 = worldController.method296(plane, j4, i7);
+                    Object1 class10 = worldController.method296(plane, j4, i7);
                     if (class10 != null) {
                         int k21 = ObjectKey.getObjectId(class10.uid);
                         if (j12 == 2) {
-                            class10.renderable1 = new Animable_Sub5(k21, 4 + k14, 2, i19, l19, j18, k20, j17,
+                            class10.aClass30_Sub2_Sub4_278 = new Animable_Sub5(k21, 4 + k14, 2, i19, l19, j18, k20, j17,
                                     false);
-                            class10.renderable2 = new Animable_Sub5(k21, k14 + 1 & 3, 2, i19, l19, j18, k20,
+                            class10.aClass30_Sub2_Sub4_279 = new Animable_Sub5(k21, k14 + 1 & 3, 2, i19, l19, j18, k20,
                                     j17, false);
                         } else {
-                            class10.renderable1 = new Animable_Sub5(k21, k14, j12, i19, l19, j18, k20, j17,
+                            class10.aClass30_Sub2_Sub4_278 = new Animable_Sub5(k21, k14, j12, i19, l19, j18, k20, j17,
                                     false);
                         }
                     }
@@ -16049,17 +16045,17 @@ public class Client extends RSApplet {
                                 j18, k20, j17, false);
                 }
                 if (j16 == 2) {
-                    GameObject class28 = worldController.method298(j4, i7, plane);
+                    StaticObject class28 = worldController.method298(j4, i7, plane);
                     if (j12 == 11)
                         j12 = 10;
                     if (class28 != null)
-                        class28.renderable = new Animable_Sub5(ObjectKey.getObjectId(class28.uid), k14, j12, i19,
+                        class28.aClass30_Sub2_Sub4_521 = new Animable_Sub5(ObjectKey.getObjectId(class28.uid), k14, j12, i19,
                                 l19, j18, k20, j17, false);
                 }
                 if (j16 == 3) {
-                    GroundObject class49 = worldController.method299(i7, j4, plane);
+                    Object3 class49 = worldController.method299(i7, j4, plane);
                     if (class49 != null)
-                        class49.renderable = new Animable_Sub5(ObjectKey.getObjectId(class49.uid), k14, 22, i19,
+                        class49.aClass30_Sub2_Sub4_814 = new Animable_Sub5(ObjectKey.getObjectId(class49.uid), k14, 22, i19,
                                 l19, j18, k20, j17, false);
                 }
             }
@@ -16269,7 +16265,7 @@ public class Client extends RSApplet {
 	}
 
     public boolean mouseInRegion(int x1, int y1, int x2, int y2) {
-		return super.mouseX >= x1 && super.mouseX <= x2 && super.mouseY >= y1 && super.mouseY <= y2;
+		return super.getMouseX() >= x1 && super.getMouseX() <= x2 && super.getMouseY() >= y1 && super.getMouseY() <= y2;
 	}
 
     private void processLoginScreenInput() {
@@ -18084,8 +18080,8 @@ public class Client extends RSApplet {
         int k2 = Rasterizer3D.lastTextureRetrievalCount;
         Model.aBoolean1684 = true;
         Model.obj_loaded = 0;
-        Model.anInt1685 = super.mouseX - 4;
-        Model.anInt1686 = super.mouseY - 4;
+        Model.anInt1685 = super.getMouseX() - 4;
+        Model.anInt1686 = super.getMouseY() - 4;
         WorldController.focalLength = 519;
         int[] pixels = null;
         int[] offsets = null;

@@ -1150,7 +1150,7 @@ public final class ItemDefinition {
 		int l3 = Rasterizer3D.anIntArray1470[itemDef.spritePitch] * k3 >> 16;
 		int i4 = Rasterizer3D.COSINE[itemDef.spritePitch] * k3 >> 16;
 		model.method482(itemDef.spriteCameraRoll, itemDef.spriteCameraYaw, itemDef.spritePitch, itemDef.spriteTranslateX,
-				l3 + model.modelBaseY / 2 + itemDef.spriteTranslateY, i4 + itemDef.spriteTranslateY);
+				l3 + model.modelHeight / 2 + itemDef.spriteTranslateY, i4 + itemDef.spriteTranslateY);
 		if (itemDef.certTemplateID != -1) {
 			int l5 = sprite1.maxWidth;
 			int j6 = sprite1.maxHeight;
@@ -1243,7 +1243,7 @@ public final class ItemDefinition {
 			k3 = (int) ((double) k3 * 1.04D);
         int l3 = Rasterizer3D.anIntArray1470[itemDef.spritePitch] * k3 >> 16;
         int i4 = Rasterizer3D.COSINE[itemDef.spritePitch] * k3 >> 16;
-        model.method482(itemDef.spriteCameraRoll, itemDef.spriteCameraYaw, itemDef.spritePitch, itemDef.spriteTranslateX, l3 + model.modelBaseY / 2 + itemDef.spriteTranslateY, i4 + itemDef.spriteTranslateY);
+        model.method482(itemDef.spriteCameraRoll, itemDef.spriteCameraYaw, itemDef.spritePitch, itemDef.spriteTranslateX, l3 + model.modelHeight / 2 + itemDef.spriteTranslateY, i4 + itemDef.spriteTranslateY);
 
 		for (int i5 = 31; i5 >= 0; i5--) {
 			for (int j4 = 31; j4 >= 0; j4--)

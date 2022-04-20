@@ -31,7 +31,7 @@ public final class NPC extends Entity {
 		Model model = method450();
 		if (model == null)
 			return null;
-		super.height = model.modelBaseY;
+		super.height = model.modelHeight;
 		if (super.anInt1520 != -1 && super.currentAnimation != -1) {
 			GraphicsDefinition spotAnim = GraphicsDefinition.cache[super.anInt1520];
 			Model model_1 = spotAnim.getModel();

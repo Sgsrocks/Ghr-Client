@@ -3,30 +3,30 @@ package com.client;
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) 
 
-public final class Tile extends Node {
+public final class Ground extends Node {
 
-	public Tile(int i, int j, int k) {
-		objects = new GameObject[5];
-		gameObjectsChanged = new int[5];
-		anInt1310 = plane = i;
+	public Ground(int i, int j, int k) {
+		obj5Array = new StaticObject[5];
+		anIntArray1319 = new int[5];
+		anInt1310 = anInt1307 = i;
 		anInt1308 = j;
 		anInt1309 = k;
 	}
 
-	int plane;
+	int anInt1307;
 	final int anInt1308;
 	final int anInt1309;
 	final int anInt1310;
-	public SceneTilePaint aClass43_1311;
-	public SceneTileModel aClass40_1312;
-	public WallObject wallObject;
+	public Class43 aClass43_1311;
+	public ShapedTile aClass40_1312;
+	public Object1 obj1;
 	public Object2 obj2;
-	public GroundObject groundObject;
+	public Object3 obj3;
 	public Object4 obj4;
-	int gameObjectIndex;
-	public final GameObject[] objects;
-	final int[] gameObjectsChanged;
-	int totalTiledObjectMask;
+	int anInt1317;
+	public final StaticObject[] obj5Array;
+	final int[] anIntArray1319;
+	int anInt1320;
 	int anInt1321;
 	boolean aBoolean1322;
 	boolean aBoolean1323;
@@ -35,5 +35,5 @@ public final class Tile extends Node {
 	int anInt1326;
 	int anInt1327;
 	int anInt1328;
-	public Tile bridge;
+	public Ground aClass30_Sub3_1329;
 }
