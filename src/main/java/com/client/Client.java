@@ -23,7 +23,6 @@ import com.client.graphics.loaders.*;
 import com.client.sign.Signlink;
 import com.client.sound.Sound;
 import com.client.sound.SoundType;
-import com.client.utilities.ObjectKey;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.converters.reflection.Sun14ReflectionProvider;
 import org.apache.commons.lang3.SystemUtils;
@@ -2487,7 +2486,7 @@ public class Client extends RSApplet {
             for (int l2 = 0; l2 < 104; l2++) {
                 long i3 = worldController.method303(plane, k2, l2);
                 if (i3 != 0) {
-                    int objId = ObjectKey.getObjectId(i3);
+                    int objId = get_object_key(i3);
                         int j3 = ObjectDefinition.forID(objId).AreaType;
                         if (j3 >= 0) {
                             int sprite = AreaDefinition.lookup(j3).spriteId;
@@ -2549,23 +2548,24 @@ public class Client extends RSApplet {
     public void renderNpcList(boolean flag) {
         for (int j = 0; j < npcCount; j++) {
             NPC npc = npcs[npcIndices[j]];
-            long k = 0x20000000L |  (long) (npcIndices[j] << 32);
+            long k = 0x20000000L |  (long) npcIndices[j] << 32;
             if (npc == null || !npc.isVisible() || npc.desc.aBoolean93 != flag)
                 continue;
             int l = npc.x >> 7;
             int i1 = npc.y >> 7;
-            if (l < 0 || l >= 104 || i1 < 0 || i1 >= 104)
+            if (l < 0 || l >= 104 || i1 < 0 || i1 >= 104) {
                 continue;
+            }
             if (npc.anInt1540 == 1 && (npc.x & 0x7f) == 64 && (npc.y & 0x7f) == 64) {
-                if (anIntArrayArray929[l][i1] == anInt1265)
+                if (anIntArrayArray929[l][i1] == anInt1265) {
                     continue;
+                }
                 anIntArrayArray929[l][i1] = anInt1265;
             }
-            if (!npc.desc.clickable)
+            if (!npc.desc.clickable) {
                 k |= ~0x7fffffffffffffffL;
-
-            worldController.method285(plane, npc.anInt1552, getCenterHeight(plane, npc.y, npc.x), k, npc.y,
-                    (npc.anInt1540 - 1) * 64 + 60, npc.x, npc, npc.aBoolean1541);
+            }
+            worldController.method285(plane, npc.anInt1552, getCenterHeight(plane, npc.y, npc.x), k, npc.y, (npc.anInt1540 - 1) * 64 + 60, npc.x, npc, npc.aBoolean1541);
         }
     }
 
@@ -4642,14 +4642,14 @@ public class Client extends RSApplet {
     public void method50(int i, int k, int l, int i1, int j1) {
         long k1 = worldController.method300(j1, l, i);
         if (k1 != 0) {
-            int k2 = ObjectKey.getObjectOrientation(k1);
-            int i3 = ObjectKey.getObjectType(k1);
+            int k2 = get_object_orientation(k1);
+            int i3 = get_object_type(k1);
             int k3 = k;
             if (k1 > 0)
                 k3 = i1;
             int ai[] = minimapImage.myPixels;
             int k4 = 24624 + l * 4 + (103 - i) * 512 * 4;
-            int i5 = ObjectKey.getObjectId(k1);
+            int i5 = get_object_key(k1);
             ObjectDefinition class46_2 = ObjectDefinition.forID(i5);
             if (class46_2.mapscene != -1) {
                 IndexedImage background_2 = mapScenes[class46_2.mapscene];
@@ -4716,9 +4716,9 @@ public class Client extends RSApplet {
         }
         k1 = worldController.method302(j1, l, i);
         if (k1 != 0l) {
-            int l2 = ObjectKey.getObjectOrientation(k1);
-            int j3 = ObjectKey.getObjectType(k1);
-            int l3 = ObjectKey.getObjectId(k1);
+            int l2 = get_object_orientation(k1);
+            int j3 = get_object_type(k1);
+            int l3 = get_object_key(k1);
             ObjectDefinition class46_1 = ObjectDefinition.forID(l3);
             if (class46_1.mapscene != -1) {
                 if (class46_1.mapscene < mapScenes.length) {
@@ -4752,7 +4752,7 @@ public class Client extends RSApplet {
         }
         k1 = worldController.method303(j1, l, i);
         if (k1 != 0) {
-            int j2 = ObjectKey.getObjectId(k1);
+            int j2 = get_object_key(k1);
             ObjectDefinition class46 = ObjectDefinition.forID(j2);
             if (class46.mapscene != -1) {
                 IndexedImage background = mapScenes[class46.mapscene];
@@ -5658,11 +5658,11 @@ public class Client extends RSApplet {
     }
 
     //might be needed
-    private boolean clickObject(long i, int j, int k) {
-        int objectType = ObjectKey.getObjectType(i);
-        int orientation = ObjectKey.getObjectOrientation(i);
+    private boolean clickObject(long object, int y, int x) {
+        int objectType = get_object_type(object);
+        int orientation = get_object_orientation(object);
         if (objectType == 10 || objectType == 11 || objectType == 22) {
-            ObjectDefinition class46 = ObjectDefinition.forID(ObjectKey.getObjectId(i));
+            ObjectDefinition class46 = ObjectDefinition.forID(get_object_key(object));
             int i2;
             int j2;
             if (orientation == 0 || orientation == 2) {
@@ -5675,9 +5675,9 @@ public class Client extends RSApplet {
             int k2 = class46.anInt768;
             if (orientation != 0)
                 k2 = (k2 << orientation & 0xf) + (k2 >> 4 - orientation);
-            doWalkTo(2, 0, j2, 0, myPlayer.smallY[0], i2, k2, j, myPlayer.smallX[0], false, k);
+            doWalkTo(2, 0, j2, 0, myPlayer.smallY[0], i2, k2, y, myPlayer.smallX[0], false, x);
         } else {
-            doWalkTo(2, orientation, 0, orientation + 1, myPlayer.smallY[0], 0, 0, j, myPlayer.smallX[0], false, k);
+            doWalkTo(2, orientation, 0, orientation + 1, myPlayer.smallY[0], 0, 0, y, myPlayer.smallX[0], false, x);
         }
         crossX = super.saveClickX;
         crossY = super.saveClickY;
@@ -5981,7 +5981,7 @@ public class Client extends RSApplet {
         if (l == 62 && clickObject(keyLong, buttonPressed, j)) {
             stream.createFrame(192);
             stream.writeWord(anInt1284);
-            stream.writeDWord(ObjectKey.getObjectId(keyLong));
+            stream.writeDWord(get_object_key(keyLong));
             System.out.println(keyLong);
             stream.method433(buttonPressed + baseY);
             stream.method431(anInt1283);
@@ -6262,7 +6262,7 @@ public class Client extends RSApplet {
             clickObject(keyLong, buttonPressed, j);
             System.out.println(keyLong);
             stream.createFrame(228);
-            stream.writeDWord(ObjectKey.getObjectId(keyLong));
+            stream.writeDWord(get_object_key(keyLong));
             stream.method432(buttonPressed + baseY);
             stream.writeWord(j + baseX);
         }
@@ -6928,9 +6928,9 @@ public class Client extends RSApplet {
         }
         if (l == 900) {
             clickObject(keyLong, buttonPressed, j);
-            System.out.println(ObjectKey.getObjectId(keyLong));
+            System.out.println(get_object_key(keyLong));
             stream.createFrame(252);
-            stream.writeDWord(ObjectKey.getObjectId(keyLong));
+            stream.writeDWord(get_object_key(keyLong));
             stream.method431(buttonPressed + baseY);
             stream.method432(j + baseX);
         }
@@ -6989,11 +6989,11 @@ public class Client extends RSApplet {
         }
         if (l == 956 && clickObject(keyLong, buttonPressed, j)) {
             stream.createFrame(35);
-            System.out.println(ObjectKey.getObjectId(keyLong));
+            System.out.println(get_object_key(keyLong));
             stream.method431(j + baseX);
             stream.method432(anInt1137);
             stream.method432(buttonPressed + baseY);
-            stream.writeDWord(ObjectKey.getObjectId(keyLong));
+            stream.writeDWord(get_object_key(keyLong));
         }
         if (l == 567) {
             boolean flag6 = doWalkTo(2, 0, 0, 0, myPlayer.smallY[0], 0, 0, buttonPressed, myPlayer.smallX[0], false, j);
@@ -7158,26 +7158,26 @@ public class Client extends RSApplet {
         }
         if (l == 113) {
             clickObject(keyLong, buttonPressed, j);
-            System.out.println(ObjectKey.getObjectId(keyLong));
+            System.out.println(get_object_key(keyLong));
             stream.createFrame(70);
             stream.method431(j + baseX);
             stream.writeWord(buttonPressed + baseY);
-            stream.writeDWord(ObjectKey.getObjectId(keyLong));
+            stream.writeDWord(get_object_key(keyLong));
         }
         if (l == 872) {
             clickObject(keyLong, buttonPressed, j);
-            System.out.println(ObjectKey.getObjectId(keyLong));
+            System.out.println(get_object_key(keyLong));
             stream.createFrame(234);
             stream.method433(j + baseX);
-            stream.writeDWord(ObjectKey.getObjectId(keyLong));
+            stream.writeDWord(get_object_key(keyLong));
             stream.method433(buttonPressed + baseY);
         }
         if (l == 502) {
             clickObject(keyLong, buttonPressed, j);
-            System.out.println(ObjectKey.getObjectId(keyLong));
+            System.out.println(get_object_key(keyLong));
             stream.createFrame(132);
             stream.method433(j + baseX);
-            stream.writeDWord(ObjectKey.getObjectId(keyLong));
+            stream.writeDWord(get_object_key(keyLong));
             stream.method432(buttonPressed + baseY);
         }
         if (l == 1125) {
@@ -7447,10 +7447,10 @@ public class Client extends RSApplet {
         long previous = -1L;
         for (int k = 0; k < Model.obj_loaded; k++) {
             long current = Model.obj_key[k];
-            int x = ObjectKey.getObjectX(current);
-            int y = ObjectKey.getObjectY(current);
-            int opcode = ObjectKey.getObjectOpcode(current);
-            int uid = ObjectKey.getObjectId(current);
+            int x = get_object_x(current);
+            int y = get_object_y(current);
+            int opcode = get_object_opcode(current);
+            int uid = get_object_key(current);
             if (current == previous)
                 continue;
             previous = current;
@@ -10832,9 +10832,9 @@ public class Client extends RSApplet {
         if (class30_sub1.anInt1296 == 3)
             i = worldController.method303(class30_sub1.anInt1295, class30_sub1.anInt1297, class30_sub1.anInt1298);
         if (i != 0L) {
-            j = ObjectKey.getObjectId(i);
-            k = ObjectKey.getObjectType(i);
-            l = ObjectKey.getObjectOrientation(i);
+            j = get_object_key(i);
+            k = get_object_type(i);
+            l = get_object_orientation(i);
         }
         class30_sub1.anInt1299 = j;
         class30_sub1.anInt1301 = k;
@@ -16026,7 +16026,7 @@ public class Client extends RSApplet {
                 if (j16 == 0) {
                     Object1 class10 = worldController.method296(plane, j4, i7);
                     if (class10 != null) {
-                        int k21 = ObjectKey.getObjectId(class10.uid);
+                        int k21 = get_object_key(class10.uid);
                         if (j12 == 2) {
                             class10.aClass30_Sub2_Sub4_278 = new Animable_Sub5(k21, 4 + k14, 2, i19, l19, j18, k20, j17,
                                     false);
@@ -16041,7 +16041,7 @@ public class Client extends RSApplet {
                 if (j16 == 1) {
                     Object2 class26 = worldController.method297(j4, i7, plane);
                     if (class26 != null)
-                        class26.aClass30_Sub2_Sub4_504 = new Animable_Sub5(ObjectKey.getObjectId(class26.uid), 0, 4, i19, l19,
+                        class26.aClass30_Sub2_Sub4_504 = new Animable_Sub5(get_object_key(class26.uid), 0, 4, i19, l19,
                                 j18, k20, j17, false);
                 }
                 if (j16 == 2) {
@@ -16049,13 +16049,13 @@ public class Client extends RSApplet {
                     if (j12 == 11)
                         j12 = 10;
                     if (class28 != null)
-                        class28.aClass30_Sub2_Sub4_521 = new Animable_Sub5(ObjectKey.getObjectId(class28.uid), k14, j12, i19,
+                        class28.aClass30_Sub2_Sub4_521 = new Animable_Sub5(get_object_key(class28.uid), k14, j12, i19,
                                 l19, j18, k20, j17, false);
                 }
                 if (j16 == 3) {
                     Object3 class49 = worldController.method299(i7, j4, plane);
                     if (class49 != null)
-                        class49.aClass30_Sub2_Sub4_814 = new Animable_Sub5(ObjectKey.getObjectId(class49.uid), k14, 22, i19,
+                        class49.aClass30_Sub2_Sub4_814 = new Animable_Sub5(get_object_key(class49.uid), k14, 22, i19,
                                 l19, j18, k20, j17, false);
                 }
             }
@@ -16376,6 +16376,29 @@ public class Client extends RSApplet {
             // e.printStackTrace();
         }
     }
+    private int get_object_x(long id) {
+        return (int) id & 0x7f;
+    }
+
+    private int get_object_y(long id) {
+        return (int) (id >> 7) & 0x7f;
+    }
+
+    private int get_object_opcode(long id) {
+        return (int) id >> 29 & 0x3;
+    }
+
+    private int get_object_key(long id) {
+        return (int) (id >>> 32) & 0x7fffffff;
+    }
+
+    private int get_object_type(long id) {
+        return (int) id >> 14 & 0x1f;
+    }
+
+    private int get_object_orientation(long id) {
+        return (int) id >> 20 & 0x3;
+    }
 
     public void method142(int i, int j, int k, int l, int i1, int j1, int k1) {
         if (i1 >= 1 && i >= 1 && i1 <= 102 && i <= 102) {
@@ -16391,11 +16414,12 @@ public class Client extends RSApplet {
             if (j1 == 3)
                 i2 = worldController.method303(j, i1, i);
             if (i2 != 0L) {
-                int k2 = ObjectKey.getObjectType(i2);
-                int l2 = ObjectKey.getObjectOrientation(i2);
+                int object_id = get_object_key(i2);
+                int k2 = get_object_type(i2);
+                int l2 = get_object_orientation(i2);
                 if (j1 == 0) {
                     worldController.method291(i1, j, i, (byte) -119);
-                    ObjectDefinition class46 = ObjectDefinition.forID(ObjectKey.getObjectId(i2));
+                    ObjectDefinition class46 = ObjectDefinition.forID(object_id);
                     if (class46.solid)
                         aClass11Array1230[j].method215(l2, k2, class46.impenetrable, i1, i);
                 }
@@ -16403,7 +16427,7 @@ public class Client extends RSApplet {
                     worldController.method292(i, j, i1);
                 if (j1 == 2) {
                     worldController.method293(j, i1, i);
-                    ObjectDefinition class46_1 = ObjectDefinition.forID(ObjectKey.getObjectId(i2));
+                    ObjectDefinition class46_1 = ObjectDefinition.forID(object_id);
                     if (i1 + class46_1.objectSizeX > 103 || i + class46_1.objectSizeX > 103 || i1 + class46_1.objectSizeY > 103
                             || i + class46_1.objectSizeY > 103)
                         return;
@@ -16413,7 +16437,7 @@ public class Client extends RSApplet {
                 }
                 if (j1 == 3) {
                     worldController.method294(j, i, i1);
-                    ObjectDefinition class46_2 = ObjectDefinition.forID(ObjectKey.getObjectId(i2));
+                    ObjectDefinition class46_2 = ObjectDefinition.forID(object_id);
                     if (class46_2.solid && class46_2.isInteractive)
                         aClass11Array1230[j].method218(i, i1);
                 }

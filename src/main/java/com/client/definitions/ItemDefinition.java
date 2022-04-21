@@ -30,9 +30,6 @@ public final class ItemDefinition {
 	public static void unpackConfig(final FileArchive streamLoader) {
 		 stream = new Buffer(streamLoader.readFile("obj.dat"));
 		 Buffer stream = new Buffer(streamLoader.readFile("obj.idx"));
-		//stream = new Stream(FileOperations.readFile(Signlink.getCacheDirectory() + "/data/obj.dat"));
-		//final Stream stream = new Stream(FileOperations.readFile(Signlink.getCacheDirectory() + "/data/obj.idx"));
-
 		totalItems = stream.readUnsignedShort();
 		streamIndices = new int[totalItems + 90000];
 		int i = 2;
@@ -45,7 +42,9 @@ public final class ItemDefinition {
 		for (int index = 0; index < 10; index++) {
 			cache[index] = new ItemDefinition();
 		}
-		dumpList();
+		//dumpList();
+		//dumpItemconfig();
+		//dumpBonus();
 	}
 
 	public static ItemDefinition forID(int itemId) {
@@ -86,14 +85,14 @@ public final class ItemDefinition {
 	   private int currentcolors;
 	   private int currenttextures;
 	   //Start item dump
-	   public static void dumpItems2() {
+	   public static void dumpItemconfig() {
 	   for(int i = 0; i < totalItems; i++) {
 	   ItemDefinition class8 = forID(i);
 	         BufferedWriter bw = null;
 
 	         try {
 	   	 class8.currentcolors = 0;
-	            bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/201itemdump.txt", true));
+	            bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/204itemdump.txt", true));
 
 	   	 bw.newLine();
 	   	 bw.write("	if(i == "+i+") //ID");
@@ -351,7 +350,7 @@ public final class ItemDefinition {
 	}
 	public static void dumpCfg() {
 		boolean delete = (new File("item.cfg")).delete();
-		for(int i = 0; i < 30000; i++) {
+		for(int i = 22545; i < totalItems; i++) {
 			ItemDefinition class8 = forID(i);
 			BufferedWriter bw = null;
 			String des = "";
@@ -801,13 +800,13 @@ public final class ItemDefinition {
 		int bonus = 0;
 		int amount = 0;
 		System.out.println("Starting to dump item bonuses...");
-		for (int i = 20000; i < totalItems; i++) {
+		for (int i = 22545; i < totalItems; i++) {
 			ItemDefinition item = ItemDefinition.forID(i);
 			try {
 				try {
 					try {
 						final URL url = new URL(
-								"http://2007.runescape.wikia.com/wiki/" + item.name.replaceAll(" ", "_"));
+								"http://oldschoolrunescape.fandom.com/wiki/" + item.name.replaceAll(" ", "_"));
 						URLConnection con = url.openConnection();
 						BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
 						String line;
@@ -831,7 +830,7 @@ public final class ItemDefinition {
 							}
 							in.close();
 							writer.write("item = " + i + "	" + item.name.replace(" ", "_") + "	"
-									+ item.description.replace(" ", "_") + "	" + item.value + "	" + item.value
+									+ item.name.replace(" ", "_") + "	" + item.value + "	" + item.value
 									+ "	" + item.value + "	" + wikiBonuses[0] + "	" + wikiBonuses[1] + "	"
 									+ wikiBonuses[2] + "	" + wikiBonuses[3] + "	" + wikiBonuses[4] + "	"
 									+ wikiBonuses[5] + "	" + wikiBonuses[6] + "	" + wikiBonuses[7] + "	"

@@ -8235,7 +8235,324 @@ class8.certID = -1;
 	class8.unnotedId = -1;
 	class8.notedId = -1;
 }
+        if(i == 28969) //ID
+        {
+            class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
+            class8.groundActions = new String[] {null, null, "Take", null, null};
+            class8.name = "Twisted bow (Pink)"; //Name
+            class8.description = "Its an Twisted bow (Pink)"; //Description
+            class8.modifiedModelColors = new int[5];
+            class8.originalModelColors = new int[5];
+            class8.modifiedModelColors[0] = 16;
+            class8.originalModelColors[0] = 61055;
+            class8.modifiedModelColors[1] = 8;
+            class8.originalModelColors[1] = 62207;
+            class8.modifiedModelColors[2] = 24;
+            class8.originalModelColors[2] = 60415;
+            class8.modifiedModelColors[3] = 33;
+            class8.originalModelColors[3] = 59365;
+            class8.modifiedModelColors[4] = 41;
+            class8.originalModelColors[4] = 639;
+            class8.modelId = 32799;
+            class8.spriteScale = 2000;
+            class8.spritePitch = 720;
+            class8.spriteCameraRoll = 1500;
+            class8.spriteCameraYaw = 0;
+            class8.spriteTranslateX = -3;
+            class8.spriteTranslateY = 1;
+            class8.primaryMaleModel = 32674;
+            class8.primaryFemaleModel = 32674;
+            class8.secondaryMaleModel = -1;
+            class8.secondaryFemaleModel = -1;
+            class8.primaryMaleHeadPiece = -1;
+            class8.primaryFemaleHeadPiece = -1;
+            class8.stackable = false;
+            class8.certID = -1;
+            class8.certTemplateID = -1;
+            class8.unnotedId = -1;
+            class8.notedId = -1;
+            class8.value = 4000000;
+        }
+        if(i == 28970) //ID
+        {
+            class8.itemActions = new String[] {null, "Wield", null, null, "Drop"};
+            class8.groundActions = new String[] {null, null, "Take", null, null};
+            class8.name = "Twisted bow (Teal)"; //Name
+            class8.description = "Its an Twisted bow (Teal)"; //Description
+            class8.modifiedModelColors = new int[5];
+            class8.originalModelColors = new int[5];
+            class8.modifiedModelColors[0] = 16;
+            class8.originalModelColors[0] = 31648;
+            class8.modifiedModelColors[1] = 8;
+            class8.originalModelColors[1] = 33733;
+            class8.modifiedModelColors[2] = 24;
+            class8.originalModelColors[2] = 31673;
+            class8.modifiedModelColors[3] = 33;
+            class8.originalModelColors[3] = 33706;
+            class8.modifiedModelColors[4] = 41;
+            class8.originalModelColors[4] = 30658;
+            class8.modelId = 32799;
+            class8.spriteScale = 2000;
+            class8.spritePitch = 720;
+            class8.spriteCameraRoll = 1500;
+            class8.spriteCameraYaw = 0;
+            class8.spriteTranslateX = -3;
+            class8.spriteTranslateY = 1;
+            class8.primaryMaleModel = 32674;
+            class8.primaryFemaleModel = 32674;
+            class8.secondaryMaleModel = -1;
+            class8.secondaryFemaleModel = -1;
+            class8.primaryMaleHeadPiece = -1;
+            class8.primaryFemaleHeadPiece = -1;
+            class8.stackable = false;
+            class8.certID = -1;
+            class8.certTemplateID = -1;
+            class8.unnotedId = -1;
+            class8.notedId = -1;
+            class8.value = 4000000;
+        }
 
+        if(i == 28971) //ID
+        {
+            class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+            class8.groundActions = new String[] {null};
+            class8.name = "Hat of the eye (purple)"; //Name
+            class8.description = "Its an Hat of the eye (purple)"; //Description
+            class8.modifiedModelColors = new int[6];
+            class8.originalModelColors = new int[6];
+            class8.modifiedModelColors[0] = 10295;
+            class8.modifiedModelColors[1] = 9137;
+            class8.modifiedModelColors[2] = 5045;
+            class8.modifiedModelColors[3] = 10293;
+            class8.modifiedModelColors[4] = 10297;
+            class8.modifiedModelColors[5] = 10289;
+            class8.originalModelColors[0] = 55131;
+            class8.originalModelColors[1] = 55131;
+            class8.originalModelColors[2] = 55131;
+            class8.originalModelColors[3] = 54245;
+            class8.originalModelColors[4] = 54220;
+            class8.originalModelColors[5] = 54194;
+            class8.modelId = 44127;
+            class8.spriteScale = 1118;
+            class8.spritePitch = 131;
+            class8.spriteCameraRoll = 171;
+            class8.spriteCameraYaw = 0;
+            class8.spriteTranslateX = 4;
+            class8.spriteTranslateY = -13;
+            class8.primaryMaleModel = 43886;
+            class8.primaryFemaleModel = 43896;
+            class8.secondaryMaleModel = -1;
+            class8.secondaryFemaleModel = -1;
+            class8.primaryMaleHeadPiece = 44076;
+            class8.primaryFemaleHeadPiece = 44080;
+            class8.value = 500;
+            class8.unnotedId = -1;
+            class8.notedId = -1;
+            class8.certID = -1;
+            class8.certTemplateID = -1;
+            class8.stackable = false;
+            class8.placeholderId = 26871;
+            class8.placeholderTemplateId = -1;
+        }
+
+        if(i == 28972) //ID
+        {
+            class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+            class8.groundActions = new String[] {null};
+            class8.name = "Robe top of the eye (purple)"; //Name
+            class8.description = "Its an Robe top of the eye (purple)"; //Description
+            class8.modifiedModelColors = new int[4];
+            class8.originalModelColors = new int[4];
+            class8.modifiedModelColors[0] = 3495;
+            class8.modifiedModelColors[1] = 3484;
+            class8.modifiedModelColors[2] = 9137;
+            class8.modifiedModelColors[3] = 5045;
+            class8.originalModelColors[0] = 55131;
+            class8.originalModelColors[1] = 54194;
+            class8.originalModelColors[2] = 54220;
+            class8.originalModelColors[3] = 55131;
+            class8.modelId = 44102;
+            class8.spriteScale = 1414;
+            class8.spritePitch = 532;
+            class8.spriteCameraRoll = 0;
+            class8.spriteCameraYaw = 0;
+            class8.spriteTranslateX = 0;
+            class8.spriteTranslateY = 14;
+            class8.primaryMaleModel = 43894;
+            class8.primaryFemaleModel = 43903;
+            class8.secondaryMaleModel = 43893;
+            class8.secondaryFemaleModel = 43902;
+            class8.primaryMaleHeadPiece = -1;
+            class8.primaryFemaleHeadPiece = -1;
+            class8.value = 400;
+            class8.unnotedId = -1;
+            class8.notedId = -1;
+            class8.certID = -1;
+            class8.certTemplateID = -1;
+            class8.stackable = false;
+            class8.placeholderId = 26873;
+            class8.placeholderTemplateId = -1;
+        }
+
+        if(i == 28973) //ID
+        {
+            class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+            class8.groundActions = new String[] {null};
+            class8.name = "Robe bottoms of the eye (purple)"; //Name
+            class8.description = "Its an Robe bottoms of the eye (purple)"; //Description
+            class8.modifiedModelColors = new int[4];
+            class8.originalModelColors = new int[4];
+            class8.modifiedModelColors[0] = 3495;
+            class8.modifiedModelColors[1] = 3486;
+            class8.modifiedModelColors[2] = 9137;
+            class8.modifiedModelColors[3] = 5045;
+            class8.originalModelColors[0] = 55131;
+            class8.originalModelColors[1] = 54194;
+            class8.originalModelColors[2] = 54220;
+            class8.originalModelColors[3] = 55131;
+            class8.modelId = 44131;
+            class8.spriteScale = 1711;
+            class8.spritePitch = 579;
+            class8.spriteCameraRoll = 2047;
+            class8.spriteCameraYaw = 0;
+            class8.spriteTranslateX = 0;
+            class8.spriteTranslateY = 9;
+            class8.primaryMaleModel = 43889;
+            class8.primaryFemaleModel = 43899;
+            class8.secondaryMaleModel = -1;
+            class8.secondaryFemaleModel = -1;
+            class8.primaryMaleHeadPiece = -1;
+            class8.primaryFemaleHeadPiece = -1;
+            class8.value = 400;
+            class8.unnotedId = -1;
+            class8.notedId = -1;
+            class8.certID = -1;
+            class8.certTemplateID = -1;
+            class8.stackable = false;
+            class8.placeholderId = 26875;
+            class8.placeholderTemplateId = -1;
+        }
+
+        if(i == 28974) //ID
+        {
+            class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+            class8.groundActions = new String[] {null};
+            class8.name = "Hat of the eye (yellow)"; //Name
+            class8.description = "Its an Hat of the eye (yellow)"; //Description
+            class8.modifiedModelColors = new int[6];
+            class8.originalModelColors = new int[6];
+            class8.modifiedModelColors[0] = 10295;
+            class8.modifiedModelColors[1] = 9137;
+            class8.modifiedModelColors[2] = 5045;
+            class8.modifiedModelColors[3] = 10293;
+            class8.modifiedModelColors[4] = 10297;
+            class8.modifiedModelColors[5] = 10289;
+            class8.originalModelColors[0] = 11263;
+            class8.originalModelColors[1] = 11263;
+            class8.originalModelColors[2] = 11263;
+            class8.originalModelColors[3] = 9215;
+            class8.originalModelColors[4] = 11237;
+            class8.originalModelColors[5] = 13311;
+            class8.modelId = 44127;
+            class8.spriteScale = 1118;
+            class8.spritePitch = 131;
+            class8.spriteCameraRoll = 171;
+            class8.spriteCameraYaw = 0;
+            class8.spriteTranslateX = 4;
+            class8.spriteTranslateY = -13;
+            class8.primaryMaleModel = 43886;
+            class8.primaryFemaleModel = 43896;
+            class8.secondaryMaleModel = -1;
+            class8.secondaryFemaleModel = -1;
+            class8.primaryMaleHeadPiece = 44076;
+            class8.primaryFemaleHeadPiece = 44080;
+            class8.value = 500;
+            class8.unnotedId = -1;
+            class8.notedId = -1;
+            class8.certID = -1;
+            class8.certTemplateID = -1;
+            class8.stackable = false;
+            class8.placeholderId = 26871;
+            class8.placeholderTemplateId = -1;
+        }
+
+        if(i == 28975) //ID
+        {
+            class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+            class8.groundActions = new String[] {null};
+            class8.name = "Robe top of the eye (yellow)"; //Name
+            class8.description = "Its an Robe top of the eye (yellow)"; //Description
+            class8.modifiedModelColors = new int[4];
+            class8.originalModelColors = new int[4];
+            class8.modifiedModelColors[0] = 3495;
+            class8.modifiedModelColors[1] = 3484;
+            class8.modifiedModelColors[2] = 9137;
+            class8.modifiedModelColors[3] = 5045;
+            class8.originalModelColors[0] = 11263;
+            class8.originalModelColors[1] = 13311;
+            class8.originalModelColors[2] = 11237;
+            class8.originalModelColors[3] = 11263;
+            class8.modelId = 44102;
+            class8.spriteScale = 1414;
+            class8.spritePitch = 532;
+            class8.spriteCameraRoll = 0;
+            class8.spriteCameraYaw = 0;
+            class8.spriteTranslateX = 0;
+            class8.spriteTranslateY = 14;
+            class8.primaryMaleModel = 43894;
+            class8.primaryFemaleModel = 43903;
+            class8.secondaryMaleModel = 43893;
+            class8.secondaryFemaleModel = 43902;
+            class8.primaryMaleHeadPiece = -1;
+            class8.primaryFemaleHeadPiece = -1;
+            class8.value = 400;
+            class8.unnotedId = -1;
+            class8.notedId = -1;
+            class8.certID = -1;
+            class8.certTemplateID = -1;
+            class8.stackable = false;
+            class8.placeholderId = 26873;
+            class8.placeholderTemplateId = -1;
+        }
+
+        if(i == 28976) //ID
+        {
+            class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+            class8.groundActions = new String[] {null};
+            class8.name = "Robe bottoms of the eye (yellow)"; //Name
+            class8.description = "Its an Robe bottoms of the eye (yellow)"; //Description
+            class8.modifiedModelColors = new int[4];
+            class8.originalModelColors = new int[4];
+            class8.modifiedModelColors[0] = 3495;
+            class8.modifiedModelColors[1] = 3486;
+            class8.modifiedModelColors[2] = 9137;
+            class8.modifiedModelColors[3] = 5045;
+            class8.originalModelColors[0] = 11263;
+            class8.originalModelColors[1] = 13311;
+            class8.originalModelColors[2] = 11237;
+            class8.originalModelColors[3] = 11263;
+            class8.modelId = 44131;
+            class8.spriteScale = 1711;
+            class8.spritePitch = 579;
+            class8.spriteCameraRoll = 2047;
+            class8.spriteCameraYaw = 0;
+            class8.spriteTranslateX = 0;
+            class8.spriteTranslateY = 9;
+            class8.primaryMaleModel = 43889;
+            class8.primaryFemaleModel = 43899;
+            class8.secondaryMaleModel = -1;
+            class8.secondaryFemaleModel = -1;
+            class8.primaryMaleHeadPiece = -1;
+            class8.primaryFemaleHeadPiece = -1;
+            class8.value = 400;
+            class8.unnotedId = -1;
+            class8.notedId = -1;
+            class8.certID = -1;
+            class8.certTemplateID = -1;
+            class8.stackable = false;
+            class8.placeholderId = 26875;
+            class8.placeholderTemplateId = -1;
+        }
 if (i == 26988)
 {
         class8.itemActions = new String[5];

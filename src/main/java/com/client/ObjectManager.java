@@ -8,7 +8,6 @@ import java.io.IOException;
 import com.client.definitions.FloorOverlayDefinition;
 import com.client.definitions.FloorUnderlayDefinition;
 import com.client.definitions.ObjectDefinition;
-import com.client.utilities.ObjectKey;
 
 /**
  * Scene Objects
@@ -803,7 +802,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 		int i4 = 16;
 		long k4 = worldController.method300(z, x, y);
 		if (k4 > 0)
-			i4 = ObjectDefinition.forID(ObjectKey.getObjectId(k4)).decorDisplacement;
+			i4 = ObjectDefinition.forID(((int) (k4 >>> 32) & 0x7fffffff)).decorDisplacement;
 		Object obj13;
 		if (definition.animation == -1 && definition.childrenIDs == null)
 			obj13 = definition.modelAt(4, 0, k1, l1, i2, j2, -1);
@@ -1229,7 +1228,7 @@ private void renderObject(int y, WorldController worldController, CollisionMap c
 			int j4 = 16;
 			long l4 = worldController.method300(k1, x, y);
 			if (l4 > 0)
-				j4 = ObjectDefinition.forID(ObjectKey.getObjectId(l4)).decorDisplacement;
+				j4 = ObjectDefinition.forID(((int) (l4 >>> 32) & 0x7fffffff)).decorDisplacement;
 			Object obj13;
 			if (definition.animation == -1 && definition.childrenIDs == null)
 				obj13 = definition.modelAt(4, 0, l1, i2, j2, k2, -1);
