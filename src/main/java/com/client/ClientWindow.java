@@ -35,7 +35,7 @@ public class ClientWindow extends Client implements ActionListener, WindowListen
 			JPopupMenu.setDefaultLightWeightPopupEnabled(false);
 			frame = new JFrame(Configuration.CLIENT_TITLE + userNameFrameTitle);
 			frame.setLayout(new BorderLayout());
-			frame.setIconImage(new ImageIcon(new URL("https://i.imgur.com/DmxTnCI.gif")).getImage());
+			frame.setIconImage(new ImageIcon(new URL("https://i.imgur.com/9KMJnuc.png")).getImage());
 			setFocusTraversalKeysEnabled(false);
 			frame.setResizable(false);
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -55,7 +55,7 @@ public class ClientWindow extends Client implements ActionListener, WindowListen
 	}
 
 	private String getClientUserName() {
-		return Client.myPlayer.name;
+		return Client.local_player.username;
 	}
 
 	public ClientWindow(String args[]) {

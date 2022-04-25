@@ -9,11 +9,11 @@ public class Entity extends Renderable {
 
 
 	public boolean isLocalPlayer() {
-		return this == Client.myPlayer;
+		return this == Client.local_player;
 	}
 
 	public int getAbsoluteX() {
-		int x = Client.baseX + (this.x - 6 >> 7);
+		int x = Client.baseX + (this.world_x - 6 >> 7);
 		if (this instanceof NPC) {
 			return x - ((NPC) this).desc.boundDim / 2;
 		}
@@ -21,7 +21,7 @@ public class Entity extends Renderable {
 	}
 
 	public int getAbsoluteY() {
-		int y = Client.baseY + (this.y - 6 >> 7);
+		int y = Client.baseY + (this.world_y - 6 >> 7);
 		if (this instanceof NPC) {
 			return y - ((NPC) this).desc.boundDim / 2;
 		}
@@ -39,7 +39,7 @@ public class Entity extends Renderable {
 	}
 
 	public void makeSound(int soundId) {
-		double distance = getDistanceFrom(Client.myPlayer);
+		double distance = getDistanceFrom(Client.local_player);
 //		if (Configuration.developerMode) {
 //			System.out.println("entity sound: id " + id + " x" + getAbsoluteX() + " y" + getAbsoluteY() + " d" + distance);
 //		}
@@ -72,8 +72,8 @@ public class Entity extends Renderable {
 		anInt1503 = 0;
 		smallX[0] = i;
 		smallY[0] = j;
-		x = smallX[0] * 128 + anInt1540 * 64;
-		y = smallY[0] * 128 + anInt1540 * 64;
+		world_x = smallX[0] * 128 + anInt1540 * 64;
+		world_y = smallY[0] * 128 + anInt1540 * 64;
 	}
 
 	public final void resetPath() {
@@ -143,18 +143,18 @@ public class Entity extends Renderable {
 	Entity() {
 		smallX = new int[10];
 		smallY = new int[10];
-		interactingEntity = -1;
+		engaged_entity_id = -1;
 		anInt1504 = 32;
 		anInt1505 = -1;
 		height = 200;
 		field1133 = -1; // L: 64
 		field1185 = -1; // L: 65
-		anInt1511 = -1;
+		idle_animation_id = -1;
 		anInt1512 = -1;
 		hitArray = new int[4];
 		hitMarkTypes = new int[4];
 		hitsLoopCycle = new int[4];
-		anInt1517 = -1;
+		queued_animation_id = -1;
 		anInt1520 = -1;
 		anim = -1;
 		loopCycleStatus = -1000;
@@ -170,14 +170,14 @@ public class Entity extends Renderable {
 
 	public final int[] smallX;
 	public final int[] smallY;
-	public int interactingEntity;
+	public int engaged_entity_id;
 	int anInt1503;
 	int anInt1504;
 	int anInt1505;
 	public String textSpoken;
 	public int height;
 	public int turnDirection;
-	int anInt1511;
+	int idle_animation_id;
 	int anInt1512;
 	int anInt1513;
 	final int[] hitArray;
@@ -189,7 +189,7 @@ public class Entity extends Renderable {
 	byte field1187;
 	byte field1188;
 	byte field1189;
-	int anInt1517;
+	int queued_animation_id;
 	int anInt1518;
 	int anInt1519;
 	int anInt1520;
@@ -221,9 +221,9 @@ public class Entity extends Renderable {
 	int startForceMovement;
 	int endForceMovement;
 	int direction;
-	public int x;
-	public int y;
-	int anInt1552;
+	public int world_x;
+	public int world_y;
+	int current_rotation;
 	final boolean[] aBooleanArray1553;
 	int anInt1554;
 	int anInt1555;

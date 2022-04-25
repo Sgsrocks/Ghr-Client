@@ -149,7 +149,7 @@ public final class ObjectDefinition {
 		thickness = 128;
 		height = 128;
 		width = 128;
-		anInt768 = 0;
+		surroundings = 0;
 		anInt738 = 0;
 		anInt745 = 0;
 		anInt783 = 0;
@@ -470,7 +470,7 @@ public final class ObjectDefinition {
 			else if (type == 68)
 				mapscene = stream.readUnsignedShort();
 			else if (type == 69)
-				anInt768 = stream.readUnsignedByte();
+				surroundings = stream.readUnsignedByte();
 			else if (type == 70)
 				anInt738 = stream.readSignedWord();
 			else if (type == 71)
@@ -578,7 +578,7 @@ public final class ObjectDefinition {
 	public static Client clientInstance;
 	private boolean aBoolean766;
 	public boolean solid;
-	public int anInt768;
+	public int surroundings;
 	private boolean delayShading;
 	private static int cacheIndex;
 	private int height;

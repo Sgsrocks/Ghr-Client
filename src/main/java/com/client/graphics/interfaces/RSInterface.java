@@ -886,7 +886,8 @@ public class RSInterface {
 		
 		
 		//addText(10221, "@or1@Control Panel", tda, 2, 16750899, false, true);
-		addText(10222, "@or1@Anguish", tda, 2, 16750899, true, true);
+		//addText(10222, "@or1@GodzHell", tda, 2, 16750899, true, true);
+		addSprite(10222, 8, "Interfaces/infoTab/SPRITE");
 		addSprite(10224, 0, "Interfaces/infoTab/SPRITE");
 		addSprite(10225, 1, "Interfaces/infoTab/SPRITE");
 		configHoverButton(10403, "Select", "Interfaces/OSRSQuestTab/SPRITE", 1, 2, 3, 3, false, new int[] { 10404, 10405, 10406 });
@@ -895,7 +896,7 @@ public class RSInterface {
 		configHoverButton(10406, "Select", "Interfaces/OSRSQuestTab/SPRITE", 10, 11, 12, 12, false, new int[] { 10403, 10404, 10405 });
 		tab.totalChildren(21);
 		tab.child(0, 10224, 0, 35); //pic
-		tab.child(1, 10222, 95, 240); //anguish
+		tab.child(1, 10222, 25, 225); //anguish
 		tab.child(2, 10404, 8, 12); //begin buttons
 		tab.child(3, 10405, 52, 12);
 		tab.child(4, 10406, 96, 13);
@@ -2939,20 +2940,22 @@ public class RSInterface {
 	public static void teleport(TextDrawingArea[] tda) { //hop back here
 		RSInterface inter = addInterface(51000);
 		int extraX = 5;
-		addHoverButton(41249, "/Interfaces/Teleportation/SPRITE", -1, 157, 45, "Select", -1, 41250, 1);
+		addHoverButton(41249, "/Interfaces/Teleportation/SPRITE", 5, 149, 45, "Select", -1, 41250, 1);
 		addHoveredButton(41250, "/Interfaces/Teleportation/SPRITE", 0, 157, 40, 41251);
-		addHoverButton(41252, "/Interfaces/Teleportation/SPRITE", -1, 157, 45, "Select", -1, 41253, 1);
+		addHoverButton(41252, "/Interfaces/Teleportation/SPRITE", 5, 149, 45, "Select", -1, 41253, 1);
 		addHoveredButton(41253, "/Interfaces/Teleportation/SPRITE", 0, 157, 40, 41254);
-		addHoverButton(42255, "/Interfaces/Teleportation/SPRITE", -1, 157, 45, "Select", -1, 42256, 1);
+		addHoverButton(42255, "/Interfaces/Teleportation/SPRITE", 5, 149, 45, "Select", -1, 42256, 1);
 		addHoveredButton(42256, "/Interfaces/Teleportation/SPRITE", 0, 157, 40, 42257);
-		addHoverButton(42258, "/Interfaces/Teleportation/SPRITE", -1, 157, 45, "Select", -1, 42259, 1);
+		addHoverButton(42258, "/Interfaces/Teleportation/SPRITE", 5, 149, 45, "Select", -1, 42259, 1);
 		addHoveredButton(42259, "/Interfaces/Teleportation/SPRITE", 0, 157, 40, 42260);
-		addHoverButton(42261, "/Interfaces/Teleportation/SPRITE", -1, 157, 45, "Select", -1, 42262, 1);
+		addHoverButton(42261, "/Interfaces/Teleportation/SPRITE", 5, 149, 45, "Select", -1, 42262, 1);
 		addHoveredButton(42262, "/Interfaces/Teleportation/SPRITE", 0, 157, 40, 42263);
-		addHoverButton(42264, "/Interfaces/Teleportation/SPRITE", -1, 157, 45, "Select", -1, 42265, 1);
+		addHoverButton(42264, "/Interfaces/Teleportation/SPRITE", 5, 149, 45, "Select", -1, 42265, 1);
 		addHoveredButton(42265, "/Interfaces/Teleportation/SPRITE", 0, 157, 40, 42266);
-		addHoverButton(42267, "/Interfaces/Teleportation/SPRITE", -1, 157, 45, "Select", -1, 42268, 1);
+		addHoverButton(42267, "/Interfaces/Teleportation/SPRITE", 5, 149, 45, "Select", -1, 42268, 1);
 		addHoveredButton(42268, "/Interfaces/Teleportation/SPRITE", 0, 157, 40, 42269);
+		addHoverButton(42270, "/Interfaces/Teleportation/SPRITE", 5, 149, 45, "Select", -1, 42271, 1);
+		addHoveredButton(42271, "/Interfaces/Teleportation/SPRITE", 0, 157, 40, 42272);
 		addText(44305, "Monsters", tda, 2, 0xFF981F, true, true);
 		addText(44306, "Minigames", tda, 2, 0xFF981F, true, true);
 		addText(44307, "Wilderness", tda, 2, 0xFF981F, true, true);
@@ -2966,7 +2969,8 @@ public class RSInterface {
 		scroller.height = 222;
 		scroller.width = 146;
 		scroller.scrollMax = 355;
-		scroller.totalChildren(22);
+		scroller.scrollMax = 355;
+		scroller.totalChildren(24);
 		setBounds(41249, 9 - 4, 50 - 49, 0, scroller);
 		setBounds(41250, 9 - 4, 50 - 49, 1, scroller);
 		setBounds(41252, 9 - 4, 96 - 50, 2, scroller);
@@ -2981,14 +2985,16 @@ public class RSInterface {
 		setBounds(42265, 9 - 4, 96 + 90 + 90 - 50, 11, scroller);
 		setBounds(42267, 9 - 4, 96 + 90 + 90 + 45 - 50, 12, scroller);
 		setBounds(42268, 9 - 4, 96 + 90 + 90 + 45 - 50, 13, scroller);
-		setBounds(44305, 81 - 0, 62 - 50, 14, scroller);
-		setBounds(44306, 81 - 0, 62 + 45 - 50, 15, scroller);
-		setBounds(44307, 81 - 0, 62 + 45 + 45 - 50, 16, scroller);
-		setBounds(44308, 81 - 0, 62 + 45 + 90 - 50, 17, scroller);
-		setBounds(44309, 81 - 0, 62 + 90 + 90 - 50, 18, scroller);
-		setBounds(44340, 81 - 0, 62 + 90 + 90 + 45 - 50, 19, scroller);
-		setBounds(44341, 81 - 0, 62 + 90 + 90 + 90 - 50, 20, scroller);
-		setBounds(44342, 81 - 0, 62 + 90 + 90 + 90 + 45 - 50, 21, scroller);
+		setBounds(42270, 9 - 4, 96 + 90 + 90 + 90 + 45 - 50, 14, scroller);
+		setBounds(42271, 9 - 4, 96 + 90 + 90 + 90 + 45 - 50, 15, scroller);
+		setBounds(44305, 71 - 0, 62 - 50, 16, scroller);
+		setBounds(44306, 71 - 0, 62 + 45 - 50, 17, scroller);
+		setBounds(44307, 71 - 0, 62 + 45 + 45 - 50, 18, scroller);
+		setBounds(44308, 71 - 0, 62 + 45 + 90 - 50, 19, scroller);
+		setBounds(44309, 71 - 0, 62 + 90 + 90 - 50, 20, scroller);
+		setBounds(44340, 71 - 0, 62 + 90 + 90 + 45 - 50, 21, scroller);
+		setBounds(44341, 71 - 0, 62 + 90 + 90 + 90 - 50, 22, scroller);
+		setBounds(44342, 71 - 0, 62 + 90 + 90 + 90 + 45 - 50, 23, scroller);
 
 		inter.totalChildren(8);
 		addSprite(44001, 2, "/Interfaces/Teleportation/SPRITE");
@@ -5573,7 +5579,7 @@ public class RSInterface {
 		if (i == 2)
 			model = NpcDefinition.forID(j).method160();
 		if (i == 3)
-			model = Client.myPlayer.method453();
+			model = Client.local_player.method453();
 		if (i == 4)
 			model = ItemDefinition.forID(j).method202(50);
 		if (i == 5)
@@ -5842,7 +5848,31 @@ public class RSInterface {
 		tab.anInt239 = 0;
 		tab.tooltip = tooltip;
 	}
-	
+	public static void addClickableText2(int id, String text, String tooltip, TextDrawingArea tda[], int idx, int color,
+										boolean center, boolean shadow, int width, int j, String name) {
+		RSInterface tab = addTabInterface(id);
+		tab.parentID = id;
+		tab.id = id;
+		tab.type = 4;
+		tab.atActionType = 1;
+		tab.width = width;
+		tab.height = 11;
+		tab.contentType = 0;
+		tab.opacity = 0;
+		tab.mOverInterToTrigger = -1;
+		tab.centerText = center;
+		tab.textShadow = shadow;
+		tab.textDrawingAreas = tda[idx];
+		tab.message = text;
+		tab.hoverText = text;
+		tab.textColor = color;
+		tab.secondaryColor = 0;
+		tab.hoverTextColor = 0xffffff;
+		tab.anInt239 = 0;
+		tab.sprite1 = imageLoader(j, name);
+		tab.sprite2 = imageLoader(j, name);
+		tab.tooltip = tooltip;
+	}
 	public static void addClickableTextCustomColor(int id, String text, String tooltip, TextDrawingArea tda[], int idx, int color, int hovercolor,
 			boolean center, boolean shadow, int width) {
 		RSInterface tab = addTabInterface(id);

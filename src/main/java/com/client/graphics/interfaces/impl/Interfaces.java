@@ -952,7 +952,7 @@ public class Interfaces extends RSInterface {
 		addButton(65006, 1, "Interfaces/TeleInterface/SPRITE", "Select");
 
 		//catagory text
-		addClickableText(65011,"Bosses", "Select", tda, 0, 0xff9040, true, true, 71);
+		addClickableText2(65011,"Bosses", "Select", tda, 0, 0xff9040, true, true, 71, 5, "Interfaces/TeleInterface/SPRITE");
 		addClickableText(65012,"Monsters", "Select", tda, 0, 0xff9040, true, true, 71);
 		addClickableText(65013,"Wilderness", "Select", tda, 0, 0xff9040, true, true, 71);
 		addClickableText(65014,"Skilling", "Select", tda, 0, 0xff9040, true, true, 71);

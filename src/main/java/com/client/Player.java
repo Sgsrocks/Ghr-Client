@@ -13,7 +13,7 @@ public final class Player extends Entity {
 			return null;
 		super.height = model.modelHeight;
 		model.fits_on_single_square = true;
-		if (aBoolean1699)
+		if (reference_pose)
 			return model;
 		if (super.anInt1520 != -1 && super.currentAnimation != -1) {
 			GraphicsDefinition spotAnim = GraphicsDefinition.cache[super.anInt1520];
@@ -38,12 +38,12 @@ public final class Player extends Entity {
 			}
 		}
 		if (aModel_1714 != null) {
-			if (Client.loopCycle >= anInt1708)
+			if (Client.game_tick >= transform_duration)
 				aModel_1714 = null;
-			if (Client.loopCycle >= anInt1707 && Client.loopCycle < anInt1708) {
+			if (Client.game_tick >= transform_delay && Client.game_tick < transform_duration) {
 				Model model_1 = aModel_1714;
-				model_1.translate(anInt1711 - super.x, anInt1712 - anInt1709,
-						anInt1713 - super.y);
+				model_1.translate(anInt1711 - super.world_x, anInt1712 - height,
+						anInt1713 - super.world_y);
 				if (super.turnDirection == 512) {
 					model_1.rotate90Degrees();
 					model_1.rotate90Degrees();
@@ -65,8 +65,8 @@ public final class Player extends Entity {
 					model_1.rotate90Degrees();
 					model_1.rotate90Degrees();
 				}
-				model_1.translate(super.x - anInt1711, anInt1709 - anInt1712,
-						super.y - anInt1713);
+				model_1.translate(super.world_x - anInt1711, height - anInt1712,
+						super.world_y - anInt1713);
 			}
 		}
 		model.fits_on_single_square = true;
@@ -120,9 +120,9 @@ public final class Player extends Entity {
 			anIntArray1700[l] = j1;
 		}
 
-		super.anInt1511 = stream.readUnsignedShort();
-		if (super.anInt1511 == 65535)
-			super.anInt1511 = -1;
+		super.idle_animation_id = stream.readUnsignedShort();
+		if (super.idle_animation_id == 65535)
+			super.idle_animation_id = -1;
 		super.anInt1512 = stream.readUnsignedShort();
 		if (super.anInt1512 == 65535)
 			super.anInt1512 = -1;
@@ -141,7 +141,7 @@ public final class Player extends Entity {
 		super.anInt1505 = stream.readUnsignedShort();
 		if (super.anInt1505 == 65535)
 			super.anInt1505 = -1;
-		name = TextClass.fixName(TextClass.nameForLong(stream.readQWord()));
+		username = TextClass.fixName(TextClass.nameForLong(stream.readQWord()));
 		visible = stream.readUnsignedByte() == 0 ? true : false;
 		combatLevel = stream.readUnsignedByte();
 		rights = stream.readUnsignedByte();
@@ -171,8 +171,8 @@ public final class Player extends Entity {
 			int j = -1;
 			if (super.anim >= 0 && super.anInt1529 == 0)
 				j = AnimationDefinition.anims[super.anim].primaryFrames[super.anInt1527];
-			else if (super.anInt1517 >= 0)
-				j = AnimationDefinition.anims[super.anInt1517].primaryFrames[super.anInt1518];
+			else if (super.queued_animation_id >= 0)
+				j = AnimationDefinition.anims[super.queued_animation_id].primaryFrames[super.anInt1518];
 			Model model = desc.method164(-1, j, null);
 			return model;
 		}
@@ -184,8 +184,8 @@ public final class Player extends Entity {
 		if (super.anim >= 0 && super.anInt1529 == 0) {
 			AnimationDefinition animation = AnimationDefinition.anims[super.anim];
 			k = animation.primaryFrames[super.anInt1527];
-			if (super.anInt1517 >= 0 && super.anInt1517 != super.anInt1511)
-				i1 = AnimationDefinition.anims[super.anInt1517].primaryFrames[super.anInt1518];
+			if (super.queued_animation_id >= 0 && super.queued_animation_id != super.idle_animation_id)
+				i1 = AnimationDefinition.anims[super.queued_animation_id].primaryFrames[super.anInt1518];
 			if (animation.anInt360 >= 0) {
 				j1 = animation.anInt360;
 				l += j1 - equipment[5] << 40;
@@ -194,8 +194,8 @@ public final class Player extends Entity {
 				k1 = animation.anInt361;
 				l += k1 - equipment[3] << 48;
 			}
-		} else if (super.anInt1517 >= 0)
-			k = AnimationDefinition.anims[super.anInt1517].primaryFrames[super.anInt1518];
+		} else if (super.queued_animation_id >= 0)
+			k = AnimationDefinition.anims[super.queued_animation_id].primaryFrames[super.anInt1518];
 		Model model_1 = (Model) mruNodes.insertFromCache(l);
 		if (model_1 == null) {
 			boolean flag = false;
@@ -256,7 +256,7 @@ public final class Player extends Entity {
 			mruNodes.removeFromCache(model_1, l);
 			aLong1697 = l;
 		}
-		if (aBoolean1699)
+		if (reference_pose)
 			return model_1;
 		Model model_2 = Model.EMPTY_MODEL;
 		model_2.method464(model_1, Frame.noAnimationInProgress(k) & Frame.noAnimationInProgress(i1));
@@ -324,7 +324,7 @@ public final class Player extends Entity {
 
 	Player() {
 		aLong1697 = -1L;
-		aBoolean1699 = false;
+		reference_pose = false;
 		anIntArray1700 = new int[5];
 		visible = false;
 		equipment = new int[12];
@@ -341,19 +341,19 @@ public final class Player extends Entity {
 	private int rights;
 	private long aLong1697;
 	public NpcDefinition desc;
-	boolean aBoolean1699;
+	boolean reference_pose;
 	final int[] anIntArray1700;
 	public int team;
 	private int anInt1702;
-	public String name;
+	public String username;
 	static MRUNodes mruNodes = new MRUNodes(260);
 	public int combatLevel;
 	public int headIcon;
 	public int skullIcon;
 	public int hintIcon;
-	public int anInt1707;
-	int anInt1708;
-	int anInt1709;
+	public int transform_delay;
+	int transform_duration;
+	int height;
 	boolean visible;
 	int anInt1711;
 	int anInt1712;
@@ -361,10 +361,10 @@ public final class Player extends Entity {
 	Model aModel_1714;
 	public final int[] equipment;
 	private long aLong1718;
-	int anInt1719;
-	int anInt1720;
-	int anInt1721;
-	int anInt1722;
+	int transform_width;
+	int transform_height;
+	int transform_width_offset;
+	int transform_height_offset;
 	int skill;
 	private int healthState;
 

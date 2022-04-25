@@ -79,6 +79,7 @@ public final class NpcDefinition {
 		}*/
 		   //dumpNpcConfig();
 		//dumpNpcList();
+		dumpSizes();
 	}
 
 	public static void dumpNpcConfig() {
@@ -395,7 +396,7 @@ bw.close();
 
 	public static void dumpSizes() {
 		try {
-			File file = new File(System.getProperty("user.home") + "/Desktop/npcSizes 143.txt");
+			File file = new File(System.getProperty("user.home") + "/Desktop/npcSizes 204.txt");
 
 			if (!file.exists()) {
 				file.createNewFile();

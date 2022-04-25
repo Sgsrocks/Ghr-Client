@@ -46,7 +46,7 @@ public class EntityTarget {
 				name = npc.desc.name;
 			}
 		} else if (state == 2) {
-			name = ((Player) target).name;
+			name = ((Player) target).username;
 		} else {
 			state = 0;
 			return;
