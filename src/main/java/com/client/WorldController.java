@@ -7,13 +7,13 @@ final class WorldController {
         int j = 104;// was parameter
         int k = 4;// was parameter
         aBoolean434 = true;
-        gameObjectsCache = new GameObject[5000];
+        gameObjectsCache = new StaticObject[5000];
         anIntArray486 = new int[10000];
         anIntArray487 = new int[10000];
         numberOfZ = k;
         xRegionSize = j;
         yRegionSize = i;
-        tiles = new Tile[k][j][i];
+        groundArray = new Ground[k][j][i];
         anIntArrayArrayArray445 = new int[k][j + 1][i + 1];
         heightMap = ai;
         initToNull();
@@ -32,7 +32,7 @@ final class WorldController {
         for (int j = 0; j < numberOfZ; j++) {
             for (int k = 0; k < xRegionSize; k++) {
                 for (int i1 = 0; i1 < yRegionSize; i1++)
-                    tiles[j][k][i1] = null;
+                    groundArray[j][k][i1] = null;
 
             }
 
@@ -57,32 +57,32 @@ final class WorldController {
         zAnInt442 = i;
         for (int k = 0; k < xRegionSize; k++) {
             for (int l = 0; l < yRegionSize; l++)
-                if (tiles[i][k][l] == null)
-                    tiles[i][k][l] = new Tile(i, k, l);
+                if (groundArray[i][k][l] == null)
+                    groundArray[i][k][l] = new Ground(i, k, l);
 
         }
 
     }
 
     public void method276(int i, int j) {
-        Tile class30_sub3 = tiles[0][j][i];
+        Ground class30_sub3 = groundArray[0][j][i];
         for (int l = 0; l < 3; l++) {
-            Tile class30_sub3_1 = tiles[l][j][i] = tiles[l + 1][j][i];
+            Ground class30_sub3_1 = groundArray[l][j][i] = groundArray[l + 1][j][i];
             if (class30_sub3_1 != null) {
-                class30_sub3_1.plane--;
-                for (int j1 = 0; j1 < class30_sub3_1.gameObjectIndex; j1++) {
-                    GameObject class28 = class30_sub3_1.objects[j1];
-                    if ((class28.uid >> 29 & 3) == 2 && class28.xLocLow == j
-                            && class28.yLocHigh == i)
-                        class28.zLoc--;
+                class30_sub3_1.anInt1307--;
+                for (int j1 = 0; j1 < class30_sub3_1.anInt1317; j1++) {
+                    StaticObject class28 = class30_sub3_1.obj5Array[j1];
+                    if ((class28.uid >> 29 & 3) == 2 && class28.anInt523 == j
+                            && class28.anInt525 == i)
+                        class28.anInt517--;
                 }
 
             }
         }
-        if (tiles[0][j][i] == null)
-            tiles[0][j][i] = new Tile(0, j, i);
-        tiles[0][j][i].bridge = class30_sub3;
-        tiles[3][j][i] = null;
+        if (groundArray[0][j][i] == null)
+            groundArray[0][j][i] = new Ground(0, j, i);
+        groundArray[0][j][i].aClass30_Sub3_1329 = class30_sub3;
+        groundArray[3][j][i] = null;
     }
 
     public static void createNewSceneCluster(int i, int j, int k, int l, int i1, int j1,
@@ -103,9 +103,9 @@ final class WorldController {
     }
 
     public void method278(int i, int j, int k, int l) {
-        Tile class30_sub3 = tiles[i][j][k];
+        Ground class30_sub3 = groundArray[i][j][k];
         if (class30_sub3 != null) {
-            tiles[i][j][k].anInt1321 = l;
+            groundArray[i][j][k].anInt1321 = l;
         }
     }
 
@@ -115,28 +115,28 @@ final class WorldController {
         if (l == 0) {
             SceneTilePaint class43 = new SceneTilePaint(k2, l2, i3, j3, -1, k4);
             for (int i5 = i; i5 >= 0; i5--)
-                if (tiles[i5][j][k] == null)
-                    tiles[i5][j][k] = new Tile(i5, j, k);
+                if (groundArray[i5][j][k] == null)
+                    groundArray[i5][j][k] = new Ground(i5, j, k);
 
-            tiles[i][j][k].aClass43_1311 = class43;
+            groundArray[i][j][k].aClass43_1311 = class43;
             return;
         }
         if (l == 1) {
             SceneTilePaint class43_1 = new SceneTilePaint(k3, l3, i4, j4, j1, l4);
             for (int j5 = i; j5 >= 0; j5--)
-                if (tiles[j5][j][k] == null)
-                    tiles[j5][j][k] = new Tile(j5, j, k);
+                if (groundArray[j5][j][k] == null)
+                    groundArray[j5][j][k] = new Ground(j5, j, k);
 
-            tiles[i][j][k].aClass43_1311 = class43_1;
+            groundArray[i][j][k].aClass43_1311 = class43_1;
             return;
         }
         SceneTileModel class40 = new SceneTileModel(k, k3, j3, i2, j1, i4, i1, k2, k4, i3,
                 j2, l1, k1, l, j4, l3, l2, j, l4);
         for (int k5 = i; k5 >= 0; k5--)
-            if (tiles[k5][j][k] == null)
-                tiles[k5][j][k] = new Tile(k5, j, k);
+            if (groundArray[k5][j][k] == null)
+                groundArray[k5][j][k] = new Ground(k5, j, k);
 
-        tiles[i][j][k].aClass40_1312 = class40;
+        groundArray[i][j][k].aClass40_1312 = class40;
     }
 
     public void method280(int i, int j, int k, Renderable class30_sub2_sub4,
@@ -151,9 +151,9 @@ final class WorldController {
         class49.uid = i1;
         class49.aByte816 = byte0;
         class49.setNewUID(var);
-        if (tiles[i][j1][k] == null)
-            tiles[i][j1][k] = new Tile(i, j1, k);
-        tiles[i][j1][k].groundObject = class49;
+        if (groundArray[i][j1][k] == null)
+            groundArray[i][j1][k] = new Ground(i, j1, k);
+        groundArray[i][j1][k].groundObject = class49;
     }
 
     public void method281(int i, int j, Renderable class30_sub2_sub4, int k,
@@ -168,20 +168,20 @@ final class WorldController {
         object4.aClass30_Sub2_Sub4_49 = class30_sub2_sub4;
         object4.aClass30_Sub2_Sub4_50 = class30_sub2_sub4_1;
         int j1 = 0;
-        Tile class30_sub3 = tiles[l][i][i1];
+        Ground class30_sub3 = groundArray[l][i][i1];
         if (class30_sub3 != null) {
-            for (int k1 = 0; k1 < class30_sub3.gameObjectIndex; k1++)
-                if (class30_sub3.objects[k1].renderable instanceof Model) {
-                    int l1 = ((Model) class30_sub3.objects[k1].renderable).itemDropHeight;
+            for (int k1 = 0; k1 < class30_sub3.anInt1317; k1++)
+                if (class30_sub3.obj5Array[k1].renderable instanceof Model) {
+                    int l1 = ((Model) class30_sub3.obj5Array[k1].renderable).itemDropHeight;
                     if (l1 > j1)
                         j1 = l1;
                 }
 
         }
         object4.anInt52 = j1;
-        if (tiles[l][i][i1] == null)
-            tiles[l][i][i1] = new Tile(l, i, i1);
-        tiles[l][i][i1].obj4 = object4;
+        if (groundArray[l][i][i1] == null)
+            groundArray[l][i][i1] = new Ground(l, i, i1);
+        groundArray[l][i][i1].obj4 = object4;
     }
 
     public void addWallObject(int i, Renderable class30_sub2_sub4, int j, int k,
@@ -201,10 +201,10 @@ final class WorldController {
         object1.orientation1 = j1;
         object1.setNewUID(var);
         for (int l1 = k1; l1 >= 0; l1--)
-            if (tiles[l1][l][k] == null)
-                tiles[l1][l][k] = new Tile(l1, l, k);
+            if (groundArray[l1][l][k] == null)
+                groundArray[l1][l][k] = new Ground(l1, l, k);
 
-        tiles[k1][l][k].wallObject = object1;
+        groundArray[k1][l][k].wallObject = object1;
     }
 
     public void addWallDecoration(int i, int j, int k, int i1, int j1, int k1,
@@ -222,10 +222,10 @@ final class WorldController {
         class26.anInt503 = k;
         class26.setNewUID(var);
         for (int k2 = i1; k2 >= 0; k2--)
-            if (tiles[k2][l1][j] == null)
-                tiles[k2][l1][j] = new Tile(k2, l1, j);
+            if (groundArray[k2][l1][j] == null)
+                groundArray[k2][l1][j] = new Ground(k2, l1, j);
 
-        tiles[i1][l1][j].obj2 = class26;
+        groundArray[i1][l1][j].obj2 = class26;
     }
 
     public boolean addTiledObject(int i, byte byte0, int j, int k,
@@ -280,24 +280,24 @@ final class WorldController {
             for (int l2 = k; l2 < k + i1; l2++) {
                 if (k2 < 0 || l2 < 0 || k2 >= xRegionSize || l2 >= yRegionSize)
                     return false;
-                Tile class30_sub3 = tiles[i][k2][l2];
-                if (class30_sub3 != null && class30_sub3.gameObjectIndex >= 5)
+                Ground class30_sub3 = groundArray[i][k2][l2];
+                if (class30_sub3 != null && class30_sub3.anInt1317 >= 5)
                     return false;
             }
 
         }
 
-        GameObject class28 = new GameObject();
+        StaticObject class28 = new StaticObject();
         class28.uid = j2;
         class28.mask = byte0;
-        class28.zLoc = i;
+        class28.anInt517 = i;
         class28.xPos = j1;
         class28.yPos = k1;
         class28.tileHeight = l1;
         class28.renderable = class30_sub2_sub4;
         class28.turnValue = i2;
-        class28.xLocLow = j;
-        class28.yLocHigh = k;
+        class28.anInt523 = j;
+        class28.anInt525 = k;
         class28.xLocHigh = (j + l) - 1;
         class28.yLocLow = (k + i1) - 1;
         class28.setNewUID(var);
@@ -313,14 +313,14 @@ final class WorldController {
                 if (j3 < (k + i1) - 1)
                     k3 += 2;
                 for (int l3 = i; l3 >= 0; l3--)
-                    if (tiles[l3][i3][j3] == null)
-                        tiles[l3][i3][j3] = new Tile(l3, i3, j3);
+                    if (groundArray[l3][i3][j3] == null)
+                        groundArray[l3][i3][j3] = new Ground(l3, i3, j3);
 
-                Tile class30_sub3_1 = tiles[i][i3][j3];
-                class30_sub3_1.objects[class30_sub3_1.gameObjectIndex] = class28;
-                class30_sub3_1.gameObjectsChanged[class30_sub3_1.gameObjectIndex] = k3;
+                Ground class30_sub3_1 = groundArray[i][i3][j3];
+                class30_sub3_1.obj5Array[class30_sub3_1.anInt1317] = class28;
+                class30_sub3_1.gameObjectsChanged[class30_sub3_1.anInt1317] = k3;
                 class30_sub3_1.totalTiledObjectMask |= k3;
-                class30_sub3_1.gameObjectIndex++;
+                class30_sub3_1.anInt1317++;
             }
 
         }
@@ -332,7 +332,7 @@ final class WorldController {
 
     public void clearObj5Cache() {
         for (int i = 0; i < interactableObjectCacheCurrPos; i++) {
-            GameObject object5 = gameObjectsCache[i];
+            StaticObject object5 = gameObjectsCache[i];
             method289(object5);
             gameObjectsCache[i] = null;
         }
@@ -340,26 +340,26 @@ final class WorldController {
         interactableObjectCacheCurrPos = 0;
     }
 
-    private void method289(GameObject class28) {
-        for (int j = class28.xLocLow; j <= class28.xLocHigh; j++) {
-            for (int k = class28.yLocHigh; k <= class28.yLocLow; k++) {
-                Tile class30_sub3 = tiles[class28.zLoc][j][k];
+    private void method289(StaticObject class28) {
+        for (int j = class28.anInt523; j <= class28.xLocHigh; j++) {
+            for (int k = class28.anInt525; k <= class28.yLocLow; k++) {
+                Ground class30_sub3 = groundArray[class28.anInt517][j][k];
                 if (class30_sub3 != null) {
-                    for (int l = 0; l < class30_sub3.gameObjectIndex; l++) {
-                        if (class30_sub3.objects[l] != class28)
+                    for (int l = 0; l < class30_sub3.anInt1317; l++) {
+                        if (class30_sub3.obj5Array[l] != class28)
                             continue;
-                        class30_sub3.gameObjectIndex--;
-                        for (int i1 = l; i1 < class30_sub3.gameObjectIndex; i1++) {
-                            class30_sub3.objects[i1] = class30_sub3.objects[i1 + 1];
+                        class30_sub3.anInt1317--;
+                        for (int i1 = l; i1 < class30_sub3.anInt1317; i1++) {
+                            class30_sub3.obj5Array[i1] = class30_sub3.obj5Array[i1 + 1];
                             class30_sub3.gameObjectsChanged[i1] = class30_sub3.gameObjectsChanged[i1 + 1];
                         }
 
-                        class30_sub3.objects[class30_sub3.gameObjectIndex] = null;
+                        class30_sub3.obj5Array[class30_sub3.anInt1317] = null;
                         break;
                     }
 
                     class30_sub3.totalTiledObjectMask = 0;
-                    for (int j1 = 0; j1 < class30_sub3.gameObjectIndex; j1++)
+                    for (int j1 = 0; j1 < class30_sub3.anInt1317; j1++)
                         class30_sub3.totalTiledObjectMask |= class30_sub3.gameObjectsChanged[j1];
 
                 }
@@ -370,7 +370,7 @@ final class WorldController {
     }
 
     public void method290(int i, int k, int l, int i1) {
-        Tile class30_sub3 = tiles[i1][l][i];
+        Ground class30_sub3 = groundArray[i1][l][i];
         if (class30_sub3 == null)
             return;
         Object2 class26 = class30_sub3.obj2;
@@ -383,7 +383,7 @@ final class WorldController {
     }
 
     public void method291(int i, int j, int k, byte byte0) {
-        Tile class30_sub3 = tiles[j][i][k];
+        Ground class30_sub3 = groundArray[j][i][k];
         if (byte0 != -119)
             aBoolean434 = !aBoolean434;
         if (class30_sub3 != null) {
@@ -392,20 +392,20 @@ final class WorldController {
     }
 
     public void method292(int j, int k, int l) {
-        Tile class30_sub3 = tiles[k][l][j];
+        Ground class30_sub3 = groundArray[k][l][j];
         if (class30_sub3 != null) {
             class30_sub3.obj2 = null;
         }
     }
 
     public void method293(int i, int k, int l) {
-        Tile class30_sub3 = tiles[i][k][l];
+        Ground class30_sub3 = groundArray[i][k][l];
         if (class30_sub3 == null)
             return;
-        for (int j1 = 0; j1 < class30_sub3.gameObjectIndex; j1++) {
-            GameObject class28 = class30_sub3.objects[j1];
-            if ((class28.uid >> 29 & 3) == 2 && class28.xLocLow == k
-                    && class28.yLocHigh == l) {
+        for (int j1 = 0; j1 < class30_sub3.anInt1317; j1++) {
+            StaticObject class28 = class30_sub3.obj5Array[j1];
+            if ((class28.uid >> 29 & 3) == 2 && class28.anInt523 == k
+                    && class28.anInt525 == l) {
                 method289(class28);
                 return;
             }
@@ -414,21 +414,21 @@ final class WorldController {
     }
 
     public void method294(int i, int j, int k) {
-        Tile class30_sub3 = tiles[i][k][j];
+        Ground class30_sub3 = groundArray[i][k][j];
         if (class30_sub3 == null)
             return;
         class30_sub3.groundObject = null;
     }
 
     public void method295(int i, int j, int k) {
-        Tile class30_sub3 = tiles[i][j][k];
+        Ground class30_sub3 = groundArray[i][j][k];
         if (class30_sub3 != null) {
             class30_sub3.obj4 = null;
         }
     }
 
     public WallObject method296(int i, int j, int k) {
-        Tile class30_sub3 = tiles[i][j][k];
+        Ground class30_sub3 = groundArray[i][j][k];
         if (class30_sub3 == null)
             return null;
         else
@@ -436,28 +436,28 @@ final class WorldController {
     }
 
     public Object2 method297(int i, int k, int l) {
-        Tile class30_sub3 = tiles[l][i][k];
+        Ground class30_sub3 = groundArray[l][i][k];
         if (class30_sub3 == null)
             return null;
         else
             return class30_sub3.obj2;
     }
 
-    public GameObject method298(int i, int j, int k) {
-        Tile class30_sub3 = tiles[k][i][j];
+    public StaticObject method298(int i, int j, int k) {
+        Ground class30_sub3 = groundArray[k][i][j];
         if (class30_sub3 == null)
             return null;
-        for (int l = 0; l < class30_sub3.gameObjectIndex; l++) {
-            GameObject class28 = class30_sub3.objects[l];
-            if ((class28.uid >> 29 & 3) == 2 && class28.xLocLow == i
-                    && class28.yLocHigh == j)
+        for (int l = 0; l < class30_sub3.anInt1317; l++) {
+            StaticObject class28 = class30_sub3.obj5Array[l];
+            if ((class28.uid >> 29 & 3) == 2 && class28.anInt523 == i
+                    && class28.anInt525 == j)
                 return class28;
         }
         return null;
     }
 
     public GroundObject method299(int i, int j, int k) {
-        Tile class30_sub3 = tiles[k][j][i];
+        Ground class30_sub3 = groundArray[k][j][i];
         if (class30_sub3 == null || class30_sub3.groundObject == null)
             return null;
         else
@@ -466,7 +466,7 @@ final class WorldController {
 
 	//fetchWallObjectUID
 	public int getWallObjectUid(int i, int j, int k) {
-		Tile tile = tiles[i][j][k];
+		Ground tile = groundArray[i][j][k];
 		if(tile == null || tile.wallObject == null)
 			return 0;
 		else
@@ -475,7 +475,7 @@ final class WorldController {
 	
 	//fetchWallObjectNewUID
 	public int fetchWallObjectNewUID(int i, int j, int k) {
-		Tile tile = tiles[i][j][k];
+		Ground tile = groundArray[i][j][k];
 		if(tile == null || tile.wallObject == null)
 			return 0;
 		else
@@ -484,7 +484,7 @@ final class WorldController {
 	
 	//fetchWallDecorationUID
 	public int method301(int i, int j, int l) {
-		Tile tile = tiles[i][j][l];
+		Ground tile = groundArray[i][j][l];
 		if(tile == null || tile.obj2 == null)
 			return 0;
 		else
@@ -493,7 +493,7 @@ final class WorldController {
 	
 	//fetchWallDecorationNewUID
 	public int fetchWallDecorationNewUID(int i, int j, int l) {
-		Tile tile = tiles[i][j][l];
+		Ground tile = groundArray[i][j][l];
 		if(tile == null || tile.obj2 == null)
 			return 0;
 		else
@@ -502,13 +502,13 @@ final class WorldController {
 
 	//fetchObjectMeshUID
 	public int method302(int z, int x, int y) {
-		Tile tile = tiles[z][x][y];
+		Ground tile = groundArray[z][x][y];
 		if(tile == null)
 			return 0;
-		for(int l = 0; l < tile.gameObjectIndex; l++) {
-			GameObject interactableObject = tile.objects[l];
+		for(int l = 0; l < tile.anInt1317; l++) {
+			StaticObject interactableObject = tile.obj5Array[l];
 			if((interactableObject.uid >> 29 & 3) == 2 && 
-					interactableObject.xLocLow == x && interactableObject.yLocHigh == y) {
+					interactableObject.anInt523 == x && interactableObject.anInt525 == y) {
 				return interactableObject.uid;
 			}
 		}
@@ -517,13 +517,13 @@ final class WorldController {
 	
 	//fetchObjectMeshNewUID
 	public int fetchObjectMeshNewUID(int z, int x, int y) {
-		Tile tile = tiles[z][x][y];
+		Ground tile = groundArray[z][x][y];
 		if(tile == null)
 			return 0;
-		for(int l = 0; l < tile.gameObjectIndex; l++) {
-			GameObject interactableObject = tile.objects[l];
+		for(int l = 0; l < tile.anInt1317; l++) {
+			StaticObject interactableObject = tile.obj5Array[l];
 			if((interactableObject.uid >> 29 & 3) == 2 && 
-					interactableObject.xLocLow == x && interactableObject.yLocHigh == y) {
+					interactableObject.anInt523 == x && interactableObject.anInt525 == y) {
 				return interactableObject.newuid;
 			}
 		}
@@ -531,7 +531,7 @@ final class WorldController {
 	}
 	//fetchGroundDecorationUID
 	public int method303(int i, int j, int k) {
-		Tile tile = tiles[i][j][k];
+		Ground tile = groundArray[i][j][k];
 		if(tile == null || tile.groundObject == null)
 			return 0;
 		else
@@ -540,7 +540,7 @@ final class WorldController {
 	
 	//fetchGroundDecorationNewUID
 	public int fetchGroundDecorationNewUID(int i, int j, int k) {
-		Tile tile = tiles[i][j][k];
+		Ground tile = groundArray[i][j][k];
 		if(tile == null || tile.groundObject == null)
 			return 0;
 		else
@@ -549,7 +549,7 @@ final class WorldController {
 
 	//fetchObjectIDTAGForXYZ
 	public int method304(int z, int x, int y, int objectMesh) {//fecthObjectIDXYZ
-		Tile tile = tiles[z][x][y];
+		Ground tile = groundArray[z][x][y];
 		if(tile == null)
 			return -1;
 		if(tile.wallObject != null && tile.wallObject.uid == objectMesh)//obj1 = wall
@@ -558,22 +558,22 @@ final class WorldController {
 			return tile.obj2.aByte506 & 255;
 		if(tile.groundObject != null && tile.groundObject.uid == objectMesh)//obj3 = groundDec
 			return tile.groundObject.aByte816 & 255;
-			for(int i1 = 0; i1 < tile.gameObjectIndex; i1++)//anInt1317 = count?
-				if(tile.objects[i1].uid == objectMesh)
-					return tile.objects[i1].mask & 255;
+			for(int i1 = 0; i1 < tile.anInt1317; i1++)//anInt1317 = count?
+				if(tile.obj5Array[i1].uid == objectMesh)
+					return tile.obj5Array[i1].mask & 255;
 
 			return -1;
 	}
 
     public void shadeModels(int lightY, int lightX, int lightZ) {
-        int intensity = 64;// was parameter
+        int intensity = 100;// was parameter
         int diffusion = 768;// was parameter
         int lightDistance = (int) Math.sqrt(lightX * lightX + lightY * lightY + lightZ * lightZ);
         int someLightQualityVariable = diffusion * lightDistance >> 8;
         for (int zLoc = 0; zLoc < numberOfZ; zLoc++) {
             for (int xLoc = 0; xLoc < xRegionSize; xLoc++) {
                 for (int yLoc = 0; yLoc < yRegionSize; yLoc++) {
-                    Tile tile = tiles[zLoc][xLoc][yLoc];
+                    Ground tile = groundArray[zLoc][xLoc][yLoc];
                     if (tile != null) {
                         WallObject wallObject = tile.wallObject;
                         if (wallObject != null && wallObject.renderable1 != null
@@ -589,12 +589,12 @@ final class WorldController {
                             ((Model) wallObject.renderable1).setLighting(intensity, someLightQualityVariable,
                                     lightX, lightY, lightZ);
                         }
-                        for (int k2 = 0; k2 < tile.gameObjectIndex; k2++) {
-                            GameObject interactableObject = tile.objects[k2];
+                        for (int k2 = 0; k2 < tile.anInt1317; k2++) {
+                            StaticObject interactableObject = tile.obj5Array[k2];
                             if (interactableObject != null && interactableObject.renderable != null
                                     && interactableObject.renderable.vertexNormals != null) {
-                                get_pos(zLoc, (interactableObject.xLocHigh - interactableObject.xLocLow) + 1,
-                                        (interactableObject.yLocLow - interactableObject.yLocHigh) + 1, xLoc, yLoc,
+                                get_pos(zLoc, (interactableObject.xLocHigh - interactableObject.anInt523) + 1,
+                                        (interactableObject.yLocLow - interactableObject.anInt525) + 1, xLoc, yLoc,
                                         (Model) interactableObject.renderable);
                                 ((Model) interactableObject.renderable).setLighting(intensity,
                                         someLightQualityVariable, lightX, lightY, lightZ);
@@ -618,28 +618,28 @@ final class WorldController {
     public void get_pos(int modelXLoc, int modelZLoc, Model model,
                         int modelYLoc) { //TODO figure it out
         if (modelXLoc < xRegionSize) {
-            Tile tile = tiles[modelZLoc][modelXLoc + 1][modelYLoc];
+            Ground tile = groundArray[modelZLoc][modelXLoc + 1][modelYLoc];
             if (tile != null && tile.groundObject != null
                     && tile.groundObject.renderable.vertexNormals != null) {
                 mergeNormals(model, (Model) tile.groundObject.renderable, 128, 0, 0, true);
             }
         }
         if (modelYLoc < xRegionSize) {
-            Tile tile = tiles[modelZLoc][modelXLoc][modelYLoc + 1];
+            Ground tile = groundArray[modelZLoc][modelXLoc][modelYLoc + 1];
             if (tile != null && tile.groundObject != null
                     && tile.groundObject.renderable.vertexNormals != null) {
                 mergeNormals(model, (Model) tile.groundObject.renderable, 0, 0, 128, true);
             }
         }
         if (modelXLoc < xRegionSize && modelYLoc < yRegionSize) {
-            Tile tile = tiles[modelZLoc][modelXLoc + 1][modelYLoc + 1];
+            Ground tile = groundArray[modelZLoc][modelXLoc + 1][modelYLoc + 1];
             if (tile != null && tile.groundObject != null
                     && tile.groundObject.renderable.vertexNormals != null) {
                 mergeNormals(model, (Model) tile.groundObject.renderable, 128, 0, 128, true);
             }
         }
         if (modelXLoc < xRegionSize && modelYLoc > 0) {
-            Tile tile = tiles[modelZLoc][modelXLoc + 1][modelYLoc - 1];
+            Ground tile = groundArray[modelZLoc][modelXLoc + 1][modelYLoc - 1];
             if (tile != null && tile.groundObject != null
                     && tile.groundObject.renderable.vertexNormals != null) {
                 mergeNormals(model, (Model) tile.groundObject.renderable, 128, 0, -128, true);
@@ -662,7 +662,7 @@ final class WorldController {
                         for (int yLoc = startY; yLoc <= stopY; yLoc++) {
                             if (yLoc >= 0 && yLoc < yRegionSize && (!flag || xLoc >= stopX || yLoc >= stopY
                                     || yLoc < modelYLoc && xLoc != modelXLoc)) {
-                                Tile tile = tiles[zLoc][xLoc][yLoc];
+                                Ground tile = groundArray[zLoc][xLoc][yLoc];
                                 if (tile != null) {
                                     int relativeHeightToModelTile = (heightMap[zLoc][xLoc][yLoc]
                                             + heightMap[zLoc][xLoc + 1][yLoc] + heightMap[zLoc][xLoc][yLoc + 1]
@@ -684,16 +684,16 @@ final class WorldController {
                                                 (xLoc - modelXLoc) * 128 + (1 - modelXSize) * 64, relativeHeightToModelTile,
                                                 (yLoc - modelYLoc) * 128 + (1 - modelYSize) * 64, flag);
                                     }
-                                    for (int i = 0; i < tile.gameObjectIndex; i++) {
-                                        GameObject gameObject = tile.objects[i];
+                                    for (int i = 0; i < tile.anInt1317; i++) {
+                                        StaticObject gameObject = tile.obj5Array[i];
                                         if (gameObject != null && gameObject.renderable != null
                                                 && gameObject.renderable.vertexNormals != null) {
-                                            int tiledObjectXSize = (gameObject.xLocHigh - gameObject.xLocLow) + 1;
-                                            int tiledObjectYSize = (gameObject.yLocLow - gameObject.yLocHigh) + 1;
+                                            int tiledObjectXSize = (gameObject.xLocHigh - gameObject.anInt523) + 1;
+                                            int tiledObjectYSize = (gameObject.yLocLow - gameObject.anInt525) + 1;
                                             mergeNormals(model, (Model) gameObject.renderable,
-                                                    (gameObject.xLocLow - modelXLoc) * 128
+                                                    (gameObject.anInt523 - modelXLoc) * 128
                                                             + (tiledObjectXSize - modelXSize) * 64,
-                                                    relativeHeightToModelTile, (gameObject.yLocHigh - modelYLoc) * 128
+                                                    relativeHeightToModelTile, (gameObject.anInt525 - modelYLoc) * 128
                                                             + (tiledObjectYSize - modelYSize) * 64,
                                                     flag);
                                         }
@@ -777,7 +777,7 @@ final class WorldController {
 
     public void method309(int ai[], int i, int k, int l, int i1) {
         int j = 512;// was parameter
-        Tile class30_sub3 = tiles[k][l][i1];
+        Ground class30_sub3 = groundArray[k][l][i1];
         if (class30_sub3 == null)
             return;
         SceneTilePaint class43 = class30_sub3.aClass43_1311;
@@ -963,10 +963,10 @@ final class WorldController {
         method319();
         anInt446 = 0;
         for (int k1 = zAnInt442; k1 < numberOfZ; k1++) {
-            Tile aclass30_sub3[][] = tiles[k1];
+            Ground aclass30_sub3[][] = groundArray[k1];
             for (int i2 = cameraLowTileX; i2 < cameraHighTileX; i2++) {
                 for (int k2 = cameraLowTileY; k2 < cameraHighTileY; k2++) {
-                    Tile class30_sub3 = aclass30_sub3[i2][k2];
+                    Ground class30_sub3 = aclass30_sub3[i2][k2];
                     if (class30_sub3 != null)
                         if (class30_sub3.anInt1321 > i1
                                 || !aBooleanArrayArray492[(i2 - screenCenterX) + 25][(k2 - yCameraTile) + 25]
@@ -977,7 +977,7 @@ final class WorldController {
                         } else {
                             class30_sub3.aBoolean1322 = true;
                             class30_sub3.aBoolean1323 = true;
-                            class30_sub3.aBoolean1324 = class30_sub3.gameObjectIndex > 0;
+                            class30_sub3.aBoolean1324 = class30_sub3.anInt1317 > 0;
                             anInt446++;
                         }
                 }
@@ -987,7 +987,7 @@ final class WorldController {
         }
 
         for (int l1 = zAnInt442; l1 < numberOfZ; l1++) {
-            Tile aclass30_sub3_1[][] = tiles[l1];
+            Ground aclass30_sub3_1[][] = groundArray[l1];
             for (int l2 = -25; l2 <= 0; l2++) {
                 int i3 = screenCenterX + l2;
                 int k3 = screenCenterX - l2;
@@ -997,13 +997,13 @@ final class WorldController {
                         int i5 = yCameraTile - i4;
                         if (i3 >= cameraLowTileX) {
                             if (k4 >= cameraLowTileY) {
-                                Tile class30_sub3_1 = aclass30_sub3_1[i3][k4];
+                                Ground class30_sub3_1 = aclass30_sub3_1[i3][k4];
                                 if (class30_sub3_1 != null
                                         && class30_sub3_1.aBoolean1322)
                                     method314(class30_sub3_1, true);
                             }
                             if (i5 < cameraHighTileY) {
-                                Tile class30_sub3_2 = aclass30_sub3_1[i3][i5];
+                                Ground class30_sub3_2 = aclass30_sub3_1[i3][i5];
                                 if (class30_sub3_2 != null
                                         && class30_sub3_2.aBoolean1322)
                                     method314(class30_sub3_2, true);
@@ -1011,13 +1011,13 @@ final class WorldController {
                         }
                         if (k3 < cameraHighTileX) {
                             if (k4 >= cameraLowTileY) {
-                                Tile class30_sub3_3 = aclass30_sub3_1[k3][k4];
+                                Ground class30_sub3_3 = aclass30_sub3_1[k3][k4];
                                 if (class30_sub3_3 != null
                                         && class30_sub3_3.aBoolean1322)
                                     method314(class30_sub3_3, true);
                             }
                             if (i5 < cameraHighTileY) {
-                                Tile class30_sub3_4 = aclass30_sub3_1[k3][i5];
+                                Ground class30_sub3_4 = aclass30_sub3_1[k3][i5];
                                 if (class30_sub3_4 != null
                                         && class30_sub3_4.aBoolean1322)
                                     method314(class30_sub3_4, true);
@@ -1035,7 +1035,7 @@ final class WorldController {
         }
 
         for (int j2 = zAnInt442; j2 < numberOfZ; j2++) {
-            Tile aclass30_sub3_2[][] = tiles[j2];
+            Ground aclass30_sub3_2[][] = groundArray[j2];
             for (int j3 = -25; j3 <= 0; j3++) {
                 int l3 = screenCenterX + j3;
                 int j4 = screenCenterX - j3;
@@ -1045,13 +1045,13 @@ final class WorldController {
                         int k5 = yCameraTile - l4;
                         if (l3 >= cameraLowTileX) {
                             if (j5 >= cameraLowTileY) {
-                                Tile class30_sub3_5 = aclass30_sub3_2[l3][j5];
+                                Ground class30_sub3_5 = aclass30_sub3_2[l3][j5];
                                 if (class30_sub3_5 != null
                                         && class30_sub3_5.aBoolean1322)
                                     method314(class30_sub3_5, false);
                             }
                             if (k5 < cameraHighTileY) {
-                                Tile class30_sub3_6 = aclass30_sub3_2[l3][k5];
+                                Ground class30_sub3_6 = aclass30_sub3_2[l3][k5];
                                 if (class30_sub3_6 != null
                                         && class30_sub3_6.aBoolean1322)
                                     method314(class30_sub3_6, false);
@@ -1059,13 +1059,13 @@ final class WorldController {
                         }
                         if (j4 < cameraHighTileX) {
                             if (j5 >= cameraLowTileY) {
-                                Tile class30_sub3_7 = aclass30_sub3_2[j4][j5];
+                                Ground class30_sub3_7 = aclass30_sub3_2[j4][j5];
                                 if (class30_sub3_7 != null
                                         && class30_sub3_7.aBoolean1322)
                                     method314(class30_sub3_7, false);
                             }
                             if (k5 < cameraHighTileY) {
-                                Tile class30_sub3_8 = aclass30_sub3_2[j4][k5];
+                                Ground class30_sub3_8 = aclass30_sub3_2[j4][k5];
                                 if (class30_sub3_8 != null
                                         && class30_sub3_8.aBoolean1322)
                                     method314(class30_sub3_8, false);
@@ -1084,51 +1084,51 @@ final class WorldController {
         clicked = false;
     }
 
-    private void method314(Tile class30_sub3, boolean flag) {
+    private void method314(Ground class30_sub3, boolean flag) {
         tileDeque.insertHead(class30_sub3);
         do {
-            Tile class30_sub3_1;
+            Ground class30_sub3_1;
             do {
-                class30_sub3_1 = (Tile) tileDeque.popHead();
+                class30_sub3_1 = (Ground) tileDeque.popHead();
                 if (class30_sub3_1 == null)
                     return;
             } while (!class30_sub3_1.aBoolean1323);
             int i = class30_sub3_1.anInt1308;
             int j = class30_sub3_1.anInt1309;
-            int k = class30_sub3_1.plane;
+            int k = class30_sub3_1.anInt1307;
             int l = class30_sub3_1.anInt1310;
-            Tile aclass30_sub3[][] = tiles[k];
+            Ground aclass30_sub3[][] = groundArray[k];
             if (class30_sub3_1.aBoolean1322) {
                 if (flag) {
                     if (k > 0) {
-                        Tile class30_sub3_2 = tiles[k - 1][i][j];
+                        Ground class30_sub3_2 = groundArray[k - 1][i][j];
                         if (class30_sub3_2 != null
                                 && class30_sub3_2.aBoolean1323)
                             continue;
                     }
                     if (i <= screenCenterX && i > cameraLowTileX) {
-                        Tile class30_sub3_3 = aclass30_sub3[i - 1][j];
+                        Ground class30_sub3_3 = aclass30_sub3[i - 1][j];
                         if (class30_sub3_3 != null
                                 && class30_sub3_3.aBoolean1323
                                 && (class30_sub3_3.aBoolean1322 || (class30_sub3_1.totalTiledObjectMask & 1) == 0))
                             continue;
                     }
                     if (i >= screenCenterX && i < cameraHighTileX - 1) {
-                        Tile class30_sub3_4 = aclass30_sub3[i + 1][j];
+                        Ground class30_sub3_4 = aclass30_sub3[i + 1][j];
                         if (class30_sub3_4 != null
                                 && class30_sub3_4.aBoolean1323
                                 && (class30_sub3_4.aBoolean1322 || (class30_sub3_1.totalTiledObjectMask & 4) == 0))
                             continue;
                     }
                     if (j <= yCameraTile && j > cameraLowTileY) {
-                        Tile class30_sub3_5 = aclass30_sub3[i][j - 1];
+                        Ground class30_sub3_5 = aclass30_sub3[i][j - 1];
                         if (class30_sub3_5 != null
                                 && class30_sub3_5.aBoolean1323
                                 && (class30_sub3_5.aBoolean1322 || (class30_sub3_1.totalTiledObjectMask & 8) == 0))
                             continue;
                     }
                     if (j >= yCameraTile && j < cameraHighTileY - 1) {
-                        Tile class30_sub3_6 = aclass30_sub3[i][j + 1];
+                        Ground class30_sub3_6 = aclass30_sub3[i][j + 1];
                         if (class30_sub3_6 != null
                                 && class30_sub3_6.aBoolean1323
                                 && (class30_sub3_6.aBoolean1322 || (class30_sub3_1.totalTiledObjectMask & 2) == 0))
@@ -1138,8 +1138,8 @@ final class WorldController {
                     flag = true;
                 }
                 class30_sub3_1.aBoolean1322 = false;
-                if (class30_sub3_1.bridge != null) {
-                    Tile class30_sub3_7 = class30_sub3_1.bridge;
+                if (class30_sub3_1.aClass30_Sub3_1329 != null) {
+                    Ground class30_sub3_7 = class30_sub3_1.aClass30_Sub3_1329;
                     if (class30_sub3_7.aClass43_1311 != null) {
                         if (!method320(0, i, j))
                             method315(class30_sub3_7.aClass43_1311, 0,
@@ -1157,8 +1157,8 @@ final class WorldController {
                                         - cameraX2,
                                 class10.anInt273 - cameraY2, class10.anInt275
                                         - cameraZ2, class10.uid, class10.getNewUID());
-                    for (int i2 = 0; i2 < class30_sub3_7.gameObjectIndex; i2++) {
-                        GameObject class28 = class30_sub3_7.objects[i2];
+                    for (int i2 = 0; i2 < class30_sub3_7.anInt1317; i2++) {
+                        StaticObject class28 = class30_sub3_7.obj5Array[i2];
                         if (class28 != null)
                             class28.renderable.renderAtPoint(
                                     class28.turnValue, camUpDownY, camUpDownX,
@@ -1316,25 +1316,25 @@ final class WorldController {
                 int k4 = class30_sub3_1.totalTiledObjectMask;
                 if (k4 != 0) {
                     if (i < screenCenterX && (k4 & 4) != 0) {
-                        Tile class30_sub3_17 = aclass30_sub3[i + 1][j];
+                        Ground class30_sub3_17 = aclass30_sub3[i + 1][j];
                         if (class30_sub3_17 != null
                                 && class30_sub3_17.aBoolean1323)
                             tileDeque.insertHead(class30_sub3_17);
                     }
                     if (j < yCameraTile && (k4 & 2) != 0) {
-                        Tile class30_sub3_18 = aclass30_sub3[i][j + 1];
+                        Ground class30_sub3_18 = aclass30_sub3[i][j + 1];
                         if (class30_sub3_18 != null
                                 && class30_sub3_18.aBoolean1323)
                             tileDeque.insertHead(class30_sub3_18);
                     }
                     if (i > screenCenterX && (k4 & 1) != 0) {
-                        Tile class30_sub3_19 = aclass30_sub3[i - 1][j];
+                        Ground class30_sub3_19 = aclass30_sub3[i - 1][j];
                         if (class30_sub3_19 != null
                                 && class30_sub3_19.aBoolean1323)
                             tileDeque.insertHead(class30_sub3_19);
                     }
                     if (j > yCameraTile && (k4 & 8) != 0) {
-                        Tile class30_sub3_20 = aclass30_sub3[i][j - 1];
+                        Ground class30_sub3_20 = aclass30_sub3[i][j - 1];
                         if (class30_sub3_20 != null
                                 && class30_sub3_20.aBoolean1323)
                             tileDeque.insertHead(class30_sub3_20);
@@ -1343,8 +1343,8 @@ final class WorldController {
             }
             if (class30_sub3_1.anInt1325 != 0) {
                 boolean flag2 = true;
-                for (int k1 = 0; k1 < class30_sub3_1.gameObjectIndex; k1++) {
-                    if (class30_sub3_1.objects[k1].anInt528 == anInt448
+                for (int k1 = 0; k1 < class30_sub3_1.anInt1317; k1++) {
+                    if (class30_sub3_1.obj5Array[k1].anInt528 == anInt448
                             || (class30_sub3_1.gameObjectsChanged[k1] & class30_sub3_1.anInt1325) != class30_sub3_1.anInt1326)
                         continue;
                     flag2 = false;
@@ -1364,28 +1364,28 @@ final class WorldController {
             }
             if (class30_sub3_1.aBoolean1324)
                 try {
-                    int i1 = class30_sub3_1.gameObjectIndex;
+                    int i1 = class30_sub3_1.anInt1317;
                     class30_sub3_1.aBoolean1324 = false;
                     int l1 = 0;
                     label0:
                     for (int k2 = 0; k2 < i1; k2++) {
-                        GameObject class28_1 = class30_sub3_1.objects[k2];
+                        StaticObject class28_1 = class30_sub3_1.obj5Array[k2];
                         if (class28_1.anInt528 == anInt448)
                             continue;
-                        for (int k3 = class28_1.xLocLow; k3 <= class28_1.xLocHigh; k3++) {
-                            for (int l4 = class28_1.yLocHigh; l4 <= class28_1.yLocLow; l4++) {
-                                Tile class30_sub3_21 = aclass30_sub3[k3][l4];
+                        for (int k3 = class28_1.anInt523; k3 <= class28_1.xLocHigh; k3++) {
+                            for (int l4 = class28_1.anInt525; l4 <= class28_1.yLocLow; l4++) {
+                                Ground class30_sub3_21 = aclass30_sub3[k3][l4];
                                 if (class30_sub3_21.aBoolean1322) {
                                     class30_sub3_1.aBoolean1324 = true;
                                 } else {
                                     if (class30_sub3_21.anInt1325 == 0)
                                         continue;
                                     int l6 = 0;
-                                    if (k3 > class28_1.xLocLow)
+                                    if (k3 > class28_1.anInt523)
                                         l6++;
                                     if (k3 < class28_1.xLocHigh)
                                         l6 += 4;
-                                    if (l4 > class28_1.yLocHigh)
+                                    if (l4 > class28_1.anInt525)
                                         l6 += 8;
                                     if (l4 < class28_1.yLocLow)
                                         l6 += 2;
@@ -1399,11 +1399,11 @@ final class WorldController {
                         }
 
                         interactableObjects[l1++] = class28_1;
-                        int i5 = screenCenterX - class28_1.xLocLow;
+                        int i5 = screenCenterX - class28_1.anInt523;
                         int i6 = class28_1.xLocHigh - screenCenterX;
                         if (i6 > i5)
                             i5 = i6;
-                        int i7 = yCameraTile - class28_1.yLocHigh;
+                        int i7 = yCameraTile - class28_1.anInt525;
                         int j8 = class28_1.yLocLow - yCameraTile;
                         if (j8 > i7)
                             class28_1.anInt527 = i5 + j8;
@@ -1415,7 +1415,7 @@ final class WorldController {
                         int i3 = -50;
                         int l3 = -1;
                         for (int j5 = 0; j5 < l1; j5++) {
-                            GameObject class28_2 = interactableObjects[j5];
+                            StaticObject class28_2 = interactableObjects[j5];
                             if (class28_2.anInt528 != anInt448)
                                 if (class28_2.anInt527 > i3) {
                                     i3 = class28_2.anInt527;
@@ -1434,10 +1434,10 @@ final class WorldController {
 
                         if (l3 == -1)
                             break;
-                        GameObject class28_3 = interactableObjects[l3];
+                        StaticObject class28_3 = interactableObjects[l3];
                         class28_3.anInt528 = anInt448;
-                        if (!method323(l, class28_3.xLocLow,
-                                class28_3.xLocHigh, class28_3.yLocHigh,
+                        if (!method323(l, class28_3.anInt523,
+                                class28_3.xLocHigh, class28_3.anInt525,
                                 class28_3.yLocLow,
                                 class28_3.renderable.modelBaseY))
                             class28_3.renderable.renderAtPoint(
@@ -1446,9 +1446,9 @@ final class WorldController {
                                             - cameraX2, class28_3.tileHeight
                                             - cameraY2, class28_3.yPos
                                             - cameraZ2, class28_3.uid, class28_3.getNewUID());
-                        for (int k7 = class28_3.xLocLow; k7 <= class28_3.xLocHigh; k7++) {
-                            for (int l8 = class28_3.yLocHigh; l8 <= class28_3.yLocLow; l8++) {
-                                Tile class30_sub3_22 = aclass30_sub3[k7][l8];
+                        for (int k7 = class28_3.anInt523; k7 <= class28_3.xLocHigh; k7++) {
+                            for (int l8 = class28_3.anInt525; l8 <= class28_3.yLocLow; l8++) {
+                                Ground class30_sub3_22 = aclass30_sub3[k7][l8];
                                 if (class30_sub3_22.anInt1325 != 0)
                                     tileDeque.insertHead(class30_sub3_22);
                                 else if ((k7 != i || l8 != j)
@@ -1467,22 +1467,22 @@ final class WorldController {
             if (!class30_sub3_1.aBoolean1323 || class30_sub3_1.anInt1325 != 0)
                 continue;
             if (i <= screenCenterX && i > cameraLowTileX) {
-                Tile class30_sub3_8 = aclass30_sub3[i - 1][j];
+                Ground class30_sub3_8 = aclass30_sub3[i - 1][j];
                 if (class30_sub3_8 != null && class30_sub3_8.aBoolean1323)
                     continue;
             }
             if (i >= screenCenterX && i < cameraHighTileX - 1) {
-                Tile class30_sub3_9 = aclass30_sub3[i + 1][j];
+                Ground class30_sub3_9 = aclass30_sub3[i + 1][j];
                 if (class30_sub3_9 != null && class30_sub3_9.aBoolean1323)
                     continue;
             }
             if (j <= yCameraTile && j > cameraLowTileY) {
-                Tile class30_sub3_10 = aclass30_sub3[i][j - 1];
+                Ground class30_sub3_10 = aclass30_sub3[i][j - 1];
                 if (class30_sub3_10 != null && class30_sub3_10.aBoolean1323)
                     continue;
             }
             if (j >= yCameraTile && j < cameraHighTileY - 1) {
-                Tile class30_sub3_11 = aclass30_sub3[i][j + 1];
+                Ground class30_sub3_11 = aclass30_sub3[i][j + 1];
                 if (class30_sub3_11 != null && class30_sub3_11.aBoolean1323)
                     continue;
             }
@@ -1571,27 +1571,27 @@ final class WorldController {
                 }
             }
             if (k < numberOfZ - 1) {
-                Tile class30_sub3_12 = tiles[k + 1][i][j];
+                Ground class30_sub3_12 = groundArray[k + 1][i][j];
                 if (class30_sub3_12 != null && class30_sub3_12.aBoolean1323)
                     tileDeque.insertHead(class30_sub3_12);
             }
             if (i < screenCenterX) {
-                Tile class30_sub3_13 = aclass30_sub3[i + 1][j];
+                Ground class30_sub3_13 = aclass30_sub3[i + 1][j];
                 if (class30_sub3_13 != null && class30_sub3_13.aBoolean1323)
                     tileDeque.insertHead(class30_sub3_13);
             }
             if (j < yCameraTile) {
-                Tile class30_sub3_14 = aclass30_sub3[i][j + 1];
+                Ground class30_sub3_14 = aclass30_sub3[i][j + 1];
                 if (class30_sub3_14 != null && class30_sub3_14.aBoolean1323)
                     tileDeque.insertHead(class30_sub3_14);
             }
             if (i > screenCenterX) {
-                Tile class30_sub3_15 = aclass30_sub3[i - 1][j];
+                Ground class30_sub3_15 = aclass30_sub3[i - 1][j];
                 if (class30_sub3_15 != null && class30_sub3_15.aBoolean1323)
                     tileDeque.insertHead(class30_sub3_15);
             }
             if (j > yCameraTile) {
-                Tile class30_sub3_16 = aclass30_sub3[i][j - 1];
+                Ground class30_sub3_16 = aclass30_sub3[i][j - 1];
                 if (class30_sub3_16 != null && class30_sub3_16.aBoolean1323)
                     tileDeque.insertHead(class30_sub3_16);
             }
@@ -2182,10 +2182,10 @@ final class WorldController {
     private final int xRegionSize;
     private final int yRegionSize;
     private final int[][][] heightMap;
-    private final Tile[][][] tiles;
+    private final Ground[][][] groundArray;
     private int zAnInt442;
     private int interactableObjectCacheCurrPos;
-    private final GameObject[] gameObjectsCache;
+    private final StaticObject[] gameObjectsCache;
     private final int[][][] anIntArrayArrayArray445;
     private static int anInt446;
     private static int currentRenderPlane;
@@ -2203,7 +2203,7 @@ final class WorldController {
     private static int camUpDownX;
     private static int camLeftRightY;
     private static int camLeftRightX;
-    private static GameObject[] interactableObjects = new GameObject[100];
+    private static StaticObject[] interactableObjects = new StaticObject[100];
     private static final int[] anIntArray463 = {53, -53, -53, 53};
     private static final int[] anIntArray464 = {-53, -53, 53, 53};
     private static final int[] anIntArray465 = {-45, 45, 45, -45};

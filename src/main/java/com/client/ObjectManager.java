@@ -189,6 +189,7 @@ final class ObjectManager {
 						if (l < maximumPlane) {
 							maximumPlane = l;
 						}
+
 						int underlayA = underlays[l][x][z] & 0xff;
 						int underlayB = underlays[l][nextX][z] & 0xff;
 						int underlayC = underlays[l][nextX][nextZ] & 0xff;
@@ -426,6 +427,7 @@ final class ObjectManager {
 			}
 		}
 	}
+
 	private int checkedLight(int color, int light) {
 		if (color == -2)
 			return 0xbc614e;
@@ -533,7 +535,7 @@ final class ObjectManager {
 			modY = y;
 			modY1 = 1 + y;
 		}
-		int k1 = tileHeights[z %= 4][modX][modY];
+		int k1 = tileHeights[z][modX][modY];
 		int l1 = tileHeights[z][modX1][modY];
 		int i2 = tileHeights[z][modX1][modY1];
 		int j2 = tileHeights[z][modX][modY1];
@@ -980,13 +982,14 @@ final class ObjectManager {
 			return j;
 	}
 
+
 	public final void method183(CollisionMap aclass11[], WorldController worldController, int i, int j, int k, int l,
 			byte abyte0[], int i1, int j1, int k1) {
 		label0: {
 			Buffer stream = new Buffer(abyte0);
 			int l1 = -1;
 			do {
-				int i2 = stream.readUSmart2();
+				int i2 = stream.getUIncrementalSmart();
 				if (i2 == 0)
 					break label0;
 				l1 += i2;

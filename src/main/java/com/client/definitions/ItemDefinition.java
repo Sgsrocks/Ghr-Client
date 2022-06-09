@@ -26,10 +26,11 @@ import com.client.sign.Signlink;
 public final class ItemDefinition {
 
 	private int opcode94;
+	private String opcode150;
 
 	public static void unpackConfig(final FileArchive streamLoader) {
-		 stream = new Buffer(streamLoader.readFile("obj.dat"));
-		 Buffer stream = new Buffer(streamLoader.readFile("obj.idx"));
+		stream = new Buffer(streamLoader.readFile("obj.dat"));
+		Buffer stream = new Buffer(streamLoader.readFile("obj.idx"));
 		//stream = new Stream(FileOperations.readFile(Signlink.getCacheDirectory() + "/data/obj.dat"));
 		//final Stream stream = new Stream(FileOperations.readFile(Signlink.getCacheDirectory() + "/data/obj.idx"));
 
@@ -45,7 +46,12 @@ public final class ItemDefinition {
 		for (int index = 0; index < 10; index++) {
 			cache[index] = new ItemDefinition();
 		}
-		dumpList();
+		//dumpList();
+		//dumpNpcList();
+		//dumpNotableList();
+		//dumpNotes();
+		//dumpStackable();
+		//dumpStackableList();
 	}
 
 	public static ItemDefinition forID(int itemId) {
@@ -83,222 +89,222 @@ public final class ItemDefinition {
 		}
 		return itemDef;
 	}
-	   private int currentcolors;
-	   private int currenttextures;
-	   //Start item dump
-	   public static void dumpItems2() {
-	   for(int i = 0; i < totalItems; i++) {
-	   ItemDefinition class8 = forID(i);
-	         BufferedWriter bw = null;
+	private int currentcolors;
+	private int currenttextures;
+	//Start item dump
+	public static void dumpItems2() {
+		for(int i = 0; i < totalItems; i++) {
+			ItemDefinition class8 = forID(i);
+			BufferedWriter bw = null;
 
-	         try {
-	   	 class8.currentcolors = 0;
-	            bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/201itemdump.txt", true));
+			try {
+				class8.currentcolors = 0;
+				bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/201itemdump.txt", true));
 
-	   	 bw.newLine();
-	   	 bw.write("	if(i == "+i+") //ID");
-	   	 bw.newLine();
-	   	 bw.write("		{");
-	   	 bw.newLine();
-	   	 bw.write("			class8.itemActions = new String[] {"+Arrays.toString(class8.itemActions)+"};");
-	   	 bw.newLine();
-	   	 bw.write("			class8.groundActions = new String[] {"+Arrays.toString(class8.groundActions)+"};");
-	   	 bw.newLine();
-	   	 bw.write("			class8.name = \""+class8.name+"\"; //Name");
-	   	 bw.newLine();
-	   	 bw.write("			class8.description = \"Its an "+class8.name+"\"; //Description");
-	   	 bw.newLine();
-	                    if(class8.modifiedModelColors != null) {
-	                        for(int i2 = 0; i2 < class8.modifiedModelColors.length; i2++) {
-	                            if(i2 == 0) {
-	                            }
-	                            if(i2 != class8.modifiedModelColors.length - 1) {                 
-	   		             class8.currentcolors += 1;
-	                            } else {   
-	   		             class8.currentcolors += 1;                         									if(class8.currentcolors != 0)
-	   	{
-	                    bw.write("			class8.modifiedModelColors = new int["+class8.currentcolors+"];");
-	                    bw.newLine();
-	                    bw.write("			class8.originalModelColors = new int["+class8.currentcolors+"];");
-	                    bw.newLine();
-	   	}				
-	   		             class8.currentcolors = 0;
-	                            }
-	                        }
-	                    }
-	                    if(class8.modifiedModelColors != null) {
-	                        for(int i2 = 0; i2 < class8.modifiedModelColors.length; i2++) {
-	                            if(i2 == 0) {
-	                            }
-	                            if(i2 != class8.modifiedModelColors.length - 1) {                             	bw.write("			class8.modifiedModelColors["+class8.currentcolors+"] = " +class8.modifiedModelColors[i2]+";");
-	   		             class8.currentcolors += 1;
-	                                bw.newLine();
-	                            } else {                            						bw.write("			class8.modifiedModelColors["+class8.currentcolors+"] = " +class8.modifiedModelColors[i2]+";");
-	   		             class8.currentcolors = 0;
-	                                bw.newLine();
-	                            }
-	                        }
-	                    }
-	                    if(class8.originalModelColors != null) {
-	                        for(int i2 = 0; i2 < class8.originalModelColors.length; i2++) {
-	                            if(i2 == 0) {
-	                            }
-	                            if(i2 != class8.originalModelColors.length - 1) {                             	bw.write("			class8.originalModelColors["+class8.currentcolors+"] = " +class8.originalModelColors[i2]+";");
-	   		             class8.currentcolors += 1;
-	                                bw.newLine();
-	                            } else {                            						bw.write("			class8.originalModelColors["+class8.currentcolors+"] = " +class8.originalModelColors[i2]+";");
-	   		             class8.currentcolors = 0;
-	                                bw.newLine();
-	                            }
-	                        }
-		                    if(class8.modifiedTextureColors != null) {
-		                        for(int i2 = 0; i2 < class8.modifiedTextureColors.length; i2++) {
-		                            if(i2 == 0) {
-		                            }
-		                            if(i2 != class8.modifiedTextureColors.length - 1) {                 
-		   		             class8.currenttextures += 1;
-		                            } else {   
-		   		             class8.currenttextures += 1;                         									if(class8.currenttextures != 0)
-		   	{
-		                    bw.write("			class8.modifiedTextureColors = new int["+class8.currenttextures+"];");
-		                    bw.newLine();
-		                    bw.write("			class8.originalTextureColors = new int["+class8.currenttextures+"];");
-		                    bw.newLine();
-		   	}				
-		   		             class8.currenttextures = 0;
-		                            }
-		                        }
-		                    }
-		                    if(class8.modifiedTextureColors != null) {
-		                        for(int i2 = 0; i2 < class8.modifiedTextureColors.length; i2++) {
-		                            if(i2 == 0) {
-		                            }
-		                            if(i2 != class8.modifiedTextureColors.length - 1) {                             	bw.write("			class8.modifiedTextureColors["+class8.currenttextures+"] = " +class8.modifiedTextureColors[i2]+";");
-		   		             class8.currenttextures += 1;
-		                                bw.newLine();
-		                            } else {                            						bw.write("			class8.modifiedTextureColors["+class8.currenttextures+"] = " +class8.modifiedTextureColors[i2]+";");
-		   		             class8.currenttextures = 0;
-		                                bw.newLine();
-		                            }
-		                        }
-		                    }
-		                    if(class8.originalTextureColors != null) {
-		                        for(int i2 = 0; i2 < class8.originalTextureColors.length; i2++) {
-		                            if(i2 == 0) {
-		                            }
-		                            if(i2 != class8.originalTextureColors.length - 1) {                             	bw.write("			class8.originalTextureColors["+class8.currenttextures+"] = " +class8.originalTextureColors[i2]+";");
-		   		             class8.currenttextures += 1;
-		                                bw.newLine();
-		                            } else {                            						bw.write("			class8.originalTextureColors["+class8.currenttextures+"] = " +class8.originalTextureColors[i2]+";");
-		   		             class8.currenttextures = 0;
-		                                bw.newLine();
-		                            }
-		                        }
-		                    }
-	                        if(class8.stackAmounts != null) {
-	                            for(int i2 = 0; i2 < class8.stackAmounts.length; i2++) {
-	                                if(i2 == 0) {
-	                                }
-	                                if(i2 != class8.stackAmounts.length - 1) {                 
-	       		             class8.currentcolors += 1;
-	                                } else {   
-	       		             class8.currentcolors += 1;                         									if(class8.currentcolors != 0)
-	       	{
-	                        bw.write("			class8.stackAmounts = new int["+class8.currentcolors+"];");
-	                        bw.newLine();
-	                        bw.write("			class8.stackIds = new int["+class8.currentcolors+"];");
-	                        bw.newLine();
-	       	}				
-	       		             class8.currentcolors = 0;
-	                                }
-	                            }
-	                        }
-	                        
-	                        if(class8.stackAmounts != null) {
-	                            for(int i2 = 0; i2 < class8.stackAmounts.length; i2++) {
-	                                if(i2 == 0) {
-	                                }
-	                                if(i2 != class8.stackAmounts.length - 1) {                             	bw.write("			class8.stackAmounts["+class8.currentcolors+"] = " +class8.stackAmounts[i2]+";");
-	       		             class8.currentcolors += 1;
-	                                    bw.newLine();
-	                                } else {                            						bw.write("			class8.stackAmounts["+class8.currentcolors+"] = " +class8.stackAmounts[i2]+";");
-	       		             class8.currentcolors = 0;
-	                                    bw.newLine();
-	                                }
-	                            }
-	                        }
-	                        if(class8.stackIDs != null) {
-	                            for(int i2 = 0; i2 < class8.stackIDs.length; i2++) {
-	                                if(i2 == 0) {
-	                                }
-	                                if(i2 != class8.stackIDs.length - 1) {                             	bw.write("			class8.stackIds["+class8.currentcolors+"] = " +class8.stackIDs[i2]+";");
-	       		             class8.currentcolors += 1;
-	                                    bw.newLine();
-	                                } else {                            						bw.write("			class8.stackIds["+class8.currentcolors+"] = " +class8.stackIDs[i2]+";");
-	       		             class8.currentcolors = 0;
-	                                    bw.newLine();
-	                                }
-	                            }
-	                        }
-	                    }
-	                    bw.write("			class8.modelId = "+class8.modelId+";");
-	                    bw.newLine();
-	                    bw.write("			class8.spriteScale = "+class8.spriteScale+";");
-	                    bw.newLine();
-	                    bw.write("			class8.spritePitch = "+class8.spritePitch+";");
-	                    bw.newLine();
-	                    bw.write("			class8.spriteCameraRoll = "+class8.spriteCameraRoll+";");
-	                    bw.newLine();
-	                    bw.write("			class8.spriteCameraYaw = "+class8.spriteCameraYaw+";");
-	                    bw.newLine();
-	                    bw.write("			class8.spriteTranslateX = "+class8.spriteTranslateX+";");
-	                    bw.newLine();
-	                    bw.write("			class8.spriteTranslateY = "+class8.spriteTranslateY+";");
-	                    bw.newLine();
-	                    bw.write("			class8.primaryMaleModel = "+class8.primaryMaleModel+";");
-	                    bw.newLine();
-	                    bw.write("			class8.primaryFemaleModel = "+class8.primaryFemaleModel+";");
-	                    bw.newLine();
-	                    bw.write("			class8.secondaryMaleModel = "+class8.secondaryMaleModel+";");
-	                    bw.newLine();
-	                    bw.write("			class8.secondaryFemaleModel = "+class8.secondaryFemaleModel+";");
-	                    bw.newLine();
-	                    bw.write("			class8.primaryMaleHeadPiece = "+class8.primaryMaleHeadPiece+";");
-	                    bw.newLine();
-	                    bw.write("			class8.primaryFemaleHeadPiece = "+class8.primaryFemaleHeadPiece+";");
-	                    bw.newLine();
-	                    bw.write("			class8.value = "+class8.value+";");
-	                    bw.newLine();
-	                    bw.write("			class8.unnotedId = " + class8.unnotedId + ";");
-	                    bw.newLine();
-	        			 bw.write("			class8.notedId = " + class8.notedId + ";");
-	                    bw.newLine();
-	                    bw.write("			class8.certID = " + class8.certID + ";");
-	                    bw.newLine();
-	                    bw.write("			class8.certTemplateID = " + class8.certTemplateID + ";");
-	                    bw.newLine();
-	                    bw.write("			class8.stackable = " + class8.stackable + ";");
-	                    bw.newLine();
-	        			bw.write("			class8.placeholderId = " + class8.placeholderId + ";");
-	                    bw.newLine();
-	        			bw.write("			class8.placeholderTemplateId = " + class8.placeholderTemplateId + ";");
-	                    bw.newLine();
-	                    bw.write("		}");
-	                    bw.newLine();
-	                    bw.newLine();
-	   	 bw.flush();
-	         } catch (IOException ioe) {
-	   	 ioe.printStackTrace();
-	         } finally {
-	   	 if (bw != null) try {
-	   	    bw.close();
-	   	 } catch (IOException ioe2) {
-	   	 }
-	         }
-	   }
-	   }
+				bw.newLine();
+				bw.write("	if(i == "+i+") //ID");
+				bw.newLine();
+				bw.write("		{");
+				bw.newLine();
+				bw.write("			class8.itemActions = new String[] {"+Arrays.toString(class8.itemActions)+"};");
+				bw.newLine();
+				bw.write("			class8.groundActions = new String[] {"+Arrays.toString(class8.groundActions)+"};");
+				bw.newLine();
+				bw.write("			class8.name = \""+class8.name+"\"; //Name");
+				bw.newLine();
+				bw.write("			class8.description = \"Its an "+class8.name+"\"; //Description");
+				bw.newLine();
+				if(class8.modifiedModelColors != null) {
+					for(int i2 = 0; i2 < class8.modifiedModelColors.length; i2++) {
+						if(i2 == 0) {
+						}
+						if(i2 != class8.modifiedModelColors.length - 1) {
+							class8.currentcolors += 1;
+						} else {
+							class8.currentcolors += 1;                         									if(class8.currentcolors != 0)
+							{
+								bw.write("			class8.modifiedModelColors = new int["+class8.currentcolors+"];");
+								bw.newLine();
+								bw.write("			class8.originalModelColors = new int["+class8.currentcolors+"];");
+								bw.newLine();
+							}
+							class8.currentcolors = 0;
+						}
+					}
+				}
+				if(class8.modifiedModelColors != null) {
+					for(int i2 = 0; i2 < class8.modifiedModelColors.length; i2++) {
+						if(i2 == 0) {
+						}
+						if(i2 != class8.modifiedModelColors.length - 1) {                             	bw.write("			class8.modifiedModelColors["+class8.currentcolors+"] = " +class8.modifiedModelColors[i2]+";");
+							class8.currentcolors += 1;
+							bw.newLine();
+						} else {                            						bw.write("			class8.modifiedModelColors["+class8.currentcolors+"] = " +class8.modifiedModelColors[i2]+";");
+							class8.currentcolors = 0;
+							bw.newLine();
+						}
+					}
+				}
+				if(class8.originalModelColors != null) {
+					for(int i2 = 0; i2 < class8.originalModelColors.length; i2++) {
+						if(i2 == 0) {
+						}
+						if(i2 != class8.originalModelColors.length - 1) {                             	bw.write("			class8.originalModelColors["+class8.currentcolors+"] = " +class8.originalModelColors[i2]+";");
+							class8.currentcolors += 1;
+							bw.newLine();
+						} else {                            						bw.write("			class8.originalModelColors["+class8.currentcolors+"] = " +class8.originalModelColors[i2]+";");
+							class8.currentcolors = 0;
+							bw.newLine();
+						}
+					}
+					if(class8.modifiedTextureColors != null) {
+						for(int i2 = 0; i2 < class8.modifiedTextureColors.length; i2++) {
+							if(i2 == 0) {
+							}
+							if(i2 != class8.modifiedTextureColors.length - 1) {
+								class8.currenttextures += 1;
+							} else {
+								class8.currenttextures += 1;                         									if(class8.currenttextures != 0)
+								{
+									bw.write("			class8.modifiedTextureColors = new int["+class8.currenttextures+"];");
+									bw.newLine();
+									bw.write("			class8.originalTextureColors = new int["+class8.currenttextures+"];");
+									bw.newLine();
+								}
+								class8.currenttextures = 0;
+							}
+						}
+					}
+					if(class8.modifiedTextureColors != null) {
+						for(int i2 = 0; i2 < class8.modifiedTextureColors.length; i2++) {
+							if(i2 == 0) {
+							}
+							if(i2 != class8.modifiedTextureColors.length - 1) {                             	bw.write("			class8.modifiedTextureColors["+class8.currenttextures+"] = " +class8.modifiedTextureColors[i2]+";");
+								class8.currenttextures += 1;
+								bw.newLine();
+							} else {                            						bw.write("			class8.modifiedTextureColors["+class8.currenttextures+"] = " +class8.modifiedTextureColors[i2]+";");
+								class8.currenttextures = 0;
+								bw.newLine();
+							}
+						}
+					}
+					if(class8.originalTextureColors != null) {
+						for(int i2 = 0; i2 < class8.originalTextureColors.length; i2++) {
+							if(i2 == 0) {
+							}
+							if(i2 != class8.originalTextureColors.length - 1) {                             	bw.write("			class8.originalTextureColors["+class8.currenttextures+"] = " +class8.originalTextureColors[i2]+";");
+								class8.currenttextures += 1;
+								bw.newLine();
+							} else {                            						bw.write("			class8.originalTextureColors["+class8.currenttextures+"] = " +class8.originalTextureColors[i2]+";");
+								class8.currenttextures = 0;
+								bw.newLine();
+							}
+						}
+					}
+					if(class8.stackAmounts != null) {
+						for(int i2 = 0; i2 < class8.stackAmounts.length; i2++) {
+							if(i2 == 0) {
+							}
+							if(i2 != class8.stackAmounts.length - 1) {
+								class8.currentcolors += 1;
+							} else {
+								class8.currentcolors += 1;                         									if(class8.currentcolors != 0)
+								{
+									bw.write("			class8.stackAmounts = new int["+class8.currentcolors+"];");
+									bw.newLine();
+									bw.write("			class8.stackIds = new int["+class8.currentcolors+"];");
+									bw.newLine();
+								}
+								class8.currentcolors = 0;
+							}
+						}
+					}
+
+					if(class8.stackAmounts != null) {
+						for(int i2 = 0; i2 < class8.stackAmounts.length; i2++) {
+							if(i2 == 0) {
+							}
+							if(i2 != class8.stackAmounts.length - 1) {                             	bw.write("			class8.stackAmounts["+class8.currentcolors+"] = " +class8.stackAmounts[i2]+";");
+								class8.currentcolors += 1;
+								bw.newLine();
+							} else {                            						bw.write("			class8.stackAmounts["+class8.currentcolors+"] = " +class8.stackAmounts[i2]+";");
+								class8.currentcolors = 0;
+								bw.newLine();
+							}
+						}
+					}
+					if(class8.stackIDs != null) {
+						for(int i2 = 0; i2 < class8.stackIDs.length; i2++) {
+							if(i2 == 0) {
+							}
+							if(i2 != class8.stackIDs.length - 1) {                             	bw.write("			class8.stackIds["+class8.currentcolors+"] = " +class8.stackIDs[i2]+";");
+								class8.currentcolors += 1;
+								bw.newLine();
+							} else {                            						bw.write("			class8.stackIds["+class8.currentcolors+"] = " +class8.stackIDs[i2]+";");
+								class8.currentcolors = 0;
+								bw.newLine();
+							}
+						}
+					}
+				}
+				bw.write("			class8.modelId = "+class8.modelId+";");
+				bw.newLine();
+				bw.write("			class8.spriteScale = "+class8.spriteScale+";");
+				bw.newLine();
+				bw.write("			class8.spritePitch = "+class8.spritePitch+";");
+				bw.newLine();
+				bw.write("			class8.spriteCameraRoll = "+class8.spriteCameraRoll+";");
+				bw.newLine();
+				bw.write("			class8.spriteCameraYaw = "+class8.spriteCameraYaw+";");
+				bw.newLine();
+				bw.write("			class8.spriteTranslateX = "+class8.spriteTranslateX+";");
+				bw.newLine();
+				bw.write("			class8.spriteTranslateY = "+class8.spriteTranslateY+";");
+				bw.newLine();
+				bw.write("			class8.primaryMaleModel = "+class8.primaryMaleModel+";");
+				bw.newLine();
+				bw.write("			class8.primaryFemaleModel = "+class8.primaryFemaleModel+";");
+				bw.newLine();
+				bw.write("			class8.secondaryMaleModel = "+class8.secondaryMaleModel+";");
+				bw.newLine();
+				bw.write("			class8.secondaryFemaleModel = "+class8.secondaryFemaleModel+";");
+				bw.newLine();
+				bw.write("			class8.primaryMaleHeadPiece = "+class8.primaryMaleHeadPiece+";");
+				bw.newLine();
+				bw.write("			class8.primaryFemaleHeadPiece = "+class8.primaryFemaleHeadPiece+";");
+				bw.newLine();
+				bw.write("			class8.value = "+class8.value+";");
+				bw.newLine();
+				bw.write("			class8.unnotedId = " + class8.unnotedId + ";");
+				bw.newLine();
+				bw.write("			class8.notedId = " + class8.notedId + ";");
+				bw.newLine();
+				bw.write("			class8.certID = " + class8.certID + ";");
+				bw.newLine();
+				bw.write("			class8.certTemplateID = " + class8.certTemplateID + ";");
+				bw.newLine();
+				bw.write("			class8.stackable = " + class8.stackable + ";");
+				bw.newLine();
+				bw.write("			class8.placeholderId = " + class8.placeholderId + ";");
+				bw.newLine();
+				bw.write("			class8.placeholderTemplateId = " + class8.placeholderTemplateId + ";");
+				bw.newLine();
+				bw.write("		}");
+				bw.newLine();
+				bw.newLine();
+				bw.flush();
+			} catch (IOException ioe) {
+				ioe.printStackTrace();
+			} finally {
+				if (bw != null) try {
+					bw.close();
+				} catch (IOException ioe2) {
+				}
+			}
+		}
+	}
 	private static void customItems(int itemId) {
-	   	try {
+		try {
 			ItemDefinition itemDef = forID(itemId);
 			ItemDefinition_Sub1.itemDef(itemId, itemDef);
 			ItemDefinition_Sub1_Sub1.itemDef(itemId, itemDef);
@@ -307,20 +313,26 @@ public final class ItemDefinition {
 			ItemDefinition_Sub3.itemDef(itemId, itemDef);
 			ItemDefinition_Sub4.itemDef(itemId, itemDef);
 		} catch (ArrayIndexOutOfBoundsException e){
-	   		e.printStackTrace();
+			e.printStackTrace();
 		}
 		switch (itemId) {
 		}
 	}
 	public static void dumpNpcList() {
-		for(int i = 0; i < 30000; ++i) {
+		for(int i = 28213; i < 30000; ++i) {
 			ItemDefinition class5 = forID(i);
 			BufferedWriter bw = null;
 
 			try {
-				bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/198gameitem.txt", true));
+				bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/customItemExamine.txt", true));
 				if(class5.name != null) {
-					bw.write("ID" + i + "),//" + class5.name);
+					bw.write("{");
+					bw.newLine();
+					bw.write("\"id\":" + i + ",");
+					bw.newLine();
+					bw.write("\"examine\": \"" + class5.description + "\"");
+					bw.newLine();
+					bw.write("},");
 					bw.newLine();
 					bw.flush();
 					bw.close();
@@ -356,9 +368,9 @@ public final class ItemDefinition {
 			BufferedWriter bw = null;
 			String des = "";
 			if(class8.description != null)
-			des = new String(class8.description.replace(" ", "_"));
+				des = new String(class8.description.replace(" ", "_"));
 			else
-			des = "Its a "+class8.name;
+				des = "Its a "+class8.name;
 			try {
 				BufferedWriter bufferedwriter;
 				bufferedwriter = null;
@@ -380,8 +392,8 @@ public final class ItemDefinition {
 		spriteTranslateY = var1.spriteTranslateY * 1;
 		originalModelColors = var2.originalModelColors;
 		modifiedModelColors = var2.modifiedModelColors;
-		 originalTextureColors = var2.originalTextureColors;
-		 modifiedTextureColors = var2.modifiedTextureColors;
+		originalTextureColors = var2.originalTextureColors;
+		modifiedTextureColors = var2.modifiedTextureColors;
 		name = var2.name;
 		membersObject = var2.membersObject;
 		stackable = var2.stackable;
@@ -435,8 +447,8 @@ public final class ItemDefinition {
 				modelId = stream.readUnsignedShort();
 			else if (opcode == 2)
 				name = stream.readString();
-            else if (opcode == 3)
-                description = stream.readString();
+			else if (opcode == 3)
+				description = stream.readString();
 			else if (opcode == 4)
 				spriteScale = stream.readUnsignedShort();
 			else if (opcode == 5)
@@ -493,8 +505,8 @@ public final class ItemDefinition {
 					originalTextureColors[index] = (short) stream.readUnsignedShort();
 					modifiedTextureColors[index] = (short) stream.readUnsignedShort();
 				}
-            } else if (opcode == 42) {
-                shiftClickIndex = stream.readUnsignedByte();
+			} else if (opcode == 42) {
+				shiftClickIndex = stream.readUnsignedByte();
 			} else if (opcode == 65) {
 				searchable = true;
 			} else if (opcode == 78)
@@ -542,27 +554,29 @@ public final class ItemDefinition {
 				notedId = stream.readUnsignedShort();
 			else if (opcode == 148)
 				placeholderId = stream.readUnsignedShort();
-            else if (opcode == 149) {
-                placeholderTemplateId = stream.readUShort();
-            } else if (opcode == 249) {
-                int length = stream.readUnsignedByte();
+			else if (opcode == 149) {
+				placeholderTemplateId = stream.readUShort();
+			} else if (opcode == 150) {
+					opcode150 = stream.readString();
+			} else if (opcode == 249) {
+				int length = stream.readUnsignedByte();
 
-                params = new HashMap<>(length);
+				params = new HashMap<>(length);
 
-                for (int i = 0; i < length; i++) {
-                    boolean isString = stream.readUnsignedByte() == 1;
-                    int key = stream.read24Int();
-                    Object value;
+				for (int i = 0; i < length; i++) {
+					boolean isString = stream.readUnsignedByte() == 1;
+					int key = stream.read24Int();
+					Object value;
 
-                    if (isString) {
-                        value = stream.readString();
-                    } else {
-                        value = stream.readInt();
-                    }
+					if (isString) {
+						value = stream.readString();
+					} else {
+						value = stream.readInt();
+					}
 
-                    params.put(key, value);
-                }
-            } else {
+					params.put(key, value);
+				}
+			} else {
 				System.err.println(String.format("Error unrecognised {OBJ} opcode: %d%n", opcode));
 			}
 		}
@@ -703,7 +717,7 @@ public final class ItemDefinition {
 		stackable = false;
 		value = 1;
 		membersObject = false;
-		groundActions = null;
+		groundActions = new String[] {null, null, "Take", null, null};
 		itemActions = null;
 		primaryMaleModel = -1;
 		secondaryMaleModel = -1;
@@ -997,8 +1011,8 @@ public final class ItemDefinition {
 
 	public static void dumpList() {
 		try {
-			BufferedWriter fw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/204itemlist.txt"));
-			for (int i = 0; i < totalItems; i++) {
+			BufferedWriter fw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/205itemlist.txt"));
+			for (int i = 0; i < 30000; i++) {
 				ItemDefinition itemDefinition = ItemDefinition.forID(i);
 				fw.write("id: " + itemDefinition.id + " - " + itemDefinition.name + "\n");
 				fw.newLine();
@@ -1035,7 +1049,7 @@ public final class ItemDefinition {
 			e.printStackTrace();
 		}
 	}
-	
+
 
 	public static int[] unNoteable = {};
 
@@ -1044,7 +1058,7 @@ public final class ItemDefinition {
 			FileOutputStream out = new FileOutputStream(new File("notes.dat"));
 			for (int j = 0; j < totalItems; j++) {
 				ItemDefinition item = ItemDefinition.forID(j);
-						out.write(item.certTemplateID != -1 ? 0 : 1);
+				out.write(item.certTemplateID != -1 ? 0 : 1);
 			}
 			out.write(-1);
 			out.close();
@@ -1079,8 +1093,8 @@ public final class ItemDefinition {
 				for (int i = 0; i < totalItems; i++) {
 					ItemDefinition definition = ItemDefinition.forID(i);
 					if (definition != null) {
-							writer.write(definition.id + "\t" + definition.certID);
-							writer.newLine();
+						writer.write(definition.id + "\t" + definition.certID);
+						writer.newLine();
 					} else {
 						writer.write(i + "\t-1");
 						writer.newLine();
@@ -1241,9 +1255,9 @@ public final class ItemDefinition {
 			k3 = (int) ((double) k3 * 1.5D);
 		if (outlineColor > 0)
 			k3 = (int) ((double) k3 * 1.04D);
-        int l3 = Rasterizer3D.anIntArray1470[itemDef.spritePitch] * k3 >> 16;
-        int i4 = Rasterizer3D.COSINE[itemDef.spritePitch] * k3 >> 16;
-        model.method482(itemDef.spriteCameraRoll, itemDef.spriteCameraYaw, itemDef.spritePitch, itemDef.spriteTranslateX, l3 + model.modelBaseY / 2 + itemDef.spriteTranslateY, i4 + itemDef.spriteTranslateY);
+		int l3 = Rasterizer3D.anIntArray1470[itemDef.spritePitch] * k3 >> 16;
+		int i4 = Rasterizer3D.COSINE[itemDef.spritePitch] * k3 >> 16;
+		model.method482(itemDef.spriteCameraRoll, itemDef.spriteCameraYaw, itemDef.spritePitch, itemDef.spriteTranslateX, l3 + model.modelBaseY / 2 + itemDef.spriteTranslateY, i4 + itemDef.spriteTranslateY);
 
 		for (int i5 = 31; i5 >= 0; i5--) {
 			for (int j4 = 31; j4 >= 0; j4--)
@@ -1395,72 +1409,72 @@ public final class ItemDefinition {
 	private ItemDefinition() {
 		id = -1;
 	}
-	   public static void Models(int i, int j, int k) {
-		      ItemDefinition class8 = cache[cacheIndex];
-		      class8.modelId = i;
-		      class8.primaryMaleModel = j;
-		      class8.primaryFemaleModel = k;
-		   }
+	public static void Models(int i, int j, int k) {
+		ItemDefinition class8 = cache[cacheIndex];
+		class8.modelId = i;
+		class8.primaryMaleModel = j;
+		class8.primaryFemaleModel = k;
+	}
 
-		   public static void NewColor(int i, int j, int k) {
-		      ItemDefinition class8 = cache[cacheIndex];
-		      class8.modifiedModelColors[k] = i;
-		      class8.originalModelColors[k] = j;
-		   }
+	public static void NewColor(int i, int j, int k) {
+		ItemDefinition class8 = cache[cacheIndex];
+		class8.modifiedModelColors[k] = i;
+		class8.originalModelColors[k] = j;
+	}
 
-		   public static void NEO(String s, String s1, String s2) {
-		      ItemDefinition class8 = cache[cacheIndex];
-		      class8.itemActions = new String[5];
-		      class8.itemActions[1] = s2;
-		      class8.name = s;
-		      class8.description = s1;
-		   }
+	public static void NEO(String s, String s1, String s2) {
+		ItemDefinition class8 = cache[cacheIndex];
+		class8.itemActions = new String[5];
+		class8.itemActions[1] = s2;
+		class8.name = s;
+		class8.description = s1;
+	}
 
-		   public static void Zoom(int i, int j, int k, int l, int i1, boolean flag) {
-		      ItemDefinition class8 = cache[cacheIndex];
-		      class8.spriteScale = i;
-		      class8.spritePitch = l;
-		      class8.spriteCameraRoll = i1;
-		      class8.spriteTranslateX = k;
-		      class8.spriteTranslateY = j;
-		      class8.stackable = flag;
-		   }
+	public static void Zoom(int i, int j, int k, int l, int i1, boolean flag) {
+		ItemDefinition class8 = cache[cacheIndex];
+		class8.spriteScale = i;
+		class8.spritePitch = l;
+		class8.spriteCameraRoll = i1;
+		class8.spriteTranslateX = k;
+		class8.spriteTranslateY = j;
+		class8.stackable = flag;
+	}
 
-		   public static void Jukkycolors(int i, int j, int k) {
-		      ItemDefinition class8 = cache[cacheIndex];
-		      class8.modifiedModelColors[k] = i;
-		      class8.originalModelColors[k] = j;
-		   }
+	public static void Jukkycolors(int i, int j, int k) {
+		ItemDefinition class8 = cache[cacheIndex];
+		class8.modifiedModelColors[k] = i;
+		class8.originalModelColors[k] = j;
+	}
 
-		   public static void Jukkyzoom(int i, int j, int k, int l, int i1, int j1, int k1, int l1, boolean flag) {
-		      ItemDefinition class8 = cache[cacheIndex];
-		      class8.spriteScale = i;
-		      class8.spritePitch = j;
-		      class8.spriteCameraRoll = k;
-		      class8.spriteCameraYaw = l;
-		      class8.spriteTranslateX = i1;
-		      class8.spriteTranslateY = j1;
-		      class8.stackable = flag;
-		      class8.primaryMaleHeadPiece = k1;
-		      class8.primaryFemaleHeadPiece = l1;
-		   }
+	public static void Jukkyzoom(int i, int j, int k, int l, int i1, int j1, int k1, int l1, boolean flag) {
+		ItemDefinition class8 = cache[cacheIndex];
+		class8.spriteScale = i;
+		class8.spritePitch = j;
+		class8.spriteCameraRoll = k;
+		class8.spriteCameraYaw = l;
+		class8.spriteTranslateX = i1;
+		class8.spriteTranslateY = j1;
+		class8.stackable = flag;
+		class8.primaryMaleHeadPiece = k1;
+		class8.primaryFemaleHeadPiece = l1;
+	}
 
-		   public static void Jukkyname(String s, String s1) {
-		      ItemDefinition class8 = cache[cacheIndex];
-		      class8.itemActions = new String[5];
-		      class8.itemActions[1] = "Wear";
-		      class8.name = s;
-		      class8.description = s1;
-		   }
+	public static void Jukkyname(String s, String s1) {
+		ItemDefinition class8 = cache[cacheIndex];
+		class8.itemActions = new String[5];
+		class8.itemActions[1] = "Wear";
+		class8.name = s;
+		class8.description = s1;
+	}
 
-		   public static void JukkyModels(int male, int malearms, int female, int femalearms, int dropmdl) {
-		      ItemDefinition class8 = cache[cacheIndex];
-		      class8.primaryMaleModel = male;
-		      class8.secondaryMaleModel = malearms;
-		      class8.primaryFemaleModel = female;
-		      class8.secondaryFemaleModel = femalearms;
-		      class8.modelId = dropmdl;
-		   }
+	public static void JukkyModels(int male, int malearms, int female, int femalearms, int dropmdl) {
+		ItemDefinition class8 = cache[cacheIndex];
+		class8.primaryMaleModel = male;
+		class8.secondaryMaleModel = malearms;
+		class8.primaryFemaleModel = female;
+		class8.secondaryFemaleModel = femalearms;
+		class8.modelId = dropmdl;
+	}
 
 	private byte femaleTranslation;
 	public int value;
@@ -1510,7 +1524,7 @@ public final class ItemDefinition {
 	public int spriteCameraRoll;
 	public int primaryFemaleModel;
 	public int[] stackAmounts;
-    private int shiftClickIndex = -2;
+	private int shiftClickIndex = -2;
 	public int team;
 	public static int totalItems;
 	public int spriteCameraYaw;

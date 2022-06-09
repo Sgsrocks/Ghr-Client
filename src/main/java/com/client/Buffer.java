@@ -6,9 +6,10 @@ import com.client.sign.Signlink;
 
 public final class Buffer extends NodeSub {
 
-    private static final BigInteger RSA_MODULUS = new BigInteger("145070429513857928356880786941123816181630520860080339322435570820430043499463177812253480148237908616258207726950984696213172953111732583773303228522886811373466945121724744339027069147807590618813484504901124652903479014617029322094921583291344697479472782446080174377656364716283579697273806153353959480613");
+    private static final BigInteger RSA_MODULUS = new BigInteger("134751015111419595993778377460439070230983114535128917474432135545041083420980508255851874734134133394956350693628851426161616300374216589705179844485003691977762402361886901340023941480000866691960770514278772603850726962156915707566310275471984497966207454414023944266617246931823137351380051727499706089567");
 
     private static final BigInteger RSA_EXPONENT = new BigInteger("65537");
+
 
     public static Buffer create() {
         synchronized (nodeList) {
@@ -510,7 +511,17 @@ public final class Buffer extends NodeSub {
         var1 += var2;
         return var1;
     }
+    public int readUnsigneduShort2() {
+        int var1 = 0;
 
+        int var2;
+        for (var2 = this.readUnsignedShort(); var2 == 32767; var2 = this.readUnsignedShort()) {
+            var1 += 32767;
+        }
+
+        var1 += var2;
+        return var1;
+    }
     public int readUSmart() {
         int peek = payload[currentPosition] & 0xFF;
         return peek < 128 ? this.readUnsignedByte() : this.readUShort() - 0x8000;

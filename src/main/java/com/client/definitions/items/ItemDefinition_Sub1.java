@@ -11,7 +11,7 @@ public class ItemDefinition_Sub1
 
     public static ItemDefinition itemDef(int i, ItemDefinition itemDef)
     {
-        if(i == 16545)
+        if(i == 29287)
         {
             itemDef.itemActions = (new String[] {
                 "Open", null, null, null, "Destroy"
@@ -36,7 +36,7 @@ public class ItemDefinition_Sub1
             itemDef.primaryMaleHeadPiece = -1;
             itemDef.primaryFemaleHeadPiece = -1;
         }
-        if(i == 16546)
+        if(i == 29288)
         {
             itemDef.itemActions = (new String[] {
                 "Open", null, null, null, "Destroy"
@@ -61,7 +61,7 @@ public class ItemDefinition_Sub1
             itemDef.primaryMaleHeadPiece = -1;
             itemDef.primaryFemaleHeadPiece = -1;
         }
-        if(i == 16542)
+        if(i == 29289)
         {
             itemDef.itemActions = (new String[] {
             		"Open", null, null, null, "Destroy"
@@ -86,7 +86,7 @@ public class ItemDefinition_Sub1
             itemDef.primaryMaleHeadPiece = -1;
             itemDef.primaryFemaleHeadPiece = -1;
         }
-        if(i == 16543)
+        if(i == 29290)
         {
             itemDef.itemActions = (new String[] {
             		"Open", null, null, null, "Destroy"
@@ -111,7 +111,7 @@ public class ItemDefinition_Sub1
             itemDef.primaryMaleHeadPiece = -1;
             itemDef.primaryFemaleHeadPiece = -1;
         }
-        if(i == 16544)
+        if(i == 29291)
         {
             itemDef.itemActions = (new String[] {
             		"Open", null, null, null, "Destroy"
@@ -136,7 +136,7 @@ public class ItemDefinition_Sub1
             itemDef.primaryMaleHeadPiece = -1;
             itemDef.primaryFemaleHeadPiece = -1;
         }
-        if(i == 16547)
+        if(i == 29292)
         {
             itemDef.itemActions = (new String[] {
             		"Open", null, null, null, "Destroy"
@@ -161,7 +161,7 @@ public class ItemDefinition_Sub1
             itemDef.primaryMaleHeadPiece = -1;
             itemDef.primaryFemaleHeadPiece = -1;
         }
-        if(i == 16548)
+        if(i == 29293)
         {
             itemDef.itemActions = (new String[] {
             		"Open", null, null, null, "Destroy"
@@ -186,7 +186,7 @@ public class ItemDefinition_Sub1
             itemDef.primaryMaleHeadPiece = -1;
             itemDef.primaryFemaleHeadPiece = -1;
         }
-        if(i == 15340)
+/*        if(i == 15340)
         {
             itemDef.itemActions = (new String[] {
                     null, "Wield", null, "Check", null
@@ -432,7 +432,7 @@ public class ItemDefinition_Sub1
 		itemDef.notedId = -1;
             itemDef.name = "Lucky elysian spirit shield";
             itemDef.description = "An ethereal shield with a divine sigil attached to it.";
-        }
+        }*/
         if(i == 29431)
         {
             itemDef.itemActions = new String[5];
@@ -458,7 +458,7 @@ public class ItemDefinition_Sub1
             itemDef.name = "Golden katana";
             itemDef.description = "A fine blade from the Eastern Lands.";
         }
-        if(i == 17432)
+        if(i == 29294)
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wield";

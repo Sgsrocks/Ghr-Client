@@ -217,12 +217,12 @@ public class SettingsWidget extends Interfaces {
 				slider.setValue(600);
 				break;
 			case MUSIC_SLIDER:
-				Client.midiVolume = 256;
+				Client.getUserSettings().setmidiVolume(256);
 				Slider slider1 = RSInterface.interfaceCache[MUSIC_SLIDER].slider;
 				slider1.setValue(256);
 				break;
 			case 42552:
-				Keybinding.updateInterface();
+				//Keybinding.updateInterface();
 				break;
 		}
 	}
@@ -247,7 +247,7 @@ public class SettingsWidget extends Interfaces {
 
 		RSInterface.interfaceCache[ZOOM_SLIDER].slider.setValue(Client.cameraZoom);
 		//RSInterface.interfaceCache[BRIGHTNESS_SLIDER].slider.setValue(Client.brightnessState);
-		RSInterface.interfaceCache[MUSIC_SLIDER].slider.setValue(Client.midiVolume);
+		RSInterface.interfaceCache[MUSIC_SLIDER].slider.setValue(Client.getUserSettings().getmidiVolume());
 		RSInterface.interfaceCache[SOUND_SLIDER].slider.setValue(Client.cameraZoom);
 	}
 

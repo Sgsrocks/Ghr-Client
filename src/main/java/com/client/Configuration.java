@@ -33,12 +33,12 @@ public class Configuration {
     public static int fogColor = 0xDCDBDF;
 	public static long fogDelay = 500;
 	public static final int CLIENT_VERSION = 4;
-	public static Boolean LIVE_SERVER = false;
+	public static Boolean LIVE_SERVER = true;
 	public static final int PORT = 5555;
 
 	public static final String CLIENT_TITLE =  Configuration.LIVE_SERVER ? "GodzHell" : "GodzHell - LocalHost";
 	public static Boolean DUMP_DATA = false;
-	public static int dumpID = 200;
+	public static int dumpID = 204;
 	public static Boolean DUMP_OTHER = false;
 
 	/**
@@ -46,17 +46,17 @@ public class Configuration {
 	 * Sounds/Music Index 4 = Maps You can only do up to 300 files at a time
 	 */
 
-	public static final String CACHE_NAME = ".GodzHell-Cache";
+	public static final String CACHE_NAME = ".GodzHell";
 
 	public static boolean 
 			repackIndexOne = false,
 			repackIndexTwo = false,
 			repackIndexThree = false,
-			repackIndexFour = true,
+			repackIndexFour = false,
 			repackIndexFive = false,
 			repackIndexSix = false;
 
-	public static final String CACHE_LINK = "https://www.dropbox.com/s/z80j5p2eksojlfd/cache.zip?dl=1"; // Link for every client below client
+	public static final String CACHE_LINK = "http://godzhell.org/cache/cache.zip"; // Link for every client below client
 
 	public static final boolean DUMP_OBJECTS = false;
 	

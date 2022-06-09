@@ -19,6 +19,7 @@ import com.client.FileArchive;
 public final class ObjectDefinition {
 
 	private int opcode61;
+	private String opcode150;
 
 
 	public static ObjectDefinition forID(int i) {
@@ -50,7 +51,11 @@ public final class ObjectDefinition {
 			objectDef.actions = new String[] { "Choose", null, null, null, null };
 		}
 		switch (i) {
-
+			case 10060:
+			case 10061:
+			case 30390:
+				objectDef.name = "Trading Post booth";
+				break;
 
 
 		}
@@ -516,6 +521,8 @@ public final class ObjectDefinition {
 				AreaType = stream.readUnsignedShort();//AreaType
 			} else if(type == 89) {
 				field3621 = false;
+			} else if (type == 94) {
+				opcode150 = stream.readString();
 			} else if(type == 249) {
 				int var1 = stream.readUnsignedByte();
 				for(int var2 = 0;var2<var1;var2++) {

@@ -25,6 +25,7 @@ import com.client.sign.Signlink;
 public final class NpcDefinition {
 
 
+	private String opcode112;
 
 	public static NpcDefinition forID(int i) {
 		for (int j = 0; j < 20; j++)
@@ -79,6 +80,7 @@ public final class NpcDefinition {
 		}*/
 		   //dumpNpcConfig();
 		//dumpNpcList();
+		//dumpList();
 	}
 
 	public static void dumpNpcConfig() {
@@ -206,7 +208,8 @@ bw.close();
 			} else if (opcode == 107)
 				aBoolean84 = false;
 			else if(opcode == 111 || opcode == 107 || opcode == 109) {
-				
+			} else if (opcode == 112) {
+				opcode112 = stream.readString();
 			} else {
 				System.out.println("Missing NPC opcode " + opcode + "last: " + last);
 				continue;
@@ -352,7 +355,7 @@ bw.close();
 
 	public static void dumpList() {
 		try {
-			File file = new File(System.getProperty("user.home") + "/Desktop/npcList 178" + Configuration.dumpID + ".txt");
+			File file = new File(System.getProperty("user.home") + "/Desktop/npcList" + Configuration.dumpID + ".txt");
 
 			if (!file.exists()) {
 				file.createNewFile();
@@ -362,8 +365,7 @@ bw.close();
 				for (int i = 0; i < totalAmount; i++) {
 					NpcDefinition definition = forID(i);
 					if (definition != null) {
-						writer.write("npc = " + i + "\t" + definition.name + "\t" + definition.combatLevel + "\t"
-								+ definition.standAnim + "\t" + definition.walkAnim + "\t");
+						writer.write("npc = " + i + "\t" + definition.name + "\t" + definition.combatLevel + "\t0");
 						writer.newLine();
 					}
 				}
