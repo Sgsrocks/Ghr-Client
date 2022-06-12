@@ -73,6 +73,8 @@ public class Client extends RSApplet {
 
     };
     private static final int[] anIntArray1019;
+    public FileArchive mediaStreamLoader;
+
     private static final String validUserPassChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!\"\243$%^&*()-_=+[{]};:'@#~,<.>/?\\| ";
     public static boolean oldGameframe = false;
     public static Sprite[] fadingScreenImages = new Sprite[8];
@@ -12104,6 +12106,7 @@ public class Client extends RSApplet {
             FileArchive streamLoader = streamLoaderForName(2, "config", "config", expectedCRCs[2], 30);
             FileArchive streamLoader_1 = streamLoaderForName(3, "interface", "interface", expectedCRCs[3], 35);
             FileArchive streamLoader_2 = streamLoaderForName(4, "2d graphics", "media", expectedCRCs[4], 40);
+            this.mediaStreamLoader = streamLoader_2;
             FileArchive streamLoader_3 = streamLoaderForName(6, "textures", "textures", expectedCRCs[6], 45);
             FileArchive streamLoader_4 = streamLoaderForName(7, "chat system", "wordenc", expectedCRCs[7], 50);
             @SuppressWarnings("unused")

@@ -133,6 +133,16 @@ public final class Buffer extends NodeSub {
         return i;
 
     }
+    public int readShort() {
+        currentPosition += 2;
+        int value = ((payload[currentPosition - 2] & 0xff) << 8)
+                + (payload[currentPosition - 1] & 0xff);
+
+        if (value > 32767) {
+            value -= 0x10000;
+        }
+        return value;
+    }
 
     public int readUSmart2() {
         int baseVal = 0;
