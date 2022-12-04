@@ -18,8 +18,7 @@ public class SpriteLoader3 {
 	/**
 	 * Loads the sprite data and index files from the overlays location. This can be
 	 * edited to use an archive such as config or media to load from the overlays.
-	 * 
-	 * @param archive
+	 *
 	 */
 	public static void loadSprites() {
 		try {

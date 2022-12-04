@@ -35,7 +35,7 @@ public final class ItemDefinition {
 		//final Stream stream = new Stream(FileOperations.readFile(Signlink.getCacheDirectory() + "/data/obj.idx"));
 
 		totalItems = stream.readUnsignedShort();
-		streamIndices = new int[totalItems + 90000];
+		streamIndices = new int[totalItems + 5000];
 		int i = 2;
 		for (int j = 0; j < totalItems; j++) {
 			streamIndices[j] = i;
@@ -46,8 +46,10 @@ public final class ItemDefinition {
 		for (int index = 0; index < 10; index++) {
 			cache[index] = new ItemDefinition();
 		}
+		//dumpItemConfig();
 		//dumpList();
 		//dumpNpcList();
+		//dumpItems2();
 		//dumpNotableList();
 		//dumpNotes();
 		//dumpStackable();
@@ -99,7 +101,7 @@ public final class ItemDefinition {
 
 			try {
 				class8.currentcolors = 0;
-				bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/201itemdump.txt", true));
+				bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/206itemdump.txt", true));
 
 				bw.newLine();
 				bw.write("	if(i == "+i+") //ID");
@@ -312,6 +314,7 @@ public final class ItemDefinition {
 			ItemDefinition_Sub2_Sub1.itemDef(itemId, itemDef);
 			ItemDefinition_Sub3.itemDef(itemId, itemDef);
 			ItemDefinition_Sub4.itemDef(itemId, itemDef);
+			ItemDefinition_Sub5.itemDef(itemId, itemDef);
 		} catch (ArrayIndexOutOfBoundsException e){
 			e.printStackTrace();
 		}
@@ -379,6 +382,22 @@ public final class ItemDefinition {
 				bufferedwriter.newLine();
 				bufferedwriter.flush();
 			} catch(Exception e) {
+			}
+		}
+	}
+	public static void dumpItemConfig() {
+		for(int i = 0; i < totalItems; i++) {
+			ItemDefinition class5 = forID(i);
+			BufferedWriter bw = null;
+			try {
+				bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/item_list.txt", true));
+				if(class5.name!= null) {
+					bw.write(i+" - "+class5.name);
+					bw.newLine();
+					bw.flush();
+					bw.close();
+				}
+			} catch (IOException ioe2) {
 			}
 		}
 	}
@@ -556,26 +575,6 @@ public final class ItemDefinition {
 				placeholderId = stream.readUnsignedShort();
 			else if (opcode == 149) {
 				placeholderTemplateId = stream.readUShort();
-			} else if (opcode == 150) {
-					opcode150 = stream.readString();
-			} else if (opcode == 249) {
-				int length = stream.readUnsignedByte();
-
-				params = new HashMap<>(length);
-
-				for (int i = 0; i < length; i++) {
-					boolean isString = stream.readUnsignedByte() == 1;
-					int key = stream.read24Int();
-					Object value;
-
-					if (isString) {
-						value = stream.readString();
-					} else {
-						value = stream.readInt();
-					}
-
-					params.put(key, value);
-				}
 			} else {
 				System.err.println(String.format("Error unrecognised {OBJ} opcode: %d%n", opcode));
 			}

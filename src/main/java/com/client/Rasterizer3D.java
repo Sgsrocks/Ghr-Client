@@ -1,12 +1,13 @@
 package com.client;
 
 
-import static com.client.Model.EMPTY_MODEL;
-
 public final class Rasterizer3D extends Rasterizer2D {
 
     public static boolean saveDepth;
     public static float[] depthBuffer;
+    public static int fieldOfView = 512;
+    public static double brightness = 0;
+    public static boolean world = true;
     private static int mipMapLevel;
     public static int textureAmount = 103;
     static boolean textureOutOfDrawingBounds;
@@ -130,11 +131,9 @@ public final class Rasterizer3D extends Rasterizer2D {
     public static void initiateRequestBuffers() {
         if (textureRequestPixelBuffer == null) {
             textureRequestBufferPointer = 20;
-            if (lowMem) {
-                textureRequestPixelBuffer = new int[textureRequestBufferPointer][16384];
-            } else {
-                textureRequestPixelBuffer = new int[textureRequestBufferPointer][0x10000];
-            }
+
+            textureRequestPixelBuffer = new int[textureRequestBufferPointer][0x10000];
+
             for (int i = 0; i < textureAmount; i++) {
                 texturesPixelBuffer[i] = null;
             }
@@ -193,132 +192,153 @@ public final class Rasterizer3D extends Rasterizer2D {
         texturesPixelBuffer[textureId] = null;
     }
 
-    private static int[] getTexturePixels(int textureId) {
+    public static int[] getTexturePixels(int textureId) {
         textureLastUsed[textureId] = lastTextureRetrievalCount++;
-        if (texturesPixelBuffer[textureId] != null)
+        if (texturesPixelBuffer[textureId] != null) {
             return texturesPixelBuffer[textureId];
-        int texturePixels[];
+        }
+        int[] texturePixels;
         if (textureRequestBufferPointer > 0) {
             texturePixels = textureRequestPixelBuffer[--textureRequestBufferPointer];
             textureRequestPixelBuffer[textureRequestBufferPointer] = null;
         } else {
             int lastUsed = 0;
             int target = -1;
-            for (int l = 0; l < textureCount; l++)
-                if (texturesPixelBuffer[l] != null
-                        && (textureLastUsed[l] < lastUsed || target == -1)) {
+            for (int l = 0; l < textureCount; l++) {
+                if (texturesPixelBuffer[l] != null && (textureLastUsed[l] < lastUsed || target == -1)) {
                     lastUsed = textureLastUsed[l];
                     target = l;
                 }
+            }
 
             texturePixels = texturesPixelBuffer[target];
             texturesPixelBuffer[target] = null;
         }
         texturesPixelBuffer[textureId] = texturePixels;
         IndexedImage background = textures[textureId];
-        int ai1[] = currentPalette[textureId];
+        int[] texturePalette = currentPalette[textureId];
+
         if (background.width == 64) {
-            for (int j1 = 0; j1 < 128; j1++) {
-                for (int j2 = 0; j2 < 128; j2++)
-                    texturePixels[j2 + (j1 << 7)] = ai1[background.palettePixels[(j2 >> 1)
-                            + ((j1 >> 1) << 6)]];
+            for (int x = 0; x < 128; x++) {
+                for (int y = 0; y < 128; y++) {
+                    texturePixels[y
+                            + (x << 7)] = texturePalette[background.palettePixels[(y >> 1) + ((x >> 1) << 6)]];
+                }
+            }
+        } else {
+            for (int i = 0; i < 16384; i++) {
+                try {
+                    texturePixels[i] = texturePalette[background.palettePixels[i]];
+                } catch (Exception ignored) {
+
+                }
 
             }
 
-        } else {
-            for (int k1 = 0; k1 < 16384; k1++)
-                texturePixels[k1] = ai1[background.palettePixels[k1]];
+            textureIsTransparant[textureId] = false;
+            for (int i = 0; i < 16384; i++) {
+                texturePixels[i] &= 0xf8f8ff;
+                int colour = texturePixels[i];
+                if (colour == 0) {
+                    textureIsTransparant[textureId] = true;
+                }
+                texturePixels[16384 + i] = colour - (colour >>> 3) & 0xf8f8ff;
+                texturePixels[32768 + i] = colour - (colour >>> 2) & 0xf8f8ff;
+                texturePixels[49152 + i] = colour - (colour >>> 2) - (colour >>> 3) & 0xf8f8ff;
+            }
 
-        }
-        textureIsTransparant[textureId] = false;
-        for (int l1 = 0; l1 < 16384; l1++) {
-            texturePixels[l1] &= 0xf8f8ff;
-            int colour = texturePixels[l1];
-            if (colour == 0)
-                textureIsTransparant[textureId] = true;
-            texturePixels[16384 + l1] = colour - (colour >>> 3) & 0xf8f8ff;
-            texturePixels[32768 + l1] = colour - (colour >>> 2) & 0xf8f8ff;
-            texturePixels[49152 + l1] = colour - (colour >>> 2) - (colour >>> 3) & 0xf8f8ff;
         }
         return texturePixels;
     }
 
-    public static void setBrightness(double d) {
-        Texture.setBrightness(d * 2);
+    public static void setBrightness(double bright) {
+        brightness = bright;
         int j = 0;
         for (int k = 0; k < 512; k++) {
             double d1 = k / 8 / 64D + 0.0078125D;
             double d2 = (k & 7) / 8D + 0.0625D;
             for (int k1 = 0; k1 < 128; k1++) {
                 double d3 = k1 / 128D;
-                double d4 = d3;
-                double d5 = d3;
-                double d6 = d3;
+                double r = d3;
+                double g = d3;
+                double b = d3;
                 if (d2 != 0.0D) {
                     double d7;
-                    if (d3 < 0.5D)
+                    if (d3 < 0.5D) {
                         d7 = d3 * (1.0D + d2);
-                    else
+                    } else {
                         d7 = (d3 + d2) - d3 * d2;
+                    }
                     double d8 = 2D * d3 - d7;
                     double d9 = d1 + 0.33333333333333331D;
-                    if (d9 > 1.0D)
+                    if (d9 > 1.0D) {
                         d9--;
+                    }
                     double d10 = d1;
                     double d11 = d1 - 0.33333333333333331D;
-                    if (d11 < 0.0D)
+                    if (d11 < 0.0D) {
                         d11++;
-                    if (6D * d9 < 1.0D)
-                        d4 = d8 + (d7 - d8) * 6D * d9;
-                    else if (2D * d9 < 1.0D)
-                        d4 = d7;
-                    else if (3D * d9 < 2D)
-                        d4 = d8 + (d7 - d8) * (0.66666666666666663D - d9) * 6D;
-                    else
-                        d4 = d8;
-                    if (6D * d10 < 1.0D)
-                        d5 = d8 + (d7 - d8) * 6D * d10;
-                    else if (2D * d10 < 1.0D)
-                        d5 = d7;
-                    else if (3D * d10 < 2D)
-                        d5 = d8 + (d7 - d8) * (0.66666666666666663D - d10) * 6D;
-                    else
-                        d5 = d8;
-                    if (6D * d11 < 1.0D)
-                        d6 = d8 + (d7 - d8) * 6D * d11;
-                    else if (2D * d11 < 1.0D)
-                        d6 = d7;
-                    else if (3D * d11 < 2D)
-                        d6 = d8 + (d7 - d8) * (0.66666666666666663D - d11) * 6D;
-                    else
-                        d6 = d8;
+                    }
+                    if (6D * d9 < 1.0D) {
+                        r = d8 + (d7 - d8) * 6D * d9;
+                    } else if (2D * d9 < 1.0D) {
+                        r = d7;
+                    } else if (3D * d9 < 2D) {
+                        r = d8 + (d7 - d8) * (0.66666666666666663D - d9) * 6D;
+                    } else {
+                        r = d8;
+                    }
+                    if (6D * d10 < 1.0D) {
+                        g = d8 + (d7 - d8) * 6D * d10;
+                    } else if (2D * d10 < 1.0D) {
+                        g = d7;
+                    } else if (3D * d10 < 2D) {
+                        g = d8 + (d7 - d8) * (0.66666666666666663D - d10) * 6D;
+                    } else {
+                        g = d8;
+                    }
+                    if (6D * d11 < 1.0D) {
+                        b = d8 + (d7 - d8) * 6D * d11;
+                    } else if (2D * d11 < 1.0D) {
+                        b = d7;
+                    } else if (3D * d11 < 2D) {
+                        b = d8 + (d7 - d8) * (0.66666666666666663D - d11) * 6D;
+                    } else {
+                        b = d8;
+                    }
                 }
-                int byteR = (int) (d4 * 256D);
-                int byteG = (int) (d5 * 256D);
-                int byteB = (int) (d6 * 256D);
+                int byteR = (int) (r * 256D);
+                int byteG = (int) (g * 256D);
+                int byteB = (int) (b * 256D);
                 int rgb = (byteR << 16) + (byteG << 8) + byteB;
-                rgb = adjustBrightness(rgb, d);
-                if (rgb == 0)
+                rgb = adjustBrightness(rgb, bright);
+                if (rgb == 0) {
                     rgb = 1;
+                }
                 hslToRgb[j++] = rgb;
             }
 
         }
 
-        for (int textureId = 0; textureId < textureAmount; textureId++)
+        for (int textureId = 0; textureId < textureAmount; textureId++) {
             if (textures[textureId] != null) {
-                int originalPalette[] = textures[textureId].palette;
+                int[] originalPalette = textures[textureId].palette;
                 currentPalette[textureId] = new int[originalPalette.length];
                 for (int colourId = 0; colourId < originalPalette.length; colourId++) {
-                    currentPalette[textureId][colourId] = adjustBrightness(originalPalette[colourId], d);
-                    if ((currentPalette[textureId][colourId] & 0xf8f8ff) == 0 && colourId != 0)
+                    currentPalette[textureId][colourId] = adjustBrightness(originalPalette[colourId],
+                            bright);
+                    if ((currentPalette[textureId][colourId] & 0xf8f8ff) == 0 && colourId != 0) {
                         currentPalette[textureId][colourId] = 1;
+                    }
                 }
 
             }
+        }
 
-        for (int textureId = 0; textureId < textureAmount + 1; textureId++)
+        for (int textureId = 0; textureId < textureAmount; textureId++) {
             requestTextureUpdate(textureId);
+        }
+
     }
     static int adjustBrightness(int color, double amt) {
         double red = (color >> 16) / 256D;
@@ -1424,8 +1444,1041 @@ public final class Rasterizer3D extends Rasterizer2D {
         }
     }
 
+    public static void drawTexturedTriangle(int var0, int var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14, int var15, int var16, int var17, int var18) {
+        int[] texturePixels = getTexturePixels(var18);
+        int var21;
+        aBoolean1463 = !textureIsTransparant[var18];
+        var21 = var4 - var3;
+        int var26 = var1 - var0;
+        int var27 = var5 - var3;
+        int var31 = var2 - var0;
+        int var28 = var7 - var6;
+        int var23 = var8 - var6;
+        int var29 = 0;
+        if(var1 != var0) {
+            var29 = (var4 - var3 << 16) / (var1 - var0);
+        }
 
-    public static void drawTexturedTriangle(int y_a, int y_b, int y_c, int x_a, int x_b, int x_c,
+        int var30 = 0;
+        if(var2 != var1) {
+            var30 = (var5 - var4 << 16) / (var2 - var1);
+        }
+
+        int var22 = 0;
+        if(var2 != var0) {
+            var22 = (var3 - var5 << 16) / (var0 - var2);
+        }
+
+        int var32 = var21 * var31 - var27 * var26;
+        if(var32 != 0) {
+            int var41 = (var28 * var31 - var23 * var26 << 9) / var32;
+            int var20 = (var23 * var21 - var28 * var27 << 9) / var32;
+            var10 = var9 - var10;
+            var13 = var12 - var13;
+            var16 = var15 - var16;
+            var11 -= var9;
+            var14 -= var12;
+            var17 -= var15;
+            final int FOV = (aBoolean1464 ? Rasterizer3D.fieldOfView : 512);
+            int var24 = var11 * var12 - var14 * var9 << 14;
+            int var38 = (int)(((long)(var14 * var15 - var17 * var12) << 3 << 14) / (long)FOV);
+            int var25 = (int)(((long)(var17 * var9 - var11 * var15) << 14) / (long)FOV);
+            int var36 = var10 * var12 - var13 * var9 << 14;
+            int var39 = (int)(((long)(var13 * var15 - var16 * var12) << 3 << 14) / (long)FOV);
+            int var37 = (int)(((long)(var16 * var9 - var10 * var15) << 14) / (long)FOV);
+            int var33 = var13 * var11 - var10 * var14 << 14;
+            int var40 = (int)(((long)(var16 * var14 - var13 * var17) << 3 << 14) / (long)FOV);
+            int var34 = (int)(((long)(var10 * var17 - var16 * var11) << 14) / (long)FOV);
+
+
+            int var35;
+            if(var0 <= var1 && var0 <= var2) {
+                if(var0 < Rasterizer2D.clip_bottom) {
+                    if(var1 > Rasterizer2D.clip_bottom) {
+                        var1 = Rasterizer2D.clip_bottom;
+                    }
+
+                    if(var2 > Rasterizer2D.clip_bottom) {
+                        var2 = Rasterizer2D.clip_bottom;
+                    }
+
+                    var6 = (var6 << 9) - var41 * var3 + var41;
+                    if(var1 < var2) {
+                        var5 = var3 <<= 16;
+                        if(var0 < 0) {
+                            var5 -= var22 * var0;
+                            var3 -= var29 * var0;
+                            var6 -= var20 * var0;
+                            var0 = 0;
+                        }
+
+                        var4 <<= 16;
+                        if(var1 < 0) {
+                            var4 -= var30 * var1;
+                            var1 = 0;
+                        }
+
+                        var35 = var0 - originViewY;
+                        var24 += var25 * var35;
+                        var36 += var37 * var35;
+                        var33 += var34 * var35;
+                        if((var0 == var1 || var22 >= var29) && (var0 != var1 || var22 <= var30)) {
+                            var2 -= var1;
+                            var1 -= var0;
+                            var0 = scanOffsets[var0];
+
+                            while(true) {
+                                --var1;
+                                if(var1 < 0) {
+                                    while(true) {
+                                        --var2;
+                                        if(var2 < 0) {
+                                            return;
+                                        }
+
+                                        drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var0, var4 >> 16, var5 >> 16, var6, var41, var24, var36, var33, var38, var39, var40);
+                                        var5 += var22;
+                                        var4 += var30;
+                                        var6 += var20;
+                                        var0 += Rasterizer2D.width;
+                                        var24 += var25;
+                                        var36 += var37;
+                                        var33 += var34;
+                                    }
+                                }
+
+                                drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var0, var3 >> 16, var5 >> 16, var6, var41, var24, var36, var33, var38, var39, var40);
+                                var5 += var22;
+                                var3 += var29;
+                                var6 += var20;
+                                var0 += Rasterizer2D.width;
+                                var24 += var25;
+                                var36 += var37;
+                                var33 += var34;
+                            }
+                        } else {
+                            var2 -= var1;
+                            var1 -= var0;
+                            var0 = scanOffsets[var0];
+
+                            while(true) {
+                                --var1;
+                                if(var1 < 0) {
+                                    while(true) {
+                                        --var2;
+                                        if(var2 < 0) {
+                                            return;
+                                        }
+
+                                        drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var0, var5 >> 16, var4 >> 16, var6, var41, var24, var36, var33, var38, var39, var40);
+                                        var5 += var22;
+                                        var4 += var30;
+                                        var6 += var20;
+                                        var0 += Rasterizer2D.width;
+                                        var24 += var25;
+                                        var36 += var37;
+                                        var33 += var34;
+                                    }
+                                }
+
+                                drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var0, var5 >> 16, var3 >> 16, var6, var41, var24, var36, var33, var38, var39, var40);
+                                var5 += var22;
+                                var3 += var29;
+                                var6 += var20;
+                                var0 += Rasterizer2D.width;
+                                var24 += var25;
+                                var36 += var37;
+                                var33 += var34;
+                            }
+                        }
+                    } else {
+                        var4 = var3 <<= 16;
+                        if(var0 < 0) {
+                            var4 -= var22 * var0;
+                            var3 -= var29 * var0;
+                            var6 -= var20 * var0;
+                            var0 = 0;
+                        }
+
+                        var5 <<= 16;
+                        if(var2 < 0) {
+                            var5 -= var30 * var2;
+                            var2 = 0;
+                        }
+
+                        var35 = var0 - originViewY;
+                        var24 += var25 * var35;
+                        var36 += var37 * var35;
+                        var33 += var34 * var35;
+                        if((var0 == var2 || var22 >= var29) && (var0 != var2 || var30 <= var29)) {
+                            var1 -= var2;
+                            var2 -= var0;
+                            var0 = scanOffsets[var0];
+
+                            while(true) {
+                                --var2;
+                                if(var2 < 0) {
+                                    while(true) {
+                                        --var1;
+                                        if(var1 < 0) {
+                                            return;
+                                        }
+
+                                        drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var0, var3 >> 16, var5 >> 16, var6, var41, var24, var36, var33, var38, var39, var40);
+                                        var5 += var30;
+                                        var3 += var29;
+                                        var6 += var20;
+                                        var0 += Rasterizer2D.width;
+                                        var24 += var25;
+                                        var36 += var37;
+                                        var33 += var34;
+                                    }
+                                }
+
+                                drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var0, var3 >> 16, var4 >> 16, var6, var41, var24, var36, var33, var38, var39, var40);
+                                var4 += var22;
+                                var3 += var29;
+                                var6 += var20;
+                                var0 += Rasterizer2D.width;
+                                var24 += var25;
+                                var36 += var37;
+                                var33 += var34;
+                            }
+                        } else {
+                            var1 -= var2;
+                            var2 -= var0;
+                            var0 = scanOffsets[var0];
+
+                            while(true) {
+                                --var2;
+                                if(var2 < 0) {
+                                    while(true) {
+                                        --var1;
+                                        if(var1 < 0) {
+                                            return;
+                                        }
+
+                                        drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var0, var5 >> 16, var3 >> 16, var6, var41, var24, var36, var33, var38, var39, var40);
+                                        var5 += var30;
+                                        var3 += var29;
+                                        var6 += var20;
+                                        var0 += Rasterizer2D.width;
+                                        var24 += var25;
+                                        var36 += var37;
+                                        var33 += var34;
+                                    }
+                                }
+
+                                drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var0, var4 >> 16, var3 >> 16, var6, var41, var24, var36, var33, var38, var39, var40);
+                                var4 += var22;
+                                var3 += var29;
+                                var6 += var20;
+                                var0 += Rasterizer2D.width;
+                                var24 += var25;
+                                var36 += var37;
+                                var33 += var34;
+                            }
+                        }
+                    }
+                }
+            } else if(var1 <= var2) {
+                if(var1 < Rasterizer2D.clip_bottom) {
+                    if(var2 > Rasterizer2D.clip_bottom) {
+                        var2 = Rasterizer2D.clip_bottom;
+                    }
+
+                    if(var0 > Rasterizer2D.clip_bottom) {
+                        var0 = Rasterizer2D.clip_bottom;
+                    }
+
+                    var7 = (var7 << 9) - var41 * var4 + var41;
+                    if(var2 < var0) {
+                        var3 = var4 <<= 16;
+                        if(var1 < 0) {
+                            var3 -= var29 * var1;
+                            var4 -= var30 * var1;
+                            var7 -= var20 * var1;
+                            var1 = 0;
+                        }
+
+                        var5 <<= 16;
+                        if(var2 < 0) {
+                            var5 -= var22 * var2;
+                            var2 = 0;
+                        }
+
+                        var35 = var1 - originViewY;
+                        var24 += var25 * var35;
+                        var36 += var37 * var35;
+                        var33 += var34 * var35;
+                        if((var1 == var2 || var29 >= var30) && (var1 != var2 || var29 <= var22)) {
+                            var0 -= var2;
+                            var2 -= var1;
+                            var1 = scanOffsets[var1];
+
+                            while(true) {
+                                --var2;
+                                if(var2 < 0) {
+                                    while(true) {
+                                        --var0;
+                                        if(var0 < 0) {
+                                            return;
+                                        }
+
+                                        drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var1, var5 >> 16, var3 >> 16, var7, var41, var24, var36, var33, var38, var39, var40);
+                                        var3 += var29;
+                                        var5 += var22;
+                                        var7 += var20;
+                                        var1 += Rasterizer2D.width;
+                                        var24 += var25;
+                                        var36 += var37;
+                                        var33 += var34;
+                                    }
+                                }
+
+                                drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var1, var4 >> 16, var3 >> 16, var7, var41, var24, var36, var33, var38, var39, var40);
+                                var3 += var29;
+                                var4 += var30;
+                                var7 += var20;
+                                var1 += Rasterizer2D.width;
+                                var24 += var25;
+                                var36 += var37;
+                                var33 += var34;
+                            }
+                        } else {
+                            var0 -= var2;
+                            var2 -= var1;
+                            var1 = scanOffsets[var1];
+
+                            while(true) {
+                                --var2;
+                                if(var2 < 0) {
+                                    while(true) {
+                                        --var0;
+                                        if(var0 < 0) {
+                                            return;
+                                        }
+
+                                        drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var1, var3 >> 16, var5 >> 16, var7, var41, var24, var36, var33, var38, var39, var40);
+                                        var3 += var29;
+                                        var5 += var22;
+                                        var7 += var20;
+                                        var1 += Rasterizer2D.width;
+                                        var24 += var25;
+                                        var36 += var37;
+                                        var33 += var34;
+                                    }
+                                }
+
+                                drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var1, var3 >> 16, var4 >> 16, var7, var41, var24, var36, var33, var38, var39, var40);
+                                var3 += var29;
+                                var4 += var30;
+                                var7 += var20;
+                                var1 += Rasterizer2D.width;
+                                var24 += var25;
+                                var36 += var37;
+                                var33 += var34;
+                            }
+                        }
+                    } else {
+                        var5 = var4 <<= 16;
+                        if(var1 < 0) {
+                            var5 -= var29 * var1;
+                            var4 -= var30 * var1;
+                            var7 -= var20 * var1;
+                            var1 = 0;
+                        }
+
+                        var3 <<= 16;
+                        if(var0 < 0) {
+                            var3 -= var22 * var0;
+                            var0 = 0;
+                        }
+
+                        var35 = var1 - originViewY;
+                        var24 += var25 * var35;
+                        var36 += var37 * var35;
+                        var33 += var34 * var35;
+                        if(var29 < var30) {
+                            var2 -= var0;
+                            var0 -= var1;
+                            var1 = scanOffsets[var1];
+
+                            while(true) {
+                                --var0;
+                                if(var0 < 0) {
+                                    while(true) {
+                                        --var2;
+                                        if(var2 < 0) {
+                                            return;
+                                        }
+
+                                        drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var1, var3 >> 16, var4 >> 16, var7, var41, var24, var36, var33, var38, var39, var40);
+                                        var3 += var22;
+                                        var4 += var30;
+                                        var7 += var20;
+                                        var1 += Rasterizer2D.width;
+                                        var24 += var25;
+                                        var36 += var37;
+                                        var33 += var34;
+                                    }
+                                }
+
+                                drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var1, var5 >> 16, var4 >> 16, var7, var41, var24, var36, var33, var38, var39, var40);
+                                var5 += var29;
+                                var4 += var30;
+                                var7 += var20;
+                                var1 += Rasterizer2D.width;
+                                var24 += var25;
+                                var36 += var37;
+                                var33 += var34;
+                            }
+                        } else {
+                            var2 -= var0;
+                            var0 -= var1;
+                            var1 = scanOffsets[var1];
+
+                            while(true) {
+                                --var0;
+                                if(var0 < 0) {
+                                    while(true) {
+                                        --var2;
+                                        if(var2 < 0) {
+                                            return;
+                                        }
+
+                                        drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var1, var4 >> 16, var3 >> 16, var7, var41, var24, var36, var33, var38, var39, var40);
+                                        var3 += var22;
+                                        var4 += var30;
+                                        var7 += var20;
+                                        var1 += Rasterizer2D.width;
+                                        var24 += var25;
+                                        var36 += var37;
+                                        var33 += var34;
+                                    }
+                                }
+
+                                drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var1, var4 >> 16, var5 >> 16, var7, var41, var24, var36, var33, var38, var39, var40);
+                                var5 += var29;
+                                var4 += var30;
+                                var7 += var20;
+                                var1 += Rasterizer2D.width;
+                                var24 += var25;
+                                var36 += var37;
+                                var33 += var34;
+                            }
+                        }
+                    }
+                }
+            } else if(var2 < Rasterizer2D.clip_bottom) {
+                if(var0 > Rasterizer2D.clip_bottom) {
+                    var0 = Rasterizer2D.clip_bottom;
+                }
+
+                if(var1 > Rasterizer2D.clip_bottom) {
+                    var1 = Rasterizer2D.clip_bottom;
+                }
+
+                var8 = (var8 << 9) - var41 * var5 + var41;
+                if(var0 < var1) {
+                    var4 = var5 <<= 16;
+                    if(var2 < 0) {
+                        var4 -= var30 * var2;
+                        var5 -= var22 * var2;
+                        var8 -= var20 * var2;
+                        var2 = 0;
+                    }
+
+                    var3 <<= 16;
+                    if(var0 < 0) {
+                        var3 -= var29 * var0;
+                        var0 = 0;
+                    }
+
+                    var35 = var2 - originViewY;
+                    var24 += var25 * var35;
+                    var36 += var37 * var35;
+                    var33 += var34 * var35;
+                    if(var30 < var22) {
+                        var1 -= var0;
+                        var0 -= var2;
+                        var2 = scanOffsets[var2];
+
+                        while(true) {
+                            --var0;
+                            if(var0 < 0) {
+                                while(true) {
+                                    --var1;
+                                    if(var1 < 0) {
+                                        return;
+                                    }
+
+                                    drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var2, var4 >> 16, var3 >> 16, var8, var41, var24, var36, var33, var38, var39, var40);
+                                    var4 += var30;
+                                    var3 += var29;
+                                    var8 += var20;
+                                    var2 += Rasterizer2D.width;
+                                    var24 += var25;
+                                    var36 += var37;
+                                    var33 += var34;
+                                }
+                            }
+
+                            drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var2, var4 >> 16, var5 >> 16, var8, var41, var24, var36, var33, var38, var39, var40);
+                            var4 += var30;
+                            var5 += var22;
+                            var8 += var20;
+                            var2 += Rasterizer2D.width;
+                            var24 += var25;
+                            var36 += var37;
+                            var33 += var34;
+                        }
+                    } else {
+                        var1 -= var0;
+                        var0 -= var2;
+                        var2 = scanOffsets[var2];
+
+                        while(true) {
+                            --var0;
+                            if(var0 < 0) {
+                                while(true) {
+                                    --var1;
+                                    if(var1 < 0) {
+                                        return;
+                                    }
+
+                                    drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var2, var3 >> 16, var4 >> 16, var8, var41, var24, var36, var33, var38, var39, var40);
+                                    var4 += var30;
+                                    var3 += var29;
+                                    var8 += var20;
+                                    var2 += Rasterizer2D.width;
+                                    var24 += var25;
+                                    var36 += var37;
+                                    var33 += var34;
+                                }
+                            }
+
+                            drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var2, var5 >> 16, var4 >> 16, var8, var41, var24, var36, var33, var38, var39, var40);
+                            var4 += var30;
+                            var5 += var22;
+                            var8 += var20;
+                            var2 += Rasterizer2D.width;
+                            var24 += var25;
+                            var36 += var37;
+                            var33 += var34;
+                        }
+                    }
+                } else {
+                    var3 = var5 <<= 16;
+                    if(var2 < 0) {
+                        var3 -= var30 * var2;
+                        var5 -= var22 * var2;
+                        var8 -= var20 * var2;
+                        var2 = 0;
+                    }
+
+                    var4 <<= 16;
+                    if(var1 < 0) {
+                        var4 -= var29 * var1;
+                        var1 = 0;
+                    }
+
+                    var35 = var2 - originViewY;
+                    var24 += var25 * var35;
+                    var36 += var37 * var35;
+                    var33 += var34 * var35;
+                    if(var30 < var22) {
+                        var0 -= var1;
+                        var1 -= var2;
+                        var2 = scanOffsets[var2];
+
+                        while(true) {
+                            --var1;
+                            if(var1 < 0) {
+                                while(true) {
+                                    --var0;
+                                    if(var0 < 0) {
+                                        return;
+                                    }
+
+                                    drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var2, var4 >> 16, var5 >> 16, var8, var41, var24, var36, var33, var38, var39, var40);
+                                    var4 += var29;
+                                    var5 += var22;
+                                    var8 += var20;
+                                    var2 += Rasterizer2D.width;
+                                    var24 += var25;
+                                    var36 += var37;
+                                    var33 += var34;
+                                }
+                            }
+
+                            drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var2, var3 >> 16, var5 >> 16, var8, var41, var24, var36, var33, var38, var39, var40);
+                            var3 += var30;
+                            var5 += var22;
+                            var8 += var20;
+                            var2 += Rasterizer2D.width;
+                            var24 += var25;
+                            var36 += var37;
+                            var33 += var34;
+                        }
+                    } else {
+                        var0 -= var1;
+                        var1 -= var2;
+                        var2 = scanOffsets[var2];
+
+                        while(true) {
+                            --var1;
+                            if(var1 < 0) {
+                                while(true) {
+                                    --var0;
+                                    if(var0 < 0) {
+                                        return;
+                                    }
+
+                                    drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var2, var5 >> 16, var4 >> 16, var8, var41, var24, var36, var33, var38, var39, var40);
+                                    var4 += var29;
+                                    var5 += var22;
+                                    var8 += var20;
+                                    var2 += Rasterizer2D.width;
+                                    var24 += var25;
+                                    var36 += var37;
+                                    var33 += var34;
+                                }
+                            }
+
+                            drawTexturedLine(Rasterizer2D.pixels, texturePixels, 0, 0, var2, var5 >> 16, var3 >> 16, var8, var41, var24, var36, var33, var38, var39, var40);
+                            var3 += var30;
+                            var5 += var22;
+                            var8 += var20;
+                            var2 += Rasterizer2D.width;
+                            var24 += var25;
+                            var36 += var37;
+                            var33 += var34;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    static void drawTexturedLine(int[] var0, int[] var1, int var2, int var3, int var4, int var5, int var6, int var7, int var8, int var9, int var10, int var11, int var12, int var13, int var14) {
+        if(textureOutOfDrawingBounds) {
+            if(var6 > Rasterizer2D.lastX) {
+                var6 = Rasterizer2D.lastX;
+            }
+
+            if(var5 < 0) {
+                var5 = 0;
+            }
+        }
+
+        if(var5 < var6) {
+            var4 += var5;
+            var7 += var8 * var5;
+            int var17 = var6 - var5;
+            int var15;
+            int var16;
+            int var18;
+            int var19;
+            int var20;
+            int var21;
+            int var22;
+            int var23;
+            if(false) {
+                var15 = var5 - originViewX;
+                var9 += (var12 >> 3) * var15;
+                var10 += (var13 >> 3) * var15;
+                var11 += (var14 >> 3) * var15;
+                var19 = var11 >> 12;
+                if(var19 != 0) {
+                    var20 = var9 / var19;
+                    var18 = var10 / var19;
+                    if(var20 < 0) {
+                        var20 = 0;
+                    } else if(var20 > 4032) {
+                        var20 = 4032;
+                    }
+                } else {
+                    var20 = 0;
+                    var18 = 0;
+                }
+
+                var9 += var12;
+                var10 += var13;
+                var11 += var14;
+                var19 = var11 >> 12;
+                if(var19 != 0) {
+                    var22 = var9 / var19;
+                    var16 = var10 / var19;
+                    if(var22 < 0) {
+                        var22 = 0;
+                    } else if(var22 > 4032) {
+                        var22 = 4032;
+                    }
+                } else {
+                    var22 = 0;
+                    var16 = 0;
+                }
+
+                var2 = (var20 << 20) + var18;
+                var23 = (var22 - var20 >> 3 << 20) + (var16 - var18 >> 3);
+                var17 >>= 3;
+                var8 <<= 3;
+                var21 = var7 >> 8;
+                if(aBoolean1463) {
+                    if(var17 > 0) {
+                        do {
+                            var3 = var1[(var2 & 4032) + (var2 >>> 26)];
+                            var0[var4++] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            var2 += var23;
+                            var3 = var1[(var2 & 4032) + (var2 >>> 26)];
+                            var0[var4++] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            var2 += var23;
+                            var3 = var1[(var2 & 4032) + (var2 >>> 26)];
+                            var0[var4++] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            var2 += var23;
+                            var3 = var1[(var2 & 4032) + (var2 >>> 26)];
+                            var0[var4++] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            var2 += var23;
+                            var3 = var1[(var2 & 4032) + (var2 >>> 26)];
+                            var0[var4++] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            var2 += var23;
+                            var3 = var1[(var2 & 4032) + (var2 >>> 26)];
+                            var0[var4++] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            var2 += var23;
+                            var3 = var1[(var2 & 4032) + (var2 >>> 26)];
+                            var0[var4++] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            var2 += var23;
+                            var3 = var1[(var2 & 4032) + (var2 >>> 26)];
+                            var0[var4++] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            var20 = var22;
+                            var18 = var16;
+                            var9 += var12;
+                            var10 += var13;
+                            var11 += var14;
+                            var19 = var11 >> 12;
+                            if(var19 != 0) {
+                                var22 = var9 / var19;
+                                var16 = var10 / var19;
+                                if(var22 < 0) {
+                                    var22 = 0;
+                                } else if(var22 > 4032) {
+                                    var22 = 4032;
+                                }
+                            } else {
+                                var22 = 0;
+                                var16 = 0;
+                            }
+
+                            var2 = (var20 << 20) + var18;
+                            var23 = (var22 - var20 >> 3 << 20) + (var16 - var18 >> 3);
+                            var7 += var8;
+                            var21 = var7 >> 8;
+                            --var17;
+                        } while(var17 > 0);
+                    }
+
+                    var17 = var6 - var5 & 7;
+                    if(var17 > 0) {
+                        do {
+                            var3 = var1[(var2 & 4032) + (var2 >>> 26)];
+                            var0[var4++] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            var2 += var23;
+                            --var17;
+                        } while(var17 > 0);
+
+                    }
+                } else {
+                    if(var17 > 0) {
+                        do {
+                            if((var3 = var1[(var2 & 4032) + (var2 >>> 26)]) != 0) {
+                                var0[var4] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            }
+
+                            ++var4;
+                            var2 += var23;
+                            if((var3 = var1[(var2 & 4032) + (var2 >>> 26)]) != 0) {
+                                var0[var4] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            }
+
+                            ++var4;
+                            var2 += var23;
+                            if((var3 = var1[(var2 & 4032) + (var2 >>> 26)]) != 0) {
+                                var0[var4] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            }
+
+                            ++var4;
+                            var2 += var23;
+                            if((var3 = var1[(var2 & 4032) + (var2 >>> 26)]) != 0) {
+                                var0[var4] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            }
+
+                            ++var4;
+                            var2 += var23;
+                            if((var3 = var1[(var2 & 4032) + (var2 >>> 26)]) != 0) {
+                                var0[var4] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            }
+
+                            ++var4;
+                            var2 += var23;
+                            if((var3 = var1[(var2 & 4032) + (var2 >>> 26)]) != 0) {
+                                var0[var4] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            }
+
+                            ++var4;
+                            var2 += var23;
+                            if((var3 = var1[(var2 & 4032) + (var2 >>> 26)]) != 0) {
+                                var0[var4] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            }
+
+                            ++var4;
+                            var2 += var23;
+                            if((var3 = var1[(var2 & 4032) + (var2 >>> 26)]) != 0) {
+                                var0[var4] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            }
+
+                            ++var4;
+                            var20 = var22;
+                            var18 = var16;
+                            var9 += var12;
+                            var10 += var13;
+                            var11 += var14;
+                            var19 = var11 >> 12;
+                            if(var19 != 0) {
+                                var22 = var9 / var19;
+                                var16 = var10 / var19;
+                                if(var22 < 0) {
+                                    var22 = 0;
+                                } else if(var22 > 4032) {
+                                    var22 = 4032;
+                                }
+                            } else {
+                                var22 = 0;
+                                var16 = 0;
+                            }
+
+                            var2 = (var20 << 20) + var18;
+                            var23 = (var22 - var20 >> 3 << 20) + (var16 - var18 >> 3);
+                            var7 += var8;
+                            var21 = var7 >> 8;
+                            --var17;
+                        } while(var17 > 0);
+                    }
+
+                    var17 = var6 - var5 & 7;
+                    if(var17 > 0) {
+                        do {
+                            if((var3 = var1[(var2 & 4032) + (var2 >>> 26)]) != 0) {
+                                var0[var4] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            }
+
+                            ++var4;
+                            var2 += var23;
+                            --var17;
+                        } while(var17 > 0);
+
+                    }
+                }
+            } else {
+                var15 = var5 - originViewX;
+                var9 += (var12 >> 3) * var15;
+                var10 += (var13 >> 3) * var15;
+                var11 += (var14 >> 3) * var15;
+                var19 = var11 >> 14;
+                if(var19 != 0) {
+                    var20 = var9 / var19;
+                    var18 = var10 / var19;
+                    if(var20 < 0) {
+                        var20 = 0;
+                    } else if(var20 > 16256) {
+                        var20 = 16256;
+                    }
+                } else {
+                    var20 = 0;
+                    var18 = 0;
+                }
+
+                var9 += var12;
+                var10 += var13;
+                var11 += var14;
+                var19 = var11 >> 14;
+                if(var19 != 0) {
+                    var22 = var9 / var19;
+                    var16 = var10 / var19;
+                    if(var22 < 0) {
+                        var22 = 0;
+                    } else if(var22 > 16256) {
+                        var22 = 16256;
+                    }
+                } else {
+                    var22 = 0;
+                    var16 = 0;
+                }
+
+                var2 = (var20 << 18) + var18;
+                var23 = (var22 - var20 >> 3 << 18) + (var16 - var18 >> 3);
+                var17 >>= 3;
+                var8 <<= 3;
+                var21 = var7 >> 8;
+                if(aBoolean1463) {
+                    if(var17 > 0) {
+                        do {
+                            var3 = var1[(var2 & 16256) + (var2 >>> 25)];
+                            var0[var4++] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            var2 += var23;
+                            var3 = var1[(var2 & 16256) + (var2 >>> 25)];
+                            var0[var4++] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            var2 += var23;
+                            var3 = var1[(var2 & 16256) + (var2 >>> 25)];
+                            var0[var4++] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            var2 += var23;
+                            var3 = var1[(var2 & 16256) + (var2 >>> 25)];
+                            var0[var4++] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            var2 += var23;
+                            var3 = var1[(var2 & 16256) + (var2 >>> 25)];
+                            var0[var4++] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            var2 += var23;
+                            var3 = var1[(var2 & 16256) + (var2 >>> 25)];
+                            var0[var4++] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            var2 += var23;
+                            var3 = var1[(var2 & 16256) + (var2 >>> 25)];
+                            var0[var4++] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            var2 += var23;
+                            var3 = var1[(var2 & 16256) + (var2 >>> 25)];
+                            var0[var4++] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            var20 = var22;
+                            var18 = var16;
+                            var9 += var12;
+                            var10 += var13;
+                            var11 += var14;
+                            var19 = var11 >> 14;
+                            if(var19 != 0) {
+                                var22 = var9 / var19;
+                                var16 = var10 / var19;
+                                if(var22 < 0) {
+                                    var22 = 0;
+                                } else if(var22 > 16256) {
+                                    var22 = 16256;
+                                }
+                            } else {
+                                var22 = 0;
+                                var16 = 0;
+                            }
+
+                            var2 = (var20 << 18) + var18;
+                            var23 = (var22 - var20 >> 3 << 18) + (var16 - var18 >> 3);
+                            var7 += var8;
+                            var21 = var7 >> 8;
+                            --var17;
+                        } while(var17 > 0);
+                    }
+
+                    var17 = var6 - var5 & 7;
+                    if(var17 > 0) {
+                        do {
+                            var3 = var1[(var2 & 16256) + (var2 >>> 25)];
+                            var0[var4++] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            var2 += var23;
+                            --var17;
+                        } while(var17 > 0);
+
+                    }
+                } else {
+                    if(var17 > 0) {
+                        do {
+                            if((var3 = var1[(var2 & 16256) + (var2 >>> 25)]) != 0) {
+                                var0[var4] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            }
+
+                            ++var4;
+                            var2 += var23;
+                            if((var3 = var1[(var2 & 16256) + (var2 >>> 25)]) != 0) {
+                                var0[var4] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            }
+
+                            ++var4;
+                            var2 += var23;
+                            if((var3 = var1[(var2 & 16256) + (var2 >>> 25)]) != 0) {
+                                var0[var4] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            }
+
+                            ++var4;
+                            var2 += var23;
+                            if((var3 = var1[(var2 & 16256) + (var2 >>> 25)]) != 0) {
+                                var0[var4] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            }
+
+                            ++var4;
+                            var2 += var23;
+                            if((var3 = var1[(var2 & 16256) + (var2 >>> 25)]) != 0) {
+                                var0[var4] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            }
+
+                            ++var4;
+                            var2 += var23;
+                            if((var3 = var1[(var2 & 16256) + (var2 >>> 25)]) != 0) {
+                                var0[var4] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            }
+
+                            ++var4;
+                            var2 += var23;
+                            if((var3 = var1[(var2 & 16256) + (var2 >>> 25)]) != 0) {
+                                var0[var4] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            }
+
+                            ++var4;
+                            var2 += var23;
+                            if((var3 = var1[(var2 & 16256) + (var2 >>> 25)]) != 0) {
+                                var0[var4] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            }
+
+                            ++var4;
+                            var20 = var22;
+                            var18 = var16;
+                            var9 += var12;
+                            var10 += var13;
+                            var11 += var14;
+                            var19 = var11 >> 14;
+                            if(var19 != 0) {
+                                var22 = var9 / var19;
+                                var16 = var10 / var19;
+                                if(var22 < 0) {
+                                    var22 = 0;
+                                } else if(var22 > 16256) {
+                                    var22 = 16256;
+                                }
+                            } else {
+                                var22 = 0;
+                                var16 = 0;
+                            }
+
+                            var2 = (var20 << 18) + var18;
+                            var23 = (var22 - var20 >> 3 << 18) + (var16 - var18 >> 3);
+                            var7 += var8;
+                            var21 = var7 >> 8;
+                            --var17;
+                        } while(var17 > 0);
+                    }
+
+                    var17 = var6 - var5 & 7;
+                    if(var17 > 0) {
+                        do {
+                            if((var3 = var1[(var2 & 16256) + (var2 >>> 25)]) != 0) {
+                                var0[var4] = ((var3 & 16711935) * var21 & -16711936) + ((var3 & '\uff00') * var21 & 16711680) >> 8;
+                            }
+
+                            ++var4;
+                            var2 += var23;
+                            --var17;
+                        } while(var17 > 0);
+
+                    }
+                }
+            }
+        }
+    }
+
+    public static void drawTexturedTriangle2(int y_a, int y_b, int y_c, int x_a, int x_b, int x_c,
                                             int k1, int l1, int i2, int Px, int Mx, int Nx, int Pz, int Mz, int Nz, int Py, int My,
                                             int Ny, int k4, float z_a, float z_b, float z_c) {
         if (z_a < 0 || z_b < 0 || z_c < 0) {
@@ -1439,15 +2492,15 @@ public final class Rasterizer3D extends Rasterizer2D {
         Nx -= Px;
         Nz -= Pz;
         Ny -= Py;
-        int Oa = (Nx * Pz - Nz * Px) * WorldController.focalLength << 5;
+        int Oa = (Nx * Pz - Nz * Px) * Rasterizer3D.fieldOfView << 5;
         int Ha = Nz * Py - Ny * Pz << 8;
         int Va = Ny * Px - Nx * Py << 5;
 
-        int Ob = (Mx * Pz - Mz * Px) * WorldController.focalLength << 5;
+        int Ob = (Mx * Pz - Mz * Px) * Rasterizer3D.fieldOfView << 5;
         int Hb = Mz * Py - My * Pz << 8;
         int Vb = My * Px - Mx * Py << 5;
 
-        int Oc = (Mz * Nx - Mx * Nz) * WorldController.focalLength << 5;
+        int Oc = (Mz * Nx - Mx * Nz) * Rasterizer3D.fieldOfView << 5;
         int Hc = My * Nz - Mz * Ny << 8;
         int Vc = Mx * Ny - My * Nx << 5;
         int a_to_b = 0;

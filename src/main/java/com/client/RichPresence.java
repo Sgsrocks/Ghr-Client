@@ -14,9 +14,9 @@ public class RichPresence {
         lib.Discord_Initialize("908569866133459016", handlers, true, "");
         presence = new DiscordRichPresence();
         presence.startTimestamp = System.currentTimeMillis() / 1000L;
-        presence.state = "Playing GodzHell ";
+        presence.state = "Working on GodzHell ";
         presence.largeImageKey = "godzhell";
-        presence.details = "#1 Rsps 2009-2022";
+        presence.details = "Bring back one of the greatest servers there was.";
         updatePresence();
         (new Thread(() -> {
             while(!Thread.currentThread().isInterrupted()) {

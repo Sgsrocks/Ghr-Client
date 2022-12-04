@@ -426,13 +426,13 @@ public class ItemDefinition_Sub4 {
 		if(i == 29316) //ID
 		{
 			class8.itemActions = new String[] {null, null, null, null, null};
-			class8.groundActions = new String[] {null};
+			class8.groundActions = new String[] {null, null, "Take", null, null};
 			class8.name = "Donator money"; //Name
 			class8.description = "Its an Donator money"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
 			class8.modifiedModelColors[0] = 8128;
-			class8.originalModelColors[0] = 19213;
+			class8.originalModelColors[0] = 43980;
 			class8.stackAmounts = new int[10];
 			class8.stackIDs = new int[10];
 			class8.stackAmounts[0] = 2;
@@ -445,15 +445,15 @@ public class ItemDefinition_Sub4 {
 			class8.stackAmounts[7] = 1000;
 			class8.stackAmounts[8] = 10000;
 			class8.stackAmounts[9] = 0;
-			class8.stackIDs[0] = 27317;
-			class8.stackIDs[1] = 27318;
-			class8.stackIDs[2] = 27319;
-			class8.stackIDs[3] = 27320;
-			class8.stackIDs[4] = 27321;
-			class8.stackIDs[5] = 27322;
-			class8.stackIDs[6] = 27323;
-			class8.stackIDs[7] = 27324;
-			class8.stackIDs[8] = 27325;
+			class8.stackIDs[0] = 29317;
+			class8.stackIDs[1] = 29318;
+			class8.stackIDs[2] = 29319;
+			class8.stackIDs[3] = 29320;
+			class8.stackIDs[4] = 29321;
+			class8.stackIDs[5] = 29322;
+			class8.stackIDs[6] = 29323;
+			class8.stackIDs[7] = 29324;
+			class8.stackIDs[8] = 29325;
 			class8.stackIDs[9] = 0;
 			class8.modelId = 2484;
 			class8.spriteScale = 710;
@@ -482,13 +482,13 @@ public class ItemDefinition_Sub4 {
 		if(i == 29317) //ID
 		{
 			class8.itemActions = new String[] {null};
-			class8.groundActions = new String[] {null};
+			class8.groundActions = new String[] {null, null, "Take", null, null};
 			class8.name = "null"; //Name
 			class8.description = "Its an null"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
 			class8.modifiedModelColors[0] = 8128;
-			class8.originalModelColors[0] = 19213;
+			class8.originalModelColors[0] = 43980;
 			class8.modelId = 2485;
 			class8.spriteScale = 710;
 			class8.spritePitch = 184;
@@ -516,13 +516,13 @@ public class ItemDefinition_Sub4 {
 		if(i == 29318) //ID
 		{
 			class8.itemActions = new String[] {null};
-			class8.groundActions = new String[] {null};
+			class8.groundActions = new String[] {null, null, "Take", null, null};
 			class8.name = "null"; //Name
 			class8.description = "Its an null"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
 			class8.modifiedModelColors[0] = 8128;
-			class8.originalModelColors[0] = 19213;
+			class8.originalModelColors[0] = 43980;
 			class8.modelId = 2486;
 			class8.spriteScale = 710;
 			class8.spritePitch = 184;
@@ -550,13 +550,13 @@ public class ItemDefinition_Sub4 {
 		if(i == 29319) //ID
 		{
 			class8.itemActions = new String[] {null};
-			class8.groundActions = new String[] {null};
+			class8.groundActions = new String[] {null, null, "Take", null, null};
 			class8.name = "null"; //Name
 			class8.description = "Its an null"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
 			class8.modifiedModelColors[0] = 8128;
-			class8.originalModelColors[0] = 19213;
+			class8.originalModelColors[0] = 43980;
 			class8.modelId = 2487;
 			class8.spriteScale = 710;
 			class8.spritePitch = 184;
@@ -584,13 +584,13 @@ public class ItemDefinition_Sub4 {
 		if(i == 29320) //ID
 		{
 			class8.itemActions = new String[] {null};
-			class8.groundActions = new String[] {null};
+			class8.groundActions = new String[] {null, null, "Take", null, null};
 			class8.name = "null"; //Name
 			class8.description = "Its an null"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
 			class8.modifiedModelColors[0] = 8128;
-			class8.originalModelColors[0] = 19213;
+			class8.originalModelColors[0] = 43980;
 			class8.modelId = 2488;
 			class8.spriteScale = 710;
 			class8.spritePitch = 184;
@@ -618,13 +618,13 @@ public class ItemDefinition_Sub4 {
 		if(i == 29321) //ID
 		{
 			class8.itemActions = new String[] {null};
-			class8.groundActions = new String[] {null};
+			class8.groundActions = new String[] {null, null, "Take", null, null};
 			class8.name = "null"; //Name
 			class8.description = "Its an null"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
 			class8.modifiedModelColors[0] = 8128;
-			class8.originalModelColors[0] = 19213;
+			class8.originalModelColors[0] = 43980;
 			class8.modelId = 2667;
 			class8.spriteScale = 710;
 			class8.spritePitch = 184;
@@ -652,13 +652,13 @@ public class ItemDefinition_Sub4 {
 		if(i == 29322) //ID
 		{
 			class8.itemActions = new String[] {null};
-			class8.groundActions = new String[] {null};
+			class8.groundActions = new String[] {null, null, "Take", null, null};
 			class8.name = "null"; //Name
 			class8.description = "Its an null"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
 			class8.modifiedModelColors[0] = 8128;
-			class8.originalModelColors[0] = 19213;
+			class8.originalModelColors[0] = 43980;
 			class8.modelId = 2825;
 			class8.spriteScale = 710;
 			class8.spritePitch = 184;
@@ -686,13 +686,13 @@ public class ItemDefinition_Sub4 {
 		if(i == 29323) //ID
 		{
 			class8.itemActions = new String[] {null};
-			class8.groundActions = new String[] {null};
+			class8.groundActions = new String[] {null, null, "Take", null, null};
 			class8.name = "null"; //Name
 			class8.description = "Its an null"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
 			class8.modifiedModelColors[0] = 8128;
-			class8.originalModelColors[0] = 19213;
+			class8.originalModelColors[0] = 43980;
 			class8.modelId = 2423;
 			class8.spriteScale = 650;
 			class8.spritePitch = 160;
@@ -720,13 +720,13 @@ public class ItemDefinition_Sub4 {
 		if(i == 29324) //ID
 		{
 			class8.itemActions = new String[] {null};
-			class8.groundActions = new String[] {null};
+			class8.groundActions = new String[] {null, null, "Take", null, null};
 			class8.name = "null"; //Name
 			class8.description = "Its an null"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
 			class8.modifiedModelColors[0] = 8128;
-			class8.originalModelColors[0] = 19213;
+			class8.originalModelColors[0] = 43980;
 			class8.modelId = 2710;
 			class8.spriteScale = 980;
 			class8.spritePitch = 172;
@@ -754,13 +754,13 @@ public class ItemDefinition_Sub4 {
 		if(i == 29325) //ID
 		{
 			class8.itemActions = new String[] {null};
-			class8.groundActions = new String[] {null};
+			class8.groundActions = new String[] {null, null, "Take", null, null};
 			class8.name = "null"; //Name
 			class8.description = "Its an null"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
 			class8.modifiedModelColors[0] = 8128;
-			class8.originalModelColors[0] = 19213;
+			class8.originalModelColors[0] = 43980;
 			class8.modelId = 2775;
 			class8.spriteScale = 1000;
 			class8.spritePitch = 168;
@@ -814,7 +814,7 @@ public class ItemDefinition_Sub4 {
 		if(i == 29327) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.groundActions = new String[] {null};
+			class8.groundActions = new String[] {null, null, "Take", null, null};
 			class8.name = "Blue Flippers"; //Name
 			class8.description = "Its an Blue Flippers"; //Description
 			class8.modifiedModelColors = new int[1];
@@ -6574,7 +6574,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29328) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Light Blue Ghostly boots"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Light Blue Ghostly boots"; //Name
 			class8.description = "Its an Light Blue Ghostly boots"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -6603,7 +6604,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29329) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Light Blue Ghostly robe top"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Light Blue Ghostly robe top"; //Name
 			class8.description = "Its an Light Blue Ghostly robe top"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -6632,7 +6634,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29330) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Light Blue Ghostly robe bottom"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Light Blue Ghostly robe bottom"; //Name
 			class8.description = "Its an Light Blue Ghostly robe bottom"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -6661,7 +6664,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29331) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Light Blue Ghostly hood"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Light Blue Ghostly hood"; //Name
 			class8.description = "Its an Light Blue Ghostly hood"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -6690,7 +6694,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29332) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Light Blue Ghostly gloves"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Light Blue Ghostly gloves"; //Name
 			class8.description = "Its an Light Blue Ghostly gloves"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -6719,7 +6724,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29333) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Light Blue Ghostly cloak"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Light Blue Ghostly cloak"; //Name
 			class8.description = "Its an Light Blue Ghostly cloak"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -6746,7 +6752,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29334) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Light Green Ghostly boots"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Light Green Ghostly boots"; //Name
 			class8.description = "Its an Light Green Ghostly boots"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -6775,7 +6782,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29335) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Light Green Ghostly robe top"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Light Green Ghostly robe top"; //Name
 			class8.description = "Its an Light Green Ghostly robe top"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -6804,7 +6812,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29336) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Light Green Ghostly robe bottom"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Light Green Ghostly robe bottom"; //Name
 			class8.description = "Its an Light Green Ghostly robe bottom"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -6833,7 +6842,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29337) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Light Green Ghostly hood"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Light Green Ghostly hood"; //Name
 			class8.description = "Its an Light Green Ghostly hood"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -6862,7 +6872,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29338) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Light Green Ghostly gloves"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Light Green Ghostly gloves"; //Name
 			class8.description = "Its an Light Green Ghostly gloves"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -6891,7 +6902,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29339) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Light Green Ghostly cloak"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Light Green Ghostly cloak"; //Name
 			class8.description = "Its an Light Green Ghostly cloak"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -6918,7 +6930,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29340) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Red Ghostly boots"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Red Ghostly boots"; //Name
 			class8.description = "Its an Red Ghostly boots"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -6947,7 +6960,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29341) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Red Ghostly robe top"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Red Ghostly robe top"; //Name
 			class8.description = "Its an Red Ghostly robe top"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -6976,7 +6990,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29342) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Red Ghostly robe bottom"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Red Ghostly robe bottom"; //Name
 			class8.description = "Its an Red Ghostly robe bottom"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7005,7 +7020,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29343) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Red Ghostly hood"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Red Ghostly hood"; //Name
 			class8.description = "Its an Red Ghostly hood"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7034,7 +7050,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29344) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Red Ghostly gloves"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Red Ghostly gloves"; //Name
 			class8.description = "Its an Red Ghostly gloves"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7063,7 +7080,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29345) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Red Ghostly cloak"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Red Ghostly cloak"; //Name
 			class8.description = "Its an Red Ghostly cloak"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7090,7 +7108,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29346) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Yellow Ghostly boots"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Yellow Ghostly boots"; //Name
 			class8.description = "Its an Yellow Ghostly boots"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7119,7 +7138,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29347) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Yellow Ghostly robe top"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Yellow Ghostly robe top"; //Name
 			class8.description = "Its an Yellow Ghostly robe top"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7148,7 +7168,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29348) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Yellow Ghostly robe bottom"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Yellow Ghostly robe bottom"; //Name
 			class8.description = "Its an Yellow Ghostly robe bottom"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7177,7 +7198,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29349) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Yellow Ghostly hood"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Yellow Ghostly hood"; //Name
 			class8.description = "Its an Yellow Ghostly hood"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7206,7 +7228,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29350) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Yellow Ghostly gloves"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Yellow Ghostly gloves"; //Name
 			class8.description = "Its an Yellow Ghostly gloves"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7235,7 +7258,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29351) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Yellow Ghostly cloak"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Yellow Ghostly cloak"; //Name
 			class8.description = "Its an Yellow Ghostly cloak"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7262,7 +7286,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29352) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Pink Ghostly boots"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Pink Ghostly boots"; //Name
 			class8.description = "Its an Pink Ghostly boots"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7291,7 +7316,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29353) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Pink Ghostly robe top"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Pink Ghostly robe top"; //Name
 			class8.description = "Its an Pink Ghostly robe top"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7320,7 +7346,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29354) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Pink Ghostly robe bottom"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Pink Ghostly robe bottom"; //Name
 			class8.description = "Its an Pink Ghostly robe bottom"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7349,7 +7376,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29355) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Pink Ghostly hood"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Pink Ghostly hood"; //Name
 			class8.description = "Its an Pink Ghostly hood"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7378,7 +7406,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29356) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Pink Ghostly gloves"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Pink Ghostly gloves"; //Name
 			class8.description = "Its an Pink Ghostly gloves"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7407,7 +7436,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29357) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Pink Ghostly cloak"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Pink Ghostly cloak"; //Name
 			class8.description = "Its an Pink Ghostly cloak"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7434,7 +7464,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29358) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "White Ghostly boots"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "White Ghostly boots"; //Name
 			class8.description = "Its an White Ghostly boots"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7463,7 +7494,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29359) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "White Ghostly robe top"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "White Ghostly robe top"; //Name
 			class8.description = "Its an White Ghostly robe top"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7492,7 +7524,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29360) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "White Ghostly robe bottom"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "White Ghostly robe bottom"; //Name
 			class8.description = "Its an White Ghostly robe bottom"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7521,7 +7554,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29361) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "White Ghostly hood"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "White Ghostly hood"; //Name
 			class8.description = "Its an White Ghostly hood"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7550,7 +7584,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29362) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "White Ghostly gloves"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "White Ghostly gloves"; //Name
 			class8.description = "Its an White Ghostly gloves"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7579,7 +7614,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29363) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "White Ghostly cloak"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "White Ghostly cloak"; //Name
 			class8.description = "Its an White Ghostly cloak"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7606,7 +7642,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29364) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Gnome scarf"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Gnome scarf"; //Name
 			class8.description = "Its an Gnome scarf"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -7639,7 +7676,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29365) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Gnome scarf"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Gnome scarf"; //Name
 			class8.description = "Its an Gnome scarf"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -7672,7 +7710,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29366) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Gnome scarf"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Gnome scarf"; //Name
 			class8.description = "Its an Gnome scarf"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -7705,7 +7744,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29367) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Gnome scarf"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Gnome scarf"; //Name
 			class8.description = "Its an Gnome scarf"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -7738,7 +7778,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29368) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Gnome scarf"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Gnome scarf"; //Name
 			class8.description = "Its an Gnome scarf"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -7771,7 +7812,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29369) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Gnome scarf"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Gnome scarf"; //Name
 			class8.description = "Its an Gnome scarf"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -7804,7 +7846,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29370) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Gnome scarf"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Gnome scarf"; //Name
 			class8.description = "Its an Gnome scarf"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -7837,7 +7880,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29371) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Gnome scarf"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Gnome scarf"; //Name
 			class8.description = "Its an Gnome scarf"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -7870,7 +7914,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29372) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Gnome scarf"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Gnome scarf"; //Name
 			class8.description = "Its an Gnome scarf"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -7903,7 +7948,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29373) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Gnome scarf"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Gnome scarf"; //Name
 			class8.description = "Its an Gnome scarf"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -7936,7 +7982,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29374) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Gnome scarf"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Gnome scarf"; //Name
 			class8.description = "Its an Gnome scarf"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -7969,7 +8016,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29375) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Gnome scarf"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Gnome scarf"; //Name
 			class8.description = "Its an Gnome scarf"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -8002,7 +8050,8 @@ public class ItemDefinition_Sub4 {
 		if(i == 29376) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Golden Frog mask"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Golden Frog mask"; //Name
 			class8.description = "Its an Golden  Frog mask"; //Description
 			class8.modifiedModelColors = new int[3];
 			class8.originalModelColors = new int[3];
@@ -8037,6 +8086,7 @@ public class ItemDefinition_Sub4 {
 		if(i == 29377) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.groundActions = new String[] {null, null, "Take", null, null};
 			class8.name =  "Blue Frog mask"; //Name
 			class8.description = "Its an Blue Frog mask"; //Description
 			class8.modifiedModelColors = new int[3];
@@ -8072,6 +8122,7 @@ public class ItemDefinition_Sub4 {
 		if(i == 29378) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.groundActions = new String[] {null, null, "Take", null, null};
 			class8.name =  "Purple Frog mask"; //Name
 			class8.description = "Its an Purple Frog mask"; //Description
 			class8.modifiedModelColors = new int[3];
@@ -8107,6 +8158,7 @@ public class ItemDefinition_Sub4 {
 		if(i == 29379) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.groundActions = new String[] {null, null, "Take", null, null};
 			class8.name =  "Green Frog mask"; //Name
 			class8.description = "Its an Green Frog mask"; //Description
 			class8.modifiedModelColors = new int[3];
@@ -8142,6 +8194,7 @@ public class ItemDefinition_Sub4 {
 		if(i == 29380) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.groundActions = new String[] {null, null, "Take", null, null};
 			class8.name =  "Red Frog mask"; //Name
 			class8.description = "Its an Red Frog mask"; //Description
 			class8.modifiedModelColors = new int[3];
@@ -8177,6 +8230,7 @@ public class ItemDefinition_Sub4 {
 		if(i == 29381) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.groundActions = new String[] {null, null, "Take", null, null};
 			class8.name =  "Pink Frog mask"; //Name
 			class8.description = "Its an Pink Frog mask"; //Description
 			class8.modifiedModelColors = new int[3];
@@ -8212,6 +8266,7 @@ public class ItemDefinition_Sub4 {
 		if(i == 29382) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
+			class8.groundActions = new String[] {null, null, "Take", null, null};
 			class8.name =  "Teal Frog mask"; //Name
 			class8.description = "Its an Teal Frog mask"; //Description
 			class8.modifiedModelColors = new int[3];
@@ -8243,197 +8298,6 @@ public class ItemDefinition_Sub4 {
 			class8.stackable = false;
 			class8.placeholderId = 18077;
 			class8.placeholderTemplateId = -1;
-		}
-		if(i == 29383) //ID
-		{
-			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name =  "Yellow Frog mask"; //Name
-			class8.description = "Its an Yellow Frog mask"; //Description
-			class8.modifiedModelColors = new int[3];
-			class8.originalModelColors = new int[3];
-			class8.modifiedModelColors[0] = 25490;
-			class8.originalModelColors[0] = 11212;
-			class8.modifiedModelColors[1] = 26520;
-			class8.originalModelColors[1] = 11186;
-			class8.modifiedModelColors[2] = 22412;
-			class8.originalModelColors[2] = 11186;
-			class8.modelId = 8806;
-			class8.spriteScale = 900;
-			class8.spritePitch = 288;
-			class8.spriteCameraRoll = 0;
-			class8.spriteCameraYaw = 0;
-			class8.spriteTranslateX = 0;
-			class8.spriteTranslateY = 5;
-			class8.primaryMaleModel = 8776;
-			class8.primaryFemaleModel = 8782;
-			class8.secondaryMaleModel = -1;
-			class8.secondaryFemaleModel = -1;
-			class8.primaryMaleHeadPiece = 8770;
-			class8.primaryFemaleHeadPiece = 8772;
-			class8.value = 0;
-			class8.unnotedId = -1;
-			class8.notedId = -1;
-			class8.certID = -1;
-			class8.certTemplateID = -1;
-			class8.stackable = false;
-			class8.placeholderId = 18077;
-			class8.placeholderTemplateId = -1;
-		}
-		if(i == 29384) //ID
-		{
-			class8.itemActions = new String[] {null, "Wield", "Check", "Uncharge", "Drop"};
-			class8.groundActions = new String[] {null};
-			class8.name = "Scythe of vitur (Lava)"; //Name
-			class8.description = "Its an Scythe of vitur (Lava)"; //Description
-			class8.modelId = 65742;
-			class8.spriteScale = 2105;
-			class8.spritePitch = 327;
-			class8.spriteCameraRoll = 23;
-			class8.spriteCameraYaw = 0;
-			class8.spriteTranslateX = 1;
-			class8.spriteTranslateY = 17;
-			class8.primaryMaleModel = 65371;
-			class8.primaryFemaleModel = 62906;
-			class8.secondaryMaleModel = -1;
-			class8.secondaryFemaleModel = -1;
-			class8.primaryMaleHeadPiece = -1;
-			class8.primaryFemaleHeadPiece = -1;
-			class8.value = 4000000;
-			class8.unnotedId = -1;
-			class8.notedId = -1;
-			class8.certID = -1;
-			class8.certTemplateID = -1;
-			class8.stackable = false;
-			class8.placeholderId = 22485;
-			class8.placeholderTemplateId = -1;
-		}
-		if(i == 29385) //ID
-		{
-			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.groundActions = new String[] {null, null, "Take", null, null};
-			class8.originalTextureColors = new short[1];
-			class8.modifiedTextureColors = new short[1];
-			class8.originalTextureColors[0] = 59;
-			class8.modifiedTextureColors[0] = 98;
-			class8.name = "Magic Infernal cape"; //Name
-			class8.description = "Its an Magic Infernal cape"; //Description
-			class8.modelId = 33144;
-			class8.spriteScale = 2086;
-			class8.spritePitch = 567;
-			class8.spriteCameraRoll = 2031;
-			class8.spriteCameraYaw = 0;
-			class8.spriteTranslateX = -4;
-			class8.spriteTranslateY = 0;
-			class8.primaryMaleModel = 33103;
-			class8.primaryFemaleModel = 33111;
-			class8.secondaryMaleModel = -1;
-			class8.secondaryFemaleModel = -1;
-			class8.primaryMaleHeadPiece = -1;
-			class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;
-			class8.certID = -1;
-			class8.certTemplateID = -1;
-			class8.unnotedId = -1;
-			class8.notedId = -1;
-			class8.value = 80000;
-		}
-		if(i == 29386) //ID
-		{
-			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.groundActions = new String[] {null, null, "Take", null, null};
-			class8.originalTextureColors = new short[1];
-			class8.modifiedTextureColors = new short[1];
-			class8.originalTextureColors[0] = 59;
-			class8.modifiedTextureColors[0] = 100;
-			class8.name = "Range Infernal cape"; //Name
-			class8.description = "Its an Magic Infernal cape"; //Description
-			class8.modelId = 33144;
-			class8.spriteScale = 2086;
-			class8.spritePitch = 567;
-			class8.spriteCameraRoll = 2031;
-			class8.spriteCameraYaw = 0;
-			class8.spriteTranslateX = -4;
-			class8.spriteTranslateY = 0;
-			class8.primaryMaleModel = 33103;
-			class8.primaryFemaleModel = 33111;
-			class8.secondaryMaleModel = -1;
-			class8.secondaryFemaleModel = -1;
-			class8.primaryMaleHeadPiece = -1;
-			class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;
-			class8.certID = -1;
-			class8.certTemplateID = -1;
-			class8.unnotedId = -1;
-			class8.notedId = -1;
-			class8.value = 80000;
-		}
-		if(i == 29570) //ID
-		{
-			class8.itemActions = new String[] {null, "Wear", "Teleport", null, null};
-			class8.name = "Justin's Mythical cape"; //Name
-			class8.description = "Its an Mythical cape"; //Description
-			class8.modifiedModelColors = new int[5];
-			class8.originalModelColors = new int[5];
-			class8.modifiedModelColors[0] = 127;
-			class8.originalModelColors[0] = 0;
-			class8.modifiedModelColors[1] = 107;
-			class8.originalModelColors[1] = 16;
-			class8.modifiedModelColors[2] = 115;
-			class8.originalModelColors[2] = 16;
-			class8.modifiedModelColors[3] = 90;
-			class8.originalModelColors[3] = 16;
-			class8.modifiedModelColors[4] = 38333;
-			class8.originalModelColors[4] = 21933;
-			class8.modelId = 34418;
-			class8.spriteScale = 1960;
-			class8.spritePitch = 528;
-			class8.spriteCameraRoll = 1583;
-			class8.spriteCameraYaw = 0;
-			class8.spriteTranslateX = 0;
-			class8.spriteTranslateY = 2;
-			class8.primaryMaleModel = 34271;
-			class8.primaryFemaleModel = 34288;
-			class8.secondaryMaleModel = -1;
-			class8.secondaryFemaleModel = -1;
-			class8.primaryMaleHeadPiece = -1;
-			class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;
-			class8.certID = -1;
-			class8.certTemplateID = -1;
-			class8.unnotedId = -1;
-			class8.notedId = -1;
-		}
-		if(i == 29571) //ID
-		{
-			class8.itemActions = new String[] {null, "Wear", "Teleport", null, null};
-			class8.name = "Halo's Mythical cape"; //Name
-			class8.description = "Its an Mythical cape"; //Description
-			class8.modifiedModelColors = new int[5];
-			class8.originalModelColors = new int[5];
-			class8.modifiedModelColors[0] = 127;
-			class8.originalModelColors[0] = 54015;
-			class8.modifiedModelColors[1] = 107;
-			class8.originalModelColors[1] = 54220;
-			class8.modifiedModelColors[2] = 115;
-			class8.originalModelColors[2] = 54220;
-			class8.modifiedModelColors[3] = 90;
-			class8.originalModelColors[3] = 54220;
-			class8.modifiedModelColors[4] = 38333;
-			class8.originalModelColors[4] = 54169;
-			class8.modelId = 34418;
-			class8.spriteScale = 1960;
-			class8.spritePitch = 528;
-			class8.spriteCameraRoll = 1583;
-			class8.spriteCameraYaw = 0;
-			class8.spriteTranslateX = 0;
-			class8.spriteTranslateY = 2;
-			class8.primaryMaleModel = 34271;
-			class8.primaryFemaleModel = 34288;
-			class8.secondaryMaleModel = -1;
-			class8.secondaryFemaleModel = -1;
-			class8.primaryMaleHeadPiece = -1;
-			class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;
-			class8.certID = -1;
-			class8.certTemplateID = -1;
-			class8.unnotedId = -1;
-			class8.notedId = -1;
 		}
 		return class8;
 	}

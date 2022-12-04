@@ -58,19 +58,24 @@ sourceSets {
 }
 
 dependencies {
+    //implementation 'com.android.support:support-annotations:28.0.0'
+
+    // implementation 'com.android.support:support-annotations:28.0.0'
     compile fileTree(dir: 'lib', include: ['*.jar'])
 	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
     // Discord rich presence
     //implementation 'com.github.Vatuu:discord-rpc:1.6.2'
 
 //    // Runelite dependencies below
-//    compile group: 'net.runelite.pushingpixels', name: 'trident', version: '1.5.00'
-//    compile group: 'net.runelite.pushingpixels', name: 'substance', version: '8.0.02'
-//    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
-//    compile group: 'com.google.inject', name: 'guice', version: '4.2.2'
-//    compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
-//    compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.3.0'
-//   // compile group: 'com.google.collections', name: 'google-collections', version: '1.0'
+  //  compile group: 'net.runelite.pushingpixels', name: 'trident', version: '1.5.00'
+ //   compile group: 'net.runelite.pushingpixels', name: 'substance', version: '8.0.02'
+  //  compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.4'
+ //   compile group: 'com.google.inject', name: 'guice', version: '4.2.2'
+ //   compile group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.2'
+ //   compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.3.0'
+ //   compile group: 'com.google.collections', name: 'google-collections', version: '1.0'
+// https://mvnrepository.com/artifact/org.slf4j/slf4j-api
+    //implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.32'
 
 //    compile group: 'org.apache.commons', name: 'commons-csv', version: '1.7'
 //    compile group: 'org.apache.commons', name: 'commons-text', version: '1.8'

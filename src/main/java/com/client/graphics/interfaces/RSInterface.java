@@ -1600,20 +1600,20 @@ public class RSInterface {
 	}
 
 	public static void lootingBagAdd(TextDrawingArea[] tda) {
-		RSInterface rsi = addTabInterface(39843);
-		addSprite(39844, 0, "/Interfaces/Lootingbag/SPRITE");
-		addText(39845, "Add items", tda, 2, 16750623, true, true);
+		RSInterface rsi = addTabInterface(40143);
+		addSprite(40144, 0, "/Interfaces/Lootingbag/SPRITE");
+		addText(40145, "Add items", tda, 2, 16750623, true, true);
 
-		addHoverButton(39846, "/Interfaces/Lootingbag/CLOSE", 0, 128, 35, "Close", 0, 36484, 1);
-		addHoveredButton(39847, "/Interfaces/Lootingbag/CLOSE", 1, 128, 35, 36485);
+		addHoverButton(40146, "/Interfaces/Lootingbag/CLOSE", 0, 128, 35, "Close", 0, 36484, 1);
+		addHoveredButton(40147, "/Interfaces/Lootingbag/CLOSE", 1, 128, 35, 36485);
 		rsi.totalChildren(32);
 
 		int child = 0;
 
-		rsi.child(child++, 39844, 7, 30);// bg
-		rsi.child(child++, 39845, 90, 10);// title
-		rsi.child(child++, 39846, 160, 9); // close button
-		rsi.child(child++, 39847, 160, 9); // close hover
+		rsi.child(child++, 40144, 7, 30);// bg
+		rsi.child(child++, 40145, 90, 10);// title
+		rsi.child(child++, 40146, 160, 9); // close button
+		rsi.child(child++, 40147, 160, 9); // close hover
 
 		/**
 		 * Inventory
@@ -1623,7 +1623,7 @@ public class RSInterface {
 		int y = 35;
 		final int X_DIFF = 38;
 		final int Y_DIFF = 30;
-		int id = 39848;
+		int id = 40148;
 
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 4; j++) {
@@ -1642,24 +1642,24 @@ public class RSInterface {
 	}
 
 	public static void lootingBag(TextDrawingArea[] tda) {
-		RSInterface rsi = addTabInterface(39842);
-		addSprite(39843, 0, "/Interfaces/Lootingbag/SPRITE");
-		addText(39844, "Looting bag", tda, 2, 16750623, true, true);
+		RSInterface rsi = addTabInterface(40042);
+		addSprite(40043, 0, "/Interfaces/Lootingbag/SPRITE");
+		addText(40044, "Looting bag", tda, 2, 16750623, true, true);
 
-		addHoverButton(39845, "/Interfaces/Lootingbag/CLOSE", 0, 128, 35, "Close", 0, 36484, 1);
-		addHoveredButton(39846, "/Interfaces/Lootingbag/CLOSE", 1, 128, 35, 36485);
-		addHoverText(39847, "Bank All", "Bank all items", tda, 0, 0xff9040, false, true, 40);
-		addText(39848, "Value: 0 coins", tda, 0, 0xFF9900, true, true);
+		addHoverButton(40045, "/Interfaces/Lootingbag/CLOSE", 0, 128, 35, "Close", 0, 36484, 1);
+		addHoveredButton(40046, "/Interfaces/Lootingbag/CLOSE", 1, 128, 35, 36485);
+		addHoverText(40047, "Bank All", "Bank all items", tda, 0, 0xff9040, false, true, 40);
+		addText(40048, "Value: 0 coins", tda, 0, 0xFF9900, true, true);
 		rsi.totalChildren(34);
 
 		int child = 0;
 
-		rsi.child(child++, 39843, 7, 19);// bg
-		rsi.child(child++, 39844, 107, 1);// title
-		rsi.child(child++, 39845, 160, 1); // close button
-		rsi.child(child++, 39846, 160, 1); // close hover
-		rsi.child(child++, 39847, 10, 4); // Bank All
-		rsi.child(child++, 39848, 92, 250); // Total Value
+		rsi.child(child++, 40043, 7, 19);// bg
+		rsi.child(child++, 40044, 107, 1);// title
+		rsi.child(child++, 40045, 160, 1); // close button
+		rsi.child(child++, 40046, 160, 1); // close hover
+		rsi.child(child++, 40047, 10, 4); // Bank All
+		rsi.child(child++, 40048, 92, 250); // Total Value
 
 		/**
 		 * Inventory
@@ -1669,7 +1669,7 @@ public class RSInterface {
 		int y = 21;
 		final int X_DIFF = 1;
 		final int Y_DIFF = 2;
-		int id = 39849;
+		int id = 40049;
 
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 4; j++) {

@@ -39,7 +39,7 @@ public final class NpcDefinition {
 		entityDef.readValues(stream);
 
 
-		if (i== 4625){
+		if (i== 11486){
 			entityDef.name = "Donator shop";
 			entityDef.actions = new String[] { "Talk-to", null, "Trade", null, null };
 		}
@@ -78,7 +78,7 @@ public final class NpcDefinition {
 			if (ed.name == null)
 				continue;
 		}*/
-		   //dumpNpcConfig();
+		  // dumpNpcConfig();
 		//dumpNpcList();
 		//dumpList();
 	}
@@ -88,9 +88,9 @@ for(int i = 0; i < totalAmount; i++) {
 NpcDefinition class5 = forID(i);
 BufferedWriter bw = null;
 try {
-bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/npc_config196.cfg", true));
+bw = new BufferedWriter(new FileWriter(Signlink.getCacheDirectory() + "/dumps/npc_names.txt", true));
 if(class5.name!= null) {
-bw.write("npc = "+i+"\t"+class5.name.replace(" ","_"));
+bw.write(i+" - "+class5.name);
 bw.newLine();
 bw.flush();
 bw.close();
@@ -205,11 +205,26 @@ bw.close();
 				}
 				childrenIDs[i1 + 1] = var3;
 				
-			} else if (opcode == 107)
+			} else if (opcode == 107) {
 				aBoolean84 = false;
-			else if(opcode == 111 || opcode == 107 || opcode == 109) {
-			} else if (opcode == 112) {
-				opcode112 = stream.readString();
+			} else if(opcode == 109) {
+				this.isClickable = false;
+			} else if(opcode == 111) {
+				this.aBool2190 = true;
+			} else if(opcode == 114) {
+				this.field1914 = stream.readUShort();
+			} else if(opcode == 115) {
+				this.field1914 = stream.readUShort();
+				this.field1919 = stream.readUShort();
+				this.field1918 = stream.readUShort();
+				this.field1938 = stream.readUShort();
+			} else if(opcode == 116) {
+				this.field1920 = stream.readUShort();
+			} else if(opcode == 117) {
+				this.field1920 = stream.readUShort();
+				this.field1933 = stream.readUShort();
+				this.field1922 = stream.readUShort();
+				this.field1923 = stream.readUShort();
 			} else {
 				System.out.println("Missing NPC opcode " + opcode + "last: " + last);
 				continue;
@@ -342,8 +357,18 @@ bw.close();
 		anInt86 = 128;
 		onMinimap = true;
 		anInt91 = 128;
+		aBool2190 = false;
+		isClickable = true;
 		aBoolean93 = false;
 		Category = -1;
+		field1914 = -1;
+		field1918 = -1;
+		field1919 = -1;
+		field1920 = -1;
+		field1922 = -1;
+		field1923 = -1;
+		field1933 = -1;
+		field1938 = -1;
 	}
 
 	public static void nullLoader() {
@@ -436,6 +461,8 @@ bw.close();
 	public int[] dialogueModels;
 	public int anInt75;
 	public int[] originalColors;
+	private boolean isClickable;
+	private boolean aBool2190;
 	public int standAnim;
 	public long interfaceType;
 	public int getDegreesToTurn;
@@ -445,6 +472,14 @@ bw.close();
 	public boolean aBoolean84;
 	public int anInt85;
 	public int anInt86;
+	public int field1914;
+	public int field1919;
+	public int field1918;
+	public int field1938;
+	public int field1920;
+	public int field1933;
+	public int field1922;
+	public int field1923;
 	public boolean onMinimap;
 	public int childrenIDs[];
 	public String description;

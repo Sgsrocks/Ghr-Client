@@ -19,6 +19,6 @@ public class Renderable extends NodeSub {
         modelBaseY = 1000;
     }
 
-    VertexNormal vertexNormals[];
+    VertexNormal aClass33Array1425[];
     public int modelBaseY;
 }

@@ -31,7 +31,7 @@ public final class Player extends Entity {
 							spotAnim.anInt411);
 				// model_3.method479(64 + spotAnim.anInt413, 850 +
 				// spotAnim.anInt414, -30, -50, -30, true);
-				model_3.light(84 + spotAnim.anInt413,
+				model_3.method479(84 + spotAnim.anInt413,
 						1550 + spotAnim.anInt414, -50, -110, -50, true);
 				Model aclass30_sub2_sub4_sub6_1s[] = { model, model_3 };
 				model = new Model(aclass30_sub2_sub4_sub6_1s);

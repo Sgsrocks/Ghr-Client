@@ -26,9 +26,9 @@ public class CacheDownloader {
 	 *
 	 */
 	public enum FileType {
-		CACHE(Signlink.getCacheDirectory(),"http://godzhell.org/cache/cache.zip",9),
+		CACHE(Signlink.getCacheDirectory(),"http://godzhell.org/cache/cache.zip",14),
 		MODELS(Signlink.getCacheDirectory(),"http://godzhell.org/cache/models.zip",2),
-		SPRITES(Signlink.getCacheDirectory(),"http://godzhell.org/cache/sprites.zip",4);
+		SPRITES(Signlink.getCacheDirectory(),"http://godzhell.org/cache/sprites.zip",5);
 		/**
 		 * The directory to extract the file after downloaded
 		 */

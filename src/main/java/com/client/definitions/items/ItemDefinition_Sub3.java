@@ -4520,7 +4520,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29161) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Golden Gnome scarf"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Golden Gnome scarf"; //Name
 			class8.description = "Its an Golden Gnome scarf"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -4967,7 +4968,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29176) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age platelegs (B)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age platelegs (B)"; //Name
 			class8.description = "Its an 3rd age platelegs (B)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -4994,7 +4996,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29177) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age platebody (B)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age platebody (B)"; //Name
 			class8.description = "Its an 3rd age platebody (g)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5021,7 +5024,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29178) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age full helmet (B)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age full helmet (B)"; //Name
 			class8.description = "Its an 3rd age full helmet (B)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5048,7 +5052,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29179) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age kiteshield (B)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age kiteshield (B)"; //Name
 			class8.description = "Its an 3rd age kiteshield (B)"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -5081,7 +5086,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29180) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age platelegs (R)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age platelegs (R)"; //Name
 			class8.description = "Its an 3rd age platelegs (R)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5108,7 +5114,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29181) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age platebody (R)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age platebody (R)"; //Name
 			class8.description = "Its an 3rd age platebody (g)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5135,7 +5142,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29182) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age full helmet (R)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age full helmet (R)"; //Name
 			class8.description = "Its an 3rd age full helmet (R)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5162,7 +5170,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29183) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age kiteshield (R)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age kiteshield (R)"; //Name
 			class8.description = "Its an 3rd age kiteshield (R)"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -5195,7 +5204,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29184) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age platelegs (P)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age platelegs (P)"; //Name
 			class8.description = "Its an 3rd age platelegs (P)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5222,7 +5232,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29185)//ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age platebody (P)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age platebody (P)"; //Name
 			class8.description = "Its an 3rd age platebody (g)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5249,7 +5260,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29186) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age full helmet (P)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age full helmet (P)"; //Name
 			class8.description = "Its an 3rd age full helmet (P)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5276,7 +5288,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29187)//ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age kiteshield (P)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age kiteshield (P)"; //Name
 			class8.description = "Its an 3rd age kiteshield (P)"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -5309,7 +5322,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29188) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age platelegs (G)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age platelegs (G)"; //Name
 			class8.description = "Its an 3rd age platelegs (G)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5336,7 +5350,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29189)//ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age platebody (G)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age platebody (G)"; //Name
 			class8.description = "Its an 3rd age platebody (g)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5363,7 +5378,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29190) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age full helmet (G)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age full helmet (G)"; //Name
 			class8.description = "Its an 3rd age full helmet (G)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5390,7 +5406,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29191)//ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age kiteshield (G)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age kiteshield (G)"; //Name
 			class8.description = "Its an 3rd age kiteshield (G)"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -5423,7 +5440,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29192) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age platelegs (O)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age platelegs (O)"; //Name
 			class8.description = "Its an 3rd age platelegs (O)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5450,7 +5468,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29193)//ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age platebody (O)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age platebody (O)"; //Name
 			class8.description = "Its an 3rd age platebody (O)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5477,7 +5496,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29194) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age full helmet (O)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age full helmet (O)"; //Name
 			class8.description = "Its an 3rd age full helmet (O)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5504,7 +5524,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29195)//ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age kiteshield (O)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age kiteshield (O)"; //Name
 			class8.description = "Its an 3rd age kiteshield (O)"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -5537,7 +5558,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29196) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age platelegs (BR)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age platelegs (BR)"; //Name
 			class8.description = "Its an 3rd age platelegs (BR)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5564,7 +5586,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29197)//ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age platebody (BR)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age platebody (BR)"; //Name
 			class8.description = "Its an 3rd age platebody (BR)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5591,7 +5614,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29198) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age full helmet (BR)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age full helmet (BR)"; //Name
 			class8.description = "Its an 3rd age full helmet (BR)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5618,7 +5642,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29199)//ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age kiteshield (BR)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age kiteshield (BR)"; //Name
 			class8.description = "Its an 3rd age kiteshield (BR)"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -5651,7 +5676,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29200) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age platelegs (D)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age platelegs (D)"; //Name
 			class8.description = "Its an 3rd age platelegs (D)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5678,7 +5704,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29201)//ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age platebody (D)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age platebody (D)"; //Name
 			class8.description = "Its an 3rd age platebody (D)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5705,7 +5732,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29202) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age full helmet (D)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age full helmet (D)"; //Name
 			class8.description = "Its an 3rd age full helmet (D)"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -5732,7 +5760,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29203)//ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "3rd age kiteshield (D)"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "3rd age kiteshield (D)"; //Name
 			class8.description = "Its an 3rd age kiteshield (D)"; //Description
 			class8.modifiedModelColors = new int[4];
 			class8.originalModelColors = new int[4];
@@ -7256,7 +7285,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29237) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Dark Blue Ghostly boots"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Dark Blue Ghostly boots"; //Name
 			class8.description = "Its an Dark Blue Ghostly boots"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7285,7 +7315,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29238) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Dark Blue Ghostly robe top"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Dark Blue Ghostly robe top"; //Name
 			class8.description = "Its an Dark Blue Ghostly robe top"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7314,7 +7345,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29239) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Dark Blue Ghostly robe bottom"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Dark Blue Ghostly robe bottom"; //Name
 			class8.description = "Its an Dark Blue Ghostly robe bottom"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7343,7 +7375,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29240) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Dark Blue Ghostly hood"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Dark Blue Ghostly hood"; //Name
 			class8.description = "Its an Dark Blue Ghostly hood"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7372,7 +7405,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29241) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Dark Blue Ghostly gloves"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Dark Blue Ghostly gloves"; //Name
 			class8.description = "Its an Dark Blue Ghostly gloves"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7401,7 +7435,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29242) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Dark Blue Ghostly cloak"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Dark Blue Ghostly cloak"; //Name
 			class8.description = "Its an Dark Blue Ghostly cloak"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7428,7 +7463,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29243) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Dark Green Ghostly boots"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Dark Green Ghostly boots"; //Name
 			class8.description = "Its an Dark Green Ghostly boots"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7457,7 +7493,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29244) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Dark Green Ghostly robe top"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Dark Green Ghostly robe top"; //Name
 			class8.description = "Its an Dark Green Ghostly robe top"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7486,7 +7523,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29245) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Dark Green Ghostly robe bottom"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Dark Green Ghostly robe bottom"; //Name
 			class8.description = "Its an Dark Green Ghostly robe bottom"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7515,7 +7553,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29246) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Dark Green Ghostly hood"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Dark Green Ghostly hood"; //Name
 			class8.description = "Its an Dark Green Ghostly hood"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7544,7 +7583,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29247) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Dark Green Ghostly gloves"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Dark Green Ghostly gloves"; //Name
 			class8.description = "Its an Dark Green Ghostly gloves"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7573,7 +7613,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29248) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Dark Green Ghostly cloak"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Dark Green Ghostly cloak"; //Name
 			class8.description = "Its an Dark Green Ghostly cloak"; //Description
 			class8.modifiedModelColors = new int[1];
 			class8.originalModelColors = new int[1];
@@ -7629,7 +7670,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29250) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Bag of Easter eggs"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Bag of Easter eggs"; //Name
 			class8.description = "Happy Easter From Sgsrocks (2019)"; //Description
 			class8.modelId = 98702;
 			class8.spriteScale = 2280;
@@ -7652,7 +7694,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29251) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Hylian Shield"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Hylian Shield"; //Name
 			class8.description = "The Hylian Shield from Zelda."; //Description
 			class8.modelId = 53717;
 			class8.spriteScale = 1560;
@@ -7675,7 +7718,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29252) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Ancient Blade"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Ancient Blade"; //Name
 			class8.description = "A very powerful Ancient Blade."; //Description
 			class8.modelId = 52007;
 			class8.spriteScale = 1957;
@@ -7767,7 +7811,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29256) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Chopper Hat"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Chopper Hat"; //Name
 			class8.description = "A Hat worn by Braiton."; //Description
 			class8.modelId = 44125;
 			class8.spriteScale = 750;
@@ -7790,7 +7835,8 @@ public class ItemDefinition_Sub3 {
 		if(i == 29257) //ID
 		{
 			class8.itemActions = new String[] {null, "Wear", null, null, "Drop"};
-			class8.name = "Beautiful Cape"; //Name
+			class8.groundActions = new String[] {null, null, "Take", null, null};
+			class8.name  = "Beautiful Cape"; //Name
 			class8.description = "A Beautiful Cape For Beautiful People."; //Description
 			class8.modelId = 81112;
 			class8.spriteScale = 400;
@@ -9130,244 +9176,6 @@ public class ItemDefinition_Sub3 {
 			class8.notedId = -1;
 			class8.name = "Rico's Kiteshield";
 			class8.description = "It's an Rico's kiteshield.";
-		}
-		if(i == 29399) //ID
-		{
-			class8.itemActions = new String[] {null, "Wear", null, null, null};
-			class8.groundActions = new String[] {null, null, "Take", null, null};
-			class8.name = "Rico's Crown"; //Name
-			class8.description = "Its an Rico's Crown"; //Description
-			class8.modifiedModelColors = new int[2];
-			class8.originalModelColors = new int[2];
-			class8.modifiedModelColors[0] = 945;
-			class8.modifiedModelColors[1] = 8128;
-			class8.originalModelColors[0] = 7114;
-			class8.originalModelColors[1] = 972;
-			class8.modelId = 8774;
-			class8.spriteScale = 500;
-			class8.spritePitch = 0;
-			class8.spriteCameraRoll = 0;
-			class8.spriteCameraYaw = 0;
-			class8.spriteTranslateX = 0;
-			class8.spriteTranslateY = 90;
-			class8.primaryMaleModel = 8774;
-			class8.primaryFemaleModel = 8774;
-			class8.secondaryMaleModel = -1;
-			class8.secondaryFemaleModel = -1;
-			class8.primaryMaleHeadPiece = -1;
-			class8.primaryFemaleHeadPiece = -1;
-			class8.value = 1;
-			class8.stackable = false;
-			class8.certID = -1;
-			class8.certTemplateID = -1;
-			class8.unnotedId = -1;
-			class8.notedId = -1;
-			class8.placeholderId = 17851;
-			class8.placeholderTemplateId = -1;
-		}
-		if(i == 29400) //ID
-		{
-			class8.itemActions = new String[] {null, "Wear", null, null, null};
-			class8.groundActions = new String[] {null, null, "Take", null, null};
-			class8.name = "Starter Platebody"; //Name
-			class8.description = "Its an Starter Platebody"; //Description
-			class8.modifiedModelColors = new int[8];
-			class8.originalModelColors = new int[8];
-			class8.modifiedModelColors[0] = 61;
-			class8.modifiedModelColors[1] = 24;
-			class8.modifiedModelColors[2] = 41;
-			class8.modifiedModelColors[3] = 10394;
-			class8.modifiedModelColors[4] = 10518;
-			class8.modifiedModelColors[5] = 10388;
-			class8.modifiedModelColors[6] = 10514;
-			class8.modifiedModelColors[7] = 10508;
-			class8.originalModelColors[0] = 54194;
-			class8.originalModelColors[1] = 7114;
-			class8.originalModelColors[2] = 54194;
-			class8.originalModelColors[3] = 54194;
-			class8.originalModelColors[4] = 7114;
-			class8.originalModelColors[5] = 7114;
-			class8.originalModelColors[6] = 7114;
-			class8.originalModelColors[7] = 7114;
-			class8.modelId = 2378;
-			class8.spriteScale = 1380;
-			class8.spritePitch = 452;
-			class8.spriteCameraRoll = 0;
-			class8.spriteCameraYaw = 0;
-			class8.spriteTranslateX = 0;
-			class8.spriteTranslateY = -1;
-			class8.primaryMaleModel = 6646;
-			class8.primaryFemaleModel = 6685;
-			class8.secondaryMaleModel = 3379;
-			class8.secondaryFemaleModel = 3383;
-			class8.primaryMaleHeadPiece = -1;
-			class8.primaryFemaleHeadPiece = -1;
-			class8.value = 1;
-			class8.stackable = false;
-			class8.certID = -1;
-			class8.certTemplateID = -1;
-			class8.unnotedId = -1;
-			class8.notedId = -1;
-			class8.placeholderId = 17851;
-			class8.placeholderTemplateId = -1;
-		}
-
-		if(i == 29401)
-		{
-			class8.itemActions = new String[5];
-			class8.itemActions[1] = "Wear";
-			class8.modifiedModelColors = new int[2];
-			class8.originalModelColors = new int[2];
-			class8.modifiedModelColors[0] = 926;
-			class8.originalModelColors[0] = 54194;
-			class8.modifiedModelColors[1] = 912;
-			class8.originalModelColors[1] = 7114;
-			class8.spriteScale = 1740;
-			class8.spritePitch = 444;
-			class8.spriteCameraRoll = 0;
-			class8.spriteCameraYaw = 0;
-			class8.spriteTranslateX = 0;
-			class8.spriteTranslateY = -8;
-			class8.primaryMaleModel = 5024;
-			class8.primaryFemaleModel = 5025;
-			class8.modelId = 5026;
-			class8.secondaryMaleModel = -1;
-			class8.secondaryFemaleModel = -1;
-			class8.primaryMaleHeadPiece = -1;
-			class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;
-			class8.certID = -1;
-			class8.certTemplateID = -1;
-			class8.unnotedId = -1;
-			class8.notedId = -1;
-			class8.name = "Starter Platelegs";
-			class8.description = "A set of Starter platelegs.";
-		}
-		if(i == 29402)
-		{
-			class8.itemActions = new String[5];
-			class8.itemActions[1] = "Wear";
-			class8.modifiedModelColors = new int[4];
-			class8.originalModelColors = new int[4];
-			class8.modifiedModelColors[0] = 61;
-			class8.originalModelColors[0] = 7114;
-			class8.modelId = 5037;
-			class8.spriteScale = 770;
-			class8.spritePitch = 164;
-			class8.spriteCameraRoll = 156;
-			class8.spriteCameraYaw = 0;
-			class8.spriteTranslateX = 3;
-			class8.spriteTranslateY = -3;
-			class8.primaryMaleModel = 4954;
-			class8.primaryFemaleModel = 5031;
-			class8.secondaryMaleModel = -1;
-			class8.secondaryFemaleModel = -1;
-			class8.primaryMaleHeadPiece = -1;
-			class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;
-			class8.certID = -1;
-			class8.certTemplateID = -1;
-			class8.unnotedId = -1;
-			class8.notedId = -1;
-			class8.name = "Starter Boots";
-			class8.description = "Starter boots";
-		}
-		if(i == 29403)
-		{
-			class8.itemActions = new String[5];
-			class8.itemActions[1] = "Wear";
-			class8.modifiedModelColors = new int[3];
-			class8.originalModelColors = new int[3];
-			class8.modifiedModelColors[0] = 61;
-			class8.originalModelColors[0] = 54194;
-			class8.modifiedModelColors[1] = 57;
-			class8.originalModelColors[1] = 54194;
-			class8.modifiedModelColors[2] = 7054;
-			class8.originalModelColors[2] = 7114;
-			class8.modelId = 2339;
-			class8.spriteScale = 1560;
-			class8.spritePitch = 344;
-			class8.spriteCameraRoll = 1104;
-			class8.spriteCameraYaw = 0;
-			class8.spriteTranslateX = -6;
-			class8.spriteTranslateY = -14;
-			class8.primaryMaleModel = 486;
-			class8.primaryFemaleModel = 486;
-			class8.primaryMaleHeadPiece = -1;
-			class8.primaryFemaleHeadPiece = -1;            class8.stackable = false;
-			class8.certID = -1;
-			class8.certTemplateID = -1;
-			class8.unnotedId = -1;
-			class8.notedId = -1;
-			class8.name = "Starter Kiteshield";
-			class8.description = "It's an Starter kiteshield.";
-		}
-		if(i == 29404) //ID
-		{
-			class8.itemActions = new String[] {null, "Wear", null, null, null};
-			class8.groundActions = new String[] {null, null, "Take", null, null};
-			class8.name = "Starter Crown"; //Name
-			class8.description = "Its an Starter Crown"; //Description
-			class8.modifiedModelColors = new int[2];
-			class8.originalModelColors = new int[2];
-			class8.modifiedModelColors[0] = 945;
-			class8.modifiedModelColors[1] = 8128;
-			class8.originalModelColors[0] = 7114;
-			class8.originalModelColors[1] = 54194;
-			class8.modelId = 8774;
-			class8.spriteScale = 500;
-			class8.spritePitch = 0;
-			class8.spriteCameraRoll = 0;
-			class8.spriteCameraYaw = 0;
-			class8.spriteTranslateX = 0;
-			class8.spriteTranslateY = 90;
-			class8.primaryMaleModel = 8774;
-			class8.primaryFemaleModel = 8774;
-			class8.secondaryMaleModel = -1;
-			class8.secondaryFemaleModel = -1;
-			class8.primaryMaleHeadPiece = -1;
-			class8.primaryFemaleHeadPiece = -1;
-			class8.value = 1;
-			class8.stackable = false;
-			class8.certID = -1;
-			class8.certTemplateID = -1;
-			class8.unnotedId = -1;
-			class8.notedId = -1;
-			class8.placeholderId = 17851;
-			class8.placeholderTemplateId = -1;
-		}
-		if(i == 29405) //ID
-		{
-			class8.itemActions = new String[] {null, "Wear", "Teleport", null, null};
-			class8.name = "Rico's Mythical cape"; //Name
-			class8.description = "Its an Rico's  Mythical cape"; //Description
-			class8.modifiedModelColors = new int[5];
-			class8.originalModelColors = new int[5];
-			class8.modifiedModelColors[0] = 127;
-			class8.originalModelColors[0] = 972;
-			class8.modifiedModelColors[1] = 107;
-			class8.originalModelColors[1] = 997;
-			class8.modifiedModelColors[2] = 115;
-			class8.originalModelColors[2] = 997;
-			class8.modifiedModelColors[3] = 90;
-			class8.originalModelColors[3] = 997;
-			class8.modifiedModelColors[4] = 38333;
-			class8.originalModelColors[4] = 7114;
-			class8.modelId = 34418;
-			class8.spriteScale = 1960;
-			class8.spritePitch = 528;
-			class8.spriteCameraRoll = 1583;
-			class8.spriteCameraYaw = 0;
-			class8.spriteTranslateX = 0;
-			class8.spriteTranslateY = 2;
-			class8.primaryMaleModel = 34271;            class8.stackable = false;
-			class8.certID = -1;
-			class8.certTemplateID = -1;
-			class8.unnotedId = -1;
-			class8.notedId = -1;
-			class8.primaryFemaleModel = 34288;
-			class8.secondaryMaleModel = -1;
-			class8.secondaryFemaleModel = -1;
-			class8.primaryMaleHeadPiece = -1;
-			class8.primaryFemaleHeadPiece = -1;
 		}
 
 		return class8;

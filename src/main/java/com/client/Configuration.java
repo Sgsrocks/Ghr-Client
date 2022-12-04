@@ -32,8 +32,8 @@ public class Configuration {
 	public static int chatColor = 0;
     public static int fogColor = 0xDCDBDF;
 	public static long fogDelay = 500;
-	public static final int CLIENT_VERSION = 4;
-	public static Boolean LIVE_SERVER = true;
+	public static final int CLIENT_VERSION = 5;
+	public static Boolean LIVE_SERVER = false;
 	public static final int PORT = 5555;
 
 	public static final String CLIENT_TITLE =  Configuration.LIVE_SERVER ? "GodzHell" : "GodzHell - LocalHost";
@@ -49,14 +49,13 @@ public class Configuration {
 	public static final String CACHE_NAME = ".GodzHell";
 
 	public static boolean 
-			repackIndexOne = false,
-			repackIndexTwo = false,
+			repackIndexOne = true,
+			repackIndexTwo = true,
 			repackIndexThree = false,
-			repackIndexFour = false,
+			repackIndexFour = true,
 			repackIndexFive = false,
 			repackIndexSix = false;
 
-	public static final String CACHE_LINK = "http://godzhell.org/cache/cache.zip"; // Link for every client below client
 
 	public static final boolean DUMP_OBJECTS = false;
 	

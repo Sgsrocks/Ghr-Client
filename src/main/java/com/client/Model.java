@@ -610,7 +610,7 @@ public class Model extends Renderable {
         colorsY = model.colorsY;
         colorsZ = model.colorsZ;
         types = model.types;
-//		}
+	//	}
         verticesX = model.verticesX;
         verticesZ = model.verticesZ;
         colors = model.colors;
@@ -1143,6 +1143,161 @@ public class Model extends Renderable {
         }
 
     }
+    public final void method479(int i, int j, int k, int l, int i1, boolean flag) {
+        int j1 = (int) Math.sqrt(k * k + l * l + i1 * i1);
+        int k1 = j * j1 >> 8;
+        if (colorsX == null) {
+            colorsX = new int[trianglesCount];
+            colorsY = new int[trianglesCount];
+            colorsZ = new int[trianglesCount];
+        }
+        if (super.aClass33Array1425 == null) {
+            super.aClass33Array1425 = new VertexNormal[verticesCount];
+            for (int l1 = 0; l1 < verticesCount; l1++) {
+                super.aClass33Array1425[l1] = new VertexNormal();
+            }
+
+        }
+        for (int i2 = 0; i2 < trianglesCount; i2++) {
+            int var17;
+            if (types == null) {
+                var17 = 0;
+            } else {
+                var17 = types[i2];
+            }
+
+            final int var18;
+            if (alphas == null) {
+                var18 = 0;
+            } else {
+                var18 = alphas[i2];
+            }
+
+            final short var12;
+            if (materials == null) {
+                var12 = -1;
+            } else {
+                var12 = materials[i2];
+            }
+
+            int j2 = trianglesX[i2];
+            int l2 = trianglesY[i2];
+            int i3 = trianglesZ[i2];
+            int j3 = verticesX[l2] - verticesX[j2];
+            int k3 = verticesY[l2] - verticesY[j2];
+            int l3 = verticesZ[l2] - verticesZ[j2];
+            int i4 = verticesX[i3] - verticesX[j2];
+            int j4 = verticesY[i3] - verticesY[j2];
+            int k4 = verticesZ[i3] - verticesZ[j2];
+            int l4 = k3 * k4 - j4 * l3;
+            int i5 = l3 * i4 - k4 * j3;
+            int j5;
+            for (j5 = j3 * j4 - i4 * k3; l4 > 8192 || i5 > 8192 || j5 > 8192 || l4 < -8192 || i5 < -8192 || j5 < -8192; j5 >>= 1) {
+                l4 >>= 1;
+                i5 >>= 1;
+            }
+
+            int k5 = (int) Math.sqrt(l4 * l4 + i5 * i5 + j5 * j5);
+            if (k5 <= 0) {
+                k5 = 1;
+            }
+            l4 = l4 * 256 / k5;
+            i5 = i5 * 256 / k5;
+            j5 = j5 * 256 / k5;
+
+            if (types == null || (types[i2] & 1) == 0) {
+
+                VertexNormal class33_2 = super.aClass33Array1425[j2];
+                class33_2.x += l4;
+                class33_2.y += i5;
+                class33_2.z += j5;
+                class33_2.magnitude++;
+                class33_2 = super.aClass33Array1425[l2];
+                class33_2.x += l4;
+                class33_2.y += i5;
+                class33_2.z += j5;
+                class33_2.magnitude++;
+                class33_2 = super.aClass33Array1425[i3];
+                class33_2.x += l4;
+                class33_2.y += i5;
+                class33_2.z += j5;
+                class33_2.magnitude++;
+
+            } else {
+
+                int l5 = i + (k * l4 + l * i5 + i1 * j5) / (k1 + k1 / 2);
+                colorsX[i2] = method481(colors[i2], l5, types[i2]);
+
+            }
+        }
+
+        if (flag) {
+            method480(i, k1, k, l, i1);
+        } else {
+            vertexNormals = new VertexNormal[verticesCount];
+            for (int k2 = 0; k2 < verticesCount; k2++) {
+                VertexNormal class33 = super.aClass33Array1425[k2];
+                VertexNormal class33_1 = vertexNormals[k2] = new VertexNormal();
+                class33_1.x = class33.x;
+                class33_1.y = class33.y;
+                class33_1.z = class33.z;
+                class33_1.magnitude = class33.magnitude;
+            }
+
+        }
+        if (flag) {
+            calculateDistances();
+            return;
+        } else {
+            method468(21073);
+            return;
+        }
+    }
+    public void method468(int i) {
+        super.modelBaseY = 0;
+        XYZMag = 0;
+        maximumYVertex = 0;
+        minimumXVertex = 0xf423f;
+        maximumXVertex = 0xfff0bdc1;
+        maximumZVertex = 0xfffe7961;
+        minimumZVertex = 0x1869f;
+        for (int j = 0; j < verticesCount; j++) {
+            int k = verticesX[j];
+            int l = verticesY[j];
+            int i1 = verticesZ[j];
+            if (k < minimumXVertex) {
+                minimumXVertex = k;
+            }
+            if (k > maximumXVertex) {
+                maximumXVertex = k;
+            }
+            if (i1 < minimumZVertex) {
+                minimumZVertex = i1;
+            }
+            if (i1 > maximumZVertex) {
+                maximumZVertex = i1;
+            }
+            if (-l > super.modelBaseY) {
+                super.modelBaseY = -l;
+            }
+            if (l > maximumYVertex) {
+                maximumYVertex = l;
+            }
+            int j1 = k * k + i1 * i1;
+            if (j1 > XYZMag) {
+                XYZMag = j1;
+            }
+        }
+
+        XYZMag = (int) Math.sqrt(XYZMag);
+        diagonal3DAboveOrigin = (int) Math.sqrt(XYZMag * XYZMag + super.modelBaseY * super.modelBaseY);
+        if (i != 21073) {
+            return;
+        } else {
+            maxRenderDepth = diagonal3DAboveOrigin + (int) Math.sqrt(XYZMag * XYZMag + maximumYVertex * maximumYVertex);
+            return;
+        }
+    }
     public void light() {
         if (vertexNormals == null) {
             vertexNormals = new VertexNormal[verticesCount];
@@ -1171,7 +1326,7 @@ public class Model extends Renderable {
                     var12 >>= 1;
                 }
 
-                int var14 = (int) Math.sqrt(var11 * var11 + var12 * var12 + var13 * var13);
+                int var14 = (int)Math.sqrt((double)(var11 * var11 + var12 * var12 + var13 * var13)); // L: 1368
                 if (var14 <= 0) {
                     var14 = 1;
                 }
@@ -1218,7 +1373,7 @@ public class Model extends Renderable {
     public void light(final int ambient, final int contrast, final int x, final int y, final int z, final boolean flag) {
 
         light();
-        final int magnitude = (int) Math.sqrt(x * x + y * y + z * z);
+        final int magnitude = (int) Math.sqrt((double) (x * x + y * y + z * z));
         final int k1 = contrast * magnitude >> 8;
         colorsX = new int[trianglesCount];
         colorsY = new int[trianglesCount];
@@ -1330,9 +1485,9 @@ public class Model extends Renderable {
             }
         }
         calculateDistances();
-        if (textures == null) {
-            vertexNormals();
-        }
+          if (textures == null) {
+              method468(21073);
+          }
 
     }
 
@@ -1344,126 +1499,6 @@ public class Model extends Renderable {
         }
 
         return var0;
-    }
-
-    private float[] faceTextureUVCoordinates;
-    private int[] vertexNormalsX, vertexNormalsY, vertexNormalsZ;
-    public void vertexNormals()
-    {
-        if (vertexNormalsX == null)
-        {
-            int verticesCount = getVerticesCount();
-
-            vertexNormalsX = new int[verticesCount];
-            vertexNormalsY = new int[verticesCount];
-            vertexNormalsZ = new int[verticesCount];
-
-            int[] trianglesX = getTrianglesX();
-            int[] trianglesY = getTrianglesY();
-            int[] trianglesZ = getTrianglesZ();
-            int[] verticesX = getVerticesX();
-            int[] verticesY = getVerticesY();
-            int[] verticesZ = getVerticesZ();
-
-            for (int i = 0; i < getTrianglesCount(); ++i)
-            {
-                int var9 = trianglesX[i];
-                int var10 = trianglesY[i];
-                int var11 = trianglesZ[i];
-
-                int var12 = verticesX[var10] - verticesX[var9];
-                int var13 = verticesY[var10] - verticesY[var9];
-                int var14 = verticesZ[var10] - verticesZ[var9];
-                int var15 = verticesX[var11] - verticesX[var9];
-                int var16 = verticesY[var11] - verticesY[var9];
-                int var17 = verticesZ[var11] - verticesZ[var9];
-
-                int var18 = var13 * var17 - var16 * var14;
-                int var19 = var14 * var15 - var17 * var12;
-
-                int var20;
-                for (var20 = var12 * var16 - var15 * var13; var18 > 8192 || var19 > 8192 || var20 > 8192 || var18 < -8192 || var19 < -8192 || var20 < -8192; var20 >>= 1)
-                {
-                    var18 >>= 1;
-                    var19 >>= 1;
-                }
-
-                int var21 = (int) Math.sqrt(var18 * var18 + var19 * var19 + var20 * var20);
-                if (var21 <= 0)
-                {
-                    var21 = 1;
-                }
-
-                var18 = var18 * 256 / var21;
-                var19 = var19 * 256 / var21;
-                var20 = var20 * 256 / var21;
-
-                vertexNormalsX[var9] += var18;
-                vertexNormalsY[var9] += var19;
-                vertexNormalsZ[var9] += var20;
-
-                vertexNormalsX[var10] += var18;
-                vertexNormalsY[var10] += var19;
-                vertexNormalsZ[var10] += var20;
-
-                vertexNormalsX[var11] += var18;
-                vertexNormalsY[var11] += var19;
-                vertexNormalsZ[var11] += var20;
-            }
-        }
-    }
-    public int getVerticesCount() {
-        return verticesCount;
-    }
-
-    public int[] getVerticesX() {
-        return this.verticesX;
-    }
-
-    public int[] getVerticesY() {
-        return verticesY;
-    }
-
-    public int[] getVerticesZ() {
-        return verticesZ;
-    }
-
-    public int[] getVertexNormalsX() {
-        if(vertexNormalsX == null)
-            return verticesX;
-        return vertexNormalsX;
-    }
-
-    public int[] getVertexNormalsY() {
-        if(vertexNormalsY == null)
-            return verticesY;
-        return vertexNormalsY;
-    }
-
-    public int[] getVertexNormalsZ() {
-        if(vertexNormalsZ == null)
-            return verticesZ;
-        return vertexNormalsZ;
-    }
-
-    public int getTrianglesCount() {
-        return trianglesCount;
-    }
-
-    public int[] getTrianglesX() {
-        return trianglesX;
-    }
-
-    public int[] getTrianglesY() {
-        return trianglesY;
-    }
-
-    public int[] getTrianglesZ() {
-        return trianglesZ;
-    }
-
-    public int[][] getVertexGroups() {
-        return vertexGroups;
     }
 
     private int method2792(final int var0, int var1) {
@@ -1483,40 +1518,39 @@ public class Model extends Renderable {
     public static String vvString = "nt";
     public static String aString9_9 = "" + ccString + "n Ch" + xxString + "ie" + vvString + " ";
 
-    public final void setLighting(int i, int j, int k, int l, int i1) {
+    public final void method480(int i, int j, int k, int l, int i1) {
         for (int j1 = 0; j1 < trianglesCount; j1++) {
             int k1 = trianglesX[j1];
             int i2 = trianglesY[j1];
             int j2 = trianglesZ[j1];
-
             if (types == null) {
                 int i3 = colors[j1];
-                VertexNormal class33 = super.vertexNormals[k1];
+                VertexNormal class33 = super.aClass33Array1425[k1];
                 int k2 = i + (k * class33.x + l * class33.y + i1 * class33.z) / (j * class33.magnitude);
                 colorsX[j1] = method481(i3, k2, 0);
-                class33 = super.vertexNormals[i2];
+                class33 = super.aClass33Array1425[i2];
                 k2 = i + (k * class33.x + l * class33.y + i1 * class33.z) / (j * class33.magnitude);
                 colorsY[j1] = method481(i3, k2, 0);
-                class33 = super.vertexNormals[j2];
+                class33 = super.aClass33Array1425[j2];
                 k2 = i + (k * class33.x + l * class33.y + i1 * class33.z) / (j * class33.magnitude);
                 colorsZ[j1] = method481(i3, k2, 0);
             } else if ((types[j1] & 1) == 0) {
                 int j3 = colors[j1];
                 int k3 = types[j1];
-                VertexNormal class33_1 = super.vertexNormals[k1];
+                VertexNormal class33_1 = super.aClass33Array1425[k1];
                 int l2 = i + (k * class33_1.x + l * class33_1.y + i1 * class33_1.z) / (j * class33_1.magnitude);
                 colorsX[j1] = method481(j3, l2, k3);
-                class33_1 = super.vertexNormals[i2];
+                class33_1 = super.aClass33Array1425[i2];
                 l2 = i + (k * class33_1.x + l * class33_1.y + i1 * class33_1.z) / (j * class33_1.magnitude);
                 colorsY[j1] = method481(j3, l2, k3);
-                class33_1 = super.vertexNormals[j2];
+                class33_1 = super.aClass33Array1425[j2];
                 l2 = i + (k * class33_1.x + l * class33_1.y + i1 * class33_1.z) / (j * class33_1.magnitude);
                 colorsZ[j1] = method481(j3, l2, k3);
             }
         }
 
-        super.vertexNormals = null;
-        alsoVertexNormals = null;
+        super.aClass33Array1425 = null;
+        vertexNormals = null;
         vertexData = null;
         triangleData = null;
         if (types != null) {
@@ -1592,8 +1626,8 @@ public class Model extends Renderable {
             j5 = i5 * l3 + j5 * i4 >> 16;
             i5 = j6;
             projected_verticesZ[k4] = j5 - j4;
-            projected_verticesX[k4] = l1 + (l4 * WorldController.focalLength) / j5;
-            projected_verticesY[k4] = i2 + (i5 * WorldController.focalLength) / j5;
+            projected_verticesX[k4] = l1 + (l4 * Rasterizer3D.fieldOfView) / j5;
+            projected_verticesY[k4] = i2 + (i5 * Rasterizer3D.fieldOfView) / j5;
             if (Rasterizer3D.saveDepth) {
                 camera_verticesZ[k4] = j5;
             }
@@ -1634,22 +1668,22 @@ public class Model extends Renderable {
             return;
         }
         int j3 = l1 * l + j1 * i1 >> 16;
-        int k3 = (j3 - XYZMag) * WorldController.focalLength;
+        int k3 = (j3 - XYZMag) * Rasterizer3D.fieldOfView;
         if (k3 / i3 >= Rasterizer2D.viewportCenterX) {
             return;
         }
-        int l3 = (j3 + XYZMag) * WorldController.focalLength;
+        int l3 = (j3 + XYZMag) * Rasterizer3D.fieldOfView;
         if (l3 / i3 <= -Rasterizer2D.viewportCenterX) {
             return;
         }
         int i4 = k1 * k - j2 * j >> 16;
         int j4 = XYZMag * j >> 16;
-        int k4 = (i4 + j4) * WorldController.focalLength;
+        int k4 = (i4 + j4) * Rasterizer3D.fieldOfView;
         if (k4 / i3 <= -Rasterizer2D.viewportCenterY) {
             return;
         }
         int l4 = j4 + (super.modelBaseY * k >> 16);
-        int i5 = (i4 - l4) * WorldController.focalLength;
+        int i5 = (i4 - l4) * Rasterizer3D.fieldOfView;
         if (i5 / i3 >= Rasterizer2D.viewportCenterY) {
             return;
         }
@@ -1717,9 +1751,9 @@ public class Model extends Renderable {
             l7 = k8;
             projected_verticesZ[j7] = i8 - k2;
             if (i8 >= 50) {
-                projected_verticesX[j7] = (l5 + k7 * WorldController.focalLength
+                projected_verticesX[j7] = (l5 + k7 * Rasterizer3D.fieldOfView
                         / i8);
-                projected_verticesY[j7] = (j6 + l7 * WorldController.focalLength
+                projected_verticesY[j7] = (j6 + l7 * Rasterizer3D.fieldOfView
                         / i8);
                 if (Rasterizer3D.saveDepth) {
                     camera_verticesZ[j7] = i8;
@@ -1960,8 +1994,7 @@ public class Model extends Renderable {
                         anIntArray1668[texture_a], anIntArray1668[texture_b], anIntArray1668[texture_c],
                         camera_verticesY[texture_a], camera_verticesY[texture_b], camera_verticesY[texture_c],
                         viewportTextureZ[texture_a], viewportTextureZ[texture_b], viewportTextureZ[texture_c],
-                        materials[i],
-                        camera_verticesZ[j], camera_verticesZ[k], camera_verticesZ[l]);
+                        materials[i]);
             } else {
                 Rasterizer3D.drawTexturedTriangle(
                         projected_verticesY[j], projected_verticesY[k], projected_verticesY[l],
@@ -1970,8 +2003,7 @@ public class Model extends Renderable {
                         anIntArray1668[texture_a], anIntArray1668[texture_b], anIntArray1668[texture_c],
                         camera_verticesY[texture_a], camera_verticesY[texture_b], camera_verticesY[texture_c],
                         viewportTextureZ[texture_a], viewportTextureZ[texture_b], viewportTextureZ[texture_c],
-                        materials[i],
-                        camera_verticesZ[j], camera_verticesZ[k], camera_verticesZ[l]);
+                        materials[i]);
             }
         } else {
             if (type == 0) {
@@ -2015,10 +2047,10 @@ public class Model extends Renderable {
             if (j2 >= 50) {
                 int k5 = (50 - l1) * modelIntArray4[j2 - l1];
                 anIntArray1678[l] = j
-                        + (k2 + ((anIntArray1668[k1] - k2) * k5 >> 16) << WorldController.viewDistance)
+                        + (k2 + ((anIntArray1668[k1] - k2) * k5 >> 16) << SceneGraph.viewDistance)
                         / 50;
                 anIntArray1679[l] = k
-                        + (k3 + ((camera_verticesY[k1] - k3) * k5 >> 16) << WorldController.viewDistance)
+                        + (k3 + ((camera_verticesY[k1] - k3) * k5 >> 16) << SceneGraph.viewDistance)
                         / 50;
                 anIntArray1680[l++] = k4
                         + ((colorsZ[i] - k4) * k5 >> 16);
@@ -2026,10 +2058,10 @@ public class Model extends Renderable {
             if (i2 >= 50) {
                 int l5 = (50 - l1) * modelIntArray4[i2 - l1];
                 anIntArray1678[l] = j
-                        + (k2 + ((anIntArray1668[j1] - k2) * l5 >> 16) << WorldController.viewDistance)
+                        + (k2 + ((anIntArray1668[j1] - k2) * l5 >> 16) << SceneGraph.viewDistance)
                         / 50;
                 anIntArray1679[l] = k
-                        + (k3 + ((camera_verticesY[j1] - k3) * l5 >> 16) << WorldController.viewDistance)
+                        + (k3 + ((camera_verticesY[j1] - k3) * l5 >> 16) << SceneGraph.viewDistance)
                         / 50;
                 anIntArray1680[l++] = k4
                         + ((colorsZ[i] - k4) * l5 >> 16);
@@ -2046,10 +2078,10 @@ public class Model extends Renderable {
             if (l1 >= 50) {
                 int i6 = (50 - i2) * modelIntArray4[l1 - i2];
                 anIntArray1678[l] = j
-                        + (l2 + ((anIntArray1668[i1] - l2) * i6 >> 16) << WorldController.viewDistance)
+                        + (l2 + ((anIntArray1668[i1] - l2) * i6 >> 16) << SceneGraph.viewDistance)
                         / 50;
                 anIntArray1679[l] = k
-                        + (l3 + ((camera_verticesY[i1] - l3) * i6 >> 16) << WorldController.viewDistance)
+                        + (l3 + ((camera_verticesY[i1] - l3) * i6 >> 16) << SceneGraph.viewDistance)
                         / 50;
                 anIntArray1680[l++] = l4
                         + ((colorsX[i] - l4) * i6 >> 16);
@@ -2057,10 +2089,10 @@ public class Model extends Renderable {
             if (j2 >= 50) {
                 int j6 = (50 - i2) * modelIntArray4[j2 - i2];
                 anIntArray1678[l] = j
-                        + (l2 + ((anIntArray1668[k1] - l2) * j6 >> 16) << WorldController.viewDistance)
+                        + (l2 + ((anIntArray1668[k1] - l2) * j6 >> 16) << SceneGraph.viewDistance)
                         / 50;
                 anIntArray1679[l] = k
-                        + (l3 + ((camera_verticesY[k1] - l3) * j6 >> 16) << WorldController.viewDistance)
+                        + (l3 + ((camera_verticesY[k1] - l3) * j6 >> 16) << SceneGraph.viewDistance)
                         / 50;
                 anIntArray1680[l++] = l4
                         + ((colorsX[i] - l4) * j6 >> 16);
@@ -2077,20 +2109,20 @@ public class Model extends Renderable {
             if (i2 >= 50) {
                 int k6 = (50 - j2) * modelIntArray4[i2 - j2];
                 anIntArray1678[l] = j
-                        + (i3 + ((anIntArray1668[j1] - i3) * k6 >> 16) << WorldController.viewDistance)
+                        + (i3 + ((anIntArray1668[j1] - i3) * k6 >> 16) << SceneGraph.viewDistance)
                         / 50;
                 anIntArray1679[l] = k
-                        + (i4 + ((camera_verticesY[j1] - i4) * k6 >> 16) << WorldController.viewDistance)
+                        + (i4 + ((camera_verticesY[j1] - i4) * k6 >> 16) << SceneGraph.viewDistance)
                         / 50;
                 anIntArray1680[l++] = i5 + ((colorsY[i] - i5) * k6 >> 16);
             }
             if (l1 >= 50) {
                 int l6 = (50 - j2) * modelIntArray4[l1 - j2];
                 anIntArray1678[l] = j
-                        + (i3 + ((anIntArray1668[i1] - i3) * l6 >> 16) << WorldController.viewDistance)
+                        + (i3 + ((anIntArray1668[i1] - i3) * l6 >> 16) << SceneGraph.viewDistance)
                         / 50;
                 anIntArray1679[l] = k
-                        + (i4 + ((camera_verticesY[i1] - i4) * l6 >> 16) << WorldController.viewDistance)
+                        + (i4 + ((camera_verticesY[i1] - i4) * l6 >> 16) << SceneGraph.viewDistance)
                         / 50;
                 anIntArray1680[l++] = i5 + ((colorsX[i] - i5) * l6 >> 16);
             }
@@ -2130,8 +2162,7 @@ public class Model extends Renderable {
                                 anIntArray1668[texture_a], anIntArray1668[texture_b], anIntArray1668[texture_c],
                                 camera_verticesY[texture_a], camera_verticesY[texture_b], camera_verticesY[texture_c],
                                 viewportTextureZ[texture_a], viewportTextureZ[texture_b], viewportTextureZ[texture_c],
-                                materials[i],
-                                camera_verticesZ[i1], camera_verticesZ[j1], camera_verticesZ[k1]);
+                                materials[i]);
                     } else {
                         Rasterizer3D.drawTexturedTriangle(
                                 i7, j7, k7,
@@ -2140,8 +2171,7 @@ public class Model extends Renderable {
                                 anIntArray1668[texture_a], anIntArray1668[texture_b], anIntArray1668[texture_c],
                                 camera_verticesY[texture_a], camera_verticesY[texture_b], camera_verticesY[texture_c],
                                 viewportTextureZ[texture_a], viewportTextureZ[texture_b], viewportTextureZ[texture_c],
-                                materials[i],
-                                camera_verticesZ[i1], camera_verticesZ[j1], camera_verticesZ[k1]);
+                                materials[i]);
                     }
                 } else {
                     if (l7 == 0)
@@ -2177,8 +2207,7 @@ public class Model extends Renderable {
                                 anIntArray1668[texture_a], anIntArray1668[texture_b], anIntArray1668[texture_c],
                                 camera_verticesY[texture_a], camera_verticesY[texture_b], camera_verticesY[texture_c],
                                 viewportTextureZ[texture_a], viewportTextureZ[texture_b], viewportTextureZ[texture_c],
-                                materials[i],
-                                camera_verticesZ[i1], camera_verticesZ[j1], camera_verticesZ[k1]);
+                                materials[i]);
                         Rasterizer3D.drawTexturedTriangle(
                                 i7, k7, anIntArray1679[3],
                                 j3, j5, anIntArray1678[3],
@@ -2186,8 +2215,7 @@ public class Model extends Renderable {
                                 anIntArray1668[texture_a], anIntArray1668[texture_b], anIntArray1668[texture_c],
                                 camera_verticesY[texture_a], camera_verticesY[texture_b], camera_verticesY[texture_c],
                                 viewportTextureZ[texture_a], viewportTextureZ[texture_b], viewportTextureZ[texture_c],
-                                materials[i],
-                                camera_verticesZ[i1], camera_verticesZ[j1], camera_verticesZ[k1]);
+                                materials[i]);
                     } else {
                         Rasterizer3D.drawTexturedTriangle(
                                 i7, j7, k7,
@@ -2196,8 +2224,7 @@ public class Model extends Renderable {
                                 anIntArray1668[texture_a], anIntArray1668[texture_b], anIntArray1668[texture_c],
                                 camera_verticesY[texture_a], camera_verticesY[texture_b], camera_verticesY[texture_c],
                                 viewportTextureZ[texture_a], viewportTextureZ[texture_b], viewportTextureZ[texture_c],
-                                materials[i],
-                                camera_verticesZ[i1], camera_verticesZ[j1], camera_verticesZ[k1]);
+                                materials[i]);
                         Rasterizer3D.drawTexturedTriangle(
                                 i7, k7, anIntArray1679[3],
                                 j3, j5, anIntArray1678[3],
@@ -2205,8 +2232,7 @@ public class Model extends Renderable {
                                 anIntArray1668[texture_a], anIntArray1668[texture_b], anIntArray1668[texture_c],
                                 camera_verticesY[texture_a], camera_verticesY[texture_b], camera_verticesY[texture_c],
                                 viewportTextureZ[texture_a], viewportTextureZ[texture_b], viewportTextureZ[texture_c],
-                                materials[i],
-                                camera_verticesZ[i1], camera_verticesZ[j1], camera_verticesZ[k1]);
+                                materials[i]);
                         return;
                     }
                 } else {
@@ -2286,7 +2312,7 @@ public class Model extends Renderable {
     public int vertexGroups[][];
     public int faceGroups[][];
     public boolean fits_on_single_square;
-    VertexNormal alsoVertexNormals[];
+    VertexNormal vertexNormals[];
     public VertexNormal[] vertexNormalsOffsets;
     public FaceNormal[] faceNormals;
     static ModelHeader aClass21Array1661[];

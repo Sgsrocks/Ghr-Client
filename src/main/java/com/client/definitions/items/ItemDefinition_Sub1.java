@@ -1604,7 +1604,7 @@ public class ItemDefinition_Sub1
     	if(i == 28250) //ID
 		{
 			itemDef.itemActions = new String[] {null, "Wear", null, null, null};
-			itemDef.groundActions = new String[] {null};
+			itemDef.groundActions = new String[] {null, null, "Take", null, null};
 			itemDef.name = "Admin Platebody"; //Name
 			itemDef.description = "Its an Admin Platebody"; //Description
 			itemDef.modifiedModelColors = new int[8];
@@ -1681,7 +1681,7 @@ public class ItemDefinition_Sub1
     	if(i == 28252) //ID
 		{
 			itemDef.itemActions = new String[] {null, "Wear", null, null, null};
-			itemDef.groundActions = new String[] {null};
+			itemDef.groundActions = new String[] {null, null, "Take", null, null};
 			itemDef.name = "Admin Crown"; //Name
 			itemDef.description = "Its an Admin Crown"; //Description
 			itemDef.modifiedModelColors = new int[1];
@@ -1715,7 +1715,7 @@ public class ItemDefinition_Sub1
 	if(i == 28253) //ID
 		{
 			itemDef.itemActions = new String[] {null, "Wear", null, null, null};
-			itemDef.groundActions = new String[] {null};
+			itemDef.groundActions = new String[] {null, null, "Take", null, null};
 			itemDef.name = "G-mod Crown"; //Name
 			itemDef.description = "Its an G-mod Crown"; //Description
 			itemDef.modifiedModelColors = new int[2];
@@ -1751,7 +1751,7 @@ public class ItemDefinition_Sub1
 	if(i == 28254) //ID
 		{
 			itemDef.itemActions = new String[] {null, "Wear", null, null, null};
-			itemDef.groundActions = new String[] {null};
+			itemDef.groundActions = new String[] {null, null, "Take", null, null};
 			itemDef.name = "Mod Crown"; //Name
 			itemDef.description = "Its an Mod Crown"; //Description
 			itemDef.modifiedModelColors = new int[2];
@@ -1787,7 +1787,7 @@ public class ItemDefinition_Sub1
 	if(i == 28255) //ID
 		{
 			itemDef.itemActions = new String[] {null, "Wear", null, null, null};
-			itemDef.groundActions = new String[] {null};
+			itemDef.groundActions = new String[] {null, null, "Take", null, null};
 			itemDef.name = "SB-mod Crown"; //Name
 			itemDef.description = "Its an SB-mod Crown"; //Description
 			itemDef.modifiedModelColors = new int[2];
@@ -1911,7 +1911,7 @@ public class ItemDefinition_Sub1
     	if(i == 28259) //ID
 		{
 			itemDef.itemActions = new String[] {null, "Wear", null, null, null};
-			itemDef.groundActions = new String[] {null};
+			itemDef.groundActions = new String[] {null, null, "Take", null, null};
 			itemDef.name = "Mod Platebody"; //Name
 			itemDef.description = "Its an Mod Platebody"; //Description
 			itemDef.modifiedModelColors = new int[8];
@@ -2143,7 +2143,7 @@ public class ItemDefinition_Sub1
     	if(i == 28266) //ID
 		{
 			itemDef.itemActions = new String[] {null, "Wear", null, null, null};
-			itemDef.groundActions = new String[] {null};
+			itemDef.groundActions = new String[] {null, null, "Take", null, null};
 			itemDef.name = "Owners Platebody"; //Name
 			itemDef.description = "Its an Owners Platebody"; //Description
 			itemDef.modifiedModelColors = new int[8];
@@ -2281,7 +2281,7 @@ public class ItemDefinition_Sub1
     	if(i == 28270) //ID
 		{
 			itemDef.itemActions = new String[] {null, "Wear", null, null, null};
-			itemDef.groundActions = new String[] {null};
+			itemDef.groundActions = new String[] {null, null, "Take", null, null};
 			itemDef.name = "Owners Crown"; //Name
 			itemDef.description = "Its an Owners Crown"; //Description
 			itemDef.modifiedModelColors = new int[2];
@@ -4609,15 +4609,15 @@ public class ItemDefinition_Sub1
             itemDef.itemActions[1] = "Wear";
             itemDef.modifiedModelColors = new int[5];
             itemDef.originalModelColors = new int[5];
-            itemDef.modelId = 0x16c68;
+            itemDef.modelId = 93288;
             itemDef.spriteScale = 2992;
             itemDef.spritePitch = 517;
             itemDef.spriteCameraRoll = 1035;
             itemDef.spriteTranslateX = 39;
             itemDef.spriteTranslateY = 73;
             itemDef.spriteCameraYaw = 14;
-            itemDef.primaryMaleModel = 0x16c67;
-            itemDef.primaryFemaleModel = 0x16c67;
+            itemDef.primaryMaleModel = 93287;
+            itemDef.primaryFemaleModel = 93287;
             itemDef.primaryMaleHeadPiece = -1;
             itemDef.primaryFemaleHeadPiece = -1;
     		itemDef.stackable = false;

@@ -368,7 +368,7 @@ public final class ObjectDefinition {
 		// !aBoolean769);
 		// ORIGINAL^
 
-		model_3.light(64 + ambientLighting,    768 + lightDiffusion  * 5, -50, -10, -50, !delayShading);
+		model_3.light(85 + ambientLighting,    768 + lightDiffusion  * 25, -50, -10, -50, !delayShading);
 
 		if (anInt760 == 1)
 			model_3.itemDropHeight = model_3.modelBaseY;
@@ -521,8 +521,6 @@ public final class ObjectDefinition {
 				AreaType = stream.readUnsignedShort();//AreaType
 			} else if(type == 89) {
 				field3621 = false;
-			} else if (type == 94) {
-				opcode150 = stream.readString();
 			} else if(type == 249) {
 				int var1 = stream.readUnsignedByte();
 				for(int var2 = 0;var2<var1;var2++) {
