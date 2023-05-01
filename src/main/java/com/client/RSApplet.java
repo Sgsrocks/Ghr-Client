@@ -1,11 +1,7 @@
 package com.client;
 
 import java.applet.Applet;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Font;
-import java.awt.FontMetrics;
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
@@ -39,6 +35,13 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 	public final int MOVE = 4;
 	boolean mouseWheelDown;
 	int mouseWheelX, mouseWheelY;
+
+	public int getMouseX() {
+		return (int) ClientWindow.getStretchedMouseCoordinates(new Point(mouseX, mouseY)).getX();
+	}
+	public int getMouseY() {
+		return (int) ClientWindow.getStretchedMouseCoordinates(new Point(mouseX, mouseY)).getY();
+	}
 
 	final void initClientFrame(int clientWidth, int clientHeight) {
 		myWidth = clientWidth;

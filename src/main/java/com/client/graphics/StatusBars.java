@@ -136,7 +136,7 @@ public class StatusBars {
         }
 
         if(getPercent(type,0) < 20) {
-            if(Client.loopCycle % 20 < 10) {
+            if(Client.game_tick % 20 < 10) {
             	Client.cacheSprite3[type.getIcon()].drawSprite(xOffset + 12 + getBarOffsetX(type), 50 + yOffset);
             }
         } else {

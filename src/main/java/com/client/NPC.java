@@ -13,14 +13,14 @@ public final class NPC extends Entity {
 		if (super.anim >= 0 && super.anInt1529 == 0) {
 			int k = AnimationDefinition.anims[super.anim].primaryFrames[super.anInt1527];
 			int i1 = -1;
-			if (super.anInt1517 >= 0 && super.anInt1517 != super.anInt1511)
-				i1 = AnimationDefinition.anims[super.anInt1517].primaryFrames[super.anInt1518];
+			if (super.queued_animation_id >= 0 && super.queued_animation_id != super.idle_animation_id)
+				i1 = AnimationDefinition.anims[super.queued_animation_id].primaryFrames[super.anInt1518];
 			return desc.method164(i1, k,
 					AnimationDefinition.anims[super.anim].anIntArray357);
 		}
 		int l = -1;
-		if (super.anInt1517 >= 0)
-			l = AnimationDefinition.anims[super.anInt1517].primaryFrames[super.anInt1518];
+		if (super.queued_animation_id >= 0)
+			l = AnimationDefinition.anims[super.queued_animation_id].primaryFrames[super.anInt1518];
 		return desc.method164(-1, l, null);
 	}
 
@@ -31,7 +31,7 @@ public final class NPC extends Entity {
 		Model model = method450();
 		if (model == null)
 			return null;
-		super.height = model.modelBaseY;
+		super.height = model.modelHeight;
 		if (super.anInt1520 != -1 && super.currentAnimation != -1) {
 			GraphicsDefinition spotAnim = GraphicsDefinition.cache[super.anInt1520];
 			Model model_1 = spotAnim.getModel();
@@ -64,6 +64,9 @@ public final class NPC extends Entity {
 
 	NPC() {
 	}
-
+	public boolean isShowMenuOnHover() {
+		return npcPetType == 0 || npcPetType == 2;
+	}
+	public int npcPetType;
 	public NpcDefinition desc;
 }

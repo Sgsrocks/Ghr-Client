@@ -52,7 +52,7 @@ final class Animable_Sub5 extends Renderable {
 	public Model getRotatedModel() {
 		int j = -1;
 		if (aAnimation_1607 != null) {
-			int k = Client.loopCycle - anInt1608;
+			int k = Client.game_tick - anInt1608;
 			if (k > 100 && aAnimation_1607.anInt356 > 0)
 				k = 100;
 			while (k > aAnimation_1607.method258(anInt1599)) {
@@ -66,7 +66,7 @@ final class Animable_Sub5 extends Renderable {
 				aAnimation_1607 = null;
 				break;
 			}
-			anInt1608 = Client.loopCycle - k;
+			anInt1608 = Client.game_tick - k;
 			if (aAnimation_1607 != null)
 				j = aAnimation_1607.primaryFrames[anInt1599];
 		}
@@ -95,7 +95,7 @@ final class Animable_Sub5 extends Renderable {
 		if (l1 != -1) {
 			aAnimation_1607 = AnimationDefinition.anims[l1];
 			anInt1599 = 0;
-			anInt1608 = Client.loopCycle;
+			anInt1608 = Client.game_tick;
 			if (flag && aAnimation_1607.anInt356 != -1) {
 				anInt1599 = (int) (Math.random() * aAnimation_1607.anInt352);
 				anInt1608 -= (int) (Math.random() * aAnimation_1607
