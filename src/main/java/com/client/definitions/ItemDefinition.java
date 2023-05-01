@@ -12,6 +12,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.stream.IntStream;
 
 import com.client.Rasterizer2D;
 import com.client.MRUNodes;
@@ -22,11 +23,17 @@ import com.client.Buffer;
 import com.client.FileArchive;
 import com.client.definitions.items.*;
 import com.client.sign.Signlink;
+import com.client.utilities.FieldGenerator;
+import com.client.utilities.TempWriter;
 
 public final class ItemDefinition {
 
 	private int opcode94;
 	private String opcode150;
+	private byte field2142;
+	private byte field2157;
+	private byte field2158;
+	private int field2182;
 
 	public static void unpackConfig(final FileArchive streamLoader) {
 		stream = new Buffer(streamLoader.readFile("obj.dat"));
@@ -54,6 +61,16 @@ public final class ItemDefinition {
 		//dumpNotes();
 		//dumpStackable();
 		//dumpStackableList();
+			TempWriter writer2 = new TempWriter("item_fields");
+			FieldGenerator generator = new FieldGenerator(writer2::writeLine);
+			IntStream.range(0, 100_000).forEach(id -> {
+				try {
+					ItemDefinition definition = ItemDefinition.forID(id);
+					generator.add(definition.name + (definition.certTemplateID != -1 ? " noted" : ""), id);
+				} catch (Exception e) {
+				}
+			});
+			writer2.close();
 	}
 
 	public static ItemDefinition forID(int itemId) {
@@ -486,6 +503,10 @@ public final class ItemDefinition {
 				stackable = true;
 			else if (opcode == 12)
 				value = stream.readDWord();
+			else if(opcode == 13)
+				this.field2142 = stream.readSignedByte();
+			else if(opcode == 14)
+				this.field2157 = stream.readSignedByte();
 			else if (opcode == 16)
 				membersObject = true;
 			else if (opcode == 23) {
@@ -498,6 +519,8 @@ public final class ItemDefinition {
 				femaleTranslation = stream.readSignedByte();
 			} else if (opcode == 26)
 				secondaryFemaleModel = stream.readUnsignedShort();
+			else if(opcode == 27)
+				this.field2158 = stream.readSignedByte();
 			else if (opcode >= 30 && opcode < 35) {
 				if (groundActions == null)
 					groundActions = new String[5];
@@ -528,6 +551,8 @@ public final class ItemDefinition {
 				shiftClickIndex = stream.readUnsignedByte();
 			} else if (opcode == 65) {
 				searchable = true;
+			} else if (opcode == 75){
+				this.field2182 = stream.readSignedWord();
 			} else if (opcode == 78)
 				tertiaryMaleEquipmentModel = stream.readUnsignedShort();
 			else if (opcode == 79)
@@ -623,9 +648,9 @@ public final class ItemDefinition {
 			Model aclass30_sub2_sub4_sub6s[] = { model, model_1 };
 			model = new Model(2, aclass30_sub2_sub4_sub6s);
 		}
-		if (modifiedModelColors != null) {
-			for (int i1 = 0; i1 < modifiedModelColors.length; i1++)
-				model.recolor(modifiedModelColors[i1], originalModelColors[i1]);
+		if (originalModelColors != null) {
+			for (int i1 = 0; i1 < originalModelColors.length; i1++)
+				model.recolor(originalModelColors[i1], modifiedModelColors[i1]);
 
 		}
 		if (originalTextureColors != null) {
@@ -684,9 +709,9 @@ public final class ItemDefinition {
 			model.translate(0, maleTranslation, 0);
 		if (i == 1 && femaleTranslation != 0)
 			model.translate(0, femaleTranslation, 0);
-		if (modifiedModelColors != null) {
-			for (int i1 = 0; i1 < modifiedModelColors.length; i1++)
-				model.recolor(modifiedModelColors[i1], originalModelColors[i1]);
+		if (originalModelColors != null) {
+			for (int i1 = 0; i1 < originalModelColors.length; i1++)
+				model.recolor(originalModelColors[i1], modifiedModelColors[i1]);
 
 		}
 		if (originalTextureColors != null) {
@@ -1357,9 +1382,9 @@ public final class ItemDefinition {
 			return null;
 		if (groundScaleX != 128 || groundScaleY != 128 || groundScaleZ != 128)
 			model.scale(groundScaleX, groundScaleZ, groundScaleY);
-		if (modifiedModelColors != null) {
-			for (int l = 0; l < modifiedModelColors.length; l++)
-				model.recolor(modifiedModelColors[l], originalModelColors[l]);
+		if (originalModelColors != null) {
+			for (int l = 0; l < originalModelColors.length; l++)
+				model.recolor(originalModelColors[l], modifiedModelColors[l]);
 
 		}
 		if (originalTextureColors != null) {
@@ -1392,9 +1417,9 @@ public final class ItemDefinition {
 		Model model = Model.getModel(modelId);
 		if (model == null)
 			return null;
-		if (modifiedModelColors != null) {
-			for (int l = 0; l < modifiedModelColors.length; l++)
-				model.recolor(modifiedModelColors[l], originalModelColors[l]);
+		if (originalModelColors != null) {
+			for (int l = 0; l < originalModelColors.length; l++)
+				model.recolor(originalModelColors[l], modifiedModelColors[l]);
 
 		}
 		if (originalTextureColors != null) {

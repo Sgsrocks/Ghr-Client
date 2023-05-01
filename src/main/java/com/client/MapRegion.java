@@ -22,8 +22,8 @@ final class MapRegion {
 		regionSizeY = 104;
 		this.tileHeights = tileHeights;
 		this.tileFlags = fileFlags;
-		underlays = new byte[4][regionSizeX][regionSizeY];
-		overlays = new byte[4][regionSizeX][regionSizeY];
+		underlays = new short[4][regionSizeX][regionSizeY];
+		overlays = new short[4][regionSizeX][regionSizeY];
 		overlayTypes = new byte[4][regionSizeX][regionSizeY];
 		overlayOrientations = new byte[4][regionSizeX][regionSizeY];
 		anIntArrayArrayArray135 = new int[4][regionSizeX + 1][regionSizeY + 1];
@@ -126,7 +126,7 @@ final class MapRegion {
 				for (int z = 0; z < regionSizeY; z++) {
 					int xForwardOffset = x + 5;
 					if (xForwardOffset < regionSizeX) {
-						int underlayId = underlays[l][xForwardOffset][z] & 0xff;
+						int underlayId = underlays[l][xForwardOffset][z] & 0x3FFF;
 						if (underlayId > 0) {
 							FloorUnderlayDefinition flo = FloorUnderlayDefinition.underlays[underlayId - 1];
 							hues[z] += flo.blendHue;
@@ -138,7 +138,7 @@ final class MapRegion {
 					}
 					int xBackwardOffset = x - 5;
 					if (xBackwardOffset >= 0) {
-						int underlayId = underlays[l][xBackwardOffset][z] & 0xff;
+						int underlayId = underlays[l][xBackwardOffset][z] & 0x3FFF;
 						if (underlayId > 0) {
 							FloorUnderlayDefinition flo_1 = FloorUnderlayDefinition.underlays[underlayId - 1];
 							hues[z] -= flo_1.blendHue;
@@ -191,12 +191,12 @@ final class MapRegion {
 							maximumPlane = l;
 						}
 
-						int underlayA = underlays[l][x][z] & 0xff;
-						int underlayB = underlays[l][nextX][z] & 0xff;
-						int underlayC = underlays[l][nextX][nextZ] & 0xff;
-						int underlayD = underlays[l][x][nextZ] & 0xff;
+						int underlayA = underlays[l][x][z] & 0x3FFF;
+						int underlayB = underlays[l][nextX][z] & 0x3FFF;
+						int underlayC = underlays[l][nextX][nextZ] & 0x3FFF;
+						int underlayD = underlays[l][x][nextZ] & 0x3FFF;
 
-						int overlayA = overlays[l][x][z] & 0xff;
+						int overlayA = overlays[l][x][z] & 0x3FFF;
 						if (underlayA > 0 || overlayA > 0) {
 							int tileHeightA = tileHeights[l][x][z];
 							int tileHeightB = tileHeights[l][x + 1][z];
@@ -896,7 +896,7 @@ final class MapRegion {
 				int absZ = (i1 + l);
 				tileFlags[l][k][i] = 0;
 				do {
-					int l1 = stream.readUnsignedByte();
+					int l1 = stream.readUShort();
 					if (l1 == 0)
 						if (l == 0) {
 							tileHeights[0][k][i] = -calculateVertexHeight(0xe3b7b + k + k1, 0x87cce + i + j) * 8;
@@ -948,17 +948,17 @@ final class MapRegion {
 						overlayTypes[l][k][i] = 0; // tile shape
 					}
 					if (l1 <= 49) {
-						overlays[l][k][i] = stream.readSignedByte();
+						overlays[l][k][i] = (short) stream.readSignedWord();
 						overlayTypes[l][k][i] = (byte) ((l1 - 2) / 4);
 						overlayOrientations[l][k][i] = (byte) ((l1 - 2) + i1 & 3);
 					} else if (l1 <= 81)
 						tileFlags[l][k][i] = (byte) (l1 - 49);
 					else
-						underlays[l][k][i] = (byte) (l1 - 81);
+						underlays[l][k][i] = (short) (l1 - 81);
 				} while (true);
 			}
 			do {
-				int i2 = stream.readUnsignedByte();
+				int i2 = stream.readUShort();
 				if (i2 == 0)
 					break;
 				if (i2 == 1) {
@@ -966,7 +966,7 @@ final class MapRegion {
 					return;
 				}
 				if (i2 <= 49)
-					stream.readUnsignedByte();
+					stream.readSignedWord();
 			} while (true);
 		} catch (Exception e) {
 		}
@@ -1239,7 +1239,7 @@ final class MapRegion {
 		Buffer stream = new Buffer(is);
 		int i_252_ = -1;
 		for (;;) {
-			int i_253_ = stream.readUSmart2();
+			int i_253_ = stream.readUnsignedIntSmartShortCompat();
 			if (i_253_ == 0)
 				break;
 			i_252_ += i_253_;
@@ -1247,12 +1247,12 @@ final class MapRegion {
 			boolean bool_255_ = false;
 			for (;;) {
 				if (bool_255_) {
-					int i_256_ = stream.readUSmart();
+					int i_256_ = stream.readUnsignedIntSmartShortCompat();
 					if (i_256_ == 0)
 						break;
 					stream.readUnsignedByte();
 				} else {
-					int i_257_ = stream.readUSmart();
+					int i_257_ = stream.readUnsignedIntSmartShortCompat();
 					if (i_257_ == 0)
 						break;
 					i_254_ += i_257_ - 1;
@@ -1285,7 +1285,7 @@ final class MapRegion {
 				objId += objIdOffset;
 				int objPosInfo = 0;
 				do {
-					int objPosInfoOffset = stream.readUSmart();
+					int objPosInfoOffset = stream.readUnsignedIntSmartShortCompat();
 					if (objPosInfoOffset == 0)
 						break;
 					objPosInfo += objPosInfoOffset - 1;
@@ -1294,7 +1294,7 @@ final class MapRegion {
 					int localX = objPosInfo >> 6 & 0x3f;
 					int plane = objPosInfo >> 12;
 				
-					int objOtherInfo = stream.readUnsignedByte();
+					int objOtherInfo = stream.readUnsignedIntSmartShortCompat();
 					
 					int type = objOtherInfo >> 2;
 					int rotation = objOtherInfo & 3;
@@ -1346,7 +1346,7 @@ final class MapRegion {
 	private final int[] chromas;
 	private final int[] anIntArray128;
 	private final int[][][] tileHeights;
-	private final byte[][][] overlays;
+	private final short[][][] overlays;
 	static int anInt131;
 	private final byte[][][] shading;
 	private final int[][][] anIntArrayArrayArray135;
@@ -1354,7 +1354,7 @@ final class MapRegion {
 	private static final int anIntArray137[] = { 1, 0, -1, 0 };
 	private final int[][] tileLighting;
 	private static final int anIntArray140[] = { 16, 32, 64, 128 };
-	private final byte[][][] underlays;
+	private final short[][][] underlays;
 	private static final int anIntArray144[] = { 0, -1, 0, 1 };
 	static int maximumPlane = 99;
 	private final int regionSizeX;

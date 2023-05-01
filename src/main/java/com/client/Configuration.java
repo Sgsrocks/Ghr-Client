@@ -50,7 +50,7 @@ public class Configuration {
 
 	public static boolean 
 			repackIndexOne = true,
-			repackIndexTwo = true,
+			repackIndexTwo = false,
 			repackIndexThree = false,
 			repackIndexFour = true,
 			repackIndexFive = false,

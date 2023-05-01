@@ -18,10 +18,10 @@ public class ItemDefinition_Sub1
             });
             itemDef.name = "Lucky Box";
             itemDef.description = "You can get lucky items from this.";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 22410;
-            itemDef.originalModelColors[0] = 100;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 22410;
+            itemDef.modifiedModelColors[0] = 100;
             itemDef.modelId = 2426;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 160;
@@ -43,10 +43,10 @@ public class ItemDefinition_Sub1
             });
             itemDef.name = "Pet Box";
             itemDef.description = "You can get skill pets from this.";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 22410;
-            itemDef.originalModelColors[0] = 7114;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 22410;
+            itemDef.modifiedModelColors[0] = 7114;
             itemDef.modelId = 2426;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 160;
@@ -68,10 +68,10 @@ public class ItemDefinition_Sub1
                 });
             itemDef.name = "Basic Donator Box";
             itemDef.description = "What could be inside?";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 22410;
-            itemDef.originalModelColors[0] = 918;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 22410;
+            itemDef.modifiedModelColors[0] = 918;
             itemDef.modelId = 2426;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 160;
@@ -93,10 +93,10 @@ public class ItemDefinition_Sub1
                 });
             itemDef.name = "Super Donator Box";
             itemDef.description = "What could be inside?";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 22410;
-            itemDef.originalModelColors[0] = 22464;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 22410;
+            itemDef.modifiedModelColors[0] = 22464;
             itemDef.modelId = 2426;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 160;
@@ -118,10 +118,10 @@ public class ItemDefinition_Sub1
                 });
             itemDef.name = "Extreme Donator Box";
             itemDef.description = "What could be inside?";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 22410;
-            itemDef.originalModelColors[0] = 43968;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 22410;
+            itemDef.modifiedModelColors[0] = 43968;
             itemDef.modelId = 2426;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 160;
@@ -143,10 +143,10 @@ public class ItemDefinition_Sub1
                 });
             itemDef.name = "legendary Donator Box";
             itemDef.description = "What could be inside?";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 22410;
-            itemDef.originalModelColors[0] = 6073;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 22410;
+            itemDef.modifiedModelColors[0] = 6073;
             itemDef.modelId = 2426;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 160;
@@ -168,10 +168,10 @@ public class ItemDefinition_Sub1
                 });
             itemDef.name = "Rainbow Donator Box";
             itemDef.description = "What could be inside?";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 22410;
-            itemDef.originalModelColors[0] = 23286;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 22410;
+            itemDef.modifiedModelColors[0] = 23286;
             itemDef.modelId = 2426;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 160;
@@ -191,10 +191,10 @@ public class ItemDefinition_Sub1
             itemDef.itemActions = (new String[] {
                     null, "Wield", null, "Check", null
                 });
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 0;
+            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors[0] = 0;
+            itemDef.modifiedModelColors[0] = 0;
             itemDef.modelId = 0x1185a;
             itemDef.spriteScale = 2050;
             itemDef.spritePitch = 222;
@@ -221,8 +221,8 @@ public class ItemDefinition_Sub1
             itemDef.itemActions = (new String[] {
                     null, "Wield", null, "Check", null
                 });
-            itemDef.modifiedModelColors = new int[0];
             itemDef.originalModelColors = new int[0];
+            itemDef.modifiedModelColors = new int[0];
             itemDef.modelId = 0x11859;
             itemDef.spriteScale = 2000;
             itemDef.spritePitch = 228;
@@ -249,8 +249,8 @@ public class ItemDefinition_Sub1
             itemDef.itemActions = (new String[] {
                     null, "Wield", null, "Check", null
                 });
-            itemDef.modifiedModelColors = new int[0];
             itemDef.originalModelColors = new int[0];
+            itemDef.modifiedModelColors = new int[0];
             itemDef.modelId = 0x11857;
             itemDef.spriteScale = 2128;
             itemDef.spritePitch = 243;
@@ -275,8 +275,8 @@ public class ItemDefinition_Sub1
             itemDef.itemActions = (new String[] {
                     null, "Wield", null, "Check", null
                 });
-            itemDef.modifiedModelColors = new int[0];
             itemDef.originalModelColors = new int[0];
+            itemDef.modifiedModelColors = new int[0];
             itemDef.modelId = 0x11858;
             itemDef.spriteScale = 3355;
             itemDef.spritePitch = 512;
@@ -303,10 +303,10 @@ public class ItemDefinition_Sub1
             itemDef.itemActions = (new String[] {
                     null, "Wield", null, "Check", null
                 });
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 0;
+            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors[0] = 0;
+            itemDef.modifiedModelColors[0] = 0;
             itemDef.modelId = 0x11856;
             itemDef.spriteScale = 1616;
             itemDef.spritePitch = 192;
@@ -332,8 +332,8 @@ public class ItemDefinition_Sub1
             itemDef.itemActions = (new String[] {
                 null, "Wield", null, "Check", null
             });
-            itemDef.modifiedModelColors = new int[0];
             itemDef.originalModelColors = new int[0];
+            itemDef.modifiedModelColors = new int[0];
             itemDef.modelId = 0x102a4;
             itemDef.spriteScale = 2151;
             itemDef.spritePitch = 636;
@@ -360,8 +360,8 @@ public class ItemDefinition_Sub1
             itemDef.itemActions = (new String[] {
                     null, "Wield", null, "Check", null
                 });
-            itemDef.modifiedModelColors = new int[0];
             itemDef.originalModelColors = new int[0];
+            itemDef.modifiedModelColors = new int[0];
             itemDef.modelId = 0x10294;
             itemDef.spriteScale = 840;
             itemDef.spritePitch = 200;
@@ -386,8 +386,8 @@ public class ItemDefinition_Sub1
             itemDef.itemActions = (new String[] {
                     null, "Wield", null, "Check", null
                 });
-            itemDef.modifiedModelColors = new int[0];
             itemDef.originalModelColors = new int[0];
+            itemDef.modifiedModelColors = new int[0];
             itemDef.modelId = 0x13642;
             itemDef.spriteScale = 2891;
             itemDef.spritePitch = 512;
@@ -412,8 +412,8 @@ public class ItemDefinition_Sub1
             itemDef.itemActions = (new String[] {
                     null, "Wear", null, "Check", null
                 });
-            itemDef.modifiedModelColors = new int[0];
             itemDef.originalModelColors = new int[0];
+            itemDef.modifiedModelColors = new int[0];
             itemDef.modelId = 66193;
             itemDef.spriteScale = 1919;
             itemDef.spritePitch = 396;
@@ -437,8 +437,8 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wield";
-            itemDef.modifiedModelColors = new int[0];
             itemDef.originalModelColors = new int[0];
+            itemDef.modifiedModelColors = new int[0];
             itemDef.modelId = 0x114f3;
             itemDef.spriteScale = 1897;
             itemDef.spritePitch = 520;
@@ -462,8 +462,8 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wield";
-            itemDef.modifiedModelColors = new int[0];
             itemDef.originalModelColors = new int[0];
+            itemDef.modifiedModelColors = new int[0];
             itemDef.modelId = 0x13c04;
             itemDef.spriteScale = 1897;
             itemDef.spritePitch = 520;
@@ -487,8 +487,8 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wield";
-            itemDef.modifiedModelColors = new int[0];
             itemDef.originalModelColors = new int[0];
+            itemDef.modifiedModelColors = new int[0];
             itemDef.modelId = 0x10301;
             itemDef.spriteScale = 1897;
             itemDef.spritePitch = 308;
@@ -512,10 +512,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 528;
-            itemDef.originalModelColors[0] = 6073;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 528;
+            itemDef.modifiedModelColors[0] = 6073;
             itemDef.modelId = 5412;
             itemDef.spriteScale = 840;
             itemDef.spritePitch = 280;
@@ -541,10 +541,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 528;
-            itemDef.originalModelColors[0] = 51136;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 528;
+            itemDef.modifiedModelColors[0] = 51136;
             itemDef.modelId = 5412;
             itemDef.spriteScale = 840;
             itemDef.spritePitch = 280;
@@ -570,10 +570,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 528;
-            itemDef.originalModelColors[0] = 25;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 528;
+            itemDef.modifiedModelColors[0] = 25;
             itemDef.modelId = 5412;
             itemDef.spriteScale = 840;
             itemDef.spritePitch = 280;
@@ -599,10 +599,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 528;
-            itemDef.originalModelColors[0] = 950;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 528;
+            itemDef.modifiedModelColors[0] = 950;
             itemDef.modelId = 5412;
             itemDef.spriteScale = 840;
             itemDef.spritePitch = 280;
@@ -628,10 +628,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 528;
-            itemDef.originalModelColors[0] = 43968;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 528;
+            itemDef.modifiedModelColors[0] = 43968;
             itemDef.modelId = 5412;
             itemDef.spriteScale = 840;
             itemDef.spritePitch = 280;
@@ -657,10 +657,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 528;
-            itemDef.originalModelColors[0] = 10394;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 528;
+            itemDef.modifiedModelColors[0] = 10394;
             itemDef.modelId = 5412;
             itemDef.spriteScale = 840;
             itemDef.spritePitch = 280;
@@ -686,10 +686,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 528;
-            itemDef.originalModelColors[0] = 7114;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 528;
+            itemDef.modifiedModelColors[0] = 7114;
             itemDef.modelId = 5412;
             itemDef.spriteScale = 840;
             itemDef.spritePitch = 280;
@@ -715,10 +715,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 528;
-            itemDef.originalModelColors[0] = 100;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 528;
+            itemDef.modifiedModelColors[0] = 100;
             itemDef.modelId = 5412;
             itemDef.spriteScale = 840;
             itemDef.spritePitch = 280;
@@ -744,12 +744,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 51136;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 7097;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 51136;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 7097;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -775,12 +775,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 6;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 7097;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 6;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 7097;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -806,12 +806,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 7097;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 7097;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -837,12 +837,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 7097;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 7097;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -868,12 +868,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 1000;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 7097;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 1000;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 7097;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -899,12 +899,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 7097;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 7097;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -930,12 +930,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 7114;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 7097;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 7114;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 7097;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -961,12 +961,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 10394;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 7097;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 10394;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 7097;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -992,12 +992,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 43968;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 7097;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 43968;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 7097;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -1023,12 +1023,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 51136;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 7097;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 51136;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 7097;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -1054,10 +1054,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 0;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 0;
             itemDef.modelId = 2635;
             itemDef.spriteScale = 440;
             itemDef.spritePitch = 76;
@@ -1081,10 +1081,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 6073;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 6073;
             itemDef.modelId = 2635;
             itemDef.spriteScale = 440;
             itemDef.spritePitch = 76;
@@ -1108,10 +1108,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 8128;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 8128;
             itemDef.modelId = 2635;
             itemDef.spriteScale = 440;
             itemDef.spritePitch = 76;
@@ -1135,10 +1135,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 50;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 50;
             itemDef.modelId = 2635;
             itemDef.spriteScale = 440;
             itemDef.spritePitch = 76;
@@ -1163,10 +1163,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 5652;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 5652;
             itemDef.modelId = 2635;
             itemDef.spriteScale = 440;
             itemDef.spritePitch = 76;
@@ -1191,10 +1191,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 41;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 41;
             itemDef.modelId = 2635;
             itemDef.spriteScale = 440;
             itemDef.spritePitch = 76;
@@ -1219,10 +1219,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 43297;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 43297;
             itemDef.modelId = 2635;
             itemDef.spriteScale = 440;
             itemDef.spritePitch = 76;
@@ -1247,10 +1247,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 21662;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 21662;
             itemDef.modelId = 2635;
             itemDef.spriteScale = 440;
             itemDef.spritePitch = 76;
@@ -1275,10 +1275,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 36133;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 36133;
             itemDef.modelId = 2635;
             itemDef.spriteScale = 440;
             itemDef.spritePitch = 76;
@@ -1303,10 +1303,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 924;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 924;
             itemDef.modelId = 2635;
             itemDef.spriteScale = 440;
             itemDef.spritePitch = 76;
@@ -1331,10 +1331,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 10388;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 10388;
             itemDef.modelId = 2635;
             itemDef.spriteScale = 440;
             itemDef.spritePitch = 76;
@@ -1359,12 +1359,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wield";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 28;
-            itemDef.modifiedModelColors[0] = 74;
-            itemDef.originalModelColors[0] = 10512;
-            itemDef.originalModelColors[0] = 10512;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 28;
+            itemDef.originalModelColors[0] = 74;
+            itemDef.modifiedModelColors[0] = 10512;
+            itemDef.modifiedModelColors[0] = 10512;
             itemDef.modelId = 15335;
             itemDef.spriteScale = 526;
             itemDef.spritePitch = 525;
@@ -1390,12 +1390,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 61;
-            itemDef.originalModelColors[1] = 1000;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 61;
+            itemDef.modifiedModelColors[1] = 1000;
             itemDef.modelId = 5037;
             itemDef.spriteScale = 770;
             itemDef.spritePitch = 164;
@@ -1421,12 +1421,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 12;
-            itemDef.modifiedModelColors[1] = 912;
-            itemDef.originalModelColors[1] = 908;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 12;
+            itemDef.originalModelColors[1] = 912;
+            itemDef.modifiedModelColors[1] = 908;
             itemDef.modelId = 5026;
             itemDef.spritePitch = 452;
             itemDef.spriteCameraRoll = 0;
@@ -1449,12 +1449,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 10266;
-            itemDef.originalModelColors[0] = 12;
-            itemDef.modifiedModelColors[1] = 3171;
-            itemDef.originalModelColors[1] = 908;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 10266;
+            itemDef.modifiedModelColors[0] = 12;
+            itemDef.originalModelColors[1] = 3171;
+            itemDef.modifiedModelColors[1] = 908;
             itemDef.modelId = 8733;
             itemDef.spriteScale = 1196;
             itemDef.spritePitch = 179;
@@ -1478,12 +1478,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 10283;
-            itemDef.originalModelColors[0] = 12;
-            itemDef.modifiedModelColors[1] = 10270;
-            itemDef.originalModelColors[1] = 908;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 10283;
+            itemDef.modifiedModelColors[0] = 12;
+            itemDef.originalModelColors[1] = 10270;
+            itemDef.modifiedModelColors[1] = 908;
             itemDef.modelId = 8700;
             itemDef.spritePitch = 878;
             itemDef.spriteCameraRoll = 517;
@@ -1506,10 +1506,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 0;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 0;
             itemDef.modelId = 2438;
             itemDef.spriteScale = 730;
             itemDef.spritePitch = 516;
@@ -1535,16 +1535,16 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[4];
             itemDef.originalModelColors = new int[4];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.modifiedModelColors[2] = 24;
-            itemDef.modifiedModelColors[3] = 11187;
-            itemDef.originalModelColors[0] = 926;
-            itemDef.originalModelColors[1] = 926;
-            itemDef.originalModelColors[2] = 7114;
-            itemDef.originalModelColors[3] = 926;
+            itemDef.modifiedModelColors = new int[4];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.originalModelColors[2] = 24;
+            itemDef.originalModelColors[3] = 11187;
+            itemDef.modifiedModelColors[0] = 926;
+            itemDef.modifiedModelColors[1] = 926;
+            itemDef.modifiedModelColors[2] = 7114;
+            itemDef.modifiedModelColors[3] = 926;
             itemDef.modelId = 3020;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -1570,16 +1570,16 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[4];
             itemDef.originalModelColors = new int[4];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.modifiedModelColors[2] = 24;
-            itemDef.modifiedModelColors[3] = 11187;
-            itemDef.originalModelColors[0] = 926;
-            itemDef.originalModelColors[1] = 926;
-            itemDef.originalModelColors[2] = 926;
-            itemDef.originalModelColors[3] = 926;
+            itemDef.modifiedModelColors = new int[4];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.originalModelColors[2] = 24;
+            itemDef.originalModelColors[3] = 11187;
+            itemDef.modifiedModelColors[0] = 926;
+            itemDef.modifiedModelColors[1] = 926;
+            itemDef.modifiedModelColors[2] = 926;
+            itemDef.modifiedModelColors[3] = 926;
             itemDef.modelId = 3020;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -1607,24 +1607,24 @@ public class ItemDefinition_Sub1
 			itemDef.groundActions = new String[] {null, null, "Take", null, null};
 			itemDef.name = "Admin Platebody"; //Name
 			itemDef.description = "Its an Admin Platebody"; //Description
-			itemDef.modifiedModelColors = new int[8];
 			itemDef.originalModelColors = new int[8];
-			itemDef.modifiedModelColors[0] = 61;
-			itemDef.modifiedModelColors[1] = 24;
-			itemDef.modifiedModelColors[2] = 41;
-			itemDef.modifiedModelColors[3] = 10394;
-			itemDef.modifiedModelColors[4] = 10518;
-			itemDef.modifiedModelColors[5] = 10388;
-			itemDef.modifiedModelColors[6] = 10514;
-			itemDef.modifiedModelColors[7] = 10508;
-			itemDef.originalModelColors[0] = 8128;
-			itemDef.originalModelColors[1] = 38676;
-			itemDef.originalModelColors[2] = 8128;
-			itemDef.originalModelColors[3] = 8128;
-			itemDef.originalModelColors[4] = 38676;
-			itemDef.originalModelColors[5] = 38676;
-			itemDef.originalModelColors[6] = 38676;
-			itemDef.originalModelColors[7] = 38676;
+			itemDef.modifiedModelColors = new int[8];
+			itemDef.originalModelColors[0] = 61;
+			itemDef.originalModelColors[1] = 24;
+			itemDef.originalModelColors[2] = 41;
+			itemDef.originalModelColors[3] = 10394;
+			itemDef.originalModelColors[4] = 10518;
+			itemDef.originalModelColors[5] = 10388;
+			itemDef.originalModelColors[6] = 10514;
+			itemDef.originalModelColors[7] = 10508;
+			itemDef.modifiedModelColors[0] = 8128;
+			itemDef.modifiedModelColors[1] = 38676;
+			itemDef.modifiedModelColors[2] = 8128;
+			itemDef.modifiedModelColors[3] = 8128;
+			itemDef.modifiedModelColors[4] = 38676;
+			itemDef.modifiedModelColors[5] = 38676;
+			itemDef.modifiedModelColors[6] = 38676;
+			itemDef.modifiedModelColors[7] = 38676;
 			itemDef.modelId = 2378;
 			itemDef.spriteScale = 1380;
 			itemDef.spritePitch = 452;
@@ -1651,12 +1651,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 8128;
-            itemDef.modifiedModelColors[1] = 912;
-            itemDef.originalModelColors[1] = 38676;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 8128;
+            itemDef.originalModelColors[1] = 912;
+            itemDef.modifiedModelColors[1] = 38676;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
             itemDef.spriteCameraRoll = 0;
@@ -1684,10 +1684,10 @@ public class ItemDefinition_Sub1
 			itemDef.groundActions = new String[] {null, null, "Take", null, null};
 			itemDef.name = "Admin Crown"; //Name
 			itemDef.description = "Its an Admin Crown"; //Description
-			itemDef.modifiedModelColors = new int[1];
 			itemDef.originalModelColors = new int[1];
-			itemDef.modifiedModelColors[0] = 945;
-			itemDef.originalModelColors[0] = 38676;
+			itemDef.modifiedModelColors = new int[1];
+			itemDef.originalModelColors[0] = 945;
+			itemDef.modifiedModelColors[0] = 38676;
 			itemDef.modelId = 8774;
 			itemDef.spriteScale = 500;
 			itemDef.spritePitch = 0;
@@ -1718,12 +1718,12 @@ public class ItemDefinition_Sub1
 			itemDef.groundActions = new String[] {null, null, "Take", null, null};
 			itemDef.name = "G-mod Crown"; //Name
 			itemDef.description = "Its an G-mod Crown"; //Description
-			itemDef.modifiedModelColors = new int[2];
 			itemDef.originalModelColors = new int[2];
-			itemDef.modifiedModelColors[0] = 945;
-			itemDef.modifiedModelColors[1] = 8128;
-			itemDef.originalModelColors[0] = 22412;
-			itemDef.originalModelColors[1] = 63;
+			itemDef.modifiedModelColors = new int[2];
+			itemDef.originalModelColors[0] = 945;
+			itemDef.originalModelColors[1] = 8128;
+			itemDef.modifiedModelColors[0] = 22412;
+			itemDef.modifiedModelColors[1] = 63;
 			itemDef.modelId = 8774;
 			itemDef.spriteScale = 500;
 			itemDef.spritePitch = 0;
@@ -1754,12 +1754,12 @@ public class ItemDefinition_Sub1
 			itemDef.groundActions = new String[] {null, null, "Take", null, null};
 			itemDef.name = "Mod Crown"; //Name
 			itemDef.description = "Its an Mod Crown"; //Description
-			itemDef.modifiedModelColors = new int[2];
 			itemDef.originalModelColors = new int[2];
-			itemDef.modifiedModelColors[0] = 945;
-			itemDef.modifiedModelColors[1] = 8128;
-			itemDef.originalModelColors[0] = 6073;
-			itemDef.originalModelColors[1] = 63;
+			itemDef.modifiedModelColors = new int[2];
+			itemDef.originalModelColors[0] = 945;
+			itemDef.originalModelColors[1] = 8128;
+			itemDef.modifiedModelColors[0] = 6073;
+			itemDef.modifiedModelColors[1] = 63;
 			itemDef.modelId = 8774;
 			itemDef.spriteScale = 500;
 			itemDef.spritePitch = 0;
@@ -1790,12 +1790,12 @@ public class ItemDefinition_Sub1
 			itemDef.groundActions = new String[] {null, null, "Take", null, null};
 			itemDef.name = "SB-mod Crown"; //Name
 			itemDef.description = "Its an SB-mod Crown"; //Description
-			itemDef.modifiedModelColors = new int[2];
 			itemDef.originalModelColors = new int[2];
-			itemDef.modifiedModelColors[0] = 945;
-			itemDef.modifiedModelColors[1] = 8128;
-			itemDef.originalModelColors[0] = 128;
-			itemDef.originalModelColors[1] = 63;
+			itemDef.modifiedModelColors = new int[2];
+			itemDef.originalModelColors[0] = 945;
+			itemDef.originalModelColors[1] = 8128;
+			itemDef.modifiedModelColors[0] = 128;
+			itemDef.modifiedModelColors[1] = 63;
 			itemDef.modelId = 8774;
 			itemDef.spriteScale = 500;
 			itemDef.spritePitch = 0;
@@ -1823,10 +1823,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[4];
             itemDef.originalModelColors = new int[4];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 38676;
+            itemDef.modifiedModelColors = new int[4];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 38676;
             itemDef.modelId = 5037;
             itemDef.spriteScale = 770;
             itemDef.spritePitch = 164;
@@ -1852,14 +1852,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 8128;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 8128;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 38676;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 8128;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 8128;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 38676;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -1883,10 +1883,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 528;
-            itemDef.originalModelColors[0] = 38676;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 528;
+            itemDef.modifiedModelColors[0] = 38676;
             itemDef.modelId = 5412;
             itemDef.spriteScale = 840;
             itemDef.spritePitch = 280;
@@ -1914,24 +1914,24 @@ public class ItemDefinition_Sub1
 			itemDef.groundActions = new String[] {null, null, "Take", null, null};
 			itemDef.name = "Mod Platebody"; //Name
 			itemDef.description = "Its an Mod Platebody"; //Description
-			itemDef.modifiedModelColors = new int[8];
 			itemDef.originalModelColors = new int[8];
-			itemDef.modifiedModelColors[0] = 61;
-			itemDef.modifiedModelColors[1] = 24;
-			itemDef.modifiedModelColors[2] = 41;
-			itemDef.modifiedModelColors[3] = 10394;
-			itemDef.modifiedModelColors[4] = 10518;
-			itemDef.modifiedModelColors[5] = 10388;
-			itemDef.modifiedModelColors[6] = 10514;
-			itemDef.modifiedModelColors[7] = 10508;
-			itemDef.originalModelColors[0] = 63;
-			itemDef.originalModelColors[1] = 6073;
-			itemDef.originalModelColors[2] = 63;
-			itemDef.originalModelColors[3] = 63;
-			itemDef.originalModelColors[4] = 6073;
-			itemDef.originalModelColors[5] = 6073;
-			itemDef.originalModelColors[6] = 6073;
-			itemDef.originalModelColors[7] = 6073;
+			itemDef.modifiedModelColors = new int[8];
+			itemDef.originalModelColors[0] = 61;
+			itemDef.originalModelColors[1] = 24;
+			itemDef.originalModelColors[2] = 41;
+			itemDef.originalModelColors[3] = 10394;
+			itemDef.originalModelColors[4] = 10518;
+			itemDef.originalModelColors[5] = 10388;
+			itemDef.originalModelColors[6] = 10514;
+			itemDef.originalModelColors[7] = 10508;
+			itemDef.modifiedModelColors[0] = 63;
+			itemDef.modifiedModelColors[1] = 6073;
+			itemDef.modifiedModelColors[2] = 63;
+			itemDef.modifiedModelColors[3] = 63;
+			itemDef.modifiedModelColors[4] = 6073;
+			itemDef.modifiedModelColors[5] = 6073;
+			itemDef.modifiedModelColors[6] = 6073;
+			itemDef.modifiedModelColors[7] = 6073;
 			itemDef.modelId = 2378;
 			itemDef.spriteScale = 1380;
 			itemDef.spritePitch = 452;
@@ -1958,12 +1958,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 63;
-            itemDef.modifiedModelColors[1] = 912;
-            itemDef.originalModelColors[1] = 6073;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 63;
+            itemDef.originalModelColors[1] = 912;
+            itemDef.modifiedModelColors[1] = 6073;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
             itemDef.spriteCameraRoll = 0;
@@ -1989,10 +1989,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[4];
             itemDef.originalModelColors = new int[4];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 63;
+            itemDef.modifiedModelColors = new int[4];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 63;
             itemDef.modelId = 5037;
             itemDef.spriteScale = 770;
             itemDef.spritePitch = 164;
@@ -2018,14 +2018,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 63;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 63;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 6073;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 63;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 63;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 6073;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -2049,10 +2049,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 528;
-            itemDef.originalModelColors[0] = 63;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 528;
+            itemDef.modifiedModelColors[0] = 63;
             itemDef.modelId = 5412;
             itemDef.spriteScale = 840;
             itemDef.spritePitch = 280;
@@ -2078,16 +2078,16 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[4];
             itemDef.originalModelColors = new int[4];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 8128;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 38676;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 38676;
-            itemDef.modifiedModelColors[3] = 25238;
-            itemDef.originalModelColors[3] = 8128;
+            itemDef.modifiedModelColors = new int[4];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 8128;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 38676;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 38676;
+            itemDef.originalModelColors[3] = 25238;
+            itemDef.modifiedModelColors[3] = 8128;
             itemDef.modelId = 4208;
             itemDef.spriteScale = 1100;
             itemDef.spritePitch = 620;
@@ -2111,16 +2111,16 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[4];
             itemDef.originalModelColors = new int[4];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 63;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 6073;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 6073;
-            itemDef.modifiedModelColors[3] = 25238;
-            itemDef.originalModelColors[3] = 63;
+            itemDef.modifiedModelColors = new int[4];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 63;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 6073;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 6073;
+            itemDef.originalModelColors[3] = 25238;
+            itemDef.modifiedModelColors[3] = 63;
             itemDef.modelId = 4208;
             itemDef.spriteScale = 1100;
             itemDef.spritePitch = 620;
@@ -2146,24 +2146,24 @@ public class ItemDefinition_Sub1
 			itemDef.groundActions = new String[] {null, null, "Take", null, null};
 			itemDef.name = "Owners Platebody"; //Name
 			itemDef.description = "Its an Owners Platebody"; //Description
-			itemDef.modifiedModelColors = new int[8];
 			itemDef.originalModelColors = new int[8];
-			itemDef.modifiedModelColors[0] = 61;
-			itemDef.modifiedModelColors[1] = 24;
-			itemDef.modifiedModelColors[2] = 41;
-			itemDef.modifiedModelColors[3] = 10394;
-			itemDef.modifiedModelColors[4] = 10518;
-			itemDef.modifiedModelColors[5] = 10388;
-			itemDef.modifiedModelColors[6] = 10514;
-			itemDef.modifiedModelColors[7] = 10508;
-			itemDef.originalModelColors[0] = 0;
-			itemDef.originalModelColors[1] = 950;
-			itemDef.originalModelColors[2] = 0;
-			itemDef.originalModelColors[3] = 0;
-			itemDef.originalModelColors[4] = 950;
-			itemDef.originalModelColors[5] = 950;
-			itemDef.originalModelColors[6] = 950;
-			itemDef.originalModelColors[7] = 950;
+			itemDef.modifiedModelColors = new int[8];
+			itemDef.originalModelColors[0] = 61;
+			itemDef.originalModelColors[1] = 24;
+			itemDef.originalModelColors[2] = 41;
+			itemDef.originalModelColors[3] = 10394;
+			itemDef.originalModelColors[4] = 10518;
+			itemDef.originalModelColors[5] = 10388;
+			itemDef.originalModelColors[6] = 10514;
+			itemDef.originalModelColors[7] = 10508;
+			itemDef.modifiedModelColors[0] = 0;
+			itemDef.modifiedModelColors[1] = 950;
+			itemDef.modifiedModelColors[2] = 0;
+			itemDef.modifiedModelColors[3] = 0;
+			itemDef.modifiedModelColors[4] = 950;
+			itemDef.modifiedModelColors[5] = 950;
+			itemDef.modifiedModelColors[6] = 950;
+			itemDef.modifiedModelColors[7] = 950;
 			itemDef.modelId = 2378;
 			itemDef.spriteScale = 1380;
 			itemDef.spritePitch = 452;
@@ -2191,12 +2191,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 912;
-            itemDef.originalModelColors[1] = 950;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 912;
+            itemDef.modifiedModelColors[1] = 950;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
             itemDef.spriteCameraRoll = 0;
@@ -2222,10 +2222,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[4];
             itemDef.originalModelColors = new int[4];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 950;
+            itemDef.modifiedModelColors = new int[4];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 950;
             itemDef.modelId = 5037;
             itemDef.spriteScale = 770;
             itemDef.spritePitch = 164;
@@ -2251,14 +2251,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 0;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 950;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 0;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 950;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -2284,12 +2284,12 @@ public class ItemDefinition_Sub1
 			itemDef.groundActions = new String[] {null, null, "Take", null, null};
 			itemDef.name = "Owners Crown"; //Name
 			itemDef.description = "Its an Owners Crown"; //Description
-			itemDef.modifiedModelColors = new int[2];
 			itemDef.originalModelColors = new int[2];
-			itemDef.modifiedModelColors[0] = 945;
-			itemDef.modifiedModelColors[1] = 8128;
-			itemDef.originalModelColors[0] = 950;
-			itemDef.originalModelColors[1] = 0;
+			itemDef.modifiedModelColors = new int[2];
+			itemDef.originalModelColors[0] = 945;
+			itemDef.originalModelColors[1] = 8128;
+			itemDef.modifiedModelColors[0] = 950;
+			itemDef.modifiedModelColors[1] = 0;
 			itemDef.modelId = 8774;
 			itemDef.spriteScale = 500;
 			itemDef.spritePitch = 0;
@@ -2317,10 +2317,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 36133;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 36133;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -2344,14 +2344,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 22416;
-            itemDef.originalModelColors[0] = 7097;
-            itemDef.modifiedModelColors[1] = 22424;
-            itemDef.originalModelColors[1] = 7114;
-            itemDef.modifiedModelColors[2] = 24;
-            itemDef.originalModelColors[2] = 43117;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 22416;
+            itemDef.modifiedModelColors[0] = 7097;
+            itemDef.originalModelColors[1] = 22424;
+            itemDef.modifiedModelColors[1] = 7114;
+            itemDef.originalModelColors[2] = 24;
+            itemDef.modifiedModelColors[2] = 43117;
             itemDef.modelId = 11390;
             itemDef.spriteScale = 1030;
             itemDef.spritePitch = 548;
@@ -2375,14 +2375,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 22416;
-            itemDef.originalModelColors[0] = 7097;
-            itemDef.modifiedModelColors[1] = 22424;
-            itemDef.originalModelColors[1] = 7114;
-            itemDef.modifiedModelColors[2] = 24;
-            itemDef.originalModelColors[2] = 43117;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 22416;
+            itemDef.modifiedModelColors[0] = 7097;
+            itemDef.originalModelColors[1] = 22424;
+            itemDef.modifiedModelColors[1] = 7114;
+            itemDef.originalModelColors[2] = 24;
+            itemDef.modifiedModelColors[2] = 43117;
             itemDef.modelId = 11371;
             itemDef.spriteScale = 1720;
             itemDef.spritePitch = 488;
@@ -2406,14 +2406,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 0;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 950;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 0;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 950;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -2437,15 +2437,15 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 950;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 0;
-			itemDef.originalModelColors[2] = 0;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 950;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 0;
+			itemDef.modifiedModelColors[2] = 0;
 			itemDef.modelId = 2378;
 			itemDef.spriteScale = 1180;
 			itemDef.spritePitch = 452;
@@ -2471,12 +2471,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 950;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 950;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -2500,14 +2500,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 0;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 950;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 0;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 950;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -2531,16 +2531,16 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[4];
             itemDef.originalModelColors = new int[4];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 950;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 950;
-            itemDef.modifiedModelColors[3] = 25238;
-            itemDef.originalModelColors[3] = 0;
+            itemDef.modifiedModelColors = new int[4];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 950;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 950;
+            itemDef.originalModelColors[3] = 25238;
+            itemDef.modifiedModelColors[3] = 0;
             itemDef.modelId = 4208;
             itemDef.spriteScale = 1100;
             itemDef.spritePitch = 620;
@@ -2564,14 +2564,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 0;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 100;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 0;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 100;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -2595,15 +2595,15 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 100;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 0;
-			itemDef.originalModelColors[2] = 0;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 100;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 0;
+			itemDef.modifiedModelColors[2] = 0;
 			itemDef.modelId = 2378;
 			itemDef.spriteScale = 1180;
 			itemDef.spritePitch = 452;
@@ -2629,12 +2629,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 100;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 100;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -2658,14 +2658,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 0;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 100;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 0;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 100;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -2689,16 +2689,16 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[4];
             itemDef.originalModelColors = new int[4];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 100;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 100;
-            itemDef.modifiedModelColors[3] = 25238;
-            itemDef.originalModelColors[3] = 0;
+            itemDef.modifiedModelColors = new int[4];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 100;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 100;
+            itemDef.originalModelColors[3] = 25238;
+            itemDef.modifiedModelColors[3] = 0;
             itemDef.modelId = 4208;
             itemDef.spriteScale = 1100;
             itemDef.spritePitch = 620;
@@ -2722,14 +2722,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 0;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 43968;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 0;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 43968;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -2753,15 +2753,15 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 43968;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 0;
-			itemDef.originalModelColors[2] = 0;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 43968;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 0;
+			itemDef.modifiedModelColors[2] = 0;
 			itemDef.modelId = 2378;
 			itemDef.spriteScale = 1180;
 			itemDef.spritePitch = 452;
@@ -2787,12 +2787,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 43968;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 43968;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -2816,14 +2816,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 0;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 43968;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 0;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 43968;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -2847,16 +2847,16 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[4];
             itemDef.originalModelColors = new int[4];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 43968;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 43968;
-            itemDef.modifiedModelColors[3] = 25238;
-            itemDef.originalModelColors[3] = 0;
+            itemDef.modifiedModelColors = new int[4];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 43968;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 43968;
+            itemDef.originalModelColors[3] = 25238;
+            itemDef.modifiedModelColors[3] = 0;
             itemDef.modelId = 4208;
             itemDef.spriteScale = 1100;
             itemDef.spritePitch = 620;
@@ -2880,14 +2880,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 0;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 22464;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 0;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 22464;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -2911,15 +2911,15 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 22464;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 0;
-			itemDef.originalModelColors[2] = 0;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 22464;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 0;
+			itemDef.modifiedModelColors[2] = 0;
 			itemDef.modelId = 2378;
 			itemDef.spriteScale = 1180;
 			itemDef.spritePitch = 452;
@@ -2945,12 +2945,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 22464;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 22464;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -2974,14 +2974,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 0;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 22464;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 0;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 22464;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -3005,16 +3005,16 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[4];
             itemDef.originalModelColors = new int[4];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 22464;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 22464;
-            itemDef.modifiedModelColors[3] = 25238;
-            itemDef.originalModelColors[3] = 0;
+            itemDef.modifiedModelColors = new int[4];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 22464;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 22464;
+            itemDef.originalModelColors[3] = 25238;
+            itemDef.modifiedModelColors[3] = 0;
             itemDef.modelId = 4208;
             itemDef.spriteScale = 1100;
             itemDef.spritePitch = 620;
@@ -3038,14 +3038,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 0;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 51136;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 0;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 51136;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -3069,15 +3069,15 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 51136;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 0;
-			itemDef.originalModelColors[2] = 0;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 51136;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 0;
+			itemDef.modifiedModelColors[2] = 0;
 			itemDef.modelId = 2378;
 			itemDef.spriteScale = 1180;
 			itemDef.spritePitch = 452;
@@ -3103,12 +3103,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 51136;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 51136;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -3132,14 +3132,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 0;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 51136;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 0;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 51136;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -3163,16 +3163,16 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[4];
             itemDef.originalModelColors = new int[4];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 0;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 51136;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 51136;
-            itemDef.modifiedModelColors[3] = 25238;
-            itemDef.originalModelColors[3] = 0;
+            itemDef.modifiedModelColors = new int[4];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 0;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 51136;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 51136;
+            itemDef.originalModelColors[3] = 25238;
+            itemDef.modifiedModelColors[3] = 0;
             itemDef.modelId = 4208;
             itemDef.spriteScale = 1100;
             itemDef.spritePitch = 620;
@@ -3196,10 +3196,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Summon from the";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 7446;
-            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 7446;
+            itemDef.modifiedModelColors[0] = 926;
             itemDef.modelId = 0x13455;
             itemDef.spriteScale = 1595;
             itemDef.spritePitch = 196;
@@ -3223,12 +3223,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 10394;
-            itemDef.originalModelColors[0] = 6069;
-            itemDef.modifiedModelColors[1] = 6020;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 10394;
+            itemDef.modifiedModelColors[0] = 6069;
             itemDef.originalModelColors[1] = 6020;
+            itemDef.modifiedModelColors[1] = 6020;
             itemDef.modelId = 6583;
             itemDef.spriteScale = 860;
             itemDef.spritePitch = 2012;
@@ -3254,12 +3254,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 10394;
-            itemDef.originalModelColors[0] = 26706;
-            itemDef.modifiedModelColors[1] = 6020;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 10394;
+            itemDef.modifiedModelColors[0] = 26706;
             itemDef.originalModelColors[1] = 6020;
+            itemDef.modifiedModelColors[1] = 6020;
             itemDef.modelId = 6583;
             itemDef.spriteScale = 860;
             itemDef.spritePitch = 2012;
@@ -3285,12 +3285,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 62920;
-            itemDef.modifiedModelColors[1] = 912;
-            itemDef.originalModelColors[1] = 62928;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 62920;
+            itemDef.originalModelColors[1] = 912;
+            itemDef.modifiedModelColors[1] = 62928;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
             itemDef.spriteCameraRoll = 0;
@@ -3316,12 +3316,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 26706;
-            itemDef.modifiedModelColors[1] = 912;
-            itemDef.originalModelColors[1] = 26667;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 26706;
+            itemDef.originalModelColors[1] = 912;
+            itemDef.modifiedModelColors[1] = 26667;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
             itemDef.spriteCameraRoll = 0;
@@ -3347,12 +3347,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 6072;
-            itemDef.modifiedModelColors[1] = 912;
-            itemDef.originalModelColors[1] = 6054;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 6072;
+            itemDef.originalModelColors[1] = 912;
+            itemDef.modifiedModelColors[1] = 6054;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
             itemDef.spriteCameraRoll = 0;
@@ -3378,12 +3378,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 10394;
-            itemDef.originalModelColors[0] = 62928;
-            itemDef.modifiedModelColors[1] = 6020;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 10394;
+            itemDef.modifiedModelColors[0] = 62928;
             itemDef.originalModelColors[1] = 6020;
+            itemDef.modifiedModelColors[1] = 6020;
             itemDef.modelId = 6583;
             itemDef.spriteScale = 860;
             itemDef.spritePitch = 2012;
@@ -3409,14 +3409,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 10283;
-            itemDef.originalModelColors[0] = 6069;
-            itemDef.modifiedModelColors[1] = 10270;
-            itemDef.originalModelColors[1] = 6073;
-            itemDef.modifiedModelColors[2] = 3326;
-            itemDef.originalModelColors[2] = 6074;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 10283;
+            itemDef.modifiedModelColors[0] = 6069;
+            itemDef.originalModelColors[1] = 10270;
+            itemDef.modifiedModelColors[1] = 6073;
+            itemDef.originalModelColors[2] = 3326;
+            itemDef.modifiedModelColors[2] = 6074;
             itemDef.modelId = 8700;
             itemDef.spriteScale = 710;
             itemDef.spritePitch = 332;
@@ -3442,14 +3442,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 10283;
-            itemDef.originalModelColors[0] = 26706;
-            itemDef.modifiedModelColors[1] = 10270;
-            itemDef.originalModelColors[1] = 24648;
-            itemDef.modifiedModelColors[2] = 3326;
-            itemDef.originalModelColors[2] = 24640;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 10283;
+            itemDef.modifiedModelColors[0] = 26706;
+            itemDef.originalModelColors[1] = 10270;
+            itemDef.modifiedModelColors[1] = 24648;
+            itemDef.originalModelColors[2] = 3326;
+            itemDef.modifiedModelColors[2] = 24640;
             itemDef.modelId = 8700;
             itemDef.spriteScale = 710;
             itemDef.spritePitch = 332;
@@ -3475,12 +3475,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 8741;
-            itemDef.originalModelColors[0] = 924;
-            itemDef.modifiedModelColors[1] = 14490;
-            itemDef.originalModelColors[1] = 921;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 8741;
+            itemDef.modifiedModelColors[0] = 924;
+            itemDef.originalModelColors[1] = 14490;
+            itemDef.modifiedModelColors[1] = 921;
             itemDef.modelId = 6578;
             itemDef.spriteScale = 1250;
             itemDef.spritePitch = 468;
@@ -3506,12 +3506,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 14490;
-            itemDef.originalModelColors[0] = 924;
-            itemDef.modifiedModelColors[1] = 45468;
-            itemDef.originalModelColors[1] = 921;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 14490;
+            itemDef.modifiedModelColors[0] = 924;
+            itemDef.originalModelColors[1] = 45468;
+            itemDef.modifiedModelColors[1] = 921;
             itemDef.modelId = 6577;
             itemDef.spriteScale = 1730;
             itemDef.spritePitch = 504;
@@ -3537,10 +3537,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 8741;
-            itemDef.originalModelColors[0] = 924;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 8741;
+            itemDef.modifiedModelColors[0] = 924;
             itemDef.modelId = 5419;
             itemDef.spriteScale = 730;
             itemDef.spritePitch = 0;
@@ -3566,12 +3566,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wield";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 28;
-            itemDef.modifiedModelColors[0] = 74;
-            itemDef.originalModelColors[0] = 38676;
-            itemDef.originalModelColors[0] = 760;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 28;
+            itemDef.originalModelColors[0] = 74;
+            itemDef.modifiedModelColors[0] = 38676;
+            itemDef.modifiedModelColors[0] = 760;
             itemDef.modelId = 5139;
             itemDef.spriteScale = 490;
             itemDef.spritePitch = 344;
@@ -3595,14 +3595,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 10283;
-            itemDef.originalModelColors[0] = 62928;
-            itemDef.modifiedModelColors[1] = 10270;
-            itemDef.originalModelColors[1] = 62928;
-            itemDef.modifiedModelColors[2] = 3326;
-            itemDef.originalModelColors[2] = 62928;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 10283;
+            itemDef.modifiedModelColors[0] = 62928;
+            itemDef.originalModelColors[1] = 10270;
+            itemDef.modifiedModelColors[1] = 62928;
+            itemDef.originalModelColors[2] = 3326;
+            itemDef.modifiedModelColors[2] = 62928;
             itemDef.modelId = 8700;
             itemDef.spriteScale = 710;
             itemDef.spritePitch = 332;
@@ -3628,8 +3628,8 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Equip";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
+            itemDef.modifiedModelColors = new int[1];
             itemDef.modelId = 153;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -3656,8 +3656,8 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Equip";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
+            itemDef.modifiedModelColors = new int[1];
             itemDef.modelId = 153;
             itemDef.spriteScale = 760;
             itemDef.spritePitch = 552;
@@ -3684,8 +3684,8 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Equip";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
+            itemDef.modifiedModelColors = new int[1];
             itemDef.modelId = 153;
             itemDef.spriteScale = 760;
             itemDef.spritePitch = 552;
@@ -3712,8 +3712,8 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Equip";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
+            itemDef.modifiedModelColors = new int[1];
             itemDef.modelId = 153;
             itemDef.spriteScale = 760;
             itemDef.spritePitch = 552;
@@ -3740,8 +3740,8 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Equip";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
+            itemDef.modifiedModelColors = new int[1];
             itemDef.modelId = 153;
             itemDef.spriteScale = 770;
             itemDef.spritePitch = 152;
@@ -3768,8 +3768,8 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Equip";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
+            itemDef.modifiedModelColors = new int[1];
             itemDef.modelId = 153;
             itemDef.spriteScale = 770;
             itemDef.spritePitch = 152;
@@ -3796,18 +3796,18 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[5];
             itemDef.originalModelColors = new int[5];
-            itemDef.modifiedModelColors[0] = 914;
-            itemDef.originalModelColors[0] = 6070;
-            itemDef.modifiedModelColors[1] = 918;
-            itemDef.originalModelColors[1] = 6070;
-            itemDef.modifiedModelColors[2] = 922;
-            itemDef.originalModelColors[2] = 6071;
-            itemDef.modifiedModelColors[3] = 391;
-            itemDef.originalModelColors[3] = 6070;
-            itemDef.modifiedModelColors[4] = 917;
-            itemDef.originalModelColors[4] = 6069;
+            itemDef.modifiedModelColors = new int[5];
+            itemDef.originalModelColors[0] = 914;
+            itemDef.modifiedModelColors[0] = 6070;
+            itemDef.originalModelColors[1] = 918;
+            itemDef.modifiedModelColors[1] = 6070;
+            itemDef.originalModelColors[2] = 922;
+            itemDef.modifiedModelColors[2] = 6071;
+            itemDef.originalModelColors[3] = 391;
+            itemDef.modifiedModelColors[3] = 6070;
+            itemDef.originalModelColors[4] = 917;
+            itemDef.modifiedModelColors[4] = 6069;
             itemDef.spriteScale = 1100;
             itemDef.spritePitch = 568;
             itemDef.spriteCameraRoll = 0;
@@ -3833,18 +3833,18 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[5];
             itemDef.originalModelColors = new int[5];
-            itemDef.modifiedModelColors[0] = 914;
-            itemDef.originalModelColors[0] = 26706;
-            itemDef.modifiedModelColors[1] = 918;
-            itemDef.originalModelColors[1] = 24648;
-            itemDef.modifiedModelColors[2] = 922;
-            itemDef.originalModelColors[2] = 24640;
-            itemDef.modifiedModelColors[3] = 391;
-            itemDef.originalModelColors[3] = 26706;
-            itemDef.modifiedModelColors[4] = 917;
-            itemDef.originalModelColors[4] = 24648;
+            itemDef.modifiedModelColors = new int[5];
+            itemDef.originalModelColors[0] = 914;
+            itemDef.modifiedModelColors[0] = 26706;
+            itemDef.originalModelColors[1] = 918;
+            itemDef.modifiedModelColors[1] = 24648;
+            itemDef.originalModelColors[2] = 922;
+            itemDef.modifiedModelColors[2] = 24640;
+            itemDef.originalModelColors[3] = 391;
+            itemDef.modifiedModelColors[3] = 26706;
+            itemDef.originalModelColors[4] = 917;
+            itemDef.modifiedModelColors[4] = 24648;
             itemDef.spriteScale = 1100;
             itemDef.spritePitch = 568;
             itemDef.spriteCameraRoll = 0;
@@ -3870,10 +3870,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[4];
             itemDef.originalModelColors = new int[4];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 26706;
+            itemDef.modifiedModelColors = new int[4];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 26706;
             itemDef.modelId = 5037;
             itemDef.spriteScale = 770;
             itemDef.spritePitch = 164;
@@ -3899,18 +3899,18 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[5];
             itemDef.originalModelColors = new int[5];
-            itemDef.modifiedModelColors[0] = 914;
-            itemDef.originalModelColors[0] = 62928;
-            itemDef.modifiedModelColors[1] = 918;
-            itemDef.originalModelColors[1] = 62931;
-            itemDef.modifiedModelColors[2] = 922;
-            itemDef.originalModelColors[2] = 62928;
-            itemDef.modifiedModelColors[3] = 391;
-            itemDef.originalModelColors[3] = 62930;
-            itemDef.modifiedModelColors[4] = 917;
-            itemDef.originalModelColors[4] = 62928;
+            itemDef.modifiedModelColors = new int[5];
+            itemDef.originalModelColors[0] = 914;
+            itemDef.modifiedModelColors[0] = 62928;
+            itemDef.originalModelColors[1] = 918;
+            itemDef.modifiedModelColors[1] = 62931;
+            itemDef.originalModelColors[2] = 922;
+            itemDef.modifiedModelColors[2] = 62928;
+            itemDef.originalModelColors[3] = 391;
+            itemDef.modifiedModelColors[3] = 62930;
+            itemDef.originalModelColors[4] = 917;
+            itemDef.modifiedModelColors[4] = 62928;
             itemDef.spriteScale = 1100;
             itemDef.spritePitch = 568;
             itemDef.spriteCameraRoll = 0;
@@ -3936,14 +3936,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 43127;
-            itemDef.originalModelColors[0] = 6073;
-            itemDef.modifiedModelColors[1] = 38119;
-            itemDef.originalModelColors[1] = 6069;
-            itemDef.modifiedModelColors[2] = 36975;
-            itemDef.originalModelColors[2] = 6069;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 43127;
+            itemDef.modifiedModelColors[0] = 6073;
+            itemDef.originalModelColors[1] = 38119;
+            itemDef.modifiedModelColors[1] = 6069;
+            itemDef.originalModelColors[2] = 36975;
+            itemDef.modifiedModelColors[2] = 6069;
             itemDef.modelId = 5198;
             itemDef.spriteScale = 1900;
             itemDef.spritePitch = 500;
@@ -3967,14 +3967,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 43127;
-            itemDef.originalModelColors[0] = 62928;
-            itemDef.modifiedModelColors[1] = 38119;
-            itemDef.originalModelColors[1] = 62928;
-            itemDef.modifiedModelColors[2] = 36975;
-            itemDef.originalModelColors[2] = 62928;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 43127;
+            itemDef.modifiedModelColors[0] = 62928;
+            itemDef.originalModelColors[1] = 38119;
+            itemDef.modifiedModelColors[1] = 62928;
+            itemDef.originalModelColors[2] = 36975;
+            itemDef.modifiedModelColors[2] = 62928;
             itemDef.modelId = 5198;
             itemDef.spriteScale = 1900;
             itemDef.spritePitch = 500;
@@ -3998,10 +3998,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[4];
             itemDef.originalModelColors = new int[4];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 6073;
+            itemDef.modifiedModelColors = new int[4];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 6073;
             itemDef.modelId = 5037;
             itemDef.spriteScale = 770;
             itemDef.spritePitch = 164;
@@ -4027,10 +4027,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[4];
             itemDef.originalModelColors = new int[4];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 62929;
+            itemDef.modifiedModelColors = new int[4];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 62929;
             itemDef.modelId = 5037;
             itemDef.spriteScale = 770;
             itemDef.spritePitch = 164;
@@ -4081,12 +4081,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 62928;
-            itemDef.modifiedModelColors[1] = 935;
-            itemDef.originalModelColors[1] = 62930;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 62928;
+            itemDef.originalModelColors[1] = 935;
+            itemDef.modifiedModelColors[1] = 62930;
             itemDef.modelId = 6033;
             itemDef.spriteScale = 980;
             itemDef.spritePitch = 350;
@@ -4110,14 +4110,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 43127;
-            itemDef.originalModelColors[0] = 43968;
-            itemDef.modifiedModelColors[1] = 38119;
-            itemDef.originalModelColors[1] = 43968;
-            itemDef.modifiedModelColors[2] = 36975;
-            itemDef.originalModelColors[2] = 43968;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 43127;
+            itemDef.modifiedModelColors[0] = 43968;
+            itemDef.originalModelColors[1] = 38119;
+            itemDef.modifiedModelColors[1] = 43968;
+            itemDef.originalModelColors[2] = 36975;
+            itemDef.modifiedModelColors[2] = 43968;
             itemDef.modelId = 5198;
             itemDef.spriteScale = 1900;
             itemDef.spritePitch = 500;
@@ -4141,14 +4141,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 43127;
-            itemDef.originalModelColors[0] = 43968;
-            itemDef.modifiedModelColors[1] = 38119;
-            itemDef.originalModelColors[1] = 43968;
-            itemDef.modifiedModelColors[2] = 36975;
-            itemDef.originalModelColors[2] = 43968;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 43127;
+            itemDef.modifiedModelColors[0] = 43968;
+            itemDef.originalModelColors[1] = 38119;
+            itemDef.modifiedModelColors[1] = 43968;
+            itemDef.originalModelColors[2] = 36975;
+            itemDef.modifiedModelColors[2] = 43968;
             itemDef.modelId = 3902;
             itemDef.spriteScale = 1570;
             itemDef.spritePitch = 192;
@@ -4174,14 +4174,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 43127;
-            itemDef.originalModelColors[0] = 26706;
-            itemDef.modifiedModelColors[1] = 38119;
-            itemDef.originalModelColors[1] = 24648;
-            itemDef.modifiedModelColors[2] = 36975;
-            itemDef.originalModelColors[2] = 24640;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 43127;
+            itemDef.modifiedModelColors[0] = 26706;
+            itemDef.originalModelColors[1] = 38119;
+            itemDef.modifiedModelColors[1] = 24648;
+            itemDef.originalModelColors[2] = 36975;
+            itemDef.modifiedModelColors[2] = 24640;
             itemDef.modelId = 5198;
             itemDef.spriteScale = 1900;
             itemDef.spritePitch = 500;
@@ -4205,12 +4205,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 26706;
-            itemDef.modifiedModelColors[1] = 935;
-            itemDef.originalModelColors[1] = 24648;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 26706;
+            itemDef.originalModelColors[1] = 935;
+            itemDef.modifiedModelColors[1] = 24648;
             itemDef.modelId = 6033;
             itemDef.spriteScale = 980;
             itemDef.spritePitch = 350;
@@ -4234,14 +4234,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 43127;
-            itemDef.originalModelColors[0] = 128;
-            itemDef.modifiedModelColors[1] = 38119;
-            itemDef.originalModelColors[1] = 128;
-            itemDef.modifiedModelColors[2] = 36975;
-            itemDef.originalModelColors[2] = 128;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 43127;
+            itemDef.modifiedModelColors[0] = 128;
+            itemDef.originalModelColors[1] = 38119;
+            itemDef.modifiedModelColors[1] = 128;
+            itemDef.originalModelColors[2] = 36975;
+            itemDef.modifiedModelColors[2] = 128;
             itemDef.modelId = 5198;
             itemDef.spriteScale = 1900;
             itemDef.spritePitch = 500;
@@ -4265,10 +4265,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 0;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 0;
             itemDef.modelId = 2438;
             itemDef.spriteScale = 730;
             itemDef.spritePitch = 516;
@@ -4294,10 +4294,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 11200;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 11200;
             itemDef.modelId = 2438;
             itemDef.spriteScale = 730;
             itemDef.spritePitch = 516;
@@ -4323,10 +4323,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 528;
-            itemDef.originalModelColors[0] = 36133;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 528;
+            itemDef.modifiedModelColors[0] = 36133;
             itemDef.modelId = 5412;
             itemDef.spriteScale = 840;
             itemDef.spritePitch = 280;
@@ -4405,10 +4405,10 @@ public class ItemDefinition_Sub1
             });
             itemDef.name = "Dragon platebody (or)";
             itemDef.description = "Its an Dragon platebody (or)";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 0;
-            itemDef.originalModelColors[0] = 1;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 0;
+            itemDef.modifiedModelColors[0] = 1;
             itemDef.modelId = 58207;
             itemDef.spriteScale = 1360;
             itemDef.spritePitch = 443;
@@ -4432,12 +4432,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wield";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 43072;
-            itemDef.originalModelColors[0] = 925;
-            itemDef.modifiedModelColors[1] = 4550;
-            itemDef.originalModelColors[1] = 925;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 43072;
+            itemDef.modifiedModelColors[0] = 925;
+            itemDef.originalModelColors[1] = 4550;
+            itemDef.modifiedModelColors[1] = 925;
             itemDef.modelId = 0x121a4;
             itemDef.spriteScale = 1330;
             itemDef.spritePitch = 310;
@@ -4527,12 +4527,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 35321;
-            itemDef.modifiedModelColors[1] = 35321;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 35321;
             itemDef.originalModelColors[1] = 35321;
+            itemDef.modifiedModelColors[1] = 35321;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -4580,10 +4580,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "look at";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 586;
-            itemDef.originalModelColors[0] = 43297;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 586;
+            itemDef.modifiedModelColors[0] = 43297;
             itemDef.modelId = 546;
             itemDef.spriteScale = 654;
             itemDef.spritePitch = 852;
@@ -4607,8 +4607,8 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[5];
             itemDef.originalModelColors = new int[5];
+            itemDef.modifiedModelColors = new int[5];
             itemDef.modelId = 93288;
             itemDef.spriteScale = 2992;
             itemDef.spritePitch = 517;
@@ -4632,12 +4632,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 8245;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 8245;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 8245;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 8245;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -4663,12 +4663,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 18105;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 18105;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 18105;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 18105;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -4694,12 +4694,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 45549;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 45549;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 45549;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 45549;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -4725,12 +4725,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 50971;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 50971;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 50971;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 50971;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -4756,12 +4756,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 60176;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 60176;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 60176;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 60176;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -4787,12 +4787,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 19213;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 19213;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 19213;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 19213;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -4818,12 +4818,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 3654;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 3654;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 3654;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 3654;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -4849,12 +4849,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 12904;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 12904;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 12904;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 12904;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -4880,12 +4880,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 618;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 618;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 618;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 618;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -4911,12 +4911,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 46440;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 46440;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 46440;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 46440;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -4942,12 +4942,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 11378;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 11378;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 11378;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 11378;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -4973,12 +4973,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 36207;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 36207;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 36207;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 36207;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -5004,12 +5004,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 32562;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 32562;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 32562;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 32562;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -5035,12 +5035,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 933;
-            itemDef.originalModelColors[0] = 8245;
-            itemDef.modifiedModelColors[1] = 10351;
-            itemDef.originalModelColors[1] = 8245;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 933;
+            itemDef.modifiedModelColors[0] = 8245;
+            itemDef.originalModelColors[1] = 10351;
+            itemDef.modifiedModelColors[1] = 8245;
             itemDef.modelId = 2537;
             itemDef.spriteScale = 540;
             itemDef.spritePitch = 72;
@@ -5066,10 +5066,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 528;
-            itemDef.originalModelColors[0] = 32984;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 528;
+            itemDef.modifiedModelColors[0] = 32984;
             itemDef.modelId = 5412;
             itemDef.spriteScale = 840;
             itemDef.spritePitch = 280;
@@ -5095,14 +5095,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 33;
-            itemDef.originalModelColors[0] = 32984;
-            itemDef.modifiedModelColors[1] = 49;
-            itemDef.originalModelColors[1] = 32984;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 32984;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 33;
+            itemDef.modifiedModelColors[0] = 32984;
+            itemDef.originalModelColors[1] = 49;
+            itemDef.modifiedModelColors[1] = 32984;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 32984;
             itemDef.modelId = 2558;
             itemDef.spriteScale = 1100;
             itemDef.spritePitch = 568;
@@ -5128,14 +5128,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 24;
-            itemDef.originalModelColors[0] = 32984;
-            itemDef.modifiedModelColors[1] = 61;
-            itemDef.originalModelColors[1] = 32984;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 32984;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 24;
+            itemDef.modifiedModelColors[0] = 32984;
+            itemDef.originalModelColors[1] = 61;
+            itemDef.modifiedModelColors[1] = 32984;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 32984;
             itemDef.modelId = 32637;
             itemDef.spriteScale = 1250;
             itemDef.spritePitch = 488;
@@ -5161,10 +5161,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 32984;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 32984;
             itemDef.modelId = 2833;
             itemDef.spriteScale = 640;
             itemDef.spritePitch = 108;
@@ -5190,12 +5190,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 32984;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 48030;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 32984;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 48030;
             itemDef.modelId = 32639;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -5221,14 +5221,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 32984;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 32984;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 32984;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 32984;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 32984;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 32984;
             itemDef.modelId = 32638;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -5254,12 +5254,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 10394;
-            itemDef.originalModelColors[0] = -22221;
-            itemDef.modifiedModelColors[1] = 6020;
-            itemDef.originalModelColors[1] = -22221;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 10394;
+            itemDef.modifiedModelColors[0] = -22221;
+            itemDef.originalModelColors[1] = 6020;
+            itemDef.modifiedModelColors[1] = -22221;
             itemDef.modelId = 6583;
             itemDef.spriteScale = 860;
             itemDef.spritePitch = 2012;
@@ -5285,12 +5285,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = -22221;
-            itemDef.modifiedModelColors[1] = 912;
-            itemDef.originalModelColors[1] = -22221;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = -22221;
+            itemDef.originalModelColors[1] = 912;
+            itemDef.modifiedModelColors[1] = -22221;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
             itemDef.spriteCameraRoll = 0;
@@ -5316,14 +5316,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 10283;
-            itemDef.originalModelColors[0] = -22221;
-            itemDef.modifiedModelColors[1] = 10270;
-            itemDef.originalModelColors[1] = -22221;
-            itemDef.modifiedModelColors[2] = 3326;
-            itemDef.originalModelColors[2] = -22221;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 10283;
+            itemDef.modifiedModelColors[0] = -22221;
+            itemDef.originalModelColors[1] = 10270;
+            itemDef.modifiedModelColors[1] = -22221;
+            itemDef.originalModelColors[2] = 3326;
+            itemDef.modifiedModelColors[2] = -22221;
             itemDef.modelId = 8700;
             itemDef.spriteScale = 710;
             itemDef.spritePitch = 332;
@@ -5349,18 +5349,18 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[5];
             itemDef.originalModelColors = new int[5];
-            itemDef.modifiedModelColors[0] = 914;
-            itemDef.originalModelColors[0] = -22221;
-            itemDef.modifiedModelColors[1] = 918;
-            itemDef.originalModelColors[1] = -22221;
-            itemDef.modifiedModelColors[2] = 922;
-            itemDef.originalModelColors[2] = -22221;
-            itemDef.modifiedModelColors[3] = 391;
-            itemDef.originalModelColors[3] = -22221;
-            itemDef.modifiedModelColors[4] = 917;
-            itemDef.originalModelColors[4] = -22221;
+            itemDef.modifiedModelColors = new int[5];
+            itemDef.originalModelColors[0] = 914;
+            itemDef.modifiedModelColors[0] = -22221;
+            itemDef.originalModelColors[1] = 918;
+            itemDef.modifiedModelColors[1] = -22221;
+            itemDef.originalModelColors[2] = 922;
+            itemDef.modifiedModelColors[2] = -22221;
+            itemDef.originalModelColors[3] = 391;
+            itemDef.modifiedModelColors[3] = -22221;
+            itemDef.originalModelColors[4] = 917;
+            itemDef.modifiedModelColors[4] = -22221;
             itemDef.spriteScale = 1100;
             itemDef.spritePitch = 568;
             itemDef.spriteCameraRoll = 0;
@@ -5386,14 +5386,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 43127;
-            itemDef.originalModelColors[0] = 43968;
-            itemDef.modifiedModelColors[1] = 38119;
-            itemDef.originalModelColors[1] = 43968;
-            itemDef.modifiedModelColors[2] = 36975;
-            itemDef.originalModelColors[2] = 43968;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 43127;
+            itemDef.modifiedModelColors[0] = 43968;
+            itemDef.originalModelColors[1] = 38119;
+            itemDef.modifiedModelColors[1] = 43968;
+            itemDef.originalModelColors[2] = 36975;
+            itemDef.modifiedModelColors[2] = 43968;
             itemDef.modelId = 5198;
             itemDef.spriteScale = 1900;
             itemDef.spritePitch = 500;
@@ -5417,10 +5417,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[4];
             itemDef.originalModelColors = new int[4];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43968;
+            itemDef.modifiedModelColors = new int[4];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43968;
             itemDef.modelId = 5037;
             itemDef.spriteScale = 770;
             itemDef.spritePitch = 164;
@@ -5446,10 +5446,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43968;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43968;
             itemDef.modelId = 2373;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 300;
@@ -5475,10 +5475,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 7073;
-            itemDef.originalModelColors[0] = 10394;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 7073;
+            itemDef.modifiedModelColors[0] = 10394;
             itemDef.modelId = 2451;
             itemDef.spriteScale = 690;
             itemDef.spritePitch = 160;
@@ -5504,10 +5504,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 7073;
-            itemDef.originalModelColors[0] = 7114;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 7073;
+            itemDef.modifiedModelColors[0] = 7114;
             itemDef.modelId = 2451;
             itemDef.spriteScale = 690;
             itemDef.spritePitch = 160;
@@ -5533,10 +5533,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 7073;
-            itemDef.originalModelColors[0] = 100;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 7073;
+            itemDef.modifiedModelColors[0] = 100;
             itemDef.modelId = 2451;
             itemDef.spriteScale = 690;
             itemDef.spritePitch = 160;
@@ -5562,10 +5562,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 7073;
-            itemDef.originalModelColors[0] = 924;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 7073;
+            itemDef.modifiedModelColors[0] = 924;
             itemDef.modelId = 2451;
             itemDef.spriteScale = 690;
             itemDef.spritePitch = 160;
@@ -5591,14 +5591,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 43072;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 22464;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 43072;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 22464;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -5622,14 +5622,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 22464;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 43072;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 22464;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 43072;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -5655,12 +5655,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 22464;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 22464;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -5684,14 +5684,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 43072;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 22464;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 43072;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 22464;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -5715,14 +5715,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 43072;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 100;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 43072;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 100;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -5746,14 +5746,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 100;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 43072;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 100;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 43072;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -5779,12 +5779,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 100;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 100;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -5808,14 +5808,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 43072;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 100;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 43072;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 100;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -5839,14 +5839,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 43072;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 43968;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 43072;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 43968;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -5870,14 +5870,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 43968;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 43072;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 43968;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 43072;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -5903,12 +5903,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 43968;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 43968;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -5932,14 +5932,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 43072;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 43968;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 43072;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 43968;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -5963,14 +5963,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 43072;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 6073;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 43072;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 6073;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -5994,14 +5994,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 6073;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 43072;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 6073;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 43072;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -6027,12 +6027,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 6073;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 6073;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -6056,14 +6056,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 43072;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 6073;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 43072;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 6073;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -6087,14 +6087,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 43072;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 51136;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 43072;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 51136;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -6118,14 +6118,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 51136;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 43072;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 51136;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 43072;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -6151,12 +6151,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 51136;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 51136;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -6180,14 +6180,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43072;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 43072;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 51136;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43072;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 43072;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 51136;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -6211,14 +6211,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 43297;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 22464;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 43297;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 22464;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -6242,14 +6242,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 22464;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 43297;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 22464;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 43297;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -6275,12 +6275,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 22464;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 22464;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -6304,14 +6304,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 43297;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 22464;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 43297;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 22464;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -6335,14 +6335,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 43297;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 100;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 43297;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 100;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -6366,14 +6366,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 100;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 43297;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 100;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 43297;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -6399,12 +6399,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 100;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 100;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -6428,14 +6428,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 43297;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 100;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 43297;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 100;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -6459,14 +6459,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 43297;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 43968;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 43297;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 43968;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -6490,14 +6490,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 43968;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 43297;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 43968;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 43297;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -6523,12 +6523,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 43968;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 43968;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -6552,14 +6552,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 43297;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 43968;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 43297;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 43968;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -6583,14 +6583,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 43297;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 6073;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 43297;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 6073;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -6614,14 +6614,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 6073;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 43297;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 6073;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 43297;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -6647,12 +6647,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 6073;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 6073;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -6676,14 +6676,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 43297;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 6073;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 43297;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 6073;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -6707,14 +6707,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 43297;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 51136;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 43297;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 51136;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -6738,14 +6738,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 51136;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 43297;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 51136;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 43297;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -6771,12 +6771,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 51136;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 51136;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -6800,14 +6800,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 43297;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 43297;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 51136;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 43297;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 43297;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 51136;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -6831,14 +6831,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 21662;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 22464;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 21662;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 22464;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -6862,14 +6862,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 22464;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 21662;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 22464;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 21662;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -6895,12 +6895,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 22464;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 22464;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -6924,14 +6924,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 21662;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 22464;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 21662;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 22464;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -6955,14 +6955,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 21662;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 100;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 21662;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 100;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -6986,14 +6986,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 100;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 21662;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 100;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 21662;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -7019,12 +7019,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 100;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 100;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -7048,14 +7048,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 21662;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 100;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 21662;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 100;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -7079,14 +7079,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 21662;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 43968;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 21662;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 43968;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -7110,14 +7110,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 43968;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 21662;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 43968;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 21662;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -7142,14 +7142,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 43968;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 21662;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 43968;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 21662;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -7174,12 +7174,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 43968;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 43968;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -7202,14 +7202,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 21662;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 43968;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 21662;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 43968;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -7232,14 +7232,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 21662;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 6073;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 21662;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 6073;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -7262,14 +7262,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 6073;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 21662;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 6073;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 21662;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -7294,12 +7294,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 6073;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 6073;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -7322,14 +7322,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 21662;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 6073;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 21662;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 6073;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -7352,14 +7352,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 21662;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 51136;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 21662;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 51136;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -7382,14 +7382,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 51136;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 21662;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 51136;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 21662;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -7414,12 +7414,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 51136;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 51136;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -7442,14 +7442,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 21662;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 21662;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 51136;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 21662;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 21662;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 51136;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -7472,14 +7472,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 36133;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 22464;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 36133;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 22464;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -7502,14 +7502,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 22464;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 36133;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 22464;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 36133;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -7534,12 +7534,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 22464;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 22464;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -7562,14 +7562,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 36133;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 22464;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 36133;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 22464;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -7592,14 +7592,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 36133;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 100;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 36133;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 100;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -7622,14 +7622,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 100;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 36133;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 100;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 36133;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -7654,12 +7654,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 100;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 100;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -7682,14 +7682,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 36133;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 100;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 36133;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 100;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -7712,14 +7712,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 36133;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 43968;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 36133;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 43968;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -7742,14 +7742,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 43968;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 36133;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 43968;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 36133;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -7774,12 +7774,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 43968;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 43968;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -7802,14 +7802,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 36133;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 43968;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 36133;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 43968;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -7832,14 +7832,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 36133;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 6073;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 36133;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 6073;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -7862,14 +7862,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 6073;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 36133;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 6073;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 36133;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -7894,12 +7894,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 6073;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 6073;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -7922,14 +7922,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 36133;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 6073;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 36133;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 6073;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -7952,14 +7952,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 41;
-            itemDef.originalModelColors[1] = 36133;
-            itemDef.modifiedModelColors[2] = 57;
-            itemDef.originalModelColors[2] = 51136;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 41;
+            itemDef.modifiedModelColors[1] = 36133;
+            itemDef.originalModelColors[2] = 57;
+            itemDef.modifiedModelColors[2] = 51136;
             itemDef.modelId = 2582;
             itemDef.spriteScale = 1740;
             itemDef.spritePitch = 444;
@@ -7982,14 +7982,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 24;
-            itemDef.originalModelColors[1] = 51136;
-            itemDef.modifiedModelColors[2] = 41;
-            itemDef.originalModelColors[2] = 36133;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 24;
+            itemDef.modifiedModelColors[1] = 51136;
+            itemDef.originalModelColors[2] = 41;
+            itemDef.modifiedModelColors[2] = 36133;
             itemDef.modelId = 2378;
             itemDef.spriteScale = 1180;
             itemDef.spritePitch = 452;
@@ -8014,12 +8014,12 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[2];
             itemDef.originalModelColors = new int[2];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 926;
-            itemDef.originalModelColors[1] = 51136;
+            itemDef.modifiedModelColors = new int[2];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 926;
+            itemDef.modifiedModelColors[1] = 51136;
             itemDef.modelId = 2813;
             itemDef.spriteScale = 800;
             itemDef.spritePitch = 160;
@@ -8042,14 +8042,14 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[3];
             itemDef.originalModelColors = new int[3];
-            itemDef.modifiedModelColors[0] = 61;
-            itemDef.originalModelColors[0] = 36133;
-            itemDef.modifiedModelColors[1] = 57;
-            itemDef.originalModelColors[1] = 36133;
-            itemDef.modifiedModelColors[2] = 7054;
-            itemDef.originalModelColors[2] = 51136;
+            itemDef.modifiedModelColors = new int[3];
+            itemDef.originalModelColors[0] = 61;
+            itemDef.modifiedModelColors[0] = 36133;
+            itemDef.originalModelColors[1] = 57;
+            itemDef.modifiedModelColors[1] = 36133;
+            itemDef.originalModelColors[2] = 7054;
+            itemDef.modifiedModelColors[2] = 51136;
             itemDef.modelId = 2339;
             itemDef.spriteScale = 1560;
             itemDef.spritePitch = 344;
@@ -8072,10 +8072,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 18105;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 18105;
             itemDef.modelId = 2635;
             itemDef.spriteScale = 440;
             itemDef.spritePitch = 76;
@@ -8099,10 +8099,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 45549;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 45549;
             itemDef.modelId = 2635;
             itemDef.spriteScale = 440;
             itemDef.spritePitch = 76;
@@ -8126,10 +8126,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 50971;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 50971;
             itemDef.modelId = 2635;
             itemDef.spriteScale = 440;
             itemDef.spritePitch = 76;
@@ -8153,10 +8153,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 60176;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 60176;
             itemDef.modelId = 2635;
             itemDef.spriteScale = 440;
             itemDef.spritePitch = 76;
@@ -8180,10 +8180,10 @@ public class ItemDefinition_Sub1
         {
             itemDef.itemActions = new String[5];
             itemDef.itemActions[1] = "Wear";
-            itemDef.modifiedModelColors = new int[1];
             itemDef.originalModelColors = new int[1];
-            itemDef.modifiedModelColors[0] = 926;
-            itemDef.originalModelColors[0] = 19213;
+            itemDef.modifiedModelColors = new int[1];
+            itemDef.originalModelColors[0] = 926;
+            itemDef.modifiedModelColors[0] = 19213;
             itemDef.modelId = 2635;
             itemDef.spriteScale = 440;
             itemDef.spritePitch = 76;

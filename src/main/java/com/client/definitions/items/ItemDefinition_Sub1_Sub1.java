@@ -15,10 +15,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 926;
-            class8.originalModelColors[0] = 3654;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 926;
+            class8.modifiedModelColors[0] = 3654;
             class8.modelId = 2635;
             class8.spriteScale = 440;
             class8.spritePitch = 76;
@@ -42,10 +42,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 926;
-            class8.originalModelColors[0] = 12904;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 926;
+            class8.modifiedModelColors[0] = 12904;
             class8.modelId = 2635;
             class8.spriteScale = 440;
             class8.spritePitch = 76;
@@ -69,10 +69,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 926;
-            class8.originalModelColors[0] = 618;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 926;
+            class8.modifiedModelColors[0] = 618;
             class8.modelId = 2635;
             class8.spriteScale = 440;
             class8.spritePitch = 76;
@@ -96,10 +96,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 926;
-            class8.originalModelColors[0] = 46440;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 926;
+            class8.modifiedModelColors[0] = 46440;
             class8.modelId = 2635;
             class8.spriteScale = 440;
             class8.spritePitch = 76;
@@ -123,10 +123,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 926;
-            class8.originalModelColors[0] = 11378;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 926;
+            class8.modifiedModelColors[0] = 11378;
             class8.modelId = 2635;
             class8.spriteScale = 440;
             class8.spritePitch = 76;
@@ -150,10 +150,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 926;
-            class8.originalModelColors[0] = 36207;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 926;
+            class8.modifiedModelColors[0] = 36207;
             class8.modelId = 2635;
             class8.spriteScale = 440;
             class8.spritePitch = 76;
@@ -177,10 +177,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 926;
-            class8.originalModelColors[0] = 32562;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 926;
+            class8.modifiedModelColors[0] = 32562;
             class8.modelId = 2635;
             class8.spriteScale = 440;
             class8.spritePitch = 76;
@@ -204,10 +204,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 926;
-            class8.originalModelColors[0] = 8245;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 926;
+            class8.modifiedModelColors[0] = 8245;
             class8.modelId = 2635;
             class8.spriteScale = 440;
             class8.spritePitch = 76;
@@ -231,10 +231,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 18105;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 18105;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -259,10 +259,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 45549;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 45549;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -287,10 +287,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 50971;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 50971;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -315,10 +315,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 60176;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 60176;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -343,10 +343,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 19213;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 19213;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -371,10 +371,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 3654;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 3654;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -399,10 +399,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 12904;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 12904;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -427,10 +427,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 618;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 618;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -455,10 +455,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 46440;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 46440;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -483,10 +483,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 11378;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 11378;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -511,10 +511,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 36207;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 36207;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -539,10 +539,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 32562;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 32562;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -567,10 +567,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 8245;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 8245;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -639,12 +639,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 926;
-            class8.originalModelColors[0] = 0;
-            class8.modifiedModelColors[1] = 912;
-            class8.originalModelColors[1] = 950;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 926;
+            class8.modifiedModelColors[0] = 0;
+            class8.originalModelColors[1] = 912;
+            class8.modifiedModelColors[1] = 950;
             class8.spriteScale = 1740;
             class8.spritePitch = 444;
             class8.spriteCameraRoll = 0;
@@ -669,12 +669,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 926;
-            class8.originalModelColors[0] = 0;
-            class8.modifiedModelColors[1] = 912;
-            class8.originalModelColors[1] = 950;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 926;
+            class8.modifiedModelColors[0] = 0;
+            class8.originalModelColors[1] = 912;
+            class8.modifiedModelColors[1] = 950;
             class8.spriteScale = 1300;
             class8.spritePitch = 500;
             class8.spriteCameraRoll = 0;
@@ -721,24 +721,24 @@ public class ItemDefinition_Sub1_Sub1
         }
         if(i == 28490)
         {
-            class8.modifiedModelColors = new int[8];
             class8.originalModelColors = new int[8];
-            class8.modifiedModelColors[0] = 0;
+            class8.modifiedModelColors = new int[8];
             class8.originalModelColors[0] = 0;
-            class8.modifiedModelColors[1] = 57260;
-            class8.originalModelColors[1] = 954;
-            class8.modifiedModelColors[2] = 55218;
-            class8.originalModelColors[2] = 954;
-            class8.modifiedModelColors[3] = 55220;
-            class8.originalModelColors[3] = 954;
-            class8.modifiedModelColors[4] = 56246;
-            class8.originalModelColors[4] = 954;
-            class8.modifiedModelColors[5] = 56221;
-            class8.originalModelColors[5] = 954;
-            class8.modifiedModelColors[6] = 56230;
-            class8.originalModelColors[6] = 954;
-            class8.modifiedModelColors[7] = 57126;
-            class8.originalModelColors[7] = 954;
+            class8.modifiedModelColors[0] = 0;
+            class8.originalModelColors[1] = 57260;
+            class8.modifiedModelColors[1] = 954;
+            class8.originalModelColors[2] = 55218;
+            class8.modifiedModelColors[2] = 954;
+            class8.originalModelColors[3] = 55220;
+            class8.modifiedModelColors[3] = 954;
+            class8.originalModelColors[4] = 56246;
+            class8.modifiedModelColors[4] = 954;
+            class8.originalModelColors[5] = 56221;
+            class8.modifiedModelColors[5] = 954;
+            class8.originalModelColors[6] = 56230;
+            class8.modifiedModelColors[6] = 954;
+            class8.originalModelColors[7] = 57126;
+            class8.modifiedModelColors[7] = 954;
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
             class8.modelId = 0x183a3;
@@ -759,24 +759,24 @@ public class ItemDefinition_Sub1_Sub1
         }
         if(i == 28491)
         {
-            class8.modifiedModelColors = new int[8];
             class8.originalModelColors = new int[8];
-            class8.modifiedModelColors[0] = 0;
+            class8.modifiedModelColors = new int[8];
             class8.originalModelColors[0] = 0;
-            class8.modifiedModelColors[1] = 57260;
-            class8.originalModelColors[1] = 53432;
-            class8.modifiedModelColors[2] = 55218;
-            class8.originalModelColors[2] = 53432;
-            class8.modifiedModelColors[3] = 55220;
-            class8.originalModelColors[3] = 53432;
-            class8.modifiedModelColors[4] = 56246;
-            class8.originalModelColors[4] = 53432;
-            class8.modifiedModelColors[5] = 56221;
-            class8.originalModelColors[5] = 53432;
-            class8.modifiedModelColors[6] = 56230;
-            class8.originalModelColors[6] = 53432;
-            class8.modifiedModelColors[7] = 57126;
-            class8.originalModelColors[7] = 53432;
+            class8.modifiedModelColors[0] = 0;
+            class8.originalModelColors[1] = 57260;
+            class8.modifiedModelColors[1] = 53432;
+            class8.originalModelColors[2] = 55218;
+            class8.modifiedModelColors[2] = 53432;
+            class8.originalModelColors[3] = 55220;
+            class8.modifiedModelColors[3] = 53432;
+            class8.originalModelColors[4] = 56246;
+            class8.modifiedModelColors[4] = 53432;
+            class8.originalModelColors[5] = 56221;
+            class8.modifiedModelColors[5] = 53432;
+            class8.originalModelColors[6] = 56230;
+            class8.modifiedModelColors[6] = 53432;
+            class8.originalModelColors[7] = 57126;
+            class8.modifiedModelColors[7] = 53432;
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
             class8.modelId = 0x183a3;
@@ -797,24 +797,24 @@ public class ItemDefinition_Sub1_Sub1
         }
         if(i == 28492)
         {
-            class8.modifiedModelColors = new int[8];
             class8.originalModelColors = new int[8];
-            class8.modifiedModelColors[0] = 0;
+            class8.modifiedModelColors = new int[8];
             class8.originalModelColors[0] = 0;
-            class8.modifiedModelColors[1] = 57260;
-            class8.originalModelColors[1] = 32691;
-            class8.modifiedModelColors[2] = 55218;
-            class8.originalModelColors[2] = 32691;
-            class8.modifiedModelColors[3] = 55220;
-            class8.originalModelColors[3] = 32691;
-            class8.modifiedModelColors[4] = 56246;
-            class8.originalModelColors[4] = 32691;
-            class8.modifiedModelColors[5] = 56221;
-            class8.originalModelColors[5] = 32691;
-            class8.modifiedModelColors[6] = 56230;
-            class8.originalModelColors[6] = 32691;
-            class8.modifiedModelColors[7] = 57126;
-            class8.originalModelColors[7] = 32691;
+            class8.modifiedModelColors[0] = 0;
+            class8.originalModelColors[1] = 57260;
+            class8.modifiedModelColors[1] = 32691;
+            class8.originalModelColors[2] = 55218;
+            class8.modifiedModelColors[2] = 32691;
+            class8.originalModelColors[3] = 55220;
+            class8.modifiedModelColors[3] = 32691;
+            class8.originalModelColors[4] = 56246;
+            class8.modifiedModelColors[4] = 32691;
+            class8.originalModelColors[5] = 56221;
+            class8.modifiedModelColors[5] = 32691;
+            class8.originalModelColors[6] = 56230;
+            class8.modifiedModelColors[6] = 32691;
+            class8.originalModelColors[7] = 57126;
+            class8.modifiedModelColors[7] = 32691;
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
             class8.modelId = 0x183a3;
@@ -835,24 +835,24 @@ public class ItemDefinition_Sub1_Sub1
         }
         if(i == 28493)
         {
-            class8.modifiedModelColors = new int[8];
             class8.originalModelColors = new int[8];
-            class8.modifiedModelColors[0] = 0;
+            class8.modifiedModelColors = new int[8];
             class8.originalModelColors[0] = 0;
-            class8.modifiedModelColors[1] = 57260;
-            class8.originalModelColors[1] = 13221;
-            class8.modifiedModelColors[2] = 55218;
-            class8.originalModelColors[2] = 13221;
-            class8.modifiedModelColors[3] = 55220;
-            class8.originalModelColors[3] = 13221;
-            class8.modifiedModelColors[4] = 56246;
-            class8.originalModelColors[4] = 13221;
-            class8.modifiedModelColors[5] = 56221;
-            class8.originalModelColors[5] = 13221;
-            class8.modifiedModelColors[6] = 56230;
-            class8.originalModelColors[6] = 13221;
-            class8.modifiedModelColors[7] = 57126;
-            class8.originalModelColors[7] = 13221;
+            class8.modifiedModelColors[0] = 0;
+            class8.originalModelColors[1] = 57260;
+            class8.modifiedModelColors[1] = 13221;
+            class8.originalModelColors[2] = 55218;
+            class8.modifiedModelColors[2] = 13221;
+            class8.originalModelColors[3] = 55220;
+            class8.modifiedModelColors[3] = 13221;
+            class8.originalModelColors[4] = 56246;
+            class8.modifiedModelColors[4] = 13221;
+            class8.originalModelColors[5] = 56221;
+            class8.modifiedModelColors[5] = 13221;
+            class8.originalModelColors[6] = 56230;
+            class8.modifiedModelColors[6] = 13221;
+            class8.originalModelColors[7] = 57126;
+            class8.modifiedModelColors[7] = 13221;
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
             class8.modelId = 0x183a3;
@@ -873,24 +873,24 @@ public class ItemDefinition_Sub1_Sub1
         }
         if(i == 28494)
         {
-            class8.modifiedModelColors = new int[8];
             class8.originalModelColors = new int[8];
-            class8.modifiedModelColors[0] = 0;
+            class8.modifiedModelColors = new int[8];
             class8.originalModelColors[0] = 0;
-            class8.modifiedModelColors[1] = 57260;
-            class8.originalModelColors[1] = 5039;
-            class8.modifiedModelColors[2] = 55218;
-            class8.originalModelColors[2] = 5039;
-            class8.modifiedModelColors[3] = 55220;
-            class8.originalModelColors[3] = 5039;
-            class8.modifiedModelColors[4] = 56246;
-            class8.originalModelColors[4] = 5039;
-            class8.modifiedModelColors[5] = 56221;
-            class8.originalModelColors[5] = 5039;
-            class8.modifiedModelColors[6] = 56230;
-            class8.originalModelColors[6] = 5039;
-            class8.modifiedModelColors[7] = 57126;
-            class8.originalModelColors[7] = 5039;
+            class8.modifiedModelColors[0] = 0;
+            class8.originalModelColors[1] = 57260;
+            class8.modifiedModelColors[1] = 5039;
+            class8.originalModelColors[2] = 55218;
+            class8.modifiedModelColors[2] = 5039;
+            class8.originalModelColors[3] = 55220;
+            class8.modifiedModelColors[3] = 5039;
+            class8.originalModelColors[4] = 56246;
+            class8.modifiedModelColors[4] = 5039;
+            class8.originalModelColors[5] = 56221;
+            class8.modifiedModelColors[5] = 5039;
+            class8.originalModelColors[6] = 56230;
+            class8.modifiedModelColors[6] = 5039;
+            class8.originalModelColors[7] = 57126;
+            class8.modifiedModelColors[7] = 5039;
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
             class8.modelId = 0x183a3;
@@ -911,24 +911,24 @@ public class ItemDefinition_Sub1_Sub1
         }
         if(i == 28495)
         {
-            class8.modifiedModelColors = new int[8];
             class8.originalModelColors = new int[8];
-            class8.modifiedModelColors[0] = 0;
-            class8.originalModelColors[0] = 125;
-            class8.modifiedModelColors[1] = 57260;
-            class8.originalModelColors[1] = 0;
-            class8.modifiedModelColors[2] = 55218;
-            class8.originalModelColors[2] = 0;
-            class8.modifiedModelColors[3] = 55220;
-            class8.originalModelColors[3] = 0;
-            class8.modifiedModelColors[4] = 56246;
-            class8.originalModelColors[4] = 0;
-            class8.modifiedModelColors[5] = 56221;
-            class8.originalModelColors[5] = 0;
-            class8.modifiedModelColors[6] = 56230;
-            class8.originalModelColors[6] = 0;
-            class8.modifiedModelColors[7] = 57126;
-            class8.originalModelColors[7] = 0;
+            class8.modifiedModelColors = new int[8];
+            class8.originalModelColors[0] = 0;
+            class8.modifiedModelColors[0] = 125;
+            class8.originalModelColors[1] = 57260;
+            class8.modifiedModelColors[1] = 0;
+            class8.originalModelColors[2] = 55218;
+            class8.modifiedModelColors[2] = 0;
+            class8.originalModelColors[3] = 55220;
+            class8.modifiedModelColors[3] = 0;
+            class8.originalModelColors[4] = 56246;
+            class8.modifiedModelColors[4] = 0;
+            class8.originalModelColors[5] = 56221;
+            class8.modifiedModelColors[5] = 0;
+            class8.originalModelColors[6] = 56230;
+            class8.modifiedModelColors[6] = 0;
+            class8.originalModelColors[7] = 57126;
+            class8.modifiedModelColors[7] = 0;
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
             class8.modelId = 0x183a3;
@@ -971,8 +971,8 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[5];
             class8.originalModelColors = new int[5];
+            class8.modifiedModelColors = new int[5];
             class8.modelId = 0x16ee0;
             class8.spriteScale = 2000;
             class8.spritePitch = 500;
@@ -995,12 +995,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 7114;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 7114;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 7114;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 7114;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1026,12 +1026,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 43968;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 43968;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 43968;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 43968;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1057,12 +1057,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 950;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 950;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 950;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 950;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1087,12 +1087,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 51136;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 51136;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 51136;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 51136;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1117,12 +1117,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 22464;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 22464;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 22464;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 22464;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1147,12 +1147,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 6073;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 6073;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 6073;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 6073;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1177,12 +1177,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 10394;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 10394;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 10394;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 10394;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1207,12 +1207,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 926;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 926;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 926;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 926;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1237,12 +1237,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 5652;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 5652;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 5652;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 5652;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1267,12 +1267,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 33;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 33;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 33;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 33;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1297,12 +1297,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 43072;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 43072;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 43072;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 43072;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1327,12 +1327,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 8;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 8;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 8;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 8;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1357,12 +1357,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 43297;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 43297;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 43297;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 43297;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1387,12 +1387,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 36133;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 36133;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 36133;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 36133;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1417,12 +1417,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 21662;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 21662;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 21662;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 21662;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1447,12 +1447,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 6069;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 6069;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 6069;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 6069;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1477,12 +1477,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 26706;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 26706;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 26706;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 26706;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1507,12 +1507,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 62920;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 62920;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 62920;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 62920;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1537,14 +1537,14 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[3];
             class8.originalModelColors = new int[3];
-            class8.modifiedModelColors[0] = 48596;
-            class8.originalModelColors[0] = 10394;
-            class8.modifiedModelColors[1] = 37196;
-            class8.originalModelColors[1] = 10394;
-            class8.modifiedModelColors[2] = 53167;
-            class8.originalModelColors[2] = 10394;
+            class8.modifiedModelColors = new int[3];
+            class8.originalModelColors[0] = 48596;
+            class8.modifiedModelColors[0] = 10394;
+            class8.originalModelColors[1] = 37196;
+            class8.modifiedModelColors[1] = 10394;
+            class8.originalModelColors[2] = 53167;
+            class8.modifiedModelColors[2] = 10394;
             class8.modelId = 1781;
             class8.spriteScale = 840;
             class8.spritePitch = 612;
@@ -1569,14 +1569,14 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[3];
             class8.originalModelColors = new int[3];
-            class8.modifiedModelColors[0] = 48596;
-            class8.originalModelColors[0] = 926;
-            class8.modifiedModelColors[1] = 37196;
-            class8.originalModelColors[1] = 926;
-            class8.modifiedModelColors[2] = 53167;
-            class8.originalModelColors[2] = 926;
+            class8.modifiedModelColors = new int[3];
+            class8.originalModelColors[0] = 48596;
+            class8.modifiedModelColors[0] = 926;
+            class8.originalModelColors[1] = 37196;
+            class8.modifiedModelColors[1] = 926;
+            class8.originalModelColors[2] = 53167;
+            class8.modifiedModelColors[2] = 926;
             class8.modelId = 1781;
             class8.spriteScale = 840;
             class8.spritePitch = 612;
@@ -1601,14 +1601,14 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[3];
             class8.originalModelColors = new int[3];
-            class8.modifiedModelColors[0] = 48596;
-            class8.originalModelColors[0] = 5652;
-            class8.modifiedModelColors[1] = 37196;
-            class8.originalModelColors[1] = 5652;
-            class8.modifiedModelColors[2] = 53167;
-            class8.originalModelColors[2] = 5652;
+            class8.modifiedModelColors = new int[3];
+            class8.originalModelColors[0] = 48596;
+            class8.modifiedModelColors[0] = 5652;
+            class8.originalModelColors[1] = 37196;
+            class8.modifiedModelColors[1] = 5652;
+            class8.originalModelColors[2] = 53167;
+            class8.modifiedModelColors[2] = 5652;
             class8.modelId = 1781;
             class8.spriteScale = 840;
             class8.spritePitch = 612;
@@ -1633,14 +1633,14 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[3];
             class8.originalModelColors = new int[3];
-            class8.modifiedModelColors[0] = 48596;
-            class8.originalModelColors[0] = 33;
-            class8.modifiedModelColors[1] = 37196;
-            class8.originalModelColors[1] = 33;
-            class8.modifiedModelColors[2] = 53167;
-            class8.originalModelColors[2] = 33;
+            class8.modifiedModelColors = new int[3];
+            class8.originalModelColors[0] = 48596;
+            class8.modifiedModelColors[0] = 33;
+            class8.originalModelColors[1] = 37196;
+            class8.modifiedModelColors[1] = 33;
+            class8.originalModelColors[2] = 53167;
+            class8.modifiedModelColors[2] = 33;
             class8.modelId = 1781;
             class8.spriteScale = 840;
             class8.spritePitch = 612;
@@ -1665,14 +1665,14 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[3];
             class8.originalModelColors = new int[3];
-            class8.modifiedModelColors[0] = 48596;
-            class8.originalModelColors[0] = 43072;
-            class8.modifiedModelColors[1] = 37196;
-            class8.originalModelColors[1] = 43072;
-            class8.modifiedModelColors[2] = 53167;
-            class8.originalModelColors[2] = 43072;
+            class8.modifiedModelColors = new int[3];
+            class8.originalModelColors[0] = 48596;
+            class8.modifiedModelColors[0] = 43072;
+            class8.originalModelColors[1] = 37196;
+            class8.modifiedModelColors[1] = 43072;
+            class8.originalModelColors[2] = 53167;
+            class8.modifiedModelColors[2] = 43072;
             class8.modelId = 1781;
             class8.spriteScale = 840;
             class8.spritePitch = 612;
@@ -1697,14 +1697,14 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[3];
             class8.originalModelColors = new int[3];
-            class8.modifiedModelColors[0] = 48596;
-            class8.originalModelColors[0] = 43297;
-            class8.modifiedModelColors[1] = 37196;
-            class8.originalModelColors[1] = 43297;
-            class8.modifiedModelColors[2] = 53167;
-            class8.originalModelColors[2] = 43297;
+            class8.modifiedModelColors = new int[3];
+            class8.originalModelColors[0] = 48596;
+            class8.modifiedModelColors[0] = 43297;
+            class8.originalModelColors[1] = 37196;
+            class8.modifiedModelColors[1] = 43297;
+            class8.originalModelColors[2] = 53167;
+            class8.modifiedModelColors[2] = 43297;
             class8.modelId = 1781;
             class8.spriteScale = 840;
             class8.spritePitch = 612;
@@ -1729,14 +1729,14 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[3];
             class8.originalModelColors = new int[3];
-            class8.modifiedModelColors[0] = 48596;
-            class8.originalModelColors[0] = 21662;
-            class8.modifiedModelColors[1] = 37196;
-            class8.originalModelColors[1] = 21662;
-            class8.modifiedModelColors[2] = 53167;
-            class8.originalModelColors[2] = 21662;
+            class8.modifiedModelColors = new int[3];
+            class8.originalModelColors[0] = 48596;
+            class8.modifiedModelColors[0] = 21662;
+            class8.originalModelColors[1] = 37196;
+            class8.modifiedModelColors[1] = 21662;
+            class8.originalModelColors[2] = 53167;
+            class8.modifiedModelColors[2] = 21662;
             class8.modelId = 1781;
             class8.spriteScale = 840;
             class8.spritePitch = 612;
@@ -1761,14 +1761,14 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[3];
             class8.originalModelColors = new int[3];
-            class8.modifiedModelColors[0] = 48596;
-            class8.originalModelColors[0] = 36133;
-            class8.modifiedModelColors[1] = 37196;
-            class8.originalModelColors[1] = 36133;
-            class8.modifiedModelColors[2] = 53167;
-            class8.originalModelColors[2] = 36133;
+            class8.modifiedModelColors = new int[3];
+            class8.originalModelColors[0] = 48596;
+            class8.modifiedModelColors[0] = 36133;
+            class8.originalModelColors[1] = 37196;
+            class8.modifiedModelColors[1] = 36133;
+            class8.originalModelColors[2] = 53167;
+            class8.modifiedModelColors[2] = 36133;
             class8.modelId = 1781;
             class8.spriteScale = 840;
             class8.spritePitch = 612;
@@ -1793,12 +1793,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 32707;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 32707;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 32707;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 32707;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1823,12 +1823,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 52685;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 52685;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 52685;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 52685;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1853,12 +1853,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 13140;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 13140;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 13140;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 13140;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1883,12 +1883,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 20245;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 20245;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 20245;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 20245;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1913,12 +1913,12 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[2];
             class8.originalModelColors = new int[2];
-            class8.modifiedModelColors[0] = 933;
-            class8.originalModelColors[0] = 50976;
-            class8.modifiedModelColors[1] = 10351;
-            class8.originalModelColors[1] = 50976;
+            class8.modifiedModelColors = new int[2];
+            class8.originalModelColors[0] = 933;
+            class8.modifiedModelColors[0] = 50976;
+            class8.originalModelColors[1] = 10351;
+            class8.modifiedModelColors[1] = 50976;
             class8.modelId = 2553;
             class8.spriteScale = 550;
             class8.spritePitch = 360;
@@ -1953,10 +1953,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 21662;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 21662;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -1981,10 +1981,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 36133;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 36133;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -2009,10 +2009,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 43297;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 43297;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -2037,10 +2037,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 8;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 8;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -2065,10 +2065,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 43072;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 43072;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -2093,10 +2093,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 33;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 33;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -2121,10 +2121,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 5652;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 5652;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -2149,10 +2149,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 926;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 926;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -2177,10 +2177,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 528;
-            class8.originalModelColors[0] = 49500;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 528;
+            class8.modifiedModelColors[0] = 49500;
             class8.modelId = 5412;
             class8.spriteScale = 840;
             class8.spritePitch = 280;
@@ -2205,14 +2205,14 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[4];
             class8.originalModelColors = new int[4];
-            class8.modifiedModelColors[0] = 61;
-            class8.modifiedModelColors[1] = 41;
-            class8.modifiedModelColors[2] = 57;
-            class8.originalModelColors[0] = 924;
-            class8.originalModelColors[1] = 127;
-            class8.originalModelColors[2] = 924;
+            class8.modifiedModelColors = new int[4];
+            class8.originalModelColors[0] = 61;
+            class8.originalModelColors[1] = 41;
+            class8.originalModelColors[2] = 57;
+            class8.modifiedModelColors[0] = 924;
+            class8.modifiedModelColors[1] = 127;
+            class8.modifiedModelColors[2] = 924;
             class8.modelId = 2582;
             class8.spriteScale = 1740;
             class8.spritePitch = 444;
@@ -2237,16 +2237,16 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[4];
             class8.originalModelColors = new int[4];
-            class8.modifiedModelColors[0] = 61;
-            class8.modifiedModelColors[1] = 41;
-            class8.modifiedModelColors[2] = 24;
-            class8.modifiedModelColors[3] = 11187;
-            class8.originalModelColors[0] = 127;
-            class8.originalModelColors[1] = 924;
-            class8.originalModelColors[2] = 127;
-            class8.originalModelColors[3] = 127;
+            class8.modifiedModelColors = new int[4];
+            class8.originalModelColors[0] = 61;
+            class8.originalModelColors[1] = 41;
+            class8.originalModelColors[2] = 24;
+            class8.originalModelColors[3] = 11187;
+            class8.modifiedModelColors[0] = 127;
+            class8.modifiedModelColors[1] = 924;
+            class8.modifiedModelColors[2] = 127;
+            class8.modifiedModelColors[3] = 127;
             class8.modelId = 3020;
             class8.spriteScale = 1180;
             class8.spritePitch = 452;
@@ -2271,14 +2271,14 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[4];
             class8.originalModelColors = new int[4];
-            class8.modifiedModelColors[0] = 61;
-            class8.modifiedModelColors[1] = 7054;
-            class8.modifiedModelColors[2] = 57;
-            class8.originalModelColors[0] = 127;
-            class8.originalModelColors[1] = 924;
-            class8.originalModelColors[2] = 924;
+            class8.modifiedModelColors = new int[4];
+            class8.originalModelColors[0] = 61;
+            class8.originalModelColors[1] = 7054;
+            class8.originalModelColors[2] = 57;
+            class8.modifiedModelColors[0] = 127;
+            class8.modifiedModelColors[1] = 924;
+            class8.modifiedModelColors[2] = 924;
             class8.modelId = 2339;
             class8.spriteScale = 1560;
             class8.spritePitch = 344;
@@ -2303,16 +2303,16 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[4];
             class8.originalModelColors = new int[4];
-            class8.modifiedModelColors[0] = 926;
-            class8.modifiedModelColors[1] = 7700;
-            class8.modifiedModelColors[2] = 11200;
-            class8.modifiedModelColors[3] = 6032;
-            class8.originalModelColors[0] = 127;
-            class8.originalModelColors[1] = 127;
-            class8.originalModelColors[2] = 924;
-            class8.originalModelColors[3] = 127;
+            class8.modifiedModelColors = new int[4];
+            class8.originalModelColors[0] = 926;
+            class8.originalModelColors[1] = 7700;
+            class8.originalModelColors[2] = 11200;
+            class8.originalModelColors[3] = 6032;
+            class8.modifiedModelColors[0] = 127;
+            class8.modifiedModelColors[1] = 127;
+            class8.modifiedModelColors[2] = 924;
+            class8.modifiedModelColors[3] = 127;
             class8.modelId = 2603;
             class8.spriteScale = 2140;
             class8.spritePitch = 400;
@@ -2337,14 +2337,14 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[4];
             class8.originalModelColors = new int[4];
-            class8.modifiedModelColors[0] = 39009;
-            class8.modifiedModelColors[1] = 40918;
-            class8.originalModelColors[0] = 127;
-            class8.originalModelColors[1] = 924;
-            class8.originalModelColors[2] = 924;
-            class8.originalModelColors[3] = 127;
+            class8.modifiedModelColors = new int[4];
+            class8.originalModelColors[0] = 39009;
+            class8.originalModelColors[1] = 40918;
+            class8.modifiedModelColors[0] = 127;
+            class8.modifiedModelColors[1] = 924;
+            class8.modifiedModelColors[2] = 924;
+            class8.modifiedModelColors[3] = 127;
             class8.modelId = 5039;
             class8.spriteScale = 830;
             class8.spritePitch = 536;
@@ -2369,10 +2369,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[4];
             class8.originalModelColors = new int[4];
-            class8.modifiedModelColors[0] = 61;
-            class8.originalModelColors[0] = 127;
+            class8.modifiedModelColors = new int[4];
+            class8.originalModelColors[0] = 61;
+            class8.modifiedModelColors[0] = 127;
             class8.modelId = 5037;
             class8.spriteScale = 770;
             class8.spritePitch = 164;
@@ -2397,14 +2397,14 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[4];
             class8.originalModelColors = new int[4];
-            class8.modifiedModelColors[0] = 61;
-            class8.modifiedModelColors[1] = 41;
-            class8.modifiedModelColors[2] = 57;
-            class8.originalModelColors[0] = 11200;
-            class8.originalModelColors[1] = 0;
-            class8.originalModelColors[2] = 11200;
+            class8.modifiedModelColors = new int[4];
+            class8.originalModelColors[0] = 61;
+            class8.originalModelColors[1] = 41;
+            class8.originalModelColors[2] = 57;
+            class8.modifiedModelColors[0] = 11200;
+            class8.modifiedModelColors[1] = 0;
+            class8.modifiedModelColors[2] = 11200;
             class8.modelId = 2582;
             class8.spriteScale = 1740;
             class8.spritePitch = 444;
@@ -2429,16 +2429,16 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[4];
             class8.originalModelColors = new int[4];
-            class8.modifiedModelColors[0] = 61;
-            class8.modifiedModelColors[1] = 41;
-            class8.modifiedModelColors[2] = 24;
-            class8.modifiedModelColors[3] = 11187;
-            class8.originalModelColors[0] = 0;
-            class8.originalModelColors[1] = 11200;
-            class8.originalModelColors[2] = 0;
-            class8.originalModelColors[3] = 0;
+            class8.modifiedModelColors = new int[4];
+            class8.originalModelColors[0] = 61;
+            class8.originalModelColors[1] = 41;
+            class8.originalModelColors[2] = 24;
+            class8.originalModelColors[3] = 11187;
+            class8.modifiedModelColors[0] = 0;
+            class8.modifiedModelColors[1] = 11200;
+            class8.modifiedModelColors[2] = 0;
+            class8.modifiedModelColors[3] = 0;
             class8.modelId = 3020;
             class8.spriteScale = 1180;
             class8.spritePitch = 452;
@@ -2463,14 +2463,14 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[4];
             class8.originalModelColors = new int[4];
-            class8.modifiedModelColors[0] = 61;
-            class8.modifiedModelColors[1] = 7054;
-            class8.modifiedModelColors[2] = 57;
-            class8.originalModelColors[0] = 0;
-            class8.originalModelColors[1] = 11200;
-            class8.originalModelColors[2] = 11200;
+            class8.modifiedModelColors = new int[4];
+            class8.originalModelColors[0] = 61;
+            class8.originalModelColors[1] = 7054;
+            class8.originalModelColors[2] = 57;
+            class8.modifiedModelColors[0] = 0;
+            class8.modifiedModelColors[1] = 11200;
+            class8.modifiedModelColors[2] = 11200;
             class8.modelId = 2339;
             class8.spriteScale = 1560;
             class8.spritePitch = 344;
@@ -2495,16 +2495,16 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[4];
             class8.originalModelColors = new int[4];
-            class8.modifiedModelColors[0] = 926;
-            class8.modifiedModelColors[1] = 7700;
-            class8.modifiedModelColors[2] = 11200;
-            class8.modifiedModelColors[3] = 6032;
-            class8.originalModelColors[0] = 0;
-            class8.originalModelColors[1] = 0;
+            class8.modifiedModelColors = new int[4];
+            class8.originalModelColors[0] = 926;
+            class8.originalModelColors[1] = 7700;
             class8.originalModelColors[2] = 11200;
-            class8.originalModelColors[3] = 0;
+            class8.originalModelColors[3] = 6032;
+            class8.modifiedModelColors[0] = 0;
+            class8.modifiedModelColors[1] = 0;
+            class8.modifiedModelColors[2] = 11200;
+            class8.modifiedModelColors[3] = 0;
             class8.modelId = 2603;
             class8.spriteScale = 2140;
             class8.spritePitch = 400;
@@ -2529,14 +2529,14 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[4];
             class8.originalModelColors = new int[4];
-            class8.modifiedModelColors[0] = 39009;
-            class8.modifiedModelColors[1] = 40918;
-            class8.originalModelColors[0] = 0;
-            class8.originalModelColors[1] = 11200;
-            class8.originalModelColors[2] = 11200;
-            class8.originalModelColors[3] = 0;
+            class8.modifiedModelColors = new int[4];
+            class8.originalModelColors[0] = 39009;
+            class8.originalModelColors[1] = 40918;
+            class8.modifiedModelColors[0] = 0;
+            class8.modifiedModelColors[1] = 11200;
+            class8.modifiedModelColors[2] = 11200;
+            class8.modifiedModelColors[3] = 0;
             class8.modelId = 5039;
             class8.spriteScale = 830;
             class8.spritePitch = 536;
@@ -2561,10 +2561,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[4];
             class8.originalModelColors = new int[4];
-            class8.modifiedModelColors[0] = 61;
-            class8.originalModelColors[0] = 0;
+            class8.modifiedModelColors = new int[4];
+            class8.originalModelColors[0] = 61;
+            class8.modifiedModelColors[0] = 0;
             class8.modelId = 5037;
             class8.spriteScale = 770;
             class8.spritePitch = 164;
@@ -2589,10 +2589,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 926;
-            class8.originalModelColors[0] = 62928;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 926;
+            class8.modifiedModelColors[0] = 62928;
             class8.modelId = 2635;
             class8.spriteScale = 440;
             class8.spritePitch = 76;
@@ -2615,10 +2615,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 926;
-            class8.originalModelColors[0] = 39758;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 926;
+            class8.modifiedModelColors[0] = 39758;
             class8.modelId = 2635;
             class8.spriteScale = 440;
             class8.spritePitch = 76;
@@ -2641,10 +2641,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 926;
-            class8.originalModelColors[0] = 20763;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 926;
+            class8.modifiedModelColors[0] = 20763;
             class8.modelId = 2635;
             class8.spriteScale = 440;
             class8.spritePitch = 76;
@@ -2663,10 +2663,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 926;
-            class8.originalModelColors[0] = 44588;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 926;
+            class8.modifiedModelColors[0] = 44588;
             class8.modelId = 2635;
             class8.spriteScale = 440;
             class8.spritePitch = 76;
@@ -2689,10 +2689,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 926;
-            class8.originalModelColors[0] = 64028;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 926;
+            class8.modifiedModelColors[0] = 64028;
             class8.modelId = 2635;
             class8.spriteScale = 440;
             class8.spritePitch = 76;
@@ -2715,10 +2715,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 926;
-            class8.originalModelColors[0] = 33640;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 926;
+            class8.modifiedModelColors[0] = 33640;
             class8.modelId = 2635;
             class8.spriteScale = 440;
             class8.spritePitch = 76;
@@ -2741,10 +2741,10 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[1];
             class8.originalModelColors = new int[1];
-            class8.modifiedModelColors[0] = 926;
-            class8.originalModelColors[0] = 35321;
+            class8.modifiedModelColors = new int[1];
+            class8.originalModelColors[0] = 926;
+            class8.modifiedModelColors[0] = 35321;
             class8.modelId = 2635;
             class8.spriteScale = 440;
             class8.spritePitch = 76;
@@ -2767,8 +2767,8 @@ public class ItemDefinition_Sub1_Sub1
         {
             class8.itemActions = new String[5];
             class8.itemActions[1] = "Wear";
-            class8.modifiedModelColors = new int[0];
             class8.originalModelColors = new int[0];
+            class8.modifiedModelColors = new int[0];
             class8.modelId = 0x16836;
             class8.spriteScale = 2000;
             class8.spritePitch = 597;

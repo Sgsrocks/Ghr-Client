@@ -1600,20 +1600,20 @@ public class RSInterface {
 	}
 
 	public static void lootingBagAdd(TextDrawingArea[] tda) {
-		RSInterface rsi = addTabInterface(40143);
-		addSprite(40144, 0, "/Interfaces/Lootingbag/SPRITE");
-		addText(40145, "Add items", tda, 2, 16750623, true, true);
+		RSInterface rsi = addTabInterface(45143);
+		addSprite(45144, 0, "/Interfaces/Lootingbag/SPRITE");
+		addText(45145, "Add items", tda, 2, 16750623, true, true);
 
-		addHoverButton(40146, "/Interfaces/Lootingbag/CLOSE", 0, 128, 35, "Close", 0, 36484, 1);
-		addHoveredButton(40147, "/Interfaces/Lootingbag/CLOSE", 1, 128, 35, 36485);
+		addHoverButton(45146, "/Interfaces/Lootingbag/CLOSE", 0, 128, 35, "Close", 0, 36484, 1);
+		addHoveredButton(45147, "/Interfaces/Lootingbag/CLOSE", 1, 128, 35, 36485);
 		rsi.totalChildren(32);
 
 		int child = 0;
 
-		rsi.child(child++, 40144, 7, 30);// bg
-		rsi.child(child++, 40145, 90, 10);// title
-		rsi.child(child++, 40146, 160, 9); // close button
-		rsi.child(child++, 40147, 160, 9); // close hover
+		rsi.child(child++, 45144, 7, 30);// bg
+		rsi.child(child++, 45145, 90, 10);// title
+		rsi.child(child++, 45146, 160, 9); // close button
+		rsi.child(child++, 45147, 160, 9); // close hover
 
 		/**
 		 * Inventory
@@ -1623,7 +1623,7 @@ public class RSInterface {
 		int y = 35;
 		final int X_DIFF = 38;
 		final int Y_DIFF = 30;
-		int id = 40148;
+		int id = 45148;
 
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 4; j++) {
@@ -1642,24 +1642,24 @@ public class RSInterface {
 	}
 
 	public static void lootingBag(TextDrawingArea[] tda) {
-		RSInterface rsi = addTabInterface(40042);
-		addSprite(40043, 0, "/Interfaces/Lootingbag/SPRITE");
-		addText(40044, "Looting bag", tda, 2, 16750623, true, true);
+		RSInterface rsi = addTabInterface(45042);
+		addSprite(45043, 0, "/Interfaces/Lootingbag/SPRITE");
+		addText(45044, "Looting bag", tda, 2, 16750623, true, true);
 
-		addHoverButton(40045, "/Interfaces/Lootingbag/CLOSE", 0, 128, 35, "Close", 0, 36484, 1);
-		addHoveredButton(40046, "/Interfaces/Lootingbag/CLOSE", 1, 128, 35, 36485);
-		addHoverText(40047, "Bank All", "Bank all items", tda, 0, 0xff9040, false, true, 40);
-		addText(40048, "Value: 0 coins", tda, 0, 0xFF9900, true, true);
+		addHoverButton(45045, "/Interfaces/Lootingbag/CLOSE", 0, 128, 35, "Close", 0, 36484, 1);
+		addHoveredButton(45046, "/Interfaces/Lootingbag/CLOSE", 1, 128, 35, 36485);
+		addHoverText(45047, "Bank All", "Bank all items", tda, 0, 0xff9040, false, true, 40);
+		addText(45048, "Value: 0 coins", tda, 0, 0xFF9900, true, true);
 		rsi.totalChildren(34);
 
 		int child = 0;
 
-		rsi.child(child++, 40043, 7, 19);// bg
-		rsi.child(child++, 40044, 107, 1);// title
-		rsi.child(child++, 40045, 160, 1); // close button
-		rsi.child(child++, 40046, 160, 1); // close hover
-		rsi.child(child++, 40047, 10, 4); // Bank All
-		rsi.child(child++, 40048, 92, 250); // Total Value
+		rsi.child(child++, 45043, 7, 19);// bg
+		rsi.child(child++, 45044, 107, 1);// title
+		rsi.child(child++, 45045, 160, 1); // close button
+		rsi.child(child++, 45046, 160, 1); // close hover
+		rsi.child(child++, 45047, 10, 4); // Bank All
+		rsi.child(child++, 45048, 92, 250); // Total Value
 
 		/**
 		 * Inventory
@@ -1669,7 +1669,7 @@ public class RSInterface {
 		int y = 21;
 		final int X_DIFF = 1;
 		final int Y_DIFF = 2;
-		int id = 40049;
+		int id = 45049;
 
 		for (int i = 0; i < 7; i++) {
 			for (int j = 0; j < 4; j++) {
@@ -3002,15 +3002,15 @@ public class RSInterface {
 		addHoveredButton(44004, "Interfaces/HelpInterface/IMAGE", 3, 16, 16, 44005);
 		addText(44505, "Where would you like to be teleported?", tda, 2, 0xFF981F, true, true);
 		addText(44310, "Previous Teleport", tda, 1, 0xFF981F, true, true);
-		addHoverButton(40001, "/Interfaces/Teleportation/SPRITE", 1, 155, 40, "Teleport Previous", -1, 40002, 1);
-		addHoveredButton(40002, "/Interfaces/Teleportation/SPRITE", 3, 155, 40, 40003);
+		addHoverButton(44006, "/Interfaces/Teleportation/SPRITE", 1, 155, 40, "Teleport Previous", -1, 44007, 1);
+		addHoveredButton(44007, "/Interfaces/Teleportation/SPRITE", 3, 155, 40, 44008);
 		setBounds(44001, 4 + extraX, 16, 0, inter);
 		setBounds(44003, 481 + extraX, 25, 1, inter);
 
 		setBounds(44505, 254 + extraX, 25, 2, inter);
 		setBounds(28700, 4 + extraX, 50, 3, inter);
-		setBounds(40001, 10 + extraX, 273, 4, inter);
-		setBounds(40002, 10 + extraX, 273, 5, inter);
+		setBounds(44005, 10 + extraX, 273, 4, inter);
+		setBounds(44006, 10 + extraX, 273, 5, inter);
 
 		setBounds(44310, 84 + extraX, 58 + 90 + 90 + 48, 6, inter);
 

@@ -18,54 +18,69 @@ public final class IdentityKit {
 			if (cache[j] == null)
 				cache[j] = new IdentityKit();
 			cache[j].readValues(stream);
-			cache[j].originalColors[0] = 55232;
-			cache[j].replacementColors[0] = 6798;
+			cache[j].colourToFind[0] = (short) 55232;
+			cache[j].colourToReplace[0] = 6798;
 		}
 	}
 
 	private void readValues(Buffer stream) {
 		do {
-			int opcode = stream.readUnsignedByte();
-			if (opcode == 0)
+			int i = stream.readUnsignedByte();
+			if (i == 0)
 				return;
-			if (opcode == 1)
+			if (i == 1)
 				bodyPartId = stream.readUnsignedByte();
-			else if (opcode == 2) {
+			else if (i == 2) {
 				int j = stream.readUnsignedByte();
-				bodyModels = new int[j];
+				modelIds = new int[j];
 				for (int k = 0; k < j; k++)
-					bodyModels[k] = stream.readUnsignedShort();
-
-			} else if (opcode == 3)
-				validStyle = true;
-			else if (opcode >= 40 && opcode < 50)
-				originalColors[opcode - 40] = stream.readUnsignedShort();
-			else if (opcode >= 50 && opcode < 60)
-				replacementColors[opcode - 50] = stream.readUnsignedShort();
-			else if (opcode >= 60 && opcode < 70)
-				headModels[opcode - 60] = stream.readUnsignedShort();
+					modelIds[k] = stream.readUShort();
+			} else if (i == 3)
+				nonSelectable = true;
+			else if (i == 40) {
+				int length = stream.readUnsignedByte();
+				colourToFind = new short[length];
+				colourToReplace = new short[length];
+				for(int idx = 0;idx<length;idx++) {
+					colourToFind[idx] = (short) stream.readUShort();
+					colourToReplace[idx] = (short) stream.readUShort();
+				}
+			} else if (i == 41) {
+				int length = stream.readUnsignedByte();
+				textureToFind = new short[length];
+				textureToReplace = new short[length];
+				for(int idx = 0;idx<length;idx++) {
+					textureToFind[idx] = (short) stream.readUShort();
+					textureToReplace[idx] = (short) stream.readUShort();
+				}
+			} else if (i >= 60 && i < 70) {
+				models[i - 60] = stream.readUShort();
+				if(models[i - 60] == 65535)
+					models[i - 60] = -1;
+			}
 			else
-				System.out.println("Error unrecognised config code: " + opcode);
+				System.out.println("Error unrecognised config code: " + i);
 		} while (true);
 	}
 
+
 	public boolean method537() {
-		if (bodyModels == null)
+		if (modelIds == null)
 			return true;
 		boolean flag = true;
-		for (int j = 0; j < bodyModels.length; j++)
-			if (!Model.isCached(bodyModels[j]))
+		for (int j = 0; j < modelIds.length; j++)
+			if (!Model.isCached(modelIds[j]))
 				flag = false;
 
 		return flag;
 	}
 
 	public Model method538() {
-		if (bodyModels == null)
+		if (modelIds == null)
 			return null;
-		Model aclass30_sub2_sub4_sub6s[] = new Model[bodyModels.length];
-		for (int i = 0; i < bodyModels.length; i++)
-			aclass30_sub2_sub4_sub6s[i] = Model.getModel(bodyModels[i]);
+		Model aclass30_sub2_sub4_sub6s[] = new Model[modelIds.length];
+		for (int i = 0; i < modelIds.length; i++)
+			aclass30_sub2_sub4_sub6s[i] = Model.getModel(modelIds[i]);
 
 		Model model;
 		if (aclass30_sub2_sub4_sub6s.length == 1)
@@ -74,9 +89,9 @@ public final class IdentityKit {
 			model = new Model(aclass30_sub2_sub4_sub6s.length,
 					aclass30_sub2_sub4_sub6s);
 		for (int j = 0; j < 6; j++) {
-			if (originalColors[j] == 0)
+			if (colourToFind[j] == 0)
 				break;
-			model.recolor(originalColors[j], replacementColors[j]);
+			model.recolor(colourToFind[j], colourToReplace[j]);
 		}
 
 		return model;
@@ -85,7 +100,7 @@ public final class IdentityKit {
 	public boolean method539() {
 		boolean flag1 = true;
 		for (int i = 0; i < 5; i++)
-			if (headModels[i] != -1 && !Model.isCached(headModels[i]))
+			if (models[i] != -1 && !Model.isCached(models[i]))
 				flag1 = false;
 
 		return flag1;
@@ -95,15 +110,15 @@ public final class IdentityKit {
 		Model aclass30_sub2_sub4_sub6s[] = new Model[5];
 		int j = 0;
 		for (int k = 0; k < 5; k++)
-			if (headModels[k] != -1)
+			if (models[k] != -1)
 				aclass30_sub2_sub4_sub6s[j++] = Model
-						.getModel(headModels[k]);
+						.getModel(models[k]);
 
 		Model model = new Model(j, aclass30_sub2_sub4_sub6s);
 		for (int l = 0; l < 6; l++) {
-			if (originalColors[l] == 0)
+			if (colourToFind[l] == 0)
 				break;
-			model.recolor(originalColors[l], replacementColors[l]);
+			model.recolor(colourToFind[l], colourToReplace[l]);
 		}
 
 		return model;
@@ -111,17 +126,19 @@ public final class IdentityKit {
 
 	private IdentityKit() {
 		bodyPartId = -1;
-		originalColors = new int[6];
-		replacementColors = new int[6];
-		validStyle = false;
+		colourToFind = new short[6];
+		colourToReplace = new short[6];
+		nonSelectable = false;
 	}
 
 	public static int length;
 	public static IdentityKit cache[];
 	public int bodyPartId;
-	private int[] bodyModels;
-	private final int[] originalColors;
-	private final int[] replacementColors;
-	private final int[] headModels = { -1, -1, -1, -1, -1 };
-	public boolean validStyle;
+	private int[] modelIds;
+	private short[] colourToFind;
+	private short[] colourToReplace;
+	private short[] textureToFind;
+	private short[] textureToReplace;
+	private final int[] models = { -1, -1, -1, -1, -1 };
+	public boolean nonSelectable;
 }

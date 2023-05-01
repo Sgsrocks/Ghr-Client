@@ -2119,10 +2119,12 @@ public class Client extends RSApplet {
                 && super.mouseY <= 172;
     }
 
-    public String indexLocation(int cacheIndex, int index) {
+   public String indexLocation(int cacheIndex, int index) {
         return Signlink.getCacheDirectory() + "index" + cacheIndex + "/" + (index != -1 ? index + ".gz" : "");
     }
-
+// public String indexLocation(int cacheIndex, int index) {
+   //  return "D:\\dump\\index" + cacheIndex + "/" + (index != -1 ? index + ".gz" : "");
+ //}
     public void repackCacheIndex(int cacheIndex) {
         System.out.println("Started repacking index " + cacheIndex + ".");
         int indexLength = new File(indexLocation(cacheIndex, -1)).listFiles().length;
@@ -4432,7 +4434,7 @@ public class Client extends RSApplet {
         for (int j = 0; j < 7; j++) {
             anIntArray1065[j] = -1;
             for (int k = 0; k < IdentityKit.length; k++) {
-                if (IdentityKit.cache[k].validStyle || IdentityKit.cache[k].bodyPartId != j + (aBoolean1047 ? 0 : 7))
+                if (IdentityKit.cache[k].nonSelectable || IdentityKit.cache[k].bodyPartId != j + (aBoolean1047 ? 0 : 7))
                     continue;
                 anIntArray1065[j] = k;
                 break;
@@ -4589,7 +4591,7 @@ public class Client extends RSApplet {
                         i2 = IdentityKit.length - 1;
                     if (j1 == 1 && ++i2 >= IdentityKit.length)
                         i2 = 0;
-                } while (IdentityKit.cache[i2].validStyle || IdentityKit.cache[i2].bodyPartId != k + (aBoolean1047 ? 0 : 7));
+                } while (IdentityKit.cache[i2].nonSelectable || IdentityKit.cache[i2].bodyPartId != k + (aBoolean1047 ? 0 : 7));
                 anIntArray1065[k] = i2;
                 aBoolean1031 = true;
             }
