@@ -160,7 +160,7 @@ public final class Buffer extends NodeSub {
         return new String(payload, i, currentPosition - i - 1);
     }
 
-    public void writeWord(int i) {
+    public void writeShort(int i) {
         payload[currentPosition++] = (byte) (i >> 8);
         payload[currentPosition++] = (byte) i;
     }
@@ -170,13 +170,13 @@ public final class Buffer extends NodeSub {
         payload[currentPosition++] = (byte) (i >> 8);
     }
 
-    public void writeDWordBigEndian(int i) {
+    public void writeMedium(int i) {
         payload[currentPosition++] = (byte) (i >> 16);
         payload[currentPosition++] = (byte) (i >> 8);
         payload[currentPosition++] = (byte) i;
     }
 
-    public void writeDWord(int i) {
+    public void writeInt(int i) {
         payload[currentPosition++] = (byte) (i >> 24);
         payload[currentPosition++] = (byte) (i >> 16);
         payload[currentPosition++] = (byte) (i >> 8);
@@ -189,8 +189,18 @@ public final class Buffer extends NodeSub {
         payload[currentPosition++] = (byte) (j >> 16);
         payload[currentPosition++] = (byte) (j >> 24);
     }
-
-    public void writeQWord(long l) {
+    public void writeLongMedium(long var1) {
+        this.payload[++this.currentPosition] = (byte)((int)(var1 >> 40));
+        this.payload[++this.currentPosition] = (byte)((int)(var1 >> 32));
+        this.payload[++this.currentPosition] = (byte)((int)(var1 >> 24));
+        this.payload[++this.currentPosition] = (byte)((int)(var1 >> 16));
+        this.payload[++this.currentPosition] = (byte)((int)(var1 >> 8));
+        this.payload[++this.currentPosition] = (byte)((int)var1);
+    }
+    public void writeBoolean(boolean var1) {
+        this.writeByte(var1?1:0);
+    }
+    public void writeLong(long l) {
         try {
             payload[currentPosition++] = (byte) (int) (l >> 56);
             payload[currentPosition++] = (byte) (int) (l >> 48);
@@ -217,7 +227,21 @@ public final class Buffer extends NodeSub {
         for (int k = j; k < j + i; k++)
             payload[currentPosition++] = abyte0[k];
     }
+    public int method9178() {
+        int var1 = 0;
 
+        int var2;
+        for(var2 = this.readUShortSmart(); var2 == 32767; var2 = this.readUShortSmart()) {
+            var1 += 32767;
+        }
+
+        var1 += var2;
+        return var1;
+    }
+    public int readUShortSmart() {
+        int var1 = this.payload[this.currentPosition] & 255;
+        return var1 < 128?this.readUnsignedByte():this.readUnsignedShort() - '\u8000';
+    }
     public void writeByte(int i) {
         payload[currentPosition++] = (byte) i;
     }
@@ -317,6 +341,32 @@ public final class Buffer extends NodeSub {
         else
             i1 += payload[k] >> l - i & anIntArray1409[i];
         return i1;
+    }
+    public int get_smart_byteorshort() {
+        int value = payload[bitPosition] & 0xFF;
+        if (value < 128) {
+            return readUnsignedByte() - 0x40;
+        } else {
+            return readUShort() - 0xc000;
+        }
+    }
+    public float get_float() {
+        return Float.intBitsToFloat(this.readInt());
+    }
+
+    public int get_short() {
+        bitPosition += 2;
+        int i = ((payload[bitPosition - 2] & 0xff) << 8)
+                + (payload[bitPosition - 1] & 0xff);
+        if (i > 0x7fff) {
+            i -= 0x10000;
+        }
+        return i;
+
+    }
+
+    public int get_unsignedbyte() {
+        return payload[bitPosition++] & 0xff;
     }
 
     public void finishBitAccess() {

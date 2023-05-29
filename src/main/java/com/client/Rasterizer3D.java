@@ -9,7 +9,7 @@ public final class Rasterizer3D extends Rasterizer2D {
     public static double brightness = 0;
     public static boolean world = true;
     private static int mipMapLevel;
-    public static int textureAmount = 103;
+    public static int textureAmount = 120;
     static boolean textureOutOfDrawingBounds;
     private static boolean aBoolean1463;
     public static boolean aBoolean1464 = true;

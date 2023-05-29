@@ -1,7 +1,9 @@
 package com.client.graphics.interfaces;
 
 import java.awt.Dimension;
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.function.BiConsumer;
 
 import com.client.Frame;
 import com.client.Client;
@@ -23,11 +25,41 @@ import com.client.graphics.interfaces.impl.Dropdown;
 import com.client.graphics.interfaces.impl.DropdownMenu;
 import com.client.graphics.interfaces.impl.Interfaces;
 import com.client.graphics.interfaces.impl.Slider;
+import com.sun.crypto.provider.Preconditions;
 
 public class RSInterface {
 	public static boolean showIds = false;
 	public static RSFont[] newFonts;
-
+	public boolean allowInvDraggingToOtherContainers;
+	public boolean smallInvSprites;
+	public boolean hideInvStackSizes;
+	public boolean forceInvStackSizes;
+	public boolean invAutoScrollHeight;
+	public int invAutoScrollHeightOffset;
+	public int invAutoScrollInterfaceId;
+	public boolean invAlwaysInfinity;
+	public AlignPolicy alignmentPolicy;
+	public BiConsumer<RSInterface, String> textChangeListener;
+	public enum AlignPolicy {
+		CENTER, LEFT, RIGHT;
+	}
+	public int spriteOpacity;
+	public static void configHoverButton2(int id, String tooltip, String spriteName, int sprite2, int sprite1, int enabledAltSprite, int disabledAltSprite, boolean active, int... buttonsToDisable) {
+		RSInterface tab = addInterface(id);
+		tab.tooltip = tooltip;
+		tab.atActionType = 1;
+		tab.type = 11;
+		tab.sprite2 = imageLoader(sprite2, spriteName);
+		tab.sprite1 = imageLoader(sprite1, spriteName);
+		tab.width = tab.sprite2.myWidth;
+		tab.height = tab.sprite1.myHeight;
+		tab.enabledAltSprite = imageLoader(enabledAltSprite, spriteName);
+		tab.disabledAltSprite = imageLoader(disabledAltSprite, spriteName);
+		tab.buttonsToDisable = buttonsToDisable;
+		tab.active = active;
+		tab.toggled = active;
+		tab.spriteOpacity = 255;
+	}
 	public static void unpack(FileArchive streamLoader, TextDrawingArea textDrawingAreas[],
 							  FileArchive streamLoader_1, RSFont[] newFontSystem) {
 		aMRUNodes_238 = new MRUNodes(200000);
@@ -99,8 +131,8 @@ public class RSInterface {
 				stream.readUnsignedByte();
 			}
 			if (rsInterface.type == 2) {
-				rsInterface.inv = new int[rsInterface.width * rsInterface.height];
-				rsInterface.invStackSizes = new int[rsInterface.width * rsInterface.height];
+				rsInterface.inventoryItemId = new int[rsInterface.width * rsInterface.height];
+				rsInterface.inventoryAmounts = new int[rsInterface.width * rsInterface.height];
 				rsInterface.aBoolean259 = stream.readUnsignedByte() == 1;
 				rsInterface.isInventoryInterface = stream.readUnsignedByte() == 1;
 				rsInterface.usableItemInterface = stream.readUnsignedByte() == 1;
@@ -212,8 +244,8 @@ public class RSInterface {
 				rsInterface.spriteCameraRoll = stream.readUnsignedShort();
 			}
 			if (rsInterface.type == 7) {
-				rsInterface.inv = new int[rsInterface.width * rsInterface.height];
-				rsInterface.invStackSizes = new int[rsInterface.width * rsInterface.height];
+				rsInterface.inventoryItemId = new int[rsInterface.width * rsInterface.height];
+				rsInterface.inventoryAmounts = new int[rsInterface.width * rsInterface.height];
 				rsInterface.centerText = stream.readUnsignedByte() == 1;
 				int l2 = stream.readUnsignedByte();
 				if (textDrawingAreas != null)
@@ -290,7 +322,11 @@ public class RSInterface {
 	public int msgX, msgY;
 
 	public boolean toggled = false;
-
+	public static RSInterface get(int interfaceId) {
+		//Preconditions.checkArgument(interfaceId >= 0 && interfaceId < interfaceCache.length);
+		//Preconditions.checkArgument(interfaceCache[interfaceId] != null);
+		return interfaceCache[interfaceId];
+	}
 	public static void hoverButton(int id, String tooltip) {
 		hoverButton(id, tooltip, 255);
 	}
@@ -396,14 +432,6 @@ public class RSInterface {
 		tab.spriteOpacity = 255;
 	}
 
-	public void swapInventoryItems(int i, int j) {
-		int k = inv[i];
-		inv[i] = inv[j];
-		inv[j] = k;
-		k = invStackSizes[i];
-		invStackSizes[i] = invStackSizes[j];
-		invStackSizes[j] = k;
-	}
 
 	public static void slider(int id, double min, double max, int icon, int background, int contentType) {
 		RSInterface widget = addInterface(id);
@@ -1069,8 +1097,8 @@ public class RSInterface {
 		addText(54005, "Chance:", tda, 0, 0xff9040, true, true);
 		for (int i = 0; i < 80; i++) {
 			itemGroup(54010 + i, 1, 1, 1, 1, false, false);
-			interfaceCache[54010 + i].inv[0] = 14485;
-			interfaceCache[54010 + i].invStackSizes[0] = 1;
+			interfaceCache[54010 + i].inventoryItemId[0] = 14485;
+			interfaceCache[54010 + i].inventoryAmounts[0] = 1;
 			addText(54100 + i, "Item Name", tda, 1, 0xFFA500, false, true);
 			addText(54200 + i, "1-50", tda, 0, 0xffffff, true, true);
 			addText(54300 + i, "Common", tda, 0, 0xffffff, true, true);
@@ -1092,8 +1120,8 @@ public class RSInterface {
 		RSInterface rsi = addInterface(id);
 		rsi.width = w;
 		rsi.height = h;
-		rsi.inv = new int[w * h];
-		rsi.invStackSizes = new int[w * h];
+		rsi.inventoryItemId = new int[w * h];
+		rsi.inventoryAmounts = new int[w * h];
 		rsi.usableItemInterface = false;
 		rsi.isInventoryInterface = false;
 		rsi.invSpritePadX = x;
@@ -1447,8 +1475,8 @@ public class RSInterface {
 		for (int i = 0; i < 9; i += 3) {
 			RSInterface option = addInterface(33310 + i);
 			addToItemGroup(33311 + i, 1, 1, 0, 0, false, "", "", "");
-			interfaceCache[33311 + i].inv = new int[] { 4152 };
-			interfaceCache[33311 + i].invStackSizes = new int[] { 1 };
+			interfaceCache[33311 + i].inventoryItemId = new int[] { 4152 };
+			interfaceCache[33311 + i].inventoryAmounts = new int[] { 1 };
 			addButton(33312 + i, 1, "Interfaces/AntiBot/IMAGE", "Select");
 			setChildren(2, option);
 			setBounds(33311 + i, 0, 0, 0, option);
@@ -1569,8 +1597,8 @@ public class RSInterface {
 			addClickableText(37053 + index, costs[index / 3], costs[index / 3],
 					tda, 0, 0xFF981F, false, true, 40);
 			addToItemGroup(37054 + index, 1, 1, 0, 0, false, "", "", "");
-			interfaceCache[37054 + index].inv = new int[] { items[index / 3] + 1 };
-			interfaceCache[37054 + index].invStackSizes = new int[] { 1 };
+			interfaceCache[37054 + index].inventoryItemId = new int[] { items[index / 3] + 1 };
+			interfaceCache[37054 + index].inventoryAmounts = new int[] { 1 };
 			setBounds(37052 + index, x + 32, y, 37 + index, scroll);
 			setBounds(37053 + index, x + 32, y + 16, 37 + index + 1, scroll);
 			setBounds(37054 + index, x, y, 37 + index + 2, scroll);
@@ -1692,8 +1720,8 @@ public class RSInterface {
 		RSInterface rsi = interfaceCache[childId] = new RSInterface();
 		rsi.actions = new String[10];
 		rsi.spritesX = new int[20];
-		rsi.inv = new int[30];
-		rsi.invStackSizes = new int[30];
+		rsi.inventoryItemId = new int[30];
+		rsi.inventoryAmounts = new int[30];
 		rsi.spritesY = new int[20];
 		rsi.children = new int[0];
 		rsi.childX = new int[0];
@@ -1724,8 +1752,8 @@ public class RSInterface {
 		RSInterface rsi = interfaceCache[childId] = new RSInterface();
 		rsi.actions = new String[10];
 		rsi.spritesX = new int[20];
-		rsi.inv = new int[30];
-		rsi.invStackSizes = new int[25];
+		rsi.inventoryItemId = new int[30];
+		rsi.inventoryAmounts = new int[25];
 		rsi.spritesY = new int[20];
 		rsi.children = new int[0];
 		rsi.childX = new int[0];
@@ -2567,89 +2595,6 @@ public class RSInterface {
 		setBounds(59509, 374, 127, 8, tab);
 	}
 
-	public static void bank(TextDrawingArea[] tda) {
-		RSInterface rs = addInterface(5292);
-		rs.message = "";
-		setChildren(29, rs);
-		addSprite(58001, 0, "BankTab/07/BANK");
-		addHoverButton(5384, "BankTab/BANK", 1, 24, 24, "Close Window", 250, 5380, 3);
-		addHoveredButton(5380, "BankTab/BANK", 2, 24, 24, 5379);
-		addHoverButton(5294, "BankTab/07/BANK", 7, 37, 29, "Set/Edit Your Bank-Pin", 250, 5295, 4);
-		addHoveredButton(5295, "BankTab/BANK", 4, 100, 33, 5296);
-		addBankHover(58002, 4, 58003, 10, 11, "BankTab/07/BANK", 37, 29, 304, 1, "Swap Item Movement Mode", 58004, 7, 6,
-				"BankTab/BANK", 58005, "Switch to insert items \nmode", "Switch to swap items \nmode.", 12, 20);
-		addBankHover(58010, 4, 58011, 8, 9, "BankTab/07/BANK", 37, 29, 116, 1, "Enable/Disable Noted Withdrawal", 58012,
-				10, 12, "BankTab/BANK", 58013, "Switch to note withdrawal \nmode", "Switch to item withdrawal \nmode",
-				12, 20);
-		addClickableSprites(58014, "Enable/Disable Always Placeholders", "BankTab/07/BANK", 5, 6, 5);
-
-		addBankHover1(58018, 5, 58019, 1, "BankTab/07/BANK", 37, 29, "Deposit carried items", 58020, 2,
-				"BankTab/07/BANK", 58021, "Empty your backpack into\nyour bank", 0, 20);
-		addBankHover1(58026, 5, 58027, 3, "BankTab/07/BANK", 35, 25, "Deposit worn items", 58028, 4, "BankTab/07/BANK",
-				58029, "Empty the items your are\nwearing into your bank", 0, 20);
-
-		for (int i = 0; i < 9; i++) {
-			addInterface(58050 + i);
-			if (i == 0)
-				addConfigButton(58031, 5292, 1, 0, "BankTab/TAB", 48, 38, new String[] { "Price Check", "View" }, 1,
-						700);
-			else
-				addConfigButton(58031 + i, 5292, 4, 2, "BankTab/TAB", 48, 38,
-						new String[] { "Price Check", "Collapse", "View" }, 1, 1111 + i);
-			addToItemGroup(58040 + i, 1, 1, 0, 0, false, "", "", "");
-		}
-
-		addSprite(58060, 21, "BankTab/BANK");
-		addText(58061, "0", tda, 0, 0xE68A00, true, true);
-		addText(58062, "350", tda, 0, 0xE68A00, true, true);
-
-		addInputField(58063, 50, 0xE68A00, "Search", 235, 23, false, true);
-		addText(58064, "Bank Of " + Configuration.CLIENT_TITLE, tda, 1, 0xE68A00, true, true);
-		RSInterface Interface = interfaceCache[5385];
-		Interface.height = 202;
-		Interface.width = 481;
-		Interface = interfaceCache[5382];
-		Interface.width = 10;
-		Interface.invSpritePadX = 12;
-		Interface.height = 35;
-		Interface.actions = new String[] { "Withdraw 1", "Withdraw 5", "Withdraw 10", "Withdraw All", "Withdraw X",
-				"Withdraw All but one" };
-		setBounds(58001, 13, 1, 0, rs);
-		setBounds(5384, 475, 10, 1, rs);
-		setBounds(5380, 475, 10, 2, rs);
-		setBounds(5294, 265, 292, 3, rs); // Bank pin
-		setBounds(5295, 295, 297, 4, rs);
-		setBounds(58002, 303, 292, 5, rs); // Rearrange mode
-		setBounds(58003, 10, 237, 6, rs);
-		setBounds(58010, 341, 292, 7, rs); // Noting
-		setBounds(58011, 52, 237, 8, rs);
-
-		setBounds(58018, 417, 292, 9, rs); // Items
-
-		setBounds(58019, 94, 237, 10, rs);
-		setBounds(58026, 455, 292, 11, rs); // Invo
-		setBounds(58014, 379, 292, 28, rs); // Placeholder
-
-		setBounds(58027, 136, 237, 12, rs);
-		setBounds(5385, -3, 76, 13, rs);
-		RSInterface.interfaceCache[5385].height = 216;
-		int x = 68;
-		for (int i = 0; i < 9; i++) {
-			setBounds(58050 + i, 0, 0, 14 + i, rs);
-			RSInterface rsi = interfaceCache[58050 + i];
-			setChildren(2, rsi);
-			setBounds(58031 + i, x, 36, 0, rsi);
-			setBounds(58040 + i, x + 5, 39, 1, rsi);
-			x += 41;
-		}
-		// 0-350
-		setBounds(58060, 25, 41, 23, rs);
-		setBounds(58061, 45, 44, 24, rs);
-		setBounds(58062, 45, 57, 25, rs);
-
-		setBounds(58063, 25, 298, 26, rs); // Search
-		setBounds(58064, 250, 11, 27, rs);
-	}
 
 	public static void addInputField(int identity, int characterLimit, int color, String text, int width, int height,
 									 boolean asterisks, boolean updatesEveryInput, String regex) {
@@ -2768,8 +2713,8 @@ public class RSInterface {
 		RSInterface rsi = addInterface(id);
 		rsi.width = w;
 		rsi.height = h;
-		rsi.inv = new int[w * h];
-		rsi.invStackSizes = new int[w * h];
+		rsi.inventoryItemId = new int[w * h];
+		rsi.inventoryAmounts = new int[w * h];
 		rsi.usableItemInterface = false;
 		rsi.isInventoryInterface = false;
 		rsi.isMouseoverTriggered = false;
@@ -2797,8 +2742,8 @@ public class RSInterface {
 		RSInterface rsi = addInterface(id);
 		rsi.width = w;
 		rsi.height = h;
-		rsi.inv = new int[w * h];
-		rsi.invStackSizes = new int[w * h];
+		rsi.inventoryItemId = new int[w * h];
+		rsi.inventoryAmounts = new int[w * h];
 		rsi.usableItemInterface = false;
 		rsi.isInventoryInterface = false;
 		rsi.isMouseoverTriggered = false;
@@ -3401,7 +3346,27 @@ public class RSInterface {
 		rsinterface.textColor = 0xFF981F;
 		rsinterface.tooltip = tooltip;
 	}
-
+	public static void addTextButton(int i, String s, String tooltip, int k, int i1, boolean l, boolean m,
+									 TextDrawingArea[] TDA, int j, int w, int i2, int i3, int i4) {
+		RSInterface rsinterface = addInterface(i);
+		rsinterface.parentID = i;
+		rsinterface.id = i;
+		rsinterface.type = 4;
+		rsinterface.atActionType = 1;
+		rsinterface.width = w;
+		rsinterface.height = 16;
+		rsinterface.contentType = 0;
+		rsinterface.aByte254 = (byte) 0xFF981F;
+		rsinterface.mOverInterToTrigger = -1;
+		rsinterface.centerText = l;
+		rsinterface.textShadow = m;
+		rsinterface.textDrawingAreas = TDA[j];
+		rsinterface.message = s;
+		rsinterface.aString228 = "";
+		rsinterface.secondaryColor = 0xFF981F;
+		rsinterface.textColor = 0xFF981F;
+		rsinterface.tooltip = tooltip;
+	}
 	public static void homeTeleport() {
 		RSInterface RSInterface = addInterface(30000);
 		RSInterface.tooltip = "Cast @gre@Lunar Home Teleport";
@@ -4067,8 +4032,6 @@ public class RSInterface {
 		rsi.width = rsi.sprite1.myWidth;
 		rsi.height = rsi.sprite2.myHeight - 2;
 	}
-
-	public int spriteOpacity;
 
 	public static void configHoverButton(int id, String tooltip, int sprite2, int sprite1, int enabledAltSprite,
 										 int disabledAltSprite, boolean active, int... buttonsToDisable) {
@@ -5699,8 +5662,8 @@ public class RSInterface {
 	public String message;
 	public boolean isInventoryInterface;
 	public int id;
-	public int invStackSizes[];
-	public int inv[];
+	public int inventoryAmounts[];
+	public int inventoryItemId[];
 	public byte aByte254;
 	private int anInt255;
 	private int anInt256;
@@ -6100,4 +6063,264 @@ public class RSInterface {
 	 */
 	public Sprite[] backgroundSprites;
 	public boolean interfaceShown;
+
+	public long getInventoryContainerFreeSlots() {
+		return Arrays.stream(inventoryItemId).filter(inv -> inv == 0).count();
+	}
+
+	public static void addAllItems(RSInterface from, RSInterface to) {
+		main: for (int fromIndex = 0; fromIndex < from.inventoryItemId.length; fromIndex++) {
+			if (from.inventoryItemId[fromIndex] > 0) {
+				for (int toIndex = 0; toIndex < to.inventoryItemId.length; toIndex++) {
+					if (to.inventoryItemId[toIndex] == 0) {
+						to.inventoryItemId[toIndex] = from.inventoryItemId[fromIndex];
+						to.inventoryAmounts[toIndex] = from.inventoryAmounts[fromIndex];
+						from.inventoryItemId[fromIndex] = 0;
+						from.inventoryAmounts[fromIndex] = 0;
+						continue main;
+					}
+				}
+
+				return; // No space available in to container
+			}
+		}
+	}
+
+	public void shiftItems() {
+		int[] oldItems = inventoryItemId.clone();
+		int[] oldAmounts = inventoryAmounts.clone();
+		inventoryItemId = new int[inventoryItemId.length];
+		inventoryAmounts = new int[inventoryItemId.length];
+		int currentIndex = 0;
+		for (int index = 0; index < oldItems.length; index++) {
+			if (oldItems[index] > 0) {
+				inventoryItemId[currentIndex] = oldItems[index];
+				inventoryAmounts[currentIndex] = oldAmounts[index];
+				currentIndex++;
+			}
+		}
+	}
+
+	public void resetItems() {
+		inventoryItemId = new int[inventoryItemId.length];
+		inventoryAmounts = new int[inventoryItemId.length];
+	}
+
+	public void addItem(int id, int amount) {
+		for (int index = 0; index < inventoryItemId.length; index++) {
+			if (inventoryItemId[index] == 0) {
+				inventoryItemId[index] = id;
+				inventoryAmounts[index] = amount;
+				break;
+			}
+		}
+	}
+
+	public boolean hasItem(int itemId) {
+		if (inventoryItemId == null)
+			return false;
+		return Arrays.stream(inventoryItemId).anyMatch(it -> it - 1 == itemId);
+	}
+
+	public void removeItem(int slot) {
+		// Delete from container
+		inventoryItemId[slot] = 0;
+		inventoryAmounts[slot] = 0;
+		for (int index = slot + 1; index < inventoryItemId.length; index++) {
+			inventoryItemId[index - 1] = inventoryItemId[index];
+			inventoryAmounts[index - 1] = inventoryAmounts[index];
+		}
+	}
+
+	public static void insertInventoryItem(RSInterface fromContainer, int fromSlot, RSInterface toContainer) {
+		insertInventoryItem(fromContainer, fromSlot, toContainer, toContainer.inventoryItemId.length - (int) toContainer.getInventoryContainerFreeSlots());
+	}
+
+	public static void insertInventoryItem(RSInterface fromContainer, int fromSlot, RSInterface toContainer, int toSlot) {
+		int itemId = fromContainer.inventoryItemId[fromSlot];
+		int itemAmount = fromContainer.inventoryAmounts[fromSlot];
+		fromContainer.removeItem(fromSlot);
+
+		// Insert in container
+		for (int index = toContainer.inventoryItemId.length - 1; index > toSlot; index--) {
+			toContainer.inventoryItemId[index] = toContainer.inventoryItemId[index - 1];
+			toContainer.inventoryAmounts[index] = toContainer.inventoryAmounts[index - 1];
+		}
+		toContainer.inventoryItemId[toSlot] = itemId;
+		toContainer.inventoryAmounts[toSlot] = itemAmount;
+	}
+
+	public static void swapInventoryItems(RSInterface fromContainer, int fromSlot, RSInterface toContainer, int toSlot) {
+		int itemId1 = fromContainer.inventoryItemId[fromSlot];
+		int itemAmount1 = fromContainer.inventoryAmounts[fromSlot];
+		int itemId2 = toContainer.inventoryItemId[toSlot];
+		int itemAmount2 = toContainer.inventoryAmounts[toSlot];
+		fromContainer.inventoryItemId[fromSlot] = itemId2;
+		fromContainer.inventoryAmounts[fromSlot] = itemAmount2;
+		toContainer.inventoryItemId[toSlot] = itemId1;
+		toContainer.inventoryAmounts[toSlot] = itemAmount1;
+	}
+	public static RSInterface addInterfaceContainer(int interfaceId, int width, int height, int scrollMax) {
+		RSInterface container = addInterface(interfaceId);
+		container.width = width;
+		container.height = height;
+		container.scrollMax = scrollMax;
+		return container;
+	}
+
+	public static void addItemContainerAutoScrollable(int childId, int width, int height, int invSpritePadX, int invSpritePadY, boolean addPlaceholderItems, int invAutoScrollInterfaceId, String...options) {
+		RSInterface inter = addItemContainer(childId, width, height, invSpritePadX, invSpritePadY, addPlaceholderItems, false, options);
+		inter.invAutoScrollHeight = true;
+		inter.invAutoScrollInterfaceId = invAutoScrollInterfaceId;
+	}
+
+	public static RSInterface addInventoryContainer(int childId, int width, int height, int invSpritePadX, int invSpritePadY, boolean addPlaceholderItems, String...options) {
+		RSInterface inter = addItemContainer(childId, width, height, invSpritePadX, invSpritePadY, addPlaceholderItems, false, options);
+		inter.aBoolean259 = true;
+		return inter;
+	}
+
+	public static RSInterface addInventoryContainer(int childId, int width, int height, int invSpritePadX, int invSpritePadY, boolean addPlaceholderItems, boolean smallInvSprites, String...options) {
+		RSInterface inter = addItemContainer(childId, width, height, invSpritePadX, invSpritePadY, addPlaceholderItems, smallInvSprites, options);
+		inter.aBoolean259 = true;
+		return inter;
+	}
+
+	public static RSInterface addItemContainer(int childId, int width, int height, int invSpritePadX,
+											   int invSpritePadY, boolean addPlaceholderItems, String...options) {
+		RSInterface inter = addItemContainer(childId, width, height, invSpritePadX, invSpritePadY, addPlaceholderItems, false, options);
+		return inter;
+	}
+
+	public static RSInterface addItemContainer(int childId, int width, int height, int invSpritePadX,
+											   int invSpritePadY, boolean addPlaceholderItems, boolean smallInvSprites, String...options) {
+		RSInterface rsi = addInterface(childId);
+		rsi.smallInvSprites = smallInvSprites;
+		rsi.hideInvStackSizes = false;
+		rsi.actions = new String[10];
+		rsi.spritesX = new int[width * height];
+		rsi.inventoryItemId = new int[width * height];
+		rsi.inventoryAmounts = new int[width * height];
+		rsi.spritesY = new int[width * height];
+		rsi.height = height;
+		rsi.width = width;
+		rsi.usableItemInterface = false;
+		rsi.isInventoryInterface = false;
+		rsi.type = 2;
+		rsi.id = childId;
+		rsi.invSpritePadX = invSpritePadX;
+		rsi.invSpritePadY = invSpritePadY;
+
+
+		for (int index = 0; index < options.length; index++) {
+			rsi.actions[index] = options[index];
+		}
+
+		if (addPlaceholderItems) {
+			for (int index = 0; index < rsi.inventoryItemId.length; index++) {
+				rsi.inventoryItemId[index] = 4152 + (index * 2);
+				rsi.inventoryAmounts[index] = index + 1;
+			}
+		}
+		return rsi;
+	}
+
+	/**
+	 * Gets the amount of rows inside the item container that have at least one item.
+	 */
+	public int getItemContainerRows() {
+		//Preconditions.checkState(type == 2, "Not a container: " + id);
+		//Preconditions.checkState(inventoryItemId != null, "Not a container: " + id);
+
+		int rows = 0;
+		int lastRow = -1;
+		int index = 0;
+
+		for (int height = 0; height < this.height; height++) {
+			for (int width = 0; width < this.width; width++) {
+				if (inventoryItemId[index] != 0 && lastRow != height) {
+					rows++;
+					lastRow = height;
+				}
+				index++;
+			}
+		}
+		return rows;
+	}
+	public static boolean deleteChild(int childInterfaceId, RSInterface i) {
+		for (int index = 0; index < i.children.length; index++) {
+			if (i.children[index] == childInterfaceId) {
+				int[] newChildren = new int[i.children.length - 1];
+				int[] newChildX = new int[i.children.length - 1];
+				int[] newChildY = new int[i.children.length - 1];
+				int newChildrenIndex = 0;
+				for (int copyIndex = 0; copyIndex < i.children.length; copyIndex++) {
+					if (copyIndex != index) {
+						newChildren[newChildrenIndex] = i.children[copyIndex];
+						newChildX[newChildrenIndex] = i.childX[copyIndex];
+						newChildY[newChildrenIndex] = i.childY[copyIndex];
+					}
+				}
+
+				i.children = newChildren;
+				i.childX = newChildX;
+				i.childY = newChildY;
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public static int expandChildren(int amount, RSInterface i) {
+		int writeIndex = i.children == null ? 0 : i.children.length;
+		int[] newChildren = new int[writeIndex + amount];
+		int[] newChildX = new int[writeIndex + amount];
+		int[] newChildY = new int[writeIndex + amount];
+		if (i.children != null) {
+			System.arraycopy(i.children, 0, newChildren, 0, i.children.length);
+			System.arraycopy(i.childX, 0, newChildX, 0, i.childX.length);
+			System.arraycopy(i.childY, 0, newChildY, 0, i.childY.length);
+		}
+		i.children = newChildren;
+		i.childX = newChildX;
+		i.childY = newChildY;
+		return writeIndex;
+	}
+
+	public void reverseChildren() {
+		int[] newChildren = new int[children.length];
+		int[] newChildX = new int[children.length];
+		int[] newChildY = new int[children.length];
+		int index = 0;
+		for (int i = children.length - 1; i >= 0; i--) {
+			newChildren[i] = children[index];
+			newChildX[i] = childX[index];
+			newChildY[i] = childY[index];
+			index++;
+		}
+		children = newChildren;
+		childX = newChildX;
+		childY = newChildY;
+	}
+
+	public static int getIndexOfChild(RSInterface i, int childInterfaceId) {
+		for (int index = 0; index < i.children.length; index++) {
+			if (i.children[index] == childInterfaceId) {
+				return index;
+			}
+		}
+		throw new IllegalArgumentException("No child " + childInterfaceId + " in " + i.id);
+	}
+	public int getItemContainerHeight() {
+		return getItemContainerRows() * (32 + invSpritePadY);
+	}
+	public void swapInventoryItems(int i, int j) {
+		int k = inventoryItemId[i];
+		inventoryItemId[i] = inventoryItemId[j];
+		inventoryItemId[j] = k;
+		k = inventoryAmounts[i];
+		inventoryAmounts[i] = inventoryAmounts[j];
+		inventoryAmounts[j] = k;
+	}
 }

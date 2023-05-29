@@ -15,14 +15,12 @@ import com.client.graphics.BlackFadingScreen;
 import com.client.graphics.FadingScreen;
 import com.client.graphics.StatusBars;
 import com.client.graphics.interfaces.RSInterface;
-import com.client.graphics.interfaces.impl.DropdownMenu;
-import com.client.graphics.interfaces.impl.GrandExchange;
-import com.client.graphics.interfaces.impl.SettingsWidget;
-import com.client.graphics.interfaces.impl.Slider;
+import com.client.graphics.interfaces.impl.*;
 import com.client.graphics.loaders.*;
 import com.client.sign.Signlink;
 import com.client.sound.Sound;
 import com.client.sound.SoundType;
+import com.client.utilities.FingerPrint;
 import com.client.utilities.settings.Settings;
 import com.client.utilities.settings.SettingsManager;
 import org.apache.commons.lang3.SystemUtils;
@@ -163,7 +161,7 @@ public class Client extends RSApplet {
     static boolean clientData;
     static int baseX;
     static int baseY;
-    static int inputDialogState;
+    public static int inputDialogState;
     static int backDialogID;
     private static boolean shiftDrop = true;
     private static boolean removeShiftDropOnMenuOpen;
@@ -640,8 +638,8 @@ public class Client extends RSApplet {
     private boolean aBoolean1080;
     private String[] friendsList;
     private Buffer inStream;
-    private int anInt1084;
-    private int anInt1085;
+    private int draggingItemInterfaceId;
+    private int itemDraggingSlot;
     private int activeInterfaceType;
     private int anInt1087;
     private int anInt1088;
@@ -1621,6 +1619,10 @@ public class Client extends RSApplet {
             } else if (inputDialogState == 8) {
                 newBoldFont.drawCenteredString("Amount you want to sell:", 259, 60 + yOffset, 0, -1);
                 newBoldFont.drawCenteredString(amountOrNameInput + "*", 259, 80 + yOffset, 128, -1);
+            } else if (Bank.isSearchingBank()) {
+                newBoldFont.drawCenteredString("Enter an item to search for:", 259, 60 + yOffset, 0, -1);
+                newBoldFont.drawCenteredString(Bank.searchingBankString + "*", 259, 80 + yOffset, 128, -1);
+
             } else if (inputDialogState == 3) {
                 Rasterizer2D.fillPixels(8, 505, 108, 0x463214, 28 + yOffset);
                 Rasterizer2D.drawAlphaBox(8, 28 + yOffset, 505, 108, 0x746346, 75);
@@ -2066,8 +2068,8 @@ public class Client extends RSApplet {
                     if (class9.aBoolean259 || class9.aBoolean235) {
                         aBoolean1242 = false;
                         anInt989 = 0;
-                        anInt1084 = j2;
-                        anInt1085 = l1;
+                        draggingItemInterfaceId = j2;
+                        itemDraggingSlot = l1;
                         activeInterfaceType = 2;
                         anInt1087 = super.saveClickX;
                         anInt1088 = super.saveClickY;
@@ -2122,8 +2124,8 @@ public class Client extends RSApplet {
    public String indexLocation(int cacheIndex, int index) {
         return Signlink.getCacheDirectory() + "index" + cacheIndex + "/" + (index != -1 ? index + ".gz" : "");
     }
-// public String indexLocation(int cacheIndex, int index) {
-   //  return "D:\\dump\\index" + cacheIndex + "/" + (index != -1 ? index + ".gz" : "");
+ //public String indexLocation(int cacheIndex, int index) {
+  //   return "D:\\dump\\index" + cacheIndex + "/" + (index != -1 ? index + ".gz" : "");
  //}
     public void repackCacheIndex(int cacheIndex) {
         System.out.println("Started repacking index " + cacheIndex + ".");
@@ -2401,7 +2403,7 @@ public class Client extends RSApplet {
 
         }
         stream.createFrame(210);
-        stream.writeDWord(0x3f008edd);
+        stream.writeInt(0x3f008edd);
         System.gc();
         Rasterizer3D.initiateRequestBuffers();
         onDemandFetcher.method566();
@@ -2577,13 +2579,13 @@ public class Client extends RSApplet {
         while (true);
     }
 
-    private void buildInterfaceMenu(int i, RSInterface class9, int k, int l, int i1, int j1) {
+    private void buildInterfaceMenu(int i, RSInterface class9, int mouseX, int l, int mouseY, int j1) {
         if (class9 == null) {
             return;
         }
         if (class9.type != 0 || class9.children == null || (class9.isMouseoverTriggered && class9.id != anInt886))
             return;
-        if (k < i || i1 < l || k > i + class9.width || i1 > l + class9.height)
+        if (mouseX < i || mouseY < l || mouseX > i + class9.width || mouseY > l + class9.height)
             return;
         int k1 = class9.children.length;
         for (int l1 = 0; l1 < k1; l1++) {
@@ -2597,8 +2599,8 @@ public class Client extends RSApplet {
                 continue;
             i2 += class9_1.anInt263;
             j2 += class9_1.anInt265;
-            if ((class9_1.mOverInterToTrigger >= 0 || class9_1.anInt216 != 0) && k >= i2 && i1 >= j2
-                    && k < i2 + class9_1.width && i1 < j2 + class9_1.height) {
+            if ((class9_1.mOverInterToTrigger >= 0 || class9_1.anInt216 != 0) && mouseX >= i2 && mouseY >= j2
+                    && mouseX < i2 + class9_1.width && mouseY < j2 + class9_1.height) {
                 if (class9_1.mOverInterToTrigger >= 0)
                     anInt886 = class9_1.mOverInterToTrigger;
                 else
@@ -2613,25 +2615,25 @@ public class Client extends RSApplet {
                 if (class9_1.dropdown.isOpen()) {
 
                     // Inverted keybinds dropdown
-                    if (class9_1.type == RSInterface.TYPE_KEYBINDS_DROPDOWN && class9_1.inverted && k >= i2
-                            && k < i2 + (class9_1.dropdown.getWidth() - 16)
-                            && i1 >= j2 - class9_1.dropdown.getHeight() - 10 && i1 < j2) {
+                    if (class9_1.type == RSInterface.TYPE_KEYBINDS_DROPDOWN && class9_1.inverted && mouseX >= i2
+                            && mouseX < i2 + (class9_1.dropdown.getWidth() - 16)
+                            && mouseY >= j2 - class9_1.dropdown.getHeight() - 10 && mouseY < j2) {
 
-                        int yy = i1 - (j2 - class9_1.dropdown.getHeight());
+                        int yy = mouseY - (j2 - class9_1.dropdown.getHeight());
 
-                        if (k > i2 + (class9_1.dropdown.getWidth() / 2)) {
+                        if (mouseX > i2 + (class9_1.dropdown.getWidth() / 2)) {
                             class9_1.dropdownHover = ((yy / 15) * 2) + 1;
                         } else {
                             class9_1.dropdownHover = (yy / 15) * 2;
                         }
                         flag = true;
-                    } else if (!class9_1.inverted && k >= i2 && k < i2 + (class9_1.dropdown.getWidth() - 16)
-                            && i1 >= j2 + 19 && i1 < j2 + 19 + class9_1.dropdown.getHeight()) {
+                    } else if (!class9_1.inverted && mouseX >= i2 && mouseX < i2 + (class9_1.dropdown.getWidth() - 16)
+                            && mouseY >= j2 + 19 && mouseY < j2 + 19 + class9_1.dropdown.getHeight()) {
 
-                        int yy = i1 - (j2 + 19);
+                        int yy = mouseY - (j2 + 19);
 
                         if (class9_1.type == RSInterface.TYPE_KEYBINDS_DROPDOWN && class9_1.dropdown.doesSplit()) {
-                            if (k > i2 + (class9_1.dropdown.getWidth() / 2)) {
+                            if (mouseX > i2 + (class9_1.dropdown.getWidth() / 2)) {
                                 class9_1.dropdownHover = ((yy / 15) * 2) + 1;
                             } else {
                                 class9_1.dropdownHover = (yy / 15) * 2;
@@ -2653,7 +2655,7 @@ public class Client extends RSApplet {
                         menuActionRow++;
                     }
                 }
-                if (k >= i2 && i1 >= j2 && k < i2 + class9_1.dropdown.getWidth() && i1 < j2 + 24
+                if (mouseX >= i2 && mouseY >= j2 && mouseX < i2 + class9_1.dropdown.getWidth() && mouseY < j2 + 24
                         && menuActionRow == 1) {
                     class9_1.hovered = true;
                     menuActionName[menuActionRow] = class9_1.dropdown.isOpen() ? "Hide" : "Show";
@@ -2664,8 +2666,8 @@ public class Client extends RSApplet {
                 }
             }
 
-            if (k >= i2 && i1 >= j2 && k < i2 + (class9_1.type == 4 ? 100 : class9_1.width)
-                    && i1 < j2 + class9_1.height) {
+            if (mouseX >= i2 && mouseY >= j2 && mouseX < i2 + (class9_1.type == 4 ? 100 : class9_1.width)
+                    && mouseY < j2 + class9_1.height) {
                 if (class9_1.actions != null && !class9_1.invisible && !class9_1.drawingDisabled) {
 
                     if (!(class9_1.contentType == 206 && interfaceIsSelected(class9_1))) {
@@ -2717,24 +2719,24 @@ public class Client extends RSApplet {
                     class9_2 = RSInterface.interfaceCache[GrandExchange.grandExchangeBuyAndSellBoxIds[slot]];
                 else
                     class9_2 = RSInterface.interfaceCache[GrandExchange.grandExchangeItemBoxIds[slot]];
-                buildInterfaceMenu(i2, class9_2, k, j2, i1, j1);
+                buildInterfaceMenu(i2, class9_2, mouseX, j2, mouseY, j1);
             }
-            if (class9_1.type == 9 && k >= i2 && i1 >= j2 && k < i2 + class9_1.width && i1 < j2 + class9_1.height) {
+            if (class9_1.type == 9 && mouseX >= i2 && mouseY >= j2 && mouseX < i2 + class9_1.width && mouseY < j2 + class9_1.height) {
                 anInt1315 = class9_1.id;
             }
-            if (class9_1.type == 5 && k >= i2 && i1 >= j2 && k < i2 + class9_1.width && i1 < j2 + class9_1.height) {
+            if (class9_1.type == 5 && mouseX >= i2 && mouseY >= j2 && mouseX < i2 + class9_1.width && mouseY < j2 + class9_1.height) {
                 hoverId = class9_1.id;
             }
             if (class9_1.type == 0) {
-                buildInterfaceMenu(i2, class9_1, k, j2, i1, class9_1.scrollPosition);
+                buildInterfaceMenu(i2, class9_1, mouseX, j2, mouseY, class9_1.scrollPosition);
                 if (class9_1.scrollMax > class9_1.height) {
                     if (scrollbarVisible(class9_1)) {
-                        method65(i2 + class9_1.width, class9_1.height, k, i1, class9_1, j2, true, class9_1.scrollMax);
+                        method65(i2 + class9_1.width, class9_1.height, mouseX, mouseY, class9_1, j2, true, class9_1.scrollMax);
                     }
                 }
             } else {
-                if (class9_1.atActionType == RSInterface.OPTION_OK && k >= i2 && i1 >= j2 && k < i2 + class9_1.width
-                        && i1 < j2 + class9_1.height) {
+                if (class9_1.atActionType == RSInterface.OPTION_OK && mouseX >= i2 && mouseY >= j2 && mouseX < i2 + class9_1.width
+                        && mouseY < j2 + class9_1.height) {
                     boolean flag = false;
                     if (class9_1.contentType != 0)
                         flag = buildFriendsListMenu(class9_1);
@@ -2751,8 +2753,8 @@ public class Client extends RSApplet {
                     }
 
                 }
-                if (class9_1.atActionType == 2 && spellSelected == 0 && k >= i2 && i1 >= j2 && k < i2 + class9_1.width
-                        && i1 < j2 + class9_1.height) {
+                if (class9_1.atActionType == 2 && spellSelected == 0 && mouseX >= i2 && mouseY >= j2 && mouseX < i2 + class9_1.width
+                        && mouseY < j2 + class9_1.height) {
                     String s = class9_1.selectedActionName;
                     if (s.indexOf(" ") != -1)
                         s = s.substring(0, s.indexOf(" "));
@@ -2761,40 +2763,40 @@ public class Client extends RSApplet {
                     menuActionCmd3[menuActionRow] = class9_1.id;
                     menuActionRow++;
                 }
-                if (class9_1.atActionType == 3 && k >= i2 && i1 >= j2 && k < i2 + class9_1.width
-                        && i1 < j2 + class9_1.height) {
+                if (class9_1.atActionType == 3 && mouseX >= i2 && mouseY >= j2 && mouseX < i2 + class9_1.width
+                        && mouseY < j2 + class9_1.height) {
                     menuActionName[menuActionRow] = "Close";
                     menuActionID[menuActionRow] = 200;
                     menuActionCmd3[menuActionRow] = class9_1.id;
                     menuActionRow++;
                 }
-                if (class9_1.atActionType == 4 && k >= i2 && i1 >= j2 && k < i2 + class9_1.width
-                        && i1 < j2 + class9_1.height) {
+                if (class9_1.atActionType == 4 && mouseX >= i2 && mouseY >= j2 && mouseX < i2 + class9_1.width
+                        && mouseY < j2 + class9_1.height) {
                     menuActionName[menuActionRow] = class9_1.tooltip;
                     menuActionID[menuActionRow] = 169;
                     menuActionCmd3[menuActionRow] = class9_1.id;
                     menuActionRow++;
                 }
-                if (class9_1.atActionType == 5 && k >= i2 && i1 >= j2 && k < i2 + class9_1.width
-                        && i1 < j2 + class9_1.height) {
+                if (class9_1.atActionType == 5 && mouseX >= i2 && mouseY >= j2 && mouseX < i2 + class9_1.width
+                        && mouseY < j2 + class9_1.height) {
                     menuActionName[menuActionRow] = class9_1.tooltip;
                     menuActionID[menuActionRow] = 646;
                     menuActionCmd3[menuActionRow] = class9_1.id;
                     menuActionRow++;
                 }
-                if (class9_1.atActionType == 6 && !aBoolean1149 && k >= i2 && i1 >= j2 && k < i2 + class9_1.width
-                        && i1 < j2 + class9_1.height) {
+                if (class9_1.atActionType == 6 && !aBoolean1149 && mouseX >= i2 && mouseY >= j2 && mouseX < i2 + class9_1.width
+                        && mouseY < j2 + class9_1.height) {
                     menuActionName[menuActionRow] = class9_1.tooltip;
                     menuActionID[menuActionRow] = 679;
                     menuActionCmd3[menuActionRow] = class9_1.id;
                     menuActionRow++;
                 }
 
-                if (class9_1.type == 8 && k >= i2 && i1 >= j2 && k < i2 + class9_1.width && i1 < j2 + class9_1.height) {
+                if (class9_1.type == 8 && mouseX >= i2 && mouseY >= j2 && mouseX < i2 + class9_1.width && mouseY < j2 + class9_1.height) {
                     anInt1315 = class9_1.id;
                 }
-                if (class9_1.atActionType == 8 && !aBoolean1149 && k >= i2 && i1 >= j2 && k < i2 + class9_1.width
-                        && i1 < j2 + class9_1.height) {
+                if (class9_1.atActionType == 8 && !aBoolean1149 && mouseX >= i2 && mouseY >= j2 && mouseX < i2 + class9_1.width
+                        && mouseY < j2 + class9_1.height) {
                     for (int s1 = 0; s1 < class9_1.tooltips.length; s1++) {
                         if (!RSInterface.interfaceCache[32007].isMouseoverTriggered) {
                             if (class9_1.id > 32016) {
@@ -2807,29 +2809,29 @@ public class Client extends RSApplet {
                         menuActionRow++;
                     }
                 }
-                if (class9_1.atActionType == 9 && !aBoolean1149 && k >= i2 && i1 >= j2 && k < i2 + class9_1.width
-                        && i1 < j2 + class9_1.height) {
+                if (class9_1.atActionType == 9 && !aBoolean1149 && mouseX >= i2 && mouseY >= j2 && mouseX < i2 + class9_1.width
+                        && mouseY < j2 + class9_1.height) {
                     menuActionName[menuActionRow] = class9_1.tooltip;
                     menuActionID[menuActionRow] = 1100;
                     menuActionCmd3[menuActionRow] = class9_1.id;
                     menuActionRow++;
                 }
-                if (class9_1.atActionType == 10 && !aBoolean1149 && k >= i2 && i1 >= j2 && k < i2 + class9_1.width
-                        && i1 < j2 + class9_1.height) {
+                if (class9_1.atActionType == 10 && !aBoolean1149 && mouseX >= i2 && mouseY >= j2 && mouseX < i2 + class9_1.width
+                        && mouseY < j2 + class9_1.height) {
                     menuActionName[menuActionRow] = class9_1.getMenuItem().getText();
                     menuActionID[menuActionRow] = 1200;
                     menuActionCmd3[menuActionRow] = class9_1.id;
                     menuActionRow++;
                 }
-                if (class9_1.atActionType == 11 && k >= i2 && i1 >= j2 && k < i2 + class9_1.width
-                        && i1 < j2 + class9_1.height) {
+                if (class9_1.atActionType == 11 && mouseX >= i2 && mouseY >= j2 && mouseX < i2 + class9_1.width
+                        && mouseY < j2 + class9_1.height) {
                     menuActionName[menuActionRow] = class9_1.tooltip;
                     menuActionID[menuActionRow] = 201;
                     menuActionCmd3[menuActionRow] = class9_1.id;
                     menuActionRow++;
                 }
-                if (k >= i2 && i1 >= j2 && k < i2 + (class9_1.type == 4 ? 100 : class9_1.width)
-                        && i1 < j2 + class9_1.height) {
+                if (mouseX >= i2 && mouseY >= j2 && mouseX < i2 + (class9_1.type == 4 ? 100 : class9_1.width)
+                        && mouseY < j2 + class9_1.height) {
 
                     if (class9_1.actions != null) {
                         if ((class9_1.type == 4 && class9_1.message.length() > 0) || class9_1.type == 5) {
@@ -2860,11 +2862,15 @@ public class Client extends RSApplet {
                                 j3 += class9_1.spritesX[k2];
                                 k3 += class9_1.spritesY[k2];
                             }
-                            if (k >= j3 && i1 >= k3 && k < j3 + size && i1 < k3 + size) {
+                            if (mouseX >= j3 && mouseY >= k3 && mouseX < j3 + size && mouseY < k3 + size) {
                                 mouseInvInterfaceIndex = k2;
                                 lastActiveInvInterface = class9_1.id;
-                                if (class9_1.inv[k2] > 0) {
-                                    ItemDefinition itemDef = ItemDefinition.forID(class9_1.inv[k2] - 1);
+                                int itemID = class9_1.inventoryItemId[k2] - 1;
+                                if (class9_1.id == 30000) {
+                                    itemID = (class9_1.inventoryItemId[k2] & 0x7FFF) - 1;
+                                }
+                                if (class9_1.inventoryItemId[k2] > 0) {
+                                    ItemDefinition itemDef = ItemDefinition.forID(itemID);
                                     boolean hasDestroyOption = false;
                                     if (itemSelected == 1 && class9_1.isInventoryInterface) {
                                         if (class9_1.id != anInt1284 || k2 != anInt1283) {
@@ -2919,6 +2925,60 @@ public class Client extends RSApplet {
                                                 }
 
                                         }
+                                        if (class9_1.id == 5064) {
+                                            if (modifiableXValue > 0) {// so issue is when x = 0
+                                                if (class9_1.actions.length < 9) {
+                                                    if (variousSettings[222] == 1) {
+                                                        class9_1.actions = new String[]{
+                                                                "Store-5",
+                                                                "Store-5",
+                                                                "Store-10",
+                                                                "Store-All",
+                                                                "Store-" + modifiableXValue,
+                                                                "Store-All-but-1"
+                                                        };
+                                                    } else if (variousSettings[222] == 2) {
+                                                        class9_1.actions = new String[]{
+                                                                "Store-10",
+                                                                "Store-5",
+                                                                "Store-10",
+                                                                "Store-All",
+                                                                "Store-" + modifiableXValue,
+                                                                "Store-All-but-1"
+                                                        };
+                                                    } else if (variousSettings[222] == 3) {
+                                                        class9_1.actions = new String[]{
+                                                                "Store-" + modifiableXValue,
+                                                                "Store-5",
+                                                                "Store-10",
+                                                                "Store-All",
+                                                                "Store-" + modifiableXValue,
+                                                                "Store-All-but-1"
+                                                        };
+                                                    } else if (variousSettings[222] == 4) {
+                                                        class9_1.actions = new String[]{
+                                                                "Store-All",
+                                                                "Store-5",
+                                                                "Store-10",
+                                                                "Store-All",
+                                                                "Store-" + modifiableXValue,
+                                                                "Store-All-but-1"
+                                                        };
+                                                    } else {
+                                                        class9_1.actions = new String[]{
+                                                                "Store-1",
+                                                                "Store-5",
+                                                                "Store-10",
+                                                                "Store-All",
+                                                                "Store-" + modifiableXValue,
+                                                                "Store-All-but-1"
+                                                        };
+                                                    }
+                                                } else {
+                                                    class9_1.actions[5] = "Store-" + modifiableXValue;
+                                                }
+                                            }
+                                        }
                                         if (class9_1.usableItemInterface) {
                                             hintMenu = false;
                                             menuActionName[menuActionRow] = "Use @lre@" + itemDef.name;
@@ -2967,85 +3027,15 @@ public class Client extends RSApplet {
                                         }
 
                                         if (class9_1.actions != null) {
-                                            for (int j4 = 8; j4 >= 0; j4--) {
-                                                if (j4 > class9_1.actions.length - 1)
-                                                    continue;
-                                                if (class9_1.actions[j4] != null) {
-
-                                                    if (class9_1.parentID == 5292) {
-                                                        if (class9_1.id == 5382 && placeHolders
-                                                                && class9_1.invStackSizes[k2] <= 0) {
-                                                            // menuActionName[menuActionRow] = "Release " + " @lre@"
-                                                            // +itemDef.name;
-                                                            class9_1.actions = new String[8];
-                                                            class9_1.actions[1] = "Release";
-                                                        } else {
-                                                            if (modifiableXValue > 0) {// so issue is when x = 0
-                                                                if (class9_1.actions.length < 9) {
-                                                                    class9_1.actions = new String[]{"Withdraw-1",
-                                                                            "Withdraw-5", "Withdraw-10", "Withdraw-All",
-                                                                            "Withdraw-X",
-                                                                            "Withdraw-" + modifiableXValue,
-                                                                            "Withdraw-All-but-one", "Placeholder"};
-                                                                }
-                                                                class9_1.actions[5] = "Withdraw-" + modifiableXValue;
-                                                            }
-                                                        }
-                                                    }
-                                                    if (class9_1.id == 5064) {
-                                                        if (modifiableXValue > 0) {// so issue is when x = 0
-                                                            if (class9_1.actions.length < 7) {
-                                                                class9_1.actions = new String[]{"Deposit-1",
-                                                                        "Deposit-5", "Deposit-10", "Deposit-All",
-                                                                        "Deposit-X",
-                                                                        "Deposit-" + modifiableXValue,
-
-                                                                };
-                                                            }
-                                                            //class9_1.actions[4] = "Deposit-" + modifiableXValue;
-                                                        }
-                                                    }
-                                                    if (class9_1.id == 39373) {
-                                                        if (modifiableXValue > 0) {// so issue is when x = 0
-                                                            if (class9_1.actions.length < 10) {
-                                                                class9_1.actions = new String[]{"Take",
-                                                                        "Take-5", "Take-10", "Take-X",
-                                                                        "Take-All", "Bank-X",
-                                                                        "Bank-All", "Destroy-X", "Destroy-All", "Examine"
-
-                                                                };
-                                                            }
-                                                            //class9_1.actions[4] = "Deposit-" + modifiableXValue;
-                                                        }
-                                                    }
-                                                    if (class9_1.id == 64016) {
-                                                        if (modifiableXValue > 0) {// so issue is when x = 0
-                                                            if (class9_1.actions.length < 8) {
-                                                                class9_1.actions = new String[]{"Value",
-                                                                        "Buy 1", "Buy 5", "Buy 10", "Buy X",
-                                                                        "Buy " + modifiableXValue
-
-                                                                };
-                                                            }
-                                                            //class9_1.actions[4] = "Buy " + modifiableXValue;
-                                                        }
-                                                    }
-
-                                                    if (class9_1.id == 3823) {
-                                                        if (modifiableXValue > 0) {// so issue is when x = 0
-                                                            if (class9_1.actions.length < 8) {
-                                                                class9_1.actions = new String[]{"Value",
-                                                                        "Sell 1", "Sell 5", "Sell 10", "Sell X",
-                                                                        "Sell " + modifiableXValue
-                                                                };
-                                                            }
-                                                            //class9_1.actions[5] = "Sell " + modifiableXValue;
-                                                        }
-                                                    }
-
-                                                    menuActionName[menuActionRow] = class9_1.actions[j4] + " @lre@"
-                                                            + itemDef.name;
-                                                    if (class9_1.id != 1688) {
+                                            if (openInterfaceID == 21553 && class9_1.parentID == 3213) {
+                                                // Equipment
+                                                String[] options = new String[]{"Place in inventory", "Use as equipment"};
+                                                for (int j4 = 8; j4 >= 0; j4--) {
+                                                    if (j4 > options.length - 1)
+                                                        continue;
+                                                    if (options[j4] != null) {
+                                                        menuActionName[menuActionRow] = options[j4] + " @lre@"
+                                                                + itemDef.name;
                                                         if (j4 == 0)
                                                             menuActionID[menuActionRow] = 632;
                                                         if (j4 == 1)
@@ -3055,58 +3045,137 @@ public class Client extends RSApplet {
                                                         if (j4 == 3)
                                                             menuActionID[menuActionRow] = 431;
                                                         if (j4 == 4)
-                                                            menuActionID[menuActionRow] = 53;// can u pull up commands?
-                                                        if (j4 == 5)
-                                                            menuActionID[menuActionRow] = 54;
-														/*if(j4 == 6)
-															menuActionID[menuActionRow] = 55;*/
+                                                            menuActionID[menuActionRow] = 53;
                                                         if (j4 == 7)
-                                                            menuActionID[menuActionRow] = 1337;// placeholders
-                                                    } else {
-                                                        if (itemDef.equipActions[j4] == null) {
-                                                            menuActionName[3] = "Operate @lre@" + itemDef.name;
-                                                            menuActionName[4] = "Remove @lre@" + itemDef.name;
-                                                        } else {
-                                                            class9_1.actions = itemDef.equipActions;
-                                                            menuActionName[menuActionRow] = itemDef.equipActions[j4]
-                                                                    + " @lre@" + itemDef.name;
-                                                        }
-                                                        if (j4 == 0)
-                                                            menuActionID[menuActionRow] = 632; // remove
-                                                        if (j4 == 1)
-                                                            menuActionID[menuActionRow] = 661; // operate 1
-                                                        if (j4 == 2)
-                                                            menuActionID[menuActionRow] = 662; // operate 2
-                                                        if (j4 == 3)
-                                                            menuActionID[menuActionRow] = 663; // operate 3
-                                                        if (j4 == 4)
-                                                            menuActionID[menuActionRow] = 664; // operate 4
+                                                            menuActionID[menuActionRow] = 1337;
+                                                        menuActionCmd1[menuActionRow] = itemDef.id;
+                                                        menuActionCmd2[menuActionRow] = k2;
+                                                        menuActionCmd3[menuActionRow] = class9_1.id;
+                                                        menuActionRow++;
                                                     }
+                                                }
 
-                                                    if (class9_1.parentID == 5292 || class9_1.id == 5064 || class9_1.id == 3823) {
-                                                        if (class9_1.actions.length < 8) {
-                                                            if (j4 == 5)
-                                                                menuActionID[menuActionRow] = 291;
-                                                        } else {
+                                            } else {
+                                                // Standard containers
+                                                if (Bank.isBankContainer(class9_1)) {
+                                                    if (class9_1.id == 5382 && placeHolders && class9_1.inventoryAmounts[k2] <= 0) {
+                                                        class9_1.actions = new String[8];
+                                                        class9_1.actions[1] = "Release";
+                                                    } else {
+                                                        if (modifiableXValue > 0) {// so issue is when x = 0
+                                                            if (class9_1.actions.length < 9) {
+                                                                if (variousSettings[222] == 1) {
+                                                                    class9_1.actions = new String[]{
+                                                                            "Withdraw-5",
+                                                                            "Withdraw-5",
+                                                                            "Withdraw-10",
+                                                                            "Withdraw-All",
+                                                                            "Withdraw-" + modifiableXValue,
+                                                                            "Withdraw-All-but-1"
+                                                                    };
+                                                                } else if (variousSettings[222] == 2) {
+                                                                    class9_1.actions = new String[]{
+                                                                            "Withdraw-10",
+                                                                            "Withdraw-5",
+                                                                            "Withdraw-10",
+                                                                            "Withdraw-All",
+                                                                            "Withdraw-" + modifiableXValue,
+                                                                            "Withdraw-All-but-1"
+                                                                    };
+                                                                } else if (variousSettings[222] == 3) {
+                                                                    class9_1.actions = new String[]{
+                                                                            "Withdraw-" + modifiableXValue,
+                                                                            "Withdraw-5",
+                                                                            "Withdraw-10",
+                                                                            "Withdraw-All",
+                                                                            "Withdraw-" + modifiableXValue,
+                                                                            "Withdraw-All-but-1"
+                                                                    };
+                                                                } else if (variousSettings[222] == 4) {
+                                                                    class9_1.actions = new String[]{
+                                                                            "Withdraw-All",
+                                                                            "Withdraw-5",
+                                                                            "Withdraw-10",
+                                                                            "Withdraw-All",
+                                                                            "Withdraw-" + modifiableXValue,
+                                                                            "Withdraw-All-but-1"
+                                                                    };
+                                                                } else {
+                                                                    class9_1.actions = new String[]{
+                                                                            "Withdraw-1",
+                                                                            "Withdraw-5",
+                                                                            "Withdraw-10",
+                                                                            "Withdraw-All",
+                                                                            "Withdraw-X",
+                                                                            "Withdraw-" + modifiableXValue,
+                                                                            "Withdraw-All-but-1"
+                                                                    };
+                                                                }
+                                                            } else {
+                                                                class9_1.actions[5] = "Withdraw-" + modifiableXValue;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+
+                                                for (int j4 = 8; j4 >= 0; j4--) {
+                                                    if (j4 > class9_1.actions.length - 1)
+                                                        continue;
+                                                    if (class9_1.actions[j4] != null) {
+                                                        menuActionName[menuActionRow] = class9_1.actions[j4] + " @lre@" + itemDef.name;
+                                                        if (class9_1.id != 1688/*equipment*/) {
+                                                            if (j4 == 0)
+                                                                menuActionID[menuActionRow] = 632;
+                                                            if (j4 == 1)
+                                                                menuActionID[menuActionRow] = 78;
+                                                            if (j4 == 2)
+                                                                menuActionID[menuActionRow] = 867;
+                                                            if (j4 == 3)
+                                                                menuActionID[menuActionRow] = 431;
+                                                            if (j4 == 4)
+                                                                menuActionID[menuActionRow] = 53;
                                                             if (j4 == 5)
                                                                 menuActionID[menuActionRow] = 300;
                                                             if (j4 == 6)
                                                                 menuActionID[menuActionRow] = 291;
+
+                                                        } else {
+                                                            if (itemDef.equipActions[j4] == null) {
+                                                                menuActionName[3] = "Operate @lre@" + itemDef.name;
+                                                                menuActionName[4] = "Remove @lre@" + itemDef.name;
+                                                            } else {
+                                                                class9_1.actions = itemDef.equipActions;
+                                                                menuActionName[menuActionRow] = itemDef.equipActions[j4]
+                                                                        + " @lre@" + itemDef.name;
+                                                            }
+                                                            if (j4 == 0)
+                                                                menuActionID[menuActionRow] = 632; // remove
+                                                            if (j4 == 1)
+                                                                menuActionID[menuActionRow] = 661; // operate 1
+                                                            if (j4 == 2)
+                                                                menuActionID[menuActionRow] = 662; // operate 2
+                                                            if (j4 == 3)
+                                                                menuActionID[menuActionRow] = 663; // operate 3
+                                                            if (j4 == 4)
+                                                                menuActionID[menuActionRow] = 664; // operate 4
                                                         }
+
+                                                        menuActionCmd1[menuActionRow] = itemDef.id;
+                                                        menuActionCmd2[menuActionRow] = k2;
+                                                        menuActionCmd3[menuActionRow] = class9_1.id;
+                                                        menuActionRow++;
                                                     }
-                                                    menuActionCmd1[menuActionRow] = itemDef.id;
-                                                    menuActionCmd2[menuActionRow] = k2;
-                                                    menuActionCmd3[menuActionRow] = class9_1.id;
-                                                    menuActionRow++;
                                                 }
                                             }
                                         }
                                     }
+
                                     if (class9_1.parentID >= 58040 && class9_1.parentID <= 58048
                                             || class9_1.parentID >= 32100 && class9_1.parentID <= 32156
                                             || class9_1.parentID >= 32200 && class9_1.parentID <= 32222) {
                                         return;
                                     }
+
                                     if (class9_1.isItemSearchComponent) {
                                         menuActionName[menuActionRow] = "Select @lre@" + itemDef.name;
                                         menuActionID[menuActionRow] = 1130;
@@ -3115,40 +3184,17 @@ public class Client extends RSApplet {
                                         menuActionCmd3[menuActionRow] = class9_1.id;
                                         menuActionRow++;
                                     } else {
-                                        if (!RSInterface.interfaceCache[32007].isMouseoverTriggered) {
-                                            if (class9_1.id > 32016) {
-                                                continue;
+                                            if (myPlayer.getRights() == 2) {
+                                                menuActionName[menuActionRow] = "Examine @lre@" + itemDef.name + " @whi@(" + (itemID) + ")";
+                                            } else {
+                                                menuActionName[menuActionRow] = "Examine @lre@" + itemDef.name;
                                             }
+                                            menuActionID[menuActionRow] = 1126;
+                                            menuActionCmd1[menuActionRow] = itemDef.id;
+                                            menuActionCmd2[menuActionRow] = k2;
+                                            menuActionCmd3[menuActionRow] = class9_1.id;
+                                            menuActionRow++;
                                         }
-                                        if (myPlayer.getRights() == 9)
-                                            menuActionName[menuActionRow] = "Examine @lre@" + itemDef.name + " @whi@("
-                                                    + (class9_1.inv[k2] - 1) + ")";
-                                        else
-                                            menuActionName[menuActionRow] = "Examine @lre@" + itemDef.name;
-
-                                        if (debugModels == true) {
-                                            if (System.currentTimeMillis() - debugDelay > 1000) {
-                                                debugDelay = System.currentTimeMillis();
-                                                pushMessage("<col=255>" + itemDef.name + ":</col> Male: <col=255>"
-                                                        + itemDef.primaryMaleModel + "</col> Female: <col=255>"
-                                                        + itemDef.primaryFemaleModel + "</col> Model id: <col=255>"
-                                                        + itemDef.modelId, 0, "");
-                                                pushMessage("Zoom: <col=255>" + itemDef.spriteScale
-                                                        + "</col> Rotation: <col=255>x" + itemDef.spritePitch + " y"
-                                                        + itemDef.spriteCameraRoll + "", 0, "");
-                                                pushMessage("Offset: <col=255>x" + itemDef.spriteTranslateX + " y"
-                                                        + itemDef.spriteTranslateY, 0, "");
-                                                menuActionName[menuActionRow] = "#2 (@whi@"
-                                                        + Arrays.toString(itemDef.originalModelColors) + ")@gre@)(@whi@"
-                                                        + Arrays.toString(itemDef.modifiedModelColors) + ")@gre@)";
-                                            }
-                                        }
-                                        menuActionID[menuActionRow] = 1125;
-                                        menuActionCmd1[menuActionRow] = itemDef.id;
-                                        menuActionCmd2[menuActionRow] = k2;
-                                        menuActionCmd3[menuActionRow] = class9_1.id;
-                                        menuActionRow++;
-                                    }
                                 }
                             }
                             k2++;
@@ -3814,7 +3860,7 @@ public class Client extends RSApplet {
                 }
 
                 stream.createFrame(215);
-                stream.writeQWord(l);
+                stream.writeLong(l);
                 break;
             }
         } catch (RuntimeException runtimeexception) {
@@ -4028,17 +4074,17 @@ public class Client extends RSApplet {
                     stream.createFrame(226);
                     stream.writeWordBigEndian(0);
                     int l2 = stream.currentPosition;
-                    stream.writeWord(58722);
+                    stream.writeShort(58722);
                     stream.writeWordBigEndian(240);
-                    stream.writeWord((int) (Math.random() * 65536D));
+                    stream.writeShort((int) (Math.random() * 65536D));
                     stream.writeWordBigEndian((int) (Math.random() * 256D));
                     if ((int) (Math.random() * 2D) == 0)
-                        stream.writeWord(51825);
+                        stream.writeShort(51825);
                     stream.writeWordBigEndian((int) (Math.random() * 256D));
-                    stream.writeWord((int) (Math.random() * 65536D));
-                    stream.writeWord(7130);
-                    stream.writeWord((int) (Math.random() * 65536D));
-                    stream.writeWord(61657);
+                    stream.writeShort((int) (Math.random() * 65536D));
+                    stream.writeShort(7130);
+                    stream.writeShort((int) (Math.random() * 65536D));
+                    stream.writeShort(61657);
                     stream.writeBytes(stream.currentPosition - l2);
                 }
             }
@@ -4364,7 +4410,7 @@ public class Client extends RSApplet {
                 friendsCount++;
                 needDrawTabArea = true;
                 stream.createFrame(188);
-                stream.writeQWord(l);
+                stream.writeLong(l);
                 return;
             }
         } catch (RuntimeException runtimeexception) {
@@ -4632,7 +4678,7 @@ public class Client extends RSApplet {
             clearTopInterfaces();
             if (reportAbuseInput.length() > 0) {
                 stream.createFrame(218);
-                stream.writeQWord(TextClass.longForName(reportAbuseInput));
+                stream.writeLong(TextClass.longForName(reportAbuseInput));
                 stream.writeWordBigEndian(j - 601);
                 stream.writeWordBigEndian(canMute ? 1 : 0);
             }
@@ -4731,9 +4777,9 @@ public class Client extends RSApplet {
             if (class46_1.anInt758 != -1) {
                 IndexedImage background_1 = mapScenes[class46_1.anInt758];
                 if (background_1 != null) {
-                    int j5 = (class46_1.anInt744 * 4 - background_1.width) / 2;
-                    int k5 = (class46_1.anInt761 * 4 - background_1.height) / 2;
-                    background_1.draw(48 + l * 4 + j5, 48 + (104 - i - class46_1.anInt761) * 4 + k5);
+                    int j5 = (class46_1.sizeX * 4 - background_1.width) / 2;
+                    int k5 = (class46_1.sizeY * 4 - background_1.height) / 2;
+                    background_1.draw(48 + l * 4 + j5, 48 + (104 - i - class46_1.sizeY) * 4 + k5);
                 }
             } else if (j3 == 9) {
                 int l4 = 0xeeeeee;
@@ -4761,9 +4807,9 @@ public class Client extends RSApplet {
             if (class46.anInt758 != -1) {
                 IndexedImage background = mapScenes[class46.anInt758];
                 if (background != null) {
-                    int i4 = (class46.anInt744 * 4 - background.width) / 2;
-                    int j4 = (class46.anInt761 * 4 - background.height) / 2;
-                    background.draw(48 + l * 4 + i4, 48 + (104 - i - class46.anInt761) * 4 + j4);
+                    int i4 = (class46.sizeX * 4 - background.width) / 2;
+                    int j4 = (class46.sizeY * 4 - background.height) / 2;
+                    background.draw(48 + l * 4 + i4, 48 + (104 - i - class46.sizeY) * 4 + j4);
                 }
             }
         }
@@ -5137,13 +5183,13 @@ public class Client extends RSApplet {
                             if (anInt1022 < 8 && j6 >= -32 && j6 <= 31 && k6 >= -32 && k6 <= 31) {
                                 j6 += 32;
                                 k6 += 32;
-                                stream.writeWord((anInt1022 << 12) + (j6 << 6) + k6);
+                                stream.writeShort((anInt1022 << 12) + (j6 << 6) + k6);
                                 anInt1022 = 0;
                             } else if (anInt1022 < 8) {
-                                stream.writeDWordBigEndian(0x800000 + (anInt1022 << 19) + i6);
+                                stream.writeMedium(0x800000 + (anInt1022 << 19) + i6);
                                 anInt1022 = 0;
                             } else {
-                                stream.writeDWord(0xc0000000 + (anInt1022 << 19) + i6);
+                                stream.writeInt(0xc0000000 + (anInt1022 << 19) + i6);
                                 anInt1022 = 0;
                             }
                         }
@@ -5186,7 +5232,7 @@ public class Client extends RSApplet {
                 j5 = 1;
             int l5 = (int) l;
             stream.createFrame(241);
-            stream.writeDWord((l5 << 20) + (j5 << 19) + k4);
+            stream.writeInt((l5 << 20) + (j5 << 19) + k4);
         }
         if (anInt1016 > 0)
             anInt1016--;
@@ -5196,7 +5242,7 @@ public class Client extends RSApplet {
             anInt1016 = 20;
             aBoolean1017 = false;
             stream.createFrame(86);
-            stream.writeWord(anInt1184);
+            stream.writeShort(anInt1184);
             stream.method432(viewRotation);
         }
         if (super.awtFocus && !aBoolean954) {
@@ -5248,7 +5294,7 @@ public class Client extends RSApplet {
                 if (aBoolean1242 && anInt989 >= 12) {
                     lastActiveInvInterface = -1;
                     processRightClick();
-                    if (anInt1084 == 5382) {
+                    if (Bank.isBankContainer(RSInterface.interfaceCache[draggingItemInterfaceId]) || draggingItemInterfaceId == Bank.SEARCH_CONTAINER) {
                         Point southWest, northEast;
                         int xOffset = currentScreenMode == ScreenMode.FIXED ? 0
                                 : (centerInterface() ? (currentGameWidth / 2) - 256 : 0);
@@ -5262,52 +5308,119 @@ public class Client extends RSApplet {
                         for (int i = 0; i < slots.length; i++) {
                             if (super.mouseX >= slots[i] && super.mouseX <= slots[i] + 42
                                     && super.mouseY >= northEast.getY() && super.mouseY <= southWest.getY()) {
-                                RSInterface rsi = RSInterface.interfaceCache[58050 + i];
-                                if (rsi.isMouseoverTriggered) {
-                                    continue;
+                                if (draggingItemInterfaceId != Bank.SEARCH_CONTAINER) {
+                                    RSInterface rsi = RSInterface.interfaceCache[58050 + i];
+                                    if (rsi.isMouseoverTriggered) {
+                                        continue;
+                                    }
                                 }
+                                // Update client side to hide latency
+                                if (Bank.getCurrentBankTab() == 0) {
+                                    OptionalInt fromTabOptional = Arrays.stream(Bank.ITEM_CONTAINERS).filter(id -> draggingItemInterfaceId == id).findFirst();
+                                    if (fromTabOptional.isPresent()) {
+                                        RSInterface fromTab = RSInterface.interfaceCache[fromTabOptional.getAsInt()];
+                                        RSInterface toTab = RSInterface.interfaceCache[Bank.ITEM_CONTAINERS[i]];
+                                        if (toTab.getInventoryContainerFreeSlots() > 0 && fromTab.id != toTab.id) {
+                                            RSInterface.insertInventoryItem(fromTab, itemDraggingSlot, toTab);
+                                        }
+                                    }
+                                }
+                                if (draggingItemInterfaceId != Bank.SEARCH_CONTAINER) {
                                 stream.createFrame(214);
-                                stream.method433(anInt1084);
+                                stream.method433(draggingItemInterfaceId);
                                 stream.method424(0);
-                                stream.method433(anInt1085);
+                                stream.method433(itemDraggingSlot);
                                 stream.method431(1000 + i);
+                                } else {
+                                    stream.createFrame(243);
+                                    stream.writeShort(i);
+                                    stream.writeShort(RSInterface.get(draggingItemInterfaceId).inventoryItemId[itemDraggingSlot]);
+                                }
                                 return;
                             }
                         }
                     }
-                    if (lastActiveInvInterface == anInt1084 && mouseInvInterfaceIndex != anInt1085) {
-                        RSInterface class9 = RSInterface.interfaceCache[anInt1084];
-                        int j1 = 0;
-                        if (anInt913 == 1 && class9.contentType == 206)
-                            j1 = 1;
-                        if (class9.inv[mouseInvInterfaceIndex] <= 0)
-                            j1 = 0;
-                        if (class9.aBoolean235) {
-                            int l2 = anInt1085;
-                            int l3 = mouseInvInterfaceIndex;
-                            class9.inv[l3] = class9.inv[l2];
-                            class9.invStackSizes[l3] = class9.invStackSizes[l2];
-                            class9.inv[l2] = -1;
-                            class9.invStackSizes[l2] = 0;
-                        } else if (j1 == 1) {
-                            int i3 = anInt1085;
-                            for (int i4 = mouseInvInterfaceIndex; i3 != i4; )
-                                if (i3 > i4) {
-                                    class9.swapInventoryItems(i3, i3 - 1);
-                                    i3--;
-                                } else if (i3 < i4) {
-                                    class9.swapInventoryItems(i3, i3 + 1);
-                                    i3++;
+
+                    try {
+                        RSInterface class9 = RSInterface.interfaceCache[draggingItemInterfaceId];
+                        if (class9 != null) {
+                            if (mouseInvInterfaceIndex != itemDraggingSlot && lastActiveInvInterface == draggingItemInterfaceId) {
+                                // Dragging item inside the same container
+
+                                int insertMode = 0;
+                                if (anInt913 == 1 && class9.contentType == 206)
+                                    insertMode = 1;
+                                if (class9.inventoryItemId[mouseInvInterfaceIndex] <= 0)
+                                    insertMode = 0;
+
+                                if (class9.aBoolean235) {
+                                    // Move to empty slot?
+                                    int l2 = itemDraggingSlot;
+                                    int l3 = mouseInvInterfaceIndex;
+                                    class9.inventoryItemId[l3] = class9.inventoryItemId[l2];
+                                    class9.inventoryAmounts[l3] = class9.inventoryAmounts[l2];
+                                    class9.inventoryItemId[l2] = -1;
+                                    class9.inventoryAmounts[l2] = 0;
+                                } else if (insertMode == 1) {
+                                    // Insert
+                                    int i3 = itemDraggingSlot;
+                                    for (int i4 = mouseInvInterfaceIndex; i3 != i4; ) {
+                                        if (i3 > i4) {
+                                            class9.swapInventoryItems(i3, i3 - 1);
+                                            i3--;
+                                        } else if (i3 < i4) {
+                                            class9.swapInventoryItems(i3, i3 + 1);
+                                            i3++;
+                                        }
+                                    }
+                                } else {
+                                    // Swap
+                                    class9.swapInventoryItems(itemDraggingSlot, mouseInvInterfaceIndex);
                                 }
 
-                        } else {
-                            class9.swapInventoryItems(anInt1085, mouseInvInterfaceIndex);
+                                Bank.shiftTabs();
+                                stream.createFrame(214);
+                                stream.method433(draggingItemInterfaceId);
+                                stream.method424(insertMode);
+                                stream.method433(itemDraggingSlot);
+                                stream.method431(mouseInvInterfaceIndex);
+                            } else if (class9.allowInvDraggingToOtherContainers && lastActiveInvInterface != draggingItemInterfaceId) {
+                                if (lastActiveInvInterface != -1 && draggingItemInterfaceId != -1) {
+                                    RSInterface draggingFrom = RSInterface.interfaceCache[draggingItemInterfaceId];
+                                    RSInterface draggingTo = RSInterface.interfaceCache[lastActiveInvInterface];
+                                    if (draggingTo != null && draggingFrom != null
+                                            && draggingTo.allowInvDraggingToOtherContainers
+                                            && draggingFrom.allowInvDraggingToOtherContainers) {
+                                        int fromSlot = itemDraggingSlot;
+                                        int toSlot = mouseInvInterfaceIndex;
+                                        int insertMode = 0;
+                                        if (anInt913 == 1 && class9.contentType == 206)
+                                            insertMode = 1;
+
+                                        if (insertMode == 1) {
+                                            // insert
+                                            if (draggingTo.getInventoryContainerFreeSlots() > 0) {
+                                                RSInterface.insertInventoryItem(draggingFrom, fromSlot, draggingTo, toSlot);
+                                            } else {
+                                                return;
+                                            }
+                                        } else {
+                                            //swap
+                                            RSInterface.swapInventoryItems(draggingFrom, fromSlot, draggingTo, toSlot);
+                                        }
+
+                                        stream.createFrame(242);
+                                        stream.writeShort(draggingTo.id);
+                                        stream.writeShort(draggingFrom.id);
+                                        stream.method424(insertMode);
+                                        stream.writeShort(fromSlot);
+                                        stream.writeShort(toSlot);
+                                    }
+                                }
+                            }
                         }
-                        stream.createFrame(214);
-                        stream.method433(anInt1084);
-                        stream.method424(j1);
-                        stream.method433(anInt1085);
-                        stream.method431(mouseInvInterfaceIndex);
+                    } catch (Exception e) {
+                        e.printStackTrace();
                     }
                 } else if ((anInt1253 == 1 || menuHasAddFriend(menuActionRow - 1)) && menuActionRow > 2)
                     determineMenuSize();
@@ -5673,11 +5786,11 @@ public class Client extends RSApplet {
             int i2;
             int j2;
             if (l1 == 0 || l1 == 2) {
-                i2 = class46.anInt744;
-                j2 = class46.anInt761;
+                i2 = class46.sizeX;
+                j2 = class46.sizeY;
             } else {
-                i2 = class46.anInt761;
-                j2 = class46.anInt744;
+                i2 = class46.sizeY;
+                j2 = class46.sizeX;
             }
             int k2 = class46.anInt768;
             if (l1 != 0)
@@ -5711,7 +5824,7 @@ public class Client extends RSApplet {
 
     public void sendStringAsLong(String string) {
         stream.createFrame(60);
-        stream.writeQWord(TextClass.longForName(string));
+        stream.writeLong(TextClass.longForName(string));
     }
 
     public void sendString(int identifier, String text) {
@@ -5824,7 +5937,7 @@ public class Client extends RSApplet {
         }
         if (l == 475) {
             stream.createFrame(185);
-            stream.writeWord(-1);
+            stream.writeShort(-1);
             experienceCounter = 0L;
         }
         if (l == 852) {//goon
@@ -5833,7 +5946,7 @@ public class Client extends RSApplet {
         }
         if (l == 1850) {
             stream.createFrame(185);
-            stream.writeWord(5100);
+            stream.writeShort(5100);
         }
         if (l == 769) {
             RSInterface d = RSInterface.interfaceCache[j];
@@ -5865,7 +5978,7 @@ public class Client extends RSApplet {
         if (l == 850) {
             if (tabInterfaceIDs[tabID] == 17200) {
                 stream.createFrame(185);
-                stream.writeWord(5200 + k);
+                stream.writeShort(5200 + k);
             }
         }
         if (l == 661) { // intid, slot, itemid;
@@ -5893,18 +6006,18 @@ public class Client extends RSApplet {
             case 1500: // Toggle quick prayers
                 prayClicked = !prayClicked;
                 stream.createFrame(185);
-                stream.writeWord(5000);
+                stream.writeShort(5000);
                 break;
 
             case 1506: // Select quick prayers
                 stream.createFrame(185);
-                stream.writeWord(5001);
+                stream.writeShort(5001);
                 setTab(5);
                 break;
         }
         if (l == 1200) {
             stream.createFrame(185);
-            stream.writeWord(k);
+            stream.writeShort(k);
             RSInterface item = RSInterface.interfaceCache[k];
             RSInterface menu = RSInterface.interfaceCache[item.mOverInterToTrigger];
             menu.setMenuItem(item.getMenuItem());
@@ -5913,14 +6026,15 @@ public class Client extends RSApplet {
         if (l >= 1700 && l <= 1710) {
             stream.createFrame(185);
             int offset = k + (k - 58030) * 10 + (l - 1700);
-            stream.writeWord(offset);
+            stream.writeShort(offset);
+            Bank.handleButton(offset);
         }
         if (l == 300) {
             stream.createFrame(141);
             stream.method432(j);
-            stream.writeWord(k);
+            stream.writeShort(k);
             stream.method432(i1);
-            stream.writeDWord(modifiableXValue);
+            stream.writeInt(modifiableXValue);
         }
         if (l == 291) { //issue with bank vs selling...
             //pushMessage("int: " + openInterfaceID, 0, "int: " + openInterfaceID);
@@ -5941,9 +6055,9 @@ public class Client extends RSApplet {
             } else {
                 stream.createFrame(141);
                 stream.method432(j);
-                stream.writeWord(k);
+                stream.writeShort(k);
                 stream.method432(i1);
-                stream.writeDWord(modifiableXValue);
+                stream.writeInt(modifiableXValue);
             }
 
 
@@ -5989,17 +6103,17 @@ public class Client extends RSApplet {
             crossIndex = 0;
             stream.createFrame(236);
             stream.method431(k + baseY);
-            stream.writeWord(i1);
+            stream.writeShort(i1);
             stream.method431(j + baseX);
         }
         if (l == 62 && method66(i1, y, x, id)) {
             stream.createFrame(192);
-            stream.writeWord(anInt1284);
-            stream.writeDWord(id);
+            stream.writeShort(anInt1284);
+            stream.writeInt(id);
             stream.method433(y + baseY);
             stream.method431(anInt1283);
             stream.method433(x + baseX);
-            stream.writeWord(anInt1285);
+            stream.writeShort(anInt1285);
         }
         if (l == 511) {
             boolean flag2 = doWalkTo(2, 0, 0, 0, myPlayer.smallY[0], 0, 0, k, myPlayer.smallX[0], false, j);
@@ -6012,10 +6126,10 @@ public class Client extends RSApplet {
             stream.createFrame(25);
             stream.method431(anInt1284);
             stream.method432(anInt1285);
-            stream.writeWord(i1);
+            stream.writeShort(i1);
             stream.method432(k + baseY);
             stream.method433(anInt1283);
-            stream.writeWord(j + baseX);
+            stream.writeShort(j + baseX);
         }
         if (l == 74) {
             stream.createFrame(122);
@@ -6119,10 +6233,10 @@ public class Client extends RSApplet {
                                 itemContainer.itemSearchSelectedSlot = 0;
                             }
                             stream.createFrame(124);
-                            stream.writeDWord(RSInterface.selectedItemInterfaceId);
-                            stream.writeDWord(itemContainer.itemSearchSelectedSlot);
-                            stream.writeDWord(itemContainer.itemSearchSelectedId - 1);
-                            stream.writeDWord(amount);
+                            stream.writeInt(RSInterface.selectedItemInterfaceId);
+                            stream.writeInt(itemContainer.itemSearchSelectedSlot);
+                            stream.writeInt(itemContainer.itemSearchSelectedId - 1);
+                            stream.writeInt(amount);
                         }
                         break;
 
@@ -6147,10 +6261,10 @@ public class Client extends RSApplet {
                                 itemContainer2.itemSearchSelectedSlot = 0;
                             }
                             stream.createFrame(124);
-                            stream.writeDWord(RSInterface.selectedItemInterfaceId);
-                            stream.writeDWord(itemContainer2.itemSearchSelectedSlot);
-                            stream.writeDWord(itemContainer2.itemSearchSelectedId - 1);
-                            stream.writeDWord(amount);
+                            stream.writeInt(RSInterface.selectedItemInterfaceId);
+                            stream.writeInt(itemContainer2.itemSearchSelectedSlot);
+                            stream.writeInt(itemContainer2.itemSearchSelectedId - 1);
+                            stream.writeInt(amount);
                         }
                         break;
                     case 19144:
@@ -6160,7 +6274,7 @@ public class Client extends RSApplet {
                         break;
                     default:
                         stream.createFrame(185);
-                        stream.writeWord(k);
+                        stream.writeShort(k);
 
                         if (k >= 61101 && k <= 61200) {
                             int selected = k - 61101;
@@ -6189,8 +6303,8 @@ public class Client extends RSApplet {
                                 }
 
                                 stream.createFrame(149);
-                                stream.writeWord(id2);
-                                stream.writeDWord((int) num);
+                                stream.writeShort(id2);
+                                stream.writeInt((int) num);
                                 stream.writeWordBigEndian(variousSettings[1075]);
                                 break;
                             }
@@ -6216,12 +6330,12 @@ public class Client extends RSApplet {
                     anInt1188 = 0;
                 }
                 stream.createFrame(128);
-                stream.writeWord(i1);
+                stream.writeShort(i1);
             }
         }
         if (l == 745) {
             stream.createFrame(8);
-            stream.writeDWord(i1);
+            stream.writeInt(i1);
         }
         if (l == 20) {
             NPC class30_sub2_sub4_sub1_sub1_1 = npcs[i1];
@@ -6269,24 +6383,24 @@ public class Client extends RSApplet {
             anInt924 += baseX;
             if (anInt924 >= 113) {
                 stream.createFrame(183);
-                stream.writeDWordBigEndian(0xe63271);
+                stream.writeMedium(0xe63271);
                 anInt924 = 0;
             }
             method66(i1, y, x, id);
             stream.createFrame(228);
-            stream.writeDWord(id);
+            stream.writeInt(id);
             stream.method432(y + baseY);
-            stream.writeWord(x + baseX);
+            stream.writeShort(x + baseX);
         }
         if (l == 679 && !aBoolean1149) {
             stream.createFrame(40);
-            stream.writeWord(k);
+            stream.writeShort(k);
             aBoolean1149 = true;
         }
         if (l == 431) {
             stream.createFrame(129);
             stream.method432(j);
-            stream.writeWord(k);
+            stream.writeShort(k);
             stream.method432(i1);
             atInventoryLoopCycle = 0;
             atInventoryInterface = k;
@@ -6344,9 +6458,9 @@ public class Client extends RSApplet {
             //
 
             stream.method432(j);
-            stream.writeWord(k);
+            stream.writeShort(k);
             stream.method432(i1);
-            stream.writeDWord(modifiableXValue);
+            stream.writeInt(modifiableXValue);
         }
 
 		/*
@@ -6397,7 +6511,7 @@ public class Client extends RSApplet {
                             anInt1188 = 0;
                         }
                         stream.createFrame(128);
-                        stream.writeWord(playerIndices[j3]);
+                        stream.writeShort(playerIndices[j3]);
                     }
                     flag9 = true;
                     break;
@@ -6409,12 +6523,12 @@ public class Client extends RSApplet {
         }
         if (l == 870) {
             stream.createFrame(53);
-            stream.writeWord(j);
+            stream.writeShort(j);
             stream.method432(anInt1283);
             stream.method433(i1);
-            stream.writeWord(anInt1284);
+            stream.writeShort(anInt1284);
             stream.method431(anInt1285);
-            stream.writeWord(k);
+            stream.writeShort(k);
             atInventoryLoopCycle = 0;
             atInventoryInterface = k;
             atInventoryIndex = j;
@@ -6427,7 +6541,7 @@ public class Client extends RSApplet {
         if (l == 847) {
             stream.createFrame(87);
             stream.method432(i1);
-            stream.writeWord(k);
+            stream.writeShort(k);
             stream.method432(j);
             atInventoryLoopCycle = 0;
             atInventoryInterface = k;
@@ -6472,17 +6586,17 @@ public class Client extends RSApplet {
                 autocast = true;
                 autocastId = class9_1.id;
                 stream.createFrame(185);
-                stream.writeWord(class9_1.id);
+                stream.writeShort(class9_1.id);
             } else if (autocastId == class9_1.id) {
                 autocast = false;
                 autocastId = 0;
                 stream.createFrame(185);
-                stream.writeWord(6666); // reset server side
+                stream.writeShort(6666); // reset server side
             } else if (autocastId != class9_1.id) {
                 autocast = true;
                 autocastId = class9_1.id;
                 stream.createFrame(185);
-                stream.writeWord(class9_1.id);
+                stream.writeShort(class9_1.id);
             }
         }
         if (l == 78) {
@@ -6528,7 +6642,7 @@ public class Client extends RSApplet {
             crossIndex = 0;
             stream.createFrame(79);
             stream.method431(k + baseY);
-            stream.writeWord(i1);
+            stream.writeShort(i1);
             stream.method432(j + baseX);
         }
         if (l == 632) {
@@ -6549,11 +6663,11 @@ public class Client extends RSApplet {
             if (!runClicked) {
                 runClicked = true;
                 stream.createFrame(185);
-                stream.writeWord(152);
+                stream.writeShort(152);
             } else {
                 runClicked = false;
                 stream.createFrame(185);
-                stream.writeWord(152);
+                stream.writeShort(152);
             }
         }
         if (l == 1004) {
@@ -6741,15 +6855,15 @@ public class Client extends RSApplet {
             crossIndex = 0;
             stream.createFrame(181);
             stream.method431(k + baseY);
-            stream.writeWord(i1);
+            stream.writeShort(i1);
             stream.method431(j + baseX);
             stream.method432(anInt1137);
         }
         // clan chat
         if (l == 647) {
             stream.createFrame(213);
-            stream.writeWord(k);
-            stream.writeWord(j);
+            stream.writeShort(k);
+            stream.writeShort(j);
             switch (k) {
                 case 18304:
                     if (j == 0) {
@@ -6782,8 +6896,9 @@ public class Client extends RSApplet {
                 break;
         }
         if (l == 646) { /** TODO **/
+            Bank.handleButton(k);
             stream.createFrame(185);
-            stream.writeWord(k);
+            stream.writeShort(k);
             if (!clickConfigButton(k)) {
                 RSInterface class9_2 = RSInterface.interfaceCache[k];
                 if (class9_2.valueIndexArray != null && class9_2.valueIndexArray[0][0] == 5) {
@@ -6871,7 +6986,7 @@ public class Client extends RSApplet {
                     anInt1134 = 0;
                 }
                 stream.createFrame(21);
-                stream.writeWord(i1);
+                stream.writeShort(i1);
             }
         }
         if (l == 413) {
@@ -6896,7 +7011,7 @@ public class Client extends RSApplet {
                 clearTopInterfaces();
             else {
                 stream.createFrame(185);
-                stream.writeWord(15333);
+                stream.writeShort(15333);
             }
         }
 
@@ -6935,8 +7050,8 @@ public class Client extends RSApplet {
                         clpbrd.setContents(stringSelection, null);
                     }
                     stream.createFrame(6);
-                    stream.writeWord((int) entityDef.interfaceType);
-                    stream.writeWord(i1);
+                    stream.writeShort((int) entityDef.interfaceType);
+                    stream.writeShort(i1);
 
                     // pushMessage(s9, 0, "");
                 }
@@ -6945,7 +7060,7 @@ public class Client extends RSApplet {
         if (l == 900) {
             method66(i1, y, x, id);
             stream.createFrame(252);
-            stream.writeDWord(id);
+            stream.writeInt(id);
             stream.method431(y + baseY);
             stream.method432(x + baseX);
         }
@@ -7007,7 +7122,7 @@ public class Client extends RSApplet {
             stream.method431(j + baseX);
             stream.method432(anInt1137);
             stream.method432(k + baseY);
-            stream.writeDWord(i1 >> 14 & 0x7fff);
+            stream.writeInt(i1 >> 14 & 0x7fff);
         }
         if (l == 567) {
             boolean flag6 = doWalkTo(2, 0, 0, 0, myPlayer.smallY[0], 0, 0, k, myPlayer.smallX[0], false, j);
@@ -7028,7 +7143,7 @@ public class Client extends RSApplet {
             if (anInt1175 >= 59) {
                 stream.createFrame(200);
                 stream.createFrame(201);
-                stream.writeWord(25501);
+                stream.writeShort(25501);
                 anInt1175 = 0;
             }
             stream.createFrame(43);
@@ -7046,9 +7161,9 @@ public class Client extends RSApplet {
         }
         if (l == 543) {
             stream.createFrame(237);
-            stream.writeWord(j);
+            stream.writeShort(j);
             stream.method432(i1);
-            stream.writeWord(k);
+            stream.writeShort(k);
             stream.method432(anInt1137);
             atInventoryLoopCycle = 0;
             atInventoryInterface = k;
@@ -7089,8 +7204,8 @@ public class Client extends RSApplet {
                 crossIndex = 0;
                 stream.createFrame(14);
                 stream.method432(anInt1284);
-                stream.writeWord(i1);
-                stream.writeWord(anInt1285);
+                stream.writeShort(i1);
+                stream.writeShort(anInt1285);
                 stream.method431(anInt1283);
             }
         }
@@ -7120,7 +7235,7 @@ public class Client extends RSApplet {
         }
         if (l == 1052) {
             stream.createFrame(185);
-            stream.writeWord(154);
+            stream.writeShort(154);
         }
 
         if (l == 1004) {
@@ -7133,7 +7248,7 @@ public class Client extends RSApplet {
 
         if (l == 454) {
             stream.createFrame(41);
-            stream.writeWord(i1);
+            stream.writeShort(i1);
             stream.method432(j);
             stream.method432(k);
             atInventoryLoopCycle = 0;
@@ -7174,34 +7289,34 @@ public class Client extends RSApplet {
             method66(i1, y, x, id);
             stream.createFrame(70);
             stream.method431(x + baseX);
-            stream.writeWord(y + baseY);
-            stream.writeDWord(id);
+            stream.writeShort(y + baseY);
+            stream.writeInt(id);
         }
         if (l == 872) {
             method66(i1, y, x, id);
             stream.createFrame(234);
             stream.method433(x + baseX);
-            stream.writeDWord(id);
+            stream.writeInt(id);
             stream.method433(y + baseY);
         }
         if (l == 502) {
             method66(i1, y, x, id);
             stream.createFrame(132);
             stream.method433(x + baseX);
-            stream.writeDWord(id);
+            stream.writeInt(id);
             stream.method432(y + baseY);
         }
         if (l == 1130) {
             RSInterface class9_4 = RSInterface.interfaceCache[k];
             if (class9_4 != null) {
-                class9_4.itemSearchSelectedId = class9_4.inv[j];
+                class9_4.itemSearchSelectedId = class9_4.inventoryItemId[j];
                 class9_4.itemSearchSelectedSlot = j;
                 RSInterface.selectedItemInterfaceId = class9_4.id;
             }
         }
         if (l == 169) {
             stream.createFrame(185);
-            stream.writeWord(k);
+            stream.writeShort(k);
             RSInterface class9_3 = RSInterface.interfaceCache[k];
             if (class9_3.valueIndexArray != null && class9_3.valueIndexArray[0][0] == 5) {
                 int l2 = class9_3.valueIndexArray[0][1];
@@ -7237,7 +7352,7 @@ public class Client extends RSApplet {
             }
             stream.createFrame(146);
             stream.method433(x + baseX);
-            stream.writeWord(id);
+            stream.writeShort(id);
             stream.method432(y + baseY);
         }
         if (l == 244) {
@@ -7257,9 +7372,9 @@ public class Client extends RSApplet {
             ItemDefinition itemDef_1 = ItemDefinition.forID(i1);
             if (itemDef_1 != null) {
                 stream.createFrame(2);
-                stream.writeWord(i1);
-                stream.writeWord(j);
-                stream.writeWord(k);
+                stream.writeShort(i1);
+                stream.writeShort(j);
+                stream.writeShort(k);
             }
         }
         itemSelected = 0;
@@ -7907,7 +8022,7 @@ public class Client extends RSApplet {
                         stream.createFrame(126);
                         stream.writeWordBigEndian(0);
                         int k = stream.currentPosition;
-                        stream.writeQWord(aLong953);
+                        stream.writeLong(aLong953);
                         TextInput.method526(promptInput, stream);
                         stream.writeBytes(stream.currentPosition - k);
                         promptInput = TextInput.processText(promptInput);
@@ -7996,11 +8111,24 @@ public class Client extends RSApplet {
                         } catch (Exception _ex) {
                         }
                         stream.createFrame(208);
-                        stream.writeDWord(i1);
+                        stream.writeInt(i1);
                         modifiableXValue = i1;
                         if (modifiableXValue < 0)
                             modifiableXValue = 1;
                     }
+                    inputDialogState = 0;
+                    inputTaken = true;
+                }
+            } else if (Bank.isSearchingBank()) {
+                if (j >= 32 && j <= 122 && Bank.searchingBankString.length() < 58) {
+                    Bank.searchingBankString += (char) j;
+                    inputTaken = true;
+                }
+                if (j == 8 && Bank.searchingBankString.length() > 0) {
+                    Bank.searchingBankString = Bank.searchingBankString.substring(0, Bank.searchingBankString.length() - 1);
+                    inputTaken = true;
+                }
+                if (j == 13 || j == 10) {
                     inputDialogState = 0;
                     inputTaken = true;
                 }
@@ -8016,7 +8144,7 @@ public class Client extends RSApplet {
                 if (j == 13 || j == 10) {
                     if (amountOrNameInput.length() > 0) {
                         stream.createFrame(60);
-                        stream.writeQWord(TextClass.longForName(amountOrNameInput));
+                        stream.writeLong(TextClass.longForName(amountOrNameInput));
                     }
                     inputDialogState = 0;
                     inputTaken = true;
@@ -8060,7 +8188,7 @@ public class Client extends RSApplet {
                         int amount = 0;
                         amount = Integer.parseInt(amountOrNameInput);
                         stream.createFrame(208);
-                        stream.writeDWord(amount);
+                        stream.writeInt(amount);
                         modifiableXValue = amount;
                     }
                     inputDialogState = 0;
@@ -8092,7 +8220,7 @@ public class Client extends RSApplet {
                         int amount = 0;
                         amount = Integer.parseInt(amountOrNameInput);
                         stream.createFrame(208);
-                        stream.writeDWord(amount);
+                        stream.writeInt(amount);
                         modifiableXValue = amount;
                     }
                     inputDialogState = 0;
@@ -8137,13 +8265,13 @@ public class Client extends RSApplet {
                             int[] results = itemSearch.getItemSearchResults();
                             if (subcomponent != null) {
                                 int position = 0;
-                                int length = subcomponent.inv.length;
-                                subcomponent.inv = new int[length];
-                                subcomponent.invStackSizes = new int[subcomponent.inv.length];
+                                int length = subcomponent.inventoryItemId.length;
+                                subcomponent.inventoryItemId = new int[length];
+                                subcomponent.inventoryAmounts = new int[subcomponent.inventoryItemId.length];
                                 for (int result : results) {
                                     if (result > 0) {
-                                        subcomponent.inv[position] = result + 1;
-                                        subcomponent.invStackSizes[position] = 1;
+                                        subcomponent.inventoryItemId[position] = result + 1;
+                                        subcomponent.inventoryAmounts[position] = 1;
                                         position++;
                                     }
                                 }
@@ -8152,7 +8280,7 @@ public class Client extends RSApplet {
                     } else if (rsi.updatesEveryInput && rsi.message.length() > 0 && j != 10 && j != 13) {
                         stream.createFrame(142);
                         stream.writeWordBigEndian(4 + rsi.message.length() + 1);
-                        stream.writeDWord(rsi.id);
+                        stream.writeInt(rsi.id);
                         stream.writeString(rsi.message);
                         inputString = "";
                         promptInput = "";
@@ -8160,7 +8288,7 @@ public class Client extends RSApplet {
                     } else if ((j == 10 || j == 13) && rsi.message.length() > 0 && !rsi.updatesEveryInput) {
                         stream.createFrame(142);
                         stream.writeWordBigEndian(4 + rsi.message.length() + 1);
-                        stream.writeDWord(rsi.id);
+                        stream.writeInt(rsi.id);
                         stream.writeString(rsi.message);
                         inputString = "";
                         promptInput = "";
@@ -8348,7 +8476,7 @@ public class Client extends RSApplet {
 
                         if (inputString.equals("::resetcounter") && (j == 13 || j == 10) && myPlayer.getRights() == 9) {
                             stream.createFrame(185);
-                            stream.writeWord(-1);
+                            stream.writeShort(-1);
                             experienceCounter = 0L;
                         }
 
@@ -10069,15 +10197,15 @@ public class Client extends RSApplet {
                 ai[3] = (int) aLong1215;
                 stream.currentPosition = 0;
                 stream.writeWordBigEndian(10);
-                stream.writeDWord(ai[0]);
-                stream.writeDWord(ai[1]);
-                stream.writeDWord(ai[2]);
-                stream.writeDWord(ai[3]);
-                stream.writeDWord(Signlink.uid);
+                stream.writeInt(ai[0]);
+                stream.writeInt(ai[1]);
+                stream.writeInt(ai[2]);
+                stream.writeInt(ai[3]);
+                stream.writeInt(Signlink.uid);
                 stream.writeString(s);
                 stream.writeString(s1);
                 stream.writeString(macAddress);
-                stream.writeString(Identity.getIndentity());
+                stream.writeString(FingerPrint.getFingerprint());
                 stream.doKeys();
                 aStream_847.currentPosition = 0;
                 if (flag)
@@ -10086,10 +10214,11 @@ public class Client extends RSApplet {
                     aStream_847.writeWordBigEndian(16);
                 aStream_847.writeWordBigEndian(stream.currentPosition + 36 + 1 + 1 + 2);
                 aStream_847.writeWordBigEndian(255);
-                aStream_847.writeWord(Configuration.CLIENT_VERSION);
+                aStream_847.writeShort(Configuration.CLIENT_VERSION);
+                aStream_847.writeInt(213);
                 aStream_847.writeWordBigEndian(lowMem ? 1 : 0);
                 for (int l1 = 0; l1 < 9; l1++)
-                    aStream_847.writeDWord(expectedCRCs[l1]);
+                    aStream_847.writeInt(expectedCRCs[l1]);
 
                 aStream_847.writeBytes(stream.payload, stream.currentPosition, 0);
                 stream.encryption = new ISAACRandomGen(ai);
@@ -10546,7 +10675,7 @@ public class Client extends RSApplet {
             anInt1288 += k4;
             if (anInt1288 >= 92) {
                 stream.createFrame(36);
-                stream.writeDWord(0);
+                stream.writeInt(0);
                 anInt1288 = 0;
             }
             if (i == 0) {
@@ -12129,7 +12258,7 @@ public class Client extends RSApplet {
             //byte soundData[] = streamLoader_5.getDataForName("sounds.dat");
             //Stream stream2 = new Stream(soundData);
             //Sounds.unpack(stream2);
-
+            bankDivider = new Sprite("bank_divider");
             mapIcon7 = new Sprite(streamLoader_2, "mapfunction", 1);
             mapIcon8 = new Sprite(streamLoader_2, "mapfunction", 51);
             mapIcon6 = new Sprite(streamLoader_2, "mapfunction", 74);
@@ -12462,13 +12591,13 @@ public class Client extends RSApplet {
                     if (flag1) {
                         stream.writeWordBigEndian(i);
                         stream.writeWordBigEndian(j);
-                        stream.writeWord(viewRotation);
+                        stream.writeShort(viewRotation);
                         stream.writeWordBigEndian(57);
                         stream.writeWordBigEndian(minimapRotation);
                         stream.writeWordBigEndian(minimapZoom);
                         stream.writeWordBigEndian(89);
-                        stream.writeWord(myPlayer.x);
-                        stream.writeWord(myPlayer.y);
+                        stream.writeShort(myPlayer.x);
+                        stream.writeShort(myPlayer.y);
                         stream.writeWordBigEndian(anInt1264);
                         stream.writeWordBigEndian(63);
                     }
@@ -12483,13 +12612,13 @@ public class Client extends RSApplet {
                 if ((int) (Math.random() * 2D) == 0)
                     stream.writeWordBigEndian(101);
                 stream.writeWordBigEndian(197);
-                stream.writeWord((int) (Math.random() * 65536D));
+                stream.writeShort((int) (Math.random() * 65536D));
                 stream.writeWordBigEndian((int) (Math.random() * 256D));
                 stream.writeWordBigEndian(67);
-                stream.writeWord(14214);
+                stream.writeShort(14214);
                 if ((int) (Math.random() * 2D) == 0)
-                    stream.writeWord(29487);
-                stream.writeWord((int) (Math.random() * 65536D));
+                    stream.writeShort(29487);
+                stream.writeShort((int) (Math.random() * 65536D));
                 if ((int) (Math.random() * 2D) == 0)
                     stream.writeWordBigEndian(220);
                 stream.writeWordBigEndian(180);
@@ -13224,22 +13353,27 @@ public class Client extends RSApplet {
                 }
             } else if (class9_1.type != 1)
                 if (class9_1.type == 2) {
+                    try {
+                        Bank.setupMainTab(class9_1, _x, l2);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     int i3 = 0;
                     for (int l3 = 0; l3 < class9_1.height; l3++) {
                         for (int l4 = 0; l4 < class9_1.width; l4++) {
-                            // System.out.println("id? " + class9_1.inv[i3]);
+                            // System.out.println("id? " + class9_1.inventoryItemId[i3]);
                             int k5 = _x + l4 * (32 + class9_1.invSpritePadX);
                             int j6 = l2 + l3 * (32 + class9_1.invSpritePadY);
                             if (i3 < 20) {
                                 k5 += class9_1.spritesX[i3];
                                 j6 += class9_1.spritesY[i3];
                             }
-                            if (class9_1.inv[i3] > 0) {
+                            if (class9_1.inventoryItemId[i3] > 0) {
                                 int k6 = 0;
                                 int j7 = 0;
-                                int j9 = class9_1.inv[i3] - 1;
+                                int j9 = class9_1.inventoryItemId[i3] - 1;
                                 if (k5 > Rasterizer2D.clip_left - 32 && k5 < Rasterizer2D.clip_right && j6 > Rasterizer2D.clip_top - 32
-                                        && j6 < Rasterizer2D.clip_bottom || activeInterfaceType != 0 && anInt1085 == i3) {
+                                        && j6 < Rasterizer2D.clip_bottom || activeInterfaceType != 0 && itemDraggingSlot == i3) {
                                     int l9 = 0;
                                     if (itemSelected == 1 && anInt1283 == i3 && anInt1284 == class9_1.id)
                                         l9 = 0xffffff;
@@ -13248,14 +13382,14 @@ public class Client extends RSApplet {
                                     /**
                                      * Placeholder opacity editing
                                      */
-                                    if (class9_1.invStackSizes[i3] <= 0)
+                                    if (class9_1.inventoryAmounts[i3] <= 0)
                                         itemSpriteOpacity = 100;
 
                                     Sprite itemSprite = null;
 
                                     if (openInterfaceID == 29875) {
-                                        if (class9_1.inv[i3] < 555
-                                                || class9_1.inv[i3] > 567 && class9_1.inv[i3] != 9076) {
+                                        if (class9_1.inventoryItemId[i3] < 555
+                                                || class9_1.inventoryItemId[i3] > 567 && class9_1.inventoryItemId[i3] != 9076) {
                                             itemSpriteOpacity = 100;
                                         }
                                     }
@@ -13266,17 +13400,17 @@ public class Client extends RSApplet {
                                     if (smallSprite)
                                         itemSprite = ItemDefinition.getSmallSprite(j9);
                                     else
-                                        itemSprite = ItemDefinition.getSprite(j9, class9_1.invStackSizes[i3], l9);
+                                        itemSprite = ItemDefinition.getSprite(j9, class9_1.inventoryAmounts[i3], l9);
 
                                     if (class9_1.id >= 32212 && class9_1.id <= 32212 + 11) {
-                                        if (class9_1.inv[i3] > 0) {
+                                        if (class9_1.inventoryItemId[i3] > 0) {
                                             if (class9_1.sprite2 != null) {
                                                 class9_1.sprite2.drawSprite(k5 + k6 - 2, j6 + j7 - 2);
                                             }
                                         }
                                     }
                                     if (itemSprite != null) {
-                                        if (activeInterfaceType != 0 && anInt1085 == i3 && anInt1084 == class9_1.id) {
+                                        if (activeInterfaceType != 0 && itemDraggingSlot == i3 && draggingItemInterfaceId == class9_1.id) {
                                             k6 = super.mouseX - anInt1087;
                                             j7 = super.mouseY - anInt1088;
                                             if (k6 < 5 && k6 > -5)
@@ -13332,8 +13466,8 @@ public class Client extends RSApplet {
 
                                         if (!smallSprite) {
                                             if (class9_1.parentID < 58040 || class9_1.parentID > 58048) {
-                                                if (itemSprite.maxWidth == 33 || class9_1.invStackSizes[i3] != 1) {
-                                                    int k10 = class9_1.invStackSizes[i3];
+                                                if (itemSprite.maxWidth == 33 || class9_1.inventoryAmounts[i3] != 1) {
+                                                    int k10 = class9_1.inventoryAmounts[i3];
                                                     if (k10 >= 1)
                                                         smallText.method385(0xFFFF00, intToKOrMil(k10), j6 + 9 + j7,
                                                                 k5 + k6);
@@ -13558,11 +13692,11 @@ public class Client extends RSApplet {
                     int k4 = 0;
                     for (int j5 = 0; j5 < class9_1.height; j5++) {
                         for (int i6 = 0; i6 < class9_1.width; i6++) {
-                            if (class9_1.inv[k4] > 0) {
-                                ItemDefinition itemDef = ItemDefinition.forID(class9_1.inv[k4] - 1);
+                            if (class9_1.inventoryItemId[k4] > 0) {
+                                ItemDefinition itemDef = ItemDefinition.forID(class9_1.inventoryItemId[k4] - 1);
                                 String s2 = itemDef.name;
-                                if (itemDef.stackable || class9_1.invStackSizes[k4] != 1)
-                                    s2 = s2 + " x" + intToKOrMilLongName(class9_1.invStackSizes[k4]);
+                                if (itemDef.stackable || class9_1.inventoryAmounts[k4] != 1)
+                                    s2 = s2 + " x" + intToKOrMilLongName(class9_1.inventoryAmounts[k4]);
                                 int i9 = _x + i6 * (115 + class9_1.invSpritePadX);
                                 int k9 = l2 + j5 * (12 + class9_1.invSpritePadY);
                                 if (class9_1.centerText)
@@ -13981,6 +14115,8 @@ public class Client extends RSApplet {
                     }
                 }
         }
+        Bank.drawOnBank(rsInterface, 0, 0);
+
         Rasterizer2D.setDrawingArea(clipBottom, clipLeft, clipRight, clipTop);
         if (rsInterface.id == 42000) {
             cacheSprite2[76].flashSprite(24, 280, 200 + (int) (50 * Math.sin(loopCycle / 15.0)));
@@ -14316,14 +14452,14 @@ public class Client extends RSApplet {
                 stream.writeWordBigEndian((int) (Math.random() * 256D));
                 stream.writeWordBigEndian(101);
                 stream.writeWordBigEndian(233);
-                stream.writeWord(45092);
+                stream.writeShort(45092);
                 if ((int) (Math.random() * 2D) == 0)
-                    stream.writeWord(35784);
+                    stream.writeShort(35784);
                 stream.writeWordBigEndian((int) (Math.random() * 256D));
                 stream.writeWordBigEndian(64);
                 stream.writeWordBigEndian(38);
-                stream.writeWord((int) (Math.random() * 65536D));
-                stream.writeWord((int) (Math.random() * 65536D));
+                stream.writeShort((int) (Math.random() * 65536D));
+                stream.writeShort((int) (Math.random() * 65536D));
                 stream.writeBytes(stream.currentPosition - i2);
             }
             int j2 = k1 * 192;
@@ -14654,7 +14790,7 @@ public class Client extends RSApplet {
             ignoreListAsLongs[ignoreCount++] = l;
             needDrawTabArea = true;
             stream.createFrame(133);
-            stream.writeQWord(l);
+            stream.writeLong(l);
             return;
         } catch (RuntimeException runtimeexception) {
             Signlink.reporterror("45688, " + l + ", " + 4 + ", " + runtimeexception.toString());
@@ -14943,7 +15079,7 @@ public class Client extends RSApplet {
                     System.arraycopy(ignoreListAsLongs, j + 1, ignoreListAsLongs, j, ignoreCount - j);
 
                     stream.createFrame(74);
-                    stream.writeQWord(l);
+                    stream.writeLong(l);
                     return;
                 }
 
@@ -14993,9 +15129,9 @@ public class Client extends RSApplet {
                     int k2 = ai[l++];
                     if (k2 >= 0 && k2 < ItemDefinition.totalItems
                             && (!ItemDefinition.forID(k2).membersObject || isMembers)) {
-                        for (int j3 = 0; j3 < class9_1.inv.length; j3++) {
-                            if (class9_1.inv[j3] == k2 + 1)
-                                k1 += class9_1.invStackSizes[j3];
+                        for (int j3 = 0; j3 < class9_1.inventoryItemId.length; j3++) {
+                            if (class9_1.inventoryItemId[j3] == k2 + 1)
+                                k1 += class9_1.inventoryAmounts[j3];
                         }
                         if ((runePouch[0][0] + 1) == (k2 + 1)) {
                             k1 += runePouch[0][1];
@@ -15026,8 +15162,8 @@ public class Client extends RSApplet {
                     int l2 = ai[l++] + 1;
                     if (l2 >= 0 && l2 < ItemDefinition.totalItems
                             && (!ItemDefinition.forID(l2).membersObject || isMembers)) {
-                        for (int k3 = 0; k3 < class9_2.inv.length; k3++) {
-                            if (class9_2.inv[k3] != l2)
+                        for (int k3 = 0; k3 < class9_2.inventoryItemId.length; k3++) {
+                            if (class9_2.inventoryItemId[k3] != l2)
                                 continue;
                             k1 = 0x3b9ac9ff;
                             break;
@@ -15083,6 +15219,7 @@ public class Client extends RSApplet {
             return -1;
         }
     }
+    public Sprite bankDivider;
 
     public void drawTooltip() {
         if (tabInterfaceIDs[tabID] == 17200 && menuActionName[1].contains("ctivate")) {
@@ -15343,16 +15480,6 @@ public class Client extends RSApplet {
             } else {
                 cacheSprite2[0].drawSprite(currentGameWidth - 31, 129);
             }
-        }
-        if (currentScreenMode == ScreenMode.FIXED) {
-            wiki[0].drawSprite(190, 149);
-            if (wikiHover) {
-                wiki[1].drawSprite(190, 149);
-            } else {
-                wiki[0].drawSprite(190, 149);
-            }
-        } else {
-            wiki[0].drawSprite(currentGameWidth - 43, 155);
         }
         if (menuOpen) {
             drawMenu(currentScreenMode == ScreenMode.FIXED ? 516 : 0, 0);
@@ -16163,11 +16290,11 @@ public class Client extends RSApplet {
                     player.anInt1707 = l14 + loopCycle;
                     player.anInt1708 = k17 + loopCycle;
                     player.aModel_1714 = model;
-                    int i23 = class46.anInt744;
-                    int j23 = class46.anInt761;
+                    int i23 = class46.sizeX;
+                    int j23 = class46.sizeY;
                     if (i20 == 1 || i20 == 3) {
-                        i23 = class46.anInt761;
-                        j23 = class46.anInt744;
+                        i23 = class46.sizeY;
+                        j23 = class46.sizeX;
                     }
                     player.anInt1711 = k4 * 128 + i23 * 64;
                     player.anInt1713 = j7 * 128 + j23 * 64;
@@ -16475,11 +16602,11 @@ public class Client extends RSApplet {
                 if (j1 == 2) {
                     worldController.removeTiledObject(j, i1, i);
                     ObjectDefinition class46_1 = ObjectDefinition.forID(j2);
-                    if (i1 + class46_1.anInt744 > 103 || i + class46_1.anInt744 > 103 || i1 + class46_1.anInt761 > 103
-                            || i + class46_1.anInt761 > 103)
+                    if (i1 + class46_1.sizeX > 103 || i + class46_1.sizeX > 103 || i1 + class46_1.sizeY > 103
+                            || i + class46_1.sizeY > 103)
                         return;
                     if (class46_1.solid)
-                        aClass11Array1230[j].method216(l2, class46_1.anInt744, i1, i, class46_1.anInt761,
+                        aClass11Array1230[j].method216(l2, class46_1.sizeX, i1, i, class46_1.sizeY,
                                 class46_1.aBoolean757);
                 }
                 if (j1 == 3) {
@@ -16873,9 +17000,9 @@ public class Client extends RSApplet {
                 case 72:
                     int i1 = inStream.readLEUShort();
                     RSInterface class9 = RSInterface.interfaceCache[i1];
-                    for (int k15 = 0; k15 < class9.inv.length; k15++) {
-                        class9.inv[k15] = -1;
-                        class9.inv[k15] = 0;
+                    for (int k15 = 0; k15 < class9.inventoryItemId.length; k15++) {
+                        class9.inventoryItemId[k15] = -1;
+                        class9.inventoryItemId[k15] = 0;
                     }
                     incomingPacket = -1;
                     return true;
@@ -17658,16 +17785,22 @@ public class Client extends RSApplet {
                     int i7 = inStream.readUnsignedShort();
                     RSInterface class9_1 = RSInterface.interfaceCache[i7];
                     int j19 = inStream.readUnsignedShort();
+                    try {
+                        System.out.println("Item container size: " + j19);
                     for (int j22 = 0; j22 < j19; j22++) {
                         int i25 = inStream.readUnsignedByte();
                         if (i25 == 255)
                             i25 = inStream.readMEInt();
-                        class9_1.inv[j22] = inStream.readLEUShortA();
-                        class9_1.invStackSizes[j22] = i25;
+                        class9_1.inventoryItemId[j22] = inStream.readLEUShortA();
+                        class9_1.inventoryAmounts[j22] = i25;
                     }
-                    for (int j25 = j19; j25 < class9_1.inv.length; j25++) {
-                        class9_1.inv[j25] = 0;
-                        class9_1.invStackSizes[j25] = 0;
+                    for (int j25 = j19; j25 < class9_1.inventoryItemId.length; j25++) {
+                        class9_1.inventoryItemId[j25] = 0;
+                        class9_1.inventoryAmounts[j25] = 0;
+                    }
+                    } catch (Exception e) {
+                        System.err.println("Error in container " + i7 + ", length " + j19 + ", actual length " + class9_1.inventoryItemId.length);
+                        e.printStackTrace();
                     }
                     incomingPacket = -1;
                     return true;
@@ -17807,6 +17940,7 @@ public class Client extends RSApplet {
                     int j8 = inStream.readLEUShort();
                     int l14 = inStream.getIntLittleEndian();
                     anIntArray1045[j8] = l14;
+                    Bank.onConfigChanged(j8, l14);
                     if (variousSettings[j8] != l14) {
                         variousSettings[j8] = l14;
                         method33(j8);
@@ -17821,6 +17955,7 @@ public class Client extends RSApplet {
                     int k8 = inStream.readLEUShort();
                     byte byte0 = inStream.readSignedByte();
                     anIntArray1045[k8] = byte0;
+                    Bank.onConfigChanged(k8, byte0);
                     if (variousSettings[k8] != byte0) {
                         variousSettings[k8] = byte0;
                         method33(k8);
@@ -17886,9 +18021,9 @@ public class Client extends RSApplet {
                         int l25 = inStream.readUnsignedByte();
                         if (l25 == 255)
                             l25 = inStream.readDWord();
-                        if (j20 >= 0 && j20 < class9_2.inv.length) {
-                            class9_2.inv[j20] = i23;
-                            class9_2.invStackSizes[j20] = l25;
+                        if (j20 >= 0 && j20 < class9_2.inventoryItemId.length) {
+                            class9_2.inventoryItemId[j20] = i23;
+                            class9_2.inventoryAmounts[j20] = l25;
                         }
                     }
                     incomingPacket = -1;
@@ -18031,9 +18166,9 @@ public class Client extends RSApplet {
             inStream.readUnsignedByte();
             int amount = inStream.readDWord();
 
-            if (slot >= 0 && slot < items.inv.length) {
-                items.inv[slot] = itemId;
-                items.invStackSizes[slot] = amount;
+            if (slot >= 0 && slot < items.inventoryItemId.length) {
+                items.inventoryItemId[slot] = itemId;
+                items.inventoryAmounts[slot] = amount;
 
                 //System.out.println("item: "+itemId+", amount: "+amount);
             }

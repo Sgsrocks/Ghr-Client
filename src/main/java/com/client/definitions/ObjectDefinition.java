@@ -134,8 +134,8 @@ public final class ObjectDefinition {
 		originalModelColors = null;
 		originalTexture = null;
 		modifiedTexture = null;
-		anInt744 = 1;
-		anInt761 = 1;
+		sizeX = 1;
+		sizeY = 1;
 		solid = true;
 		aBoolean757 = true;
 		hasActions = false;
@@ -413,9 +413,9 @@ public final class ObjectDefinition {
 					}
 				}
 			} else if (type == 14)
-				anInt744 = stream.readUnsignedByte();
+				sizeX = stream.readUnsignedByte();
 			else if (type == 15)
-				anInt761 = stream.readUnsignedByte();
+				sizeY = stream.readUnsignedByte();
 			else if (type == 17)
 				solid = false;
 			else if (type == 18)
@@ -562,7 +562,7 @@ public final class ObjectDefinition {
 	public String name;
 	private int width;
 	private static final Model[] aModelArray741s = new Model[4];
-	public int anInt744;
+	public int sizeX;
 	private int anInt745;
 	public int AreaType;
 	private int[] originalModelColors;
@@ -577,7 +577,7 @@ public final class ObjectDefinition {
 	public int anInt758;
 	public int childrenIDs[];
 	private int anInt760;
-	public int anInt761;
+	public int sizeY;
 	public boolean contouredGround;
 	public boolean aBoolean764;
 	public static Client clientInstance;

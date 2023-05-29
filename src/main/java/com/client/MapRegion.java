@@ -515,30 +515,32 @@ final class MapRegion {
 		ObjectDefinition definition = ObjectDefinition.forID(id);
 		int size1;
 		int size2;
-		if(j1 == 1 || j1 == 3) {
-			size1 = definition.anInt761;//objectSizeY
-			size2 = definition.anInt744;//objectSizeX
+		if(j1 != 1 && j1 != 3) {
+			size1 = definition.sizeX;
+			size2 = definition.sizeY;
 		} else {
-			size1 = definition.anInt744;
-			size2 = definition.anInt761;
+			size1 = definition.sizeY;
+			size2 = definition.sizeX;
 		}
+
 		int modX;
 		int modX1;
-		if (104 >= (size1 + x)) {
-			modX1 = x + (size1 + 1 >> 1);
-			modX = x + (size1 >> 1);
+		if(size1 + x <= 104) {
+			modX = (size1 >> 1) + x;
+			modX1 = (size1 + 1 >> 1) + x;
 		} else {
 			modX = x;
 			modX1 = x + 1;
 		}
+
 		int modY;
 		int modY1;
-		if (104>= (size2 + y)) {
-			modY1 = y + (size2 + 1 >> 1);
+		if(size2 + y <= 104) {
 			modY = (size2 >> 1) + y;
+			modY1 = y + (size2 + 1 >> 1);
 		} else {
 			modY = y;
-			modY1 = 1 + y;
+			modY1 = y + 1;
 		}
 		int k1 = tileHeights[z][modX][modY];
 		int l1 = tileHeights[z][modX1][modY];
@@ -575,11 +577,11 @@ final class MapRegion {
 				int j4;
 				int l4;
 				if (j1 == 1 || j1 == 3) {
-					j4 = definition.anInt761;
-					l4 = definition.anInt744;
+					j4 = definition.sizeY;
+					l4 = definition.sizeX;
 				} else {
-					j4 = definition.anInt744;
-					l4 = definition.anInt761;
+					j4 = definition.sizeX;
+					l4 = definition.sizeY;
 				}
 				if (worldController.addTiledObject(key, byte0, k2, l4, ((Renderable) (obj1)), j4, z, i5, y, x, id)
 						&& definition.aBoolean779) {
@@ -604,7 +606,7 @@ final class MapRegion {
 				}
 			}
 			if (definition.solid && class11 != null)
-				class11.method212(definition.aBoolean757, definition.anInt744, definition.anInt761, x, y, j1);
+				class11.method212(definition.aBoolean757, definition.sizeX, definition.sizeY, x, y, j1);
 			return;
 		}
 		if (type >= 12) {
@@ -617,7 +619,7 @@ final class MapRegion {
 			if (type >= 12 && type <= 17 && type != 13 && z > 0)
 				anIntArrayArrayArray135[z][x][y] |= 0x924;
 			if (definition.solid && class11 != null)
-				class11.method212(definition.aBoolean757, definition.anInt744, definition.anInt761, x, y, j1);
+				class11.method212(definition.aBoolean757, definition.sizeX, definition.sizeY, x, y, j1);
 			return;
 		}
 		if (type == 0) {
@@ -743,7 +745,7 @@ final class MapRegion {
 				obj6 = new Animable_Sub5(id, j1, type, l1, i2, k1, j2, definition.animation, true);
 			worldController.addTiledObject(key, byte0, k2, 1, ((Renderable) (obj6)), 1, z, 0, y, x, id);
 			if (definition.solid && class11 != null)
-				class11.method212(definition.aBoolean757, definition.anInt744, definition.anInt761, x, y, j1);
+				class11.method212(definition.aBoolean757, definition.sizeX, definition.sizeY, x, y, j1);
 			return;
 		}
 		if (definition.contouredGround)
@@ -998,8 +1000,8 @@ final class MapRegion {
 					int rotation = objOtherInfo & 3;
 					if (plane == i && localX >= i1 && localX < i1 + 8 && localY >= k && localY < k + 8) {
 						ObjectDefinition class46 = ObjectDefinition.forID(l1);
-						int j4 = j + Class4.method157(j1, class46.anInt761, localX & 7, localY & 7, class46.anInt744);
-						int k4 = k1 + Class4.method158(localY & 7, class46.anInt761, j1, class46.anInt744, localX & 7);
+						int j4 = j + Class4.method157(j1, class46.sizeY, localX & 7, localY & 7, class46.sizeX);
+						int k4 = k1 + Class4.method158(localY & 7, class46.sizeY, j1, class46.sizeX, localX & 7);
 						if (j4 > 0 && k4 > 0 && j4 < 103 && k4 < 103) {
 							int l4 = plane;
 							if ((tileFlags[1][j4][k4] & 2) == 2)
@@ -1078,16 +1080,16 @@ final class MapRegion {
 				int k4;
 				int i5;
 				if (i == 1 || i == 3) {
-					k4 = class46.anInt761;
-					i5 = class46.anInt744;
+					k4 = class46.sizeY;
+					i5 = class46.sizeX;
 				} else {
-					k4 = class46.anInt744;
-					i5 = class46.anInt761;
+					k4 = class46.sizeX;
+					i5 = class46.sizeY;
 				}
 				worldController.addTiledObject(i3, byte1, l2, i5, ((Renderable) (obj1)), k4, k1, j5, j, i1, j1);
 			}
 			if (class46.solid)
-				class11.method212(class46.aBoolean757, class46.anInt744, class46.anInt761, i1, j, i);
+				class11.method212(class46.aBoolean757, class46.sizeX, class46.sizeY, i1, j, i);
 			return;
 		}
 		if (k >= 12) {
@@ -1098,7 +1100,7 @@ final class MapRegion {
 				obj2 = new Animable_Sub5(j1, i, k, i2, j2, l1, k2, class46.animation, true);
 			worldController.addTiledObject(i3, byte1, l2, 1, ((Renderable) (obj2)), 1, k1, 0, j, i1, j1);
 			if (class46.solid)
-				class11.method212(class46.aBoolean757, class46.anInt744, class46.anInt761, i1, j, i);
+				class11.method212(class46.aBoolean757, class46.sizeX, class46.sizeY, i1, j, i);
 			return;
 		}
 		if (k == 0) {
@@ -1159,7 +1161,7 @@ final class MapRegion {
 				obj6 = new Animable_Sub5(j1, i, k, i2, j2, l1, k2, class46.animation, true);
 			worldController.addTiledObject(i3, byte1, l2, 1, ((Renderable) (obj6)), 1, k1, 0, j, i1, j1);
 			if (class46.solid)
-				class11.method212(class46.aBoolean757, class46.anInt744, class46.anInt761, i1, j, i);
+				class11.method212(class46.aBoolean757, class46.sizeX, class46.sizeY, i1, j, i);
 			return;
 		} // try
 		if (class46.contouredGround)
@@ -1239,7 +1241,7 @@ final class MapRegion {
 		Buffer stream = new Buffer(is);
 		int i_252_ = -1;
 		for (;;) {
-			int i_253_ = stream.readUnsignedIntSmartShortCompat();
+			int i_253_ = stream.method9178();
 			if (i_253_ == 0)
 				break;
 			i_252_ += i_253_;
@@ -1247,12 +1249,12 @@ final class MapRegion {
 			boolean bool_255_ = false;
 			for (;;) {
 				if (bool_255_) {
-					int i_256_ = stream.readUnsignedIntSmartShortCompat();
+					int i_256_ = stream.readUShortSmart();
 					if (i_256_ == 0)
 						break;
 					stream.readUnsignedByte();
 				} else {
-					int i_257_ = stream.readUnsignedIntSmartShortCompat();
+					int i_257_ = stream.readUShortSmart();
 					if (i_257_ == 0)
 						break;
 					i_254_ += i_257_ - 1;
@@ -1279,13 +1281,13 @@ final class MapRegion {
 			Buffer stream = new Buffer(abyte0);
 			int objId = -1;
 			do {
-				int objIdOffset = stream.readUnsignedIntSmartShortCompat();
+				int objIdOffset = stream.method9178();
 				if (objIdOffset == 0)
 					break label0;
 				objId += objIdOffset;
 				int objPosInfo = 0;
 				do {
-					int objPosInfoOffset = stream.readUnsignedIntSmartShortCompat();
+					int objPosInfoOffset = stream.readUShortSmart();
 					if (objPosInfoOffset == 0)
 						break;
 					objPosInfo += objPosInfoOffset - 1;
@@ -1294,7 +1296,7 @@ final class MapRegion {
 					int localX = objPosInfo >> 6 & 0x3f;
 					int plane = objPosInfo >> 12;
 				
-					int objOtherInfo = stream.readUnsignedIntSmartShortCompat();
+					int objOtherInfo = stream.readUnsignedByte();
 					
 					int type = objOtherInfo >> 2;
 					int rotation = objOtherInfo & 3;

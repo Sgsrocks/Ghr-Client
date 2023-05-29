@@ -63,6 +63,7 @@ dependencies {
     // implementation 'com.android.support:support-annotations:28.0.0'
     compile fileTree(dir: 'lib', include: ['*.jar'])
 	compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
+    compile group: 'com.google.guava', name: 'guava', version: '19.0'
     // Discord rich presence
     //implementation 'com.github.Vatuu:discord-rpc:1.6.2'
 

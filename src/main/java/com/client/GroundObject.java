@@ -14,7 +14,7 @@ public final class GroundObject {
 	public Renderable renderable;
 	public int uid;
 	int groundDecorUID;
-	byte aByte816;
+	int  aByte816;
 int newuid;
 	
 	/**

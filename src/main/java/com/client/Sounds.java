@@ -65,10 +65,10 @@ final class Sounds {
 	private Buffer pack(int i) {
 		int k = encode(i);
 		stream.currentPosition = 0;
-		stream.writeDWord(0x52494646);
+		stream.writeInt(0x52494646);
 		stream.method403(36 + k);
-		stream.writeDWord(0x57415645);
-		stream.writeDWord(0x666d7420);
+		stream.writeInt(0x57415645);
+		stream.writeInt(0x666d7420);
 		stream.method403(16);
 		stream.method400(1);
 		stream.method400(1);
@@ -76,7 +76,7 @@ final class Sounds {
 		stream.method403(22050);
 		stream.method400(1);
 		stream.method400(8);
-		stream.writeDWord(0x64617461);
+		stream.writeInt(0x64617461);
 		stream.method403(k);
 		stream.currentPosition += k;
 		return stream;

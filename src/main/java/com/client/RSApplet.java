@@ -458,7 +458,7 @@ public class RSApplet extends Applet implements Runnable, MouseListener, MouseMo
 					|| Client.backDialogID == 4893 || Client.backDialogID == 356 || Client.backDialogID == 310
 					|| Client.backDialogID == 4882 || Client.backDialogID == 4900) {
 				Client.stream.createFrame(40);
-				Client.stream.writeWord(4892);
+				Client.stream.writeShort(4892);
 				// Client.setDialogueOptionsShowing(true);
 			}
 		}

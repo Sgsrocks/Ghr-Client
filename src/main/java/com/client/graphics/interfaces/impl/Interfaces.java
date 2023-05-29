@@ -28,7 +28,7 @@ public class Interfaces extends RSInterface {
 		//staffInterface(defaultTextDrawingAreas);
 		//staffInterfaceBank(defaultTextDrawingAreas);
 		teleportationInterface(defaultTextDrawingAreas);
-		bank(defaultTextDrawingAreas);
+		new Bank().bank(defaultTextDrawingAreas);
 		bankPin(defaultTextDrawingAreas);
 		slayerInterface(defaultTextDrawingAreas);
 		slayerInterfaceSub1(defaultTextDrawingAreas);
@@ -84,7 +84,7 @@ public class Interfaces extends RSInterface {
 		prestigeInterface(defaultTextDrawingAreas);
 		expLock(defaultTextDrawingAreas);
 		addStaffSpecialWidget();
-		skillTabWithHovers(defaultTextDrawingAreas);
+		//skillTabWithHovers(defaultTextDrawingAreas);
 		normals(defaultTextDrawingAreas);
 		manual(defaultTextDrawingAreas);
 		manualInfo(defaultTextDrawingAreas);
@@ -594,30 +594,30 @@ public class Interfaces extends RSInterface {
 		setBounds(19145, 40, 210, 24, Interface);
 		setBounds(19146, 40, 210, 25, Interface);
 		setBounds(19147, 40, 210, 26, Interface);
-		RSInterface tab = addTabInterface(15106);
-		addSprite3(15107, 116);
+		RSInterface tab = addTabInterface(45106);
+		addSprite3(45107, 116);
 
-		addHoverButton_sprite_loader(15210, 142, 21, 21, "Close", 250, 15211, 3);
-		addHoveredButton_sprite_loader(15211, 143, 21, 21, 15212);
+		addHoverButton_sprite_loader(45210, 142, 21, 21, "Close", 250, 45211, 3);
+		addHoveredButton_sprite_loader(45211, 143, 21, 21, 15212);
 
-		addText(15111, "Equip Your Character...", wid, 2, 0xFF9300, false, true);
-		addText(15112, "Attack bonus", wid, 2, 0xFF9300, false, true);
-		addText(15113, "Defence bonus", wid, 2, 0xFF9300, false, true);
-		addText(15114, "Other bonuses", wid, 2, 0xFF9300, false, true);
+		addText(45111, "Equip Your Character...", wid, 2, 0xFF9300, false, true);
+		addText(45112, "Attack bonus", wid, 2, 0xFF9300, false, true);
+		addText(45113, "Defence bonus", wid, 2, 0xFF9300, false, true);
+		addText(45114, "Other bonuses", wid, 2, 0xFF9300, false, true);
 
-		addText(16117, "0kg", wid, 1, 0xFF9300, false, true);
+		addText(46117, "0kg", wid, 1, 0xFF9300, false, true);
 
 		for (int i = 1675; i <= 1684; i++) {
 			textSize(i, wid, 1);
 		}
 		textSize(1686, wid, 1);
 		textSize(1687, wid, 1);
-		addChar(15125);
+		addChar(45125);
 		tab.totalChildren(45);
-		tab.child2(0, 15107, 5, 5);
-		tab.child2(1, 15210, 477, 12);
-		tab.child2(2, 15211, 477, 12);
-		tab.child2(3, 15111, 15, 15);
+		tab.child2(0, 45107, 5, 5);
+		tab.child2(1, 45210, 477, 12);
+		tab.child2(2, 45211, 477, 12);
+		tab.child2(3, 45111, 15, 15);
 		int Child = 4;
 		int Y = 69;
 		int xOff = 332;
@@ -1596,8 +1596,8 @@ public class Interfaces extends RSInterface {
 		RSInterface rsi = interfaceCache[index] = new RSInterface();
 		rsi.actions = new String[10];
 		rsi.spritesX = new int[20];
-		rsi.invStackSizes = new int[30];
-		rsi.inv = new int[30];
+		rsi.inventoryAmounts = new int[30];
+		rsi.inventoryItemId = new int[30];
 		rsi.spritesY = new int[20];
 
 		rsi.children = new int[0];
@@ -1773,8 +1773,8 @@ public class Interfaces extends RSInterface {
 		RSInterface rsinterface = interfaceCache[i] = new RSInterface();
 		rsinterface.actions = new String[5];
 		rsinterface.spritesX = new int[20];
-		rsinterface.invStackSizes = new int[30];
-		rsinterface.inv = new int[30];
+		rsinterface.inventoryAmounts = new int[30];
+		rsinterface.inventoryItemId = new int[30];
 		rsinterface.spritesY = new int[20];
 		rsinterface.children = new int[0];
 		rsinterface.childX = new int[0];
@@ -1782,8 +1782,8 @@ public class Interfaces extends RSInterface {
 		rsinterface.spritesY[0] = 0;
 		// rsinterface.invStackSizes[0] = 0;
 		for (int i2 = 0; i2 < 30; i2++)
-			rsinterface.invStackSizes[i2] = 0;
-		rsinterface.inv[0] = 0;
+			rsinterface.inventoryAmounts[i2] = 0;
+		rsinterface.inventoryItemId[0] = 0;
 		rsinterface.spritesX[0] = 0;
 		rsinterface.actions[0] = "Cancel";
 		rsinterface.centerText = false;
@@ -1908,8 +1908,8 @@ public class Interfaces extends RSInterface {
 		RSInterface rsi = interfaceCache[index] = new RSInterface();
 		rsi.actions = new String[10];
 		rsi.spritesX = new int[20];
-		rsi.invStackSizes = new int[30];
-		rsi.inv = new int[30];
+		rsi.inventoryAmounts = new int[30];
+		rsi.inventoryItemId = new int[30];
 		rsi.spritesY = new int[20];
 
 		rsi.children = new int[0];
